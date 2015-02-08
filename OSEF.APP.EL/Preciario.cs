@@ -18,6 +18,11 @@ namespace OSEF.APP.EL
         string archivo;
         string estatus;
         DateTime fechaalta;
+        Sucursal rsucursal;
+
+        
+
+       
 
         #endregion
 
@@ -57,6 +62,12 @@ namespace OSEF.APP.EL
         {
             get { return fechaalta; }
             set { fechaalta = value; }
+        }
+
+        public Sucursal RSucursal
+        {
+            get { return rsucursal; }
+            set { rsucursal = value; }
         }
 
         #endregion

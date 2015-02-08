@@ -13,11 +13,15 @@ namespace OSEF.APP.EL
         #region Campos
 
         string id;
+        string clave;
         string preciario;
         string descripcion;
         string categoria;
         string estatus;
         DateTime fechaalta;
+        string tipo;
+
+       
 
         #endregion
 
@@ -27,6 +31,14 @@ namespace OSEF.APP.EL
         {
             get { return id; }
             set { id = value; }
+        }
+
+
+
+        public string Clave
+        {
+            get { return clave; }
+            set { clave = value; }
         }
 
         public string Preciario
@@ -57,6 +69,12 @@ namespace OSEF.APP.EL
         {
             get { return fechaalta; }
             set { fechaalta = value; }
+        }
+
+        public string Tipo
+        {
+            get { return tipo; }
+            set { tipo = value; }
         }
 
         #endregion

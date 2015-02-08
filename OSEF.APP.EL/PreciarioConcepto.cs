@@ -13,17 +13,25 @@ namespace OSEF.APP.EL
         #region Campos
 
         string id;
+        string clave;
         string preciario;
         string descripcion;
         string categoria;
         string subcategoria;
         string subsubcategoria;
         string unidad;
-        float costo;
-        float importe;
+        decimal costo;
+        decimal cantidad;
+        decimal importe;
         string estatus;
         DateTime fechaalta;
+        string tipo;
 
+        PreciarioCategoria rcategoria;
+        PreciarioSubCategoria rsubcategoria;
+        PreciarioSubSubCategoria rsubsubcategoria;
+
+       
         #endregion
 
         #region Propiedades
@@ -32,6 +40,12 @@ namespace OSEF.APP.EL
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public string Clave
+        {
+            get { return clave; }
+            set { clave = value; }
         }
 
         public string Preciario
@@ -70,13 +84,19 @@ namespace OSEF.APP.EL
             set { unidad = value; }
         }
 
-        public float Costo
+        public decimal Costo
         {
             get { return costo; }
             set { costo = value; }
         }
 
-        public float Importe
+        public decimal Cantidad
+        {
+            get { return cantidad; }
+            set { cantidad = value; }
+        }
+
+        public decimal Importe
         {
             get { return importe; }
             set { importe = value; }
@@ -93,6 +113,31 @@ namespace OSEF.APP.EL
             get { return fechaalta; }
             set { fechaalta = value; }
         }
+        
+        public string Tipo
+        {
+            get { return tipo; }
+            set { tipo = value; }
+        }
+
+        public PreciarioCategoria RCategoria
+        {
+            get { return rcategoria; }
+            set { rcategoria = value; }
+        }
+
+        public PreciarioSubCategoria RSubcategoria
+        {
+            get { return rsubcategoria; }
+            set { rsubcategoria = value; }
+        }
+
+        public PreciarioSubSubCategoria RSubsubcategoria
+        {
+            get { return rsubsubcategoria; }
+            set { rsubsubcategoria = value; }
+        }
+       
 
         #endregion
     }

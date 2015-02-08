@@ -20,6 +20,8 @@ namespace OSEF.APP.EL
         DateTime fechaalta;
         string tipo;
 
+        
+
         #endregion
 
         #region Propiedades
@@ -35,6 +37,7 @@ namespace OSEF.APP.EL
             get { return clave; }
             set { clave = value; }
         }
+
         public string Preciario
         {
             get { return preciario; }
@@ -64,7 +67,6 @@ namespace OSEF.APP.EL
             get { return tipo; }
             set { tipo = value; }
         }
-
 
         #endregion
     }
