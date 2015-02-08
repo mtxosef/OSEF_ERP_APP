@@ -7,9 +7,25 @@
     <link rel="shortcut icon" href="images/myApp.ico" />
     <link rel="Stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
 </head>
 <body>
-    <form id="form1" runat="server">
     <ext:ResourceManager ID="rmLogin" runat="server" HideInDesign="true" />
     <img src="images/logo-banco.png" alt="logo" class="imgs logo-image" />
     <%--  Panel de Error--%>
@@ -55,10 +71,10 @@
                             </Items>
                         </ext:Panel>
                         <ext:Panel 
-                        ID="pLogin" 
-                        runat="server"
-                        BodyStyle="background-color:transparent;"
-                        StyleSpec="margin-left: 20px;">
+                            ID="pLogin" 
+                            runat="server"
+                            BodyStyle="background-color:transparent;"
+                            StyleSpec="margin-left: 20px;">
                             <Items>
                                 <ext:FieldContainer 
                                 ID="fcLoginbanner" 
@@ -168,6 +184,5 @@
         </div>
     </div>
     <%--  Footer--%>
-    </form>
 </body>
 </html>

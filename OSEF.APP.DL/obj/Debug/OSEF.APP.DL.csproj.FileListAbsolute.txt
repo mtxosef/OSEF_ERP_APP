@@ -61,3 +61,12 @@ C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_PROJECT_ERP\OSEF.APP.DL\bin
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_PROJECT_ERP\OSEF.APP.DL\obj\Debug\OSEF.APP.DL.csprojResolveAssemblyReference.cache
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_PROJECT_ERP\OSEF.APP.DL\obj\Debug\OSEF.APP.DL.dll
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_PROJECT_ERP\OSEF.APP.DL\obj\Debug\OSEF.APP.DL.pdb
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\bin\Debug\OSEF.APP.DL.dll
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\bin\Debug\OSEF.APP.DL.pdb
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\bin\Debug\OSEF.APP.EL.dll
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\bin\Debug\OSEF.LIBRARY.COMMON.dll
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\bin\Debug\OSEF.APP.EL.pdb
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\bin\Debug\OSEF.LIBRARY.COMMON.pdb
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\obj\Debug\OSEF.APP.DL.csprojResolveAssemblyReference.cache
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\obj\Debug\OSEF.APP.DL.dll
+C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.DL\obj\Debug\OSEF.APP.DL.pdb
