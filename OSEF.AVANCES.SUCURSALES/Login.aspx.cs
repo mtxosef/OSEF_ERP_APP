@@ -52,6 +52,9 @@ namespace OSEF.AVANCES.SUCURSALES
                 FormsAuthentication.SetAuthCookie(strUsuario, true);
                 e.Authenticated = true;
                 bMascara = true;
+                Session["Usuario"] = UsuarioBusiness.ObtenerUsuarioPorID(strUsuario);
+                if (Session["Usuario"] == null)
+                    Session["Usuario"] = UsuarioBusiness.ObtenerUsuarioPorCorreo(strUsuario);
             }
             else
             {

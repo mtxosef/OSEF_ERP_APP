@@ -31,31 +31,49 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmDefault;
         
         /// <summary>
-        /// Control SplitButton1.
+        /// Control sUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.SplitButton SplitButton1;
+        protected global::Ext.Net.Store sUsuario;
         
         /// <summary>
-        /// Control Menu2.
+        /// Control mUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Menu Menu2;
+        protected global::Ext.Net.Model mUsuario;
         
         /// <summary>
-        /// Control MenuItem4.
+        /// Control btnUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem MenuItem4;
+        protected global::Ext.Net.Button btnUsuario;
+        
+        /// <summary>
+        /// Control mOpciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Menu mOpciones;
+        
+        /// <summary>
+        /// Control miConfiguracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem miConfiguracion;
         
         /// <summary>
         /// Control miCambiarContrasena.
@@ -67,13 +85,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.MenuItem miCambiarContrasena;
         
         /// <summary>
-        /// Control MenuItem5.
+        /// Control miCerrarSesion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem MenuItem5;
+        protected global::Ext.Net.MenuItem miCerrarSesion;
         
         /// <summary>
         /// Control imgbtnRegresar.

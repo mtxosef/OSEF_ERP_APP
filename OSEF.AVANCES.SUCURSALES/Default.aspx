@@ -20,6 +20,30 @@
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmDefault" runat="server" HideInDesign="true" />
 
+        <ext:Store ID="sUsuario" runat="server">
+            <Model>
+                <ext:Model ID="mUsuario" runat="server" IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Correo" Type="String" />
+                        <ext:ModelField Name="Nombre" Type="String" />
+                        <ext:ModelField Name="APaterno" Type="String" />
+                        <ext:ModelField Name="AMaterno" Type="String" />
+                        <ext:ModelField Name="Estatus" Type="String" />
+                        <ext:ModelField Name="Bloqueado" Type="Boolean" />
+                        <ext:ModelField Name="EnLinea" Type="Boolean" />
+                        <ext:ModelField Name="FechaAlta" Type="Date" />
+                        <ext:ModelField Name="FechaBloqueo" Type="Date" />
+                        <ext:ModelField Name="UltimoAcceso" Type="Date" />
+                        <ext:ModelField Name="CambioContrasena" Type="Date" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <DirectEvents>
+                <Load OnEvent="sUsuario_Load" Success="sUsuario_Load_Success" />
+            </DirectEvents>
+        </ext:Store>
+
         <div id="wrap">
             <!-- Header -->
             <div id="nav-bar" class="">
@@ -37,27 +61,27 @@
                             <span></span>
                         </a>
                         <div class="pull-left">
-                            <ext:SplitButton 
-                                ID="SplitButton1"
+                            <ext:Button 
+                                ID="btnUsuario"
                                 runat="server"
-                                Text="CHRISTIAN MEDINA"
+                                Text=""
                                 Cls="xBtnCustomDesplegable">
                                 <Menu>
-                                    <ext:Menu ID="Menu2" runat="server">
+                                    <ext:Menu ID="mOpciones" runat="server">
                                         <Items>
-                                            <ext:MenuItem ID="MenuItem4" runat="server" Text="Configuración" Width="250">
+                                            <ext:MenuItem ID="miConfiguracion" runat="server" Text="Configuración">
                                             </ext:MenuItem>
                                             <ext:MenuItem ID="miCambiarContrasena" runat="server" Text="Cambiar contraseña">
                                                 <Listeners>
                                                     <Click Fn="miCambiarContrasena_Click" />
                                                 </Listeners>
                                             </ext:MenuItem>
-                                            <ext:MenuItem ID="MenuItem5" runat="server" Text="Cerrar sesión">
+                                            <ext:MenuItem ID="miCerrarSesion" runat="server" Text="Cerrar sesión">
                                             </ext:MenuItem>
                                         </Items>
                                     </ext:Menu>
                                 </Menu>
-                            </ext:SplitButton>
+                            </ext:Button>
                         </div>
                     </div>
                 </div>
