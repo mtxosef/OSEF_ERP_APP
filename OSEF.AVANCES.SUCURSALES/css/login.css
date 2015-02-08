@@ -39,9 +39,8 @@ html, body
 }
 
 /*Div para el error del login*/
-#center-panel-error
+#cError
 {
-    visibility: hidden;
     position: absolute; /*nos posicionamos en el centro del navegador*/
     top: 54%;
     left: 50%; /*determinamos una anchura*/

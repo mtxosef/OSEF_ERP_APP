@@ -84,5 +84,20 @@ namespace OSEF.APP.BL
         }
 
         #endregion
+
+        #region Acción
+
+        /// <summary>
+        /// Método que valida el usuario y la contraseña para hacer login
+        /// </summary>
+        /// <param name="strUsuario"></param>
+        /// <param name="strContrasena"></param>
+        /// <returns></returns>
+        public static bool ValidarUsuarioContrasena(string strUsuario, string strContrasena)
+        {
+            return UsuarioDataAccess.ValidarUsuarioContrasena(strUsuario, strContrasena);
+        }
+
+        #endregion
     }
 }

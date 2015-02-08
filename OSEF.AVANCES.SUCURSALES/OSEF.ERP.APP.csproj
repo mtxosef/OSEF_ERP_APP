@@ -281,6 +281,7 @@
     <Content Include="js\conceptos2.js" />
     <Content Include="js\cuentasContables.js" />
     <Content Include="js\finalidades.js" />
+    <Content Include="js\login.js" />
     <Content Include="js\menus2.js" />
     <Content Include="js\profesiones.js" />
     <Content Include="js\tableroAvances.js" />
