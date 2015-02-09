@@ -688,6 +688,42 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Model mEmpresaMunicipios;
         
         /// <summary>
+        /// Control fcDatosEmpresa6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcDatosEmpresa6;
+        
+        /// <summary>
+        /// Control txtfEmpresaTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEmpresaTelefono;
+        
+        /// <summary>
+        /// Control imEmpresaTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask imEmpresaTelefono;
+        
+        /// <summary>
+        /// Control nfEmpresaTelefonoExt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfEmpresaTelefonoExt;
+        
+        /// <summary>
         /// Control pBeneficiarios.
         /// </summary>
         /// <remarks>

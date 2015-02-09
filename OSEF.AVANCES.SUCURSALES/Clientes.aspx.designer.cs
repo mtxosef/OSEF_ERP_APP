@@ -40,22 +40,22 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmSocios;
         
         /// <summary>
-        /// Control gpSocios.
+        /// Control gpClientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gpSocios;
+        protected global::Ext.Net.GridPanel gpClientes;
         
         /// <summary>
-        /// Control tbSocios.
+        /// Control tbClientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbSocios;
+        protected global::Ext.Net.Toolbar tbClientes;
         
         /// <summary>
         /// Control imgbtnNuevo.

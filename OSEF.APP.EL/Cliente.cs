@@ -42,7 +42,10 @@ namespace OSEF.APP.EL
         int empresacodigopostal;
         string empresaentrecalles;
         string empresatelefono;
+        int empresatelefonoext;
         string puesto;
+        string tiposocio;
+        string numerosocio;
         DateTime fechaalta;
         string estatus;
         string usuario;
@@ -233,10 +236,28 @@ namespace OSEF.APP.EL
             set { empresatelefono = value; }
         }
 
+        public int EmpresaTelefonoExt
+        {
+            get { return empresatelefonoext; }
+            set { empresatelefonoext = value; }
+        }
+
         public string Puesto
         {
             get { return puesto; }
             set { puesto = value; }
+        }
+
+        public string TipoSocio
+        {
+            get { return tiposocio; }
+            set { tiposocio = value; }
+        }
+
+        public string NumeroSocio
+        {
+            get { return numerosocio; }
+            set { numerosocio = value; }
         }
 
         public DateTime FechaAlta

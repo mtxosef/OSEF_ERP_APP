@@ -276,7 +276,7 @@
     <Content Include="js\articulos.js" />
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
-    <Content Include="js\cliente.js" />
+    <Content Include="js\clientes.js" />
     <Content Include="js\colonias.js" />
     <Content Include="js\conceptos2.js" />
     <Content Include="js\cuentasContables.js" />

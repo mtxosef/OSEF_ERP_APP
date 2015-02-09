@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/login2.css" />
     <link rel="Stylesheet" href="css/customControls2.css" />
     <link rel="Stylesheet" href="css/osef_combobox.css" />
-    <script type="text/javascript" src="js/cliente.js"></script>
+    <script type="text/javascript" src="js/clientes.js"></script>
 </head>
 <body>
     <form id="Form1" runat="server">
@@ -24,7 +24,7 @@
                     <ext:FormPanel 
                         ID="fpCliente" 
                         runat="server" 
-                        Height="398"
+                        Height="404"
                         MonitorResize="true">
                         <Items>
                              <ext:TabPanel 
@@ -44,7 +44,7 @@
                                         BodyPadding="10"
                                         MonitorResize="true">
                                         <Items>
-                                            <ext:FieldContainer 
+                                            <ext:FieldContainer
                                                 ID="fcCliente1" 
                                                 runat="server" 
                                                 LabelWidth="120" 
@@ -417,7 +417,7 @@
                                         BodyPadding="10" 
                                         AutoScroll="true">
                                         <Items>
-                                            <ext:FieldContainer 
+                                            <ext:FieldContainer
                                                 ID="fcDireccion1" 
                                                 runat="server" 
                                                 LabelWidth="120"
@@ -621,7 +621,7 @@
                                         BodyPadding="10" 
                                         AutoScroll="true">
                                         <Items>
-                                            <ext:FieldContainer 
+                                            <ext:FieldContainer
                                                 ID="fcDatosEmpresa1" 
                                                 runat="server" 
                                                 LabelWidth="120"
@@ -756,7 +756,7 @@
                                                     </ext:TextField>
                                                 </Items>
                                             </ext:FieldContainer>
-                                            <ext:FieldContainer 
+                                            <ext:FieldContainer
                                                 ID="fcDatosEmpresa5" 
                                                 runat="server"
                                                 LabelWidth="120"
@@ -830,6 +830,46 @@
                                                             </ext:Store>
                                                         </Store>
                                                     </ext:ComboBox>
+                                                </Items>
+                                            </ext:FieldContainer>
+                                            <ext:FieldContainer
+                                                ID="fcDatosEmpresa6" 
+                                                runat="server"
+                                                LabelWidth="120"
+                                                FieldLabel="Teléfono" 
+                                                Layout="ColumnLayout">
+                                                <Items>
+                                                    <ext:TextField
+                                                        ID="txtfEmpresaTelefono"
+                                                        runat="server"
+                                                        Width="250"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        Editable="true"
+                                                        MaxLength="15"
+                                                        EnforceMaxLength="true"
+                                                        AllowBlank="false"
+                                                        Note="Ejemplo: (449) 999-00-00">
+                                                        <Plugins>
+                                                            <ext:InputMask
+                                                                ID="imEmpresaTelefono"
+                                                                runat="server"
+                                                                Mask="(999) 999-99-99"
+                                                                AllowInvalid="true" />
+                                                        </Plugins>
+                                                    </ext:TextField>
+                                                    <ext:NumberField
+                                                        ID="nfEmpresaTelefonoExt"
+                                                        runat="server"
+                                                        Width="250"
+                                                        FieldLabel="Extensión"
+                                                        MaxLength="5"
+                                                        EnforceMaxLength="true"
+                                                        MinValue="0"
+                                                        MaxValue="99999"
+                                                        AllowDecimals="false"
+                                                        Step="1"
+                                                        Note="Ejemplo: 44889">
+                                                    </ext:NumberField>
                                                 </Items>
                                             </ext:FieldContainer>
                                         </Items>
@@ -959,7 +999,16 @@
                                 Height="50"
                                 Width="50"
                                 Disabled="true">
-                               
+                                <DirectEvents>
+                                    <Click OnEvent="imgbtnGuardar_Click" Success="imgbtnGuardar_Click_Success">
+                                        <EventMask ShowMask="true" Msg="Guardardo información..." />
+                                        <ExtraParams>
+                                            <ext:Parameter Name="RevisionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                            <ext:Parameter Name="Revision" Value="Ext.encode(#{sRevision}.getRecordsValues())" Mode="Raw" />
+                                            <ext:Parameter Name="RevisionDObraCivil" Value="Ext.encode(#{sObraCivil}.getRecordsValues())" Mode="Raw" />
+                                        </ExtraParams>
+                                    </Click>
+                                </DirectEvents>
                             </ext:ImageButton>
                             <ext:ImageButton
                                 ID="imgbtnCancelar"
