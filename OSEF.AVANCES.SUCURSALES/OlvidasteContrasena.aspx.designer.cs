@@ -94,12 +94,12 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtEnviaCorreo;
         
         /// <summary>
-        /// Control btnEnviar.
+        /// Control imbtnLogin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Button btnEnviar;
+        protected global::Ext.Net.ImageButton imbtnLogin;
     }
 }
