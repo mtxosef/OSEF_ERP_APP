@@ -7,7 +7,7 @@ $(document).ready(function () {
     $("#avances").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Avances.aspx');
         });
     });
@@ -15,7 +15,7 @@ $(document).ready(function () {
     $("#gruposMenu").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('GruposMenu.aspx');
         });
     });
@@ -23,7 +23,7 @@ $(document).ready(function () {
     $("#gruposMenu2").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('GruposMenu2.aspx');
         });
     });
@@ -31,7 +31,7 @@ $(document).ready(function () {
     $("#usuarios").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Usuarios.aspx');
         });
     });
@@ -39,7 +39,7 @@ $(document).ready(function () {
     $("#usuarios2").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Usuarios2.aspx');
         });
     });
@@ -47,7 +47,7 @@ $(document).ready(function () {
     $("#menus").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Menus.aspx');
         });
     });
@@ -55,7 +55,7 @@ $(document).ready(function () {
     $("#menus2").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Menus2.aspx');
         });
     });
@@ -63,7 +63,7 @@ $(document).ready(function () {
     $("#articulos").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Articulos.aspx');
         });
     });
@@ -71,7 +71,7 @@ $(document).ready(function () {
     $("#profesiones").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Profesiones.aspx');
         });
     });
@@ -79,7 +79,7 @@ $(document).ready(function () {
     $("#finalidades").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Finalidades.aspx');
         });
     });
@@ -87,7 +87,7 @@ $(document).ready(function () {
     $("#sucursal").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Sucursales.aspx');
         });
     });
@@ -95,7 +95,7 @@ $(document).ready(function () {
     $("#conceptos").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Conceptos.aspx');
         });
     });
@@ -103,7 +103,7 @@ $(document).ready(function () {
     $("#conceptos2").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Conceptos2.aspx');
         });
     });
@@ -111,7 +111,7 @@ $(document).ready(function () {
     $("#cuentascontables").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('CuentasContables.aspx');
         });
     });
@@ -119,7 +119,7 @@ $(document).ready(function () {
     $("#categorias").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Categorias.aspx');
         });
     });
@@ -127,7 +127,7 @@ $(document).ready(function () {
     $("#subcategorias").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Subcategorias.aspx');
         });
     });
@@ -135,7 +135,7 @@ $(document).ready(function () {
     $("#proveedores").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Proveedores.aspx');
         });
     });
@@ -143,7 +143,7 @@ $(document).ready(function () {
     $("#estados").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Estados.aspx');
         });
     });
@@ -151,7 +151,7 @@ $(document).ready(function () {
     $("#estados2").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Estados2.aspx');
         });
     });
@@ -159,7 +159,7 @@ $(document).ready(function () {
     $("#municipios").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Municipios.aspx');
         });
     });
@@ -167,15 +167,23 @@ $(document).ready(function () {
     $("#municipios2").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Municipios2.aspx');
+        });
+    });
+
+    $("#colonias").click(function (event) {
+        $("#contenedor").fadeOut(1000, function () {
+            parent.App.imgbtnRegresar.show();
+//            parent.App.lblRegresar.show();
+            parent.App.pCentro.getLoader().load('colonias.aspx');
         });
     });
 
     $("#codigospostales").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('CodigosPostales.aspx');
         });
     });
@@ -183,7 +191,7 @@ $(document).ready(function () {
     $("#codigospostales2").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('CodigosPostales2.aspx');
         });
     });
@@ -191,8 +199,26 @@ $(document).ready(function () {
     $("#socios").click(function (event) {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
-            parent.App.lblRegresar.show();
+//            parent.App.lblRegresar.show();
             parent.App.pCentro.getLoader().load('Clientes.aspx');
         });
     });
+
+    $("#preciarios").click(function (event) {
+        $("#contenedor").fadeOut(1000, function () {
+            parent.App.imgbtnRegresar.show();
+            //            parent.App.lblRegresar.show();
+            parent.App.pCentro.getLoader().load('Obra/Preciarios.aspx');
+        });
+    });
+
+    $("#volumetrias").click(function (event) {
+        $("#contenedor").fadeOut(1000, function () {
+            parent.App.imgbtnRegresar.show();
+            //            parent.App.lblRegresar.show();
+            parent.App.pCentro.getLoader().load('Obra/VolumetriasPreciario.aspx');
+        });
+    });
+
+
 });

@@ -128,6 +128,8 @@ var sMunicipios_Load = function () {
 
 //Evento lanzado al cargar el store de la sucursal
 var sColonia_Load = function () {
+
+
     App.direct.sColonia_Load();
     store = window.parent.App.pCentro.getBody().App.sColonias;
 };

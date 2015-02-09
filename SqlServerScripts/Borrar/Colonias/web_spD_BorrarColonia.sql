@@ -29,7 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spD_BorrarColonia
 	-- Add the parameters for the stored procedure here
-	@ID	CHAR(2)
+	@ID	CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

@@ -29,7 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spI_InsertarColonia
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(12),
+	@ID				CHAR(10) OUTPUT,
 	@Descripcion	VARCHAR(50),
 	@Estado			VARCHAR(4),
 	@Municipio		VARCHAR(6)
@@ -38,7 +38,55 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
+	--Formar el ID
+	DECLARE
+		@ID_TEMP INT,
+		@VALOR CHAR(10)
+		
+		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT)) FROM Colonias WHERE ID LIKE 'COL%'
+		IF (@ID_TEMP IS NOT NULL)
+		BEGIN
+			SET @ID_TEMP = @ID_TEMP + 1
+		END
+		ELSE
+		BEGIN
+			SET @ID_TEMP = 1
+		END
 
+		--DECIMAL
+		IF ((@ID_TEMP / 10) < 1)
+		BEGIN
+			SET @VALOR = 'COL000000' + CAST(@ID_TEMP AS CHAR(1))
+		END
+		ELSE IF ((@ID_TEMP / 100) < 1)
+		BEGIN
+			SET @VALOR = 'COL00000' + CAST(@ID_TEMP AS CHAR(2))
+		END
+		ELSE IF ((@ID_TEMP / 1000) < 1)
+		BEGIN
+			SET @VALOR = 'COL0000' + CAST(@ID_TEMP AS CHAR(3))
+		END
+		ELSE IF ((@ID_TEMP / 10000) < 1)
+		BEGIN
+			SET @VALOR = 'COL000' + CAST(@ID_TEMP AS CHAR(4))
+		END
+		ELSE IF ((@ID_TEMP / 100000) < 1)
+		BEGIN
+			SET @VALOR = 'COL00' + CAST(@ID_TEMP AS CHAR(5))
+		END
+		ELSE  IF ((@ID_TEMP / 1000000) < 1)
+		BEGIN
+			SET @VALOR = 'COL0' + CAST(@ID_TEMP AS CHAR(6))
+		END
+		ELSE
+		BEGIN
+			SET @VALOR = 'COL' + CAST(@ID_TEMP AS CHAR(7))
+		END
+		
+		SELECT @ID = @VALOR
+
+	
+	
     -- Insert statements for procedure here
     INSERT INTO
 		Colonias

@@ -7,6 +7,23 @@
     <title></title>
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <script type="text/javascript" src="js/colonias.js"></script>
 </head>
 <body>
@@ -14,27 +31,30 @@
         <ext:ResourceManager ID="rmFormaProveedor" runat="server" HideInDesign="true" />
 
         <ext:Store
-            ID="sColonias"
+            ID="sColonia"
             runat="server">
             <Model>
                 <ext:Model ID="mFormacolonias" runat="server" IDProperty="ID">
                     <Fields>
                         <ext:ModelField Name="ID" Type="String" />
-                        <ext:ModelField Name="Colonia" Type="String" />
+                        <ext:ModelField Name="Descripcion" Type="String" />
                         <ext:ModelField Name="Estado" Type="String" />
                         <ext:ModelField Name="Municipio" Type="String" />
                        
                     </Fields>
                 </ext:Model>
             </Model>
-           
+            <Listeners>
+                <Load Fn="sColonia_Load" />
+                <Add Fn="sColonia_Add" />
+            </Listeners>
         </ext:Store>
     
         <ext:FormPanel 
             ID="fpColonias"
             runat="server"
             Height="230"
-            Width="650"
+            Width="450"
             BodyPadding="10"
             MonitorResize="true">
             <Items>
@@ -50,7 +70,8 @@
                             runat="server" 
                             Width="200" 
                             Margins="0 3 0 0"
-                            Disabled="true">
+                            >
+
                         </ext:TextField>
                     </Items>
                 </ext:FieldContainer>            
@@ -65,11 +86,13 @@
                             ID="txtfColonia" 
                             runat="server" 
                             Width="200"
+                            AutoFocus="true"
                             MaxLength="50"
                             EnforceMaxLength="true"
-                            AutoFocus="true"
                             AllowBlank="false">
-                         
+                            <Listeners>
+                                <Blur Handler="App.txtfColonia.setValue(App.txtfColonia.getValue().toUpperCase());" />
+                            </Listeners>
                         </ext:TextField>
                     </Items>
                 </ext:FieldContainer> 
@@ -87,10 +110,31 @@
                             Width="200"
                             MaxLength="50"
                             EnforceMaxLength="true"
-                            AutoFocus="true"
-                            Text="Selecciona un estado"
+                            DisplayField="Descripcion"
+                            ValueField="ID"
                             AllowBlank="false">
-                         
+                            <Store>
+                                <ext:Store
+                                    ID="sEstados"
+                                    runat="server">
+                                    <Model>
+                                        <ext:Model ID="mEstados" runat="server" IDProperty="ID">
+                                            <Fields>
+                                                <ext:ModelField Name="ID" Type="String" />
+                                                <ext:ModelField Name="Abreviacion" Type="String" />
+                                                <ext:ModelField Name="Descripcion" Type="String" />
+                                            </Fields>
+                                        </ext:Model>
+                                    </Model>
+                                </ext:Store>
+                            </Store>
+                            <DirectEvents>
+                                <Change OnEvent="cmbEstado_Change">
+                                    <ExtraParams>
+                                        <ext:Parameter Name="valor" Value="App.cmbEstados.getValue()" Mode="Raw" />
+                                    </ExtraParams>
+                                </Change>
+                            </DirectEvents>
                         </ext:ComboBox>
                     </Items>
                 </ext:FieldContainer>   
@@ -107,19 +151,39 @@
                             runat="server" 
                             Width="200"
                             MaxLength="50"
+                            DisplayField="Descripcion"
+                            ValueField="ID"
                             EnforceMaxLength="true"
-                            AutoFocus="true"
-                            Text="Selecciona municipio"
                             AllowBlank="false">
-                         
+                            <Store>
+                                <ext:Store
+                                    ID="sMunicipios"
+                                    runat="server">
+                                    <Model>
+                                        <ext:Model ID="mMunicipios" runat="server" IDProperty="ID">
+                                            <Fields>
+                                                <ext:ModelField Name="ID" Type="String" />
+                                                <ext:ModelField Name="Descripcion" Type="String" />
+                                                <ext:ModelField Name="Estado" Type="String" />
+                                            </Fields>
+                                        </ext:Model>
+                                    </Model>
+                                    <Listeners>
+                                        <Load Fn="sMunicipios_Load" />
+                                    </Listeners>
+                                </ext:Store>
+                            </Store>
                         </ext:ComboBox>
                     </Items>
-                </ext:FieldContainer>         
-             
-
-
+                </ext:FieldContainer>       
             </Items>
-           
+            <Listeners>
+                <ValidityChange Handler="this.dockedItems.get(0).setStatus({
+                                                text : valid ? 'La información esta completa/correcta' : 'Existe información incompleta/incorrecta', 
+                                                iconCls: valid ? 'icon-accept' : 'icon-exclamation'
+                                            });
+                                            #{imgbtnGuardar}.setDisabled(!valid);" />
+            </Listeners>
             <BottomBar>
                 <ext:StatusBar ID="sbProveedor" runat="server" Cls="x-colorToolbar" Text="Sin validar información" />
             </BottomBar>
@@ -135,7 +199,14 @@
                     Height="50" 
                     Width="50"
                     Disabled="true">
-                    
+                   <DirectEvents>
+                        <Click OnEvent="imgbtnGuardar_Click">
+                            <EventMask ShowMask="true" Msg="Registrando información..." />
+                            <ExtraParams>
+                                <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                            </ExtraParams>
+                        </Click>
+                    </DirectEvents>
                 </ext:ImageButton>
                 <ext:ImageButton 
                     ID="imgbtnCancelar" 

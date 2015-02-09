@@ -40,13 +40,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmFormaProveedor;
         
         /// <summary>
-        /// Control sColonias.
+        /// Control sColonia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sColonias;
+        protected global::Ext.Net.Store sColonia;
         
         /// <summary>
         /// Control mFormacolonias.
@@ -121,6 +121,24 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ComboBox cmbEstados;
         
         /// <summary>
+        /// Control sEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEstados;
+        
+        /// <summary>
+        /// Control mEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEstados;
+        
+        /// <summary>
         /// Control fcMunicipios.
         /// </summary>
         /// <remarks>
@@ -137,6 +155,24 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cbMunicipio;
+        
+        /// <summary>
+        /// Control sMunicipios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sMunicipios;
+        
+        /// <summary>
+        /// Control mMunicipios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mMunicipios;
         
         /// <summary>
         /// Control sbProveedor.
