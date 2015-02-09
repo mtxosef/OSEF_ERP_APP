@@ -18,17 +18,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarios' AND
+			WHERE  name = 'web_spD_BorrarColonia' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarios
+	DROP PROCEDURE web_spD_BorrarColonia
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener todos los registros de Articulos
+-- Author:		Christian Medina
+-- Create date: Martes 20 de Enero de 2015
+-- Description:	Borrar un registro de Colonia por su ID
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarios
+CREATE PROCEDURE web_spD_BorrarColonia
 	-- Add the parameters for the stored procedure here
+	@ID	CHAR(2)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -36,14 +37,9 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		Descripcion,
-		Sucursal,
-		FechaAlta,
-		Archivo,
-		Estatus
-	FROM
-		Preciarios
+    DELETE FROM
+		Colonias
+	WHERE
+		ID = @ID
 END
 GO

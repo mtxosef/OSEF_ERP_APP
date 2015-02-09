@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarios' AND
+			WHERE  name = 'web_spS_ObtenerColonia' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarios
+	DROP PROCEDURE web_spS_ObtenerColonia
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener todos los registros de Articulos
+-- Author:		Christian Medina
+-- Create date: Martes 20 de Enero de 2015
+-- Description:	Obtener todos los registros de Colonias
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarios
+CREATE PROCEDURE web_spS_ObtenerColonia
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -39,11 +39,9 @@ BEGIN
 	SELECT
 		ID,
 		Descripcion,
-		Sucursal,
-		FechaAlta,
-		Archivo,
-		Estatus
+		Estado,
+		Municipio
 	FROM
-		Preciarios
+		Colonias
 END
 GO

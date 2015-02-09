@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarios' AND
+			WHERE  name = 'web_spS_ObtenerPreciariosSubSubCategorias' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarios
+	DROP PROCEDURE web_spS_ObtenerPreciariosSubSubCategorias
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Martes 16 de Diciembre de 2014
 -- Description:	Obtener todos los registros de Articulos
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarios
+CREATE PROCEDURE web_spS_ObtenerPreciariosSubSubCategorias
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -38,12 +38,15 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT
 		ID,
+		CLAVE,
+		Preciario,
 		Descripcion,
-		Sucursal,
-		FechaAlta,
-		Archivo,
-		Estatus
+		Categoria,
+		SubCategoria,
+		Estatus,
+		FechaAlta
+		
 	FROM
-		Preciarios
+		PreciarioSubSubCategorias
 END
 GO

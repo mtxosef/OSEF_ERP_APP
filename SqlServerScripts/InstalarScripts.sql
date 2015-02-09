@@ -50,6 +50,17 @@
 -- Conceptos (Modificar)
 :r c:\SqlServerScripts\Modificar\Conceptos\web_spU_ActualizarConcepto.sql
 -----------------------------------------------------------------------------------
+-- Colonias (Borrar)
+:r c:\SqlServerScripts\Borrar\Colonias\web_spD_BorrarColonia.sql
+-- Colonias (Consultar)
+:r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColonia.sql
+:r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniaPorID.sql
+:r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasEnSucursalesPorID.sql
+-- Colonias (Insertar)
+:r c:\SqlServerScripts\Insertar\Colonias\web_spI_InsertarColonia.sql
+-- Colonias (Modificar)
+:r c:\SqlServerScripts\Modificar\Colonias\web_spU_ActualizarColonia.sql
+-----------------------------------------------------------------------------------
 -- CuentasContables (Borrar)
 :r c:\SqlServerScripts\Borrar\CuentasContables\web_spD_BorrarCuentaContable.sql
 -- CuentasContables (Consultar)
@@ -207,4 +218,55 @@
 :r c:\SqlServerScripts\Insertar\Usuarios\web_spI_InsertarUsuario.sql
 -- Usuarios (Modificar)
 :r c:\SqlServerScripts\Modificar\Usuarios\web_spU_ActualizarUsuario.sql
+-----------------------------------------------------------------------------------
+-- Preciarios (Borrar)
+:r c:\SqlServerScripts\Borrar\Preciarios\web_spD_BorrarPreciario.sql
+-- Preciarios (Consultar)
+:r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciarios.sql
+:r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciariosPorID.sql
+:r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciariosPorSucursal.sql
+-- Preciarios (Insertar)
+:r c:\SqlServerScripts\Insertar\Preciarios\web_spI_InsertarPreciario.sql
+-- Preciarios (Modificar)
+:r c:\SqlServerScripts\Modificar\Preciarios\web_spU_ActualizarPreciario.sql
+-----------------------------------------------------------------------------------
+-- PreciarioCategoria (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciarioCategoria\web_spD_BorrarPreciarioCategorias.sql
+-- PreciarioCategoria (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciarioCategoria\web_spS_ObtenerPreciarioCategorias.sql
+:r c:\SqlServerScripts\Consultar\PreciarioCategoria\web_spS_ObtenerPreciarioCategoriasPorID.sql
+-- PreciarioCategoria (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciarioCategoria\web_spI_InsertarPreciarioCategorias.sql
+-- PreciarioCategoria (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciarioCategoria\web_spU_ActualizarPreciarioCategorias.sql
+-----------------------------------------------------------------------------------
+-- PreciarioSubCategoria (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciarioSubCategoria\web_spD_BorrarPreciarioSubCategorias.sql
+-- PreciarioSubCategoria (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciarioSubCategoria\web_spS_ObtenerPreciarioSubCategorias.sql
+:r c:\SqlServerScripts\Consultar\PreciarioSubCategoria\web_spS_ObtenerPreciarioSubCategoriasPorID.sql
+-- PreciarioSubCategoria (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciarioSubCategoria\web_spI_InsertarPreciarioSubCategorias.sql
+-- PreciarioSubCategoria (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciarioSubCategoria\web_spU_ActualizarPreciarioSubCategorias.sql
+-----------------------------------------------------------------------------------
+-- PreciarioSubSubCategoria (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciarioSubSubCategoria\web_spD_BorrarPreciarioSubSubCategorias.sql
+-- PreciarioSubSubCategoria (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciarioSubSubCategoria\web_spS_ObtenerPreciarioSubSubCategorias.sql
+:r c:\SqlServerScripts\Consultar\PreciarioSubSubCategoria\web_spS_ObtenerPreciarioSubSubCategoriasPorID.sql
+-- PreciarioSubSubCategoria (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciarioSubSubCategoria\web_spI_InsertarPreciarioSubSubCategorias.sql
+-- PreciarioSubSubCategoria (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciarioSubSubCategoria\web_spU_ActualizarPreciarioSubSubCategorias.sql
+-----------------------------------------------------------------------------------
+-- PreciarioConcepto (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciarioConcepto\web_spD_BorrarPreciarioConcepto.sql
+-- PreciarioConcepto (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptosPorPreciario.sql
+:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptoPorId.sql
+-- PreciarioConcepto (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciarioConcepto\web_spI_InsertarPreciarioConcepto.sql
+-- PreciarioConcepto (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciarioConcepto\web_spU_ActualizarPreciarioConcepto.sql
 -----------------------------------------------------------------------------------

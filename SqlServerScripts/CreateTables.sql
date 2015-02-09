@@ -26,7 +26,7 @@ CREATE TABLE Municipios(
 )
 
 CREATE TABLE Colonias(
-	ID			CHAR(5)			NOT NULL PRIMARY KEY,
+	ID			CHAR(12)			NOT NULL PRIMARY KEY,
 	Descripcion VARCHAR(100)	NULL,
 	Estado		CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
 	Municipio	CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID)
@@ -36,7 +36,7 @@ CREATE TABLE CodigosPostales(
 	ID			CHAR(7)			NOT NULL PRIMARY KEY,
 	Estado		CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
 	Municipio	CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
-	Colonia		CHAR(5)			NOT NULL FOREIGN KEY REFERENCES Colonias(ID),
+	Colonia		CHAR(12)			NOT NULL FOREIGN KEY REFERENCES Colonias(ID),
 	Numero		INT				NULL
 )
 
@@ -362,54 +362,58 @@ CREATE TABLE Beneficiarios(
 )
 
 CREATE TABLE Preciarios(
-	ID				CHAR(7)			NOT NULL PRIMARY KEY,
-	Descripcion		VARCHAR(50)		NOT NULL,
-	Sucursal		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
-	Archivo			VARCHAR(200)	NOT NULL,
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+ ID    CHAR(7)   NOT NULL PRIMARY KEY,
+ Descripcion  VARCHAR(50)  NOT NULL,
+ Sucursal  CHAR(10)  NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
+ Archivo   VARCHAR(200) NOT NULL,
+ Estatus   VARCHAR(20)  NOT NULL,
+ FechaAlta  SMALLDATETIME NOT NULL
 )
 
 CREATE TABLE PreciarioCategorias(
-	ID			CHAR(7)			NOT NULL PRIMARY KEY,
-	Preciario	CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
-	Descripcion	VARCHAR(50)		NOT NULL,
-	Estatus		VARCHAR(20)		NOT NULL,
-	FechaAlta	SMALLDATETIME	NOT NULL
+ ID CHAR(10) NOT NULL PRIMARY KEY,
+ CLAVE   CHAR(7) NULL,
+ Preciario CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+ Descripcion VARCHAR(500)  NOT NULL,
+ Estatus  VARCHAR(20)  NOT NULL,
+ FechaAlta SMALLDATETIME NOT NULL
 )
 
 CREATE TABLE PreciarioSubCategorias(
-	ID			CHAR(7)			NOT NULL PRIMARY KEY,
-	Preciario	CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
-	Descripcion	VARCHAR(50)		NOT NULL,
-	Categoria	CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
-	Estatus		VARCHAR(20)		NOT NULL,
-	FechaAlta	SMALLDATETIME	NOT NULL
+ ID CHAR(10) NOT NULL PRIMARY KEY,
+ CLAVE   CHAR(7) NULL,
+ Preciario CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+ Descripcion VARCHAR(500)  NOT NULL,
+ Categoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+ Estatus  VARCHAR(20)  NOT NULL,
+ FechaAlta SMALLDATETIME NOT NULL
 )
 
 CREATE TABLE PreciarioSubSubCategorias(
-	ID				CHAR(7)			NOT NULL PRIMARY KEY,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
-	Descripcion		VARCHAR(50)		NOT NULL,
-	Categoria		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
-	SubCategoria	CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+ ID CHAR(10) NOT NULL PRIMARY KEY,
+ CLAVE   CHAR(7) NULL,
+ Preciario  CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+ Descripcion  VARCHAR(500)  NOT NULL,
+ Categoria  CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+ SubCategoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
+ Estatus   VARCHAR(20)  NOT NULL,
+ FechaAlta  SMALLDATETIME NOT NULL
 )
 
 CREATE TABLE PreciarioConceptos(
-	ID				CHAR(7)			NOT NULL PRIMARY KEY,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
-	Descripcion		VARCHAR(50)		NOT NULL,
-	Categoria		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
-	SubCategoria	CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
-	SubSubCategoria	CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciarioSubSubCategorias(ID),
-	Unidad			VARCHAR(4)		NULL,
-	Cantidad		INT				NULL,
-	Costo			MONEY			NULL,
-	Importe			MONEY			NULL,
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+ ID CHAR(10) NOT NULL PRIMARY KEY,
+ CLAVE   CHAR(7) NULL,
+ Preciario  CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+ Descripcion  VARCHAR(2000)  NOT NULL,
+ Categoria  CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+ SubCategoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
+ SubSubCategoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubSubCategorias(ID),
+ Unidad   VARCHAR(30)  NULL,
+ Costo    DECIMAL(20,2),
+ Cantidad DECIMAL(10,2),
+ Importe    DECIMAL(20,2),
+ Estatus   VARCHAR(20)  NOT NULL,
+ FechaAlta  SMALLDATETIME NOT NULL
 )
 
 --DROP TABLE Menus
@@ -436,6 +440,11 @@ CREATE TABLE PreciarioConceptos(
 --DROP TABLE Municipios
 --DROP TABLE Estados
 --DROP TABLE Usuarios
+--DROP TABLE Preciarios
+--DROP TABLE PreciarioCategorias
+--DROP TABLE PreciarioSubCategorias
+--DROP TABLE PreciarioSubSubCategorias
+--DROP TABLE PreciarioConceptos
 
 -- CORREGIR
 --ALTER TABLE Sucursales ADD CR SMALLINT NOT NULL

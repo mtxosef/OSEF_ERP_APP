@@ -18,21 +18,23 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spI_InsertarPreciario' AND
+			WHERE  name = 'web_spI_InsertarPreciarioSubSubCategoria' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spI_InsertarPreciario
+	DROP PROCEDURE web_spI_InsertarPreciarioSubSubCategoria
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Martes 16 de Diciembre de 2014
 -- Description:	Insertar un registro de Articulo
 -- =============================================
-CREATE PROCEDURE web_spI_InsertarPreciario
+CREATE PROCEDURE web_spI_InsertarPreciarioSubSubCategoria
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(7) OUTPUT,
+	@ID				CHAR(10) OUTPUT,
+	@CLAVE			CHAR(7),
+	@Preciario		VARCHAR(50),
 	@Descripcion	VARCHAR(100),
-	@Sucursal		VARCHAR(50),
-	@Archivo		VARCHAR(50),
+	@Categoria		CHAR(10),
+	@SubCategoria	CHAR(10),
 	@Estatus		VARCHAR(20),
 	@FechaAlta		SMALLDATETIME
 AS
@@ -41,12 +43,13 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
+	
 	--Formar el ID
 	DECLARE
 		@ID_TEMP INT,
-		@VALOR CHAR(7)
+		@VALOR CHAR(10)
 		
-		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT)) FROM Preciarios WHERE ID LIKE 'PRC%'
+		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 6, LEN(ID)) AS INT)) FROM PreciarioSubSubCategorias WHERE ID LIKE 'SSCAT%'
 		IF (@ID_TEMP IS NOT NULL)
 		BEGIN
 			SET @ID_TEMP = @ID_TEMP + 1
@@ -59,45 +62,50 @@ BEGIN
 		--DECIMAL
 		IF ((@ID_TEMP / 10) < 1)
 		BEGIN
-			SET @VALOR = 'PRC000' + CAST(@ID_TEMP AS CHAR(1))
+			SET @VALOR = 'SSCAT0000' + CAST(@ID_TEMP AS CHAR(1))
 		END
 		ELSE IF ((@ID_TEMP / 100) < 1)
 		BEGIN
-			SET @VALOR = 'PRC00' + CAST(@ID_TEMP AS CHAR(2))
+			SET @VALOR = 'SSCAT000' + CAST(@ID_TEMP AS CHAR(2))
 		END
 		ELSE IF ((@ID_TEMP / 1000) < 1)
 		BEGIN
-			SET @VALOR = 'PRC0' + CAST(@ID_TEMP AS CHAR(3))
+			SET @VALOR = 'SSCAT00' + CAST(@ID_TEMP AS CHAR(3))
 		END
-	
+		ELSE IF ((@ID_TEMP / 10000) < 1)
+		BEGIN
+			SET @VALOR = 'SSCAT0' + CAST(@ID_TEMP AS CHAR(4))
+		END
 		ELSE
 		BEGIN
-			SET @VALOR = 'PRC' + CAST(@ID_TEMP AS CHAR(4))
+			SET @VALOR = 'SSCAT' + CAST(@ID_TEMP AS CHAR(5))
 		END
 		
 		SELECT @ID = @VALOR
-	
+
     -- Insert statements for procedure here
     INSERT INTO
-		Preciarios
+		PreciarioSubSubCategorias
 		(
 			ID,
+			CLAVE,
+			Preciario,
 			Descripcion,
-			Sucursal,
-			Archivo,
+			categoria,
+			SubCategoria,
 			Estatus,
 			FechaAlta
 		)
 	VALUES
 		(
 			@ID,
+			@CLAVE,
+			@Preciario,
 			@Descripcion,
-			@Sucursal,
-			@Archivo,
+			@Categoria,
+			@SubCategoria,
 			@Estatus,
 			@FechaAlta
 		)
 END
 GO
-
-

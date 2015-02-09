@@ -18,17 +18,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarios' AND
+			WHERE  name = 'web_spS_ObtenerColoniasPorMunicipio' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarios
+	DROP PROCEDURE web_spS_ObtenerMunicipiosPorEstado
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener todos los registros de Articulos
+-- Create date: Sabado 22 de Noviembre de 2014
+-- Description:	Obtener todos los Municipios por Estado
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarios
+CREATE PROCEDURE web_spS_ObtenerMunicipiosPorEstado
 	-- Add the parameters for the stored procedure here
+	@Estado	CHAR(15)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -39,11 +40,10 @@ BEGIN
 	SELECT
 		ID,
 		Descripcion,
-		Sucursal,
-		FechaAlta,
-		Archivo,
-		Estatus
+		Estado
 	FROM
-		Preciarios
+		Municipios
+	WHERE
+		Estado = @Estado
 END
 GO

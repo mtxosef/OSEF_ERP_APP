@@ -18,17 +18,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarios' AND
+			WHERE  name = 'web_spS_ObtenerSucursalesEnRevisionesPorID' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarios
+	DROP PROCEDURE web_spS_ObtenerSucursalesEnRevisionesPorID
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener todos los registros de Articulos
+-- Create date: Miercoles 14 de Enero de 2015
+-- Description:	Obtener los registros de Sucursales por su Revisión
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarios
+CREATE PROCEDURE web_spS_ObtenerSucursalesEnRevisionesPorID
 	-- Add the parameters for the stored procedure here
+	@ID	CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -36,14 +37,13 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		Descripcion,
-		Sucursal,
-		FechaAlta,
-		Archivo,
-		Estatus
-	FROM
-		Preciarios
+	IF EXISTS(SELECT A.ID FROM Sucursales A INNER JOIN Revisiones B ON A.ID = B.Sucursal WHERE A.ID = @ID)
+	BEGIN
+		SELECT CAST(1 AS BIT)
+	END
+	ELSE
+	BEGIN
+		SELECT CAST(0 AS BIT)
+	END
 END
 GO

@@ -24,17 +24,16 @@ IF EXISTS (	SELECT name
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Miércoles 21 de Enero de 2015
--- Description:	Actualizar un registro de Preciario por su ID
+-- Create date: Martes 16 de Diciembre de 2014
+-- Description:	Actualizar un Articulo por su ID
 -- =============================================
 CREATE PROCEDURE web_spU_ActualizarPreciario
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(7) OUTPUT,
-	@Descripcion	VARCHAR(50),
-	@Sucursal		CHAR(10),
-	@Archivo		VARCHAR(200),
-	@Estatus		VARCHAR(20),
-	@FechaAlta		SMALLDATETIME
+	@ID				CHAR(10),
+	@Descripcion	VARCHAR(100),
+	@Sucursal		VARCHAR(50),
+	@Archivo		VARCHAR(50),
+	@Estatus		VARCHAR(20)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -43,13 +42,14 @@ BEGIN
 
     -- Insert statements for procedure here
     UPDATE
-		Preciario
+		Preciarios
 	SET
+		
 		Descripcion = @Descripcion,
-		Sucursal = @Sucursal,
+		Sucursal =@Sucursal,
 		Archivo = @Archivo,
-		Estatus = @Estatus,
-		FechaAlta = @FechaAlta
+		Estatus = @Estatus
+		
 	WHERE
 		ID = @ID
 END
