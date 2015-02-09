@@ -164,6 +164,9 @@
 :r c:\SqlServerScripts\Insertar\Revisiones\web_spI_InsertarRevision.sql
 -- Revisiones (Modificar)
 :r c:\SqlServerScripts\Modificar\Revisiones\web_spU_ActualizarRevision.sql
+-- Revisiones (Acción)
+:r c:\SqlServerScripts\Accion\Revisiones\web_spS_AfectarRevisionPorID.sql
+:r c:\SqlServerScripts\Accion\Revisiones\web_spS_AvanzarRevisionPorID.sql
 -----------------------------------------------------------------------------------
 -- RevisionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\RevisionesD\web_spD_BorrarRevisionD.sql
@@ -174,6 +177,8 @@
 :r c:\SqlServerScripts\Insertar\RevisionesD\web_spI_InsertarRevisionD.sql
 -- RevisionesD (Modificar)
 :r c:\SqlServerScripts\Modificar\RevisionesD\web_spU_ActualizarRevisionD.sql
+-- RevisionesD (Acción)
+:r c:\SqlServerScripts\Accion\RevisionesD\web_spI_InsertarRevisionD.sql
 -----------------------------------------------------------------------------------
 -- SolicitudesPrestamos (Borrar)
 :r c:\SqlServerScripts\Borrar\SolicitudesPrestamos\web_spD_BorrarSolicitudPrestamo.sql
@@ -218,8 +223,9 @@
 :r c:\SqlServerScripts\Insertar\Usuarios\web_spI_InsertarUsuario.sql
 -- Usuarios (Modificar)
 :r c:\SqlServerScripts\Modificar\Usuarios\web_spU_ActualizarUsuario.sql
------------------------------------------------------------------------------------
--- Preciarios (Borrar)
+-- Usuarios (Acción)
+:r c:\SqlServerScripts\Accion\Usuarios\web_spS_ValidarUsuarioContrasena.sql
+------------------------------------------------------------------------------------- Preciarios (Borrar)
 :r c:\SqlServerScripts\Borrar\Preciarios\web_spD_BorrarPreciario.sql
 -- Preciarios (Consultar)
 :r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciarios.sql
