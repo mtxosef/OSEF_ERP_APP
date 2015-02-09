@@ -43,8 +43,6 @@ BEGIN
     UPDATE
 		PreciarioCategorias
 	SET
-		
-		Descripcion = @Descripcion,
 		Preciario =@Preciario,
 		Descripcion = @Descripcion,
 		Estatus = @Estatus

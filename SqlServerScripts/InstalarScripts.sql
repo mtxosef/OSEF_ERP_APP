@@ -270,7 +270,7 @@
 :r c:\SqlServerScripts\Borrar\PreciarioConcepto\web_spD_BorrarPreciarioConcepto.sql
 -- PreciarioConcepto (Consultar)
 :r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptosPorPreciario.sql
-:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptoPorId.sql
+:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptosPorId.sql
 -- PreciarioConcepto (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciarioConcepto\web_spI_InsertarPreciarioConcepto.sql
 -- PreciarioConcepto (Modificar)
