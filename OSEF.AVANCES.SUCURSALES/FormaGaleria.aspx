@@ -7,24 +7,43 @@
     <title></title>
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
-    <script language="javascript" type="text/javascript">
-        var onGroupCommand = function (column, command, group) {
-            if (command === 'CargarImagenes') {
-                App.wCargarImagenes.load('FormaCargaMultiImagenes.aspx');
-                App.wCargarImagenes.setHeight(351.5);
-                App.wCargarImagenes.setWidth(630);
-                App.wCargarImagenes.center();
-                App.wCargarImagenes.setTitle('Nueva Imagen');
-                App.wCargarImagenes.show();
-            }
-        };
 
-        var getAdditionalData = function (data, idx, record, orig) {
-            return {
-                rowBodyColspan: record.fields.getCount(),
-                rowBody: Ext.String.format('<div style=\'padding:0 5px 5px 5px;\'>The {0} [{1}] requires light conditions of <i>{2}</i>.<br /><b>Price: {3}</b></div>', data.Common, data.Botanical, data.Light, Ext.util.Format.usMoney(data.Price))
-            };
-        }; 
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
+        <script type="text/javascript" src="js/avance.js"></script>
+     <script language="javascript" type="text/javascript">
+         var onGroupCommand = function (column, command, group) {
+             if (command === 'CargarImagenes') {
+                 window.parent.App.wCargarImagenes.load('FormaCargaMultiImagenes.aspx');
+                 window.parent.App.wCargarImagenes.setHeight(351.5);
+                 window.parent.App.wCargarImagenes.setWidth(630);
+                 window.parent.App.wCargarImagenes.center();
+                 window.parent.App.wCargarImagenes.setTitle('Nueva Imagen');
+                 window.parent.App.wCargarImagenes.show();
+             }
+         };
+
+         var getAdditionalData = function (data, idx, record, orig) {
+             return {
+                 rowBodyColspan: record.fields.getCount(),
+                 rowBody: Ext.String.format('<div style=\'padding:0 5px 5px 5px;\'>The {0} [{1}] requires light conditions of <i>{2}</i>.<br /><b>Price: {3}</b></div>', data.Common, data.Botanical, data.Light, Ext.util.Format.usMoney(data.Price))
+             };
+         }; 
 
     </script>
 </head>

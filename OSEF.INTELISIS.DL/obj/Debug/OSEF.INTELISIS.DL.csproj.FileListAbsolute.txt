@@ -34,3 +34,12 @@ C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.INTELISIS.DL\b
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.INTELISIS.DL\obj\Debug\OSEF.INTELISIS.DL.csprojResolveAssemblyReference.cache
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.INTELISIS.DL\obj\Debug\OSEF.INTELISIS.DL.dll
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.INTELISIS.DL\obj\Debug\OSEF.INTELISIS.DL.pdb
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\bin\Debug\OSEF.INTELISIS.DL.dll
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\bin\Debug\OSEF.INTELISIS.DL.pdb
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\bin\Debug\OSEF.INTELISIS.EL.dll
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\bin\Debug\OSEF.LIBRARY.COMMON.dll
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\bin\Debug\OSEF.INTELISIS.EL.pdb
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\bin\Debug\OSEF.LIBRARY.COMMON.pdb
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\obj\Debug\OSEF.INTELISIS.DL.csprojResolveAssemblyReference.cache
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\obj\Debug\OSEF.INTELISIS.DL.dll
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.INTELISIS.DL\obj\Debug\OSEF.INTELISIS.DL.pdb

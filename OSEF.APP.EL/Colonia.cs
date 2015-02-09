@@ -20,6 +20,9 @@ namespace OSEF.APP.EL
         Estado restado;
         Municipio rmunicipio;
 
+        
+        
+
         #endregion
 
         #region Propiedades

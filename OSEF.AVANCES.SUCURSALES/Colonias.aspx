@@ -7,9 +7,25 @@
     <title></title>
        <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
-    <script type="text/javascript" src="js/libs/jquery-2.0.3.min.js"></script>
-    <script type='text/javascript' src="js/menu-usuario.js"></script>
-    <script type="text/javascript" src="js/estados.js"></script>
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
+
+    <script type="text/javascript" src="js/colonias.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
@@ -40,7 +56,9 @@
                             PressedImageUrl="assets/img/controles/nuevo-pressed.png"
                             Height="50"
                             Width="50">
-                            
+                            <Listeners>
+                                <Click Fn="imgbtnNuevo_Click" />
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnEditar"
@@ -52,7 +70,9 @@
                             Height="50"
                             Width="50"
                             Disabled="true">
-                           
+                            <Listeners>
+                                <Click Fn="imgbtnEditar_Click" />
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnBorrar"
@@ -64,7 +84,25 @@
                             Height="50"
                             Width="50"
                             Disabled="true">
-                           
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnBorrar_Click" Success="imgbtnBorrar_Click_Success">
+                                    <Confirmation
+                                        ConfirmRequest="true"
+                                        Title="Eliminar"
+                                        Message="¿Deseas eliminar el registro?">
+                                    </Confirmation>
+                                    <EventMask
+                                        ShowMask="true"
+                                        CustomTarget="App.gpColonias.body"
+                                        Target="CustomTarget"
+                                        Msg="Eliminando registro">
+                                    </EventMask>
+                                    <ExtraParams>
+                                        <ext:Parameter Name="ID" Value="App.gpColonias.getSelectionModel().getSelection()[0].get('ID')" Mode="Raw">
+                                        </ext:Parameter>
+                                    </ExtraParams>
+                                </Click>
+                             </DirectEvents>
                         </ext:ImageButton>
                         <ext:ToolbarSpacer ID="tbsColonias" runat="server" Width="500">
                         </ext:ToolbarSpacer>
@@ -77,7 +115,9 @@
                             PressedImageUrl="assets/img/controles/update-pressed.png"
                             Height="50"
                             Width="50">
-                           
+                           <Listeners>
+                                <Click Handler="#{sColonias}.reload(); App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:TextField 
                             ID="txtBuscar"
@@ -85,7 +125,9 @@
                             AutoFocus="true"
                             EmptyText="Buscar"
                             Width="200">
-                            
+                            <Listeners>
+                                <Change Fn="txtBuscar_Change" />
+                            </Listeners>
                             <RightButtons>
                                 <ext:ImageButton
                                     ID="imgbtnBuscar"
@@ -103,22 +145,27 @@
             </TopBar>
             <Store>
                 <ext:Store
-                    ID="sEstados"
-                    runat="server">
+                    ID="sColonias"
+                    runat="server"
+                    OnReadData="OnReadData_sColonias">
                     <Model>
-                        <ext:Model ID="mColonoias" runat="server">
+                        <ext:Model ID="mColonias" runat="server">
                             <Fields>
                                 <ext:ModelField Name="ID" Type="String" />
-                                <ext:ModelField Name="Colonia" Type="String" />
+                                <ext:ModelField Name="Descripcion" Type="String" />
                                 <ext:ModelField Name="Estado" Type="String" />
                                 <ext:ModelField Name="Municipio" Type="String" />
+                                <ext:ModelField Name="REstado" Type="Object" />
+                                <ext:ModelField Name="RMunicipio" Type="Object" />
                             </Fields>
                         </ext:Model>
                     </Model>
                     <Sorters>
                         <ext:DataSorter Property="ID" Direction="ASC" />
                     </Sorters>
-                    
+                    <Listeners>
+                        <DataChanged Fn="sColonias_DataChanged" />
+                    </Listeners>
                 </ext:Store>
             </Store>
             <ColumnModel>
@@ -138,29 +185,31 @@
                         Text="COLONIA"
                         Align="Center"
                         Width="270"
-                        DataIndex="Colonia">
-                       
+                        DataIndex="Descripcion">
                     </ext:Column>
                     <ext:Column
                         ID="cEstado"
                         runat="server"
                         Text="ESTADO"
                         Align="Left"
-                        Width="270"
+                        Width="250"
                         DataIndex="Estado">
-                      
+                       <Renderer Fn="cEstado_Renderer" />
                     </ext:Column>
                     <ext:Column
                         ID="cMunicipio"
                         runat="server"
                         Text="MUNICIPIO"
                         Align="Left"
-                        Width="270"
+                        Width="250"
                         DataIndex="Municipio">
-                      
+                        <Renderer Fn="cMunicipio_Renderer" />
                     </ext:Column>
                 </Columns>
             </ColumnModel>
+             <Listeners>
+                <ItemClick Fn="gpColonias_ItemClick" />
+            </Listeners>
             <View>
                 <ext:GridView
                     ID="gvColonias"
@@ -168,11 +217,15 @@
                     StripeRows="true">
                 </ext:GridView>
             </View>
-            
-          
+            <SelectionModel>
+                <ext:RowSelectionModel
+                    ID="rsmColonias"
+                    runat="server">
+                </ext:RowSelectionModel>
+            </SelectionModel>
             <FooterBar>
                 <ext:StatusBar
-                    ID="sbEstados"
+                    ID="sbColonias"
                     runat="server"
                     Text=""
                     StatusAlign="Left">

@@ -44,6 +44,7 @@
     <Compile Include="ArticuloDataAccess.cs" />
     <Compile Include="CategoriaDataAccess.cs" />
     <Compile Include="ClienteDataAccess.cs" />
+    <Compile Include="ColoniaDataAccess.cs" />
     <Compile Include="ConceptoDataAccess.cs" />
     <Compile Include="CuentaContableDataAccess.cs" />
     <Compile Include="EstadoDataAccess.cs" />
@@ -51,6 +52,11 @@
     <Compile Include="GrupoMenuDataAccess.cs" />
     <Compile Include="MenuDataAccess.cs" />
     <Compile Include="MunicipioDataAccess.cs" />
+    <Compile Include="PreciarioCategoriaDataAccess.cs" />
+    <Compile Include="PreciarioConceptosDataAccess.cs" />
+    <Compile Include="PreciarioDataAccess.cs" />
+    <Compile Include="PreciarioSubCategoriasDataAccess.cs" />
+    <Compile Include="PreciarioSubSubCategoriaDataAccess.cs" />
     <Compile Include="ProfesionDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDataAccess.cs" />

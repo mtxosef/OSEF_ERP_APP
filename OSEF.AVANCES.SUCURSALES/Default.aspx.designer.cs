@@ -103,15 +103,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ImageButton imgbtnRegresar;
         
         /// <summary>
-        /// Control lblRegresar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Label lblRegresar;
-        
-        /// <summary>
         /// Control pCentro.
         /// </summary>
         /// <remarks>

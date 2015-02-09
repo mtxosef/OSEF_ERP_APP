@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace OSEF.AVANCES.SUCURSALES
+namespace OSEF.AVANCES.SUCURSALES.Obra
 {
-    public partial class Preciarios : System.Web.UI.Page
+    public partial class VolumetriasPreciario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

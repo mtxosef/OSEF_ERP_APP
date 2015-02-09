@@ -7926,6 +7926,23 @@ Progress control. */
 }
 
 
+.bg-color-darkgreen {
+  background-color: #1e7145 !important;
+}
+
+.bg-color-darkgreen:hover {
+
+   background-color: #1e7145 !important ;
+
+}
+
+.bg-color-darkgreen:active {
+
+   background-color: #1e7145 !important;
+
+}
+
+
 
 
 

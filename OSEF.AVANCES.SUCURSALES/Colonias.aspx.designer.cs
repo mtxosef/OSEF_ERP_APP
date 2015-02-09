@@ -112,22 +112,22 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ImageButton imgbtnBuscar;
         
         /// <summary>
-        /// Control sEstados.
+        /// Control sColonias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sEstados;
+        protected global::Ext.Net.Store sColonias;
         
         /// <summary>
-        /// Control mColonoias.
+        /// Control mColonias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mColonoias;
+        protected global::Ext.Net.Model mColonias;
         
         /// <summary>
         /// Control cID.
@@ -175,12 +175,21 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.GridView gvColonias;
         
         /// <summary>
-        /// Control sbEstados.
+        /// Control rsmColonias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar sbEstados;
+        protected global::Ext.Net.RowSelectionModel rsmColonias;
+        
+        /// <summary>
+        /// Control sbColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.StatusBar sbColonias;
     }
 }

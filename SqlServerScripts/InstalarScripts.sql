@@ -124,16 +124,6 @@
 -- Municipios (Modificar)
 :r c:\SqlServerScripts\Modificar\Municipios\web_spU_ActualizarMunicipio.sql
 -----------------------------------------------------------------------------------
--- Preciarios (Borrar)
-:r c:\SqlServerScripts\Borrar\Preciarios\web_spD_BorrarPreciario.sql
--- Preciarios (Consultar)
-:r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciarios.sql
-:r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciarioPorID.sql
--- Preciarios (Insertar)
-:r c:\SqlServerScripts\Insertar\Preciarios\web_spI_InsertarPreciario.sql
--- Preciarios (Modificar)
-:r c:\SqlServerScripts\Modificar\Preciarios\web_spU_ActualizarPreciario.sql
------------------------------------------------------------------------------------
 -- Profesiones (Borrar)
 :r c:\SqlServerScripts\Borrar\Profesiones\web_spD_BorrarProfesion.sql
 -- Profesiones (Consultar)
@@ -270,7 +260,7 @@
 :r c:\SqlServerScripts\Borrar\PreciarioConcepto\web_spD_BorrarPreciarioConcepto.sql
 -- PreciarioConcepto (Consultar)
 :r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptosPorPreciario.sql
-:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptosPorId.sql
+:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptoPorId.sql
 -- PreciarioConcepto (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciarioConcepto\web_spI_InsertarPreciarioConcepto.sql
 -- PreciarioConcepto (Modificar)

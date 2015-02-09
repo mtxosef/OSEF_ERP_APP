@@ -33,10 +33,10 @@
                                     </div>
                                 </a>
 
-                                <a class="tile wide imagetext wideimage bg-color-green" href="#">
-                                    <img src="assets/img/search.png" alt="Explorador de revisiones" class="img-large" />
+                                <a class="tile wide imagetext wideimage bg-color-fucsia" id="volumetrias" href="#">
+                                    <img src="assets/img/menu-volumetria.png" alt="Volumetrías" class="img-large" />
                                     <div class="textover-wrapper transparent">
-                                        <div class="text2">Explorador de avances</div>
+                                        <div class="text2">Volumetrías Preciario</div>
                                     </div>
                                 </a>
 
@@ -98,6 +98,19 @@
                                         <div class="text2">Estados</div>
                                     </div>
                                 </a>
+                                <a class="tile square image bg-color-fucsia" id="colonias" href="#">
+                                    <img src="assets/img/menu-colonias.png" alt="" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Colonias</div>
+                                    </div>
+                                </a>
+                                 <a class="tile wide imagetext wideimage bg-color-darkgreen" id="preciarios" href="#">
+                                    <img src="assets/img/menu-preciarios.png" alt="Preciarios" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Preciarios</div>
+                                    </div>
+                                </a>
+
                             </div>
                         
                             <div class="tile-column-span-1">

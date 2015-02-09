@@ -1015,6 +1015,28 @@
                     Msg="Cargando..." />
             </Loader>
         </ext:Window>
+
+         <ext:Window 
+        ID="wCargarImagenes" 
+        runat="server" 
+        Icon="Application"
+        Hidden="true"
+        Modal="true" 
+        Padding="5" 
+        Resizable="False" 
+        Region="Center" 
+        XOnEsc="Ext.emptyFn">
+            <Loader 
+            ID="Loader2" 
+            runat="server" 
+            Mode="Frame" 
+            AutoLoad="false">
+                <LoadMask 
+                ShowMask="true" 
+                Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
     </form>
 </body>
 </html>

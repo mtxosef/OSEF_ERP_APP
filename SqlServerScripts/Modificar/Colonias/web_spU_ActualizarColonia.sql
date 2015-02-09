@@ -29,7 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spU_ActualizarColonia
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(15),
+	@ID				CHAR(10),
 	@Descripcion	VARCHAR(50),
 	@Estado			VARCHAR(4),
 	@Municipio		VARCHAR(6)
