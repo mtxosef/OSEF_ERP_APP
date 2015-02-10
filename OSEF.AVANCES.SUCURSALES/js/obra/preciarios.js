@@ -4,20 +4,21 @@ var store;
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarPreciario', 'Nuevo');
-    window.parent.App.wEmergente.load('../obra/FormaPreciario.aspx');
+   
+    window.parent.App.wEmergente.load('Obra/FormaPreciario.aspx');
     window.parent.App.wEmergente.setHeight(550);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nuevo Preciario');
     window.parent.App.wEmergente.show();
-    
+
 };
 
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieEditarPreciario', App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID'));
-    window.parent.App.wEmergente.load('../obra/FormaPreciario.aspx');
+    window.parent.App.wEmergente.load('Obra/FormaPreciario.aspx');
     window.parent.App.wEmergente.setHeight(550);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
@@ -55,20 +56,23 @@ var imgbtnBorrar_Click = function () {
 
 //Revisa la extencion del archivo de excel forzosamente
 var CheckExtension = function (FileUploadField1, file) {
-
+   //Se declara un arreglo con las extenciones que serán permitidas
     var validFilesTypes = ["xls", "xlsx"];
-
+    //se pasa el parametro que contiene el archivo
     var filePath = file;
+    //Se extrae la cadena a apartir del punto
     var ext = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+    //Se declara la bandera falsa
     var isValidFile = false;
-
+    //se recorre el arreglo que contiene las extenciones validas y se compara
     for (var i = 0; i < validFilesTypes.length; i++) {
+        //Si la extenvion es igual a la valida la variable es igual a true
         if (ext == validFilesTypes[i]) {
             isValidFile = true;
             break;
         }
     }
-
+    //si no es valida no la deja pasar y manda el mensaje ademas de poner en blanco el control
     if (!isValidFile) {
         file.value = null;
         FileUploadField1.reset();

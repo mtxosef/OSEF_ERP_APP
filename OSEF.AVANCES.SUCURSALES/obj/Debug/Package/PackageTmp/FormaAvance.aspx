@@ -7,6 +7,23 @@
     <title></title>
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <script type="text/javascript" src="js/avance.js"></script>
 </head>
 <body>
@@ -25,6 +42,8 @@
                         <ext:ModelField Name="ID" Type="Int" />
                         <ext:ModelField Name="Mov" Type="String" />
                         <ext:ModelField Name="MovID" Type="String" />
+                        <ext:ModelField Name="Origen" Type="String" />
+                        <ext:ModelField Name="OrigenID" Type="String" />
                         <ext:ModelField Name="Semana" Type="Int" />
                         <ext:ModelField Name="Sucursal" Type="String" />
                         <ext:ModelField Name="FechaEmision" Type="Date" />
@@ -32,6 +51,7 @@
                         <ext:ModelField Name="Observaciones" Type="String" />
                         <ext:ModelField Name="Comentarios" Type="String" />
                         <ext:ModelField Name="Estatus" Type="String" />
+                        <ext:ModelField Name="RSucursal" Type="Object" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -130,9 +150,16 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                            <Listeners>
-                                <Click Fn="imgbtnAfectar_Click" />
-                            </Listeners>
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnAfectar_Click" Before="imgbtnAfectar_Click_Before" Success="imgbtnAfectar_Click_Success">
+                                    <EventMask ShowMask="true" Msg="Afectando movimiento..." />
+                                    <ExtraParams>
+                                        <ext:Parameter Name="RevisionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                        <ext:Parameter Name="Revision" Value="Ext.encode(#{sRevision}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="RevisionDObraCivil" Value="Ext.encode(#{sObraCivil}.getRecordsValues())" Mode="Raw" />
+                                    </ExtraParams>
+                                </Click>
+                            </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnAutorizar"
@@ -311,12 +338,28 @@
                                                                     Width="200"
                                                                     Margins="0 3 0 0"
                                                                     Editable="false"
-                                                                    AutoFocus="true"
-                                                                    AllowBlank="false">
+                                                                    AllowBlank="false"
+                                                                    DisplayField="Nombre"
+                                                                    ValueField="ID">
+                                                                    <Store>
+                                                                        <ext:Store ID="sMov" runat="server">
+                                                                            <Model>
+                                                                                <ext:Model ID="mMov" runat="server" IDProperty="ID">
+                                                                                    <Fields>
+                                                                                        <ext:ModelField Name="ID" Type="String" />
+                                                                                        <ext:ModelField Name="Nombre" Type="String" />
+                                                                                    </Fields>
+                                                                                </ext:Model>
+                                                                            </Model>
+                                                                            <Listeners>
+                                                                                <Add Fn="sMov_Add" />
+                                                                            </Listeners>
+                                                                        </ext:Store>
+                                                                    </Store>
                                                                     <Items>
                                                                         <ext:ListItem Index="0" Text="Iniciar proyecto" Value="Iniciar proyecto" />
-                                                                        <ext:ListItem Index="0" Text="Revisión" Value="Revisión" />
-                                                                        <ext:ListItem Index="0" Text="Terminar proyecto" Value="Terminar proyecto" />
+                                                                        <ext:ListItem Index="1" Text="Revisión" Value="Revisión" />
+                                                                        <ext:ListItem Index="2" Text="Terminar proyecto" Value="Terminar proyecto" />
                                                                     </Items>
                                                                     <Listeners>
                                                                         <Select Fn="cmbMov_Select" />
@@ -367,8 +410,10 @@
                                                                     Cls="spanCustomCombo xEspacioCmbxCustom"
                                                                     PageSize="10"
                                                                     AllowBlank="false"
-                                                                    ForceSelection="true">
-                                                                    <ListConfig LoadingText="Buscando..." Width="350" Cls="xEspacioCmbxCustom">
+                                                                    ForceSelection="true"
+                                                                    QueryMode="Local"
+                                                                    TypeAhead="true">
+                                                                    <ListConfig ID="lcEstado" runat="server" Width="350" Cls="xEspacioCmbxCustom">
                                                                         <ItemTpl ID="itSucursal" runat="server">
                                                                             <Html>
                                                                                 <div class="search-item">
@@ -389,7 +434,6 @@
                                                                                     <Fields>
                                                                                         <ext:ModelField Name="ID" />
                                                                                         <ext:ModelField Name="Nombre" />
-                                                                                        <ext:ModelField Name="Contratista" />
                                                                                     </Fields>
                                                                                 </ext:Model>                            
                                                                             </Model>
@@ -676,6 +720,7 @@
                                                                 ID="ccAcciones"
                                                                 runat="server"
                                                                 Width="25">
+                                                                <PrepareToolbar Fn="ccAcciones_PrepareToolbar" />
                                                                 <Commands>
                                                                     <ext:GridCommand
                                                                         Icon="Delete"
@@ -936,6 +981,21 @@
         </ext:FormPanel>
 
         <ext:Window 
+            ID="wEmergente"
+            runat="server"
+            Icon="Application"
+            Hidden="true"
+            Modal="true"
+            Padding="5"
+            Resizable="False"
+            Region="Center"
+            XOnEsc="Ext.emptyFn">
+            <Loader ID="lEmergente" runat="server" Mode="Frame" AutoLoad="false">
+                <LoadMask ShowMask="true" Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
+        <ext:Window 
             ID="wFormaGaleria" 
             runat="server" 
             Icon="Application" 
@@ -955,6 +1015,28 @@
                     Msg="Cargando..." />
             </Loader>
         </ext:Window>
+
+         <ext:Window 
+        ID="wCargarImagenes" 
+        runat="server" 
+        Icon="Application"
+        Hidden="true"
+        Modal="true" 
+        Padding="5" 
+        Resizable="False" 
+        Region="Center" 
+        XOnEsc="Ext.emptyFn">
+            <Loader 
+            ID="Loader2" 
+            runat="server" 
+            Mode="Frame" 
+            AutoLoad="false">
+                <LoadMask 
+                ShowMask="true" 
+                Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
     </form>
 </body>
 </html>

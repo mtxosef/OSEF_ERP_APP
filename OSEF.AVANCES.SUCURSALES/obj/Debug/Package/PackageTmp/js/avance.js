@@ -1,6 +1,5 @@
 ﻿//Boton de nuevo
 var imgbtnNuevo_Click = function () {
-
     //Limpiar controles del encabezado
     App.cmbMov.clearValue();
     App.txtfMovID.setValue(null);
@@ -30,19 +29,20 @@ var imgbtnGuardar_Click_Success = function (response, result) {
     if (result.extraParamsResponse.accion == 'insertar') {
         Ext.Msg.show({
             id: 'msgAvance',
-            title: 'Movimiento guardado',
-            msg: '<p align="center">Movimiento registrado con ID: <br/>' + App.sRevision.getAt(0).get('ID') + '.</p>',
+            title: 'GUARDAR',
+            msg: '<p align="center">Movimiento registrado ID: ' + App.sRevision.getAt(0).get('ID') + '.</p>',
             buttons: Ext.MessageBox.OK,
             onEsc: Ext.emptyFn,
             closable: false,
             icon: Ext.MessageBox.INFO
         });
+        App.imgbtnBorrar.setDisabled(false);
     }
     else {
         Ext.Msg.show({
             id: 'msgAvance',
-            title: 'Movimiento actualizado',
-            msg: '<p align="center">Movimiento actualizado con ID: <br/>' + App.sRevision.getAt(0).get('ID') + '.</p>',
+            title: 'ACTUALIZAR',
+            msg: '<p align="center">Movimiento actualizado ID: ' + App.sRevision.getAt(0).get('ID') + '.</p>',
             buttons: Ext.MessageBox.OK,
             onEsc: Ext.emptyFn,
             closable: false,
@@ -61,8 +61,57 @@ var imgbtnInfo_Click = function () {
     window.parent.App.wEmergenteGraficas.show();
 };
 
+//Método que se lanza antes de llamar al procedimiento de Afectar
+var imgbtnAfectar_Click_Before = function () {
+    if (App.sRevision.getCount() != 0) {
+        if (App.sRevision.getAt(0).get('Estatus') == 'PENDIENTE') {
+            App.wEmergente.load('FormaAvanzarMovimiento.aspx');
+            App.wEmergente.setHeight(179);
+            App.wEmergente.setWidth(220);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Avanzar Movimiento');
+            App.wEmergente.show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    else {
+        return true;
+    }
+};
+
 //Afectar el movimiento
-var imgbtnAfectar_Click = function () {
+var imgbtnAfectar_Click_Success = function (response, result) {
+    //1. Actualizar el store del tablero
+    window.parent.App.pCentro.getBody().App.sAvances.reload();
+
+    //2. Lanzar ventana de movimiento afectado
+    Ext.Msg.show({
+        id: 'msgAvance',
+        title: 'AFECTAR',
+        msg: '<p align="center">Movimiento afectado ID: ' + App.sRevision.getAt(0).get('ID') + '.</p>',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.INFO
+    });
+
+    //Actualizar campos afetados
+    App.txtfMovID.setValue(App.sRevision.getAt(0).get('MovID'));
+    App.sbFormaAvance.setText(App.sRevision.getAt(0).get('Estatus'));
+
+    //3. Remover la útima fila
+    var ultimoRegistro = App.sObraCivil.getAt(App.sObraCivil.getCount() - 1);
+    if (ultimoRegistro.get('Concepto').length == 0 && ultimoRegistro.get('Proveedor').length == 0 && ultimoRegistro.get('Programado') == 0 && ultimoRegistro.get('Real') == 0) {
+        App.sObraCivil.removeAt(App.sObraCivil.getCount() - 1);
+    }
+
+    //4. Deseleccionar datos del GridPanel y deshabilitar los controles
+    App.gpObraCivil.getSelectionModel().deselectAll();
+    DeshabilitarControlesAfectar();
+    Ext.util.Cookies.set('cookieEditarRevision', App.sRevision.getAt(0).get('ID'));
 };
 
 //Para autorizar un movimiento a afectar
@@ -109,23 +158,44 @@ var cmbMov_Select = function (combobox, registro) {
     PrimerRenglonDetalle();
     //Validar si se habilita Guardar
     HabilitarGuardar();
+    //Validar si se habilita Afectar
+    HabilitarAfectar();
+};
+
+//Se lanza por cada elemento agregado al Store de Movimientos
+var sMov_Add = function (store, registros, index, eOpts) {
+    var d = new Date();
+
+    //Validar si es nuevo, se asigna el movimieno Iniciar Proyecto y Semana número 1
+    if (registros[0].get('ID') == 'Iniciar proyecto' && Ext.util.Cookies.get('cookieEditarRevision') == 'Nuevo') {
+        App.cmbMov.select(registros[0].get('ID'));
+        App.cmbMov.setReadOnly(true);
+        App.nfSemana.setValue(1);
+        App.nfSemana.setReadOnly(true);
+        App.dfFechaEmision.setValue(d);
+        App.cmbSucursal.focus();
+    }
 };
 
 //Evento que se lanza al cambiar el valor de la Semana
 var nfSemana_Change = function () {
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
+    //Validar si se habilita Afectar
+    HabilitarAfectar();
 };
 
 //Evento que se lanza al seleccionar algun valor de la sucursal
 var cmbSucursal_Select = function (combobox, registro) {
     App.txtfSucursalNombre.setValue(registro[0].data.Nombre);
     //Validar si se asigna el primer renglon del detalle
-    PrimerRenglonDetalle();
+    PrimerRenglonDetalle();    
     //Validar si se habilita Guardar
-    HabilitarGuardar();
+    HabilitarGuardar();    
     //Validar si se habilita Información
     HabilitarInformacion();
+    //Validar si se habilita Afectar
+    HabilitarAfectar();
 };
 
 //Evento que se lanza al poner algun caracter en el control de la Sucursal
@@ -145,12 +215,16 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
     HabilitarGuardar();
     //Validar si se habilita Información
     HabilitarInformacion();
+    //Validar si se habilita Afectar
+    HabilitarAfectar();
 };
 
 //Evento que se lanza al poner alguna fecha valida en el control de FechaRevision
 var dfFechaRevision_Change = function () {
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
+    //Validar si se habilita Afectar
+    HabilitarAfectar();
 };
 
 //Lanzar ventana de la galería de imagenes
@@ -208,44 +282,13 @@ var ceObraCivil_Edit = function (cellediting, columna) {
             var renglonAnterior = App.sObraCivil.getAt(columna.rowIdx).get('Renglon') + 1;
             //Insertar un nuevo registro
             App.sObraCivil.insert(App.sObraCivil.getCount(), { Renglon: renglonAnterior });
+            //Actualiza el renglon anterior pintando el botón de borrar
+            App.gpObraCivil.getView().refreshNode(App.sObraCivil.getCount() - 2);
+            //Validar si se habilita Afectar
+            HabilitarAfectar();
         }
     }
 };
-
-//Función que valida si se habilita el primer renlgon en el GridPanel detalle
-function PrimerRenglonDetalle()
-{
-    //Validar si se asigna el primer renglon del concepto
-    if (App.cmbMov.getValue() != null && App.nfSemana.getValue() != null && App.cmbSucursal.getValue() != null && App.dfFechaRevision.getValue() != null) {
-        if (App.nfSemana.isValid() && App.cmbSucursal.isValid() && App.dfFechaRevision.isValid()) {
-            var store = App.gpObraCivil.getStore();
-            if (store.getCount() == 0) {
-                //Insertar el primer registro
-                store.insert(0, { Renglon: 0 });
-            }
-        }
-    }
-}
-
-//Función que valida si se habilita el botón de Guardar
-function HabilitarGuardar() {
-    if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != null) {
-        App.imgbtnGuardar.setDisabled(false);
-    }
-    else {
-        App.imgbtnGuardar.setDisabled(true);
-    }
-}
-
-//Validar si se habilita el botón de Información
-function HabilitarInformacion() {
-    if (App.cmbSucursal.getValue() != null) {
-        App.imgbtnInfo.setDisabled(false);
-    }
-    else {
-        App.imgbtnInfo.setDisabled(true);
-    }
-}
 
 //Evento lanzado al cargar el store de avance encabezado
 var sRevision_Load = function () {
@@ -260,6 +303,7 @@ var sRevision_Add = function (avance, registro) {
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.nfSemana.setValue(registro[0].get('Semana'));
         App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.dfFechaRevision.setValue(registro[0].get('FechaRevision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
@@ -283,4 +327,87 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
         dato.set('Renglon', renglon);
         renglon = renglon + 1;
     });
+
+    //Validar si se habilita Afectar
+    HabilitarAfectar();
 };
+
+//Ocultar el último renglon
+var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+    if (grid.getStore().getCount() - 1 == rowIndex) {
+        toolbar.items.get(0).hide();
+    }
+};
+
+//Función que valida si se habilita el botón de Guardar
+function HabilitarGuardar() {
+    if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != null) {
+        App.imgbtnGuardar.setDisabled(false);
+    }
+    else {
+        App.imgbtnGuardar.setDisabled(true);
+    }
+}
+
+//Validar si se habilita el botón de Información
+function HabilitarInformacion() {
+    if (App.cmbSucursal.getValue() != null) {
+        App.imgbtnInfo.setDisabled(false);
+    }
+    else {
+        App.imgbtnInfo.setDisabled(true);
+    }
+}
+
+//Validar si se habilita el botón d Afectar
+function HabilitarAfectar() {
+    if (App.cmbMov.getValue() != null && App.nfSemana.getValue() != null && App.cmbSucursal.getValue() != null && App.dfFechaRevision.getValue() != null && App.dfFechaEmision.getValue() != null) {
+        if (App.nfSemana.isValid() && App.cmbSucursal.isValid() && App.dfFechaRevision.isValid()) {
+            if (App.gpObraCivil.getStore().getCount() != 0) {
+                if (App.sObraCivil.getAt(0).get('Concepto').length != 0 && App.sObraCivil.getAt(0).get('Proveedor').length != 0 && App.sObraCivil.getAt(0).get('Programado') != 0 && App.sObraCivil.getAt(0).get('Real') != 0) {
+                    App.imgbtnAfectar.setDisabled(false);
+                }
+                else {
+                    App.imgbtnAfectar.setDisabled(true);
+                }
+            }
+            else {
+                App.imgbtnAfectar.setDisabled(true);
+            }
+        }
+        else {
+            App.imgbtnAfectar.setDisabled(true);
+        }
+    }
+    else {
+        App.imgbtnAfectar.setDisabled(true);
+    }
+}
+
+//Función que valida si se habilita el primer renlgon en el GridPanel detalle
+function PrimerRenglonDetalle() {
+    //Validar si se asigna el primer renglon del concepto
+    if (App.cmbMov.getValue() != null && App.nfSemana.getValue() != null && App.cmbSucursal.getValue() != null && App.dfFechaRevision.getValue() != null) {
+        if (App.nfSemana.isValid() && App.cmbSucursal.isValid() && App.dfFechaRevision.isValid()) {
+            var store = App.gpObraCivil.getStore();
+            if (store.getCount() == 0) {
+                //Insertar el primer registro
+                store.insert(0, { Renglon: 0 });
+            }
+        }
+    }
+}
+
+//Función que deshabilita todos los controles cuando se afecta un movimiento
+function DeshabilitarControlesAfectar() {
+    App.cmbMov.setDisabled(true);
+    App.nfSemana.setDisabled(true);
+    App.cmbSucursal.setDisabled(true);
+    App.dfFechaEmision.setDisabled(true);
+    App.dfFechaRevision.setDisabled(true);
+    App.txtfObservaciones.setDisabled(true);
+    App.txtfComentarios.setDisabled(true);
+    App.gpObraCivil.setDisabled(true);
+    App.imgbtnGuardar.setDisabled(true);
+    App.imgbtnBorrar.setDisabled(true);
+}

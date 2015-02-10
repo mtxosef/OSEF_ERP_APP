@@ -7883,7 +7883,17 @@ Progress control. */
   background-color: #5C5959 !important;
 }
 
+.bg-color-fucsia {
+  background-color: #d20841 !important;
+}
 
+.bg-color-fucsia:hover {
+  background-color: #B2B2B2 !important;
+}
+
+.bg-color-fucsia:active {
+  background-color: #5C5959 !important;
+}
 
 .bg-color-red {
   background-color: #e51400 !important;
@@ -7912,6 +7922,23 @@ Progress control. */
 .bg-color-green:active {
 
    background-color: #515151 !important;
+
+}
+
+
+.bg-color-darkgreen {
+  background-color: #1e7145 !important;
+}
+
+.bg-color-darkgreen:hover {
+
+   background-color: #1e7145 !important ;
+
+}
+
+.bg-color-darkgreen:active {
+
+   background-color: #1e7145 !important;
 
 }
 

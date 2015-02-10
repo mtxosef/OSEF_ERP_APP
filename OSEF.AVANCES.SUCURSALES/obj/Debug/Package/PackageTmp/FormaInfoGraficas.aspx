@@ -3,10 +3,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
-      <link rel="stylesheet" href="css/login.css" />
-    <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/login.css" />
+     <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <script>
         Ext.override(Ext.chart.LegendItem, {
             createSeriesMarkers: function (config) {
@@ -110,6 +127,37 @@
                                         Width="890"
                                                 Height="340"
                                         Layout="FitLayout">
+                                        <TopBar>
+                                                    <ext:Toolbar ID="Toolbar2" runat="server">
+                                                        <Items>
+                                                            <ext:ImageButton
+                                                                ID="ImageButton2"
+                                                                runat="server"
+                                                                ImageUrl="assets/img/controles/update-normal.png"
+                                                                DisabledImageUrl="assets/img/controles/update-disable.png"
+                                                                OverImageUrl="assets/img/controles/update-hover.png"
+                                                                PressedImageUrl="assets/img/controles/update-pressed.png"
+                                                                ToolTip="Refrescar"
+                                                                Height="50"
+                                                                Width="50" OnDirectClick="ReloadData">
+                                                            </ext:ImageButton>
+                                                 
+                                                             <ext:ImageButton
+                                                                ID="ImageButton3"
+                                                                runat="server"
+                                                                ImageUrl="assets/img/controles/Savenormal.png"
+                                                                DisabledImageUrl="assets/img/controles/Savedisable.png"
+                                                                OverImageUrl="assets/img/controles/Saveover.png"
+                                                                PressedImageUrl="assets/img/controles/Savepressed.png"
+                                                                ToolTip="Guardar Imagen"
+                                                                Height="50"
+                                                                Width="50" Handler="saveChart">
+   							                                </ext:ImageButton>	
+                                                        </Items>
+                                                    </ext:Toolbar>
+                                                </TopBar>
+
+
                                         <Items>
                                                 <ext:Chart 
                                                             ID="Chart1" 

@@ -12,13 +12,54 @@
     <link rel="shortcut icon" href="images/myApp.ico" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootmetro.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+       <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
-    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <script type="text/javascript" src="js/default.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmDefault" runat="server" HideInDesign="true" />
+
+        <ext:Store ID="sUsuario" runat="server">
+            <Model>
+                <ext:Model ID="mUsuario" runat="server" IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Correo" Type="String" />
+                        <ext:ModelField Name="Nombre" Type="String" />
+                        <ext:ModelField Name="APaterno" Type="String" />
+                        <ext:ModelField Name="AMaterno" Type="String" />
+                        <ext:ModelField Name="Estatus" Type="String" />
+                        <ext:ModelField Name="Bloqueado" Type="Boolean" />
+                        <ext:ModelField Name="EnLinea" Type="Boolean" />
+                        <ext:ModelField Name="FechaAlta" Type="Date" />
+                        <ext:ModelField Name="FechaBloqueo" Type="Date" />
+                        <ext:ModelField Name="UltimoAcceso" Type="Date" />
+                        <ext:ModelField Name="CambioContrasena" Type="Date" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <DirectEvents>
+                <Load OnEvent="sUsuario_Load" Success="sUsuario_Load_Success" />
+            </DirectEvents>
+        </ext:Store>
 
         <div id="wrap">
             <!-- Header -->
@@ -37,31 +78,31 @@
                             <span></span>
                         </a>
                         <div class="pull-left">
-                            <ext:SplitButton 
-                                ID="SplitButton1"
+                            <ext:Button 
+                                ID="btnUsuario"
                                 runat="server"
-                                Text="CHRISTIAN MEDINA"
+                                Text=""
                                 Cls="xBtnCustomDesplegable">
                                 <Menu>
-                                    <ext:Menu ID="Menu2" runat="server">
+                                    <ext:Menu ID="mOpciones" runat="server">
                                         <Items>
-                                            <ext:MenuItem ID="MenuItem4" runat="server" Text="Configuración" Width="250">
+                                            <ext:MenuItem ID="miConfiguracion" runat="server" Text="Configuración">
                                             </ext:MenuItem>
                                             <ext:MenuItem ID="miCambiarContrasena" runat="server" Text="Cambiar contraseña">
                                                 <Listeners>
                                                     <Click Fn="miCambiarContrasena_Click" />
                                                 </Listeners>
                                             </ext:MenuItem>
-                                            <ext:MenuItem ID="MenuItem5" runat="server" Text="Cerrar sesión">
+                                            <ext:MenuItem ID="miCerrarSesion" runat="server" Text="Cerrar sesión">
                                             </ext:MenuItem>
                                         </Items>
                                     </ext:Menu>
                                 </Menu>
-                            </ext:SplitButton>
+                            </ext:Button>
                         </div>
                     </div>
                 </div>
-              <!--Boton Regresar-->
+               <!--Boton Regresar-->
                 <ext:ImageButton
                     ID="imgbtnRegresar"
                     runat="server"
@@ -71,22 +112,21 @@
                     Height="50"
                     Width="50"
                     Hidden="true" 
-                    StyleSpec="margin-left: 900px; margin-right: auto; margin-top:25px;">
+                    StyleSpec="margin-left: 900px; margin-right: auto; margin-top:50px;">
                     <Listeners>
                         <Click Handler="
                             App.imgbtnRegresar.hide();
-                            App.lblRegresar.hide();
                             parent.App.pCentro.getLoader().load('Menu.aspx');">
                         </Click>
                     </Listeners>
                </ext:ImageButton>
-                <ext:Label
+               <%-- <ext:Label
                     ID="lblRegresar"
                     runat="server"
                     Text="Regresar"
                     Hidden="true" 
                     StyleSpec="margin-left: 1095px; margin-right: auto; margin-top:0px;">
-                </ext:Label>
+                </ext:Label>--%>
                  <!--Fin Boton Regresar-->
                
             </div>

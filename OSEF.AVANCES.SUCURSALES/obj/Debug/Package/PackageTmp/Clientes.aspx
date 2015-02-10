@@ -7,25 +7,25 @@
     <title></title>
     <link rel="stylesheet" href="css/login2.css" />
     <link rel="Stylesheet" href="css/customControls2.css" />
-    <script type='text/javascript' src="js/socios.js"></script>
+    <script type='text/javascript' src="js/clientes.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmSocios" runat="server" HideInDesign="true" />
 
         <ext:GridPanel
-            ID="gpSocios"
+            ID="gpClientes"
             runat="server"
             Height="420"
             Width="960"
-            Title="SOCIOS"
+            Title="CLIENTES"
             EnableColumnHide="false"
             EnableColumnMove="false"
             Header="true"
             TitleAlign="Left"
             StyleSpec="margin:0 auto; margin-top: 20px;">
             <TopBar>
-                <ext:Toolbar ID="tbSocios" runat="server">
+                <ext:Toolbar ID="tbClientes" runat="server">
                     <Items>
                         <ext:ImageButton
                             ID="imgbtnNuevo"
@@ -36,7 +36,9 @@
                             PressedImageUrl="assets/img/controles/nuevo-pressed.png"
                             Height="50"
                             Width="50">
-                          
+                            <Listeners>
+                                <Click Fn="imgbtnNuevo_Click" />
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnEditar"

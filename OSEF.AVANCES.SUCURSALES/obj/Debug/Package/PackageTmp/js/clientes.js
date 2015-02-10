@@ -1,4 +1,15 @@
-﻿//Antes de crear el ComboBox
+﻿//Evento de clic del botón Nuevo
+var imgbtnNuevo_Click = function () {
+    Ext.util.Cookies.set('cookieEditarCliente', 'Nuevo');
+    window.parent.App.wEmergente.load('FormaCliente.aspx');
+    window.parent.App.wEmergente.setHeight(455);
+    window.parent.App.wEmergente.setWidth(830);
+    window.parent.App.wEmergente.center();
+    window.parent.App.wEmergente.setTitle('Nuevo cliente');
+    window.parent.App.wEmergente.show();
+};
+
+//Antes de crear el ComboBox
 var ComboBox_BeforeRender = function (combobox, opciones) {
     if (Ext.util.Cookies.get('osefTheme') == 'caja') {
         combobox.cls = 'cajaCombobox cajaComboboxFocus';

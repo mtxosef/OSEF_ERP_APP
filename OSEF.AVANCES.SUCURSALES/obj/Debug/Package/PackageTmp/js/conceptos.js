@@ -4,7 +4,7 @@ var store;
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarConcepto', 'Nuevo');
-    window.parent.App.wEmergente.load('FormaConcepto2.aspx');
+    window.parent.App.wEmergente.load('FormaConcepto.aspx');
     window.parent.App.wEmergente.setHeight(301.5);
     window.parent.App.wEmergente.setWidth(670);
     window.parent.App.wEmergente.center();
@@ -22,7 +22,7 @@ var gpConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieEditarConcepto', App.gpConceptos.getSelectionModel().getSelection()[0].get('ID'));
-    window.parent.App.wEmergente.load('FormaConcepto2.aspx');
+    window.parent.App.wEmergente.load('FormaConcepto.aspx');
     window.parent.App.wEmergente.setHeight(301.5);
     window.parent.App.wEmergente.setWidth(670);
     window.parent.App.wEmergente.center();
