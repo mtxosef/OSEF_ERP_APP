@@ -418,6 +418,26 @@ CREATE TABLE PreciarioConceptos(
  FechaAlta  SMALLDATETIME NOT NULL
 )
 
+
+CREATE TABLE Volumetrias(
+	ID				INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Mov				VARCHAR(50)		NOT NULL,
+	MovID			VARCHAR(10)		NULL,
+	Sucursal		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
+	FechaEmision	SMALLDATETIME	NULL,
+	Observaciones	VARCHAR(200)	NULL,
+	Estatus			VARCHAR(20)		NOT NULL
+)
+
+CREATE TABLE VolumetriasD(
+	Volumetria	INT				NOT NULL FOREIGN KEY REFERENCES Volumetrias(ID),
+	Renglon		SMALLINT		NOT NULL,
+	ConceptoID	char(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioConceptos(ID),
+	Cantidad	decimal(10, 2)	NOT NULL,
+	Utilizada	decimal(10, 2)	NOT NULL,
+	Fotos		VARCHAR(200)	NULL
+)
+
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
 --DROP TABLE Beneficiarios
@@ -447,6 +467,8 @@ CREATE TABLE PreciarioConceptos(
 --DROP TABLE PreciarioSubCategorias
 --DROP TABLE PreciarioSubSubCategorias
 --DROP TABLE PreciarioConceptos
+--DROP TABLE Volumetrias
+--DROP TABLE VolumetriasD
 
 -- CORREGIR
 --ALTER TABLE Sucursales ADD CR SMALLINT NOT NULL

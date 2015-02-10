@@ -31,7 +31,7 @@
 
         <ext:ResourceManager ID="rmLogin" runat="server" HideInDesign="true" />
 
-        <img src="images/logo-banco.png" alt="logo" class="imgs logo-image" />
+        <img src="images/logo.png" alt="logo" class="imgs logo-image" />
 
         <%--  Panel de Error--%>
         <ext:Container ID="cError" runat="server" Hidden="true">

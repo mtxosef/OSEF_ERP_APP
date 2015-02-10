@@ -266,3 +266,13 @@
 -- PreciarioConcepto (Modificar)
 :r c:\SqlServerScripts\Modificar\PreciarioConcepto\web_spU_ActualizarPreciarioConcepto.sql
 -----------------------------------------------------------------------------------
+-- Volumetrias (Borrar)
+:r c:\SqlServerScripts\Borrar\Volumetrias\web_spD_BorrarVolumetria.sql
+-- Volumetrias (Consultar)
+:r c:\SqlServerScripts\Consultar\Volumetrias\web_spS_ObtenerVolumetrias.sql
+:r c:\SqlServerScripts\Consultar\Volumetrias\web_spS_ObtenerVolumetriasPorID.sql
+-- Volumetrias (Insertar)
+:r c:\SqlServerScripts\Insertar\Volumetrias\web_spI_InsertarVolumetria.sql
+-- Volumetrias (Modificar)
+:r c:\SqlServerScripts\Modificar\Volumetrias\web_spU_ActualizarVolumetria.sql
+-----------------------------------------------------------------------------------

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../css/xPanel.css"/>
     <link rel="stylesheet" href="../css/xButton.css"/>
 
-    <script type='text/javascript' src="../js/obra/preciarios.js"></script>
+    <script type='text/javascript' src="../js/preciarios.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">

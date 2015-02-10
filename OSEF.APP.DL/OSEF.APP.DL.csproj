@@ -65,6 +65,7 @@
     <Compile Include="SubcategoriaDataAccess.cs" />
     <Compile Include="SucursalDataAccess.cs" />
     <Compile Include="UsuarioDataAccess.cs" />
+    <Compile Include="VolumetriaDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSEF.APP.EL\OSEF.APP.EL.csproj">
