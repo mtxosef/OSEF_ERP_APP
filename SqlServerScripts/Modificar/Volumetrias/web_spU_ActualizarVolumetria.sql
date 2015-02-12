@@ -34,7 +34,8 @@ CREATE PROCEDURE web_spU_ActualizarVolumetria
 	@MovID			CHAR(10),
 	@Sucursal		CHAR(10),
 	@Observaciones	VARCHAR(200),
-	@Estatus		VARCHAR(10)
+	@Estatus		VARCHAR(10),
+	@Preciario		CHAR(7)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -43,13 +44,14 @@ BEGIN
 
     -- Insert statements for procedure here
     UPDATE
-		Revisiones
+		Volumetrias
 	SET
 		Mov = @Mov,
 		MovID = @MovID,
 		Sucursal = @Sucursal,
 		Observaciones = @Observaciones,
-		Estatus = @Estatus
+		Estatus = @Estatus,
+		Preciario= @Preciario
 	WHERE
 		ID = @ID
 END

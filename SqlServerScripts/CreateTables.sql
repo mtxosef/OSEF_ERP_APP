@@ -426,7 +426,8 @@ CREATE TABLE Volumetrias(
 	Sucursal		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
 	FechaEmision	SMALLDATETIME	NULL,
 	Observaciones	VARCHAR(200)	NULL,
-	Estatus			VARCHAR(20)		NOT NULL
+	Estatus			VARCHAR(20)		NOT NULL,
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
 )
 
 CREATE TABLE VolumetriasD(

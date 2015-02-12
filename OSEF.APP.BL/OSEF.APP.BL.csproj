@@ -64,6 +64,7 @@
     <Compile Include="SucursalBusiness.cs" />
     <Compile Include="UsuarioBusiness.cs" />
     <Compile Include="VolumetriaBusiness.cs" />
+    <Compile Include="VolumetriaDBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSEF.APP.DL\OSEF.APP.DL.csproj">

@@ -35,7 +35,8 @@ CREATE PROCEDURE web_spI_InsertarVolumetria
 	@Sucursal		CHAR(10),
 	@FechaEmision	SMALLDATETIME,
 	@Observaciones	VARCHAR(200),
-	@Estatus		VARCHAR(20)
+	@Estatus		VARCHAR(20),
+	@Preciario		CHAR(7)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -44,14 +45,15 @@ BEGIN
 
 		-- Insert statements for procedure here
 	INSERT INTO
-		Revisiones
+		Volumetrias
 		(
 			Mov,
 			MovID,
 			Sucursal,
 			FechaEmision,
 			Observaciones,
-			Estatus
+			Estatus,
+			Preciario
 		)
 	VALUES (
 			@Mov,
@@ -59,7 +61,8 @@ BEGIN
 			@Sucursal,
 			@FechaEmision,
 			@Observaciones,
-			@Estatus
+			@Estatus,
+			@Preciario
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

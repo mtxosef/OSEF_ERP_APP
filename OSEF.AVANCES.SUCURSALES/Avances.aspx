@@ -92,6 +92,9 @@
                             PressedImageUrl="assets/img/controles/update-pressed.png"
                             Height="50"
                             Width="50">
+                                <Listeners>
+                                <Click Handler="#{sAvances}.reload(); App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
+                                </Listeners>
                         </ext:ImageButton>
                         <ext:TextField 
                             ID="txtBuscar"
@@ -101,7 +104,7 @@
                             Width="200">
                             <RightButtons>
                                 <ext:ImageButton
-                                    ID="imgbtnActualizarAvances"
+                                    ID="imgbtnBuscar"
                                     runat="server"
                                     ImageUrl="assets/img/controles/search.png"
                                     OverImageUrl=""

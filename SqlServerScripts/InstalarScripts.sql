@@ -221,6 +221,7 @@
 :r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciarios.sql
 :r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciariosPorID.sql
 :r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciariosPorSucursal.sql
+:r c:\SqlServerScripts\Consultar\Preciarios\web_spS_ObtenerPreciariosEnVolumetriasPorID.sql
 -- Preciarios (Insertar)
 :r c:\SqlServerScripts\Insertar\Preciarios\web_spI_InsertarPreciario.sql
 -- Preciarios (Modificar)
@@ -275,4 +276,15 @@
 :r c:\SqlServerScripts\Insertar\Volumetrias\web_spI_InsertarVolumetria.sql
 -- Volumetrias (Modificar)
 :r c:\SqlServerScripts\Modificar\Volumetrias\web_spU_ActualizarVolumetria.sql
+-----------------------------------------------------------------------------------
+-- VolumetriasD (Borrar)
+:r c:\SqlServerScripts\Borrar\Volumetrias\web_spD_BorrarVolumetriaD.sql
+:r c:\SqlServerScripts\Consultar\Volumetrias\web_spD_BorrarVolumetriaDPorVolumetria.sql
+-- VolumetriasD (Consultar)
+:r c:\SqlServerScripts\Consultar\Volumetrias\web_spS_ObtenerVolumetriasDPorVolumetria.sql
+:r c:\SqlServerScripts\Consultar\Volumetrias\web_spS_ObtenerVolumetriasDPorPreciario.sql
+-- VolumetriasD (Insertar)
+:r c:\SqlServerScripts\Insertar\Volumetrias\web_spI_InsertarVolumetriaD.sql
+-- VolumetriasD (Modificar)
+:r c:\SqlServerScripts\Modificar\Volumetrias\web_spU_ActualizarVolumetriaD.sql
 -----------------------------------------------------------------------------------

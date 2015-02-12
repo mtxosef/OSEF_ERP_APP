@@ -19,6 +19,10 @@ namespace OSEF.APP.EL
         string observaciones;
         string estatus;
         Sucursal rsucursal;
+        string preciario;
+        Preciario rpreciario;
+
+        
 
         #endregion
 
@@ -73,7 +77,18 @@ namespace OSEF.APP.EL
             set { rsucursal = value; }
         }
 
+        public string Preciario
+        {
+            get { return preciario; }
+            set { preciario = value; }
+        }
 
+
+        public Preciario RPreciario
+        {
+            get { return rpreciario; }
+            set { rpreciario = value; }
+        }
 
         #endregion
 

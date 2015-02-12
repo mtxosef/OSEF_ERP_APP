@@ -44,7 +44,8 @@ BEGIN
 		Sucursal,
 		FechaEmision,
 		Observaciones,
-		Estatus
+		Estatus,
+		Preciario
 	FROM
 		Volumetrias
 	WHERE

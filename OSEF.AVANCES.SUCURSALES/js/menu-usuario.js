@@ -208,7 +208,7 @@ $(document).ready(function () {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
             //            parent.App.lblRegresar.show();
-            parent.App.pCentro.getLoader().load('Obra/Preciarios.aspx');
+            parent.App.pCentro.getLoader().load('Preciarios.aspx');
         });
     });
 
@@ -216,7 +216,7 @@ $(document).ready(function () {
         $("#contenedor").fadeOut(1000, function () {
             parent.App.imgbtnRegresar.show();
             //            parent.App.lblRegresar.show();
-            parent.App.pCentro.getLoader().load('Obra/VolumetriasPreciario.aspx');
+            parent.App.pCentro.getLoader().load('VolumetriasPreciario.aspx');
         });
     });
 

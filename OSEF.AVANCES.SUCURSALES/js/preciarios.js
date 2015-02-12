@@ -5,7 +5,7 @@ var store;
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarPreciario', 'Nuevo');
    
-    window.parent.App.wEmergente.load('../Obra/FormaPreciario.aspx');
+    window.parent.App.wEmergente.load('FormaPreciario.aspx');
     window.parent.App.wEmergente.setHeight(550);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
@@ -18,7 +18,7 @@ var imgbtnNuevo_Click = function () {
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieEditarPreciario', App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID'));
-    window.parent.App.wEmergente.load('../Obra/FormaPreciario.aspx');
+    window.parent.App.wEmergente.load('FormaPreciario.aspx');
     window.parent.App.wEmergente.setHeight(550);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
@@ -34,25 +34,40 @@ var imgbtnGuardar_Click_Success = function () {
     window.parent.App.pCentro.getBody().App.sPreciarios.reload();
 };
 
+
 //Para el botón de eliminar, Eliminar un registro
-var imgbtnBorrar_Click = function () {
-    var identificador = App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID');
-    var indice = App.gpPreciarios.getStore().find('ID', identificador);
-    var descripcion = App.sPreciarios.getAt(indice).get('Descripcion');
-    App.direct.EliminarPreciario(identificador);
-    App.gpPreciarios.getStore().removeAt(indice);
-    Ext.net.Notification.show({
-        iconCls: 'icon-delete',
-        pinEvent: 'click',
-        header: true,
-        width: 350,
-        html: '<p class="deletePop">ID: ' + identificador + '</p><p class="deletePop">Descripcion: ' + descripcion + '</p>',
-        title: 'Eliminar registro'
-    });
-    App.gpPreciarios.getSelectionModel().deselectAll();
-    App.imgbtnEditar.setDisabled(true);
-    App.imgbtnBorrar.setDisabled(true);
+var imgbtnBorrar_Click_Success = function (response, result) {
+    if (result.extraParamsResponse.existe) {
+        Ext.Msg.show({
+            id: 'msgPreciarios',
+            title: 'Advertencia Preciarios',
+            msg: 'El preciario esta siendo utilizada en un registro',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+    }
+    else {
+        var identificador = App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID');
+        var nombre = App.gpPreciarios.getSelectionModel().getSelection()[0].get('Descripcion');
+
+        App.gpPreciarios.getStore().removeAt(indice);
+        Ext.net.Notification.show({
+            iconCls: 'icon-delete',
+            pinEvent: 'click',
+            header: true,
+            width: 350,
+            html: '<p class="deletePop">ID: ' + identificador + '</p><p class="deletePop">Descripción: ' + nombre + '</p>',
+            title: 'Eliminar registro'
+        });
+        App.gpPreciarios.getSelectionModel().deselectAll();
+        App.imgbtnEditar.setDisabled(true);
+        App.imgbtnBorrar.setDisabled(true);
+
+    }
 };
+
 
 //Revisa la extencion del archivo de excel forzosamente
 var CheckExtension = function (FileUploadField1, file) {

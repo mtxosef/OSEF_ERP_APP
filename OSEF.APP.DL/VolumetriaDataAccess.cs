@@ -72,6 +72,12 @@ namespace OSEF.APP.DL
                sqlpEstatus.SqlDbType = SqlDbType.VarChar;
                sqlpEstatus.Value = iVolumetria.Estatus;
 
+               SqlParameter sqlpPreciario = new SqlParameter();
+               sqlpPreciario.ParameterName = "@Preciario";
+               sqlpPreciario.SqlDbType = SqlDbType.Char;
+               sqlpPreciario.Size = 7;
+               sqlpPreciario.Value = iVolumetria.Preciario;
+
                //3. Agregar los parametros al comando
                sqlcComando.Parameters.Add(sqlpID);
                sqlcComando.Parameters.Add(sqlpMov);
@@ -80,6 +86,7 @@ namespace OSEF.APP.DL
                sqlcComando.Parameters.Add(sqlpFechaEmision);
                sqlcComando.Parameters.Add(sqlpObservaciones);
                sqlcComando.Parameters.Add(sqlpEstatus);
+               sqlcComando.Parameters.Add(sqlpPreciario);
 
                //4. Abrir la conexión
                sqlcComando.Connection.Open();
@@ -151,6 +158,12 @@ namespace OSEF.APP.DL
                sqlpEstatus.SqlDbType = SqlDbType.VarChar;
                sqlpEstatus.Value = uVolumetria.Estatus;
 
+               SqlParameter sqlpPreciario = new SqlParameter();
+               sqlpPreciario.ParameterName = "@Preciario";
+               sqlpPreciario.SqlDbType = SqlDbType.Char;
+               sqlpPreciario.Size = 7;
+               sqlpPreciario.Value = uVolumetria.Preciario;
+
                //3. Agregar los parametros al comando
                sqlcComando.Parameters.Add(sqlpID);
                sqlcComando.Parameters.Add(sqlpMov);
@@ -158,6 +171,7 @@ namespace OSEF.APP.DL
                sqlcComando.Parameters.Add(sqlpSucursal);
                sqlcComando.Parameters.Add(sqlpObservaciones);
                sqlcComando.Parameters.Add(sqlpEstatus);
+               sqlcComando.Parameters.Add(sqlpPreciario);
 
                //4. Abrir la conexión
                sqlcComando.Connection.Open();

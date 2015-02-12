@@ -63,7 +63,16 @@ namespace OSEF.APP.BL
 
             //2. Complementarlas con sucursal
             foreach (Volumetria sd in lVolumetrias)
+            {
                 sd.RSucursal = SucursalBusiness.ObtenerSucursalPorID(sd.Sucursal);
+             
+            }
+            //2. Complementarlas con preciario
+            foreach (Volumetria sd in lVolumetrias)
+            {
+                sd.RPreciario = PreciarioBusiness.ObtenerPreciarioPorID(sd.Preciario);
+                
+            }
             return lVolumetrias;
         }
 
@@ -77,6 +86,8 @@ namespace OSEF.APP.BL
             //1. Inicializar objeto, complementarlo con la Sucursal
             Volumetria oVolumetria = VolumetriaDataAccess.ObtenerVolumetriaPorID(iID);
             oVolumetria.RSucursal = SucursalBusiness.ObtenerSucursalPorID(oVolumetria.Sucursal);
+            oVolumetria.RPreciario = PreciarioBusiness.ObtenerPreciarioPorID(oVolumetria.Preciario);
+
 
             return oVolumetria;
         }

@@ -193,13 +193,22 @@ namespace OSEF.AVANCES.SUCURSALES.Obra {
         protected global::Ext.Net.Column cFechaEmision;
         
         /// <summary>
-        /// Control cFotos.
+        /// Control cEstatus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cFotos;
+        protected global::Ext.Net.Column cEstatus;
+        
+        /// <summary>
+        /// Control cPreciario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cPreciario;
         
         /// <summary>
         /// Control gvVolumetrias.

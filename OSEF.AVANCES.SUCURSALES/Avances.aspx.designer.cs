@@ -103,13 +103,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtBuscar;
         
         /// <summary>
-        /// Control imgbtnActualizarAvances.
+        /// Control imgbtnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnActualizarAvances;
+        protected global::Ext.Net.ImageButton imgbtnBuscar;
         
         /// <summary>
         /// Control sAvances.

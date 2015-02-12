@@ -5,27 +5,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-     <link rel="stylesheet" href="../css/login.css" />
-    <link rel="Stylesheet" href="../css/customControls.css" />
-    <link rel="stylesheet" href="../css/xMask.css" />
-    <link rel="stylesheet" href="../css/xDatePicker.css" />
-    <link rel="stylesheet" href="../css/xSplitButton.css" />
-    <link rel="stylesheet" href="../css/xGridPanel.css" />
-    <link rel="stylesheet" href="../css/xWindowPopup.css" />
-    <link rel="stylesheet" href="../css/xTabPanel.css"/>
-    <link rel="stylesheet" href="../css/xComboBox.css"/>
-    <link rel="stylesheet" href="../css/xCustomChart.css"/>
-    <link rel="stylesheet" href="../css/xIcons.css"/>
-    <link rel="stylesheet" href="../css/xToolbar.css"/>
-    <link rel="stylesheet" href="../css/xLabel.css"/>
-    <link rel="stylesheet" href="../css/xTreePanel.css"/>
-    <link rel="stylesheet" href="../css/xHiperlink.css"/>
-    <link rel="stylesheet" href="../css/xTextField.css"/>
-    <link rel="stylesheet" href="../css/xFieldSet.css"/>
-    <link rel="stylesheet" href="../css/xPanel.css"/>
-    <link rel="stylesheet" href="../css/xButton.css"/>
-      <script type='text/javascript' src="../js/preciarios.js"></script>
-      <script type='text/javascript' src="../js/fileValida.js"></script>
+      <link rel="stylesheet" href="css/login.css" />
+    <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
+      <script type='text/javascript' src="js/preciarios.js"></script>
+      <script type='text/javascript' src="js/fileValida.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -73,10 +73,10 @@
                      <ext:ImageButton
                             ID="imgbtnGuardar"
                             runat="server"
-                            ImageUrl="../assets/img/controles/SaveNormal.png"
-                            DisabledImageUrl="../assets/img/controles/SaveDisabled.png"
-                            OverImageUrl="../assets/img/controles/SaveOver.png"
-                            PressedImageUrl="../assets/img/controles/SavePressed.png"
+                            ImageUrl="assets/img/controles/SaveNormal.png"
+                            DisabledImageUrl="assets/img/controles/SaveDisabled.png"
+                            OverImageUrl="assets/img/controles/SaveOver.png"
+                            PressedImageUrl="assets/img/controles/SavePressed.png"
                             ToolTip="Guardar"
                             Height="30"
                             Width="30"
@@ -96,10 +96,10 @@
                        <ext:ImageButton 
                             ID="imgbtnCancelar"
                             runat="server"
-                            ImageUrl="../assets/img/controles/Cancelar.png"
-                            DisabledImageUrl="../assets/img/controles/CancelarDisabled.png"
-                            OverImageUrl="../assets/img/controles/CancelarOver.png"
-                            PressedImageUrl="../assets/img/controles/CancelarPressed.png"
+                            ImageUrl="assets/img/controles/Cancelar.png"
+                            DisabledImageUrl="assets/img/controles/CancelarDisabled.png"
+                            OverImageUrl="assets/img/controles/CancelarOver.png"
+                            PressedImageUrl="assets/img/controles/CancelarPressed.png"
                             ToolTip="Cancelar Movimiento"
                             Height="30"
                             Width="30">

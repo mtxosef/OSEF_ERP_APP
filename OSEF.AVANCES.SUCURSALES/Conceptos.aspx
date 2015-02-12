@@ -79,7 +79,8 @@
                             OverImageUrl="assets/img/controles/delete-over.png"
                             PressedImageUrl="assets/img/controles/delete-pressed.png"
                             Height="50"
-                            Width="50">
+                            Width="50"
+                            Disabled="true">
                             <Listeners>
                                 <Click Fn="imgbtnBorrar_Click" />
                             </Listeners>

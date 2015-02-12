@@ -82,7 +82,15 @@ namespace OSEF.APP.BL
             return PreciarioDataAccess.ObtenerPreciarioPorSucursal(strSucursal);
         }
 
-    
+        /// <summary>
+        /// Obtener registros de Preciario en Volumetrias por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static bool ObtenerPreciariosEnVolumetriasPorID(string strID)
+        {
+            return PreciarioDataAccess.ObtenerPreciariosEnVolumetriasPorID(strID);
+        }
 
 
 

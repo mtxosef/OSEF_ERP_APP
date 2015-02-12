@@ -5,27 +5,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-      <link rel="stylesheet" href="../css/login.css" />
-    <link rel="Stylesheet" href="../css/customControls.css" />
-    <link rel="stylesheet" href="../css/xMask.css" />
-    <link rel="stylesheet" href="../css/xDatePicker.css" />
-    <link rel="stylesheet" href="../css/xSplitButton.css" />
-    <link rel="stylesheet" href="../css/xGridPanel.css" />
-    <link rel="stylesheet" href="../css/xWindowPopup.css" />
-    <link rel="stylesheet" href="../css/xTabPanel.css"/>
-    <link rel="stylesheet" href="../css/xComboBox.css"/>
-    <link rel="stylesheet" href="../css/xCustomChart.css"/>
-    <link rel="stylesheet" href="../css/xIcons.css"/>
-    <link rel="stylesheet" href="../css/xToolbar.css"/>
-    <link rel="stylesheet" href="../css/xLabel.css"/>
-    <link rel="stylesheet" href="../css/xTreePanel.css"/>
-    <link rel="stylesheet" href="../css/xHiperlink.css"/>
-    <link rel="stylesheet" href="../css/xTextField.css"/>
-    <link rel="stylesheet" href="../css/xFieldSet.css"/>
-    <link rel="stylesheet" href="../css/xPanel.css"/>
-    <link rel="stylesheet" href="../css/xButton.css"/>
+       <link rel="stylesheet" href="css/login.css" />
+    <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
 
-    <script type='text/javascript' src="../js/preciarios.js"></script>
+    <script type='text/javascript' src="js/preciarios.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
@@ -48,10 +48,10 @@
                         <ext:ImageButton
                             ID="imgbtnNuevo"
                             runat="server"
-                            ImageUrl="../assets/img/controles/nuevo-normal.png"
-                            DisabledImageUrl="../assets/img/controles/nuevo-disable.png"
-                            OverImageUrl="../assets/img/controles/nuevo-over.png"
-                            PressedImageUrl="../assets/img/controles/nuevo-pressed.png"
+                            ImageUrl="assets/img/controles/nuevo-normal.png"
+                            DisabledImageUrl="assets/img/controles/nuevo-disable.png"
+                            OverImageUrl="assets/img/controles/nuevo-over.png"
+                            PressedImageUrl="assets/img/controles/nuevo-pressed.png"
                             Height="50"
                             Width="50">
                             <Listeners>
@@ -61,10 +61,10 @@
                         <ext:ImageButton
                             ID="imgbtnEditar"
                             runat="server"
-                            ImageUrl="../assets/img/controles/edit-normal.png"
-                            DisabledImageUrl="../assets/img/controles/edit-disable.png"
-                            OverImageUrl="../assets/img/controles/edit-over.png"
-                            PressedImageUrl="../assets/img/controles/edit-pressed.png"
+                            ImageUrl="assets/img/controles/edit-normal.png"
+                            DisabledImageUrl="assets/img/controles/edit-disable.png"
+                            OverImageUrl="assets/img/controles/edit-over.png"
+                            PressedImageUrl="assets/img/controles/edit-pressed.png"
                             Height="50"
                             Width="50"
                             Disabled="true">
@@ -75,26 +75,44 @@
                         <ext:ImageButton
                             ID="imgbtnBorrar"
                             runat="server"
-                            ImageUrl="../assets/img/controles/delete-normal.png"
-                            DisabledImageUrl="../assets/img/controles/delete-disable.png"
-                            OverImageUrl="../assets/img/controles/delete-over.png"
-                            PressedImageUrl="../assets/img/controles/delete-pressed.png"
+                            ImageUrl="assets/img/controles/delete-normal.png"
+                            DisabledImageUrl="assets/img/controles/delete-disable.png"
+                            OverImageUrl="assets/img/controles/delete-over.png"
+                            PressedImageUrl="assets/img/controles/delete-pressed.png"
                             Height="50"
                             Width="50"
                             Disabled="true">
-                            <Listeners>
-                                <Click Fn="imgbtnBorrar_Click" />
-                            </Listeners>
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnBorrar_Click" Success="imgbtnBorrar_Click_Success">
+                                    <Confirmation
+                                        ConfirmRequest="true"
+                                        Title="Eliminar"
+                                        Message="¿Deseas eliminar el registro?">
+                                    </Confirmation>
+                                    <EventMask
+                                        ShowMask="true"
+                                        CustomTarget="App.gpPreciarios.body"
+                                        Target="CustomTarget"
+                                        Msg="Eliminando registro">
+                                    </EventMask>
+                                    <ExtraParams>
+                                        <ext:Parameter Name="ID" Value="App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID')" Mode="Raw">
+                                        </ext:Parameter>
+                                    </ExtraParams>
+                                </Click>
+                             </DirectEvents>
+
+
                         </ext:ImageButton>
                         <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="500">
                         </ext:ToolbarSpacer>
                         <ext:ImageButton
                             ID="imgbtnActualizar"
                             runat="server"
-                            ImageUrl="../assets/img/controles/update-normal.png"
-                            DisabledImageUrl="../assets/img/controles/update-disable.png"
-                            OverImageUrl="../assets/img/controles/update-hover.png"
-                            PressedImageUrl="../assets/img/controles/update-pressed.png"
+                            ImageUrl="assets/img/controles/update-normal.png"
+                            DisabledImageUrl="assets/img/controles/update-disable.png"
+                            OverImageUrl="assets/img/controles/update-hover.png"
+                            PressedImageUrl="assets/img/controles/update-pressed.png"
                             Height="50"
                             Width="50">
                             <Listeners>

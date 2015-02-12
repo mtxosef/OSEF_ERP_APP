@@ -259,8 +259,10 @@
     <Content Include="FormaMenu.aspx" />
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
+    <Content Include="FormaPreciario.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaUsuario2.aspx" />
+    <Content Include="FormaVolumetriaPreciario.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GruposMenu2.aspx" />
     <Content Include="images\banco.jpg" />
@@ -295,10 +297,6 @@
     <Content Include="Menu2.aspx" />
     <Content Include="Menus2.aspx" />
     <Content Include="Municipios2.aspx" />
-    <Content Include="Obra\FormaPreciario.aspx" />
-    <Content Include="Obra\FormaVolumetriaPreciario.aspx" />
-    <Content Include="Obra\Preciarios.aspx" />
-    <Content Include="Obra\VolumetriasPreciario.aspx" />
     <Content Include="OlvidasteContrasena.aspx" />
     <Content Include="FormaProveedor.aspx" />
     <Content Include="FormaSucursal.aspx" />
@@ -333,6 +331,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="PlantService.asmx" />
+    <Content Include="Preciarios.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
@@ -341,6 +340,7 @@
     <Content Include="tVtasUnidadesVsTiempo.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Usuarios2.aspx" />
+    <Content Include="VolumetriasPreciario.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -570,6 +570,13 @@
     <Compile Include="FormaCliente.aspx.designer.cs">
       <DependentUpon>FormaCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaPreciario.aspx.cs">
+      <DependentUpon>FormaPreciario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaPreciario.aspx.designer.cs">
+      <DependentUpon>FormaPreciario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -583,6 +590,13 @@
     </Compile>
     <Compile Include="FormaUsuario2.aspx.designer.cs">
       <DependentUpon>FormaUsuario2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaVolumetriaPreciario.aspx.cs">
+      <DependentUpon>FormaVolumetriaPreciario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaVolumetriaPreciario.aspx.designer.cs">
+      <DependentUpon>FormaVolumetriaPreciario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -621,34 +635,6 @@
     </Compile>
     <Compile Include="Municipios2.aspx.designer.cs">
       <DependentUpon>Municipios2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Obra\FormaPreciario.aspx.cs">
-      <DependentUpon>FormaPreciario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Obra\FormaPreciario.aspx.designer.cs">
-      <DependentUpon>FormaPreciario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Obra\FormaVolumetriaPreciario.aspx.cs">
-      <DependentUpon>FormaVolumetriaPreciario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Obra\FormaVolumetriaPreciario.aspx.designer.cs">
-      <DependentUpon>FormaVolumetriaPreciario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Obra\Preciarios.aspx.cs">
-      <DependentUpon>Preciarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Obra\Preciarios.aspx.designer.cs">
-      <DependentUpon>Preciarios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Obra\VolumetriasPreciario.aspx.cs">
-      <DependentUpon>VolumetriasPreciario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Obra\VolumetriasPreciario.aspx.designer.cs">
-      <DependentUpon>VolumetriasPreciario.aspx</DependentUpon>
     </Compile>
     <Compile Include="OlvidasteContrasena.aspx.cs">
       <DependentUpon>OlvidasteContrasena.aspx</DependentUpon>
@@ -728,6 +714,13 @@
       <DependentUpon>PlantService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Preciarios.aspx.cs">
+      <DependentUpon>Preciarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Preciarios.aspx.designer.cs">
+      <DependentUpon>Preciarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profesiones.aspx.cs">
       <DependentUpon>Profesiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -785,6 +778,13 @@
     <Compile Include="Usuarios2.aspx.designer.cs">
       <DependentUpon>Usuarios2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VolumetriasPreciario.aspx.cs">
+      <DependentUpon>VolumetriasPreciario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VolumetriasPreciario.aspx.designer.cs">
+      <DependentUpon>VolumetriasPreciario.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\img\menu\" />
@@ -810,15 +810,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="adjuntos\CR 0418 TONALA ZARAGOZA_FINAL - copia.xlsx" />
+    <None Include="adjuntos\CR 0418 TONALA ZARAGOZA_FINAL.xlsx" />
+    <None Include="adjuntos\Excel_BD.xlsx" />
     <None Include="assets\font\IcoMoon.eot" />
     <None Include="assets\font\IcoMoon.ttf" />
     <None Include="assets\font\IcoMoon.woff" />
     <Content Include="Plants.ashx" />
     <None Include="fonts\weblysleekuil.ttf" />
     <None Include="fonts\weblysleekuisl.ttf" />
-    <None Include="Obra\adjuntos\CR 0418 TONALA ZARAGOZA_FINAL - copia.xlsx" />
-    <None Include="Obra\adjuntos\CR 0418 TONALA ZARAGOZA_FINAL.xlsx" />
-    <None Include="Obra\adjuntos\Excel_BD.xlsx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
