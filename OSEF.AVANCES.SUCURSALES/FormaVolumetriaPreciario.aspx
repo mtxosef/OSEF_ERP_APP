@@ -46,8 +46,8 @@
                         <ext:ModelField Name="FechaEmision" Type="Date" />
                         <ext:ModelField Name="Observaciones" Type="String" />
                         <ext:ModelField Name="Estatus" Type="String" />
-                        <ext:ModelField Name="Preciario" Type="String" />
                         <ext:ModelField Name="RSucursal" Type="Object" />
+                        <ext:ModelField Name="Preciario" Type="String" />
                         <ext:ModelField Name="RPreciario" Type="Object" />
                     </Fields>
                 </ext:Model>
@@ -320,68 +320,9 @@
                                         Disabled="true" />
                                 </Items>
                             </ext:FieldContainer>
-                            <ext:FieldContainer
-                                ID="fcSucursal"
-                                runat="server"
-                                FieldLabel="Sucursal"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="HBoxLayout">
-                                <Items>
-                                    <ext:ComboBox
-                                        ID="cmbSucursal"
-                                        runat="server"
-                                        DisplayField="ID"
-                                        ValueField="ID"
-                                        Width="200"
-                                        MatchFieldWidth="false"
-                                        Margins="0 3 0 0"
-                                        Cls="spanCustomCombo xEspacioCmbxCustom"
-                                        PageSize="10"
-                                        AllowBlank="false"
-                                        ForceSelection="true"
-                                        QueryMode="Local"
-                                        TypeAhead="true">
-                                        <ListConfig ID="lcEstado" runat="server" Width="350" Cls="xEspacioCmbxCustom">
-                                            <ItemTpl ID="itSucursal" runat="server">
-                                                <Html>
-                                                    <div class="search-item">
-							                            <h3>{ID}</h3>
-                                                        <span>{Nombre}</span>
-						                            </div>
-                                                </Html>
-                                            </ItemTpl>
-                                        </ListConfig>
-                                            <Store>
-                                                <ext:Store
-                                                    ID="sSucursales"
-                                                    runat="server">
-                                                    <Model>
-                                                        <ext:Model
-                                                            ID="mSucursales"
-                                                            runat="server">
-                                                            <Fields>
-                                                                <ext:ModelField Name="ID" />
-                                                                <ext:ModelField Name="Nombre" />
-                                                            </Fields>
-                                                        </ext:Model>                            
-                                                    </Model>
-                                                </ext:Store>
-                                            </Store>
-                                            <Listeners>
-                                                <Select Fn="cmbSucursal_Select" />
-                                                <Change Fn="cmbSucursal_Change" />
-                                            </Listeners>                         
-                                    </ext:ComboBox>
-                                    <ext:TextField
-                                        ID="txtfSucursalNombre"
-                                        runat="server"
-                                        Width="360"
-                                        Margins="0 3 0 0"
-                                        Disabled="true">
-                                    </ext:TextField>
-                                </Items>
-                            </ext:FieldContainer>
+
+
+                            
                             <ext:FieldContainer
                                 ID="fcPreciario"
                                 runat="server"
@@ -425,15 +366,32 @@
                                                             <Fields>
                                                                 <ext:ModelField Name="ID" />
                                                                 <ext:ModelField Name="Descripcion" />
+                                                                <ext:ModelField Name="Sucursal" />
+                                                                <ext:ModelField Name="Archivo" />
+                                                                <ext:ModelField Name="Estatus" />
+                                                                 <ext:ModelField Name="FechaAlta" />
+                                                                 <ext:ModelField Name="RSucursal" Type="Object" />
+                                                        
                                                             </Fields>
                                                         </ext:Model>                            
                                                     </Model>
+                                                  <%--  <Listeners>
+                                                    <Load Handler="console.log(App.sPreciario);"></Load>
+                                                    </Listeners>--%>
                                                 </ext:Store>
                                             </Store>
                                             <Listeners>
                                                 <Select Fn="cmbPreciario_Select" />
                                                 <Change Fn="cmbPreciario_Change" />
-                                            </Listeners>                         
+                                            </Listeners>  
+                                             <DirectEvents>
+                                                <Select OnEvent="cmbPreciarios_Change" >
+                                                    <ExtraParams>
+                                                        <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
+                                                    </ExtraParams>
+                                                </Select>
+                                            </DirectEvents>
+                                                                   
                                     </ext:ComboBox>
                                     <ext:TextField
                                         ID="txtfDescripcionPreciario"
@@ -442,6 +400,34 @@
                                         Margins="0 3 0 0"
                                         Disabled="true">
                                     </ext:TextField>
+                                </Items>
+                            </ext:FieldContainer>
+
+                            <ext:FieldContainer
+                                ID="fcSucursal"
+                                runat="server"
+                                FieldLabel="Sucursal"
+                                AnchorHorizontal="100%"
+                                LabelWidth="120"
+                                Layout="HBoxLayout">
+                                <Items>
+                                    <ext:TextField
+                                        ID="txtfIDSucursal"
+                                        runat="server"
+                                        Width="200"
+                                        Margins="0 3 0 0"
+                                        Disabled="true">
+                                        
+                                    </ext:TextField>
+                                    <ext:TextField
+                                        ID="txtfSucursalNombre"
+                                        runat="server"
+                                        Width="360"
+                                        Margins="0 3 0 0"
+                                        Disabled="true">
+                                        
+                                    </ext:TextField>
+                                    
                                 </Items>
                             </ext:FieldContainer>
                             <ext:FieldContainer 
@@ -540,6 +526,7 @@
                                                 ID="ccAcciones"
                                                 runat="server"
                                                 Width="25">
+                                                <PrepareToolbar Fn="ccAcciones_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="Delete"
@@ -547,37 +534,56 @@
                                                         <ToolTip Text="Borrar" />
                                                     </ext:GridCommand>
                                                 </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccAcciones_Command" />
+                                                </Listeners>
                                             </ext:CommandColumn>
                                             <ext:Column
                                                 ID="cIDPreciario"
                                                 runat="server"
-                                                Text="ID"
-                                                Width="100"
-                                                DataIndex="IdPreciario">
+                                                Text="Concepto"
+                                                Width="350"
+                                                DataIndex="ConceptoID">
+                                                <Renderer Fn="cDescripcion_Renderer" />
                                                 <Editor>
                                                     <ext:ComboBox
-                                                        ID="cmbPreciarios"
+                                                        ID="cmbConcepto"
                                                         runat="server"
-                                                        DisplayField="Preciario"
-                                                        ValueField="Preciario">
+                                                        DisplayField="Descripcion"
+                                                        Editable="false"
+                                                        ValueField="ID">
+                                                        <Store>
+                                                            <ext:Store
+                                                                ID="sPreciarioConcepto"
+                                                                runat="server">
+                                                                <Model>
+                                                                    <ext:Model ID="mPreciarioConcepto" runat="server">
+                                                                        <Fields>
+                                                                                <ext:ModelField Name="ID" Type="String" />
+                                                                                <ext:ModelField Name="Clave" Type="String" />
+                                                                                <ext:ModelField Name="Descripcion" Type="String" />
+                                                                                <ext:ModelField Name="Unidad" Type="String" />
+                                                                                <ext:ModelField Name="Cantidad" Type="Float" />
+                                                                                <ext:ModelField Name="Costo" Type="Float" />
+                                                                                <ext:ModelField Name="Importe" Type="Float" />
+                                                                                <ext:ModelField Name="Categoria" Type="String" />
+                                                                                <ext:ModelField Name="SubCategoria" Type="String" />
+                                                                                <ext:ModelField Name="SubSubCategoria" Type="String" />
+                                                                                <ext:ModelField Name="FechaAlta" Type="Date" />
+                                                                                <ext:ModelField Name="Estatus" Type="String" />
+                                                                                <ext:ModelField Name="Tipo" Type="String" />
+                                                                        </Fields>
+                                                                    </ext:Model>
+                                                                </Model>
+                                                                <Sorters>
+                                                                    <ext:DataSorter Property="ID" Direction="ASC" />
+                                                                </Sorters>
+                                                            </ext:Store>
+                                                        </Store>
                                                     </ext:ComboBox>
                                                 </Editor>
                                             </ext:Column>
-                                            <ext:Column
-                                                ID="cDescripcion"
-                                                runat="server"
-                                                Text="Descripción"
-                                                Width="350"
-                                                DataIndex="Descripcion">
-                                                <Editor>
-                                                    <ext:TextField
-                                                        ID="txtfDescripcion"
-                                                        runat="server"
-                                                        DisplayField="Descripcion"
-                                                        ValueField="ID">
-                                                    </ext:TextField>
-                                                </Editor>
-                                            </ext:Column>
+                                           
                                             <ext:NumberColumn
                                                 ID="cCantidad"
                                                 runat="server"
@@ -585,29 +591,17 @@
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
                                                 Width="150">
-                                                <Editor>
-                                                    <ext:NumberField 
-                                                        ID="nfCantidad"
-                                                        runat="server"
-                                                        AllowDecimals="true"
-                                                        AllowExponential="false"
-                                                        DecimalPrecision="2"
-                                                        DecimalSeparator="."
-                                                        MaxLength="7"
-                                                        EnforceMaxLength="true"
-                                                        MaxValue="1000"
-                                                        MinValue="0"
-                                                        Step="1">
-                                                    </ext:NumberField>
-                                                </Editor>
+                                                <Renderer Fn="cCantidad_Renderer" />
+                                                
                                             </ext:NumberColumn>
                                             <ext:NumberColumn 
                                                 ID="cUtilizada"
                                                 runat="server"
                                                 Align="Center"
                                                 Text="Utlizada"
-                                                DataIndex="Utlizada"
+                                                DataIndex="Utilizada"
                                                 Width="150">
+                                                  <Renderer Fn="cUtilizada_Renderer" />
                                                 <Editor>
                                                     <ext:NumberField 
                                                         ID="nfUtilizada"
@@ -616,9 +610,9 @@
                                                         AllowExponential="false"
                                                         DecimalPrecision="2"
                                                         DecimalSeparator="."
-                                                        MaxLength="7"
+                                                        MaxLength="10"
                                                         EnforceMaxLength="true"
-                                                        MaxValue="1000"
+                                                        MaxValue="999999999"
                                                         MinValue="0"
                                                         Step="1">
                                                     </ext:NumberField>
@@ -650,6 +644,9 @@
                                             ID="ceVolumetriaDetalle" 
                                             runat="server"
                                             ClicksToEdit="1">
+                                            <Listeners>
+                                                <Edit Fn="cePreciarioConcepto_Edit" />
+                                            </Listeners>
                                         </ext:CellEditing>
                                     </Plugins>
                                     <View>

@@ -71,7 +71,11 @@ var imgbtnBorrar_Click_Success = function (response, result) {
 
 //Revisa la extencion del archivo de excel forzosamente
 var CheckExtension = function (FileUploadField1, file) {
-   //Se declara un arreglo con las extenciones que serán permitidas
+    //Se declara un arreglo con las extenciones que serán permitidas
+
+  
+   
+
     var validFilesTypes = ["xls", "xlsx"];
     //se pasa el parametro que contiene el archivo
     var filePath = file;
@@ -84,6 +88,10 @@ var CheckExtension = function (FileUploadField1, file) {
         //Si la extenvion es igual a la valida la variable es igual a true
         if (ext == validFilesTypes[i]) {
             isValidFile = true;
+
+
+
+
             break;
         }
     }
@@ -93,6 +101,8 @@ var CheckExtension = function (FileUploadField1, file) {
         FileUploadField1.reset();
         alert("Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "));
     }
+
+    HabilitarGuardar();
     return isValidFile;
 };
 
@@ -134,6 +144,8 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 //Evento que se lanza al seleccionar algun valor de la sucursal
 var cmbSucursal_Select = function (combobox, registro) {
     App.txtfSucursalNombre.setValue(registro[0].data.Nombre);
+    //Validar si se habilita Guardar
+    HabilitarGuardar();
    
 };
 
@@ -150,7 +162,19 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
     else {
         App.txtfSucursalNombre.setValue('');
     }
-  
+
+    //Validar si se habilita Guardar
+    HabilitarGuardar();
+
+};
+
+//Evento que se lanza al poner algun texto en la descripcion
+var txtfDescripcion_Change = function (txtDescripcion, Evento) {
+
+    App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());
+    //Validar si se habilita Guardar
+    HabilitarGuardar();
+
 };
 
 var sSucursales_Load = function () {
@@ -217,3 +241,15 @@ var cSubsubcategoria_Renderer = function (valor, columna, registro) {
         return Subsubcategoria.Descripcion;
     }
 };
+
+
+//Función que valida si se habilita el botón de Guardar
+function HabilitarGuardar() {
+    if (App.cmbSucursal.getValue() != null && App.fufArchivoExcel.getValue().toString() != "" && App.txtfDescripcion.getValue() != "") {
+        App.imgbtnGuardar.setDisabled(false);
+  
+    }
+    else {
+        App.imgbtnGuardar.setDisabled(true);
+    }
+}

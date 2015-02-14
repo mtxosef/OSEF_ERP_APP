@@ -66,7 +66,7 @@ namespace OSEF.APP.BL
         /// </summary>
         /// <param name="strID"></param>
         /// <returns></returns>
-        public static List<PreciarioConcepto> ObtenerPreciariConceptoPorPreciario(string strPreciario)
+        public static List<PreciarioConcepto> ObtenerPreciarioConceptoPorPreciario(string strPreciario)
         {
 
             //1. Obtener lista de conceptos

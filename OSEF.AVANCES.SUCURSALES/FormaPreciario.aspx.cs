@@ -186,7 +186,7 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
                 Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strcookieEditarPreciario);
 
                 //Cargar el detalle del movimiento
-                sCarga.DataSource = PreciarioConceptoBusiness.ObtenerPreciariConceptoPorPreciario(oPreciario.ID);
+                sCarga.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(oPreciario.ID);
                 sCarga.DataBind();
 
                 sPreciario.Add(new

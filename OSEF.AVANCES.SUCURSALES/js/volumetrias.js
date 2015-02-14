@@ -17,9 +17,9 @@ var imgbtnFormaNuevo_Click = function () {
     //Limpiar controles del encabezado
   
     App.txtfMovID.setValue(null);
-    App.cmbSucursal.clearValue();
-    App.cmbPreciario.clearValue();
+    App.txtfIDSucursal.setValue(null);
     App.txtfSucursalNombre.setValue(null);
+    App.cmbPreciario.clearValue();
     App.txtfDescripcionPreciario.setValue(null);
     App.dfFechaEmision.setValue(d);
     App.txtfObservaciones.setValue(null);
@@ -101,47 +101,27 @@ var gpVolumetrias_ItemClick = function (gridview, registro, gvhtml, index) {
     indice = index;
 };
 
-//Evento que se lanza al seleccionar algun valor de la sucursal
-var cmbSucursal_Select = function (combobox, registro) {
-    App.txtfSucursalNombre.setValue(registro[0].data.Nombre);
-    //Validar si se habilita Guardar
-    HabilitarGuardar();
-    //Validar si se habilita Información
-    HabilitarInformacion();
-    //Validar si se asigna el primer renglon del detalle
-    PrimerRenglonDetalle(); 
-};
 
-//Evento que se lanza al poner algun caracter en el control de la Sucursal
-var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
-    App.sSucursales.clearFilter();
-    if (App.cmbSucursal.getValue() != null) {
-        App.sSucursales.filter([{ filterFn: function (item) {
-            if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Nombre').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
-            else { return false; }
-        }
-        }]);
-    }
-    else {
-        App.txtfSucursalNombre.setValue('');
-    }
-    //Validar si se habilita Guardar
-    HabilitarGuardar();
-    //Validar si se habilita Información
-    HabilitarInformacion();
-    //Validar si se asigna el primer renglon del detalle
-    PrimerRenglonDetalle(); 
-
-};
 
 
 //Evento que se lanza al seleccionar algun valor de la sucursal
 var cmbPreciario_Select = function (combobox, registro) {
     App.txtfDescripcionPreciario.setValue(registro[0].data.Descripcion);
+
+    console.log(App.sPreciario.getAt(0).get('Sucursal'));
+
+    if (App.sPreciario.getAt(0) != undefined) {
+        App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
+        App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
+    }
+
+
     //Validar si se habilita Guardar
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
+
+
 
 };
 
@@ -158,6 +138,15 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     else {
         App.txtfDescripcionPreciario.setValue('');
     }
+
+    console.log(App.sPreciario.getAt(0).get('Sucursal'));
+    if (App.sPreciario.getAt(0) != undefined) {
+        App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
+        App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
+
+       
+    }
+
     //Validar si se habilita Guardar
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
@@ -176,7 +165,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
         App.cmbMov.select(registros[0].get('ID'));
         App.cmbMov.setReadOnly(true);
         App.dfFechaEmision.setValue(d);
-        App.cmbSucursal.focus();
+        App.cmbPreciario.focus();
     }
 };
 
@@ -197,7 +186,7 @@ var cmbMov_Select = function (combobox, registro) {
 };
 
 
-
+ 
 //Evento lanzado al cargar el store de avance encabezado
 var sVolumetria_Load = function () {
     App.direct.sVolumetria_Load();
@@ -209,7 +198,7 @@ var sVolumetria_Add = function (avance, registro) {
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.cmbPreciario.setValue(registro[0].get('Preciario'));
         App.txtfDescripcionPreciario.setValue(registro[0].get('RPreciario').Descripcion);
@@ -217,7 +206,9 @@ var sVolumetria_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
 
-
+        //Agregar una fila para seguir capturando
+        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
+        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
       
     }
 };
@@ -267,7 +258,7 @@ var cPreciario_Renderer = function (valor, metaData, registro) {
 
 //Función que valida si se habilita el botón de Guardar
 function HabilitarGuardar() {
-    if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != null && App.cmbPreciario.getValue() != null) {
+    if (App.cmbMov.getValue() != null  && App.cmbPreciario.getValue() != null) {
         App.imgbtnGuardar.setDisabled(false);
     }
     else {
@@ -277,7 +268,7 @@ function HabilitarGuardar() {
 
 //Validar si se habilita el botón de Información
 function HabilitarInformacion() {
-    if (App.cmbSucursal.getValue() != null) {
+    if (App.txtfIDSucursal.getValue() != null) {
         App.imgbtnInfo.setDisabled(false);
     }
     else {
@@ -285,11 +276,12 @@ function HabilitarInformacion() {
     }
 }
 
+
 //Función que valida si se habilita el primer renlgon en el GridPanel detalle
 function PrimerRenglonDetalle() {
     //Validar si se asigna el primer renglon del concepto
-    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.cmbSucursal.getValue() != null) {
-        if (App.cmbSucursal.isValid() && App.cmbPreciario.isValid()) {
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null ) {
+        if (App.cmbPreciario.isValid()) {
             var store = App.gpVolumetriaDetalle.getStore();
             if (store.getCount() == 0) {
                 //Insertar el primer registro
@@ -298,3 +290,82 @@ function PrimerRenglonDetalle() {
         }
     }
 }
+
+
+
+
+//Evento de la columna de acciones
+var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
+    //Eliminar registro
+    App.sConceptos.removeAt(fila);
+
+    //Asignar renglones
+    var renglon = 0;
+    App.sConceptos.each(function (dato) {
+        dato.set('Renglon', renglon);
+        renglon = renglon + 1;
+    });
+
+    //Validar si se habilita Afectar
+//    HabilitarAfectar();
+};
+
+
+
+
+//Evento que muestra el valor de la columna Concepto por su descripción y no por su ID
+var cDescripcion_Renderer = function (valor) {
+    var registro;
+    if (valor.length != 0) {
+        registro = App.sPreciarioConcepto.findRecord('ID', valor);
+        return registro.get('Descripcion');
+    }
+};
+
+
+//Darle formato a la columna de Cantidad
+var cCantidad_Renderer = function (valor) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    return F.number(valor, "000,000,000.00");
+};
+
+//Darle formato a la columna de Cantidad
+var cUtilizada_Renderer = function (valor) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    return F.number(valor, "000,000,000.00");
+};
+
+
+//Ocultar el último renglon
+var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+    if (grid.getStore().getCount() - 1 == rowIndex) {
+        toolbar.items.get(0).hide();
+    }
+};
+
+
+//Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
+var cePreciarioConcepto_Edit = function (cellediting, columna) {
+    //Verificar si abajo de esta columna existe otra
+    if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
+        //Verificar si toda la fila contiene datos
+        var registro = App.sConceptos.getAt(columna.rowIdx);
+        //        var prueba =/^[a-zA-Z0-9]{1,2000}$/;
+        if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
+            //Obtener el Renglon anterior
+            var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
+            //Insertar un nuevo registro
+            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+            //Actualiza el renglon anterior pintando el botón de borrar
+            App.gpVolumetriaDetalle.getView().refreshNode(App.sConceptos.getCount() - 2);
+            //Validar si se habilita Afectar
+            //HabilitarAfectar();
+        }
+    }
+};
+
+

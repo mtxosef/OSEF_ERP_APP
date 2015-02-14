@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
       <script type='text/javascript' src="js/preciarios.js"></script>
-      <script type='text/javascript' src="js/fileValida.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -80,7 +79,7 @@
                             ToolTip="Guardar"
                             Height="30"
                             Width="30"
-                            Disabled="false">
+                            Disabled="true">
                           <DirectEvents>
                             <Click OnEvent="imgbtnGuardar_Click">
                                 <EventMask ShowMask="true" Msg="Registrando información..." />
@@ -135,6 +134,7 @@
                                     Disabled="true">
                                      <Listeners>
                                         <Blur Handler="App.txtfID.setValue(App.txtfID.getValue().toUpperCase());" />
+                                        
                                     </Listeners>
                                 </ext:TextField>
                                 <ext:TextField
@@ -144,7 +144,9 @@
                                     Width="360"
                                     AllowBlank="false">
                                     <Listeners>
-                                        <Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />
+                                    
+                                        <Blur Fn="txtfDescripcion_Change"></Blur>
+                                        <%--<Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />--%>
                                     </Listeners>
                                     </ext:TextField>
                             </Items>
@@ -265,11 +267,13 @@
                                 Icon="Attach"
                                 EmptyText="No haz seleccionado un archivo"
                                 AllowBlank="false" 
+                                
                                 Width="304"
                                 StyleSpec="margin-right: 6px;" 
                                 Text="">
                                     <Listeners>
-                                        <Change Fn="CheckExtension"/>
+                                        <Change Fn="CheckExtension" />
+                                       
                                     </Listeners>
                                 </ext:FileUploadField>
 
@@ -304,10 +308,10 @@
                                     ID="btnCargar"
                                     runat="server"
                                     StyleSpec="margin-right: 6px;"
-                                    ImageUrl="../assets/img/controles/Guardar.png"
-                                    DisabledImageUrl="../assets/img/controles/GuardarDisabled.png"
-                                    OverImageUrl="../assets/img/controles/GuardarOver.png"
-                                    PressedImageUrl="../assets/img/controles/GuardarPressed.png"
+                                    ImageUrl="assets/img/controles/Guardar.png"
+                                    DisabledImageUrl="assets/img/controles/GuardarDisabled.png"
+                                    OverImageUrl="assets/img/controles/GuardarOver.png"
+                                    PressedImageUrl="assets/img/controles/GuardarPressed.png"
                                     ToolTip="Cargar Archivo"
                                     Height="23"
                                     Width="23">

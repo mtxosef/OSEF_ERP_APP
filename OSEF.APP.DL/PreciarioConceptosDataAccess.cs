@@ -305,7 +305,7 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spS_ObtenerPreciarioConcepto";
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioConceptos";
 
                 //2. Declarar los parametros
 

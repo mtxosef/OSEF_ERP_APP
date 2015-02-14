@@ -17,13 +17,17 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
-                //2. Cargar sucursales
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
-                sSucursales.DataBind();
+              
 
                 //2. Cargar sucursales
                 sPreciario.DataSource = PreciarioBusiness.ObtenerPreciarios();
                 sPreciario.DataBind();
+
+                ////3. Cargar Conceptos
+                //sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConcepto();
+                //sPreciarioConcepto.DataBind();
+
+
 
             }
         }
@@ -186,6 +190,29 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
                 return "modificar";
             }
         }
+
+
+        /// <summary>
+        /// Evento que se lanza al escoger un elemento de Preciarios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbPreciarios_Change(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
+            string strPreciarios = e.ExtraParams["valor"];
+            Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strPreciarios);
+
+            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
+            sPreciarioConcepto.DataBind();
+
+
+        }
+
+
+
+
+
 
 
     }

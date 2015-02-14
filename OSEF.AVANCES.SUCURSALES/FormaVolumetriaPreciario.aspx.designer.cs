@@ -265,51 +265,6 @@ namespace OSEF.AVANCES.SUCURSALES.Obra {
         protected global::Ext.Net.TextField txtfMovID;
         
         /// <summary>
-        /// Control fcSucursal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcSucursal;
-        
-        /// <summary>
-        /// Control cmbSucursal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSucursal;
-        
-        /// <summary>
-        /// Control sSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sSucursales;
-        
-        /// <summary>
-        /// Control mSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mSucursales;
-        
-        /// <summary>
-        /// Control txtfSucursalNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfSucursalNombre;
-        
-        /// <summary>
         /// Control fcPreciario.
         /// </summary>
         /// <remarks>
@@ -353,6 +308,33 @@ namespace OSEF.AVANCES.SUCURSALES.Obra {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfDescripcionPreciario;
+        
+        /// <summary>
+        /// Control fcSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcSucursal;
+        
+        /// <summary>
+        /// Control txtfIDSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfIDSucursal;
+        
+        /// <summary>
+        /// Control txtfSucursalNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfSucursalNombre;
         
         /// <summary>
         /// Control fcFechaEmision.
@@ -454,31 +436,31 @@ namespace OSEF.AVANCES.SUCURSALES.Obra {
         protected global::Ext.Net.Column cIDPreciario;
         
         /// <summary>
-        /// Control cmbPreciarios.
+        /// Control cmbConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbPreciarios;
+        protected global::Ext.Net.ComboBox cmbConcepto;
         
         /// <summary>
-        /// Control cDescripcion.
+        /// Control sPreciarioConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cDescripcion;
+        protected global::Ext.Net.Store sPreciarioConcepto;
         
         /// <summary>
-        /// Control txtfDescripcion.
+        /// Control mPreciarioConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfDescripcion;
+        protected global::Ext.Net.Model mPreciarioConcepto;
         
         /// <summary>
         /// Control cCantidad.
@@ -488,15 +470,6 @@ namespace OSEF.AVANCES.SUCURSALES.Obra {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.NumberColumn cCantidad;
-        
-        /// <summary>
-        /// Control nfCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.NumberField nfCantidad;
         
         /// <summary>
         /// Control cUtilizada.
