@@ -56,6 +56,7 @@
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColonia.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniaPorID.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasEnSucursalesPorID.sql
+:r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasPorMunicipio.sql
 -- Colonias (Insertar)
 :r c:\SqlServerScripts\Insertar\Colonias\web_spI_InsertarColonia.sql
 -- Colonias (Modificar)

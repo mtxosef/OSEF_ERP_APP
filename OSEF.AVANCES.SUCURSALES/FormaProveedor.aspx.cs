@@ -24,6 +24,13 @@ namespace OSEF.AVANCES.SUCURSALES
             {
                 sEstados.DataSource = EstadoBusiness.ObtenerEstados();
                 sEstados.DataBind();
+
+
+                sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
+                sMunicipios.DataBind();
+
+                sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
+                sColonias.DataBind();
             }
         }
 
@@ -69,6 +76,20 @@ namespace OSEF.AVANCES.SUCURSALES
             string strEstado = e.ExtraParams["valor"];
             sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
             sMunicipios.DataBind();
+        }
+
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar un municipio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strMunicipio = e.ExtraParams["valorMunicipio"];
+            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColonias.DataBind();
         }
 
         /// <summary>
@@ -123,7 +144,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfCodigoPostal":
                         oProveedor.CodigoPostal = Convert.ToInt32(sd.Value);
                         break;
-                    case "txtColonia":
+                    case "cmbColonia":
                         oProveedor.Colonia = sd.Value;
                         break;
                     case "cmbEstado":

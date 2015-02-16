@@ -283,6 +283,54 @@ namespace OSEF.APP.DL
 
 
         /// <summary>
+        /// Obtener todos los colonias por municipio
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        /// <returns></returns>
+        public static List<Colonia> ObtenerColoniasPorMunicipio(string strMunicipio)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerColoniasPorMunicipio";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpMunicipio = new SqlParameter();
+                sqlpMunicipio.ParameterName = "@Municipio";
+                sqlpMunicipio.SqlDbType = SqlDbType.Char;
+                sqlpMunicipio.Size = 4;
+                sqlpMunicipio.Value = strMunicipio;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpMunicipio);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<Colonia> result = LibraryGenerics<Colonia>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<Colonia> ObtenerColoniasPorMunicipio(string " + strMunicipio + ")): " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
         /// Revisar si existen registros de Colonias En revisiones por ID
         /// </summary>
         /// <param name="strID"></param>
@@ -326,6 +374,8 @@ namespace OSEF.APP.DL
                 throw new Exception("Error capa de datos (public static bool ObtenerRegistrosDeColoniasPorID(string " + strID + ")): " + ex.Message);
             }
         }
+
+
 
 
         #endregion

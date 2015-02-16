@@ -97,7 +97,11 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpColonia = new SqlParameter();
                 sqlpColonia.ParameterName = "@Colonia";
                 sqlpColonia.SqlDbType = SqlDbType.VarChar;
-                sqlpColonia.Value = iProveedor.Colonia;
+
+                if (iProveedor.Colonia == null)
+                    sqlpColonia.Value = DBNull.Value;
+                else
+                    sqlpColonia.Value = iProveedor.Colonia;
 
                 SqlParameter sqlpEstado = new SqlParameter();
                 sqlpEstado.ParameterName = "@Estado";
@@ -230,7 +234,11 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpColonia = new SqlParameter();
                 sqlpColonia.ParameterName = "@Colonia";
                 sqlpColonia.SqlDbType = SqlDbType.VarChar;
-                sqlpColonia.Value = uProveedor.Colonia;
+
+                if (uProveedor.Colonia == null)
+                    sqlpColonia.Value = DBNull.Value;
+                else
+                    sqlpColonia.Value = uProveedor.Colonia;
 
                 SqlParameter sqlpEstado = new SqlParameter();
                 sqlpEstado.ParameterName = "@Estado";

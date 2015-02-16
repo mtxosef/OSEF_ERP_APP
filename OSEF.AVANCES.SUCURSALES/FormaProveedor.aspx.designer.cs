@@ -247,24 +247,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.InputMask imCP;
         
         /// <summary>
-        /// Control txtColonia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtColonia;
-        
-        /// <summary>
-        /// Control FieldContainer5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer5;
-        
-        /// <summary>
         /// Control cmbEstado.
         /// </summary>
         /// <remarks>
@@ -292,6 +274,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Model mEstados;
         
         /// <summary>
+        /// Control FieldContainer5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer FieldContainer5;
+        
+        /// <summary>
         /// Control cmbMunicipio.
         /// </summary>
         /// <remarks>
@@ -317,6 +308,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model mMunicipios;
+        
+        /// <summary>
+        /// Control cmbColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbColonia;
+        
+        /// <summary>
+        /// Control sColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sColonias;
+        
+        /// <summary>
+        /// Control mColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mColonias;
         
         /// <summary>
         /// Control sbProveedor.

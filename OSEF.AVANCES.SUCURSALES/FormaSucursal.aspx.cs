@@ -24,6 +24,12 @@ namespace OSEF.AVANCES.SUCURSALES
             {
                 sEstados.DataSource = EstadoBusiness.ObtenerEstados();
                 sEstados.DataBind();
+
+                sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
+                sMunicipios.DataBind();
+
+                sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
+                sColonias.DataBind();
             }
         }
 
@@ -158,7 +164,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfCodigoPostal":
                         oSucursal.CodigoPostal = Convert.ToInt32(sd.Value);
                         break;
-                    case "txtfColonia":
+                    case "cmbColonia":
                         oSucursal.Colonia = sd.Value;
                         break;
                     case "cmbEstado":
@@ -212,5 +218,22 @@ namespace OSEF.AVANCES.SUCURSALES
                 X.Msg.Alert("Actualización completa", "<p align='center'>Se han actualizado los datos de la sucursal <br/>" + oSucursal.ID + ".</p>", success).Show();
             }
         }
+
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar un municipio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strMunicipio = e.ExtraParams["valorMunicipio"];
+            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColonias.DataBind();
+        }
+
+
+
     }
 }

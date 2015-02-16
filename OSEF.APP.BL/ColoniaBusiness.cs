@@ -91,6 +91,20 @@ namespace OSEF.APP.BL
         {
             return ColoniaDataAccess.ObtenerRegistrosDeColoniasPorID(strID);
         }
+
+
+
+        /// <summary>
+        /// Obtener todos los colonias por municipio
+        /// </summary>
+        /// <param name="strEstado"></param>
+        /// <returns></returns>
+        public static List<Colonia> ObtenerColoniasPorMunicipio(string strMunicipio)
+        {
+            return ColoniaDataAccess.ObtenerColoniasPorMunicipio(strMunicipio);
+        }
+
+
         #endregion
     }
 }

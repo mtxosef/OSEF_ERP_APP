@@ -20,16 +20,16 @@ IF EXISTS (	SELECT name
 			FROM sysobjects
 			WHERE  name = 'web_spS_ObtenerColoniasPorMunicipio' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerMunicipiosPorEstado
+	DROP PROCEDURE web_spS_ObtenerColoniasPorMunicipio
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Sabado 22 de Noviembre de 2014
 -- Description:	Obtener todos los Municipios por Estado
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerMunicipiosPorEstado
+CREATE PROCEDURE web_spS_ObtenerColoniasPorMunicipio
 	-- Add the parameters for the stored procedure here
-	@Estado	CHAR(15)
+	@Municipio	CHAR(4)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -40,10 +40,11 @@ BEGIN
 	SELECT
 		ID,
 		Descripcion,
-		Estado
+		Estado,
+		Municipio
 	FROM
-		Municipios
+		Colonias
 	WHERE
-		Estado = @Estado
+		Municipio = @Municipio
 END
 GO
