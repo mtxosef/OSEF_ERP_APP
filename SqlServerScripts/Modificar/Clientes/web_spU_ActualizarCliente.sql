@@ -42,7 +42,7 @@ CREATE PROCEDURE web_spU_ActualizarCliente
 	@Profesion				CHAR(7),
 	@Correo					VARCHAR(100),
 	@Telefono				VARCHAR(15),
-	@TelefonoMovil			VARCHAR(15),
+	@TelefonoMovil			VARCHAR(19),
 	@Calle					VARCHAR(100),
 	@NoExterior				VARCHAR(10),
 	@NoInterior				VARCHAR(10),
@@ -58,11 +58,14 @@ CREATE PROCEDURE web_spU_ActualizarCliente
 	@EmpresaColonia			VARCHAR(50),
 	@EmpresaCodigoPostal	INT,
 	@EmpresaEntreCalles		VARCHAR(100),
+	@EmpresaEstado			CHAR(2),
+	@EmpresaMunicipio		CHAR(4),
 	@EmpresaTelefono		VARCHAR(15),
+	@EmpresaTelefonoExt		INT,
 	@Puesto					VARCHAR(50),
-	@FechaAlta				SMALLDATETIME,
-	@Estatus				VARCHAR(20),
-	@Usuario				VARCHAR(50)
+	@TipoSocio				VARCHAR(20),
+	@NumeroSocio			VARCHAR(11),
+	@Estatus				VARCHAR(20)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -101,11 +104,14 @@ BEGIN
 		EmpresaColonia = @EmpresaColonia,
 		EmpresaCodigoPostal = @EmpresaCodigoPostal,
 		EmpresaEntreCalles = @EmpresaEntreCalles,
+		EmpresaEstado = @EmpresaEstado,
+		EmpresaMunicipio = @EmpresaMunicipio,
 		EmpresaTelefono = @EmpresaTelefono,
+		EmpresaTelefonoExt = @EmpresaTelefonoExt,
 		Puesto = @Puesto,
-		FechaAlta = @FechaAlta,
-		Estatus = @Estatus,
-		Usuario = @Usuario
+		TipoSocio = @TipoSocio,
+		NumeroSocio = @NumeroSocio,
+		Estatus = @Estatus
 	WHERE
 		ID = @ID
 END

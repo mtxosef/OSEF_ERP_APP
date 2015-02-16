@@ -39,10 +39,12 @@ namespace OSEF.APP.EL
         string empresanoexterior;
         string empresanointerior;
         string empresacolonia;
-        int empresacodigopostal;
+        Nullable <int> empresacodigopostal;
         string empresaentrecalles;
+        string empresaestado;
+        string empresamunicipio;
         string empresatelefono;
-        int empresatelefonoext;
+        Nullable<int> empresatelefonoext;
         string puesto;
         string tiposocio;
         string numerosocio;
@@ -218,7 +220,7 @@ namespace OSEF.APP.EL
             set { empresacolonia = value; }
         }
 
-        public int EmpresaCodigoPostal
+        public Nullable<int> EmpresaCodigoPostal
         {
             get { return empresacodigopostal; }
             set { empresacodigopostal = value; }
@@ -230,13 +232,25 @@ namespace OSEF.APP.EL
             set { empresaentrecalles = value; }
         }
 
+        public string EmpresaEstado
+        {
+            get { return empresaestado; }
+            set { empresaestado = value; }
+        }
+
+        public string EmpresaMunicipio
+        {
+            get { return empresamunicipio; }
+            set { empresamunicipio = value; }
+        }
+
         public string EmpresaTelefono
         {
             get { return empresatelefono; }
             set { empresatelefono = value; }
         }
 
-        public int EmpresaTelefonoExt
+        public Nullable<int> EmpresaTelefonoExt
         {
             get { return empresatelefonoext; }
             set { empresatelefonoext = value; }

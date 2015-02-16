@@ -31,13 +31,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmSocios.
+        /// Control rmClientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmSocios;
+        protected global::Ext.Net.ResourceManager rmClientes;
         
         /// <summary>
         /// Control gpClientes.
@@ -121,6 +121,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ImageButton imgbtnBuscar;
         
         /// <summary>
+        /// Control sClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sClientes;
+        
+        /// <summary>
+        /// Control mClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mClientes;
+        
+        /// <summary>
+        /// Control cID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cID;
+        
+        /// <summary>
         /// Control cSocio.
         /// </summary>
         /// <remarks>
@@ -130,13 +157,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Column cSocio;
         
         /// <summary>
-        /// Control cNombre.
+        /// Control dcFechaNacimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cNombre;
+        protected global::Ext.Net.DateColumn dcFechaNacimiento;
         
         /// <summary>
         /// Control cCorreo.
@@ -146,33 +173,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cCorreo;
-        
-        /// <summary>
-        /// Control RFC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column RFC;
-        
-        /// <summary>
-        /// Control cSexo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cSexo;
-        
-        /// <summary>
-        /// Control cNacimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cNacimiento;
         
         /// <summary>
         /// Control cTelefono.
@@ -193,12 +193,21 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Column cEstatus;
         
         /// <summary>
-        /// Control sbSocios.
+        /// Control rsmClientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar sbSocios;
+        protected global::Ext.Net.RowSelectionModel rsmClientes;
+        
+        /// <summary>
+        /// Control sbClientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.StatusBar sbClientes;
     }
 }

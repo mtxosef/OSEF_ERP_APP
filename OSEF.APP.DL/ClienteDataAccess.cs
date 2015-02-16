@@ -65,9 +65,9 @@ namespace OSEF.APP.DL
                 sqlpCURP.Value = iCliente.CURP;
 
                 SqlParameter sqlpFechaNacimiento = new SqlParameter();
-                sqlpCURP.ParameterName = "@FechaNacimiento";
-                sqlpCURP.SqlDbType = SqlDbType.Date;
-                sqlpCURP.Value = iCliente.FechaNacimiento;
+                sqlpFechaNacimiento.ParameterName = "@FechaNacimiento";
+                sqlpFechaNacimiento.SqlDbType = SqlDbType.Date;
+                sqlpFechaNacimiento.Value = iCliente.FechaNacimiento;
 
                 SqlParameter sqlpEdad = new SqlParameter();
                 sqlpEdad.ParameterName = "@Edad";
@@ -175,12 +175,33 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaCodigoPostal = new SqlParameter();
                 sqlpEmpresaCodigoPostal.ParameterName = "@EmpresaCodigoPostal";
                 sqlpEmpresaCodigoPostal.SqlDbType = SqlDbType.Int;
-                sqlpEmpresaCodigoPostal.Value = iCliente.EmpresaCodigoPostal;
+                if (iCliente.EmpresaCodigoPostal == null)
+                    sqlpEmpresaCodigoPostal.Value = DBNull.Value;
+                else
+                    sqlpEmpresaCodigoPostal.Value = iCliente.EmpresaCodigoPostal;
 
                 SqlParameter sqlpEmpresaEntreCalles = new SqlParameter();
                 sqlpEmpresaEntreCalles.ParameterName = "@EmpresaEntreCalles";
                 sqlpEmpresaEntreCalles.SqlDbType = SqlDbType.VarChar;
                 sqlpEmpresaEntreCalles.Value = iCliente.EmpresaEntreCalles;
+
+                SqlParameter sqlpEmpresaEstado = new SqlParameter();
+                sqlpEmpresaEstado.ParameterName = "@EmpresaEstado";
+                sqlpEmpresaEstado.SqlDbType = SqlDbType.Char;
+                sqlpEmpresaEstado.Size = 2;
+                if (iCliente.EmpresaEstado == null)
+                    sqlpEmpresaEstado.Value = DBNull.Value;
+                else
+                    sqlpEmpresaEstado.Value = iCliente.EmpresaEstado;
+
+                SqlParameter sqlpEmpresaMunicipio = new SqlParameter();
+                sqlpEmpresaMunicipio.ParameterName = "@EmpresaMunicipio";
+                sqlpEmpresaMunicipio.SqlDbType = SqlDbType.Char;
+                sqlpEmpresaMunicipio.Size = 4;
+                if (iCliente.EmpresaMunicipio == null)
+                    sqlpEmpresaMunicipio.Value = DBNull.Value;
+                else
+                    sqlpEmpresaMunicipio.Value = iCliente.EmpresaMunicipio;
 
                 SqlParameter sqlpEmpresaTelefono = new SqlParameter();
                 sqlpEmpresaTelefono.ParameterName = "@EmpresaTelefono";
@@ -190,7 +211,10 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaTelefonoExt = new SqlParameter();
                 sqlpEmpresaTelefonoExt.ParameterName = "@EmpresaTelefonoExt";
                 sqlpEmpresaTelefonoExt.SqlDbType = SqlDbType.Int;
-                sqlpEmpresaTelefonoExt.Value = iCliente.EmpresaTelefonoExt;
+                if (iCliente.EmpresaTelefonoExt == null)
+                    sqlpEmpresaTelefonoExt.Value = DBNull.Value;
+                else
+                    sqlpEmpresaTelefonoExt.Value = iCliente.EmpresaTelefonoExt;
 
                 SqlParameter sqlpPuesto = new SqlParameter();
                 sqlpPuesto.ParameterName = "@Puesto";
@@ -252,6 +276,8 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpEmpresaColonia);
                 sqlcComando.Parameters.Add(sqlpEmpresaCodigoPostal);
                 sqlcComando.Parameters.Add(sqlpEmpresaEntreCalles);
+                sqlcComando.Parameters.Add(sqlpEmpresaEstado);
+                sqlcComando.Parameters.Add(sqlpEmpresaMunicipio);
                 sqlcComando.Parameters.Add(sqlpEmpresaTelefono);
                 sqlcComando.Parameters.Add(sqlpEmpresaTelefonoExt);
                 sqlcComando.Parameters.Add(sqlpPuesto);
@@ -284,10 +310,10 @@ namespace OSEF.APP.DL
         #region Modificar
 
         /// <summary>
-        /// Método que actualiza un nuevo registro a la tabla de Articulos
+        /// Método que actualiza un nuevo registro a la tabla de Clientes
         /// </summary>
-        /// <param name="uArticulo"></param>
-        public static int Actualizar(Articulo uArticulo)
+        /// <param name="uCliente"></param>
+        public static int Actualizar(Cliente uCliente)
         {
             try
             {
@@ -296,35 +322,256 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spU_ActualizarArticulo";
+                sqlcComando.CommandText = "web_spU_ActualizarCliente";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 2;
-                sqlpID.Value = uArticulo.ID;
+                sqlpID.Size = 8;
+                sqlpID.Value = uCliente.ID;
 
-                SqlParameter sqlpCorta = new SqlParameter();
-                sqlpCorta.ParameterName = "@Corta";
-                sqlpCorta.SqlDbType = SqlDbType.VarChar;
-                sqlpCorta.Value = uArticulo.Corta;
+                SqlParameter sqlpNombre = new SqlParameter();
+                sqlpNombre.ParameterName = "@Nombre";
+                sqlpNombre.SqlDbType = SqlDbType.VarChar;
+                sqlpNombre.Value = uCliente.Nombre;
 
-                SqlParameter sqlpDescripcion = new SqlParameter();
-                sqlpDescripcion.ParameterName = "@Descripcion";
-                sqlpDescripcion.SqlDbType = SqlDbType.VarChar;
-                sqlpDescripcion.Value = uArticulo.Descripcion;
+                SqlParameter sqlpAPaterno = new SqlParameter();
+                sqlpAPaterno.ParameterName = "@APaterno";
+                sqlpAPaterno.SqlDbType = SqlDbType.VarChar;
+                sqlpAPaterno.Value = uCliente.APaterno;
+
+                SqlParameter sqlpAMaterno = new SqlParameter();
+                sqlpAMaterno.ParameterName = "@AMaterno";
+                sqlpAMaterno.SqlDbType = SqlDbType.VarChar;
+                sqlpAMaterno.Value = uCliente.AMaterno;
+
+                SqlParameter sqlpRFC = new SqlParameter();
+                sqlpRFC.ParameterName = "@RFC";
+                sqlpRFC.SqlDbType = SqlDbType.VarChar;
+                sqlpRFC.Value = uCliente.RFC;
+
+                SqlParameter sqlpCURP = new SqlParameter();
+                sqlpCURP.ParameterName = "@CURP";
+                sqlpCURP.SqlDbType = SqlDbType.VarChar;
+                sqlpCURP.Value = uCliente.CURP;
+
+                SqlParameter sqlpFechaNacimiento = new SqlParameter();
+                sqlpFechaNacimiento.ParameterName = "@FechaNacimiento";
+                sqlpFechaNacimiento.SqlDbType = SqlDbType.Date;
+                sqlpFechaNacimiento.Value = uCliente.FechaNacimiento;
+
+                SqlParameter sqlpEdad = new SqlParameter();
+                sqlpEdad.ParameterName = "@Edad";
+                sqlpEdad.SqlDbType = SqlDbType.TinyInt;
+                sqlpEdad.Value = uCliente.Edad;
+
+                SqlParameter sqlpSexo = new SqlParameter();
+                sqlpSexo.ParameterName = "@Sexo";
+                sqlpSexo.SqlDbType = SqlDbType.VarChar;
+                sqlpSexo.Value = uCliente.Sexo;
+
+                SqlParameter sqlpEstadoCivil = new SqlParameter();
+                sqlpEstadoCivil.ParameterName = "@EstadoCivil";
+                sqlpEstadoCivil.SqlDbType = SqlDbType.VarChar;
+                sqlpEstadoCivil.Value = uCliente.EstadoCivil;
+
+                SqlParameter sqlpProfesion = new SqlParameter();
+                sqlpProfesion.ParameterName = "@Profesion";
+                sqlpProfesion.SqlDbType = SqlDbType.Char;
+                sqlpProfesion.Size = 7;
+                sqlpProfesion.Value = uCliente.Profesion;
+
+                SqlParameter sqlpCorreo = new SqlParameter();
+                sqlpCorreo.ParameterName = "@Correo";
+                sqlpCorreo.SqlDbType = SqlDbType.VarChar;
+                sqlpCorreo.Value = uCliente.Correo;
+
+                SqlParameter sqlpTelefono = new SqlParameter();
+                sqlpTelefono.ParameterName = "@Telefono";
+                sqlpTelefono.SqlDbType = SqlDbType.VarChar;
+                sqlpTelefono.Value = uCliente.Telefono;
+
+                SqlParameter sqlpTelefonoMovil = new SqlParameter();
+                sqlpTelefonoMovil.ParameterName = "@TelefonoMovil";
+                sqlpTelefonoMovil.SqlDbType = SqlDbType.VarChar;
+                sqlpTelefonoMovil.Value = uCliente.TelefonoMovil;
+
+                SqlParameter sqlpCalle = new SqlParameter();
+                sqlpCalle.ParameterName = "@Calle";
+                sqlpCalle.SqlDbType = SqlDbType.VarChar;
+                sqlpCalle.Value = uCliente.Calle;
+
+                SqlParameter sqlpNoExterior = new SqlParameter();
+                sqlpNoExterior.ParameterName = "@NoExterior";
+                sqlpNoExterior.SqlDbType = SqlDbType.VarChar;
+                sqlpNoExterior.Value = uCliente.NoExterior;
+
+                SqlParameter sqlpNoInterior = new SqlParameter();
+                sqlpNoInterior.ParameterName = "@NoInterior";
+                sqlpNoInterior.SqlDbType = SqlDbType.VarChar;
+                sqlpNoInterior.Value = uCliente.NoInterior;
+
+                SqlParameter sqlpColonia = new SqlParameter();
+                sqlpColonia.ParameterName = "@Colonia";
+                sqlpColonia.SqlDbType = SqlDbType.VarChar;
+                sqlpColonia.Value = uCliente.Colonia;
+
+                SqlParameter sqlpCodigoPostal = new SqlParameter();
+                sqlpCodigoPostal.ParameterName = "@CodigoPostal";
+                sqlpCodigoPostal.SqlDbType = SqlDbType.Int;
+                sqlpCodigoPostal.Value = uCliente.CodigoPostal;
+
+                SqlParameter sqlpEntreCalles = new SqlParameter();
+                sqlpEntreCalles.ParameterName = "@EntreCalles";
+                sqlpEntreCalles.SqlDbType = SqlDbType.VarChar;
+                sqlpEntreCalles.Value = uCliente.EntreCalles;
+
+                SqlParameter sqlpEstado = new SqlParameter();
+                sqlpEstado.ParameterName = "@Estado";
+                sqlpEstado.SqlDbType = SqlDbType.Char;
+                sqlpEstado.Size = 2;
+                sqlpEstado.Value = uCliente.Estado;
+
+                SqlParameter sqlpMunicipio = new SqlParameter();
+                sqlpMunicipio.ParameterName = "@Municipio";
+                sqlpMunicipio.SqlDbType = SqlDbType.Char;
+                sqlpMunicipio.Size = 4;
+                sqlpMunicipio.Value = uCliente.Municipio;
+
+                SqlParameter sqlpEmpresa = new SqlParameter();
+                sqlpEmpresa.ParameterName = "@Empresa";
+                sqlpEmpresa.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresa.Value = uCliente.Empresa;
+
+                SqlParameter sqlpEmpresaCalle = new SqlParameter();
+                sqlpEmpresaCalle.ParameterName = "@EmpresaCalle";
+                sqlpEmpresaCalle.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaCalle.Value = uCliente.EmpresaCalle;
+
+                SqlParameter sqlpEmpresaNoExterior = new SqlParameter();
+                sqlpEmpresaNoExterior.ParameterName = "@EmpresaNoExterior";
+                sqlpEmpresaNoExterior.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaNoExterior.Value = uCliente.EmpresaNoExterior;
+
+                SqlParameter sqlpEmpresaNoInterior = new SqlParameter();
+                sqlpEmpresaNoInterior.ParameterName = "@EmpresaNoInterior";
+                sqlpEmpresaNoInterior.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaNoInterior.Value = uCliente.EmpresaNoInterior;
+
+                SqlParameter sqlpEmpresaColonia = new SqlParameter();
+                sqlpEmpresaColonia.ParameterName = "@EmpresaColonia";
+                sqlpEmpresaColonia.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaColonia.Value = uCliente.EmpresaColonia;
+
+                SqlParameter sqlpEmpresaCodigoPostal = new SqlParameter();
+                sqlpEmpresaCodigoPostal.ParameterName = "@EmpresaCodigoPostal";
+                sqlpEmpresaCodigoPostal.SqlDbType = SqlDbType.Int;
+                if (uCliente.EmpresaCodigoPostal == null)
+                    sqlpEmpresaCodigoPostal.Value = DBNull.Value;
+                else
+                    sqlpEmpresaCodigoPostal.Value = uCliente.EmpresaCodigoPostal;
+
+                SqlParameter sqlpEmpresaEntreCalles = new SqlParameter();
+                sqlpEmpresaEntreCalles.ParameterName = "@EmpresaEntreCalles";
+                sqlpEmpresaEntreCalles.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaEntreCalles.Value = uCliente.EmpresaEntreCalles;
+
+                SqlParameter sqlpEmpresaEstado = new SqlParameter();
+                sqlpEmpresaEstado.ParameterName = "@EmpresaEstado";
+                sqlpEmpresaEstado.SqlDbType = SqlDbType.Char;
+                sqlpEmpresaEstado.Size = 2;
+                if (uCliente.EmpresaEstado == null)
+                    sqlpEmpresaEstado.Value = DBNull.Value;
+                else
+                    sqlpEmpresaEstado.Value = uCliente.EmpresaEstado;
+
+                SqlParameter sqlpEmpresaMunicipio = new SqlParameter();
+                sqlpEmpresaMunicipio.ParameterName = "@EmpresaMunicipio";
+                sqlpEmpresaMunicipio.SqlDbType = SqlDbType.Char;
+                sqlpEmpresaMunicipio.Size = 4;
+                if (uCliente.EmpresaMunicipio == null)
+                    sqlpEmpresaMunicipio.Value = DBNull.Value;
+                else
+                    sqlpEmpresaMunicipio.Value = uCliente.EmpresaMunicipio;
+
+                SqlParameter sqlpEmpresaTelefono = new SqlParameter();
+                sqlpEmpresaTelefono.ParameterName = "@EmpresaTelefono";
+                sqlpEmpresaTelefono.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaTelefono.Value = uCliente.EmpresaTelefono;
+
+                SqlParameter sqlpEmpresaTelefonoExt = new SqlParameter();
+                sqlpEmpresaTelefonoExt.ParameterName = "@EmpresaTelefonoExt";
+                sqlpEmpresaTelefonoExt.SqlDbType = SqlDbType.Int;
+                if (uCliente.EmpresaTelefonoExt == null)
+                    sqlpEmpresaTelefonoExt.Value = DBNull.Value;
+                else
+                    sqlpEmpresaTelefonoExt.Value = uCliente.EmpresaTelefonoExt;
+
+                SqlParameter sqlpPuesto = new SqlParameter();
+                sqlpPuesto.ParameterName = "@Puesto";
+                sqlpPuesto.SqlDbType = SqlDbType.VarChar;
+                sqlpPuesto.Value = uCliente.Puesto;
+
+                SqlParameter sqlpTipoSocio = new SqlParameter();
+                sqlpTipoSocio.ParameterName = "@TipoSocio";
+                sqlpTipoSocio.SqlDbType = SqlDbType.VarChar;
+                sqlpTipoSocio.Value = uCliente.TipoSocio;
+
+                SqlParameter sqlpNumeroSocio = new SqlParameter();
+                sqlpNumeroSocio.ParameterName = "@NumeroSocio";
+                sqlpNumeroSocio.SqlDbType = SqlDbType.VarChar;
+                sqlpNumeroSocio.Value = uCliente.NumeroSocio;
+
+                SqlParameter sqlpEstatus = new SqlParameter();
+                sqlpEstatus.ParameterName = "@Estatus";
+                sqlpEstatus.SqlDbType = SqlDbType.VarChar;
+                sqlpEstatus.Value = uCliente.Estatus;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
-                sqlcComando.Parameters.Add(sqlpCorta);
-                sqlcComando.Parameters.Add(sqlpDescripcion);
+                sqlcComando.Parameters.Add(sqlpNombre);
+                sqlcComando.Parameters.Add(sqlpAPaterno);
+                sqlcComando.Parameters.Add(sqlpAMaterno);
+                sqlcComando.Parameters.Add(sqlpRFC);
+                sqlcComando.Parameters.Add(sqlpCURP);
+                sqlcComando.Parameters.Add(sqlpFechaNacimiento);
+                sqlcComando.Parameters.Add(sqlpEdad);
+                sqlcComando.Parameters.Add(sqlpSexo);
+                sqlcComando.Parameters.Add(sqlpEstadoCivil);
+                sqlcComando.Parameters.Add(sqlpProfesion);
+                sqlcComando.Parameters.Add(sqlpCorreo);
+                sqlcComando.Parameters.Add(sqlpTelefono);
+                sqlcComando.Parameters.Add(sqlpTelefonoMovil);
+                sqlcComando.Parameters.Add(sqlpCalle);
+                sqlcComando.Parameters.Add(sqlpNoExterior);
+                sqlcComando.Parameters.Add(sqlpNoInterior);
+                sqlcComando.Parameters.Add(sqlpColonia);
+                sqlcComando.Parameters.Add(sqlpCodigoPostal);
+                sqlcComando.Parameters.Add(sqlpEntreCalles);
+                sqlcComando.Parameters.Add(sqlpEstado);
+                sqlcComando.Parameters.Add(sqlpMunicipio);
+                sqlcComando.Parameters.Add(sqlpEmpresa);
+                sqlcComando.Parameters.Add(sqlpEmpresaCalle);
+                sqlcComando.Parameters.Add(sqlpEmpresaNoExterior);
+                sqlcComando.Parameters.Add(sqlpEmpresaNoInterior);
+                sqlcComando.Parameters.Add(sqlpEmpresaColonia);
+                sqlcComando.Parameters.Add(sqlpEmpresaCodigoPostal);
+                sqlcComando.Parameters.Add(sqlpEmpresaEntreCalles);
+                sqlcComando.Parameters.Add(sqlpEmpresaEstado);
+                sqlcComando.Parameters.Add(sqlpEmpresaMunicipio);
+                sqlcComando.Parameters.Add(sqlpEmpresaTelefono);
+                sqlcComando.Parameters.Add(sqlpEmpresaTelefonoExt);
+                sqlcComando.Parameters.Add(sqlpPuesto);
+                sqlcComando.Parameters.Add(sqlpTipoSocio);
+                sqlcComando.Parameters.Add(sqlpNumeroSocio);
+                sqlcComando.Parameters.Add(sqlpEstatus);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
-                //5. Ejecutar la instrucción UPDATE que no regresa filas
-                int result = sqlcComando.ExecuteNonQuery();
+                //5. Ejecutar la instrucción INSERT que regresa un dato que es el ID
+                int result = Convert.ToInt32(sqlcComando.ExecuteScalar());
 
                 //6. Cerrar la conexión
                 sqlcComando.Connection.Close();
@@ -334,7 +581,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Actualizar(Articulo " + uArticulo.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Actualizar(Cliente " + uCliente.ID + ")): " + ex.Message);
             }
         }
 
@@ -390,10 +637,10 @@ namespace OSEF.APP.DL
         #region Consultar
 
         /// <summary>
-        /// Obtener todos los registros de Articulos
+        /// Obtener todos los registros de Clientes
         /// </summary>
         /// <returns></returns>
-        public static List<Articulo> ObtenerArticulos()
+        public static List<Cliente> ObtenerClientes()
         {
             try
             {
@@ -402,7 +649,7 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spS_ObtenerArticulos";
+                sqlcComando.CommandText = "web_spS_ObtenerClientes";
 
                 //2. Declarar los parametros
 
@@ -415,7 +662,7 @@ namespace OSEF.APP.DL
                 SqlDataReader reader = sqlcComando.ExecuteReader();
 
                 //6. Asignar la lista de Clientes
-                List<Articulo> result = LibraryGenerics<Articulo>.ConvertDataSetToList(reader);
+                List<Cliente> result = LibraryGenerics<Cliente>.ConvertDataSetToList(reader);
 
                 //7. Cerrar la conexión
                 sqlcComando.Connection.Close();
@@ -425,16 +672,16 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static List<Articulo> ObtenerArticulos()): " + ex.Message);
+                throw new Exception("Error capa de datos (public static List<Cliente> ObtenerClientes()): " + ex.Message);
             }
         }
 
         /// <summary>
-        /// Obtener un registro de Articulo por su ID
+        /// Obtener un registro de Cliente por su ID
         /// </summary>
         /// <param name="strID"></param>
         /// <returns></returns>
-        public static Articulo ObtenerArticuloPorID(string strID)
+        public static Cliente ObtenerClientePorID(string strID)
         {
             try
             {
@@ -443,13 +690,13 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spS_ObtenerArticuloPorID";
+                sqlcComando.CommandText = "web_spS_ObtenerClientePorID";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 2;
+                sqlpID.Size = 8;
                 sqlpID.Value = strID;
 
                 //3. Agregar los parametros al comando
@@ -462,7 +709,7 @@ namespace OSEF.APP.DL
                 SqlDataReader reader = sqlcComando.ExecuteReader();
 
                 //6. Asignar la lista de Clientes
-                Articulo result = LibraryGenerics<Articulo>.ConvertDataSetToList(reader).FirstOrDefault();
+                Cliente result = LibraryGenerics<Cliente>.ConvertDataSetToList(reader).FirstOrDefault();
 
                 //7. Cerrar la conexión
                 sqlcComando.Connection.Close();
@@ -472,7 +719,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static Articulo ObtenerArticuloPorID(string " + strID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static Cliente ObtenerClientePorID(string " + strID + ")): " + ex.Message);
             }
         }
 

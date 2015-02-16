@@ -9,6 +9,47 @@ var imgbtnNuevo_Click = function () {
     window.parent.App.wEmergente.show();
 };
 
+//Evento de click del botón Editar
+var imgbtnEditar_Click = function () {
+    Ext.util.Cookies.set('cookieEditarCliente', App.gpClientes.getSelectionModel().getSelection()[0].get('ID'));
+    window.parent.App.wEmergente.load('FormaCliente.aspx');
+    window.parent.App.wEmergente.setHeight(455);
+    window.parent.App.wEmergente.setWidth(830);
+    window.parent.App.wEmergente.center();
+    window.parent.App.wEmergente.setTitle('Editar cliente ' + Ext.util.Cookies.get('cookieEditarCliente'));
+    window.parent.App.wEmergente.show();
+};
+
+//Acciones al hacer clic en un registro
+var gpClientes_ItemClick = function (gridview, registro, gvhtml, index) {
+    App.imgbtnEditar.setDisabled(false);
+    App.imgbtnBorrar.setDisabled(false);
+    indice = index;
+};
+
+//Cambio en los datos del tablero
+var sClientes_DataChanged = function () {
+    if (App.sClientes.getCount() > 1 || App.sClientes.getCount() == 0) {
+        App.sbClientes.setText(App.sClientes.getCount() + ' ' + 'SOCIOS');
+    }
+    else {
+        App.sbClientes.setText(App.sClientes.getCount() + ' ' + 'SOCIO');
+    }
+
+    //Resize column Description when records are 11
+    if (App.sClientes.getCount() > 10) {
+        App.gpClientes.columns[1].setWidth(263);
+    }
+    else {
+        App.gpClientes.columns[1].setWidth(280);
+    }
+};
+
+//Concatenar la columna de Nombre Completo
+var NombreCompleto_Convert = function (value, record) {
+    return record.get('Nombre') + ' ' + record.get('APaterno') + ' ' + record.get('AMaterno');
+};
+
 //Antes de crear el ComboBox
 var ComboBox_BeforeRender = function (combobox, opciones) {
     if (Ext.util.Cookies.get('osefTheme') == 'caja') {
@@ -16,6 +57,13 @@ var ComboBox_BeforeRender = function (combobox, opciones) {
     }
     else {
         combobox.cls = 'bancomerCombobox bancomerComboboxFocus';
+    }
+};
+
+//Despues de crear el Combobox de Estatus
+var cmbEstatus_AfterRender = function (combobox, opciones) {
+    if (Ext.util.Cookies.get('cookieEditarCliente') === 'Nuevo') {
+        App.cmbEstatus.select('ALTA');
     }
 };
 
@@ -84,4 +132,114 @@ var CalcularFechaNacimiento = function (datefield, fecha) {
     }
 
     App.txtfEdad.setValue(edad + ' años');
+};
+
+//Método que se lanza despues de guardar un registro
+var imgbtnGuardar_Click_Success = function (response, result) {
+    if (Ext.util.Cookies.get('cookieEditarCliente') === 'Nuevo') {
+        Ext.Msg.show({
+            id: 'msgNuevo',
+            title: 'Registro nuevo',
+            msg: '<p align="center">Socio registrado con ID: ' + result.extraParamsResponse.registro + '.</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            fn: function (btn) { window.parent.App.wEmergente.hide(); window.parent.App.pCentro.getBody().App.sClientes.reload(); },
+            icon: Ext.MessageBox.INFO
+        });
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgActualizar',
+            title: 'Actualizar registro',
+            msg: '<p align="center">Información actualizada ID: ' + result.extraParamsResponse.registro + '.</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            fn: function (btn) { window.parent.App.wEmergente.hide(); window.parent.App.pCentro.getBody().App.sClientes.reload(); },
+            icon: Ext.MessageBox.INFO
+        });
+    }
+};
+
+//Evento lanzado al cargar el store de la sucursal
+var sCliente_Load = function () {
+    App.direct.sCliente_Load();
+    store = window.parent.App.pCentro.getBody().App.sClientes;
+};
+
+//Evento lanzado al agregar un registro al store
+var sCliente_Add = function (store, registro) {
+    console.log(registro[0]);
+
+    //Primera parte
+    App.txtfID.setValue(registro[0].get('ID'));
+    App.txtfNombre.setValue(registro[0].get('Nombre'));
+    App.txtfAPaterno.setValue(registro[0].get('APaterno'));
+    App.txtfAMaterno.setValue(registro[0].get('AMaterno'));
+    App.txtfRFC.setValue(registro[0].get('RFC'));
+    App.txtfCURP.setValue(registro[0].get('CURP'));
+    App.dfFechaNacimiento.setValue(registro[0].get('FechaNacimiento'));
+    App.txtfEdad.setValue(registro[0].get('Edad') + ' años');
+    App.cmbSexo.select(registro[0].get('Sexo'));
+    App.cmbEstadoCivil.select(registro[0].get('EstadoCivil'));
+    App.cmbProfesion.select(registro[0].get('Profesion'));
+    App.txtfTelefono.setValue(registro[0].get('Telefono'));
+    App.txtfTelefonoMovil.setValue(registro[0].get('TelefonoMovil'));
+    App.txtfCorreo.setValue(registro[0].get('Correo'));
+    App.cmbEstatus.select(registro[0].get('Estatus'));
+    App.dfFechaAlta.setValue(registro[0].get('FechaAlta'));
+    App.txtfUsuario.setValue(registro[0].get('Usuario'));
+
+    //Segunda parte
+    App.txtfCalle.setValue(registro[0].get('Calle'));
+    App.txtfEntreCalles.setValue(registro[0].get('EntreCalles'));
+    App.txtfNoExterior.setValue(registro[0].get('NoExterior'));
+    App.txtfNoInterior.setValue(registro[0].get('NoInterior'));
+    App.txtfCodigoPostal.setValue(registro[0].get('CodigoPostal'));
+    App.txtfColonia.setValue(registro[0].get('Colonia'));
+    App.cmbEstado.select(registro[0].get('Estado'));
+
+    //Tercera parte
+    App.txtfEmpresa.setValue(registro[0].get('Empresa'));
+    App.txtfPuesto.setValue(registro[0].get('Puesto'));
+    App.txtfEmpresaCalle.setValue(registro[0].get('EmpresaCalle'));
+    App.txtfEmpresaEntreCalles.setValue(registro[0].get('EmpresaEntreCalles'));
+    App.txtfEmpresaNoExterior.setValue(registro[0].get('EmpresaNoExterior'));
+    App.txtfEmpresaNoInterior.setValue(registro[0].get('EmpresaNoInterior'));
+    App.txtfEmpresaCodigoPostal.setValue(registro[0].get('EmpresaCodigoPostal'));
+    App.txtfEmpresaColonia.setValue(registro[0].get('EmpresaColonia'));
+    App.cmbEmpresaEstado.select(registro[0].get('EmpresaEstado'));
+    //App.cmbEmpresaMunicipio.select(registro[0].get('EmpresaMunicipio'));
+    App.txtfEmpresaTelefono.setValue(registro[0].get('EmpresaTelefono'));
+    App.nfEmpresaTelefonoExt.setValue(registro[0].get('EmpresaTelefonoExt'));
+
+    //Habiliatar controles
+    App.cmbEstatus.setDisabled(false);
+
+    //Asignar los Municipio
+    App.direct.AsignarMunicipio(App.sCliente.getAt(0).get('Estado'), {
+        //Si el proceso es correcto
+        success: function (result) {
+            App.cmbMunicipio.select(registro[0].get('Municipio'));
+        },
+
+        //Si existe un error
+        failure: function (errorMsg) {
+            Ext.Msg.alert('Error', errorMsg);
+        }
+    });
+
+    //Asignar el EmpresaMunicipio
+    App.direct.AsignarEmpresaMunicipio(App.sCliente.getAt(0).get('EmpresaEstado'), {
+        //Si el proceso es correcto
+        success: function (result) {
+            App.cmbEmpresaMunicipio.select(registro[0].get('EmpresaMunicipio'));
+        },
+
+        //Si existe un error
+        failure: function (errorMsg) {
+            Ext.Msg.alert('Error', errorMsg);
+        }
+    });
 };

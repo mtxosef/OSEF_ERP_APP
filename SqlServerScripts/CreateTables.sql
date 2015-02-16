@@ -32,8 +32,6 @@ CREATE TABLE Colonias(
 	Municipio	CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID)
 )
 
-
-
 CREATE TABLE CodigosPostales(
 	ID			CHAR(7)			NOT NULL PRIMARY KEY,
 	Estado		CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
@@ -195,7 +193,7 @@ CREATE TABLE Clientes(
 	Profesion			CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Profesiones(ID),
 	Correo				VARCHAR(100)	NULL,
 	Telefono			VARCHAR(15)		NULL,
-	TelefonoMovil		VARCHAR(15)		NULL,
+	TelefonoMovil		VARCHAR(19)		NULL,
 	Calle				VARCHAR(100)	NULL,
 	NoExterior			VARCHAR(10)		NULL,
 	NoInterior			VARCHAR(10)		NULL,
@@ -211,6 +209,8 @@ CREATE TABLE Clientes(
 	EmpresaColonia		VARCHAR(50)		NULL,
 	EmpresaCodigoPostal INT				NULL,
 	EmpresaEntreCalles	VARCHAR(100)	NULL,
+	EmpresaEstado		CHAR(2)			NULL FOREIGN KEY REFERENCES Estados(ID),
+	EmpresaMunicipio	CHAR(4)			NULL FOREIGN KEY REFERENCES Municipios(ID),
 	EmpresaTelefono		VARCHAR(15)		NULL,
 	Puesto				VARCHAR(50)		NULL,
 	FechaAlta			SMALLDATETIME	NULL,

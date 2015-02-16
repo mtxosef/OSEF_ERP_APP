@@ -65,9 +65,14 @@ BEGIN
 		EmpresaNoInterior,
 		EmpresaColonia,
 		EmpresaCodigoPostal,
-		EmpresaEntreCalles
+		EmpresaEntreCalles,
+		EmpresaEstado,
+		EmpresaMunicipio,
 		EmpresaTelefono,
+		EmpresaTelefonoExt,
 		Puesto,
+		TipoSocio,
+		NumeroSocio,
 		FechaAlta,
 		Estatus,
 		Usuario
