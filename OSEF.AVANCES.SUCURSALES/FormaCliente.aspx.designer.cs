@@ -40,6 +40,24 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmFormaCliente;
         
         /// <summary>
+        /// Control sCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sCliente;
+        
+        /// <summary>
+        /// Control mCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mCliente;
+        
+        /// <summary>
         /// Control pFormaCliente.
         /// </summary>
         /// <remarks>
@@ -326,6 +344,24 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbEstatus;
+        
+        /// <summary>
+        /// Control sEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEstatus;
+        
+        /// <summary>
+        /// Control mEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEstatus;
         
         /// <summary>
         /// Control fcCliente8.

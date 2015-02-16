@@ -14,6 +14,58 @@
     <form id="Form1" runat="server">
         <ext:ResourceManager ID="rmFormaCliente" runat="server" HideInDesign="true" />
 
+        <ext:Store ID="sCliente" runat="server">
+            <Model>
+                <ext:Model ID="mCliente" runat="server" IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Nombre" Type="String" />
+                        <ext:ModelField Name="APaterno" Type="String" />
+                        <ext:ModelField Name="AMaterno" Type="String" />
+                        <ext:ModelField Name="RFC" Type="String" />
+                        <ext:ModelField Name="CURP" Type="String" />
+                        <ext:ModelField Name="FechaNacimiento" Type="Date" />
+                        <ext:ModelField Name="Edad" Type="Int" />
+                        <ext:ModelField Name="Sexo" Type="String" />
+                        <ext:ModelField Name="EstadoCivil" Type="String" />
+                        <ext:ModelField Name="Profesion" Type="String" />
+                        <ext:ModelField Name="Correo" Type="String" />
+                        <ext:ModelField Name="Telefono" Type="String" />
+                        <ext:ModelField Name="TelefonoMovil" Type="String" />
+                        <ext:ModelField Name="Calle" Type="String" />
+                        <ext:ModelField Name="NoExterior" Type="String" />
+                        <ext:ModelField Name="NoInterior" Type="String" />
+                        <ext:ModelField Name="Colonia" Type="String" />
+                        <ext:ModelField Name="CodigoPostal" Type="Int" />
+                        <ext:ModelField Name="EntreCalles" Type="String" />
+                        <ext:ModelField Name="Estado" Type="String" />
+                        <ext:ModelField Name="Municipio" Type="String" />
+                        <ext:ModelField Name="Empresa" Type="String" />
+                        <ext:ModelField Name="EmpresaCalle" Type="String" />
+                        <ext:ModelField Name="EmpresaNoExterior" Type="String" />
+                        <ext:ModelField Name="EmpresaNoInterior" Type="String" />
+                        <ext:ModelField Name="EmpresaColonia" Type="String" />
+                        <ext:ModelField Name="EmpresaCodigoPostal" Type="Int" NullConvert="true" />
+                        <ext:ModelField Name="EmpresaEntreCalles" Type="String" />
+                        <ext:ModelField Name="EmpresaEstado" Type="String" />
+                        <ext:ModelField Name="EmpresaMunicipio" Type="String" />
+                        <ext:ModelField Name="EmpresaTelefono" Type="String" />
+                        <ext:ModelField Name="EmpresaTelefonoExt" Type="Int" NullConvert="true" />
+                        <ext:ModelField Name="Puesto" Type="String" />
+                        <ext:ModelField Name="TipoSocio" Type="String" />
+                        <ext:ModelField Name="NumeroSocio" Type="String" />
+                        <ext:ModelField Name="Usuario" Type="String" />
+                        <ext:ModelField Name="FechaAlta" Type="Date" />
+                        <ext:ModelField Name="Estatus" Type="String" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <Listeners>
+                <Load Fn="sCliente_Load" />
+                <Add Fn="sCliente_Add" />
+            </Listeners>
+        </ext:Store>
+
         <div>
             <ext:Panel 
                 ID="pFormaCliente" 
@@ -179,7 +231,7 @@
                                                         Vtype="daterange"
                                                         Note="Ejemplo: dd/mm/aaaa">
                                                         <PickerOptions 
-                                                            ID="PickerOptions2"
+                                                            ID="poFechaNacimiento"
                                                             runat="server"
                                                             Cls="my-date-picker">
                                                         </PickerOptions>
@@ -214,8 +266,8 @@
                                                             <BeforeRender Fn="ComboBox_BeforeRender" />
                                                         </Listeners>
                                                         <Items>
-                                                            <ext:ListItem Index="0" Text="Masculino" Value="Masculino" />
-                                                            <ext:ListItem Index="1" Text="Femenino" Value="Femenino" />
+                                                            <ext:ListItem Index="0" Text="MASCULINO" Value="MASCULINO" />
+                                                            <ext:ListItem Index="1" Text="FEMENINO" Value="FEMENINO" />
                                                         </Items>
                                                     </ext:ComboBox>
                                                 </Items>
@@ -244,10 +296,10 @@
                                                             <BeforeRender Fn="ComboBox_BeforeRender" />
                                                         </Listeners>
                                                         <Items>
-                                                            <ext:ListItem Index="0" Text="" Value="Soltero" />
-                                                            <ext:ListItem Index="1" Text="" Value="Casado" />
-                                                            <ext:ListItem Index="2" Text="" Value="Divorciado" />
-                                                            <ext:ListItem Index="3" Text="" Value="Viudo" />
+                                                            <ext:ListItem Index="0" Text="" Value="SOLTERO" />
+                                                            <ext:ListItem Index="1" Text="" Value="CASADO" />
+                                                            <ext:ListItem Index="2" Text="" Value="DIVORCIADO" />
+                                                            <ext:ListItem Index="3" Text="" Value="VIUDO" />
                                                         </Items>
                                                     </ext:ComboBox>
                                                     <ext:ComboBox
@@ -255,7 +307,7 @@
                                                         runat="server"
                                                         Width="402"
                                                         AllowBlank="false"
-                                                        Editable="true"
+                                                        Editable="false"
                                                         ValueField="ID"
                                                         DisplayField="Descripcion"
                                                         ForceSelection="true"
@@ -324,7 +376,7 @@
                                                         ForceSelection="true"
                                                         Editable="true"
                                                         Note="Ejemplo: (044-449) 999-00-00"
-                                                        MaxLength="15"
+                                                        MaxLength="19"
                                                         EnforceMaxLength="true">
                                                         <Plugins>
                                                             <ext:InputMask
@@ -361,7 +413,10 @@
                                                         AllowBlank="false"
                                                         Editable="false"
                                                         Width="402"
-                                                        FieldLabel="Estatus">
+                                                        FieldLabel="Estatus"
+                                                        Disabled="true"
+                                                        ValueField="ID"
+                                                        DisplayField="Descripcion">
                                                         <ListConfig ID="lcEstatus" runat="server">
                                                             <Listeners>
                                                                 <BeforeRender Fn="ListConfig_BeforeRender" />
@@ -369,11 +424,24 @@
                                                         </ListConfig>
                                                         <Listeners>
                                                             <BeforeRender Fn="ComboBox_BeforeRender" />
+                                                            <AfterRender Fn="cmbEstatus_AfterRender" />
                                                         </Listeners>
+                                                        <Store>
+                                                            <ext:Store ID="sEstatus" runat="server">
+                                                                <Model>
+                                                                    <ext:Model ID="mEstatus" runat="server" IDProperty="ID">
+                                                                        <Fields>
+                                                                            <ext:ModelField Name="ID" Type="String" />
+                                                                            <ext:ModelField Name="Descripcion" Type="String" />
+                                                                        </Fields>
+                                                                    </ext:Model>
+                                                                </Model>
+                                                            </ext:Store>
+                                                        </Store>
                                                         <Items>
-                                                            <ext:ListItem Index="0" Text="" Value="ALTA" />
-                                                            <ext:ListItem Index="1" Text="" Value="BLOQUEADO" />
-                                                            <ext:ListItem Index="2" Text="" Value="BAJA" />
+                                                            <ext:ListItem Index="0" Text="ALTA" Value="ALTA" />
+                                                            <ext:ListItem Index="1" Text="BLOQUEADO" Value="BLOQUEADO" />
+                                                            <ext:ListItem Index="2" Text="BAJA" Value="BAJA" />
                                                         </Items>
                                                     </ext:ComboBox>
                                                 </Items>
@@ -847,7 +915,7 @@
                                                         Editable="true"
                                                         MaxLength="15"
                                                         EnforceMaxLength="true"
-                                                        AllowBlank="false"
+                                                        AllowBlank="true"
                                                         Note="Ejemplo: (449) 999-00-00">
                                                         <Plugins>
                                                             <ext:InputMask
@@ -976,6 +1044,9 @@
                                                         MaxLength="20"
                                                         EnforceMaxLength="true"
                                                         AllowBlank="false">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfParentescoBeneficiario.setValue(App.txtfParentescoBeneficiario.getValue().toUpperCase());" />
+                                                        </Listeners>
                                                     </ext:TextField>
                                                 </Items>
                                             </ext:FieldContainer>
@@ -984,6 +1055,13 @@
                                 </Items>
                             </ext:TabPanel>
                         </Items>
+                        <Listeners>
+                            <ValidityChange Handler="this.dockedItems.get(0).setStatus({
+                                                            text : valid ? 'La información esta completa/correcta' : 'Existe información incompleta/incorrecta', 
+                                                            iconCls: valid ? 'icon-accept' : 'icon-exclamation'
+                                                        });
+                                                        #{imgbtnGuardar}.setDisabled(!valid);" />
+                        </Listeners>
                         <BottomBar>
                             <ext:StatusBar ID="sbSocios" runat="server" Cls="x-colorToolbar" Text="Sin validar información" />
                         </BottomBar>
@@ -1001,11 +1079,11 @@
                                 Disabled="true">
                                 <DirectEvents>
                                     <Click OnEvent="imgbtnGuardar_Click" Success="imgbtnGuardar_Click_Success">
-                                        <EventMask ShowMask="true" Msg="Guardardo información..." />
+                                        <EventMask ShowMask="true" Msg="Guardardo información..." MinDelay="1000" />
                                         <ExtraParams>
-                                            <ext:Parameter Name="RevisionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
-                                            <ext:Parameter Name="Revision" Value="Ext.encode(#{sRevision}.getRecordsValues())" Mode="Raw" />
-                                            <ext:Parameter Name="RevisionDObraCivil" Value="Ext.encode(#{sObraCivil}.getRecordsValues())" Mode="Raw" />
+                                            <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                            <ext:Parameter Name="edad" Value="App.txtfEdad.getValue()" Mode="Raw" />
+                                            <ext:Parameter Name="usuario" Value="window.parent.App.sUsuario" Mode="Raw" />
                                         </ExtraParams>
                                     </Click>
                                 </DirectEvents>

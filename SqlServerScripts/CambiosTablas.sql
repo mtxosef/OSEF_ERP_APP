@@ -10,3 +10,8 @@ ALTER TABLE Clientes ADD NumeroSocio VARCHAR(11) NULL
 
 --Cambio 9 de Febrero 2015
 ALTER TABLE Clientes ADD EmpresaTelefonoExt INT NULL
+
+--Cambio 16 de Febrero 2015
+ALTER TABLE Clientes ALTER COLUMN TelefonoMovil VARCHAR(19) NULL
+ALTER TABLE Clientes ADD EmpresaEstado CHAR(2) NULL FOREIGN KEY REFERENCES Estados(ID)
+ALTER TABLE Clientes ADD EmpresaMunicipio CHAR(4) NULL FOREIGN KEY REFERENCES Municipios(ID)

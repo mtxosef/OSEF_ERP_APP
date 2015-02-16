@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ArticuloBusiness.cs" />
     <Compile Include="CategoriaBusiness.cs" />
+    <Compile Include="ClienteBusiness.cs" />
     <Compile Include="ColoniaBusiness.cs" />
     <Compile Include="ConceptoBusiness.cs" />
     <Compile Include="CuentaContableBusiness.cs" />

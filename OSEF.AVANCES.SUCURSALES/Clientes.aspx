@@ -11,7 +11,7 @@
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="rmSocios" runat="server" HideInDesign="true" />
+        <ext:ResourceManager ID="rmClientes" runat="server" HideInDesign="true" />
 
         <ext:GridPanel
             ID="gpClientes"
@@ -50,7 +50,9 @@
                             Height="50"
                             Width="50"
                             Disabled="true">
-                     
+                            <Listeners>
+                                <Click Fn="imgbtnEditar_Click" />
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnBorrar"
@@ -98,79 +100,101 @@
                     </Items>
                 </ext:Toolbar>
             </TopBar>
-         
+            <Store>
+                <ext:Store
+                    ID="sClientes"
+                    runat="server"
+                    OnReadData="OnReadData_sClientes">
+                    <Model>
+                        <ext:Model ID="mClientes" runat="server" IDProperty="ID">
+                            <Fields>
+                                <ext:ModelField Name="ID" Type="String" />
+                                <ext:ModelField Name="NombreCompleto" Type="String">
+                                    <Convert Fn="NombreCompleto_Convert" />
+                                </ext:ModelField>
+                                <ext:ModelField Name="Nombre" Type="String" />
+                                <ext:ModelField Name="APaterno" Type="String" />
+                                <ext:ModelField Name="AMaterno" Type="String" />
+                                <ext:ModelField Name="FechaNacimiento" Type="Date" />
+                                <ext:ModelField Name="Correo" Type="String" />
+                                <ext:ModelField Name="Telefono" Type="String" />
+                                <ext:ModelField Name="Estatus" Type="String" />
+                            </Fields>
+                        </ext:Model>
+                    </Model>
+                    <Sorters>
+                        <ext:DataSorter Property="ID" Direction="ASC" />
+                    </Sorters>
+                    <Listeners>
+                        <DataChanged Fn="sClientes_DataChanged" />
+                    </Listeners>
+                </ext:Store>
+            </Store>
             <ColumnModel>
                 <Columns>
+                    <ext:Column 
+                        ID="cID"
+                        runat="server"
+                        Text="ID"
+                        Align="Center"
+                        Width="90"
+                        DataIndex="ID" />
                     <ext:Column 
                         ID="cSocio"
                         runat="server"
                         Text="SOCIO"
-                        Align="Center"
-                        Width="90"
-                        DataIndex="SOCIO" />
-                    <ext:Column 
-                        ID="cNombre"
+                        Align="Left"
+                        Width="280"
+                        DataIndex="NombreCompleto" />
+                    <ext:DateColumn
+                        ID="dcFechaNacimiento"
                         runat="server"
-                        Text="NOMBRE"
+                        Text="NACIMIENTO"
                         Align="Center"
-                        Width="180"
-                        DataIndex="NOMBRE" />
+                        Width="100"
+                        DataIndex="FechaNacimiento"
+                        Format="dd/MM/yyyy" />
                     <ext:Column
                         ID="cCorreo"
                         runat="server"
-                        Text="CORREO ELECTRONICO"
+                        Text="CORREO"
                         Align="Left"
-                        Width="170"
-                        DataIndex="CORREO" />
-                    <ext:Column
-                        ID="RFC"
-                        runat="server"
-                        Text="RFC"
-                        Align="Left"
-                        Width="110"
-                        DataIndex="RFC"/>
-                    <ext:Column
-                        ID="cSexo"
-                        runat="server"
-                        Text="SEXO"
-                        Align="Left"
-                        Width="100"
-                        DataIndex="SEXO"/>
-                    <ext:Column
-                        ID="cNacimiento"
-                        runat="server"
-                        Text="NACIMIENTO"
-                        Align="Left"
-                        Width="110"
-                        DataIndex="NACIMIENTO"/>
+                        Width="265"
+                        DataIndex="Correo" />
                       <ext:Column
                         ID="cTelefono"
                         runat="server"
                         Text="TELÉFONO"
-                        Align="Left"
-                        Width="100"
-                        DataIndex="TELEFONO"/>
+                        Align="Center"
+                        Width="115"
+                        DataIndex="Telefono"/>
                       <ext:Column
                         ID="cEstatus"
                         runat="server"
                         Text="ESTATUS"
-                        Align="Left"
-                        Width="100"
-                        DataIndex="ESTATUS"/>
-                   
+                        Align="Center"
+                        Width="110"
+                        DataIndex="Estatus" />                   
                 </Columns>
             </ColumnModel>
- 
+            <Listeners>
+                <ItemClick Fn="gpClientes_ItemClick" />
+            </Listeners>
+            <SelectionModel>
+                <ext:RowSelectionModel
+                    ID="rsmClientes"
+                    runat="server">
+                </ext:RowSelectionModel>
+            </SelectionModel>
             <FooterBar>
                 <ext:StatusBar
-                    ID="sbSocios"
+                    ID="sbClientes"
                     runat="server"
-                    Text="Estatus"
+                    Text=""
                     StatusAlign="Left">
                 </ext:StatusBar>
             </FooterBar>
         </ext:GridPanel>
-
     </form>
 </body>
 </html>
