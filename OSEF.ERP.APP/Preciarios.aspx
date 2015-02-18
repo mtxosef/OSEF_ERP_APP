@@ -132,7 +132,7 @@
                                 <ext:ImageButton
                                     ID="imgbtnBuscar"
                                     runat="server"
-                                    ImageUrl="../assets/img/controles/search.png"
+                                    ImageUrl="assets/img/controles/search.png"
                                     OverImageUrl=""
                                     PressedImageUrl=""
                                     Height="22px"
