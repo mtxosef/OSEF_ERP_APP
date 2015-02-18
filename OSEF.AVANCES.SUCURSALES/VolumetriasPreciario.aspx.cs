@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using Ext.Net;
 
-namespace OSEF.AVANCES.SUCURSALES.Obra
+namespace OSEF.AVANCES.SUCURSALES
 {
     public partial class VolumetriasPreciario : System.Web.UI.Page
     {

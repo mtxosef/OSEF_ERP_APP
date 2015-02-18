@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VolumetriasPreciario.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.Obra.VolumetriasPreciario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VolumetriasPreciario.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.VolumetriasPreciario" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -196,19 +196,19 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Center"
-                        Width="280"
+                        Width="330"
                         DataIndex="Sucursal">
                         <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
-                    <ext:Column
-                        ID="cFechaEmision"
+                     <ext:DateColumn
+                        ID="dcFechaEmision"
                         runat="server"
-                        Text="FECHA EMISIÓN"
-                        Align="Left"
-                        Width="180"
-                        Format="dd/MM/yyyy"
-                        DataIndex="FechaEmision">
-                    </ext:Column>
+                        Text="FECHA REVISIÓN"
+                        Align="Center"
+                        Width="120"
+                        DataIndex="FechaEmision"
+                        Format="dd/MM/yyyy">
+                    </ext:DateColumn>
                     <ext:Column
                         ID="cEstatus"
                         runat="server"

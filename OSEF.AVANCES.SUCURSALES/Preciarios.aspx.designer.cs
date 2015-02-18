@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES.Obra {
+namespace OSEF.ERP.APP {
     
     
     public partial class Preciarios {

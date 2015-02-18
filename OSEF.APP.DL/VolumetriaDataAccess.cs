@@ -327,6 +327,107 @@ namespace OSEF.APP.DL
        }
 
 
+       #region Acciones
+
+       /// <summary>
+       /// Método que Afecta un registro de Volumetria
+       /// </summary>
+       /// <param name="aVolumetria"></param>
+       public static int AfectarVolumetriaPorID(Volumetria aVolumetria)
+       {
+           try
+           {
+               //1. Configurar la conexión y el tipo de comando
+               SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+               SqlCommand sqlcComando = new SqlCommand();
+               sqlcComando.Connection = sqlcConectar;
+               sqlcComando.CommandType = CommandType.StoredProcedure;
+               sqlcComando.CommandText = "web_spS_AfectarVolumetriaPorID";
+
+               //2. Declarar los parametros
+               SqlParameter sqlpID = new SqlParameter();
+               sqlpID.ParameterName = "@ID";
+               sqlpID.SqlDbType = SqlDbType.Int;
+               sqlpID.Value = aVolumetria.ID;
+
+               //3. Agregar los parametros al comando
+               sqlcComando.Parameters.Add(sqlpID);
+
+               //4. Abrir la conexión
+               sqlcComando.Connection.Open();
+
+               //5. Ejecutar la instrucción UPDATE que no regresa filas
+               int result = sqlcComando.ExecuteNonQuery();
+
+               //6. Cerrar la conexión
+               sqlcComando.Connection.Close();
+
+               //7. Regresar el resultado
+               return result;
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Error capa de datos (public static int AfectarVolumetriaPorID(Volumetria " + aVolumetria + ")): " + ex.Message);
+           }
+       }
+
+       /// <summary>
+       /// Método que avanza un movimiento de Volumetria
+       /// </summary>
+       /// <param name="iID"></param>
+       /// <param name="strMov"></param>
+       /// <returns></returns>
+       public static int AvanzarVolumetriaPorID(int iID, string strMov)
+       {
+           try
+           {
+               //1. Configurar la conexión y el tipo de comando
+               SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+               SqlCommand sqlcComando = new SqlCommand();
+               sqlcComando.Connection = sqlcConectar;
+               sqlcComando.CommandType = CommandType.StoredProcedure;
+               sqlcComando.CommandText = "web_spS_AvanzarVolumetriaPorID";
+
+               //2. Declarar los parametros
+               SqlParameter sqlpID = new SqlParameter();
+               sqlpID.ParameterName = "@ID";
+               sqlpID.SqlDbType = SqlDbType.Int;
+               sqlpID.Value = iID;
+
+               SqlParameter sqlpMov = new SqlParameter();
+               sqlpMov.ParameterName = "@Mov";
+               sqlpMov.SqlDbType = SqlDbType.VarChar;
+               sqlpMov.Value = strMov;
+
+               SqlParameter sqlpIDNuevo = new SqlParameter();
+               sqlpIDNuevo.ParameterName = "@IDNuevo";
+               sqlpIDNuevo.SqlDbType = SqlDbType.Int;
+               sqlpIDNuevo.Direction = ParameterDirection.Output;
+
+               //3. Agregar los parametros al comando
+               sqlcComando.Parameters.Add(sqlpID);
+               sqlcComando.Parameters.Add(sqlpMov);
+               sqlcComando.Parameters.Add(sqlpIDNuevo);
+
+               //4. Abrir la conexión
+               sqlcComando.Connection.Open();
+
+               //5. Ejecutar la instrucción SCALAR que regresa un valor
+               int result = sqlcComando.ExecuteNonQuery();
+
+               //6. Cerrar la conexión
+               sqlcComando.Connection.Close();
+
+               //7. Regresar el resultado
+               return Convert.ToInt32(sqlcComando.Parameters["@IDNuevo"].Value);
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Error capa de datos (public static int AvanzarVolumetriaPorID(int " + iID + ", string " + strMov + ")): " + ex.Message);
+           }
+       }
+
+       #endregion
 
 
        #endregion

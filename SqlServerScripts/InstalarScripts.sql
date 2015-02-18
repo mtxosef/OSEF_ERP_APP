@@ -277,15 +277,18 @@
 :r c:\SqlServerScripts\Insertar\Volumetrias\web_spI_InsertarVolumetria.sql
 -- Volumetrias (Modificar)
 :r c:\SqlServerScripts\Modificar\Volumetrias\web_spU_ActualizarVolumetria.sql
+-- Volumetrias (Acción)
+:r c:\SqlServerScripts\Accion\Volumetrias\web_spS_AfectarVolumetriaPorID.sql
+:r c:\SqlServerScripts\Accion\Volumetrias\web_spS_AvanzarVolumetriaPorID.sql
 -----------------------------------------------------------------------------------
 -- VolumetriasD (Borrar)
-:r c:\SqlServerScripts\Borrar\Volumetrias\web_spD_BorrarVolumetriaD.sql
-:r c:\SqlServerScripts\Consultar\Volumetrias\web_spD_BorrarVolumetriaDPorVolumetria.sql
+:r c:\SqlServerScripts\Borrar\VolumetriasD\web_spD_BorrarVolumetriaD.sql
+:r c:\SqlServerScripts\Borrar\VolumetriasD\web_spD_BorrarVolumetriaDPorVolumetria.sql
 -- VolumetriasD (Consultar)
-:r c:\SqlServerScripts\Consultar\Volumetrias\web_spS_ObtenerVolumetriasDPorVolumetria.sql
-:r c:\SqlServerScripts\Consultar\Volumetrias\web_spS_ObtenerVolumetriasDPorPreciario.sql
+:r c:\SqlServerScripts\Consultar\VolumetriasD\web_spS_ObtenerVolumetriasDPorVolumetria.sql
+:r c:\SqlServerScripts\Consultar\VolumetriasD\web_spS_ObtenerVolumetriasDPorPreciario.sql
 -- VolumetriasD (Insertar)
-:r c:\SqlServerScripts\Insertar\Volumetrias\web_spI_InsertarVolumetriaD.sql
+:r c:\SqlServerScripts\Insertar\VolumetriasD\web_spI_InsertarVolumetriaD.sql
 -- VolumetriasD (Modificar)
-:r c:\SqlServerScripts\Modificar\Volumetrias\web_spU_ActualizarVolumetriaD.sql
+:r c:\SqlServerScripts\Modificar\VolumetriasD\web_spU_ActualizarVolumetriaD.sql
 -----------------------------------------------------------------------------------

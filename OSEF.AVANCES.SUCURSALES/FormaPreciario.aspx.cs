@@ -11,7 +11,7 @@ using System.IO;
 using System.Data.OleDb;
 using System.Data;
 
-namespace OSEF.AVANCES.SUCURSALES.Obra
+namespace OSEF.AVANCES.SUCURSALES
 {
     public partial class FormaPreciario : System.Web.UI.Page
     {

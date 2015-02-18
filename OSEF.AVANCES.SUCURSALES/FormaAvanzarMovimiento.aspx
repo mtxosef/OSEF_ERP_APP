@@ -74,6 +74,9 @@
                 Text="Cancelar"
                 Cls="cbtn"
                 MarginSpec="0 10 0 0">
+                <Listeners>
+                        <Click Handler="window.parent.App.wEmergente.hide();" />
+                    </Listeners>
             </ext:Button>
         </Buttons>
     </ext:Panel>

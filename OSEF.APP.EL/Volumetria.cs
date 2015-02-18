@@ -21,6 +21,10 @@ namespace OSEF.APP.EL
         Sucursal rsucursal;
         string preciario;
         Preciario rpreciario;
+        string origen;
+        string origenid;
+
+    
 
         
 
@@ -88,6 +92,19 @@ namespace OSEF.APP.EL
         {
             get { return rpreciario; }
             set { rpreciario = value; }
+        }
+
+
+        public string Origen
+        {
+            get { return origen; }
+            set { origen = value; }
+        }
+
+        public string Origenid
+        {
+            get { return origenid; }
+            set { origenid = value; }
         }
 
         #endregion

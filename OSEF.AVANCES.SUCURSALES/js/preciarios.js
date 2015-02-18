@@ -3,9 +3,10 @@ var store;
 
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
-    Ext.util.Cookies.set('cookieEditarPreciario', 'Nuevo');
-   
+
+
     window.parent.App.wEmergente.load('FormaPreciario.aspx');
+    Ext.util.Cookies.set('cookieEditarPreciario', 'Nuevo');
     window.parent.App.wEmergente.setHeight(550);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
@@ -17,8 +18,9 @@ var imgbtnNuevo_Click = function () {
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
-    Ext.util.Cookies.set('cookieEditarPreciario', App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID'));
+
     window.parent.App.wEmergente.load('FormaPreciario.aspx');
+    Ext.util.Cookies.set('cookieEditarPreciario', App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID'));
     window.parent.App.wEmergente.setHeight(550);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();

@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES.Obra {
+namespace OSEF.AVANCES.SUCURSALES {
     
     
     public partial class VolumetriasPreciario {
@@ -184,13 +184,13 @@ namespace OSEF.AVANCES.SUCURSALES.Obra {
         protected global::Ext.Net.Column cSucursal;
         
         /// <summary>
-        /// Control cFechaEmision.
+        /// Control dcFechaEmision.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cFechaEmision;
+        protected global::Ext.Net.DateColumn dcFechaEmision;
         
         /// <summary>
         /// Control cEstatus.

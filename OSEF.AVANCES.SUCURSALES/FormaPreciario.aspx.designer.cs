@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES.Obra {
+namespace OSEF.AVANCES.SUCURSALES {
     
     
     public partial class FormaPreciario {

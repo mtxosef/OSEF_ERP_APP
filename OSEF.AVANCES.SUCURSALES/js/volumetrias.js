@@ -120,7 +120,8 @@ var cmbPreciario_Select = function (combobox, registro) {
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
-
+    //Validar si se habilita el boton de afectar
+    HabilitarAfectar();
 
 
 };
@@ -151,6 +152,8 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
+    //Validar si se habilita el boton de afectar
+    HabilitarAfectar();
 
 };
 
@@ -181,8 +184,8 @@ var cmbMov_Select = function (combobox, registro) {
     PrimerRenglonDetalle();
     //Validar si se habilita Guardar
     HabilitarGuardar();
-    //Validar si se habilita Afectar
-//    HabilitarAfectar();
+    //Validar si se habilita el boton de afectar
+    HabilitarAfectar();
 };
 
 
@@ -266,6 +269,39 @@ function HabilitarGuardar() {
     }
 }
 
+
+
+//Validar si se habilita el botón d Afectar
+function HabilitarAfectar() {
+
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.dfFechaEmision.getValue() != null) {
+
+        if (App.cmbMov.isValid() && App.cmbPreciario.isValid() && App.dfFechaEmision.isValid()) {
+
+            if (App.gpVolumetriaDetalle.getStore().getCount() != 0) {
+  
+                if (App.sConceptos.getAt(0).get('ConceptoID').length != 0 && App.sConceptos.getAt(0).get('Utilizada') != 0) {
+
+                    App.imgbtnAfectar.setDisabled(false);
+                }
+                else {
+                    App.imgbtnAfectar.setDisabled(true);
+                }
+            }
+            else {
+                App.imgbtnAfectar.setDisabled(true);
+            }
+        }
+        else {
+            App.imgbtnAfectar.setDisabled(true);
+        }
+    }
+    else {
+        App.imgbtnAfectar.setDisabled(true);
+    }
+}
+
+
 //Validar si se habilita el botón de Información
 function HabilitarInformacion() {
     if (App.txtfIDSucursal.getValue() != null) {
@@ -306,8 +342,8 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
         renglon = renglon + 1;
     });
 
-    //Validar si se habilita Afectar
-//    HabilitarAfectar();
+    //Validar si se habilita el boton de afectar
+    HabilitarAfectar();
 };
 
 
@@ -362,8 +398,8 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
             App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpVolumetriaDetalle.getView().refreshNode(App.sConceptos.getCount() - 2);
-            //Validar si se habilita Afectar
-            //HabilitarAfectar();
+            //Validar si se habilita el boton de afectar
+            HabilitarAfectar();
         }
     }
 };
@@ -384,4 +420,74 @@ var cmbConcepto_Select = function (combobox, registro) {
     //se actualiza el Store contenedor con datos del store del comboBox
     App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
 
+
+}
+
+
+
+//Método que se lanza antes de llamar al procedimiento de Afectar
+var imgbtnAfectar_Click_Before = function () {
+    if (App.sVolumetria.getCount() != 0) {
+        if (App.sVolumetria.getAt(0).get('Estatus') == 'PENDIENTE') {
+
+
+
+            window.parent.App.wEmergente.load('FormaAvanzarVolumetria.aspx');
+            window.parent.App.wEmergente.setHeight(170);
+            window.parent.App.wEmergente.setWidth(220);
+            window.parent.App.wEmergente.center();
+            window.parent.App.wEmergente.setTitle('Avanzar Movimiento');
+            window.parent.App.wEmergente.show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    else {
+        return true;
+    }
+};
+
+//Afectar el movimiento
+var imgbtnAfectar_Click_Success = function (response, result) {
+    //1. Actualizar el store del tablero
+    window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
+
+    //2. Lanzar ventana de movimiento afectado
+    Ext.Msg.show({
+        id: 'msgAvance',
+        title: 'AFECTAR',
+        msg: '<p align="center">Movimiento afectado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.INFO
+    });
+
+    //Actualizar campos afetados
+    App.txtfMovID.setValue(App.sVolumetria.getAt(0).get('MovID'));
+    App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
+
+    //3. Remover la útima fila
+    var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
+    if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Utilizada') == 0) {
+        App.sConceptos.removeAt(App.sConceptos.getCount() - 1);
+    }
+
+    //4. Deseleccionar datos del GridPanel y deshabilitar los controles
+    App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
+    DeshabilitarControlesAfectar();
+    Ext.util.Cookies.set('cookieEditarVolumetria', App.sConceptos.getAt(0).get('ID'));
+};
+
+//Función que deshabilita todos los controles cuando se afecta un movimiento
+function DeshabilitarControlesAfectar() {
+    App.cmbMov.setDisabled(true);
+    App.cmbPreciario.setDisabled(true);
+    App.dfFechaEmision.setDisabled(true);
+    App.txtfObservaciones.setDisabled(true);
+    App.gpVolumetriaDetalle.setDisabled(true);
+    App.imgbtnGuardar.setDisabled(true);
+    App.imgbtnBorrar.setDisabled(true);
 }

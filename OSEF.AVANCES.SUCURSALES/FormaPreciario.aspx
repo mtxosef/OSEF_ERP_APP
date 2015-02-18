@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaPreciario.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.Obra.FormaPreciario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaPreciario.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.FormaPreciario" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

@@ -95,6 +95,29 @@ namespace OSEF.APP.BL
 
         #endregion
 
+        #region Acciones
+
+        /// <summary>
+        /// Método que Afecta un registro de Volumetrias
+        /// </summary>
+        /// <param name="aVolumetria"></param>
+        public static int AfectarVolumetriaPorID(Volumetria aVolumetria)
+        {
+            return VolumetriaDataAccess.AfectarVolumetriaPorID(aVolumetria);
+        }
+
+        /// <summary>
+        /// Método que avanza un movimiento de Volumetrias
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <param name="strMov"></param>
+        /// <returns></returns>
+        public static int AvanzarRevisionPorID(int iID, string strMov)
+        {
+            return VolumetriaDataAccess.AvanzarVolumetriaPorID(iID, strMov);
+        }
+
+        #endregion
 
 
     }

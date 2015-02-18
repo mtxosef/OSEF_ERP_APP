@@ -8,7 +8,7 @@ using Ext.Net;
 using OSEF.APP.BL;
 using OSEF.APP.EL;
 
-namespace OSEF.AVANCES.SUCURSALES.Obra
+namespace OSEF.AVANCES.SUCURSALES
 {
     public partial class FormaVolumetriaPreciario : System.Web.UI.Page
     {
@@ -24,8 +24,8 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
                 sPreciario.DataBind();
 
                 ////3. Cargar Conceptos
-                //sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConcepto();
-                //sPreciarioConcepto.DataBind();
+                sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConcepto();
+                sPreciarioConcepto.DataBind();
 
 
 
@@ -46,6 +46,12 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
             {
                 //Cargar el encabezado del movimiento
                 Volumetria oVolumetria = VolumetriaBusiness.ObtenerVolumetriaPorID(Convert.ToInt32(strcookieEditarVolumetria));
+
+                //Cargar el detalle del movimiento
+                  //Cargar el detalle del movimiento
+                sConceptos.DataSource = VolumetriaDBusiness.ObtenerVolumetriaDPorVolumetria(oVolumetria.ID);
+                sConceptos.DataBind();
+
 
                 sVolumetria.Add(new
                 {
@@ -74,17 +80,22 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
             //1. Obtener datos de la Forma y saber si es edición o nuevo
             string strVolumetriaForma = e.ExtraParams["VolumetriaForma"];
             string strVolumetria = e.ExtraParams["Volumetria"];
+            string strSucursal = e.ExtraParams["sucursal"];
+            string strVolumetriaD = e.ExtraParams["VolumetriaD"];
+
+
             string strcookieEditarVolumetria = Cookies.GetCookie("cookieEditarVolumetria").Value;
 
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strVolumetriaForma);
-            Volumetria oFormaVolumetria = ObtenerObjetoDesdeForma(dRegistro);
+            Volumetria oFormaVolumetria = ObtenerObjetoDesdeForma(dRegistro, strSucursal);
             Volumetria oVolumetria = JSON.Deserialize<List<Volumetria>>(strVolumetria).FirstOrDefault();
+            List<VolumetriaD> lVolumetriaD = JSON.Deserialize<List<VolumetriaD>>(strVolumetriaD);
 
 
-
+          
             //3. Guardar o Actuaizar el Movimiento
-            string strAccion = GuardarMovimiento(ref oFormaVolumetria, oVolumetria);
+            string strAccion = GuardarMovimiento(ref oFormaVolumetria, oVolumetria,lVolumetriaD);
 
             //4. Validar que efecto realizará para Guardar o Afectar
             switch (strAccion)
@@ -98,12 +109,59 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
             }
         }
 
+
+
+        /// <summary>
+        /// Evento de clic del botón Afectar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void imgbtnAfectar_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener datos de la Forma y saber si es edición o nuevo
+            string strVolumetriaForma = e.ExtraParams["VolumetriaForma"];
+            string strVolumetria = e.ExtraParams["Volumetria"];
+            string strSucursal = e.ExtraParams["sucursal"];
+            string strVolumetriaD = e.ExtraParams["VolumetriaD"];
+
+
+            string strcookieEditarVolumetria = Cookies.GetCookie("cookieEditarVolumetria").Value;
+
+            //2. Serializar el encabezado y el detalle
+            Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strVolumetriaForma);
+            Volumetria oVolumetriaForma = ObtenerObjetoDesdeForma(dRegistro,strSucursal);
+            Volumetria oVolumetria = JSON.Deserialize<List<Volumetria>>(strVolumetria).FirstOrDefault();
+            List<VolumetriaD> lVolumetriaD = JSON.Deserialize<List<VolumetriaD>>(strVolumetriaD);
+
+            //3. Guardar o Actuaizar el Movimiento
+            string strAccion = GuardarMovimiento(ref oVolumetriaForma, oVolumetria, lVolumetriaD);
+
+            //4. Validar que efecto realizará para Guardar o Afectar
+            switch (strAccion)
+            {
+                case "insertar":
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "insertar", ParameterMode.Value));
+                    break;
+                case "modificar":
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "modificar", ParameterMode.Value));
+                    break;
+            }
+
+            //4. Lanzar la afectación del Movimiento
+            VolumetriaBusiness.AfectarVolumetriaPorID(oVolumetriaForma);
+
+            oVolumetria = VolumetriaBusiness.ObtenerVolumetriaPorID(oVolumetriaForma.ID);
+            //7. Actualizar store de Revision
+            sVolumetria.GetAt(0).Set("MovID", oVolumetria.MovID);
+            sVolumetria.GetAt(0).Set("Estatus", oVolumetria.Estatus);
+        }
+
         /// <summary>
         /// Método que transforma los datos Control-Valor a objeto Volumetria
         /// </summary>
         /// <param name="dRegistro"></param>
         /// <returns></returns>
-        private Volumetria ObtenerObjetoDesdeForma(Dictionary<string, string> dRegistro)
+        private Volumetria ObtenerObjetoDesdeForma(Dictionary<string, string> dRegistro, string strSucursal)
         {
             //1. Declarar objeto Volumetria donde se guardarán los valores
             Volumetria oVolumetriaForma = new Volumetria();
@@ -117,9 +175,6 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
                     case "cmbMov":
                         oVolumetriaForma.Mov = sd.Value;
                         break;
-                    case "cmbSucursal":
-                        oVolumetriaForma.Sucursal = sd.Value;
-                        break;
                     case "cmbPreciario":
                         oVolumetriaForma.Preciario = sd.Value;
                         break;
@@ -132,7 +187,7 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
                 }
             }
             oVolumetriaForma.Estatus = "BORRADOR";
-
+            oVolumetriaForma.Sucursal = strSucursal;
             //3. Regresar la Revision
             return oVolumetriaForma;
         }
@@ -144,7 +199,7 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
         /// <param name="oVolumetriaForma"></param>
         /// <param name="oVolumetria"></param>
         /// <param name="lVolumetriaD"></param>
-        private string GuardarMovimiento(ref Volumetria oVolumetriaForma, Volumetria oVolumetria)
+        private string GuardarMovimiento(ref Volumetria oVolumetriaForma, Volumetria oVolumetria, List<VolumetriaD> lVolumetriaD)
         {
             //2. Lo que sucede cuando es nuevo y no se habia guardado
             if (oVolumetria == null)
@@ -168,8 +223,10 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
                     Estatus = oVolumetriaForma.Estatus
                 });
 
-               
+                //5. Guardar Detalle y regresar valor
+                GuardarDetalleVolumetria(lVolumetriaD, oVolumetriaForma);
                 return "insertar";
+
             }
             else
             {
@@ -183,13 +240,39 @@ namespace OSEF.AVANCES.SUCURSALES.Obra
                 sVolumetria.GetAt(0).Set("Preciario", oVolumetriaForma.Preciario);
                 sVolumetria.GetAt(0).Set("FechaEmision", oVolumetriaForma.FechaEmision);
                 sVolumetria.GetAt(0).Set("Observaciones", oVolumetriaForma.Observaciones);
-
+                //8. Borrar todo el detalle e insertarlo de nuevo
+                VolumetriaDBusiness.BorrarPorVolumetria(oVolumetriaForma.ID);
+                GuardarDetalleVolumetria(lVolumetriaD, oVolumetriaForma);
                
 
                 //9. Regresar valor
                 return "modificar";
             }
         }
+
+
+
+        /// <summary>
+        /// Evento que Guarda el detalle de Volumetrias
+        /// </summary>
+        /// <param name="lRevisionD"></param>
+        /// <param name="oRevisionForma"></param>
+        private void GuardarDetalleVolumetria(List<VolumetriaD> lVolumetriaD, Volumetria oVolumetriaForma)
+        {
+            //1. Insertar los datos del detalle
+            foreach (VolumetriaD sd in lVolumetriaD)
+            {
+                //2. Validar que el objeto no venga en blanco
+                if (sd.ConceptoID.Equals(string.Empty) || sd.Cantidad.Equals(string.Empty) || sd.Utilizada == 0)
+                    continue;
+                else
+                {
+                    sd.Volumetria = oVolumetriaForma.ID;
+                    VolumetriaDBusiness.Insertar(sd);
+                }
+            }
+        }
+
 
 
         /// <summary>

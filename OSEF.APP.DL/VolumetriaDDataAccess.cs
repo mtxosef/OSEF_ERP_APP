@@ -48,7 +48,7 @@ namespace OSEF.APP.DL
                 sqlpRenglon.Value = iVolumetriaD.Renglon;
 
                 SqlParameter sqlpConceptoID = new SqlParameter();
-                sqlpConceptoID.ParameterName = "@Concepto";
+                sqlpConceptoID.ParameterName = "@ConceptoID";
                 sqlpConceptoID.SqlDbType = SqlDbType.Char;
                 sqlpConceptoID.Size = 10;
                 sqlpConceptoID.Value = iVolumetriaD.ConceptoID;

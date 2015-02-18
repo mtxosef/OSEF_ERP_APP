@@ -66,7 +66,7 @@ var imgbtnAfectar_Click_Before = function () {
     if (App.sRevision.getCount() != 0) {
         if (App.sRevision.getAt(0).get('Estatus') == 'PENDIENTE') {
             App.wEmergente.load('FormaAvanzarMovimiento.aspx');
-            App.wEmergente.setHeight(179);
+            App.wEmergente.setHeight(170);
             App.wEmergente.setWidth(220);
             App.wEmergente.center();
             App.wEmergente.setTitle('Avanzar Movimiento');

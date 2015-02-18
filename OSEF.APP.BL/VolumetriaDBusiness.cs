@@ -42,10 +42,10 @@ namespace OSEF.APP.BL
         #region Eliminar
 
         /// <summary>
-        /// Método que borrar VolumetriaD por su Revision
+        /// Método que borrar VolumetriaD por su Volumetria
         /// </summary>
         /// <param name="iVolumetria"></param>
-        public static int BorrarPorRevision(int iVolumetria)
+        public static int BorrarPorVolumetria(int iVolumetria)
         {
             return VolumetriaDDataAccess.BorrarPorVolumetria(iVolumetria);
         }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaVolumetriaPreciario.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.Obra.FormaVolumetriaPreciario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaVolumetriaPreciario.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.FormaVolumetriaPreciario" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -49,6 +49,8 @@
                         <ext:ModelField Name="RSucursal" Type="Object" />
                         <ext:ModelField Name="Preciario" Type="String" />
                         <ext:ModelField Name="RPreciario" Type="Object" />
+                        <ext:ModelField Name="Origen" Type="String" />
+                        <ext:ModelField Name="OrigenID" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -117,6 +119,8 @@
                                     <ExtraParams>
                                         <ext:Parameter Name="VolumetriaForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                         <ext:Parameter Name="Volumetria" Value="Ext.encode(#{sVolumetria}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="sucursal" Value="App.txtfIDSucursal.getValue()" Mode="Raw" />
+                                         <ext:Parameter Name="VolumetriaD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                       
                                     </ExtraParams>
                                 </Click>
@@ -145,6 +149,17 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnAfectar_Click" Before="imgbtnAfectar_Click_Before" Success="imgbtnAfectar_Click_Success">
+                                    <EventMask ShowMask="true" Msg="Afectando movimiento..." />
+                                    <ExtraParams>
+                                           <ext:Parameter Name="VolumetriaForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                        <ext:Parameter Name="Volumetria" Value="Ext.encode(#{sVolumetria}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="sucursal" Value="App.txtfIDSucursal.getValue()" Mode="Raw" />
+                                         <ext:Parameter Name="VolumetriaD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
+                                    </ExtraParams>
+                                </Click>
+                            </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnAutorizar"

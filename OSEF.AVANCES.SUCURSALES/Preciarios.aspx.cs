@@ -8,7 +8,7 @@ using Ext.Net;
 using OSEF.APP.BL;
 using OSEF.APP.EL;
 
-namespace OSEF.AVANCES.SUCURSALES.Obra
+namespace OSEF.ERP.APP
 {
     public partial class Preciarios : System.Web.UI.Page
     {
