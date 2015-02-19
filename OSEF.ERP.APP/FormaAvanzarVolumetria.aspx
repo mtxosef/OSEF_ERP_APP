@@ -51,12 +51,6 @@
                     ColumnsNumber="1">
                         <Items>
                             <ext:Radio 
-                            ID="rCaptura" 
-                            runat="server" 
-                            InputValue="Captura" 
-                            BoxLabel="Captura" 
-                            Checked="true" />
-                            <ext:Radio 
                             ID="rFin" 
                             runat="server" 
                             InputValue="Fin" 
@@ -77,7 +71,6 @@
                     OnEvent="btnAceptar_Click" 
                     Success="btnAceptar_Click_Success" >
                         <ExtraParams>
-                            <ext:Parameter Name="Captura" Value="App.rCaptura.getValue()" Mode="Raw" />
                              <ext:Parameter Name="Fin" Value="App.rFin.getValue()" Mode="Raw" />
                             
                           <ext:Parameter Name="ID" Value="window.parent.App.sVolumetria.getAt(0).get('ID')" Mode="Raw" />

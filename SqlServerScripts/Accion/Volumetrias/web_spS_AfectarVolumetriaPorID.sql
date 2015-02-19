@@ -40,7 +40,7 @@ BEGIN
     UPDATE Volumetrias
     SET
 		MovID = 'V' + CAST(ID AS VARCHAR(9)),
-		Estatus = 'PENDIENTE'
+		Estatus = 'CONCLUIDO'
 	WHERE
 		ID = @ID
 END

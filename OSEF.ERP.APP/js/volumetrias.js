@@ -128,6 +128,8 @@ var cmbPreciario_Select = function (combobox, registro) {
 //Evento que se lanza al poner algun caracter en el control de la Sucursal
 var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     App.sPreciario.clearFilter();
+    
+
     if (App.cmbPreciario.getValue() != null) {
         App.sPreciario.filter([{ filterFn: function (item) {
             if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Descripcion').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
@@ -161,11 +163,11 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
 //Se lanza por cada elemento agregado al Store de Movimientos
 var sMov_Add = function (store, registros, index, eOpts) {
     var d = new Date();
-
+    
     //Validar si es nuevo, se asigna el movimieno 
-    if (registros[0].get('ID') == 'Inicio' && Ext.util.Cookies.get('cookieEditarVolumetria') == 'Nuevo') {
+    if (registros[0].get('ID') == 'Captura' && Ext.util.Cookies.get('cookieEditarVolumetria') == 'Nuevo') {
         App.cmbMov.select(registros[0].get('ID'));
-        App.cmbMov.setReadOnly(true);
+       // App.cmbMov.setReadOnly(true);
         App.dfFechaEmision.setValue(d);
         App.cmbPreciario.focus();
     }
@@ -173,10 +175,25 @@ var sMov_Add = function (store, registros, index, eOpts) {
 
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
 var cmbMov_Select = function (combobox, registro) {
+
+
     //Asignar Fecha en el control Fecha de emisión
     var d = new Date();
     if (App.dfFechaEmision.getValue() == null) {
         App.dfFechaEmision.setValue(d);
+    }
+
+
+    if (combobox.value == 'Captura') {
+        //Validar si se asigna el primer renglon del detalle
+        PrimerRenglonDetalle();
+       
+    }
+    if (combobox.value == 'Fin') {
+        //Validar si se asigna el primer renglon del detalle
+        PrimerRenglonDetalle();
+        App.sConceptos.removeAll();
+
     }
 
     //Validar si se asigna el primer renglon del detalle
@@ -185,6 +202,8 @@ var cmbMov_Select = function (combobox, registro) {
     HabilitarGuardar();
     //Validar si se habilita el boton de afectar
     HabilitarAfectar();
+
+
 };
 
 
@@ -197,7 +216,23 @@ var sVolumetria_Load = function () {
 
 //Evento lanzado al agregar un registro al store
 var sVolumetria_Add = function (avance, registro) {
-    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
+   
+
+    //Valida el estatus para ver si permite seguir capturando o no
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.cmbPreciario.setValue(registro[0].get('Preciario'));
+        App.txtfDescripcionPreciario.setValue(registro[0].get('RPreciario').Descripcion);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+
+    }
+
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
@@ -211,8 +246,9 @@ var sVolumetria_Add = function (avance, registro) {
         //Agregar una fila para seguir capturando
         var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
         App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
-      
+
     }
+
 };
 
 
@@ -315,7 +351,7 @@ function HabilitarInformacion() {
 //Función que valida si se habilita el primer renlgon en el GridPanel detalle
 function PrimerRenglonDetalle() {
     //Validar si se asigna el primer renglon del concepto
-    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null ) {
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null &&  App.cmbMov.getValue() != 'Fin') {
         if (App.cmbPreciario.isValid()) {
             var store = App.gpVolumetriaDetalle.getStore();
             if (store.getCount() == 0) {
@@ -427,7 +463,7 @@ var cmbConcepto_Select = function (combobox, registro) {
 //Método que se lanza antes de llamar al procedimiento de Afectar
 var imgbtnAfectar_Click_Before = function () {
     if (App.sVolumetria.getCount() != 0) {
-        if (App.sVolumetria.getAt(0).get('Estatus') == 'PENDIENTE') {
+        if (App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
 
 
@@ -467,6 +503,9 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     //Actualizar campos afetados
     App.txtfMovID.setValue(App.sVolumetria.getAt(0).get('MovID'));
     App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
+
+    //Deshabilita boton de afectar porque aqui concluye el flujo
+    App.imgbtnAfectar.setDisabled(true);
 
     //3. Remover la útima fila
     var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);

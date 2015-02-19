@@ -319,9 +319,8 @@
                                             </ext:Store>
                                         </Store>
                                         <Items>
-                                            <ext:ListItem Index="0" Text="Inicio" Value="Inicio" />
-                                            <ext:ListItem Index="1" Text="Captura" Value="Captura" />
-                                            <ext:ListItem Index="2" Text="Fin" Value="Fin" />
+                                            <ext:ListItem Index="0" Text="Captura" Value="Captura" />
+                                            <ext:ListItem Index="1" Text="Fin" Value="Fin" />
                                         </Items>
                                         <Listeners>
                                             <Select Fn="cmbMov_Select" />
@@ -652,9 +651,9 @@
                                                         <ToolTip Text="Ver Fotos" />
                                                     </ext:GridCommand>
                                                 </Commands>
-                                                <Listeners>
+                                               <%-- <Listeners>
                                                     <Command Fn="ccFotos_Command" />
-                                                </Listeners>
+                                                </Listeners>--%>
                                             </ext:CommandColumn>
                                         </Columns>
                                     </ColumnModel>

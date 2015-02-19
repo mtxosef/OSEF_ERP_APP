@@ -88,7 +88,7 @@ BEGIN
 			@Preciario,
 			GETDATE(),
 			NULL,
-			'BORRADOR'
+			'CONCLUIDO'
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()

@@ -29,13 +29,12 @@ namespace OSEF.ERP.APP
 
             //1. Obtener ID y el movimiento seleccionado
             int iID = Convert.ToInt32(e.ExtraParams["ID"]);
-            bool strCaptura = Convert.ToBoolean(e.ExtraParams["Captura"]);
             bool strFin = Convert.ToBoolean(e.ExtraParams["Fin"]);
 
             //2. Avanzar una revisión
-            if (strCaptura)
+            if (strFin)
             {
-                int iIDNuevo = VolumetriaBusiness.AvanzarRevisionPorID(iID, rCaptura.InputValue);
+                int iIDNuevo = VolumetriaBusiness.AvanzarRevisionPorID(iID, rFin.InputValue);
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("captura", iIDNuevo.ToString(), ParameterMode.Auto));
             }
         }
