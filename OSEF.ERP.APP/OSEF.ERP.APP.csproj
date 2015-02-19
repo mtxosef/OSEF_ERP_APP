@@ -38,11 +38,11 @@
       <HintPath>..\References\Ext.Net.dll</HintPath>
     </Reference>
     <Reference Include="Ext.Net.Utilities">
-      <HintPath>C:\Program Files\Ext.Net 2.5\Ext.Net.Utilities.dll</HintPath>
+      <HintPath>..\References\Ext.Net.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Program Files\Ext.Net 2.5\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\References\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -60,7 +60,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Transformer.NET">
-      <HintPath>C:\Program Files\Ext.Net 2.5\Transformer.NET.dll</HintPath>
+      <HintPath>..\References\Transformer.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +246,7 @@
     <Content Include="FormaAccesoSucursales.aspx" />
     <Content Include="FormaAnexosSocio.aspx" />
     <Content Include="FormaAvance.aspx" />
+    <Content Include="FormaAvanzarVolumetria.aspx" />
     <Content Include="FormaCambiarContrasena.aspx" />
     <Content Include="FormaCargaMultiImagenes.aspx" />
     <Content Include="FormaColonia.aspx" />
@@ -283,6 +284,7 @@
     <Content Include="js\articulos.js" />
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
+    <Content Include="js\avanzarVolumetria.js" />
     <Content Include="js\clientes.js" />
     <Content Include="js\colonias.js" />
     <Content Include="js\conceptos2.js" />
@@ -481,6 +483,13 @@
     </Compile>
     <Compile Include="FormaAvance.aspx.designer.cs">
       <DependentUpon>FormaAvance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaAvanzarVolumetria.aspx.cs">
+      <DependentUpon>FormaAvanzarVolumetria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaAvanzarVolumetria.aspx.designer.cs">
+      <DependentUpon>FormaAvanzarVolumetria.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaCambiarContrasena.aspx.cs">
       <DependentUpon>FormaCambiarContrasena.aspx</DependentUpon>

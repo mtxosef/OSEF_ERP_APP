@@ -431,12 +431,12 @@ var imgbtnAfectar_Click_Before = function () {
 
 
 
-            window.parent.App.wEmergente.load('FormaAvanzarVolumetria.aspx');
-            window.parent.App.wEmergente.setHeight(170);
-            window.parent.App.wEmergente.setWidth(220);
-            window.parent.App.wEmergente.center();
-            window.parent.App.wEmergente.setTitle('Avanzar Movimiento');
-            window.parent.App.wEmergente.show();
+            App.wEmergente.load('FormaAvanzarVolumetria.aspx');
+            App.wEmergente.setHeight(170);
+            App.wEmergente.setWidth(220);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Avanzar Movimiento');
+            App.wEmergente.show();
             return false;
         }
         else {
