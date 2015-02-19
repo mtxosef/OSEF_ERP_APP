@@ -535,17 +535,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.StatusBar sbFormaVolumetriaDetalle;
         
         /// <summary>
-        /// Control wEmergente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-<<<<<<< HEAD
-=======
-        protected global::Ext.Net.Window wFormaGaleria;
-        
-        /// <summary>
         /// Control wCargarImagenes.
         /// </summary>
         /// <remarks>
@@ -561,7 +550,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
->>>>>>> 213b6e613f1a616ac0061e3e395d2291288daf88
         protected global::Ext.Net.Window wEmergente;
     }
 }

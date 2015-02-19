@@ -38,7 +38,6 @@ C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.AVANCES.SUCURSALES\bin\OSE
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.AVANCES.SUCURSALES\obj\Debug\OSEF.ERP.APP.csprojResolveAssemblyReference.cache
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.AVANCES.SUCURSALES\obj\Debug\OSEF.ERP.APP.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.AVANCES.SUCURSALES\obj\Debug\OSEF.ERP.APP.pdb
-<<<<<<< HEAD
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.ERP.APP.dll
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.ERP.APP.pdb
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.ERP.APP\bin\Ext.Net.dll
@@ -59,7 +58,6 @@ C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.ERP.APP\bin\OS
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.csprojResolveAssemblyReference.cache
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.dll
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.pdb
-=======
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.ERP.APP.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.ERP.APP.pdb
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\Ext.Net.dll
@@ -83,8 +81,4 @@ C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.LIBRARY.C
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.csprojResolveAssemblyReference.cache
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.pdb
-<<<<<<< HEAD
-=======
-C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\Transformer.NET.dll
->>>>>>> 213b6e613f1a616ac0061e3e395d2291288daf88
->>>>>>> origin/master
+

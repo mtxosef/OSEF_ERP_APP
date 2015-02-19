@@ -38,6 +38,5 @@ C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.EL\obj\Deb
 C:\Users\osef\Dropbox\02 - OSEF\02 - DESARROLLO\OSEF_ERP_APP\OSEF.APP.EL\obj\Debug\OSEF.APP.EL.pdb
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.APP.EL\bin\Debug\OSEF.APP.EL.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.APP.EL\bin\Debug\OSEF.APP.EL.pdb
-C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.APP.EL\obj\Debug\OSEF.APP.EL.csprojResolveAssemblyReference.cache
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.APP.EL\obj\Debug\OSEF.APP.EL.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.APP.EL\obj\Debug\OSEF.APP.EL.pdb

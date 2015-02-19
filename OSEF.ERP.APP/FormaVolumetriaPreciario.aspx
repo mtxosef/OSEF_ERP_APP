@@ -642,7 +642,6 @@
                                                 Width="85">
                                                 <Commands>
                                                     <ext:GridCommand
-<<<<<<< HEAD
                                                         Icon="ImageAdd"
                                                         CommandName="cnCargarFotos">
                                                         <ToolTip Text="Cargar Fotos" />
@@ -652,13 +651,6 @@
                                                         CommandName="cnVerFotos">
                                                         <ToolTip Text="Ver Fotos" />
                                                     </ext:GridCommand>
-=======
-                                                        Icon="ApplicationAdd"
-                                                        CommandName="cnSubirFotos">
-                                                        <ToolTip Text="Cargar Fotos" />
-                                                    </ext:GridCommand>
-                                                    <ext:CommandSeparator />
->>>>>>> origin/master
                                                 </Commands>
                                                 <Listeners>
                                                     <Command Fn="ccFotos_Command" />
@@ -705,28 +697,8 @@
             </BottomBar>
         </ext:FormPanel>
 
-        <ext:Window 
-            ID="wEmergente" 
-            runat="server" 
-            Icon="Application" 
-            Hidden="true" 
-            Modal="true"
-            Padding="5" 
-            Resizable="False" 
-            Region="Center" 
-            XOnEsc="Ext.emptyFn">
-            <Loader 
-                ID="lEmergente" 
-                runat="server" 
-                Mode="Frame" 
-                AutoLoad="false">
-                <LoadMask 
-                    ShowMask="true" 
-                    Msg="Cargando..." />
-            </Loader>
-        </ext:Window>
-<<<<<<< HEAD
-=======
+  
+
 
          <ext:Window 
         ID="wCargarImagenes" 
@@ -764,8 +736,7 @@
             </Loader>
         </ext:Window>
 
-
->>>>>>> 213b6e613f1a616ac0061e3e395d2291288daf88
+        
     </form>
 </body>
 </html>
