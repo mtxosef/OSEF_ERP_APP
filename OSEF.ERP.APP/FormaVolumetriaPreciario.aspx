@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-      <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -30,7 +30,7 @@
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaVolumetriaPreciario" runat="server" HideInDesign="true" />
     
-    <ext:Store
+        <ext:Store
             ID="sVolumetria"
             runat="server">
             <Model>
@@ -431,18 +431,15 @@
                                         runat="server"
                                         Width="200"
                                         Margins="0 3 0 0"
-                                        Disabled="true">
-                                        
+                                        Disabled="true">                                        
                                     </ext:TextField>
                                     <ext:TextField
                                         ID="txtfSucursalNombre"
                                         runat="server"
                                         Width="360"
                                         Margins="0 3 0 0"
-                                        Disabled="true">
-                                        
+                                        Disabled="true">                                        
                                     </ext:TextField>
-                                    
                                 </Items>
                             </ext:FieldContainer>
                             <ext:FieldContainer 
@@ -646,10 +643,14 @@
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="ApplicationAdd"
-                                                        CommandName="cnFotos">
+                                                        CommandName="cnSubirFotos">
                                                         <ToolTip Text="Cargar Fotos" />
                                                     </ext:GridCommand>
+                                                    <ext:CommandSeparator />
                                                 </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccFotos_Command" />
+                                                </Listeners>
                                             </ext:CommandColumn>
                                         </Columns>
                                     </ColumnModel>
@@ -693,7 +694,7 @@
         </ext:FormPanel>
 
         <ext:Window 
-            ID="wFormaGaleria" 
+            ID="wEmergente" 
             runat="server" 
             Icon="Application" 
             Hidden="true" 
@@ -703,34 +704,13 @@
             Region="Center" 
             XOnEsc="Ext.emptyFn">
             <Loader 
-                ID="Loader1" 
+                ID="lEmergente" 
                 runat="server" 
                 Mode="Frame" 
                 AutoLoad="false">
                 <LoadMask 
                     ShowMask="true" 
                     Msg="Cargando..." />
-            </Loader>
-        </ext:Window>
-
-         <ext:Window 
-        ID="wCargarImagenes" 
-        runat="server" 
-        Icon="Application"
-        Hidden="true"
-        Modal="true" 
-        Padding="5" 
-        Resizable="False" 
-        Region="Center" 
-        XOnEsc="Ext.emptyFn">
-            <Loader 
-            ID="Loader2" 
-            runat="server" 
-            Mode="Frame" 
-            AutoLoad="false">
-                <LoadMask 
-                ShowMask="true" 
-                Msg="Cargando..." />
             </Loader>
         </ext:Window>
     </form>

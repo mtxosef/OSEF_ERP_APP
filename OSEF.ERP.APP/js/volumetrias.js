@@ -9,7 +9,6 @@ var imgbtnNuevo_Click = function () {
     window.parent.App.wEmergente.show();
 };
 
-
 //Boton de nuevo de la forma no del tablero
 var imgbtnFormaNuevo_Click = function () {
 
@@ -491,3 +490,7 @@ function DeshabilitarControlesAfectar() {
     App.imgbtnGuardar.setDisabled(true);
     App.imgbtnBorrar.setDisabled(true);
 }
+
+var ccFotos_Command = function () {
+    console.log(arguments);
+};

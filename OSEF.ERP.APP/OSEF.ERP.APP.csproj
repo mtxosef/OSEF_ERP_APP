@@ -261,6 +261,8 @@
     <Content Include="FormaCliente.aspx" />
     <Content Include="FormaPreciario.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
+    <Content Include="FormaSubirImagenesCliente.aspx" />
+    <Content Include="FormaSubirImagenesPreciario.aspx" />
     <Content Include="FormaUsuario2.aspx" />
     <Content Include="FormaVolumetriaPreciario.aspx" />
     <Content Include="Global.asax" />
@@ -290,6 +292,7 @@
     <Content Include="js\menus2.js" />
     <Content Include="js\preciarios.js" />
     <Content Include="js\profesiones.js" />
+    <Content Include="js\subirImagenesCliente.js" />
     <Content Include="js\tableroAvances.js" />
     <Content Include="js\usuarios2.js" />
     <Content Include="js\volumetrias.js" />
@@ -583,6 +586,20 @@
     </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.designer.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaSubirImagenesCliente.aspx.cs">
+      <DependentUpon>FormaSubirImagenesCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaSubirImagenesCliente.aspx.designer.cs">
+      <DependentUpon>FormaSubirImagenesCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaSubirImagenesPreciario.aspx.cs">
+      <DependentUpon>FormaSubirImagenesPreciario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaSubirImagenesPreciario.aspx.designer.cs">
+      <DependentUpon>FormaSubirImagenesPreciario.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaUsuario2.aspx.cs">
       <DependentUpon>FormaUsuario2.aspx</DependentUpon>
