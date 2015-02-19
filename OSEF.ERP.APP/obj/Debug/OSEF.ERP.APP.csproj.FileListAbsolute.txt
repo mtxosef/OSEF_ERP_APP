@@ -47,6 +47,7 @@ C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.APP.BL.dl
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.APP.EL.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.INTELISIS.BL.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.INTELISIS.EL.dll
+C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\Transformer.NET.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.APP.DL.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.INTELISIS.DL.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.LIBRARY.COMMON.dll
@@ -60,4 +61,3 @@ C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\OSEF.LIBRARY.C
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.csprojResolveAssemblyReference.cache
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.dll
 C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\obj\Debug\OSEF.ERP.APP.pdb
-C:\Users\Christian\Documents\GitHub\OSEF_ERP_APP\OSEF.ERP.APP\bin\Transformer.NET.dll

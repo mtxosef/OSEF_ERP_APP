@@ -645,9 +645,14 @@
                                                 Width="85">
                                                 <Commands>
                                                     <ext:GridCommand
-                                                        Icon="ApplicationAdd"
-                                                        CommandName="cnFotos">
+                                                        Icon="ImageAdd"
+                                                        CommandName="cnCargarFotos">
                                                         <ToolTip Text="Cargar Fotos" />
+                                                    </ext:GridCommand>
+                                                    <ext:GridCommand
+                                                        Icon="FolderPicture"
+                                                        CommandName="cnVerFotos">
+                                                        <ToolTip Text="Ver Fotos" />
                                                     </ext:GridCommand>
                                                 </Commands>
                                             </ext:CommandColumn>
