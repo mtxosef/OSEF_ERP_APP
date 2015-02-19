@@ -7,6 +7,23 @@
     <title></title>
     <link rel="stylesheet" href="css/login2.css" />
     <link rel="Stylesheet" href="css/customControls2.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <script type="text/javascript" src="js/subirImagenesCliente.js"></script>
 </head>
 <body class="xCustomBody">
@@ -19,8 +36,7 @@
             Width="590"
             Height="300"
             EnableColumnHide="false"
-            EnableColumnMove="false"
-            StyleSpec="margin:0 auto; margin-top: 20px;">
+            EnableColumnMove="false">
             <Store>
                 <ext:Store ID="sSubirImagenesCliente" runat="server">
                     <Model>
