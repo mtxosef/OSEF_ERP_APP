@@ -530,6 +530,12 @@ function DeshabilitarControlesAfectar() {
     App.imgbtnBorrar.setDisabled(true);
 }
 
-var ccFotos_Command = function () {
+var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     console.log(arguments);
+    App.wEmergente.load('FormaSubirImagenesCliente.aspx');
+    App.wEmergente.setHeight(350);
+    App.wEmergente.setWidth(600);
+    App.wEmergente.center();
+    App.wEmergente.setTitle('Cargar Fotografías');
+    App.wEmergente.show();
 };
