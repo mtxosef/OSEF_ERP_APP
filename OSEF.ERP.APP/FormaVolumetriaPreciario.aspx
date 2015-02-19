@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-      <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -30,7 +30,7 @@
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaVolumetriaPreciario" runat="server" HideInDesign="true" />
     
-    <ext:Store
+        <ext:Store
             ID="sVolumetria"
             runat="server">
             <Model>
@@ -431,18 +431,15 @@
                                         runat="server"
                                         Width="200"
                                         Margins="0 3 0 0"
-                                        Disabled="true">
-                                        
+                                        Disabled="true">                                        
                                     </ext:TextField>
                                     <ext:TextField
                                         ID="txtfSucursalNombre"
                                         runat="server"
                                         Width="360"
                                         Margins="0 3 0 0"
-                                        Disabled="true">
-                                        
+                                        Disabled="true">                                        
                                     </ext:TextField>
-                                    
                                 </Items>
                             </ext:FieldContainer>
                             <ext:FieldContainer 
@@ -645,6 +642,7 @@
                                                 Width="85">
                                                 <Commands>
                                                     <ext:GridCommand
+<<<<<<< HEAD
                                                         Icon="ImageAdd"
                                                         CommandName="cnCargarFotos">
                                                         <ToolTip Text="Cargar Fotos" />
@@ -654,7 +652,17 @@
                                                         CommandName="cnVerFotos">
                                                         <ToolTip Text="Ver Fotos" />
                                                     </ext:GridCommand>
+=======
+                                                        Icon="ApplicationAdd"
+                                                        CommandName="cnSubirFotos">
+                                                        <ToolTip Text="Cargar Fotos" />
+                                                    </ext:GridCommand>
+                                                    <ext:CommandSeparator />
+>>>>>>> origin/master
                                                 </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccFotos_Command" />
+                                                </Listeners>
                                             </ext:CommandColumn>
                                         </Columns>
                                     </ColumnModel>
@@ -698,7 +706,7 @@
         </ext:FormPanel>
 
         <ext:Window 
-            ID="wFormaGaleria" 
+            ID="wEmergente" 
             runat="server" 
             Icon="Application" 
             Hidden="true" 
@@ -708,7 +716,7 @@
             Region="Center" 
             XOnEsc="Ext.emptyFn">
             <Loader 
-                ID="Loader1" 
+                ID="lEmergente" 
                 runat="server" 
                 Mode="Frame" 
                 AutoLoad="false">
@@ -717,6 +725,8 @@
                     Msg="Cargando..." />
             </Loader>
         </ext:Window>
+<<<<<<< HEAD
+=======
 
          <ext:Window 
         ID="wCargarImagenes" 
@@ -755,6 +765,7 @@
         </ext:Window>
 
 
+>>>>>>> 213b6e613f1a616ac0061e3e395d2291288daf88
     </form>
 </body>
 </html>
