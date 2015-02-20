@@ -291,6 +291,27 @@ namespace OSEF.AVANCES.SUCURSALES
 
 
         }
+
+
+
+        /// <summary>
+        /// Método para elimnar un registro
+        /// </summary>
+        /// <param name="strID"></param>
+        protected void imgbtnBorrar_Click(object sender, DirectEventArgs e)
+        {
+
+
+            //1. Obtener registro que se quiere eliminar
+            string strcookieEditarVolumetria = Cookies.GetCookie("cookieEditarVolumetria").Value;
+
+            int strID = Convert.ToInt32(strcookieEditarVolumetria);
+
+            //Borra de la base de datos el encabezado y detalle
+            VolumetriaDBusiness.BorrarPorVolumetria(strID);
+            VolumetriaBusiness.Borrar(strID);
+           
+        }
         
 
 

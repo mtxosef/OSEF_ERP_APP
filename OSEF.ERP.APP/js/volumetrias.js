@@ -27,7 +27,7 @@ var imgbtnFormaNuevo_Click = function () {
    
     App.dfFechaEmision.setValue(d);
     App.txtfObservaciones.setValue(null);
-    App.sbFormaVolumetriaDetalle.setText('BORRADOR');
+    App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
 
     //Borrar el GridPanel del Detalle y Encabezado
     App.sConceptos.removeAll();
@@ -56,6 +56,55 @@ var imgbtnEditar_Click = function () {
 var imgbtnAbrir_Click = function () {
     window.parent.App.wEmergente.hide();
 };
+
+
+
+//Para el botón de eliminar, Eliminar un registro
+var imgbtnBorrar_Click_Success = function (response, result) {
+
+    Ext.Msg.show({
+        id: 'msgVolumetrias',
+        title: 'Advertencia Volumetrias',
+        msg: 'Se ha eliminado el movimiento',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.WARNING
+    });
+
+    //Se actualiza el tablero
+    window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
+
+    var d = new Date();
+    //Limpiar controles del encabezado
+    App.cmbMov.setReadOnly(false);
+    App.txtfMovID.setValue(null);
+
+    App.cmbPreciario.clearValue();
+    App.cmbPreciario.setDisabled(false);
+    App.txtfDescripcionPreciario.setValue(null);
+
+    App.txtfIDSucursal.setValue('');
+    App.txtfSucursalNombre.setValue('');
+
+
+    App.dfFechaEmision.setValue(d);
+    App.txtfObservaciones.setValue(null);
+    App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
+
+    App.imgbtnBorrar.setDisabled(true);
+
+    //Borrar el GridPanel del Detalle y Encabezado
+    App.sConceptos.removeAll();
+    App.sPreciarioConcepto.removeAll();
+    App.sVolumetria.removeAll();
+    Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
+    window.parent.App.wEmergente.setTitle('Nueva Volumetría');
+
+
+
+};
+
 
 
 //Concatenar la columna de Movimiento
@@ -103,7 +152,7 @@ var sVolumetrias_DataChanged = function () {
 //Acciones al hacer clic en un registro
 var gpVolumetrias_ItemClick = function (gridview, registro, gvhtml, index) {
     App.imgbtnEditar.setDisabled(false);
-    App.imgbtnBorrar.setDisabled(false);
+    //App.imgbtnBorrar.setDisabled(false);
     indice = index;
 };
 
@@ -261,6 +310,7 @@ var validaConcluidos = function (a, d, f) {
 //Evento lanzado al agregar un registro al store
 var sVolumetria_Add = function (avance, registro) {
 
+   // var botonCargarFotos = App.gpVolumetriaDetalle.columns[4];
 
     //Valida el estatus para ver si permite seguir capturando o no
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
@@ -280,7 +330,7 @@ var sVolumetria_Add = function (avance, registro) {
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
-
+        App.imgbtnCancelar.setDisabled(false);
 
     }
 
@@ -299,8 +349,10 @@ var sVolumetria_Add = function (avance, registro) {
         //Agregar una fila para seguir capturando
         var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
         App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
-
+        App.imgbtnBorrar.setDisabled(false);
     }
+
+
 
 };
 
@@ -318,7 +370,12 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
+
+        //Activa el boton de borrar movimiento
         App.imgbtnBorrar.setDisabled(false);
+        //Actualiza al estatus BORRADOR de la captura
+        App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
+
     }
     else {
         Ext.Msg.show({
@@ -332,8 +389,6 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         });
     }
 };
-
-
 
 
 
@@ -435,14 +490,9 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
         renglon = renglon + 1;
     });
 
-
-
-
     //Validar si se habilita el boton de afectar
     HabilitarAfectar();
 };
-
-
 
 
 //Evento que muestra el valor de la columna Concepto por su descripción y no por su ID
@@ -478,43 +528,52 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
         toolbar.items.get(0).hide();
     }
 
-
-
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
         //Toma el primer elemento de la columna para poder desabilitarlo
         var botonEliminar = toolbar.items.get(0);
-
-
         botonEliminar.setDisabled(true);
         botonEliminar.setTooltip("No se puede borrar un concepto en una captura concluida");
     }
-
-   
 
 };
 
 
 //Validaciones de comandos para fotos
 var ccAccionesFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
- 
 
-
-    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
         //Toma el primer elemento de la columna para poder desabilitarlo
         var botonCargar = toolbar.items.get(0);
-
-
-
         botonCargar.setDisabled(true);
         botonCargar.setTooltip("No se pueden cargar fotos a un movimiento concluido");
     }
 
-    else {
-        return true
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') == 'Nuevo' && App.sVolumetria.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(true);
+        botonVerFotos2.setDisabled(true);
+        botonCargar2.setTooltip("Debes de guardar el movimiento antes");
+        botonVerFotos2.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(false);
+        botonVerFotos2.setDisabled(false);
+        botonCargar2.setTooltip("Cargar Fotos");
+        botonVerFotos2.setTooltip("Ver Fotos");
     }
 
 };
@@ -546,8 +605,6 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 var cmbConcepto_Select = function (combobox, registro) {
 //Ayuda para traer lo que trae toda la funcion como parámetro
     //console.log(arguments);
-
-
     //Variable que contiene el indicie del elemento seleccionado del comboBox
     var indiceCombo = registro[0].index;
     //Variale que guarda el indicie del renglon del GridPanel segun la posicion en la que se encuentre capturando el usuario
@@ -565,8 +622,6 @@ var cmbConcepto_Select = function (combobox, registro) {
 var imgbtnAfectar_Click_Before = function () {
     if (App.sVolumetria.getCount() != 0) {
         if (App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
-
-
 
             App.wEmergente.load('FormaAvanzarVolumetria.aspx');
             App.wEmergente.setHeight(170);
@@ -607,6 +662,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
     //Deshabilita boton de afectar porque aqui concluye el flujo
     App.imgbtnAfectar.setDisabled(true);
+    App.imgbtnCancelar.setDisabled(false);
 
     //3. Remover la útima fila
     var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);

@@ -293,3 +293,5 @@
 -- VolumetriasD (Modificar)
 :r c:\SqlServerScripts\Modificar\VolumetriasD\web_spU_ActualizarVolumetriaD.sql
 -----------------------------------------------------------------------------------
+-- ImagenVolumetriaD (Insertar)
+:r c:\SqlServerScripts\Insertar\ImagenVolumetriaD\web_spI_InsertarImagenVolumetriaD.sql
