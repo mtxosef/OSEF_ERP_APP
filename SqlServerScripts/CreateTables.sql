@@ -439,6 +439,15 @@ CREATE TABLE VolumetriasD(
 	Fotos		VARCHAR(200)	NULL
 )
 
+CREATE TABLE ImagenesVolumetriasD(
+	Volumetria			INT				NOT NULL FOREIGN KEY REFERENCES Volumetrias(ID),
+	PreciarioConcepto	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioConceptos(ID),
+	Nombre				VARCHAR(50)		NOT NULL,
+	Direccion			VARCHAR(500)	NOT NULL,
+	Usuario				VARCHAR(50)		NOT NULL,
+	FechaAlta			SMALLDATETIME	NOT NULL
+)
+
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
 --DROP TABLE Beneficiarios
@@ -470,6 +479,7 @@ CREATE TABLE VolumetriasD(
 --DROP TABLE PreciarioConceptos
 --DROP TABLE Volumetrias
 --DROP TABLE VolumetriasD
+--DROP TABLE ImagenesVolumetriasD
 
 -- CORREGIR
 --ALTER TABLE Sucursales ADD CR SMALLINT NOT NULL

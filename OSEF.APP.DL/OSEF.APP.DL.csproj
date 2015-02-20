@@ -50,6 +50,7 @@
     <Compile Include="EstadoDataAccess.cs" />
     <Compile Include="FinalidadDataAccess.cs" />
     <Compile Include="GrupoMenuDataAccess.cs" />
+    <Compile Include="ImagenVolumetriaDDataAccess.cs" />
     <Compile Include="MenuDataAccess.cs" />
     <Compile Include="MunicipioDataAccess.cs" />
     <Compile Include="PreciarioCategoriaDataAccess.cs" />

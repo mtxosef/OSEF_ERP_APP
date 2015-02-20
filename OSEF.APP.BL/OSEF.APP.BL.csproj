@@ -49,6 +49,7 @@
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="FinalidadBusiness.cs" />
     <Compile Include="GrupoMenuBusiness.cs" />
+    <Compile Include="ImagenVolumetriaDBusiness.cs" />
     <Compile Include="MenuBusiness.cs" />
     <Compile Include="MunicipioBusiness.cs" />
     <Compile Include="PreciarioBusiness.cs" />

@@ -531,8 +531,8 @@ function DeshabilitarControlesAfectar() {
 }
 
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
-    console.log(arguments);
-    App.wEmergente.load('FormaSubirImagenesCliente.aspx');
+    Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
+    App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
     App.wEmergente.setHeight(350);
     App.wEmergente.setWidth(600);
     App.wEmergente.center();

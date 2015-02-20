@@ -51,6 +51,7 @@
     <Compile Include="Estado.cs" />
     <Compile Include="Finalidad.cs" />
     <Compile Include="GrupoMenu.cs" />
+    <Compile Include="ImagenVolumetriaD.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Municipio.cs" />
     <Compile Include="Preciario.cs" />
