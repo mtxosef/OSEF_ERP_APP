@@ -20,7 +20,7 @@ namespace OSEF.AVANCES.SUCURSALES
               
 
                 //2. Cargar sucursales
-                sPreciario.DataSource = PreciarioBusiness.ObtenerPreciarios();
+                sPreciario.DataSource = PreciarioBusiness.ObtenerPreciariosActivos();
                 sPreciario.DataBind();
 
                 ////3. Cargar Conceptos

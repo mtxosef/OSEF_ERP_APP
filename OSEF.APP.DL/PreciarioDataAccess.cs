@@ -253,6 +253,46 @@ namespace OSEF.APP.DL
         }
 
         /// <summary>
+        /// Obtener todos los registros de Preciarios con Estatus Activo
+        /// </summary>
+        /// <returns></returns>
+        public static List<Preciario> ObtenerPreciariosActivos()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciariosActivos";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<Preciario> result = LibraryGenerics<Preciario>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<Preciario> ObtenerPreciariosActivos()): " + ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Obtener un registro de Preciario por su ID
         /// </summary>
         /// <param name="strID"></param>

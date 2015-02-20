@@ -140,7 +140,7 @@
                                 <ext:TextField
                                     ID="txtfDescripcion"
                                     runat="server"
-                                    EmptyText="Nobre Preciario"
+                                    EmptyText="Nombre Preciario"
                                     Width="360"
                                     AllowBlank="false">
                                     <Listeners>
