@@ -255,6 +255,7 @@
     <Content Include="FormaAvanzarMovimiento.aspx" />
     <Content Include="FormaEspecificarFechas.aspx" />
     <Content Include="FormaGaleria.aspx" />
+    <Content Include="FormaImagenesPreciarios.aspx" />
     <Content Include="FormaInfoGraficas.aspx" />
     <Content Include="FormaInversion.aspx" />
     <Content Include="FormaMenu.aspx" />
@@ -547,6 +548,13 @@
     </Compile>
     <Compile Include="FormaGaleria.aspx.designer.cs">
       <DependentUpon>FormaGaleria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaImagenesPreciarios.aspx.cs">
+      <DependentUpon>FormaImagenesPreciarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaImagenesPreciarios.aspx.designer.cs">
+      <DependentUpon>FormaImagenesPreciarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaInfoGraficas.aspx.cs">
       <DependentUpon>FormaInfoGraficas.aspx</DependentUpon>

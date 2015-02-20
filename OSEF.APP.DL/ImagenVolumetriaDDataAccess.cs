@@ -6,6 +6,7 @@ using OSEF.APP.EL;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using OSEF.LIBRARY.COMMON.Generics;
 
 namespace OSEF.APP.DL
 {
@@ -86,6 +87,64 @@ namespace OSEF.APP.DL
             catch (Exception ex)
             {
                 throw new Exception("Error capa de datos (public static int Insertar(ImagenVolumetriaD " + iImagenVolumetriaD.Volumetria + ")): " + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Consultar
+
+        /// <summary>
+        /// Obtener los registro de as Imaganes de Volumetrias por su Volumetria y PreciarioConcepto
+        /// </summary>
+        /// <param name="strVolumetria"></param>
+        /// <param name="strPreciarioConcepto"></param>
+        /// <returns></returns>
+        public static List<ImagenVolumetriaD> ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto(int iVolumetria, string strPreciarioConcepto)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpVolumetria = new SqlParameter();
+                sqlpVolumetria.ParameterName = "@Volumetria";
+                sqlpVolumetria.SqlDbType = SqlDbType.Int;
+                sqlpVolumetria.Value = iVolumetria;
+
+                SqlParameter sqlpPreciarioConcepto = new SqlParameter();
+                sqlpPreciarioConcepto.ParameterName = "@PreciarioConcepto";
+                sqlpPreciarioConcepto.SqlDbType = SqlDbType.Char;
+                sqlpPreciarioConcepto.Size = 10;
+                sqlpPreciarioConcepto.Value = strPreciarioConcepto;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpVolumetria);
+                sqlcComando.Parameters.Add(sqlpPreciarioConcepto);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<ImagenVolumetriaD> result = LibraryGenerics<ImagenVolumetriaD>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<ImagenVolumetriaD> ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto(int " + iVolumetria + ", string " + strPreciarioConcepto + ")): " + ex.Message);
             }
         }
 

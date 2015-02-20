@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using OSEF.APP.BL;
 using System.Web.Security;
+using OSEF.APP.EL;
 
 namespace OSEF.AVANCES.SUCURSALES
 {
@@ -28,7 +29,10 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.IsAuthenticated)
+            {
+                Response.Redirect("~/Default.aspx", true);
+            }
         }
 
         /// <summary>
@@ -38,27 +42,43 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void lLogin_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            //1. Obtener nombre de usuario y passsword
+            //1. Declaración de variables
+            FormsAuthenticationTicket tkt;
+            String cookiestr;
+            HttpCookie ck;
+            Usuario oUsuario;
+
+            //2. Obtener nombre de usuario y passsword
             string strUsuario = lLogin.UserName;
             string strContrasena = lLogin.Password;
 
-            //2. Obtener control TextField del password
+            //3. Obtener control TextField del password
             TextField txtfPassword = (TextField)lLogin.FindControl("Password");
 
-            //3. Validar si el nombre de usuario y el password son correctos
+            //4. Validar si el nombre de usuario y el password son correctos
             if (UsuarioBusiness.ValidarUsuarioContrasena(strUsuario, strContrasena))
             {
-                //4. Autenticar verdadero y redireccionar a la pantalla principal
+                //5. Autenticar verdadero y redireccionar a la pantalla principal
                 FormsAuthentication.SetAuthCookie(strUsuario, true);
                 e.Authenticated = true;
                 bMascara = true;
-                Session["Usuario"] = UsuarioBusiness.ObtenerUsuarioPorID(strUsuario);
-                if (Session["Usuario"] == null)
-                    Session["Usuario"] = UsuarioBusiness.ObtenerUsuarioPorCorreo(strUsuario);
+                oUsuario = UsuarioBusiness.ObtenerUsuarioPorID(strUsuario);
+                if (oUsuario == null)
+                    oUsuario = UsuarioBusiness.ObtenerUsuarioPorCorreo(strUsuario);
+
+                Session["Usuario"] = oUsuario;
+
+                string id = Convert.ToString(oUsuario);
+                tkt = new FormsAuthenticationTicket(1, strUsuario, DateTime.Now, DateTime.Now.AddMinutes(60), true, id);
+                cookiestr = FormsAuthentication.Encrypt(tkt);
+                ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
+                ck.Expires = tkt.Expiration;
+                ck.Path = FormsAuthentication.FormsCookiePath;
+                Response.Cookies.Add(ck);
             }
             else
             {
-                //5. Sino la contraseña es incorrecta
+                //6. Sino la contraseña es incorrecta
                 txtfPassword.SelectOnFocus = true;
                 txtfPassword.Focus(true);
                 bMascara = false;

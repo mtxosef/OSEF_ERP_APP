@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using OSEF.APP.EL;
+using OSEF.APP.BL;
 
 namespace OSEF.AVANCES.SUCURSALES
 {
@@ -18,7 +19,7 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            UsuarioBusiness.checkValidSession(this);
         }
 
         /// <summary>

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using OSEF.APP.EL;
 using OSEF.APP.DL;
+using System.Web.UI;
+using System.Web.Security;
 
 namespace OSEF.APP.BL
 {
@@ -96,6 +98,28 @@ namespace OSEF.APP.BL
         public static bool ValidarUsuarioContrasena(string strUsuario, string strContrasena)
         {
             return UsuarioDataAccess.ValidarUsuarioContrasena(strUsuario, strContrasena);
+        }
+
+        /// <summary>
+        /// Actualizar la sesión
+        /// </summary>
+        /// <param name="c"></param>
+        public static void checkValidSession(Control c)
+        {
+            try
+            {
+                FormsIdentity ident = ((FormsIdentity)c.Page.User.Identity);
+                FormsAuthenticationTicket ticket = ident.Ticket;
+
+                if ((c.Page.Session["Usuario"] == null))
+                {
+                    c.Page.Session["Usuario"] = ticket.UserData;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         #endregion

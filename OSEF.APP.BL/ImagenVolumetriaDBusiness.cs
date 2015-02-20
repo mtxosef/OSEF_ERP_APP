@@ -24,5 +24,20 @@ namespace OSEF.APP.BL
         }
 
         #endregion
+
+        #region Consultar
+
+        /// <summary>
+        /// Obtener los registro de las Imaganes de Volumetrias por su Volumetria y PreciarioConcepto
+        /// </summary>
+        /// <param name="strVolumetria"></param>
+        /// <param name="strPreciarioConcepto"></param>
+        /// <returns></returns>
+        public static List<ImagenVolumetriaD> ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto(int iVolumetria, string strPreciarioConcepto)
+        {
+            return ImagenVolumetriaDDataAccess.ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto(iVolumetria, strPreciarioConcepto);
+        }
+
+        #endregion
     }
 }
