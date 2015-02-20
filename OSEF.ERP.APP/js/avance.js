@@ -174,7 +174,11 @@ var sMov_Add = function (store, registros, index, eOpts) {
         App.nfSemana.setReadOnly(true);
         App.dfFechaEmision.setValue(d);
         App.cmbSucursal.focus();
+
+
     }
+
+   
 };
 
 //Evento que se lanza al cambiar el valor de la Semana
@@ -361,6 +365,7 @@ function HabilitarInformacion() {
 
 //Validar si se habilita el botón d Afectar
 function HabilitarAfectar() {
+    
     if (App.cmbMov.getValue() != null && App.nfSemana.getValue() != null && App.cmbSucursal.getValue() != null && App.dfFechaRevision.getValue() != null && App.dfFechaEmision.getValue() != null) {
         if (App.nfSemana.isValid() && App.cmbSucursal.isValid() && App.dfFechaRevision.isValid()) {
             if (App.gpObraCivil.getStore().getCount() != 0) {

@@ -32,16 +32,44 @@ CREATE PROCEDURE web_spS_AfectarVolumetriaPorID
 	@ID	INT
 AS
 BEGIN
+
+DECLARE 
+@PRECIARIO CHAR(7),
+@MOV VARCHAR(50)
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-    UPDATE Volumetrias
+    UPDATE 
+		Volumetrias
     SET
 		MovID = 'V' + CAST(ID AS VARCHAR(9)),
 		Estatus = 'CONCLUIDO'
 	WHERE
 		ID = @ID
+	
+	
+		
+	-- Asigna el ID del preciario del movimiento de volumetrias
+	SELECT 
+		@PRECIARIO = Preciario,
+		@MOV=Mov
+	FROM 
+		Volumetrias 
+	WHERE ID = @ID	
+	
+	-- ACTUALIZA EL ESTATUS DEL PRECIARIO SI ES MOV = FIN
+	
+	IF(@MOV = 'FIN')
+	BEGIN
+		UPDATE 
+			PRECIARIOS
+		SET 
+			Estatus = 'CONCLUIDO'
+		WHERE 
+			ID=@PRECIARIO
+	END
+	
 END
 GO

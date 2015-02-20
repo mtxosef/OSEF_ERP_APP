@@ -14,17 +14,24 @@ var imgbtnFormaNuevo_Click = function () {
 
     var d = new Date();
     //Limpiar controles del encabezado
-  
+    App.cmbMov.setReadOnly(false);
     App.txtfMovID.setValue(null);
-    App.txtfIDSucursal.setValue(null);
-    App.txtfSucursalNombre.setValue(null);
+
     App.cmbPreciario.clearValue();
+    App.cmbPreciario.setDisabled(false);
     App.txtfDescripcionPreciario.setValue(null);
+
+    App.txtfIDSucursal.setValue('');
+    App.txtfSucursalNombre.setValue('');
+    
+   
     App.dfFechaEmision.setValue(d);
     App.txtfObservaciones.setValue(null);
+    App.sbFormaVolumetriaDetalle.setText('BORRADOR');
 
     //Borrar el GridPanel del Detalle y Encabezado
     App.sConceptos.removeAll();
+    App.sPreciarioConcepto.removeAll();
     App.sVolumetria.removeAll();
     Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
     window.parent.App.wEmergente.setTitle('Nueva Volumetría');
@@ -114,13 +121,26 @@ var cmbPreciario_Select = function (combobox, registro) {
         App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
     }
 
+    //Valida qué movimiento es 
+    if (App.cmbMov.getValue() == 'Fin') {
+
+        //Valida si se habilita el boton de afectar cuando el movimiento es Fin
+        HabilitarAfectarFin();
+    }
+
+    if (App.cmbMov.getValue() == 'Captura') {
+        //Validar si se habilita el boton de afectar
+        HabilitarAfectar();
+    }
+
 
     //Validar si se habilita Guardar
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
-    //Validar si se habilita el boton de afectar
-    HabilitarAfectar();
+
+
+
 
 
 };
@@ -128,7 +148,7 @@ var cmbPreciario_Select = function (combobox, registro) {
 //Evento que se lanza al poner algun caracter en el control de la Sucursal
 var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     App.sPreciario.clearFilter();
-    
+
 
     if (App.cmbPreciario.getValue() != null) {
         App.sPreciario.filter([{ filterFn: function (item) {
@@ -141,20 +161,29 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
         App.txtfDescripcionPreciario.setValue('');
     }
 
-    console.log(App.sPreciario.getAt(0).get('Sucursal'));
+   
     if (App.sPreciario.getAt(0) != undefined) {
         App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
         App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
 
-       
+
+    }
+    //Valida qué movimiento es 
+    if (App.cmbMov.getValue() == 'Fin') {
+        //Valida si se habilita el boton de afectar cuando el movimiento es Fin
+        HabilitarAfectarFin();
+    }
+
+    if (App.cmbMov.getValue() == 'Captura') {
+        //Validar si se habilita el boton de afectar
+        HabilitarAfectar();
     }
 
     //Validar si se habilita Guardar
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
-    //Validar si se habilita el boton de afectar
-    HabilitarAfectar();
+
 
 };
 
@@ -163,14 +192,16 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
 //Se lanza por cada elemento agregado al Store de Movimientos
 var sMov_Add = function (store, registros, index, eOpts) {
     var d = new Date();
-    
+
     //Validar si es nuevo, se asigna el movimieno 
     if (registros[0].get('ID') == 'Captura' && Ext.util.Cookies.get('cookieEditarVolumetria') == 'Nuevo') {
         App.cmbMov.select(registros[0].get('ID'));
-       // App.cmbMov.setReadOnly(true);
+        // App.cmbMov.setReadOnly(true);
         App.dfFechaEmision.setValue(d);
         App.cmbPreciario.focus();
     }
+    
+
 };
 
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
@@ -183,27 +214,23 @@ var cmbMov_Select = function (combobox, registro) {
         App.dfFechaEmision.setValue(d);
     }
 
-
     if (combobox.value == 'Captura') {
         //Validar si se asigna el primer renglon del detalle
         PrimerRenglonDetalle();
-       
+        //Validar si se habilita el boton de afectar
+        HabilitarAfectar();
     }
     if (combobox.value == 'Fin') {
         //Validar si se asigna el primer renglon del detalle
         PrimerRenglonDetalle();
+        HabilitarAfectarFin();
         App.sConceptos.removeAll();
+
 
     }
 
-    //Validar si se asigna el primer renglon del detalle
-    PrimerRenglonDetalle();
     //Validar si se habilita Guardar
     HabilitarGuardar();
-    //Validar si se habilita el boton de afectar
-    HabilitarAfectar();
-
-
 };
 
 
@@ -212,11 +239,28 @@ var cmbMov_Select = function (combobox, registro) {
 var sVolumetria_Load = function () {
     App.direct.sVolumetria_Load();
     store = window.parent.App.pCentro.getBody().App.sVolumetrias;
+
+};
+
+
+
+//Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada
+var validaConcluidos = function (a, d, f) {
+
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        return false;
+    }
+
+    else { 
+        return true
+    }
+
 };
 
 //Evento lanzado al agregar un registro al store
 var sVolumetria_Add = function (avance, registro) {
-   
+
 
     //Valida el estatus para ver si permite seguir capturando o no
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
@@ -230,9 +274,18 @@ var sVolumetria_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
 
+        //Deshabilita los campos en un movimiento afectado
+        App.cmbMov.setReadOnly(true);
+        App.cmbPreciario.setDisabled(true);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
+
+
     }
 
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
+
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
@@ -282,16 +335,6 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
 
 
-//Regresar el nombre de la sucursal
-var cSucursal_Renderer = function (valor, metaData, registro) {
-    return registro.get('RSucursal').Nombre;
-};
-
-//Regresar el nombre del preciario
-var cPreciario_Renderer = function (valor, metaData, registro) {
-    return registro.get('RPreciario').Descripcion;
-};
-
 
 
 //Función que valida si se habilita el botón de Guardar
@@ -309,9 +352,12 @@ function HabilitarGuardar() {
 //Validar si se habilita el botón d Afectar
 function HabilitarAfectar() {
 
-    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.dfFechaEmision.getValue() != null) {
+//Obtiene la fecha de emision del store
 
-        if (App.cmbMov.isValid() && App.cmbPreciario.isValid() && App.dfFechaEmision.isValid()) {
+
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null) {
+        
+        if (App.cmbMov.isValid() && App.cmbPreciario.isValid()) {
 
             if (App.gpVolumetriaDetalle.getStore().getCount() != 0) {
   
@@ -319,9 +365,7 @@ function HabilitarAfectar() {
 
                     App.imgbtnAfectar.setDisabled(false);
                 }
-                else {
-                    App.imgbtnAfectar.setDisabled(true);
-                }
+                
             }
             else {
                 App.imgbtnAfectar.setDisabled(true);
@@ -335,6 +379,20 @@ function HabilitarAfectar() {
         App.imgbtnAfectar.setDisabled(true);
     }
 }
+
+
+//Validar si se habilita el botón d Afectar cuando se selecciona FIN
+function HabilitarAfectarFin() {
+
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.dfFechaEmision.getValue() != null) {
+
+        App.imgbtnAfectar.setDisabled(false); 
+    }
+    else {
+        App.imgbtnAfectar.setDisabled(true);
+    }
+}
+
 
 
 //Validar si se habilita el botón de Información
@@ -377,6 +435,9 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
         renglon = renglon + 1;
     });
 
+
+
+
     //Validar si se habilita el boton de afectar
     HabilitarAfectar();
 };
@@ -416,6 +477,46 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
     if (grid.getStore().getCount() - 1 == rowIndex) {
         toolbar.items.get(0).hide();
     }
+
+
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonEliminar = toolbar.items.get(0);
+
+
+        botonEliminar.setDisabled(true);
+        botonEliminar.setTooltip("No se puede borrar un concepto en una captura concluida");
+    }
+
+   
+
+};
+
+
+//Validaciones de comandos para fotos
+var ccAccionesFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+ 
+
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+
+
+
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar fotos a un movimiento concluido");
+    }
+
+    else {
+        return true
+    }
+
 };
 
 
@@ -538,4 +639,15 @@ var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     App.wEmergente.center();
     App.wEmergente.setTitle('Cargar Fotografías');
     App.wEmergente.show();
+};
+
+
+//Regresar el nombre de la sucursal
+var cSucursal_Renderer = function (valor, metaData, registro) {
+    return registro.get('RSucursal').Nombre;
+};
+
+//Regresar el nombre del preciario
+var cPreciario_Renderer = function (valor, metaData, registro) {
+    return registro.get('RPreciario').Descripcion;
 };

@@ -535,11 +535,12 @@
                                         <Columns>
                                             <ext:CommandColumn
                                                 ID="ccAcciones"
-                                                runat="server"
+                                                runat="server" 
                                                 Width="25">
                                                 <PrepareToolbar Fn="ccAcciones_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
+                                                        
                                                         Icon="Delete"
                                                         CommandName="Borrar">
                                                         <ToolTip Text="Borrar" />
@@ -639,10 +640,11 @@
                                                 Text="Fotos"
                                                 runat="server"
                                                 Width="85">
+                                                 <PrepareToolbar Fn="ccAccionesFotos_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="ImageAdd"
-                                                        CommandName="cnCargarFotos">
+                                                        CommandName="cnCargarFotos" >
                                                         <ToolTip Text="Cargar Fotos" />
                                                     </ext:GridCommand>
                                                     <ext:GridCommand
@@ -670,6 +672,7 @@
                                             ClicksToEdit="1">
                                             <Listeners>
                                                 <Edit Fn="cePreciarioConcepto_Edit" />
+                                                <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
                                             </Listeners>
                                         </ext:CellEditing>
                                     </Plugins>
