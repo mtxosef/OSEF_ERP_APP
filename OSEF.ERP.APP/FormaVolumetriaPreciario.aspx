@@ -201,6 +201,21 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnBorrar_Click" Success="imgbtnBorrar_Click_Success">
+                                    <Confirmation
+                                        ConfirmRequest="true"
+                                        Title="Eliminar"
+                                        Message="¿Deseas eliminar el registro?">
+                                    </Confirmation>
+                                    <EventMask
+                                        ShowMask="true"
+                                        Target="CustomTarget"
+                                        Msg="Eliminando registro">
+                                    </EventMask>
+                                    
+                                </Click>
+                             </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnCancelar"
@@ -695,7 +710,7 @@
                 ID="sbFormaVolumetriaDetalle" 
                 runat="server" 
                 Cls="x-colorToolbar" 
-                Text="BORRADOR" />
+                Text="SIN AFECTAR" />
             </BottomBar>
         </ext:FormPanel>
 
