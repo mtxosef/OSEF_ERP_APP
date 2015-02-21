@@ -296,3 +296,5 @@
 -----------------------------------------------------------------------------------
 -- ImagenVolumetriaD (Insertar)
 :r c:\SqlServerScripts\Insertar\ImagenVolumetriaD\web_spI_InsertarImagenVolumetriaD.sql
+-- ImagenVolumetriaD (Consultar)
+:r c:\SqlServerScripts\Consultar\ImagenVolumetriaD\web_spS_ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto.sql

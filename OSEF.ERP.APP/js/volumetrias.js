@@ -329,6 +329,10 @@ var validaConcluidos = function (a, d, f) {
 
         return false;
     }
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        return false;
+    }
 
     else { 
         return true
@@ -339,7 +343,6 @@ var validaConcluidos = function (a, d, f) {
 //Evento lanzado al agregar un registro al store
 var sVolumetria_Add = function (avance, registro) {
 
-   // var botonCargarFotos = App.gpVolumetriaDetalle.columns[4];
 
     //Valida el estatus para ver si permite seguir capturando o no
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
@@ -360,6 +363,29 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
+
+    }
+
+    //Valida el estatus para ver si permite seguir capturando o no
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CANCELADO') {
+
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.cmbPreciario.setValue(registro[0].get('Preciario'));
+        App.txtfDescripcionPreciario.setValue(registro[0].get('RPreciario').Descripcion);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+
+        //Deshabilita los campos en un movimiento afectado
+        App.cmbMov.setReadOnly(true);
+        App.cmbPreciario.setDisabled(true);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
+        App.imgbtnCancelar.setDisabled(true);
 
     }
 
@@ -558,12 +584,21 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
     }
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO' ) {
 
         //Toma el primer elemento de la columna para poder desabilitarlo
         var botonEliminar = toolbar.items.get(0);
         botonEliminar.setDisabled(true);
-        botonEliminar.setTooltip("No se puede borrar un concepto en una captura concluida");
+        botonEliminar.setTooltip("No se puede borrar un concepto");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO' ) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonEliminar = toolbar.items.get(0);
+        botonEliminar.setDisabled(true);
+        botonEliminar.setTooltip("No se puede borrar un concepto");
     }
 
 };
@@ -579,6 +614,16 @@ var ccAccionesFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) 
         var botonCargar = toolbar.items.get(0);
         botonCargar.setDisabled(true);
         botonCargar.setTooltip("No se pueden cargar fotos a un movimiento concluido");
+    }
+
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar fotos a un movimiento cancelado");
     }
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
