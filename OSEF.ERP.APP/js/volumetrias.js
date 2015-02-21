@@ -13,19 +13,20 @@ var imgbtnNuevo_Click = function () {
 var imgbtnFormaNuevo_Click = function () {
 
     var d = new Date();
+
     //Limpiar controles del encabezado
     App.cmbMov.setReadOnly(false);
     App.txtfMovID.setValue(null);
-
     App.cmbPreciario.clearValue();
     App.cmbPreciario.setDisabled(false);
     App.txtfDescripcionPreciario.setValue(null);
-
     App.txtfIDSucursal.setValue('');
     App.txtfSucursalNombre.setValue('');
-    
-   
+
+    App.dfFechaEmision.setDisabled(false);
     App.dfFechaEmision.setValue(d);
+
+
     App.txtfObservaciones.setValue(null);
     App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
 
@@ -123,14 +124,13 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     //Se actualiza el tablero
     window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
 
-    var d = new Date();
+   
     //Limpiar controles del encabezado
     App.cmbMov.setReadOnly(true);
     App.sbFormaVolumetriaDetalle.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     window.parent.App.wEmergente.setTitle('Volumetría Cancelada');
-
-
+   
 
 };
 
@@ -780,4 +780,71 @@ var cSucursal_Renderer = function (valor, metaData, registro) {
 //Regresar el nombre del preciario
 var cPreciario_Renderer = function (valor, metaData, registro) {
     return registro.get('RPreciario').Descripcion;
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbPreciarioFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = registro[0].get('ID');
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sVolumetrias.clearFilter();
+    }
+    else {
+        App.sVolumetrias.filterBy(function (elemento) {
+            if (elemento.get('Preciario') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbEstatusFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sVolumetrias.clearFilter();
+    }
+    else {
+        App.sVolumetrias.filterBy(function (elemento) {
+            if (elemento.get('Estatus') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbUsuarioFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+  
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sVolumetrias.clearFilter();
+    }
+    else {
+        App.sVolumetrias.filterBy(function (elemento) {
+
+            if (elemento.get('Usuario') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
 };

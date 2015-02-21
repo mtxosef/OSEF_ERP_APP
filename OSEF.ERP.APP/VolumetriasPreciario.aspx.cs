@@ -23,6 +23,13 @@ namespace OSEF.AVANCES.SUCURSALES
                 sVolumetrias.DataSource = VolumetriaBusiness.ObtenerRevisiones();
                 sVolumetrias.DataBind();
                 rmVolumetrias.RegisterIcon(Icon.Delete);
+
+                sPreciarios.DataSource = PreciarioBusiness.ObtenerPreciarios();
+                sPreciarios.DataBind();
+
+                sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
+                sUsuarios.DataBind();
+
             }
 
         }

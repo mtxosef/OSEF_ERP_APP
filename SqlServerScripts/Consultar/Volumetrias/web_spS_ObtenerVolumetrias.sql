@@ -44,6 +44,7 @@ BEGIN
 		FechaEmision,
 		Observaciones,
 		Estatus,
+		Usuario,
 		Preciario
 	FROM
 		Volumetrias

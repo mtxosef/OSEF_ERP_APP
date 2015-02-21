@@ -46,6 +46,7 @@
                         <ext:ModelField Name="FechaEmision" Type="Date" />
                         <ext:ModelField Name="Observaciones" Type="String" />
                         <ext:ModelField Name="Estatus" Type="String" />
+                        <ext:ModelField Name="Usuario" Type="String" />
                         <ext:ModelField Name="RSucursal" Type="Object" />
                         <ext:ModelField Name="Preciario" Type="String" />
                         <ext:ModelField Name="RPreciario" Type="Object" />

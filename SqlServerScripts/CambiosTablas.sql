@@ -24,4 +24,6 @@ ALTER TABLE Volumetrias ADD OrigenID VARCHAR(50) NULL
 --Cambio 18 de Febrero 2015
 ALTER TABLE PreciarioConceptos ADD Utilizada DECIMAL(10,2) NULL
 
+--Cambio 21 de Febrero 2015
+ALTER TABLE Volumetrias ADD Usuario VARCHAR(50)NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
 

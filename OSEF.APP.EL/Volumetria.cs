@@ -23,6 +23,9 @@ namespace OSEF.APP.EL
         Preciario rpreciario;
         string origen;
         string origenid;
+        string usuario;
+
+      
 
     
 
@@ -107,6 +110,12 @@ namespace OSEF.APP.EL
             set { origenid = value; }
         }
 
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
         #endregion
 
 

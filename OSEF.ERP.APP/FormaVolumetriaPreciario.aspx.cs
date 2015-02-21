@@ -205,6 +205,12 @@ namespace OSEF.AVANCES.SUCURSALES
             if (oVolumetria == null)
             {
                 oVolumetriaForma.Estatus = "BORRADOR";
+
+
+                //Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                oVolumetriaForma.Usuario = oUsuario.ID;
+
                 //3. Insertar en la base de datos
                 oVolumetriaForma.ID = VolumetriaBusiness.insertarVolumetria(oVolumetriaForma);
 
@@ -220,7 +226,8 @@ namespace OSEF.AVANCES.SUCURSALES
                     Preciario = oVolumetriaForma.Preciario,
                     RPreciario = oVolumetriaForma.RPreciario,
                     RSucursal = oVolumetriaForma.RSucursal,
-                    Estatus = oVolumetriaForma.Estatus
+                    Estatus = oVolumetriaForma.Estatus,
+                    Usuario = oVolumetriaForma.Usuario
                 });
 
                 //5. Guardar Detalle y regresar valor

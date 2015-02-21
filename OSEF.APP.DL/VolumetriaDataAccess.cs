@@ -72,6 +72,11 @@ namespace OSEF.APP.DL
                sqlpEstatus.SqlDbType = SqlDbType.VarChar;
                sqlpEstatus.Value = iVolumetria.Estatus;
 
+               SqlParameter sqlpUsuario = new SqlParameter();
+               sqlpUsuario.ParameterName = "@Usuario";
+               sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+               sqlpUsuario.Value = iVolumetria.Usuario;
+
                SqlParameter sqlpPreciario = new SqlParameter();
                sqlpPreciario.ParameterName = "@Preciario";
                sqlpPreciario.SqlDbType = SqlDbType.Char;
@@ -86,6 +91,7 @@ namespace OSEF.APP.DL
                sqlcComando.Parameters.Add(sqlpFechaEmision);
                sqlcComando.Parameters.Add(sqlpObservaciones);
                sqlcComando.Parameters.Add(sqlpEstatus);
+               sqlcComando.Parameters.Add(sqlpUsuario);
                sqlcComando.Parameters.Add(sqlpPreciario);
 
                //4. Abrir la conexión
