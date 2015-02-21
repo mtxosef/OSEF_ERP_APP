@@ -107,13 +107,42 @@ var imgbtnBorrar_Click_Success = function (response, result) {
 
 
 
+//Para el botón de cancelar, cancela un registro
+var imgbtnCancelar_Click_Success = function (response, result) {
+
+    Ext.Msg.show({
+        id: 'msgVolumetrias',
+        title: 'Advertencia Volumetrias',
+        msg: 'Se ha cancelado el movimiento',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.WARNING
+    });
+
+    //Se actualiza el tablero
+    window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
+
+    var d = new Date();
+    //Limpiar controles del encabezado
+    App.cmbMov.setReadOnly(true);
+    App.sbFormaVolumetriaDetalle.setText('CANCELADO');
+    App.imgbtnCancelar.setDisabled(true);
+    window.parent.App.wEmergente.setTitle('Volumetría Cancelada');
+
+
+
+};
+
+
+
 //Concatenar la columna de Movimiento
 var cMov_Renderer = function (valor, metaData, registro) {
     var estatus = registro.get('Estatus');
 
     switch (estatus) {
         case 'BORRADOR':
-            return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="borrador" />' + registro.get('Mov') +" "+ registro.get('MovID');
+            return '<img class="IconColumnaEstatus" src="images/borrador.png" alt="borrador" />' + registro.get('Mov') +" "+ registro.get('MovID');
         case 'PENDIENTE':
             return '<img class="IconColumnaEstatus" src="images/pendiente.png" alt="pendiente" /> ' + registro.get('Mov') + " " + registro.get('MovID');
         case 'CONCLUIDO':

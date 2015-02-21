@@ -325,7 +325,7 @@ namespace OSEF.APP.DL
                throw new Exception("Error capa de datos (public static Volumetria ObtenerVolumetriaPorID(int " + iID + ")): " + ex.Message);
            }
        }
-
+       #endregion
 
        #region Acciones
 
@@ -427,8 +427,51 @@ namespace OSEF.APP.DL
            }
        }
 
-       #endregion
 
+       /// <summary>
+       /// Método que cancela un movimiento de Volumetria
+       /// </summary>
+       /// <param name="iID"></param>
+       /// <param name="strMov"></param>
+       /// <returns></returns>
+       public static int CancelarVolumetriaPorID(int iID)
+       {
+           try
+           {
+               //1. Configurar la conexión y el tipo de comando
+               SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+               SqlCommand sqlcComando = new SqlCommand();
+               sqlcComando.Connection = sqlcConectar;
+               sqlcComando.CommandType = CommandType.StoredProcedure;
+               sqlcComando.CommandText = "web_spS_CancelarVolumetriaPorID";
+
+               //2. Declarar los parametros
+               SqlParameter sqlpID = new SqlParameter();
+               sqlpID.ParameterName = "@ID";
+               sqlpID.SqlDbType = SqlDbType.Int;
+               sqlpID.Value = iID;
+
+
+               //3. Agregar los parametros al comando
+               sqlcComando.Parameters.Add(sqlpID);
+
+               //4. Abrir la conexión
+               sqlcComando.Connection.Open();
+
+               //5. Ejecutar la instrucción SCALAR que regresa un valor
+               int result = sqlcComando.ExecuteNonQuery();
+
+               //6. Cerrar la conexión
+               sqlcComando.Connection.Close();
+
+               //7. Regresar el resultado
+               return Convert.ToInt32(sqlcComando.Parameters["@ID"].Value);
+           }
+           catch (Exception ex)
+           {
+               throw new Exception("Error capa de datos (public static int CancelarVolumetriaPorID(int " + iID + ")): " + ex.Message);
+           }
+       }
 
        #endregion
    }

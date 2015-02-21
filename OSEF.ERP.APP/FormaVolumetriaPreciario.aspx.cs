@@ -269,6 +269,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 {
                     sd.Volumetria = oVolumetriaForma.ID;
                     VolumetriaDBusiness.Insertar(sd);
+                    PreciarioConceptoBusiness.Actualizar(sd.ConceptoID,sd.Utilizada);
                 }
             }
         }
@@ -311,6 +312,23 @@ namespace OSEF.AVANCES.SUCURSALES
             VolumetriaDBusiness.BorrarPorVolumetria(strID);
             VolumetriaBusiness.Borrar(strID);
            
+        }
+
+
+        /// <summary>
+        /// Método para cancelar un registro
+        /// </summary>
+        /// <param name="strID"></param>
+        protected void imgbtnCancelar_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener registro que se quiere cancelar
+            string strcookieEditarVolumetria = Cookies.GetCookie("cookieEditarVolumetria").Value;
+            int strID = Convert.ToInt32(strcookieEditarVolumetria);
+
+            //Cambia el estatus del movimiento
+            VolumetriaBusiness.CancelaVolumetriaPorID(strID);
+            //Aqui se mandaria llamar el mismo sp para cancelar el preciario y devolverlo a sus cantidades iniciales
+
         }
         
 

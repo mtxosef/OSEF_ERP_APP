@@ -228,6 +228,21 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
+                             <DirectEvents>
+                                <Click OnEvent="imgbtnCancelar_Click" Success="imgbtnCancelar_Click_Success">
+                                    <Confirmation
+                                        ConfirmRequest="true"
+                                        Title="Eliminar"
+                                        Message="¿Deseas cancelar el movimiento?">
+                                    </Confirmation>
+                                    <EventMask
+                                        ShowMask="true"
+                                        Target="CustomTarget"
+                                        Msg="Cancelando registro">
+                                    </EventMask>
+                                    
+                                </Click>
+                             </DirectEvents>
                         </ext:ImageButton>
                         <ext:ToolbarSpacer
                             ID="tbsSegundoEspacio"

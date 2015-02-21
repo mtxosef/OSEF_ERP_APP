@@ -34,7 +34,7 @@ namespace OSEF.ERP.APP
             //2. Avanzar una revisión
             if (strFin)
             {
-                int iIDNuevo = VolumetriaBusiness.AvanzarRevisionPorID(iID, rFin.InputValue);
+                int iIDNuevo = VolumetriaBusiness.AvanzarVolumetriaPorID(iID, rFin.InputValue);
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("captura", iIDNuevo.ToString(), ParameterMode.Auto));
             }
         }

@@ -39,6 +39,7 @@ CREATE PROCEDURE web_spI_InsertarPreciarioConcepto
 	@Unidad			VARCHAR(30),
 	@Costo			DECIMAL(20,2),
 	@Cantidad		DECIMAL(10,2),
+	@Utilizada		DECIMAL(10,2),
 	@Importe		DECIMAL(20,2),
 	@Estatus		VARCHAR(20),
 	@FechaAlta		SMALLDATETIME
@@ -118,6 +119,7 @@ BEGIN
 			Unidad,
 			Costo,
 			Cantidad,
+			Utilizada,
 			Importe,
 			Estatus,
 			FechaAlta
@@ -134,6 +136,7 @@ BEGIN
 			@Unidad,
 			@Costo,
 			@Cantidad,
+			@Utilizada,
 			@Importe,
 			@Estatus,
 			@FechaAlta
