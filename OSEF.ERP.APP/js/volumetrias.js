@@ -375,7 +375,12 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         App.imgbtnBorrar.setDisabled(false);
         //Actualiza al estatus BORRADOR de la captura
         App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
-
+        //App.ccFotos.cache[0].items.get(0).setDisabled(false);
+        //App.ccFotos.cache[0].items.get(1).setDisabled(true);
+        //App.gpVolumetriaDetalle.getView().refresh();
+        //console.log(App.ccFotos.cache[0].items.get(1));
+        //console.log(App.ccFotos.getGridColumns());
+        //App.ccFotos.fireEvent('ccAccionesFotos_PrepareToolbar', App.gpVolumetriaDetalle, App.ccFotos.cache[0], 0, App.sConceptos.getAt(0));
     }
     else {
         Ext.Msg.show({
@@ -541,8 +546,8 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 
 //Validaciones de comandos para fotos
-var ccAccionesFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-
+var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+    //alert('Si entro');
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
@@ -689,12 +694,23 @@ function DeshabilitarControlesAfectar() {
 
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
-    App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
-    App.wEmergente.setHeight(350);
-    App.wEmergente.setWidth(600);
-    App.wEmergente.center();
-    App.wEmergente.setTitle('Cargar Fotografías');
-    App.wEmergente.show();
+
+    if (nombre == 'cnCargarFotos') {
+        App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
+        App.wEmergente.setHeight(350);
+        App.wEmergente.setWidth(600);
+        App.wEmergente.center();
+        App.wEmergente.setTitle('Cargar Fotografías');
+        App.wEmergente.show();
+    }
+    else {
+        App.wEmergente.load('FormaImagenesPreciarios.aspx');
+        App.wEmergente.setHeight(520);
+        App.wEmergente.setWidth(680);
+        App.wEmergente.center();
+        App.wEmergente.setTitle('Visualizar Fotografías');
+        App.wEmergente.show();
+    }
 };
 
 

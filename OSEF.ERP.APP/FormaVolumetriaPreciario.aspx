@@ -655,7 +655,7 @@
                                                 Text="Fotos"
                                                 runat="server"
                                                 Width="85">
-                                                 <PrepareToolbar Fn="ccAccionesFotos_PrepareToolbar" />
+                                                <PrepareToolbar Fn="ccFotos_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="ImageAdd"

@@ -8,10 +8,7 @@
     <ext:XScript runat="server">
         <script>
             var prepareData = function (data) {
-                data.Nombre = Ext.util.Format.ellipsis(data.name, 15);
-                data.sizeString = Ext.util.Format.fileSize(data.size);
-                data.dateString = Ext.Date.format(data.lastmod, "m/d/Y g:i a");
-
+                data.Nombre = Ext.util.Format.ellipsis(data.Nombre, 50);
                 return data;
             };
         </script>
@@ -21,6 +18,7 @@
             background: white;
             font: 11px Arial, Helvetica, sans-serif;
         }
+        
         .images-view .thumb {
             background: #dddddd;
             padding: 3px;
@@ -32,8 +30,8 @@
         }
 
         .images-view .thumb img {
-            height: 60px;
-            width: 80px;
+            height: 120px;
+            width: 140px;
         }
 
         .images-view .thumb-wrap {
@@ -47,7 +45,7 @@
             display: block;
             overflow: hidden;
             text-align: center;
-            width: 86px; // for ie to ensure that the text is centered
+            width: 146px; // for ie to ensure that the text is centered
         }
 
         .images-view .x-item-over{
@@ -115,16 +113,6 @@
             </Model>
         </ext:Store>
 
-        <ext:Panel
-            ID="Panel1"
-            runat="server"
-            Cls="images-view"
-            Frame="true"
-            Width="600"
-            Collapsible="true"
-            Layout="FitLayout"
-            Title="Imagenes conceptos preciario">
-            <Items>
                 <ext:DataView
                     ID="dvImagenesPreciarios"
                     runat="server"
@@ -133,12 +121,13 @@
                     StoreID="sImagenesVolumetriasD"
                     MultiSelect="true"
                     OverItemCls="x-item-over"
-                    TrackOver="true">
+                    TrackOver="true"
+                    Cls="images-view">
                     <Tpl ID="Tpl1" runat="server">
                         <Html>
                             <tpl for=".">
                                 <div class="thumb-wrap" id="{Nombre}">
-                                    <div class="thumb"><img src="{Direccion}" title="{Nombre}" width="100" height="100"></img></div>
+                                    <div class="thumb"><img src="{Direccion}" title="{Nombre}"></img></div>
                                     <span class="x-editable">{Nombre}</span>
                                 </div>
                             </tpl>
@@ -147,8 +136,6 @@
                     </Tpl>
                     <PrepareData Fn="prepareData" />
                 </ext:DataView>
-            </Items>
-        </ext:Panel>
 
     </form>
 </body>
