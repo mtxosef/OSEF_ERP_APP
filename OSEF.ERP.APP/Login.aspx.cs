@@ -68,7 +68,10 @@ namespace OSEF.AVANCES.SUCURSALES
 
                 Session["Usuario"] = oUsuario;
 
-                string id = Convert.ToString(oUsuario);
+
+             
+
+                string id = JSON.Serialize(oUsuario);
                 tkt = new FormsAuthenticationTicket(1, strUsuario, DateTime.Now, DateTime.Now.AddMinutes(60), true, id);
                 cookiestr = FormsAuthentication.Encrypt(tkt);
                 ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);

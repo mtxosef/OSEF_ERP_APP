@@ -22,9 +22,9 @@ namespace OSEF.APP.EL
         bool bloqueado;
         bool enlinea;
         DateTime fechaalta;
-        DateTime fechabloqueo;
-        DateTime ultimoacceso;
-        DateTime cambiocontrasena;
+        Nullable<DateTime> fechabloqueo;
+        Nullable<DateTime> ultimoacceso;
+        Nullable<DateTime> cambiocontrasena;
 
         #endregion
 
@@ -91,19 +91,19 @@ namespace OSEF.APP.EL
             set { fechaalta = value; }
         }
 
-        public DateTime FechaBloqueo
+        public Nullable<DateTime> FechaBloqueo
         {
             get { return fechabloqueo; }
             set { fechabloqueo = value; }
         }
 
-        public DateTime UltimoAcceso
+        public Nullable<DateTime> UltimoAcceso
         {
             get { return ultimoacceso; }
             set { ultimoacceso = value; }
         }
 
-        public DateTime CambioContrasena
+        public Nullable<DateTime> CambioContrasena
         {
             get { return cambiocontrasena; }
             set { cambiocontrasena = value; }

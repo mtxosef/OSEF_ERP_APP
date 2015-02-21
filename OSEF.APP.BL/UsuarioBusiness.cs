@@ -6,7 +6,7 @@ using OSEF.APP.EL;
 using OSEF.APP.DL;
 using System.Web.UI;
 using System.Web.Security;
-
+using Ext.Net;
 namespace OSEF.APP.BL
 {
     /// <summary>
@@ -111,9 +111,14 @@ namespace OSEF.APP.BL
                 FormsIdentity ident = ((FormsIdentity)c.Page.User.Identity);
                 FormsAuthenticationTicket ticket = ident.Ticket;
 
+
+
                 if ((c.Page.Session["Usuario"] == null))
                 {
-                    c.Page.Session["Usuario"] = ticket.UserData;
+                    Usuario oUsuario = JSON.Deserialize<Usuario>(ticket.UserData);
+                    c.Page.Session["Usuario"] = oUsuario;
+                    
+
                 }
             }
             catch (Exception ex)

@@ -53,6 +53,8 @@
                         <ext:ModelField Name="FechaBloqueo" Type="Date" />
                         <ext:ModelField Name="UltimoAcceso" Type="Date" />
                         <ext:ModelField Name="CambioContrasena" Type="Date" />
+
+
                     </Fields>
                 </ext:Model>
             </Model>
@@ -94,6 +96,9 @@
                                                 </Listeners>
                                             </ext:MenuItem>
                                             <ext:MenuItem ID="miCerrarSesion" runat="server" Text="Cerrar sesión">
+                                                   <DirectEvents>
+                                                        <Click  OnEvent="miCerrarSesionClick"></Click>
+                                                   </DirectEvents>
                                             </ext:MenuItem>
                                         </Items>
                                     </ext:Menu>

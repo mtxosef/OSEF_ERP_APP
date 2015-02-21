@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using OSEF.APP.EL;
 using OSEF.APP.BL;
+using System.Web.Security;
 
 namespace OSEF.AVANCES.SUCURSALES
 {
@@ -45,5 +46,22 @@ namespace OSEF.AVANCES.SUCURSALES
                 CambioContrasena = oUsuario.CambioContrasena
             });
         }
+
+
+        /// <summary>
+        /// Evento de clic del botón de cerrar Sesión
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void miCerrarSesionClick(object sender, DirectEventArgs e)
+        {
+        
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx", true);
+            
+        }
+
+
+
     }
 }
