@@ -13,19 +13,20 @@ var imgbtnNuevo_Click = function () {
 var imgbtnFormaNuevo_Click = function () {
 
     var d = new Date();
+
     //Limpiar controles del encabezado
     App.cmbMov.setReadOnly(false);
     App.txtfMovID.setValue(null);
-
     App.cmbPreciario.clearValue();
     App.cmbPreciario.setDisabled(false);
     App.txtfDescripcionPreciario.setValue(null);
-
     App.txtfIDSucursal.setValue('');
     App.txtfSucursalNombre.setValue('');
-    
-   
+
+    App.dfFechaEmision.setDisabled(false);
     App.dfFechaEmision.setValue(d);
+
+
     App.txtfObservaciones.setValue(null);
     App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
 
@@ -107,13 +108,41 @@ var imgbtnBorrar_Click_Success = function (response, result) {
 
 
 
+//Para el botón de cancelar, cancela un registro
+var imgbtnCancelar_Click_Success = function (response, result) {
+
+    Ext.Msg.show({
+        id: 'msgVolumetrias',
+        title: 'Advertencia Volumetrias',
+        msg: 'Se ha cancelado el movimiento',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.WARNING
+    });
+
+    //Se actualiza el tablero
+    window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
+
+   
+    //Limpiar controles del encabezado
+    App.cmbMov.setReadOnly(true);
+    App.sbFormaVolumetriaDetalle.setText('CANCELADO');
+    App.imgbtnCancelar.setDisabled(true);
+    window.parent.App.wEmergente.setTitle('Volumetría Cancelada');
+   
+
+};
+
+
+
 //Concatenar la columna de Movimiento
 var cMov_Renderer = function (valor, metaData, registro) {
     var estatus = registro.get('Estatus');
 
     switch (estatus) {
         case 'BORRADOR':
-            return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="borrador" />' + registro.get('Mov') +" "+ registro.get('MovID');
+            return '<img class="IconColumnaEstatus" src="images/borrador.png" alt="borrador" />' + registro.get('Mov') +" "+ registro.get('MovID');
         case 'PENDIENTE':
             return '<img class="IconColumnaEstatus" src="images/pendiente.png" alt="pendiente" /> ' + registro.get('Mov') + " " + registro.get('MovID');
         case 'CONCLUIDO':
@@ -300,6 +329,10 @@ var validaConcluidos = function (a, d, f) {
 
         return false;
     }
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        return false;
+    }
 
     else { 
         return true
@@ -310,7 +343,6 @@ var validaConcluidos = function (a, d, f) {
 //Evento lanzado al agregar un registro al store
 var sVolumetria_Add = function (avance, registro) {
 
-   // var botonCargarFotos = App.gpVolumetriaDetalle.columns[4];
 
     //Valida el estatus para ver si permite seguir capturando o no
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
@@ -331,6 +363,29 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
+
+    }
+
+    //Valida el estatus para ver si permite seguir capturando o no
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CANCELADO') {
+
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.cmbPreciario.setValue(registro[0].get('Preciario'));
+        App.txtfDescripcionPreciario.setValue(registro[0].get('RPreciario').Descripcion);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+
+        //Deshabilita los campos en un movimiento afectado
+        App.cmbMov.setReadOnly(true);
+        App.cmbPreciario.setDisabled(true);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
+        App.imgbtnCancelar.setDisabled(true);
 
     }
 
@@ -534,12 +589,21 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
     }
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO' ) {
 
         //Toma el primer elemento de la columna para poder desabilitarlo
         var botonEliminar = toolbar.items.get(0);
         botonEliminar.setDisabled(true);
-        botonEliminar.setTooltip("No se puede borrar un concepto en una captura concluida");
+        botonEliminar.setTooltip("No se puede borrar un concepto");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO' ) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonEliminar = toolbar.items.get(0);
+        botonEliminar.setDisabled(true);
+        botonEliminar.setTooltip("No se puede borrar un concepto");
     }
 
 };
@@ -555,6 +619,16 @@ var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
         var botonCargar = toolbar.items.get(0);
         botonCargar.setDisabled(true);
         botonCargar.setTooltip("No se pueden cargar fotos a un movimiento concluido");
+    }
+
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar fotos a un movimiento cancelado");
     }
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
@@ -722,4 +796,71 @@ var cSucursal_Renderer = function (valor, metaData, registro) {
 //Regresar el nombre del preciario
 var cPreciario_Renderer = function (valor, metaData, registro) {
     return registro.get('RPreciario').Descripcion;
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbPreciarioFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = registro[0].get('ID');
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sVolumetrias.clearFilter();
+    }
+    else {
+        App.sVolumetrias.filterBy(function (elemento) {
+            if (elemento.get('Preciario') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbEstatusFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sVolumetrias.clearFilter();
+    }
+    else {
+        App.sVolumetrias.filterBy(function (elemento) {
+            if (elemento.get('Estatus') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbUsuarioFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+  
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sVolumetrias.clearFilter();
+    }
+    else {
+        App.sVolumetrias.filterBy(function (elemento) {
+
+            if (elemento.get('Usuario') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
 };

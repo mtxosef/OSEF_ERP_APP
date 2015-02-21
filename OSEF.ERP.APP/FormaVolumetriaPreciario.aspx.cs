@@ -205,6 +205,12 @@ namespace OSEF.AVANCES.SUCURSALES
             if (oVolumetria == null)
             {
                 oVolumetriaForma.Estatus = "BORRADOR";
+
+
+                //Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                oVolumetriaForma.Usuario = oUsuario.ID;
+
                 //3. Insertar en la base de datos
                 oVolumetriaForma.ID = VolumetriaBusiness.insertarVolumetria(oVolumetriaForma);
 
@@ -220,7 +226,8 @@ namespace OSEF.AVANCES.SUCURSALES
                     Preciario = oVolumetriaForma.Preciario,
                     RPreciario = oVolumetriaForma.RPreciario,
                     RSucursal = oVolumetriaForma.RSucursal,
-                    Estatus = oVolumetriaForma.Estatus
+                    Estatus = oVolumetriaForma.Estatus,
+                    Usuario = oVolumetriaForma.Usuario
                 });
 
                 //5. Guardar Detalle y regresar valor
@@ -269,6 +276,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 {
                     sd.Volumetria = oVolumetriaForma.ID;
                     VolumetriaDBusiness.Insertar(sd);
+                    PreciarioConceptoBusiness.Actualizar(sd.ConceptoID,sd.Utilizada);
                 }
             }
         }
@@ -311,6 +319,23 @@ namespace OSEF.AVANCES.SUCURSALES
             VolumetriaDBusiness.BorrarPorVolumetria(strID);
             VolumetriaBusiness.Borrar(strID);
            
+        }
+
+
+        /// <summary>
+        /// Método para cancelar un registro
+        /// </summary>
+        /// <param name="strID"></param>
+        protected void imgbtnCancelar_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener registro que se quiere cancelar
+            string strcookieEditarVolumetria = Cookies.GetCookie("cookieEditarVolumetria").Value;
+            int strID = Convert.ToInt32(strcookieEditarVolumetria);
+
+            //Cambia el estatus del movimiento
+            VolumetriaBusiness.CancelaVolumetriaPorID(strID);
+            //Aqui se mandaria llamar el mismo sp para cancelar el preciario y devolverlo a sus cantidades iniciales
+
         }
         
 

@@ -112,9 +112,22 @@ namespace OSEF.APP.BL
         /// <param name="iID"></param>
         /// <param name="strMov"></param>
         /// <returns></returns>
-        public static int AvanzarRevisionPorID(int iID, string strMov)
+        public static int AvanzarVolumetriaPorID(int iID, string strMov)
         {
             return VolumetriaDataAccess.AvanzarVolumetriaPorID(iID, strMov);
+        }
+
+
+
+        /// <summary>
+        /// Método que cancela un movimiento de Volumetrias
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <param name="strMov"></param>
+        /// <returns></returns>
+        public static int CancelaVolumetriaPorID(int iID)
+        {
+            return VolumetriaDataAccess.CancelarVolumetriaPorID(iID);
         }
 
         #endregion

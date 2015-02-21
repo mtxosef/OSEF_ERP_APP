@@ -281,6 +281,7 @@
 -- Volumetrias (Acción)
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spS_AfectarVolumetriaPorID.sql
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spS_AvanzarVolumetriaPorID.sql
+:r c:\SqlServerScripts\Accion\Volumetrias\web_spS_CancelarVolumetriaPorID.sql
 -----------------------------------------------------------------------------------
 -- VolumetriasD (Borrar)
 :r c:\SqlServerScripts\Borrar\VolumetriasD\web_spD_BorrarVolumetriaD.sql
@@ -295,3 +296,5 @@
 -----------------------------------------------------------------------------------
 -- ImagenVolumetriaD (Insertar)
 :r c:\SqlServerScripts\Insertar\ImagenVolumetriaD\web_spI_InsertarImagenVolumetriaD.sql
+-- ImagenVolumetriaD (Consultar)
+:r c:\SqlServerScripts\Consultar\ImagenVolumetriaD\web_spS_ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto.sql

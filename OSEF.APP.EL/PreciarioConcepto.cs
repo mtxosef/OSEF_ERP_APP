@@ -22,6 +22,7 @@ namespace OSEF.APP.EL
         string unidad;
         decimal costo;
         decimal cantidad;
+        decimal utilizada;
         decimal importe;
         string estatus;
         DateTime fechaalta;
@@ -94,6 +95,12 @@ namespace OSEF.APP.EL
         {
             get { return cantidad; }
             set { cantidad = value; }
+        }
+
+        public decimal Utilizada
+        {
+            get { return utilizada; }
+            set { utilizada = value; }
         }
 
         public decimal Importe

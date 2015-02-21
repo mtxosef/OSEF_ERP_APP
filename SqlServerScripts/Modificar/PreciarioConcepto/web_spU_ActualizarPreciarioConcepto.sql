@@ -30,16 +30,8 @@ GO
 CREATE PROCEDURE web_spU_ActualizarPreciarioConcepto
 	-- Add the parameters for the stored procedure here
 	@ID				CHAR(10),
-	@Preciario		VARCHAR(50),
-	@Descripcion	VARCHAR(2000),
-	@Categoria		VARCHAR(100),
-	@SubCategoria	VARCHAR(100),
-	@SubSubCategoria VARCHAR(100),
-	@Unidad			VARCHAR(100),
-	@Costo			DECIMAL(20,2),
-	@Cantidad		DECIMAL(10,2),
-	@Importe		DECIMAL(20,2),
-	@Estatus		VARCHAR(20)
+	@Utilizada		DECIMAL(10,2)
+
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -50,18 +42,7 @@ BEGIN
     UPDATE
 		PreciarioConceptos
 	SET
-		
-		Preciario =@Preciario,
-		Descripcion = @Descripcion,
-		Categoria = @Categoria,
-		SubCategoria = @SubCategoria,
-		SubSubCategoria = @SubSubCategoria,
-		Unidad = @Categoria,
-		Costo = @Unidad,
-		Cantidad = @Cantidad,
-		Importe= @Costo,
-		Estatus = @Estatus
-		
+		Utilizada =@Utilizada
 	WHERE
 		ID = @ID
 END

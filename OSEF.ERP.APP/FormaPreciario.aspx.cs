@@ -138,6 +138,7 @@ namespace OSEF.AVANCES.SUCURSALES
                         pc.SubSubCategoria = subsubcategoria;
                         pc.Unidad = sd.Unidad;
                         pc.Cantidad = sd.Cantidad;
+                        pc.Utilizada = sd.Utilizada;
                         pc.Costo = sd.Costo;
                         pc.Importe = sd.Importe;
                         PreciarioConceptoBusiness.Insertar(pc);
@@ -284,6 +285,7 @@ namespace OSEF.AVANCES.SUCURSALES
                             Descripcion = row["Concepto"],
                             Unidad = row["Unidad"],
                             Cantidad = row["Cantidad"],
+                            Utilizada = row["Cantidad"],
                             Costo = row["Precio"],
                             Importe = row["Importe"],
                             Categoria = "",
@@ -307,6 +309,7 @@ namespace OSEF.AVANCES.SUCURSALES
                             Descripcion = row["Concepto"],
                             Unidad = row["Unidad"],
                             Cantidad = row["Cantidad"],
+                            Utilizada = row["Cantidad"],
                             Costo = row["Precio"],
                             Importe = row["Importe"],
                             Categoria = categoria,
@@ -329,6 +332,7 @@ namespace OSEF.AVANCES.SUCURSALES
                             Descripcion = row["Concepto"],
                             Unidad = row["Unidad"],
                             Cantidad = row["Cantidad"],
+                            Utilizada = row["Cantidad"],
                             Costo = row["Precio"],
                             Importe = row["Importe"],
                             Categoria = categoria,
@@ -351,6 +355,7 @@ namespace OSEF.AVANCES.SUCURSALES
                            Descripcion = row["Concepto"],
                            Unidad = row["Unidad"],
                            Cantidad = row["Cantidad"],
+                           Utilizada = row["Cantidad"],
                            Costo = row["Precio"],
                            Importe = row["Importe"],
                            Categoria = categoria,

@@ -84,36 +84,51 @@
                             Disabled="true">
                         </ext:ImageButton>
 
-                        <ext:ToolbarSpacer ID="ToolbarSpacer1" runat="server" Width="50">
-                        </ext:ToolbarSpacer> 
+                        
                           
                       
-                            <ext:ComboBox
-                                ID="cmbEstatus"
-                                runat="server">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="Estatus" />
-                                    <ext:ListItem Index="1" Text="PENDIENTE" />
-                                    <ext:ListItem Index="2" Text="BORRADOR" />
-                                    <ext:ListItem Index="3" Text="CONCLUIDO" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                            </ext:ComboBox>
+                            
                              <ext:ComboBox
                                 ID="cmbUsuario"
-                                runat="server">
+                                runat="server"
+                                DisplayField="Nombre"
+                                ValueField="ID">
                                 <Items>
-                                    <ext:ListItem Index="0" Text="Usuario" />
-                                    <ext:ListItem Index="1" Text="(Todos)" />
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
                                 </Items>
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
+                                <Store>
+                                <ext:Store ID="sUsuarios" runat="server">
+                                    <Model>
+                                        <ext:Model ID="mUsuarios" runat="server" IDProperty="ID">
+                                            <Fields>
+                                                <ext:ModelField Name="ID" Type="String" />
+                                                <ext:ModelField Name="Correo" Type="String" />
+                                                <ext:ModelField Name="Nombre" Type="String" />
+                                                <ext:ModelField Name="APaterno" Type="String" />
+                                                <ext:ModelField Name="AMaterno" Type="String" />
+                                                <ext:ModelField Name="Estatus" Type="String" />
+                                                <ext:ModelField Name="Bloqueado" Type="Boolean" />
+                                                <ext:ModelField Name="EnLinea" Type="Boolean" />
+                                                <ext:ModelField Name="FechaAlta" Type="Date" />
+                                                <ext:ModelField Name="FechaBloqueo" Type="Date" />
+                                                <ext:ModelField Name="UltimoAcceso" Type="Date" />
+                                                <ext:ModelField Name="CambioContrasena" Type="Date" />
+                                            </Fields>
+                                        </ext:Model>
+                                    </Model>
+                                </ext:Store>
+                                </Store>
+                                 <Listeners>
+                                    <Select Fn="cmbUsuarioFiltro_Select" />
+                                </Listeners>
                             </ext:ComboBox>
 
-                        <ext:ToolbarSpacer ID="tbsVolumetrias" runat="server" Width="103">
+                       
+
+                        <ext:ToolbarSpacer ID="tbsVolumetrias" runat="server" Width="338">
                         </ext:ToolbarSpacer>
                         <ext:ImageButton
                             ID="imgbtnActualizar"
@@ -166,6 +181,7 @@
                                 <ext:ModelField Name="FechaEmision" Type="Date" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
                                 <ext:ModelField Name="Estatus" Type="String" />
+                                <ext:ModelField Name="Usuario" Type="String" />
                                 <ext:ModelField Name="Preciario" Type="String" />
                                 <ext:ModelField Name="RSucursal" Type="Object" />
                                 <ext:ModelField Name="RPreciario" Type="Object" />
@@ -203,9 +219,9 @@
                      <ext:DateColumn
                         ID="dcFechaEmision"
                         runat="server"
-                        Text="FECHA REVISIÓN"
+                        Text="FECHA EMISIÓN"
                         Align="Center"
-                        Width="120"
+                        Width="130"
                         DataIndex="FechaEmision"
                         Format="dd/MM/yyyy">
                     </ext:DateColumn>
@@ -216,15 +232,77 @@
                         Align="Center"
                         Width="150"
                         DataIndex="Estatus">
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbFiltroEstatus"
+                                runat="server"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="PENDIENTE" />
+                                    <ext:ListItem Index="2" Text="BORRADOR" />
+                                    <ext:ListItem Index="3" Text="CONCLUIDO" />
+                                    <ext:ListItem Index="4" Text="CANCELADO" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbEstatusFiltro_Select" />
+                                </Listeners>
+                              
+
+                            </ext:ComboBox>
+                        </HeaderItems>
+
+
                     </ext:Column>
                      <ext:Column
                         ID="cPreciario"
                         runat="server"
                         Text="PRECIARIO"
                         Align="Center"
-                        Width="175"
+                        Width="195"
                         DataIndex="Preciario">
                         <Renderer Fn="cPreciario_Renderer" />
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbPreciariosFiltro"
+                                runat="server"
+                                DisplayField="Descripcion"
+                                ValueField="ID"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbPreciarioFiltro_Select" />
+                                </Listeners>
+                                <Store>
+                                    <ext:Store
+                                        ID="sPreciarios"
+                                        runat="server">
+                                        <Model>
+                                            <ext:Model ID="mPreciarios" runat="server" IDProperty="ID">
+                                                <Fields>
+                                                    <ext:ModelField Name="ID" Type="String" />
+                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                    <ext:ModelField Name="Sucursal" Type="String" />
+                                                    <ext:ModelField Name="Estatus" Type="String" />
+                                                </Fields>
+                                            </ext:Model>
+                                        </Model>
+                                    </ext:Store>
+                                </Store>
+
+                            </ext:ComboBox>
+                        </HeaderItems>
+
                     </ext:Column>
                    
                 </Columns>

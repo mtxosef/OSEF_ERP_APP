@@ -85,24 +85,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ImageButton imgbtnBorrar;
         
         /// <summary>
-        /// Control ToolbarSpacer1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ToolbarSpacer ToolbarSpacer1;
-        
-        /// <summary>
-        /// Control cmbEstatus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbEstatus;
-        
-        /// <summary>
         /// Control cmbUsuario.
         /// </summary>
         /// <remarks>
@@ -110,6 +92,24 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbUsuario;
+        
+        /// <summary>
+        /// Control sUsuarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sUsuarios;
+        
+        /// <summary>
+        /// Control mUsuarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mUsuarios;
         
         /// <summary>
         /// Control tbsVolumetrias.
@@ -202,6 +202,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Column cEstatus;
         
         /// <summary>
+        /// Control cmbFiltroEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbFiltroEstatus;
+        
+        /// <summary>
         /// Control cPreciario.
         /// </summary>
         /// <remarks>
@@ -209,6 +218,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cPreciario;
+        
+        /// <summary>
+        /// Control cmbPreciariosFiltro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbPreciariosFiltro;
+        
+        /// <summary>
+        /// Control sPreciarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sPreciarios;
+        
+        /// <summary>
+        /// Control mPreciarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mPreciarios;
         
         /// <summary>
         /// Control gvVolumetrias.

@@ -86,6 +86,11 @@ namespace OSEF.APP.DL
                 sqlpCantidad.SqlDbType = SqlDbType.Decimal;
                 sqlpCantidad.Value = iPreciarioConcepto.Cantidad;
 
+                SqlParameter sqlpUtilizada = new SqlParameter();
+                sqlpUtilizada.ParameterName = "@Utilizada";
+                sqlpUtilizada.SqlDbType = SqlDbType.Decimal;
+                sqlpUtilizada.Value = iPreciarioConcepto.Utilizada;
+
                 SqlParameter sqlpImporte = new SqlParameter();
                 sqlpImporte.ParameterName = "@Importe";
                 sqlpImporte.SqlDbType = SqlDbType.Decimal;
@@ -113,6 +118,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpUnidad);
                 sqlcComando.Parameters.Add(sqlpCosto);
                 sqlcComando.Parameters.Add(sqlpCantidad);
+                sqlcComando.Parameters.Add(sqlpUtilizada);
                 sqlcComando.Parameters.Add(sqlpImporte);
                 sqlcComando.Parameters.Add(sqlpEstatus);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
@@ -142,7 +148,7 @@ namespace OSEF.APP.DL
         /// Método que actualiza un nuevo registro a la tabla de PreciarioConcepto
         /// </summary>
         /// <param name="uPreciarioConcepto"></param>
-        public static int Actualizar(PreciarioConcepto uPreciarioConcepto)
+        public static int Actualizar(string strConcepto, decimal utilizada)
         {
             try
             {
@@ -159,70 +165,19 @@ namespace OSEF.APP.DL
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
                 sqlpID.Size = 10;
-                sqlpID.Value = uPreciarioConcepto.ID;
+                sqlpID.Value = strConcepto;
 
-                SqlParameter sqlpPreciario = new SqlParameter();
-                sqlpPreciario.ParameterName = "@Preciario";
-                sqlpPreciario.SqlDbType = SqlDbType.VarChar;
-                sqlpPreciario.Value = uPreciarioConcepto.Descripcion;
+                SqlParameter sqlpUtilizada = new SqlParameter();
+                sqlpUtilizada.ParameterName = "@Utilizada";
+                sqlpUtilizada.SqlDbType = SqlDbType.Decimal;
+                sqlpUtilizada.Value = utilizada;
 
-                SqlParameter sqlpDescripcion = new SqlParameter();
-                sqlpDescripcion.ParameterName = "@Descripcion";
-                sqlpDescripcion.SqlDbType = SqlDbType.VarChar;
-                sqlpDescripcion.Value = uPreciarioConcepto.Descripcion;
 
-                SqlParameter sqlpCategoria = new SqlParameter();
-                sqlpCategoria.ParameterName = "@Categoria";
-                sqlpCategoria.SqlDbType = SqlDbType.VarChar;
-                sqlpCategoria.Value = uPreciarioConcepto.Categoria;
-
-                SqlParameter sqlpSubCategoria = new SqlParameter();
-                sqlpSubCategoria.ParameterName = "@SubCategoria";
-                sqlpSubCategoria.SqlDbType = SqlDbType.VarChar;
-                sqlpSubCategoria.Value = uPreciarioConcepto.SubCategoria;
-
-                SqlParameter sqlpSubSubCategoria = new SqlParameter();
-                sqlpSubSubCategoria.ParameterName = "@SubSubCategoria";
-                sqlpSubSubCategoria.SqlDbType = SqlDbType.VarChar;
-                sqlpSubSubCategoria.Value = uPreciarioConcepto.SubSubCategoria;
-
-                SqlParameter sqlpUnidad = new SqlParameter();
-                sqlpUnidad.ParameterName = "@Unidad";
-                sqlpUnidad.SqlDbType = SqlDbType.VarChar;
-                sqlpUnidad.Value = uPreciarioConcepto.Unidad;
-
-                SqlParameter sqlpCosto = new SqlParameter();
-                sqlpCosto.ParameterName = "@Costo";
-                sqlpCosto.SqlDbType = SqlDbType.Decimal;
-                sqlpCosto.Value = uPreciarioConcepto.Costo;
-
-                SqlParameter sqlpCantidad = new SqlParameter();
-                sqlpCantidad.ParameterName = "@Cantidad";
-                sqlpCantidad.SqlDbType = SqlDbType.Decimal;
-                sqlpCantidad.Value = uPreciarioConcepto.Cantidad;
-
-                SqlParameter sqlpImporte = new SqlParameter();
-                sqlpImporte.ParameterName = "@Importe";
-                sqlpImporte.SqlDbType = SqlDbType.Decimal;
-                sqlpImporte.Value = uPreciarioConcepto.Importe;
-
-                SqlParameter sqlpEstatus = new SqlParameter();
-                sqlpEstatus.ParameterName = "@Estatus";
-                sqlpEstatus.SqlDbType = SqlDbType.VarChar;
-                sqlpEstatus.Value = uPreciarioConcepto.Estatus;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
-                sqlcComando.Parameters.Add(sqlpPreciario);
-                sqlcComando.Parameters.Add(sqlpDescripcion);
-                sqlcComando.Parameters.Add(sqlpCategoria);
-                sqlcComando.Parameters.Add(sqlpSubCategoria);
-                sqlcComando.Parameters.Add(sqlpSubSubCategoria);
-                sqlcComando.Parameters.Add(sqlpUnidad);
-                sqlcComando.Parameters.Add(sqlpCosto);
-                sqlcComando.Parameters.Add(sqlpCantidad);
-                sqlcComando.Parameters.Add(sqlpImporte);
-                sqlcComando.Parameters.Add(sqlpEstatus);
+                sqlcComando.Parameters.Add(sqlpUtilizada);
+
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -238,7 +193,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Actualizar(PreciarioConcepto " + uPreciarioConcepto.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Actualizar(PreciarioConcepto " + strConcepto + ")): " + ex.Message);
             }
         }
 

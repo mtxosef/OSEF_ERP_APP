@@ -270,6 +270,7 @@
     <Content Include="Global.asax" />
     <Content Include="GruposMenu2.aspx" />
     <Content Include="images\banco.jpg" />
+    <Content Include="images\borrador.png" />
     <Content Include="images\cancelar.png" />
     <Content Include="images\concluido.png" />
     <Content Include="images\fb.png" />

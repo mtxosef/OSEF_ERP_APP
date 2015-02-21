@@ -18,38 +18,47 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerVolumetriasPorID' AND
+			WHERE  name = 'web_spS_CancelarVolumetriaPorID' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerVolumetriasPorID
+	DROP PROCEDURE web_spS_CancelarVolumetriaPorID
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Viernes 05 de Diciembre de 2014
--- Description:	Obtener un registro de Revisiones por su ID
+-- Create date: Martes 03 de Febrero de 2015
+-- Description:	Avanzar un registro de Revisiones por su ID
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerVolumetriasPorID
+CREATE PROCEDURE web_spS_CancelarVolumetriaPorID
 	-- Add the parameters for the stored procedure here
-	@ID	INT
+	@ID			INT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
-	SELECT
-		ID,
-		Mov,
-		MovID,
-		Sucursal,
-		FechaEmision,
-		Observaciones,
-		Estatus,
-		Usuario,
-		Preciario
-	FROM
+    UPDATE 
 		Volumetrias
+    SET
+		Estatus = 'CANCELADO'
 	WHERE
 		ID = @ID
+		
+	-- Regresar cantidades originales a la columna utilizada del Preciario	
+
+	
+	UPDATE PreciarioConceptos
+	SET 
+		Utilizada = VD.Cantidad
+	FROM 
+		PreciarioConceptos
+	INNER JOIN 
+		VolumetriasD VD
+	ON
+		PreciarioConceptos.ID =VD.ConceptoID
+	WHERE VD.Volumetria= @ID
+
+    
 END
 GO
+
+

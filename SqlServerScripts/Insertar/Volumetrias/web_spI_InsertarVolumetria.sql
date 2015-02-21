@@ -36,6 +36,7 @@ CREATE PROCEDURE web_spI_InsertarVolumetria
 	@FechaEmision	SMALLDATETIME,
 	@Observaciones	VARCHAR(200),
 	@Estatus		VARCHAR(20),
+	@Usuario		VARCHAR(50),
 	@Preciario		CHAR(7)
 AS
 BEGIN
@@ -53,6 +54,7 @@ BEGIN
 			FechaEmision,
 			Observaciones,
 			Estatus,
+			Usuario,
 			Preciario
 		)
 	VALUES (
@@ -62,6 +64,7 @@ BEGIN
 			@FechaEmision,
 			@Observaciones,
 			@Estatus,
+			@Usuario,
 			@Preciario
 			)
 	SELECT @ID = SCOPE_IDENTITY()

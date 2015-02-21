@@ -49,6 +49,7 @@ BEGIN
 		Unidad,
 		Costo,
 		Cantidad,
+		Utilizada,
 		Importe,
 		Estatus,
 		FechaAlta

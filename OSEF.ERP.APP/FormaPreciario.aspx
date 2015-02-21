@@ -373,6 +373,7 @@
                                                         <ext:ModelField Name="Descripcion" Type="String" />
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />
+                                                        <ext:ModelField Name="Utilizada" Type="Float" />
                                                         <ext:ModelField Name="Costo" Type="Float" />
                                                         <ext:ModelField Name="Importe" Type="Float" />
                                                         <ext:ModelField Name="Categoria" Type="String" />
@@ -414,6 +415,14 @@
                                                 Align="Center"
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
+                                                Width="100">
+                                            </ext:Column>
+                                            <ext:Column
+                                                ID="cUtilizada"
+                                                runat="server"
+                                                Align="Center"
+                                                Text="Utilizada"
+                                                DataIndex="Utilizada"
                                                 Width="100">
                                             </ext:Column>
                                              <ext:Column
@@ -500,7 +509,7 @@
                 ID="sbFormaPreciario" 
                 runat="server" 
                 Cls="x-colorToolbar" 
-                Text="Sin Validar Información" />
+                Text="BORRADOR" />
             </BottomBar>
              
         </ext:FormPanel>

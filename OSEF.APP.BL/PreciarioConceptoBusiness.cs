@@ -30,9 +30,9 @@ namespace OSEF.APP.BL
         /// </summary>
         /// <param name="uPreciarioConcepto"></param>
         /// <returns></returns>
-        public static int Actualizar(PreciarioConcepto uPreciarioConcepto)
+        public static int Actualizar(string strConcepto, decimal utilizada)
         {
-            return PreciarioConceptosDataAccess.Actualizar(uPreciarioConcepto);
+            return PreciarioConceptosDataAccess.Actualizar(strConcepto,utilizada);
         }
 
         #endregion

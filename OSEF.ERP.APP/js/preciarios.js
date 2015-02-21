@@ -34,6 +34,7 @@ var imgbtnEditar_Click = function () {
 var imgbtnGuardar_Click_Success = function () {
     window.parent.App.wEmergente.hide();
     window.parent.App.pCentro.getBody().App.sPreciarios.reload();
+    App.sbFormaPreciario.setText('ACTIVO');
 };
 
 
@@ -75,9 +76,6 @@ var imgbtnBorrar_Click_Success = function (response, result) {
 var CheckExtension = function (FileUploadField1, file) {
     //Se declara un arreglo con las extenciones que serán permitidas
 
-  
-   
-
     var validFilesTypes = ["xls", "xlsx"];
     //se pasa el parametro que contiene el archivo
     var filePath = file;
@@ -90,10 +88,6 @@ var CheckExtension = function (FileUploadField1, file) {
         //Si la extenvion es igual a la valida la variable es igual a true
         if (ext == validFilesTypes[i]) {
             isValidFile = true;
-
-
-
-
             break;
         }
     }
@@ -210,7 +204,8 @@ var sPreciario_Add = function (avance, registro) {
         App.nfHoja.setDisabled(true);
         App.btnCargar.setDisabled(true);
         App.fufArchivoExcel.setDisabled(true);
-
+        App.sbFormaPreciario.setText(registro[0].get('Estatus'));
+     
     }
 };
 
@@ -229,7 +224,6 @@ var cCategoria_Renderer = function (valor, columna, registro) {
 //Asignar la descripción de la subcategoria a esta columna
 var cSubcategoria_Renderer = function (valor, columna, registro) {
     if (valor.length != 0) {
-        console.log(registro.get('RSubcategoria'));
         var Subcategoria = registro.get('RSubcategoria');
         return Subcategoria.Descripcion;
     }
@@ -247,11 +241,23 @@ var cSubsubcategoria_Renderer = function (valor, columna, registro) {
 
 //Función que valida si se habilita el botón de Guardar
 function HabilitarGuardar() {
-    if (App.cmbSucursal.getValue() != null && App.fufArchivoExcel.getValue().toString() != "" && App.txtfDescripcion.getValue() != "") {
-        App.imgbtnGuardar.setDisabled(false);
-  
+
+
+    //Valida que el control de subir archivo contenga algo, si no, se le asigna un caracter, para que entre a la validacion de habilitarGuarda();
+    var FileUploadValue = "";
+    if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo' && App.fufArchivoExcel.getValue()=="" ) {
+        FileUploadValue = "1";
     }
-    else {
+    if (Ext.util.Cookies.get('cookieEditarPreciario') == 'Nuevo') {
+         FileUploadValue = App.fufArchivoExcel.getValue();
+    }
+
+    //Valida que todos los controles del encabezado obligatorios estén llenos
+    if (App.cmbSucursal.getValue() != null && FileUploadValue != "" && App.txtfDescripcion.getValue() != "") {
+        App.imgbtnGuardar.setDisabled(false);
+    }
+    else 
+    {
         App.imgbtnGuardar.setDisabled(true);
     }
 }
