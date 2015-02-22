@@ -150,6 +150,16 @@
                     ToolTip="Enviar" 
                     Width="50"
                     Height="50">
+                    <DirectEvents>
+                        <Click
+                            OnEvent="imbtnLogin_Click"
+                            Success="txtfEnviarCorreo_SpecialKey_Success">
+                            <ExtraParams>
+                                <ext:Parameter Name="dato" Value="App.txtfEnviarCorreo.getValue()" Mode="Raw" />
+                            </ExtraParams>
+                            <EventMask ShowMask="true" MinDelay="1000" Msg="Enviando correo..." />
+                        </Click>
+                    </DirectEvents>
                 </ext:ImageButton>
             </Buttons>
         </ext:FormPanel>

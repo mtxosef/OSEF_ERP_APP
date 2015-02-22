@@ -76,5 +76,55 @@ namespace OSEF.AVANCES.SUCURSALES
                 }
             }
         }
+
+        /// <summary>
+        /// Evento de click del botón Enviar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void imbtnLogin_Click(object sender, DirectEventArgs e)
+        {
+            string strIDCorreo = e.ExtraParams["dato"];
+            Usuario oUsuario = UsuarioBusiness.ObtenerUsuarioPorIDCorreo(strIDCorreo);
+
+            if (oUsuario == null)
+            {
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
+            }
+            else
+            {
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));
+
+                try
+                {
+
+                    Configuration c = WebConfigurationManager.OpenWebConfiguration(HttpContext.Current.Request.ApplicationPath);
+                    MailSettingsSectionGroup settings = (MailSettingsSectionGroup)c.GetSectionGroup("system.net/mailSettings");
+
+                    SmtpClient servidorDeCorreo = new SmtpClient(settings.Smtp.Network.Host, settings.Smtp.Network.Port);
+                    servidorDeCorreo.EnableSsl = settings.Smtp.Network.EnableSsl;
+                    servidorDeCorreo.Credentials = new NetworkCredential(settings.Smtp.Network.UserName, settings.Smtp.Network.Password);
+
+                    MailMessage mmMensaje = new MailMessage();
+                    mmMensaje.To.Add("osef@hotmail.com");
+                    mmMensaje.Subject = "Asunto";
+                    mmMensaje.Body = "Tu contraseña es: " + UsuarioBusiness.ObtenerContrasenaPorID(oUsuario.ID);
+
+                    //10. Remitente
+                    MailAddress maFrom = new MailAddress("no-reply@osef.com.mx");
+                    mmMensaje.From = maFrom;
+
+                    mmMensaje.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure | DeliveryNotificationOptions.OnSuccess;
+                    servidorDeCorreo.Send(mmMensaje);
+
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("correcto", "true", ParameterMode.Raw));
+                }
+                catch (Exception ex)
+                {
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("correcto", "false", ParameterMode.Raw));
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mensaje", ex.Message, ParameterMode.Raw));
+                }
+            }
+        }
     }
 }
