@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
+    <link rel="stylesheet" href="css/metroButtons.css"/>
+    <link rel="stylesheet" href="css/xCustomFormPanel.css"/>
     <script type="text/javascript" src="js/olvidarContrasena.js"></script>
 </head>
 <body>
@@ -38,17 +40,46 @@
             Hidden="true"
             HideMode="Display">
             <Content>
-                <p>Se le ha enviado un correo eléctronico para recuperar su contraseña.</p>
-                <input id="btnRegresar" value="Regresar" type="button" />
+                <div id="msg" style="margin-top:190px;">
+                <center><p style="font-size:16px !important;">Se le ha enviado un correo eléctronico para recuperar su contraseña.</p></center>
+                <br>
+                <center><a href="login.aspx" class="m-btn green">Regresar</a></center>
+                </div>
             </Content>
         </ext:Container>
+
+
+         <ext:Container ID="cTodo" runat="server" Cls="">
+         <Content>
+          <%--  Panel de Error--%>
+        <ext:Container ID="cErrorOlvidasteContrasena" runat="server" Hidden="false" StyleSpec="margin:0 auto; margin-top: 100px;">
+            <Content>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="images/btnLogin_Adv.png" alt="img-error" />
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <ext:Label ID="lblError" runat="server" Text="Error, direccion incorrecta" />
+                        </td>
+                    </tr>
+                </table>
+            </Content>
+        </ext:Container>
+        <%-- Fin panel de error --%>
+        
 
         <ext:FormPanel
             ID="fpOlvidarContrasena"
             runat="server"
             Title="Restablecer Contraseña"
             Width="450"
-            StyleSpec="margin:0 auto; margin-top: 100px;"
+            Hidden="false"
+            StyleSpec="margin:0 auto; "
             BodyPadding="10"
             DefaultAnchor="100%"
             HideMode="Display">
@@ -112,6 +143,9 @@
                 </ext:ImageButton>
             </Buttons>
         </ext:FormPanel>
+        </Content>
+        </ext:Container>
+
 
         <div id="footer">
             <div id="creditos" class="creditos">

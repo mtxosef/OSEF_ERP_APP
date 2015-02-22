@@ -220,12 +220,14 @@
     <Content Include="css\customControls.css" />
     <Content Include="css\login2.css" />
     <Content Include="css\login.css" />
+    <Content Include="css\metroButtons.css" />
     <Content Include="css\osef_bancomer.css" />
     <Content Include="css\osef_cajapopular.css" />
     <Content Include="css\osef_combobox.css" />
     <Content Include="css\xButton.css" />
     <Content Include="css\xComboBox.css" />
     <Content Include="css\xCustomChart.css" />
+    <Content Include="css\xCustomFormPanel.css" />
     <Content Include="css\xDatePicker.css" />
     <Content Include="css\xDisplayImages.css" />
     <Content Include="css\xFieldSet.css" />
