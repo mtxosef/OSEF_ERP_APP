@@ -32,15 +32,11 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Si no hay AjaxRequest
             if (!X.IsAjaxRequest)
             {
-<<<<<<< HEAD
                 //2. Checar ticket de autenticación
                 UsuarioBusiness.checkValidSession(this);
 
                 //3. Llenar Store de Revisiones, Preciarios y Usuarios
-                sVolumetrias.DataSource = VolumetriaBusiness.ObtenerRevisiones();
-=======
                 sVolumetrias.DataSource = VolumetriaBusiness.ObtenerVolumetrias();
->>>>>>> 632b999aa3581ea8d17a6dbf79563564911e6339
                 sVolumetrias.DataBind();
 
                 sPreciarios.DataSource = PreciarioBusiness.ObtenerPreciarios();
@@ -50,9 +46,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 sUsuarios.DataBind();
 
                 rmVolumetrias.RegisterIcon(Icon.Delete);
-
             }
-
         }
     }
 }
