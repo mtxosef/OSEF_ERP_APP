@@ -20,7 +20,7 @@ namespace OSEF.AVANCES.SUCURSALES
             /// <param name="e"></param>
             /// if (!X.IsAjaxRequest)
             {
-                sVolumetrias.DataSource = VolumetriaBusiness.ObtenerRevisiones();
+                sVolumetrias.DataSource = VolumetriaBusiness.ObtenerVolumetrias();
                 sVolumetrias.DataBind();
                 rmVolumetrias.RegisterIcon(Icon.Delete);
 
