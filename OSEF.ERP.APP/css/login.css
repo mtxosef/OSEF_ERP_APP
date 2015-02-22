@@ -57,6 +57,23 @@ html, body
     z-index: 2;
 }
 
+/*Div para el error del login*/
+#cErrorOlvidasteContrasena
+{
+    /*top: 36%;*/
+    left: 48%; /*determinamos una anchura*/
+    width: 450px; /*indicamos que el margen izquierdo, es la mitad de la anchura*/
+    margin-left: -200px; /*determinamos una altura*/
+    height: 0px; /*indicamos que el margen superior, es la mitad de la altura*/
+    padding: 35px;
+    padding-bottom: 40px;
+    padding-top: 10px;
+    background-color: #BA0000;
+    color: #fff;
+    font-size: 14px;
+    z-index: 2;
+}
+
 /*Pie de pagina para el login*/
 #footer
 {
@@ -66,7 +83,7 @@ html, body
     height: 88px;
     text-align: center;
     padding-top: 190px;
-    z-index: 1;
+    z-index: -1;
 }
 
 /*Pie de pagina para el menu principal*/

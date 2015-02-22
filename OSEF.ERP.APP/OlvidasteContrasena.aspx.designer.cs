@@ -49,6 +49,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Container cCorreoEnviado;
         
         /// <summary>
+        /// Control cTodo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cTodo;
+        
+        /// <summary>
+        /// Control cErrorOlvidasteContrasena.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cErrorOlvidasteContrasena;
+        
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Label lblError;
+        
+        /// <summary>
         /// Control fpOlvidarContrasena.
         /// </summary>
         /// <remarks>
