@@ -49,10 +49,10 @@
         </ext:Container>
 
 
-         <ext:Container ID="cTodo" runat="server" Cls="">
+         <ext:Container ID="cTodo" runat="server"  StyleSpec=" margin-top: 120px;">
          <Content>
           <%--  Panel de Error--%>
-        <ext:Container ID="cErrorOlvidasteContrasena" runat="server" Hidden="false" StyleSpec="margin:0 auto; margin-top: 100px;">
+        <ext:Container ID="cErrorOlvidasteContrasena" runat="server" Hidden="false"  StyleSpec="margin:0 auto;">
             <Content>
                 <table>
                     <tr>
