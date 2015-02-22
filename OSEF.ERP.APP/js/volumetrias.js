@@ -217,10 +217,6 @@ var cmbPreciario_Select = function (combobox, registro) {
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
 
-
-
-
-
 };
 
 //Evento que se lanza al poner algun caracter en el control de la Sucursal
@@ -812,6 +808,8 @@ var cPreciario_Renderer = function (valor, metaData, registro) {
 
 //Evento que hace el filtro al seleccionar algun elemento
 var cmbPreciarioFiltro_Select = function (combobox, registro) {
+
+   
     //1. Obtener el valor
     var valor = registro[0].get('ID');
 

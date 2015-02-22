@@ -309,3 +309,49 @@ function HabilitarGuardar() {
         App.imgbtnGuardar.setDisabled(true);
     }
 }
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbEstatusFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sPreciarios.clearFilter();
+    }
+    else {
+        App.sPreciarios.filterBy(function (elemento) {
+            if (elemento.get('Estatus') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbSucursalFiltro_Select = function (combobox, registro) {
+
+    //1. Obtener el valor
+    var valor = registro[0].get('ID');
+ 
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Sucursal
+    if (valor == 'Todos') {
+        App.sPreciarios.clearFilter();
+    }
+    else {
+        App.sPreciarios.filterBy(function (elemento) {
+
+            if (elemento.get('Sucursal') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
