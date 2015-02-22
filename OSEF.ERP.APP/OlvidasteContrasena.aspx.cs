@@ -29,7 +29,7 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void txtfEnviarCorreo_SpecialKey(object sender, DirectEventArgs e)
         {
-            Usuario oUsuario = UsuarioBusiness.ObtenerUsuarioPorCorreo("osef@hotmail.com");
+            Usuario oUsuario = UsuarioBusiness.ObtenerUsuarioPorIDCorreo("osef@hotmail.com");
         }
     }
 }

@@ -389,6 +389,52 @@ namespace OSEF.APP.DL
             }
         }
 
+        /// <summary>
+        /// Obtener un registro de Usuario por su ID o su Correo
+        /// </summary>
+        /// <param name="strIDCorreo"></param>
+        /// <returns></returns>
+        public static Usuario ObtenerUsuarioPorIDCorreo(string strIDCorreo)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerUsuarioPorIDCorreo";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpCorreo = new SqlParameter();
+                sqlpCorreo.ParameterName = "@IDCorreo";
+                sqlpCorreo.SqlDbType = SqlDbType.VarChar;
+                sqlpCorreo.Value = strIDCorreo;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpCorreo);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                Usuario result = LibraryGenerics<Usuario>.ConvertDataSetToList(reader).FirstOrDefault();
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static Usuario ObtenerUsuarioPorIDOrden(string " + strIDCorreo + ")): " + ex.Message);
+            }
+        }
+
         #endregion
 
         #region Acción

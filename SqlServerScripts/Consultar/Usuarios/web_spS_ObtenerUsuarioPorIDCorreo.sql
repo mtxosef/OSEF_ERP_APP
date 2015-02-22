@@ -29,8 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spS_ObtenerUsuarioPorIDCorreo
 	-- Add the parameters for the stored procedure here
-	@ID		VARCHAR(50),
-	@Correo		VARCHAR(50)
+	@IDCorreo		VARCHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -54,7 +53,7 @@ BEGIN
 	FROM
 		Usuarios
 	WHERE
-		ID = @ID OR
-		Correo = @Correo
+		ID = @IDCorreo OR
+		Correo = @IDCorreo
 END
 GO

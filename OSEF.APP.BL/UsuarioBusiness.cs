@@ -7,6 +7,7 @@ using OSEF.APP.DL;
 using System.Web.UI;
 using System.Web.Security;
 using Ext.Net;
+
 namespace OSEF.APP.BL
 {
     /// <summary>
@@ -83,6 +84,16 @@ namespace OSEF.APP.BL
         public static Usuario ObtenerUsuarioPorCorreo(string strCorreo)
         {
             return UsuarioDataAccess.ObtenerUsuarioPorCorreo(strCorreo);
+        }
+
+        /// <summary>
+        /// Obtener un registro de Usuario por su ID o su Correo
+        /// </summary>
+        /// <param name="strIDCorreo"></param>
+        /// <returns></returns>
+        public static Usuario ObtenerUsuarioPorIDCorreo(string strIDCorreo)
+        {
+            return UsuarioDataAccess.ObtenerUsuarioPorIDCorreo(strIDCorreo);
         }
 
         #endregion
