@@ -43,34 +43,41 @@
                 <div id="msg" style="margin-top:190px;">
                 <center><p style="font-size:16px !important;">Se le ha enviado un correo eléctronico para recuperar su contraseña.</p></center>
                 <br>
-                <center><a href="login.aspx" class="m-btn green">Regresar</a></center>
+                <center><a href="Login.aspx" class="m-btn green">Regresar</a></center>
                 </div>
             </Content>
         </ext:Container>
 
 
-         <ext:Container ID="cTodo" runat="server"  StyleSpec=" margin-top: 120px;">
-         <Content>
-          <%--  Panel de Error--%>
-        <ext:Container ID="cErrorOlvidasteContrasena" runat="server" Hidden="false"  StyleSpec="margin:0 auto;">
+         <ext:Container
+            ID="cTodo"
+            runat="server"
+            StyleSpec=" margin-top: 120px;">
             <Content>
-                <table>
-                    <tr>
-                        <td>
-                            <img src="images/btnLogin_Adv.png" alt="img-error" />
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                            <ext:Label ID="lblError" runat="server" Text="Error, direccion incorrecta" />
-                        </td>
-                    </tr>
-                </table>
-            </Content>
-        </ext:Container>
-        <%-- Fin panel de error --%>
+            <%--  Panel de Error--%>
+                <ext:Container
+                    ID="cErrorOlvidasteContrasena"
+                    runat="server"
+                    Hidden="true" 
+                    StyleSpec="margin:0 auto;">
+                    <Content>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="images/btnLogin_Adv.png" alt="img-error" />
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <ext:Label ID="lblError" runat="server" Text="Error, nombre de usuario o dirección incorrecta" />
+                                </td>
+                            </tr>
+                        </table>
+                    </Content>
+                </ext:Container>
+                <%-- Fin panel de error --%>
         
 
         <ext:FormPanel
@@ -125,6 +132,9 @@
                             OnEvent="txtfEnviarCorreo_SpecialKey"
                             Before="return e.getKey() == Ext.EventObject.ENTER"
                             Success="txtfEnviarCorreo_SpecialKey_Success">
+                            <ExtraParams>
+                                <ext:Parameter Name="dato" Value="App.txtfEnviarCorreo.getValue()" Mode="Raw" />
+                            </ExtraParams>
                             <EventMask ShowMask="true" MinDelay="1000" Msg="Enviando correo..." />
                         </SpecialKey>
                     </DirectEvents>

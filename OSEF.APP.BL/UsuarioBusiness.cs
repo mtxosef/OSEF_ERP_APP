@@ -96,6 +96,16 @@ namespace OSEF.APP.BL
             return UsuarioDataAccess.ObtenerUsuarioPorIDCorreo(strIDCorreo);
         }
 
+        /// <summary>
+        /// Obtener la contraseña de un Usuario por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static string ObtenerContrasenaPorID(string strID)
+        {
+            return UsuarioDataAccess.ObtenerContrasenaPorID(strID);
+        }
+
         #endregion
 
         #region Acción
