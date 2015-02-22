@@ -157,6 +157,33 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cSucursal;
         
         /// <summary>
+        /// Control cmbSucursalFiltro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbSucursalFiltro;
+        
+        /// <summary>
+        /// Control sSucursales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sSucursales;
+        
+        /// <summary>
+        /// Control mSucursales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSucursales;
+        
+        /// <summary>
         /// Control cEstatus.
         /// </summary>
         /// <remarks>
@@ -164,6 +191,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cEstatus;
+        
+        /// <summary>
+        /// Control cmbFiltroEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbFiltroEstatus;
         
         /// <summary>
         /// Control rsmPreciarios.

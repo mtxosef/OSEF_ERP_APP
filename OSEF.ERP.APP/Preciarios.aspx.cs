@@ -21,6 +21,10 @@ namespace OSEF.ERP.APP
                 sPreciarios.DataBind();
 
                 rmPreciarios.RegisterIcon(Icon.Delete);
+
+
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                sSucursales.DataBind();
             }
         }
 

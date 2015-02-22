@@ -191,6 +191,41 @@
                         Align="Left"
                         Width="280"
                         DataIndex="Sucursal">
+                         <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbSucursalFiltro"
+                                runat="server"
+                                DisplayField="Nombre"
+                                ValueField="ID"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbSucursalFiltro_Select" />
+                                </Listeners>
+                                <Store>
+                                    <ext:Store
+                                        ID="sSucursales"
+                                        runat="server">
+                                        <Model>
+                                            <ext:Model ID="mSucursales" runat="server" IDProperty="ID">
+                                                <Fields>
+                                                    <ext:ModelField Name="ID" Type="String" />
+                                                    <ext:ModelField Name="Nombre" Type="String" />
+                                                </Fields>
+                                            </ext:Model>
+                                        </Model>
+                                    </ext:Store>
+                                </Store>
+
+                            </ext:ComboBox>
+                        </HeaderItems>
+
                     </ext:Column>
                     <ext:Column
                         ID="cEstatus"
@@ -199,6 +234,29 @@
                         Align="Left"
                         Width="280"
                         DataIndex="Estatus">
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbFiltroEstatus"
+                                runat="server"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="ACTIVO" />
+                                    <ext:ListItem Index="2" Text="INACTIVO" />
+                                    <ext:ListItem Index="3" Text="CONCLUIDO" />
+                                    <ext:ListItem Index="4" Text="BORRADOR" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbEstatusFiltro_Select" />
+                                </Listeners>
+                              
+
+                            </ext:ComboBox>
+                        </HeaderItems>
                     </ext:Column>
                 </Columns>
             </ColumnModel>

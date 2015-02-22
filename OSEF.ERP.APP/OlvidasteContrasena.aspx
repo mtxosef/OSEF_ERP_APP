@@ -151,6 +151,18 @@
                     Width="50"
                     Height="50">
                 </ext:ImageButton>
+                <ext:ImageButton 
+                    ID="imgbtnCancelar" 
+                    runat="server" 
+                    ImageUrl="assets/img/controles/Cancelar.png" 
+                    DisabledImageUrl="assets/img/controles/CancelarDisabled.png"
+                    OverImageUrl="assets/img/controles/CancelarOver.png" 
+                    PressedImageUrl="assets/img/controles/CancelarPressed.png" 
+                    ToolTip="Cancelar" 
+                    Href="login.aspx"
+                    Height="50" 
+                    Width="50">
+                </ext:ImageButton>
             </Buttons>
         </ext:FormPanel>
         </Content>

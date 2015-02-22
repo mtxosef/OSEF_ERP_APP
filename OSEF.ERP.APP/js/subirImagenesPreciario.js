@@ -17,10 +17,19 @@
 };
 
 var fileSelected = function (item, file) {
-    if (file.name == 'image.jpg') {
-        Ext.Msg.alert('Error', 'You cannot upload a file named "image.jpg"');
+
+    var validaCaracteres = /^[a-zA-Z0-9-_.\s]{1,100}$/;
+
+    if (validaCaracteres.test(file.name)) {
+   
+    }
+
+    else {
+        Ext.Msg.alert('Error', 'La imagen tiene demasiados caracteres o tiene carácteres especiales"');
         return false;
     }
+
+   
 
     this.up('grid').store.add({
         ID: file.id,
