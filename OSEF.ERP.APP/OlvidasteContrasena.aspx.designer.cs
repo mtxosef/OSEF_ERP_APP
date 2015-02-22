@@ -40,13 +40,22 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmOlvidoContraseña;
         
         /// <summary>
-        /// Control FormPanel1.
+        /// Control cCorreoEnviado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel FormPanel1;
+        protected global::Ext.Net.Container cCorreoEnviado;
+        
+        /// <summary>
+        /// Control fpOlvidarContrasena.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FormPanel fpOlvidarContrasena;
         
         /// <summary>
         /// Control ContenedorNombre.
@@ -58,40 +67,40 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.FieldContainer ContenedorNombre;
         
         /// <summary>
-        /// Control FieldSet1.
+        /// Control fsInstrucciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldSet FieldSet1;
+        protected global::Ext.Net.FieldSet fsInstrucciones;
         
         /// <summary>
-        /// Control FieldContainer2.
+        /// Control fcIngresaUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer2;
+        protected global::Ext.Net.FieldContainer fcIngresaUsuario;
         
         /// <summary>
-        /// Control FieldContainer3.
+        /// Control fcCorreo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer3;
+        protected global::Ext.Net.FieldContainer fcCorreo;
         
         /// <summary>
-        /// Control txtEnviaCorreo.
+        /// Control txtfEnviarCorreo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtEnviaCorreo;
+        protected global::Ext.Net.TextField txtfEnviarCorreo;
         
         /// <summary>
         /// Control imbtnLogin.

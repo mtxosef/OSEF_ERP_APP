@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title></title>
-      <link rel="stylesheet" href="css/login.css" />
+    <title>¿Olvidaste tu contraseña?</title>
+    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -24,59 +24,82 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
+    <script type="text/javascript" src="js/olvidarContrasena.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
-     <ext:ResourceManager ID="rmOlvidoContraseña" runat="server" />
+        <ext:ResourceManager ID="rmOlvidoContraseña" runat="server" HideInDesign="true" />
 
-     <img src="images/logo-banco.png" alt="logo" class="imgs logo-image" />
+        <img src="images/logo.png" alt="logo" class="imgs logo-image" />
 
-      <ext:FormPanel 
-        ID="FormPanel1" 
-        runat="server"
-        Title="Restablecer Contraseña"
-        Width="450"
-        StyleSpec="margin:0 auto; margin-top: 180px;"
-        BodyPadding="10"
-        DefaultAnchor="100%">
-        <Items>
-            <ext:FieldContainer 
-            ID="ContenedorNombre" 
-            runat="server" 
-            FieldLabel="¿Olvidaste tu contraseña?" 
-            AnchorHorizontal="100%"
-            LabelWidth="180"
-            Layout="HBoxLayout">
-            </ext:FieldContainer>
+        <ext:Container
+            ID="cCorreoEnviado"
+            runat="server"
+            Hidden="true"
+            HideMode="Display">
+            <Content>
+                <p>Se le ha enviado un correo eléctronico para recuperar su contraseña.</p>
+                <input id="btnRegresar" value="Regresar" type="button" />
+            </Content>
+        </ext:Container>
 
-            <ext:FieldSet ID="FieldSet1" 
-                runat="server"
-                Title="Instrucciones"
-                Collapsible="False"
-                DefaultAnchor="100%">
-                <Items>
-                    <ext:FieldContainer ID="FieldContainer2" 
-                        runat="server"
-                        LabelWidth="380"
-                        FieldLabel="Ingresa tu usuario o dirección de correo para restablecer tu contraseña"
-                        Layout="HBoxLayout">                        
+        <ext:FormPanel
+            ID="fpOlvidarContrasena"
+            runat="server"
+            Title="Restablecer Contraseña"
+            Width="450"
+            StyleSpec="margin:0 auto; margin-top: 100px;"
+            BodyPadding="10"
+            DefaultAnchor="100%"
+            HideMode="Display">
+            <Items>
+                <ext:FieldContainer 
+                    ID="ContenedorNombre"
+                    runat="server"
+                    FieldLabel="¿Olvidaste tu contraseña?"
+                    AnchorHorizontal="100%"
+                    LabelWidth="180"
+                    Layout="HBoxLayout">
+                </ext:FieldContainer>
+                <ext:FieldSet
+                    ID="fsInstrucciones"
+                    runat="server"
+                    Title="Instrucciones"
+                    Collapsible="False"
+                    DefaultAnchor="100%">
+                    <Items>
+                        <ext:FieldContainer
+                            ID="fcIngresaUsuario"
+                            runat="server"
+                            LabelWidth="380"
+                            FieldLabel="Ingresa tu usuario o dirección de correo para restablecer tu contraseña"
+                            Layout="HBoxLayout">                        
                         </ext:FieldContainer>
-                    <ext:FieldContainer ID="FieldContainer3" 
-                        runat="server" 
-                        FieldLabel=" Puede que tengas que ver en tu carpeta de spam o desbloquear no-reply@osef.com.mx" 
-                        Layout="HBoxLayout"
-                        LabelWidth="380">
-                      </ext:FieldContainer>
-                </Items>
-                 </ext:FieldSet>
-
-                    
-                  <ext:TextField 
-                  ID="txtEnviaCorreo" 
-                  EmptyText="Usuario/Dirección E-mail" 
-                  runat="server" />
-        </Items>
-        <Buttons>
+                        <ext:FieldContainer
+                            ID="fcCorreo"
+                            runat="server" 
+                            FieldLabel=" Puede que tengas que ver en tu carpeta de spam o desbloquear no-reply@osef.com.mx" 
+                            Layout="HBoxLayout"
+                            LabelWidth="380">
+                        </ext:FieldContainer>
+                    </Items>
+                </ext:FieldSet>
+                <ext:TextField 
+                    ID="txtfEnviarCorreo"
+                    runat="server"
+                    EmptyText="Usuario/Dirección E-mail"
+                    AutoFocus="true">
+                    <DirectEvents>
+                        <SpecialKey
+                            OnEvent="txtfEnviarCorreo_SpecialKey"
+                            Before="return e.getKey() == Ext.EventObject.ENTER"
+                            Success="txtfEnviarCorreo_SpecialKey_Success">
+                            <EventMask ShowMask="true" MinDelay="1000" Msg="Enviando correo..." />
+                        </SpecialKey>
+                    </DirectEvents>
+                </ext:TextField>
+            </Items>
+            <Buttons>
                 <ext:ImageButton 
                     ID="imbtnLogin" 
                     runat="server" 
@@ -87,13 +110,10 @@
                     Width="50"
                     Height="50">
                 </ext:ImageButton>
-        </Buttons>
-    </ext:FormPanel>
+            </Buttons>
+        </ext:FormPanel>
 
-
-
-
-     <div id="footer">
+        <div id="footer">
             <div id="creditos" class="creditos">
                 <p>
                     © 2014 Osef Technology
@@ -118,7 +138,6 @@
                     </div>--%>
             </div>
         </div>
-
     </form>
 </body>
 </html>

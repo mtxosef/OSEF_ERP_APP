@@ -298,6 +298,7 @@
     <Content Include="js\finalidades.js" />
     <Content Include="js\login.js" />
     <Content Include="js\menus2.js" />
+    <Content Include="js\olvidarContrasena.js" />
     <Content Include="js\preciarios.js" />
     <Content Include="js\profesiones.js" />
     <Content Include="js\subirImagenesCliente.js" />
