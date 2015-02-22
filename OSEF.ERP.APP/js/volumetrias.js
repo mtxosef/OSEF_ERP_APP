@@ -1,20 +1,10 @@
-﻿//Evento de clic del botón Nuevo
-var imgbtnNuevo_Click = function () {
-    Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
-    window.parent.App.wEmergente.load('FormaVolumetriaPreciario.aspx');
-    window.parent.App.wEmergente.setHeight(591.5);
-    window.parent.App.wEmergente.setWidth(930);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Nueva Volumetría');
-    window.parent.App.wEmergente.show();
-};
+﻿//------------------------------------------------ENCABEZADO------------------------------------------------------------
 
 //Boton de nuevo de la forma no del tablero
 var imgbtnFormaNuevo_Click = function () {
-
     var d = new Date();
-
     //Limpiar controles del encabezado
+  
     App.cmbMov.setReadOnly(false);
     App.txtfMovID.setValue(null);
     App.cmbPreciario.clearValue();
@@ -26,7 +16,7 @@ var imgbtnFormaNuevo_Click = function () {
     App.dfFechaEmision.setDisabled(false);
     App.dfFechaEmision.setValue(d);
 
-
+    App.imgbtnCancelar.setDisabled(true);
     App.txtfObservaciones.setValue(null);
     App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
 
@@ -38,29 +28,13 @@ var imgbtnFormaNuevo_Click = function () {
     window.parent.App.wEmergente.setTitle('Nueva Volumetría');
 };
 
-
-
-//Evento de click del botón Editar
-var imgbtnEditar_Click = function () {
-    Ext.util.Cookies.set('cookieEditarVolumetria', App.gpVolumetrias.getSelectionModel().getSelection()[0].get('ID'));
-    window.parent.App.wEmergente.load('FormaVolumetriaPreciario.aspx');
-    window.parent.App.wEmergente.setHeight(591.5);
-    window.parent.App.wEmergente.setWidth(930);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Editar Volumetría ' + Ext.util.Cookies.get('cookieEditarVolumetria'));
-    window.parent.App.wEmergente.show();
-
-
-};
-
-//Boton de abrir o cerrar
+//Boton de abrir o cerrar de la forma
 var imgbtnAbrir_Click = function () {
     window.parent.App.wEmergente.hide();
 };
 
 
-
-//Para el botón de eliminar, Eliminar un registro
+//Para el botón de eliminar de la forma, Eliminar un registro 
 var imgbtnBorrar_Click_Success = function (response, result) {
 
     Ext.Msg.show({
@@ -102,8 +76,6 @@ var imgbtnBorrar_Click_Success = function (response, result) {
     Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
     window.parent.App.wEmergente.setTitle('Nueva Volumetría');
 
-
-
 };
 
 
@@ -124,68 +96,12 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     //Se actualiza el tablero
     window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
 
-   
     //Limpiar controles del encabezado
     App.cmbMov.setReadOnly(true);
     App.sbFormaVolumetriaDetalle.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     window.parent.App.wEmergente.setTitle('Volumetría Cancelada');
-   
-
 };
-
-
-
-//Concatenar la columna de Movimiento
-var cMov_Renderer = function (valor, metaData, registro) {
-    var estatus = registro.get('Estatus');
-
-    switch (estatus) {
-        case 'BORRADOR':
-            return '<img class="IconColumnaEstatus" src="images/borrador.png" alt="borrador" />' + registro.get('Mov') +" "+ registro.get('MovID');
-        case 'PENDIENTE':
-            return '<img class="IconColumnaEstatus" src="images/pendiente.png" alt="pendiente" /> ' + registro.get('Mov') + " " + registro.get('MovID');
-        case 'CONCLUIDO':
-            return '<img class="IconColumnaEstatus" src="images/concluido.png" alt="concluido" /> ' + registro.get('Mov') + " " + registro.get('MovID');
-        case 'CANCELADO':
-            return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="cancelar" /> ' + registro.get('Mov') + " " + registro.get('MovID');
-    }
-};
-
-//Hacer la busqueda de información
-var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
-    App.sVolumetrias.clearFilter();
-    App.sVolumetrias.filter([{ filterFn: function (item) {
-        if (item.get('Mov').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('MovID').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
-        else { return false; }
-    }
-    }]);
-    App.gpPreciarios.getSelectionModel().deselectAll();
-    App.imgbtnEditar.setDisabled(true);
-    App.imgbtnBorrar.setDisabled(true);
-};
-
-
-//Cambio en los datos del tablero
-var sVolumetrias_DataChanged = function () {
-    if (App.sVolumetrias.getCount() > 1 || App.sVolumetrias.getCount() == 0) {
-        App.sbVolumetrias.setText(App.sVolumetrias.getCount() + ' ' + 'VOLUMETRÍAS');
-    }
-    else {
-        App.sbVolumetrias.setText(App.sVolumetrias.getCount() + ' ' + 'VOLUMETRÍAS');
-    }
-
-
-};
-
-//Acciones al hacer clic en un registro
-var gpVolumetrias_ItemClick = function (gridview, registro, gvhtml, index) {
-    App.imgbtnEditar.setDisabled(false);
-    //App.imgbtnBorrar.setDisabled(false);
-    indice = index;
-};
-
-
 
 
 //Evento que se lanza al seleccionar algun valor de la sucursal
@@ -223,7 +139,6 @@ var cmbPreciario_Select = function (combobox, registro) {
 var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     App.sPreciario.clearFilter();
 
-
     if (App.cmbPreciario.getValue() != null) {
         App.sPreciario.filter([{ filterFn: function (item) {
             if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Descripcion').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
@@ -239,8 +154,6 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     if (App.sPreciario.getAt(0) != undefined) {
         App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
         App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
-
-
     }
     //Valida qué movimiento es 
     if (App.cmbMov.getValue() == 'Fin') {
@@ -257,8 +170,6 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
-
-
 };
 
 
@@ -280,8 +191,6 @@ var sMov_Add = function (store, registros, index, eOpts) {
 
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
 var cmbMov_Select = function (combobox, registro) {
-
-
     //Asignar Fecha en el control Fecha de emisión
     var d = new Date();
     if (App.dfFechaEmision.getValue() == null) {
@@ -299,16 +208,12 @@ var cmbMov_Select = function (combobox, registro) {
         PrimerRenglonDetalle();
         HabilitarAfectarFin();
         App.sConceptos.removeAll();
-
-
     }
-
     //Validar si se habilita Guardar
     HabilitarGuardar();
 };
 
 
- 
 //Evento lanzado al cargar el store de avance encabezado
 var sVolumetria_Load = function () {
     App.direct.sVolumetria_Load();
@@ -316,30 +221,8 @@ var sVolumetria_Load = function () {
 
 };
 
-
-
-//Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada
-var validaConcluidos = function (a, d, f) {
-
-    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
-
-        return false;
-    }
-    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
-
-        return false;
-    }
-
-    else { 
-        return true
-    }
-
-};
-
 //Evento lanzado al agregar un registro al store
 var sVolumetria_Add = function (avance, registro) {
-
-
     //Valida el estatus para ver si permite seguir capturando o no
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
         App.cmbMov.setValue(registro[0].get('Mov'));
@@ -359,7 +242,6 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
-
     }
 
     //Valida el estatus para ver si permite seguir capturando o no
@@ -382,7 +264,6 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(true);
-
     }
 
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
@@ -402,8 +283,6 @@ var sVolumetria_Add = function (avance, registro) {
         App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
         App.imgbtnBorrar.setDisabled(false);
     }
-
-
 
 };
 
@@ -448,93 +327,76 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 };
 
 
+//Afectar el movimiento
+var imgbtnAfectar_Click_Success = function (response, result) {
+    //1. Actualizar el store del tablero
+    window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
 
-//Función que valida si se habilita el botón de Guardar
-function HabilitarGuardar() {
-    if (App.cmbMov.getValue() != null  && App.cmbPreciario.getValue() != null) {
-        App.imgbtnGuardar.setDisabled(false);
+    //2. Lanzar ventana de movimiento afectado
+    Ext.Msg.show({
+        id: 'msgAvance',
+        title: 'AFECTAR',
+        msg: '<p align="center">Movimiento afectado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.INFO
+    });
+
+    Ext.util.Cookies.set('cookieEditarVolumetria', App.sVolumetria.getAt(0).get('ID'));
+
+    //Actualizar campos afetados
+    App.txtfMovID.setValue(App.sVolumetria.getAt(0).get('MovID'));
+    App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
+
+    //Deshabilita boton de afectar porque aqui concluye el flujo
+    App.imgbtnAfectar.setDisabled(true);
+    App.imgbtnCancelar.setDisabled(false);
+
+    //3. Remover la útima fila
+    var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
+    if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Utilizada') == 0) {
+        App.sConceptos.removeAt(App.sConceptos.getCount() - 1);
     }
-    else {
-        App.imgbtnGuardar.setDisabled(true);
-    }
-}
+
+    //4. Deseleccionar datos del GridPanel y deshabilitar los controles
+    App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
+    DeshabilitarControlesAfectar();
+    
 
 
 
-//Validar si se habilita el botón d Afectar
-function HabilitarAfectar() {
+    //Deshabilita los comandos de Fotos
+    App.ccFotos.commands[0].disabled = true;
+    App.ccFotos.commands[1].disabled = false;
+    App.gpVolumetriaDetalle.reconfigure();
 
-//Obtiene la fecha de emision del store
+};
 
+//Método que se lanza antes de llamar al procedimiento de Afectar
+var imgbtnAfectar_Click_Before = function () {
+    if (App.sVolumetria.getCount() != 0) {
+        if (App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
-    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null) {
-        
-        if (App.cmbMov.isValid() && App.cmbPreciario.isValid()) {
-
-            if (App.gpVolumetriaDetalle.getStore().getCount() != 0) {
-  
-                if (App.sConceptos.getAt(0).get('ConceptoID').length != 0 && App.sConceptos.getAt(0).get('Utilizada') != 0) {
-
-                    App.imgbtnAfectar.setDisabled(false);
-                }
-                
-            }
-            else {
-                App.imgbtnAfectar.setDisabled(true);
-            }
+            App.wEmergente.load('FormaAvanzarVolumetria.aspx');
+            App.wEmergente.setHeight(170);
+            App.wEmergente.setWidth(220);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Avanzar Movimiento');
+            App.wEmergente.show();
+            return false;
         }
         else {
-            App.imgbtnAfectar.setDisabled(true);
+            return true;
         }
     }
     else {
-        App.imgbtnAfectar.setDisabled(true);
+        return true;
     }
-}
+};
 
 
-//Validar si se habilita el botón d Afectar cuando se selecciona FIN
-function HabilitarAfectarFin() {
-
-    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.dfFechaEmision.getValue() != null) {
-
-        App.imgbtnAfectar.setDisabled(false); 
-    }
-    else {
-        App.imgbtnAfectar.setDisabled(true);
-    }
-}
-
-
-
-//Validar si se habilita el botón de Información
-function HabilitarInformacion() {
-    if (App.txtfIDSucursal.getValue() != null) {
-        App.imgbtnInfo.setDisabled(false);
-    }
-    else {
-        App.imgbtnInfo.setDisabled(true);
-    }
-}
-
-
-//Función que valida si se habilita el primer renlgon en el GridPanel detalle
-function PrimerRenglonDetalle() {
-    //Validar si se asigna el primer renglon del concepto
-    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null &&  App.cmbMov.getValue() != 'Fin') {
-        if (App.cmbPreciario.isValid()) {
-            var store = App.gpVolumetriaDetalle.getStore();
-            if (store.getCount() == 0) {
-                //Insertar el primer registro
-                store.insert(0, { Renglon: 0 });
-            }
-        }
-    }
-}
-
-
-
-
+//-----------------------------------------DETALLE----------------------------------------------------------------
 //Evento de la columna de acciones
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
@@ -552,7 +414,7 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
 };
 
 
-//Evento que muestra el valor de la columna Concepto por su descripción y no por su ID
+//Evento que muestra el valor de la columna Concepto por su descripción y no por su ID del Detalle
 var cDescripcion_Renderer = function (valor) {
     var registro;
     if (valor.length != 0) {
@@ -577,6 +439,7 @@ var cUtilizada_Renderer = function (valor) {
     F.decimalSeparator = '.';
     return F.number(valor, "000,000,000.00");
 };
+
 
 
 //Ocultar el último renglon
@@ -617,7 +480,6 @@ var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
         botonCargar.setDisabled(true);
         botonCargar.setTooltip("No se pueden cargar fotos a un movimiento concluido");
     }
-
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
@@ -676,7 +538,6 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 };
 
 
-
 //Evento que pondra la cantidad según el concepto obtenido
 var cmbConcepto_Select = function (combobox, registro) {
 //Ayuda para traer lo que trae toda la funcion como parámetro
@@ -688,90 +549,8 @@ var cmbConcepto_Select = function (combobox, registro) {
 
     //se actualiza el Store contenedor con datos del store del comboBox
     App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
-
-
 }
 
-
-
-//Método que se lanza antes de llamar al procedimiento de Afectar
-var imgbtnAfectar_Click_Before = function () {
-    if (App.sVolumetria.getCount() != 0) {
-        if (App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
-
-            App.wEmergente.load('FormaAvanzarVolumetria.aspx');
-            App.wEmergente.setHeight(170);
-            App.wEmergente.setWidth(220);
-            App.wEmergente.center();
-            App.wEmergente.setTitle('Avanzar Movimiento');
-            App.wEmergente.show();
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-    else {
-        return true;
-    }
-};
-
-//Afectar el movimiento
-var imgbtnAfectar_Click_Success = function (response, result) {
-    //1. Actualizar el store del tablero
-    window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
-
-    //2. Lanzar ventana de movimiento afectado
-    Ext.Msg.show({
-        id: 'msgAvance',
-        title: 'AFECTAR',
-        msg: '<p align="center">Movimiento afectado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
-        buttons: Ext.MessageBox.OK,
-        onEsc: Ext.emptyFn,
-        closable: false,
-        icon: Ext.MessageBox.INFO
-    });
-
-    Ext.util.Cookies.set('cookieEditarVolumetria', App.sVolumetria.getAt(0).get('ID'));
-
-    //Actualizar campos afetados
-    App.txtfMovID.setValue(App.sVolumetria.getAt(0).get('MovID'));
-    App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
-
-    //Deshabilita boton de afectar porque aqui concluye el flujo
-    App.imgbtnAfectar.setDisabled(true);
-    App.imgbtnCancelar.setDisabled(false);
-
-    //3. Remover la útima fila
-    var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
-    if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Utilizada') == 0) {
-        App.sConceptos.removeAt(App.sConceptos.getCount() - 1);
-    }
-
-    //4. Deseleccionar datos del GridPanel y deshabilitar los controles
-    App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
-    DeshabilitarControlesAfectar();
-    Ext.util.Cookies.set('cookieEditarVolumetria', App.sConceptos.getAt(0).get('ID'));
-
-
-    
-    //Deshabilita los comandos de Fotos
-    App.ccFotos.commands[0].disabled = true;
-    App.ccFotos.commands[1].disabled = false;
-    App.gpVolumetriaDetalle.reconfigure();
-
-};
-
-//Función que deshabilita todos los controles cuando se afecta un movimiento
-function DeshabilitarControlesAfectar() {
-    App.cmbMov.setDisabled(true);
-    App.cmbPreciario.setDisabled(true);
-    App.dfFechaEmision.setDisabled(true);
-    App.txtfObservaciones.setDisabled(true);
-   // App.gpVolumetriaDetalle.setDisabled(true);
-    App.imgbtnGuardar.setDisabled(true);
-    App.imgbtnBorrar.setDisabled(true);
-}
 
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
@@ -794,82 +573,98 @@ var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     }
 };
 
+//-----------------------------------------------VALIDACIONES-----------------------------------------------
+//Función que valida si se habilita el primer renlgon en el GridPanel detalle
+function PrimerRenglonDetalle() {
+    //Validar si se asigna el primer renglon del concepto
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.cmbMov.getValue() != 'Fin') {
+        if (App.cmbPreciario.isValid()) {
+            var store = App.gpVolumetriaDetalle.getStore();
+            if (store.getCount() == 0) {
+                //Insertar el primer registro
+                store.insert(0, { Renglon: 0 });
+            }
+        }
+    }
+}
 
-//Regresar el nombre de la sucursal
-var cSucursal_Renderer = function (valor, metaData, registro) {
-    return registro.get('RSucursal').Nombre;
-};
-
-//Regresar el nombre del preciario
-var cPreciario_Renderer = function (valor, metaData, registro) {
-    return registro.get('RPreciario').Descripcion;
-};
-
-
-//Evento que hace el filtro al seleccionar algun elemento
-var cmbPreciarioFiltro_Select = function (combobox, registro) {
-
-   
-    //1. Obtener el valor
-    var valor = registro[0].get('ID');
-
-    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
-    if (valor == 'Todos') {
-        App.sVolumetrias.clearFilter();
+//Función que valida si se habilita el botón de Guardar
+function HabilitarGuardar() {
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null) {
+        App.imgbtnGuardar.setDisabled(false);
     }
     else {
-        App.sVolumetrias.filterBy(function (elemento) {
-            if (elemento.get('Preciario') == valor) {
-                return true
+        App.imgbtnGuardar.setDisabled(true);
+    }
+}
+
+//Validar si se habilita el botón d Afectar
+function HabilitarAfectar() {
+    //Obtiene la fecha de emision del store
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null) {
+        if (App.cmbMov.isValid() && App.cmbPreciario.isValid()) {
+            if (App.gpVolumetriaDetalle.getStore().getCount() != 0) {
+                if (App.sConceptos.getAt(0).get('ConceptoID').length != 0 && App.sConceptos.getAt(0).get('Utilizada') != 0) {
+                    App.imgbtnAfectar.setDisabled(false);
+                }
             }
             else {
-                return false;
+                App.imgbtnAfectar.setDisabled(true);
             }
-        });
-    }
-};
-
-
-//Evento que hace el filtro al seleccionar algun elemento
-var cmbEstatusFiltro_Select = function (combobox, registro) {
-    //1. Obtener el valor
-    var valor = combobox.getValue();
-
-    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
-    if (valor == 'Todos') {
-        App.sVolumetrias.clearFilter();
+        }
+        else {
+            App.imgbtnAfectar.setDisabled(true);
+        }
     }
     else {
-        App.sVolumetrias.filterBy(function (elemento) {
-            if (elemento.get('Estatus') == valor) {
-                return true
-            }
-            else {
-                return false;
-            }
-        });
+        App.imgbtnAfectar.setDisabled(true);
     }
-};
+}
 
+//Validar si se habilita el botón d Afectar cuando se selecciona FIN
+function HabilitarAfectarFin() {
 
-//Evento que hace el filtro al seleccionar algun elemento
-var cmbUsuarioFiltro_Select = function (combobox, registro) {
-    //1. Obtener el valor
-    var valor = combobox.getValue();
-  
-    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
-    if (valor == 'Todos') {
-        App.sVolumetrias.clearFilter();
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.dfFechaEmision.getValue() != null) {
+        App.imgbtnAfectar.setDisabled(false);
     }
     else {
-        App.sVolumetrias.filterBy(function (elemento) {
+        App.imgbtnAfectar.setDisabled(true);
+    }
+}
 
-            if (elemento.get('Usuario') == valor) {
-                return true
-            }
-            else {
-                return false;
-            }
-        });
+//Validar si se habilita el botón de Información
+function HabilitarInformacion() {
+    if (App.txtfIDSucursal.getValue() != null) {
+        App.imgbtnInfo.setDisabled(false);
+    }
+    else {
+        App.imgbtnInfo.setDisabled(true);
+    }
+}
+
+//Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
+var validaConcluidos = function (a, d, f) {
+
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        return false;
+    }
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        return false;
+    }
+    else {
+        return true
     }
 };
+
+//Función que deshabilita todos los controles cuando se afecta un movimiento
+function DeshabilitarControlesAfectar() {
+    App.cmbMov.setReadOnly(true);
+    App.cmbPreciario.setDisabled(true);
+    App.dfFechaEmision.setDisabled(true);
+    App.txtfObservaciones.setDisabled(true);
+    // App.gpVolumetriaDetalle.setDisabled(true);
+    App.imgbtnGuardar.setDisabled(true);
+    App.imgbtnBorrar.setDisabled(true);
+}
