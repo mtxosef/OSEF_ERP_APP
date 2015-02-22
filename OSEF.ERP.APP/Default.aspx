@@ -83,6 +83,7 @@
                             <ext:Button 
                                 ID="btnUsuario"
                                 runat="server"
+                                Width="290"
                                 Text=""
                                 Cls="xBtnCustomDesplegable">
                                 <Menu>
@@ -117,7 +118,7 @@
                     Height="50"
                     Width="50"
                     Hidden="true" 
-                    StyleSpec="margin-left: 900px; margin-right: auto; margin-top:50px;">
+                    StyleSpec="margin-left: 900px; margin-right: auto; margin-top:20px;">
                     <Listeners>
                         <Click Handler="
                             App.imgbtnRegresar.hide();

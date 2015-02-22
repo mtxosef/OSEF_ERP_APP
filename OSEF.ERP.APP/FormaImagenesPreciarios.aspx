@@ -58,7 +58,7 @@
             ID="fpImagenesVolumetriaD"
             runat="server" 
             BodyStyle="background-color:#fff;"
-            Layout="FitLayout"
+          
             Height="479"
             Width="660"
             AutoScroll="true">
