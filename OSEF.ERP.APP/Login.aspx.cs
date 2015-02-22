@@ -23,16 +23,25 @@ namespace OSEF.AVANCES.SUCURSALES
         #region Eventos
 
         /// <summary>
+        /// Se produce al principio de la inicialización de la página.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Request.IsAuthenticated)
+            {
+                Response.Redirect("~/Default.aspx", true);
+            }
+        }
+
+        /// <summary>
         /// Evento de carga de la página
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.IsAuthenticated)
-            {
-                Response.Redirect("~/Default.aspx", true);
-            }
         }
 
         /// <summary>

@@ -403,19 +403,20 @@ CREATE TABLE PreciarioSubSubCategorias(
 )
 
 CREATE TABLE PreciarioConceptos(
- ID CHAR(10) NOT NULL PRIMARY KEY,
- CLAVE   CHAR(7) NULL,
- Preciario  CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
- Descripcion  VARCHAR(2000)  NOT NULL,
- Categoria  CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
- SubCategoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
- SubSubCategoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubSubCategorias(ID),
- Unidad   VARCHAR(30)  NULL,
- Costo    DECIMAL(20,2),
- Cantidad DECIMAL(10,2),
- Importe    DECIMAL(20,2),
- Estatus   VARCHAR(20)  NOT NULL,
- FechaAlta  SMALLDATETIME NOT NULL
+	ID					CHAR(10) NOT NULL PRIMARY KEY,
+	CLAVE				CHAR(7) NULL,
+	Preciario			CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Descripcion			VARCHAR(2000)  NOT NULL,
+	Categoria			CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+	SubCategoria		CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
+	SubSubCategoria		CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubSubCategorias(ID),
+	Unidad				VARCHAR(30)  NULL,
+	Costo				DECIMAL(20,2),
+	Cantidad			DECIMAL(10,2),
+	Utilizada			DECIMAL(10,2) NULL,
+	Importe				DECIMAL(20,2),
+	Estatus				VARCHAR(20)  NOT NULL,
+	FechaAlta			SMALLDATETIME NOT NULL
 )
 
 
@@ -428,6 +429,9 @@ CREATE TABLE Volumetrias(
 	Observaciones	VARCHAR(200)	NULL,
 	Estatus			VARCHAR(20)		NOT NULL,
 	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Origen			VARCHAR(50)		NULL,
+	OrigenID		VARCHAR(50)		NULL,
+	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
 )
 
 CREATE TABLE VolumetriasD(

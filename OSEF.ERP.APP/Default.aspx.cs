@@ -47,7 +47,6 @@ namespace OSEF.AVANCES.SUCURSALES
             });
         }
 
-
         /// <summary>
         /// Evento de clic del botón de cerrar Sesión
         /// </summary>
@@ -55,13 +54,8 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void miCerrarSesionClick(object sender, DirectEventArgs e)
         {
-        
             FormsAuthentication.SignOut();
-            Response.Redirect("~/Login.aspx", true);
-            
+            Response.Redirect("~/Login.aspx", true);   
         }
-
-
-
     }
 }

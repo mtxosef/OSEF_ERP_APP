@@ -430,12 +430,11 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         App.imgbtnBorrar.setDisabled(false);
         //Actualiza al estatus BORRADOR de la captura
         App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
-        //App.ccFotos.cache[0].items.get(0).setDisabled(false);
-        //App.ccFotos.cache[0].items.get(1).setDisabled(true);
-        //App.gpVolumetriaDetalle.getView().refresh();
-        //console.log(App.ccFotos.cache[0].items.get(1));
-        //console.log(App.ccFotos.getGridColumns());
-        //App.ccFotos.fireEvent('ccAccionesFotos_PrepareToolbar', App.gpVolumetriaDetalle, App.ccFotos.cache[0], 0, App.sConceptos.getAt(0));
+
+        //Deshabilita los comandos de Fotos
+        App.ccFotos.commands[0].disabled = false;
+        App.ccFotos.commands[1].disabled = false;
+        App.gpVolumetriaDetalle.reconfigure();
     }
     else {
         Ext.Msg.show({
