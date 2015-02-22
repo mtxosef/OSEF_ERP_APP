@@ -293,17 +293,7 @@
                                     LabelWidth="120"
                                     AllowBlank="false">
                                 </ext:NumberField>
-                                <%-- <ext:Button 
-                                ID="btnCargar" 
-                                runat="server" 
-                                Icon="Add"
-                                StyleSpec="margin-right: 6px;"
-                                Text="Cargar Archivo">
-                                <DirectEvents>
-                                    <Click OnEvent="btnImportar_Click">
-                                        </Click>
-                                </DirectEvents>
-                                </ext:Button>--%>
+                             
                                 <ext:ImageButton 
                                     ID="btnCargar"
                                     runat="server"
@@ -316,9 +306,24 @@
                                     Height="23"
                                     Width="23">
                                         <DirectEvents>
-                                    <Click OnEvent="btnImportar_Click">
+                                            <Click OnEvent="btnImportar_Click" Success="btnImportar_Click_Success">
                                         </Click>
                                 </DirectEvents>
+                                </ext:ImageButton>
+                                <ext:ImageButton 
+                                    ID="imgbtnBorrarCarga"
+                                    runat="server"
+                                    StyleSpec="margin-right: 6px;"
+                                    ImageUrl="assets/img/controles/CleanNormal.png"
+                                    DisabledImageUrl="assets/img/controles/CleanDisabled.png"
+                                    OverImageUrl="assets/img/controles/CleanHover.png"
+                                    PressedImageUrl="assets/img/controles/CleanPressed.png"
+                                    ToolTip="Limpiar"
+                                    Height="23"
+                                    Width="23">
+                                    <Listeners>
+                                        <Click Fn="BorrarDetallePreciario"></Click>
+                                    </Listeners>
                                 </ext:ImageButton>
                             </Items>
                         </ext:FieldContainer> 

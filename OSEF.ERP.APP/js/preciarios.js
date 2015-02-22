@@ -15,6 +15,13 @@ var imgbtnNuevo_Click = function () {
 
 };
 
+//Evento que borra el preciario, sí se equivocó de archivo
+var BorrarDetallePreciario = function () {
+    App.sCarga.removeAll();
+
+};
+
+
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
@@ -95,7 +102,18 @@ var CheckExtension = function (FileUploadField1, file) {
     if (!isValidFile) {
         file.value = null;
         FileUploadField1.reset();
-        alert("Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "));
+
+        Ext.Msg.show({
+            id: 'msgPreciarios',
+            title: 'Advertencia Preciarios',
+            msg: "Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "),
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+
+//        alert("Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "));
     }
 
     HabilitarGuardar();
@@ -183,10 +201,13 @@ var sSucursales_Load = function () {
 var sPreciario_Load = function () {
     App.direct.sPreciario_Load();
     store = window.parent.App.pCentro.getBody().App.sPreciarios;
+    var d = new Date();
+    App.dfFechaEmision.setValue(d);
 };
 
 //Evento lanzado al agregar un registro al store
 var sPreciario_Add = function (avance, registro) {
+    //Lo que pasa cuando se selecciona un registro y es diferente de nuevo
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo') {
 
 
@@ -203,9 +224,10 @@ var sPreciario_Add = function (avance, registro) {
         App.cmbEstatus.setDisabled(false);
         App.nfHoja.setDisabled(true);
         App.btnCargar.setDisabled(true);
+        App.imgbtnBorrarCarga.setDisabled(true);
         App.fufArchivoExcel.setDisabled(true);
         App.sbFormaPreciario.setText(registro[0].get('Estatus'));
-     
+
     }
 };
 
@@ -239,10 +261,36 @@ var cSubsubcategoria_Renderer = function (valor, columna, registro) {
 };
 
 
+
+var btnImportar_Click_Success = function (response, result) {
+//Valida si se habilita el boton de guardar
+    HabilitarGuardar();
+
+    if (result.extraParamsResponse.accion == 'error') {
+        Ext.Msg.show({
+            id: 'msgPreciarioConcepto',
+            title: 'Advertencia Preciarios',
+            msg: "El formato no coincide con el indicado en las columnas <br><br>" + result.extraParamsResponse.data + "<br><br>Por favor verifica tu archivo.",
+
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+    }
+
+    //alert(result.extraParamsResponse.data);
+
+ 
+
+}
+
+
+
 //Función que valida si se habilita el botón de Guardar
 function HabilitarGuardar() {
 
-
+    
     //Valida que el control de subir archivo contenga algo, si no, se le asigna un caracter, para que entre a la validacion de habilitarGuarda();
     var FileUploadValue = "";
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo' && App.fufArchivoExcel.getValue()=="" ) {
@@ -253,7 +301,7 @@ function HabilitarGuardar() {
     }
 
     //Valida que todos los controles del encabezado obligatorios estén llenos
-    if (App.cmbSucursal.getValue() != null && FileUploadValue != "" && App.txtfDescripcion.getValue() != "") {
+     if (App.cmbSucursal.getValue() != null && FileUploadValue != "" && App.txtfDescripcion.getValue() != "" && App.sCarga.getCount() != 0) {
         App.imgbtnGuardar.setDisabled(false);
     }
     else 

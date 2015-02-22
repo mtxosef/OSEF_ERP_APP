@@ -229,6 +229,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ImageButton btnCargar;
         
         /// <summary>
+        /// Control imgbtnBorrarCarga.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnBorrarCarga;
+        
+        /// <summary>
         /// Control fcSeleccionado.
         /// </summary>
         /// <remarks>

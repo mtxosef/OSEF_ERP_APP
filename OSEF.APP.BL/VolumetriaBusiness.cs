@@ -56,7 +56,7 @@ namespace OSEF.APP.BL
         /// Método que obtiene todos los regsitros de Volumetrias
         /// </summary>
         /// <returns></returns>
-        public static List<Volumetria> ObtenerRevisiones()
+        public static List<Volumetria> ObtenerVolumetrias()
         {
             //1. Obtener las revisiones en una lista
             List<Volumetria> lVolumetrias = VolumetriaDataAccess.ObtenerVolumetrias();

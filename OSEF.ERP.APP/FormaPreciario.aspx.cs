@@ -206,7 +206,7 @@ namespace OSEF.AVANCES.SUCURSALES
 
 
         //Evento que se lanza al dar click en el boton de Cargar
-        public void btnImportar_Click(object sender, EventArgs e)
+        public void btnImportar_Click(object sender, DirectEventArgs e)
         {
             //Se limpian las variables para si se equivocan de preciario puedan cargar otro archivo de excel
             sCarga.DataSource = "";
@@ -251,127 +251,186 @@ namespace OSEF.AVANCES.SUCURSALES
             //se guarde el nombre de la hoja para poder realizar la consulta
             string SheetName = dtExcelSchema.Rows[nhoja]["TABLE_NAME"].ToString();
 
-            //Se declara el objeto de comando que se encargará de realizar la consulta
-            OleDbCommand seleccion = default(OleDbCommand);
-            seleccion = new OleDbCommand("Select id, Concepto, Unidad, Cantidad, Precio, Importe, Tipo From [" + SheetName + "]", connExcel);
-            //Se ejecuta la consulta
-            OleDbDataAdapter adaptador = new OleDbDataAdapter();
-            adaptador.SelectCommand = seleccion;
 
-            //Se llena el DataSet con lo que devolvió el adaptador
-            DataSet ds = new DataSet();
-            adaptador.Fill(ds);
-            //Variables Auxiliares para traer las categorias y declarar las fechas y estatus con los que se guarda el documento
-            string categoria = "";
-            string scategoria = "";
-            string sscategoria = "";
-            DateTime FechaAlta = DateTime.Now;
-            string strEstatus = "ACTIVO";
-            // Por cada tabla en el DataSet, imprime los valores de cada renglon
-            foreach (DataTable thisTable in ds.Tables)
+            //Valores permitidos
+            List<string> permitidos =new  List<string>(); 
+            permitidos.Add("id");
+            permitidos.Add("Concepto");
+            permitidos.Add("Unidad");
+            permitidos.Add("Cantidad");
+            permitidos.Add("Precio");
+            permitidos.Add("Importe");
+            permitidos.Add("Tipo");
+
+
+            //Extraemos e modelo de columnas del excel
+            DataTable ExcelValues = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Columns, new object[] { null, null, SheetName, null });
+            //Declaramos una lista para meter los nombres de las columnas a comparar
+            List<string> lColumnasExcel = new List<string>();
+            //Se agregan los nombres a la lista
+            foreach (DataRow row in ExcelValues.Rows)
             {
-                //Por cada renglon imprime los valores de cada columna
-                foreach (DataRow row in thisTable.Rows)
-                {
-                    //Columna auxiliar que nos permitirá saber si es Categoria, Subcategoria, subsubCategoria o concepto
-                    if (row["Tipo"].ToString().Equals("1"))
-                    {
-                        //LLenamos la variable auxiliar con el Id de la Categoria, Subcategoria, subsubCategoria
-                        categoria = row["id"].ToString();
-                        //Agrega los datos del excell al store
-                        sCarga.Add(new
-                        {
-                            Clave = row["Id"],
-                            Descripcion = row["Concepto"],
-                            Unidad = row["Unidad"],
-                            Cantidad = row["Cantidad"],
-                            Utilizada = row["Cantidad"],
-                            Costo = row["Precio"],
-                            Importe = row["Importe"],
-                            Categoria = "",
-                            Subcategoria = "",
-                            SubSubCategoria = "",
-                            FechaAlta = FechaAlta,
-                            Estatus = strEstatus,
-                            Tipo = row["Tipo"]
-
-                        });
-
-                    }
-
-                    if (row["Tipo"].ToString().Equals("2"))
-                    {
-                        scategoria = row["id"].ToString();
-
-                        sCarga.Add(new
-                        {
-                            Clave = row["Id"],
-                            Descripcion = row["Concepto"],
-                            Unidad = row["Unidad"],
-                            Cantidad = row["Cantidad"],
-                            Utilizada = row["Cantidad"],
-                            Costo = row["Precio"],
-                            Importe = row["Importe"],
-                            Categoria = categoria,
-                            SubCategoria = "",
-                            SubSubCategoria = "",
-                            FechaAlta = FechaAlta,
-                            Estatus = strEstatus,
-                            Tipo = row["Tipo"]
-
-                        });
-
-                    }
-                    if (row["Tipo"].ToString().Equals("3"))
-                    {
-                        sscategoria = row["id"].ToString();
-
-                        sCarga.Add(new
-                        {
-                            Clave = row["Id"],
-                            Descripcion = row["Concepto"],
-                            Unidad = row["Unidad"],
-                            Cantidad = row["Cantidad"],
-                            Utilizada = row["Cantidad"],
-                            Costo = row["Precio"],
-                            Importe = row["Importe"],
-                            Categoria = categoria,
-                            SubCategoria = scategoria,
-                            SubSubCategoria = "",
-                            FechaAlta = FechaAlta,
-                            Estatus = strEstatus,
-                            Tipo = row["Tipo"]
-
-                        });
-
-                    }
-
-                    if (row["Tipo"].ToString().Equals(""))
-                    {
-
-                        sCarga.Add(new
-                       {
-                           Clave = row["Id"],
-                           Descripcion = row["Concepto"],
-                           Unidad = row["Unidad"],
-                           Cantidad = row["Cantidad"],
-                           Utilizada = row["Cantidad"],
-                           Costo = row["Precio"],
-                           Importe = row["Importe"],
-                           Categoria = categoria,
-                           SubCategoria = scategoria,
-                           SubSubCategoria = sscategoria,
-                           FechaAlta = FechaAlta,
-                           Estatus = strEstatus,
-                           Tipo = row["Tipo"]
-
-                       });
-                    }
-
-                }//Fin del for que recorre los renglones
+                lColumnasExcel.Add(row["Column_name"].ToString());
             }
-            //cerramos la conexion con el adaptador de excel
-            connExcel.Close();
+
+            //Se de clara una nueva lista que  manda llamar el metodo que compara y devuelve las columnas que no coinciden
+            List<string> lValoresDiferentes = Comparator(lColumnasExcel, permitidos);
+
+            //Si el validador devuelve 0 registros sin coincidir realiza la operacion
+            if (lValoresDiferentes.Count() == 0)
+            {
+                //Se declara el objeto de comando que se encargará de realizar la consulta
+                OleDbCommand seleccion = default(OleDbCommand);
+                seleccion = new OleDbCommand("Select id, Concepto, Unidad, Cantidad, Precio, Importe, Tipo From [" + SheetName + "]", connExcel);
+                //Se ejecuta la consulta
+                OleDbDataAdapter adaptador = new OleDbDataAdapter();
+                adaptador.SelectCommand = seleccion;
+
+                //Se llena el DataSet con lo que devolvió el adaptador
+                DataSet ds = new DataSet();
+                adaptador.Fill(ds);
+                //Variables Auxiliares para traer las categorias y declarar las fechas y estatus con los que se guarda el documento
+                string categoria = "";
+                string scategoria = "";
+                string sscategoria = "";
+                DateTime FechaAlta = DateTime.Now;
+                string strEstatus = "ACTIVO";
+                // Por cada tabla en el DataSet, imprime los valores de cada renglon
+                foreach (DataTable thisTable in ds.Tables)
+                {
+                    //Por cada renglon imprime los valores de cada columna
+                    foreach (DataRow row in thisTable.Rows)
+                    {
+                        //Columna auxiliar que nos permitirá saber si es Categoria, Subcategoria, subsubCategoria o concepto
+                        if (row["Tipo"].ToString().Equals("1"))
+                        {
+                            //LLenamos la variable auxiliar con el Id de la Categoria, Subcategoria, subsubCategoria
+                            categoria = row["id"].ToString();
+                            //Agrega los datos del excell al store
+                            sCarga.Add(new
+                            {
+                                Clave = row["Id"],
+                                Descripcion = row["Concepto"],
+                                Unidad = row["Unidad"],
+                                Cantidad = row["Cantidad"],
+                                Utilizada = row["Cantidad"],
+                                Costo = row["Precio"],
+                                Importe = row["Importe"],
+                                Categoria = "",
+                                Subcategoria = "",
+                                SubSubCategoria = "",
+                                FechaAlta = FechaAlta,
+                                Estatus = strEstatus,
+                                Tipo = row["Tipo"]
+
+                            });
+
+                        }
+
+                        if (row["Tipo"].ToString().Equals("2"))
+                        {
+                            scategoria = row["id"].ToString();
+
+                            sCarga.Add(new
+                            {
+                                Clave = row["Id"],
+                                Descripcion = row["Concepto"],
+                                Unidad = row["Unidad"],
+                                Cantidad = row["Cantidad"],
+                                Utilizada = row["Cantidad"],
+                                Costo = row["Precio"],
+                                Importe = row["Importe"],
+                                Categoria = categoria,
+                                SubCategoria = "",
+                                SubSubCategoria = "",
+                                FechaAlta = FechaAlta,
+                                Estatus = strEstatus,
+                                Tipo = row["Tipo"]
+
+                            });
+
+                        }
+                        if (row["Tipo"].ToString().Equals("3"))
+                        {
+                            sscategoria = row["id"].ToString();
+
+                            sCarga.Add(new
+                            {
+                                Clave = row["Id"],
+                                Descripcion = row["Concepto"],
+                                Unidad = row["Unidad"],
+                                Cantidad = row["Cantidad"],
+                                Utilizada = row["Cantidad"],
+                                Costo = row["Precio"],
+                                Importe = row["Importe"],
+                                Categoria = categoria,
+                                SubCategoria = scategoria,
+                                SubSubCategoria = "",
+                                FechaAlta = FechaAlta,
+                                Estatus = strEstatus,
+                                Tipo = row["Tipo"]
+
+                            });
+
+                        }
+
+                        if (row["Tipo"].ToString().Equals(""))
+                        {
+
+                            sCarga.Add(new
+                            {
+                                Clave = row["Id"],
+                                Descripcion = row["Concepto"],
+                                Unidad = row["Unidad"],
+                                Cantidad = row["Cantidad"],
+                                Utilizada = row["Cantidad"],
+                                Costo = row["Precio"],
+                                Importe = row["Importe"],
+                                Categoria = categoria,
+                                SubCategoria = scategoria,
+                                SubSubCategoria = sscategoria,
+                                FechaAlta = FechaAlta,
+                                Estatus = strEstatus,
+                                Tipo = row["Tipo"]
+
+                            });
+                        }
+
+                    }//Fin del for que recorre los renglones
+                }
+                //cerramos la conexion con el adaptador de excel
+                connExcel.Close();
+              
+            }
+            //Caso contrario no hace nada y devuelve los valores sin coincidencia
+            else {
+
+                string id = JSON.Serialize(lValoresDiferentes);
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "error", ParameterMode.Value));
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", id , ParameterMode.Value));
+
+                //foreach (var valor in lValoresDiferentes)
+                //{
+                //    Console.WriteLine(valor);
+                    
+                //}
+                connExcel.Close();
+            }
+
         }
+
+
+
+        public static List<string> Comparator(List<string> lsubidos, List<string> lpermitidos)
+        {
+            IEnumerable<string> differenceQuery = lsubidos.Except(lpermitidos);
+            List<string> ldiferentes = new List<string>();
+
+            foreach (string s in differenceQuery)
+                ldiferentes.Add(s);
+
+            return ldiferentes;
+        }
+
     }
 }

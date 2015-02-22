@@ -104,6 +104,10 @@
     <Content Include="assets\img\controles\CancelarDisabled.png" />
     <Content Include="assets\img\controles\CancelarOver.png" />
     <Content Include="assets\img\controles\CancelarPressed.png" />
+    <Content Include="assets\img\controles\CleanDisabled.png" />
+    <Content Include="assets\img\controles\CleanHover.png" />
+    <Content Include="assets\img\controles\cleanNormal.png" />
+    <Content Include="assets\img\controles\cleanPressed.png" />
     <Content Include="assets\img\controles\delete-disable.png" />
     <Content Include="assets\img\controles\delete-normal.png" />
     <Content Include="assets\img\controles\delete-over.png" />
