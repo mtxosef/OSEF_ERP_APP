@@ -48,5 +48,18 @@ namespace OSEF.AVANCES.SUCURSALES
                 rmVolumetrias.RegisterIcon(Icon.Delete);
             }
         }
+
+        /// <summary>
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sVolumetrias(object sender, StoreReadDataEventArgs e)
+        {
+            sVolumetrias.DataSource = VolumetriaBusiness.ObtenerVolumetrias();
+            sVolumetrias.DataBind();
+        }
+
+
     }
 }

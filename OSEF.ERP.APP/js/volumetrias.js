@@ -414,7 +414,7 @@ var sVolumetria_Add = function (avance, registro) {
 
 //Evento que ocurre al dar clic en imgbtnGuardar
 var imgbtnGuardar_Click_Success = function (response, result) {
-    window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
+    
     if (result.extraParamsResponse.accion == 'insertar') {
         Ext.Msg.show({
             id: 'msgVolumetria',
@@ -425,11 +425,13 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
-
+        Ext.util.Cookies.set('cookieEditarVolumetria', App.sVolumetria.getAt(0).get('ID'));
         //Activa el boton de borrar movimiento
         App.imgbtnBorrar.setDisabled(false);
         //Actualiza al estatus BORRADOR de la captura
         App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
+
+        window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
 
         //Deshabilita los comandos de Fotos
         App.ccFotos.commands[0].disabled = false;
@@ -734,6 +736,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         icon: Ext.MessageBox.INFO
     });
 
+    Ext.util.Cookies.set('cookieEditarVolumetria', App.sVolumetria.getAt(0).get('ID'));
+
     //Actualizar campos afetados
     App.txtfMovID.setValue(App.sVolumetria.getAt(0).get('MovID'));
     App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
@@ -752,6 +756,14 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
     DeshabilitarControlesAfectar();
     Ext.util.Cookies.set('cookieEditarVolumetria', App.sConceptos.getAt(0).get('ID'));
+
+
+    
+    //Deshabilita los comandos de Fotos
+    App.ccFotos.commands[0].disabled = true;
+    App.ccFotos.commands[1].disabled = false;
+    App.gpVolumetriaDetalle.reconfigure();
+
 };
 
 //Función que deshabilita todos los controles cuando se afecta un movimiento
@@ -760,7 +772,7 @@ function DeshabilitarControlesAfectar() {
     App.cmbPreciario.setDisabled(true);
     App.dfFechaEmision.setDisabled(true);
     App.txtfObservaciones.setDisabled(true);
-    App.gpVolumetriaDetalle.setDisabled(true);
+   // App.gpVolumetriaDetalle.setDisabled(true);
     App.imgbtnGuardar.setDisabled(true);
     App.imgbtnBorrar.setDisabled(true);
 }

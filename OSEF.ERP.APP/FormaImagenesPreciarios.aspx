@@ -7,7 +7,6 @@
     <title></title>
      <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
-    <script type="text/javascript" src="js/avance.js"></script>
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
     <link rel="stylesheet" href="css/xSplitButton.css" />
@@ -25,7 +24,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-
+    <link rel="stylesheet" href="css/xDisplayImages.css"/>
 
     <ext:XScript runat="server">
         <script>
@@ -35,85 +34,7 @@
             };
         </script>
     </ext:XScript>
-    <style type="text/css">
-        .images-view .x-panel-body {
-            background: white;
-            font: 11px Arial, Helvetica, sans-serif;
-        }
-        
-        .images-view .thumb {
-            background: #dddddd;
-            padding: 3px;
-            padding-bottom: 0;
-        }
-
-        .x-quirks .images-view .thumb {
-            padding-bottom: 3px;
-        }
-
-        .images-view .thumb img {
-            height: 120px;
-            width: 140px;
-        }
-
-        .images-view .thumb-wrap {
-            float: left;
-            margin: 4px;
-            margin-right: 0;
-            padding: 5px;
-        }
-
-        .images-view .thumb-wrap span {  
-            display: block;
-            overflow: hidden;
-            text-align: center;
-            width: 146px; // for ie to ensure that the text is centered
-        }
-
-        .images-view .x-item-over{
-            border: 1px solid #dddddd;
-            background: #efefef url(../../Shared/images/row-over.gif) repeat-x left top;
-            padding: 4px;
-        }
-
-        .images-view .x-item-selected{
-            background: #eff5fb url(../../Shared/images/selected.gif) no-repeat right bottom;
-            border: 1px solid #99bbe8;
-            padding: 4px;
-        }
-
-        .images-view .x-item-selected .thumb{
-            background: transparent;
-        }
-
-        .images-view .loading-indicator {
-            font-size: 11px;
-            background-image : url('../../Shared/images/loading.gif');
-            background-repeat: no-repeat;
-            background-position: left;
-            padding-left: 20px;
-            margin: 10px;
-        }
-
-        .x-view-selector {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0;
-            border: 1px dotted;
-            opacity: .5;
-            -moz-opacity: .5;
-            filter: alpha(opacity=50);
-            zoom: 1;
-            background-color: #c3daf9;
-            border-color: #3399bb;
-        }
-
-        .ext-strict .ext-ie .x-tree .x-panel-bwrap {
-            position: relative;
-            overflow: hidden;
-        }
-    </style>
+    
 
 </head>
 <body>
@@ -134,10 +55,18 @@
                 </ext:Model>
             </Model>
         </ext:Store>
-
+         <ext:Panel 
+            ID="fpImagenesVolumetriaD"
+            runat="server" 
+            AutoScroll="true"
+            Height="1200"
+            BodyStyle="background-color:#fff;">
+            <Items>
                 <ext:DataView
                     ID="dvImagenesPreciarios"
                     runat="server"
+                    AutoScroll="true"
+                    Height="1200"
                     ItemSelector="div.thumb-wrap"
                     EmptyText="No hay imagenes para mostrar"
                     StoreID="sImagenesVolumetriasD"
@@ -158,6 +87,9 @@
                     </Tpl>
                     <PrepareData Fn="prepareData" />
                 </ext:DataView>
+            </Items>
+         </ext:Panel>
+                
 
     </form>
 </body>

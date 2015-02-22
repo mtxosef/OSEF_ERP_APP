@@ -227,6 +227,7 @@
     <Content Include="css\xComboBox.css" />
     <Content Include="css\xCustomChart.css" />
     <Content Include="css\xDatePicker.css" />
+    <Content Include="css\xDisplayImages.css" />
     <Content Include="css\xFieldSet.css" />
     <Content Include="css\xGridPanel.css" />
     <Content Include="css\xHiperlink.css" />

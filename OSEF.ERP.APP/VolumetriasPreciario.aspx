@@ -170,7 +170,8 @@
             <Store>
                 <ext:Store
                     ID="sVolumetrias"
-                    runat="server">
+                    runat="server"
+                    OnReadData="OnReadData_sVolumetrias">
                     <Model>
                         <ext:Model ID="mVolumetrias" runat="server">
                             <Fields>
