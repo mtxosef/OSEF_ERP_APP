@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-     <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -34,8 +34,6 @@
             };
         </script>
     </ext:XScript>
-    
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -55,18 +53,19 @@
                 </ext:Model>
             </Model>
         </ext:Store>
+
          <ext:Panel 
             ID="fpImagenesVolumetriaD"
             runat="server" 
-            AutoScroll="true"
-            Height="1200"
-            BodyStyle="background-color:#fff;">
+            BodyStyle="background-color:#fff;"
+            Layout="FitLayout"
+            Height="479"
+            Width="660"
+            AutoScroll="true">
             <Items>
                 <ext:DataView
                     ID="dvImagenesPreciarios"
                     runat="server"
-                    AutoScroll="true"
-                    Height="1200"
                     ItemSelector="div.thumb-wrap"
                     EmptyText="No hay imagenes para mostrar"
                     StoreID="sImagenesVolumetriasD"
@@ -89,8 +88,6 @@
                 </ext:DataView>
             </Items>
          </ext:Panel>
-                
-
     </form>
 </body>
 </html>

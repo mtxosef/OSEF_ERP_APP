@@ -790,7 +790,7 @@ var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     }
     else {
         App.wEmergente.load('FormaImagenesPreciarios.aspx');
-        App.wEmergente.setHeight(520);
+        App.wEmergente.setHeight(530);
         App.wEmergente.setWidth(680);
         App.wEmergente.center();
         App.wEmergente.setTitle('Visualizar Fotografías');

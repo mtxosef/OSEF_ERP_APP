@@ -210,6 +210,7 @@
 :r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarios.sql
 :r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarioPorID.sql
 :r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarioPorCorreo.sql
+:r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarioPorIDCorreo.sql
 -- Usuarios (Insertar)
 :r c:\SqlServerScripts\Insertar\Usuarios\web_spI_InsertarUsuario.sql
 -- Usuarios (Modificar)
