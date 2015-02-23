@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="images/myApp.ico" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootmetro.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
-       <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -53,8 +53,6 @@
                         <ext:ModelField Name="FechaBloqueo" Type="Date" />
                         <ext:ModelField Name="UltimoAcceso" Type="Date" />
                         <ext:ModelField Name="CambioContrasena" Type="Date" />
-
-
                     </Fields>
                 </ext:Model>
             </Model>

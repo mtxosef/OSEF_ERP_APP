@@ -535,6 +535,56 @@ namespace OSEF.APP.DL
             }
         }
 
+        /// <summary>
+        /// Método que cambia la contraseña de un Usuario
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <param name="strContrasena"></param>
+        /// <returns></returns>
+        public static int CambiarContrasena(string strID, string strContrasena)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spU_CambiarContrasena";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.VarChar;
+                sqlpID.Value = strID;
+
+                SqlParameter sqlpContrasena = new SqlParameter();
+                sqlpContrasena.ParameterName = "@Contrasena";
+                sqlpContrasena.SqlDbType = SqlDbType.VarChar;
+                sqlpContrasena.Value = strContrasena;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpContrasena);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa un dato
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (CambiarContrasena(string " + strID + ", string " + strContrasena + ")): " + ex.Message);
+            }
+        }
+
         #endregion
     }
 }

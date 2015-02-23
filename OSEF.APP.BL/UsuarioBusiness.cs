@@ -144,6 +144,17 @@ namespace OSEF.APP.BL
             }
         }
 
+        /// <summary>
+        /// Cambiar contraseña de Usuario
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <param name="strContrasena"></param>
+        /// <returns></returns>
+        public static int CambiarContrasena(string strID, string strContrasena)
+        {
+            return UsuarioDataAccess.CambiarContrasena(strID, strContrasena);
+        }
+
         #endregion
     }
 }
