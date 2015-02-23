@@ -310,6 +310,7 @@
     <Content Include="js\tableroAvances.js" />
     <Content Include="js\usuarios2.js" />
     <Content Include="js\volumetrias.js" />
+    <Content Include="js\tablerovolumetrias.js" />
     <Content Include="Login2.aspx" />
     <Content Include="Menu2.aspx" />
     <Content Include="Menus2.aspx" />

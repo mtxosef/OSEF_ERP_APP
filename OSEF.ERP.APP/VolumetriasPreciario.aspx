@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type='text/javascript' src="js/volumetrias.js"></script>
+    <script type='text/javascript' src="js/tablerovolumetrias.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
