@@ -217,6 +217,9 @@
 :r c:\SqlServerScripts\Modificar\Usuarios\web_spU_ActualizarUsuario.sql
 -- Usuarios (Acción)
 :r c:\SqlServerScripts\Accion\Usuarios\web_spS_ValidarUsuarioContrasena.sql
+:r c:\SqlServerScripts\Accion\Usuarios\web_spU_CambiarContrasena.sql
+:r c:\SqlServerScripts\Accion\Usuarios\web_spS_ObtenerContrasenaPorID.sql
+:r c:\SqlServerScripts\Accion\Usuarios\web_spU_UltimoAcceso.sql
 ------------------------------------------------------------------------------------- Preciarios (Borrar)
 :r c:\SqlServerScripts\Borrar\Preciarios\web_spD_BorrarPreciario.sql
 -- Preciarios (Consultar)

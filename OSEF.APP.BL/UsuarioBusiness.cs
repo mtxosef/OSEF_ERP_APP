@@ -155,6 +155,16 @@ namespace OSEF.APP.BL
             return UsuarioDataAccess.CambiarContrasena(strID, strContrasena);
         }
 
+        /// <summary>
+        /// Método que actualiza el último acceso del usuario a la aplicación
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static int ActualizarUltimoAcceso(string strID)
+        {
+            return UsuarioDataAccess.ActualizarUltimoAcceso(strID);
+        }
+
         #endregion
     }
 }

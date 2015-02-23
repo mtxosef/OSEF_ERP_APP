@@ -75,11 +75,8 @@ namespace OSEF.AVANCES.SUCURSALES
                 if (oUsuario == null)
                     oUsuario = UsuarioBusiness.ObtenerUsuarioPorCorreo(strUsuario);
 
+                //7. Asignar variable de Session y Ticket de Session
                 Session["Usuario"] = oUsuario;
-
-
-             
-
                 string id = JSON.Serialize(oUsuario);
                 tkt = new FormsAuthenticationTicket(1, strUsuario, DateTime.Now, DateTime.Now.AddMinutes(60), true, id);
                 cookiestr = FormsAuthentication.Encrypt(tkt);
@@ -90,7 +87,7 @@ namespace OSEF.AVANCES.SUCURSALES
             }
             else
             {
-                //6. Sino la contraseña es incorrecta
+                //8. Sino la contraseña es incorrecta
                 txtfPassword.SelectOnFocus = true;
                 txtfPassword.Focus(true);
                 bMascara = false;
@@ -112,7 +109,10 @@ namespace OSEF.AVANCES.SUCURSALES
             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("showMask", bMascara.ToString().ToLower(), ParameterMode.Raw));
             //4. Direccionar a la página de Default si la autenticación fue true
             if (bMascara)
+            {
+                UsuarioBusiness.ActualizarUltimoAcceso(((Usuario)Session["Usuario"]).ID);
                 Response.Redirect("~/Default.aspx", true);
+            }
         }
 
         /// <summary>
@@ -130,7 +130,10 @@ namespace OSEF.AVANCES.SUCURSALES
             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("showMask", bMascara.ToString().ToLower(), ParameterMode.Raw));
             //4. Direccionar a la página de Default si la autenticación fue true
             if (bMascara)
+            {
+                UsuarioBusiness.ActualizarUltimoAcceso(((Usuario)Session["Usuario"]).ID);
                 Response.Redirect("~/Default.aspx", true);
+            }
         }
 
         #endregion

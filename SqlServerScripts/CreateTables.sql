@@ -66,19 +66,19 @@ CREATE TABLE Conceptos(
 )
 
 CREATE TABLE Usuarios(
-	ID					VARCHAR(50) NOT NULL PRIMARY KEY,
-	Correo				VARCHAR(50) NOT NULL,
-	Nombre				VARCHAR(50) NULL,
-	APaterno			VARCHAR(50) NULL,
-	AMaterno			VARCHAR(50) NULL,
-	Contrasena			VARCHAR(200) NULL,
-	Estatus				VARCHAR(50) NOT NULL,
-	Bloqueado			BIT NOT NULL,
-	EnLinea				BIT NOT NULL,
-	FechaAlta			SMALLDATETIME NOT NULL,
-	FechaBloqueo		SMALLDATETIME NULL,
-	UltimoAcceso		SMALLDATETIME NULL,
-	CambioContrasena	SMALLDATETIME NULL
+	ID					VARCHAR(50)		NOT NULL PRIMARY KEY,
+	Correo				VARCHAR(50)		NOT NULL,
+	Nombre				VARCHAR(50)		NULL,
+	APaterno			VARCHAR(50)		NULL,
+	AMaterno			VARCHAR(50)		NULL,
+	Contrasena			VARCHAR(200)	NULL,
+	Estatus				VARCHAR(50)		NOT NULL,
+	Bloqueado			BIT				NOT NULL,
+	EnLinea				BIT				NOT NULL,
+	FechaAlta			SMALLDATETIME	NOT NULL,
+	FechaBloqueo		SMALLDATETIME	NULL,
+	UltimoAcceso		SMALLDATETIME	NULL,
+	CambioContrasena	SMALLDATETIME	NULL
 )
 
 CREATE TABLE Proveedores(
