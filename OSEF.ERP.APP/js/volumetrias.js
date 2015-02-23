@@ -549,12 +549,13 @@ var cmbConcepto_Select = function (combobox, registro) {
 
     //se actualiza el Store contenedor con datos del store del comboBox
     App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
+  
 }
 
 
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
-
+ 
     if (nombre == 'cnCargarFotos') {
         App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
         App.wEmergente.setHeight(350);
