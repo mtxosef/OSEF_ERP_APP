@@ -81,7 +81,7 @@
                             PressedImageUrl="assets/img/controles/delete-pressed.png"
                             Height="50"
                             Width="50"
-                            Disabled="true">
+                            Disabled="false">
                         </ext:ImageButton>
 
                         
@@ -91,6 +91,7 @@
                              <ext:ComboBox
                                 ID="cmbUsuario"
                                 runat="server"
+                                FieldLabel="Usuario"
                                 DisplayField="Nombre"
                                 ValueField="ID">
                                 <Items>
