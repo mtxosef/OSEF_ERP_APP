@@ -624,10 +624,8 @@
                                                             </ext:Store>
                                                         </Store>
                                                         <Listeners>
-                                                         <Select Fn="cmbConcepto_Select" />
+                                                            <Select Fn="cmbConcepto_Select" />
                                                         </Listeners>
-
-
                                                     </ext:ComboBox>
                                                 </Editor>
                                             </ext:Column>

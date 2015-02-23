@@ -540,16 +540,36 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 
 //Evento que pondra la cantidad según el concepto obtenido
 var cmbConcepto_Select = function (combobox, registro) {
-//Ayuda para traer lo que trae toda la funcion como parámetro
+    //Ayuda para traer lo que trae toda la funcion como parámetro
     //console.log(arguments);
-    //Variable que contiene el indicie del elemento seleccionado del comboBox
-    var indiceCombo = registro[0].index;
-    //Variale que guarda el indicie del renglon del GridPanel segun la posicion en la que se encuentre capturando el usuario
-    var indice = App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId;
 
-    //se actualiza el Store contenedor con datos del store del comboBox
-    App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
-  
+    if (App.sConceptos.find('ConceptoID', registro[0].get('ID')) == -1) {
+
+        //Variable que contiene el indicie del elemento seleccionado del comboBox
+        var indiceCombo = registro[0].index;
+        //Variale que guarda el indicie del renglon del GridPanel segun la posicion en la que se encuentre capturando el usuario
+        var indice = App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId;
+
+        //se actualiza el Store contenedor con datos del store del comboBox
+        App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgConceptoError',
+            title: 'Error',
+            msg: 'El concepto ya ha sido capturado ',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            fn: function (btn) { 
+                if (btn === 'ok') { 
+                    App.cmbConcepto.setValue('');
+                    App.sConceptos.getAt(App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId).set('ConceptoID', '');
+                } 
+            },
+            icon: Ext.MessageBox.ERROR
+        });
+    }
 }
 
 

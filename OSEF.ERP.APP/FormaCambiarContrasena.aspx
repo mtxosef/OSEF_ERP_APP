@@ -30,13 +30,12 @@
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaCambiarContrasena" runat="server" HideInDesign="true" />
 
-       <%-- <ext:FormPanel 
+        <ext:FormPanel 
             ID="fpCambiarContrasena" 
             runat="server"
             Width="300">
-            <Items>--%>
-            <%--
-                <ext:FieldSet
+            <Items>
+            <%--<ext:FieldSet
                     ID="fsDivisorDatos" 
                     runat="server"
                     Title="Cambiar Contraseña">
@@ -69,7 +68,6 @@
                             AllowBlank="false"
                             MaxLength="50"
                             EnforceMaxLength="true">
-
                       <%--  <Validator Fn="txtfContrasena_Validator" />
                            <Plugins>
                                 <ext:PasswordMask ID="pmContrasena" runat="server">
@@ -90,7 +88,6 @@
                             AllowBlank="false"
                             MaxLength="50"
                             EnforceMaxLength="true">
-
                            <%-- <Validator Fn="txtfConfirmarContrasena_Validator" />
                            <Plugins>
                                 <ext:PasswordMask ID="pmConfirmarContrasena" runat="server">
@@ -103,19 +100,17 @@
                                 </ext:CapsLockDetector>
                             </Plugins>--%>
                         </ext:TextField>
-
                 <%--    </Items>
-                </ext:FieldSet> --%>                           
-             
-           <%-- </Items>--%>
-           <%-- <Listeners>
+                </ext:FieldSet> --%>
+            </Items>
+            <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
                                                 text : valid ? 'La información esta completa/correcta' : 'Existe información incompleta/incorrecta', 
                                                 iconCls: valid ? 'icon-accept' : 'icon-exclamation'
                                             });
                                             #{imgbtnGuardar}.setDisabled(!valid);" />
-            </Listeners>--%>
-            <%--<Buttons>
+            </Listeners>
+            <Buttons>
                 <ext:ImageButton
                     ID="imgbtnGuardar" 
                     runat="server" 
@@ -161,7 +156,7 @@
                     Cls="x-colorToolbar"
                     Text="Sin validar información" />
             </BottomBar>
-        </ext:FormPanel>--%>
+        </ext:FormPanel>
     </form>
 </body>
 </html>

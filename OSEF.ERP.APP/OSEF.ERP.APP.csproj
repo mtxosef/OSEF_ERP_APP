@@ -792,12 +792,6 @@
     <Compile Include="Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="reports\Volumetria.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Volumetria.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Subcategorias.aspx.cs">
       <DependentUpon>Subcategorias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -845,6 +839,7 @@
     <Folder Include="assets\img\menu\" />
     <Folder Include="imagesVolumetrias\" />
     <Folder Include="images\menu\" />
+    <Folder Include="reports\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSEF.APP.BL\OSEF.APP.BL.csproj">
@@ -877,12 +872,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="reports\Volumetria.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Volumetria.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
