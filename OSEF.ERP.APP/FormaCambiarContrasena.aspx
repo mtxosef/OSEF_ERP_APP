@@ -33,23 +33,33 @@
         <ext:FormPanel 
             ID="fpCambiarContrasena" 
             runat="server"
+<<<<<<< HEAD
             Width="300">
             <Items>
                <%-- <ext:FieldSet
+=======
+            BodyPadding="10"
+            Width="460"
+            Height="250"
+            >
+            <Items>
+                <ext:FieldSet
+>>>>>>> ecaa1ac108eb23d2763028690feb73b8e579d7ae
                     ID="fsDivisorDatos" 
                     runat="server"
                     Title="Cambiar Contraseña">
-                    <Items>--%>
+                    <Items>
                         <ext:TextField
                             ID="txtfContrasenaActual"
                             runat="server"
                             LabelWidth="150"
+                            Width="400"
                             FieldLabel="Contraseña Actual" 
                             AllowBlank="false"
                             AutoFocus="true"
                             MaxLength="50"
                             EnforceMaxLength="true">
-<%--                            <Plugins>
+                            <Plugins>
                                 <ext:PasswordMask ID="pmContrasenaActual" runat="server">
                                 </ext:PasswordMask>
                                 <ext:CapsLockDetector ID="cldContrasenaActual" runat="server">
@@ -58,18 +68,24 @@
                                         <CapsLockOff Handler="#{txtfContrasenaActual}.hideIndicator();" />
                                     </Listeners>
                                 </ext:CapsLockDetector>
-                            </Plugins>--%>
+                            </Plugins>
                         </ext:TextField>
                         <ext:TextField
                             ID="txtfContrasena"
                             runat="server"
                             LabelWidth="150"
+                            Width="400"
                             FieldLabel="Contraseña" 
                             AllowBlank="false"
                             MaxLength="50"
                             EnforceMaxLength="true">
+<<<<<<< HEAD
                         <%--    <Validator Fn="txtfContrasena_Validator" />--%>
                             <%--<Plugins>
+=======
+                            <Validator Fn="txtfContrasena_Validator" />
+                            <Plugins>
+>>>>>>> ecaa1ac108eb23d2763028690feb73b8e579d7ae
                                 <ext:PasswordMask ID="pmContrasena" runat="server">
                                 </ext:PasswordMask>
                                 <ext:CapsLockDetector ID="cldContrasena" runat="server">
@@ -78,18 +94,24 @@
                                         <CapsLockOff Handler="#{txtfContrasena}.hideIndicator();" />
                                     </Listeners>
                                 </ext:CapsLockDetector>
-                            </Plugins>--%>
+                            </Plugins>
                         </ext:TextField>
                         <ext:TextField
                             ID="txtfConfirmarContrasena"
                             runat="server"
                             LabelWidth="150"
+                            Width="400"
                             FieldLabel="Confirmar Contraseña"
                             AllowBlank="false"
                             MaxLength="50"
                             EnforceMaxLength="true">
+<<<<<<< HEAD
                             <%--<Validator Fn="txtfConfirmarContrasena_Validator" />--%>
                             <%--<Plugins>
+=======
+                            <Validator Fn="txtfConfirmarContrasena_Validator" />
+                            <Plugins>
+>>>>>>> ecaa1ac108eb23d2763028690feb73b8e579d7ae
                                 <ext:PasswordMask ID="pmConfirmarContrasena" runat="server">
                                 </ext:PasswordMask>
                                 <ext:CapsLockDetector ID="cldConfirmarContrasena" runat="server">
@@ -98,10 +120,15 @@
                                         <CapsLockOff Handler="#{txtfConfirmarContrasena}.hideIndicator();" />
                                     </Listeners>
                                 </ext:CapsLockDetector>
-                            </Plugins>--%>
+                            </Plugins>
                         </ext:TextField>
+<<<<<<< HEAD
              <%--       </Items>
                 </ext:FieldSet>  --%>                          
+=======
+                    </Items>
+                </ext:FieldSet>                            
+>>>>>>> ecaa1ac108eb23d2763028690feb73b8e579d7ae
             </Items>
             <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
