@@ -40,27 +40,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmFormaCambiarContrasena;
         
         /// <summary>
-        /// Control fpCambiarContrasena.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FormPanel fpCambiarContrasena;
-        
-        /// <summary>
-<<<<<<< HEAD
-=======
-        /// Control fsDivisorDatos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldSet fsDivisorDatos;
-        
-        /// <summary>
->>>>>>> ecaa1ac108eb23d2763028690feb73b8e579d7ae
         /// Control txtfContrasenaActual.
         /// </summary>
         /// <remarks>
@@ -68,24 +47,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfContrasenaActual;
-        
-        /// <summary>
-        /// Control pmContrasenaActual.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.PasswordMask pmContrasenaActual;
-        
-        /// <summary>
-        /// Control cldContrasenaActual.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CapsLockDetector cldContrasenaActual;
         
         /// <summary>
         /// Control txtfContrasena.
@@ -97,24 +58,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfContrasena;
         
         /// <summary>
-        /// Control pmContrasena.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.PasswordMask pmContrasena;
-        
-        /// <summary>
-        /// Control cldContrasena.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CapsLockDetector cldContrasena;
-        
-        /// <summary>
         /// Control txtfConfirmarContrasena.
         /// </summary>
         /// <remarks>
@@ -122,53 +65,5 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfConfirmarContrasena;
-        
-        /// <summary>
-<<<<<<< HEAD
-=======
-        /// Control pmConfirmarContrasena.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.PasswordMask pmConfirmarContrasena;
-        
-        /// <summary>
-        /// Control cldConfirmarContrasena.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CapsLockDetector cldConfirmarContrasena;
-        
-        /// <summary>
->>>>>>> ecaa1ac108eb23d2763028690feb73b8e579d7ae
-        /// Control imgbtnGuardar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnGuardar;
-        
-        /// <summary>
-        /// Control imgbtnCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnCancelar;
-        
-        /// <summary>
-        /// Control sbCambiarContrasena.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.StatusBar sbCambiarContrasena;
     }
 }
