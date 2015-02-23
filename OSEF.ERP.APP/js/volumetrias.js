@@ -362,9 +362,6 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     //4. Deseleccionar datos del GridPanel y deshabilitar los controles
     App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
     DeshabilitarControlesAfectar();
-    
-
-
 
     //Deshabilita los comandos de Fotos
     App.ccFotos.commands[0].disabled = true;

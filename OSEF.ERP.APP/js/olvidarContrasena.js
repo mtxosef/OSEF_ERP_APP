@@ -1,5 +1,7 @@
 ﻿//Método que se lanza despues de mandar la información de reestablecer contraseña
 var txtfEnviarCorreo_SpecialKey_Success = function (response, result) {
+
+
     if (result.extraParamsResponse.existe) {
         App.cErrorOlvidasteContrasena.hide();
         if (result.extraParamsResponse.correcto) {

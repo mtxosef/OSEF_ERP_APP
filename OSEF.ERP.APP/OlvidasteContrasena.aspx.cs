@@ -106,7 +106,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     servidorDeCorreo.Credentials = new NetworkCredential(settings.Smtp.Network.UserName, settings.Smtp.Network.Password);
 
                     MailMessage mmMensaje = new MailMessage();
-                    mmMensaje.To.Add("osef@hotmail.com");
+                    mmMensaje.To.Add(oUsuario.Correo);
                     mmMensaje.Subject = "Asunto";
                     mmMensaje.Body = "Tu contraseña es: " + UsuarioBusiness.ObtenerContrasenaPorID(oUsuario.ID);
 
