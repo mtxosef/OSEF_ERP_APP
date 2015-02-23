@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaCambiarContrasena.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.FormaCambiarPass" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaCambiarContrasena.aspx.cs" Inherits="OSEF.ERP.APP.FormaCambiarPass" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link rel="stylesheet" href="css/login.css" />
+<%--    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -24,17 +24,17 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type="text/javascript" src="js/cambiarContrasena.js"></script>
+    <script type="text/javascript" src="js/cambiarContrasena.js"></script>--%>
 </head>
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaCambiarContrasena" runat="server" HideInDesign="true" />
 
-        <ext:FormPanel 
+<%--        <ext:FormPanel 
             ID="fpCambiarContrasena" 
             runat="server"
             Width="300">
-            <Items>
+            <Items>--%>
             <%--<ext:FieldSet
                     ID="fsDivisorDatos" 
                     runat="server"
@@ -44,7 +44,7 @@
                             ID="txtfContrasenaActual"
                             runat="server"
                             LabelWidth="150"
-                            FieldLabel="Contraseña Actual" 
+                            FieldLabel="Contraseña actual" 
                             AllowBlank="false"
                             AutoFocus="true"
                             MaxLength="50"
@@ -84,7 +84,7 @@
                             ID="txtfConfirmarContrasena"
                             runat="server"
                             LabelWidth="150"
-                            FieldLabel="Confirmar Contraseña"
+                            FieldLabel="Confirmar contraseña"
                             AllowBlank="false"
                             MaxLength="50"
                             EnforceMaxLength="true">
@@ -102,7 +102,7 @@
                         </ext:TextField>
                 <%--    </Items>
                 </ext:FieldSet> --%>
-            </Items>
+            <%--</Items>
             <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
                                                 text : valid ? 'La información esta completa/correcta' : 'Existe información incompleta/incorrecta', 
@@ -156,7 +156,7 @@
                     Cls="x-colorToolbar"
                     Text="Sin validar información" />
             </BottomBar>
-        </ext:FormPanel>
+        </ext:FormPanel>--%>
     </form>
 </body>
 </html>

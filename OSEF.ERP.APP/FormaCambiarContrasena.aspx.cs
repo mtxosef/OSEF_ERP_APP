@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using OSEF.APP.BL;
 
-namespace OSEF.AVANCES.SUCURSALES
+namespace OSEF.ERP.APP
 {
     public partial class FormaCambiarPass : System.Web.UI.Page
     {
