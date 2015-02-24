@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using OSEF.APP.BL;
 using OSEF.APP.EL;
+using System.IO;
 
 namespace OSEF.AVANCES.SUCURSALES
 {
@@ -293,10 +294,8 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
             string strPreciarios = e.ExtraParams["valor"];
             Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strPreciarios);
-
             sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
             sPreciarioConcepto.DataBind();
-
 
         }
 
@@ -308,14 +307,11 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="strID"></param>
         protected void imgbtnBorrar_Click(object sender, DirectEventArgs e)
         {
-
-
             //1. Obtener registro que se quiere eliminar
             string strcookieEditarVolumetria = Cookies.GetCookie("cookieEditarVolumetria").Value;
-
             int strID = Convert.ToInt32(strcookieEditarVolumetria);
-
-            //Borra de la base de datos el encabezado y detalle
+            //Borra de la base de datos el encabezado, detalle y fotos
+            borrarImagenesPorMovimiento(strID);
             VolumetriaDBusiness.BorrarPorVolumetria(strID);
             VolumetriaBusiness.Borrar(strID);
            
@@ -331,17 +327,70 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Obtener registro que se quiere cancelar
             string strcookieEditarVolumetria = Cookies.GetCookie("cookieEditarVolumetria").Value;
             int strID = Convert.ToInt32(strcookieEditarVolumetria);
-
             //Cambia el estatus del movimiento
             VolumetriaBusiness.CancelaVolumetriaPorID(strID);
             //Aqui se mandaria llamar el mismo sp para cancelar el preciario y devolverlo a sus cantidades iniciales
-
         }
-        
+
+        /// <summary>
+        /// Método para obtener las fotos del renglon y borrarlas cuando se cambie el concepto o se elimine
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public void obtenerImagenesPorConcepto() {
+
+            //1. Obtener el ID del movimiento y el concepto
+            int iID = Convert.ToInt32(Cookies.GetCookie("cookieIDBorrarFotosVolumetria").Value);
+            string strConcepto = Cookies.GetCookie("cookieConceptoFotosVolumetria").Value;
+            string strDireccion = Server.MapPath(" ") + "\\imagesVolumetrias\\" + iID + "\\" + strConcepto;
+
+            //2. Validar si existe el directorio donde se guardaran las imagenes
+            if (Directory.Exists(strDireccion))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccion, true);
+                }
+
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            }
+ 
+            //3. Borrar en la base de datos
+            ImagenVolumetriaDBusiness.BorrarImagenesVolumetria(iID,strConcepto);
+        }
 
 
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public void borrarImagenesPorMovimiento(int strID)
+        {
+            //1. Obtener el ID del movimiento
+            string strDireccion = Server.MapPath(" ") + "\\imagesVolumetrias\\" + strID;
 
+            //2. Validar si existe el directorio donde se guardaran las imagenes
+            if (Directory.Exists(strDireccion))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccion, true);
+                }
 
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            //3. Borrar en la base de datos
+            ImagenVolumetriaDBusiness.BorrarImagenesVolumetriaPorID(strID);
+        }
 
     }
 }

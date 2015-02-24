@@ -2,6 +2,43 @@
 
 var imgbtnGuardar_Click_Success = function (response, result) {
 
+
+
+    if (result.extraParamsResponse.correcto) {
+     
+        Ext.Msg.show({
+            id: 'msgPass',
+            title: 'MENSAJE DE LA APLICACIÓN',
+            msg: '<p align="center">La contraseña se actualizó correctamente</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+
+            fn: function (btn) {
+                if (btn === 'ok') {
+                    window.parent.App.wEmergente.hide();
+                   }
+            },
+
+            icon: Ext.MessageBox.INFO
+        });
+    
+
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgPass',
+            title: 'MENSAJE DE LA APLICACIÓN',
+            msg: '<p align="center">Error al cambiar contraseña</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+
+            
+            icon: Ext.MessageBox.ERROR
+        });
+    }
+
 };
 
 var imgbtnCancelar_Click = function () {

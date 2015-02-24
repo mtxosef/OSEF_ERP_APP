@@ -308,6 +308,8 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
         window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
 
+        window.parent.App.wEmergente.setTitle('Editar Volumetría ' + Ext.util.Cookies.get('cookieEditarVolumetria'));
+
         //Deshabilita los comandos de Fotos
         App.ccFotos.commands[0].disabled = false;
         App.ccFotos.commands[1].disabled = false;
@@ -348,6 +350,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     //Actualizar campos afetados
     App.txtfMovID.setValue(App.sVolumetria.getAt(0).get('MovID'));
     App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
+
+    window.parent.App.wEmergente.setTitle('Editar Volumetría ' + Ext.util.Cookies.get('cookieEditarVolumetria'));
 
     //Deshabilita boton de afectar porque aqui concluye el flujo
     App.imgbtnAfectar.setDisabled(true);
@@ -398,6 +402,16 @@ var imgbtnAfectar_Click_Before = function () {
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
     App.sConceptos.removeAt(fila);
+   
+   
+        if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
+
+            Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
+            Ext.util.Cookies.set('cookieConceptoFotosVolumetria',  registro.get('ConceptoID'));
+
+            App.direct.obtenerImagenesPorConcepto();
+
+        }
 
     //Asignar renglones
     var renglon = 0;
@@ -516,10 +530,24 @@ var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 //Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
 var cePreciarioConcepto_Edit = function (cellediting, columna) {
+
+  //Valida que el movimiento sea diferente de nuevo y que la columna en la que se obtenga el valor original seal la unica que se mande al metodo del lado del servidor
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
+        if(columna.field == 'ConceptoID'){
+        Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
+        Ext.util.Cookies.set('cookieConceptoFotosVolumetria', columna.originalValue);
+        App.direct.obtenerImagenesPorConcepto();
+        }   
+    }
+
+
+
     //Verificar si abajo de esta columna existe otra
     if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
         //Verificar si toda la fila contiene datos
         var registro = App.sConceptos.getAt(columna.rowIdx);
+
+
         //        var prueba =/^[a-zA-Z0-9]{1,2000}$/;
         if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
             //Obtener el Renglon anterior
@@ -532,13 +560,15 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
             HabilitarAfectar();
         }
     }
+
+
 };
 
 
 //Evento que pondra la cantidad según el concepto obtenido
 var cmbConcepto_Select = function (combobox, registro) {
     //Ayuda para traer lo que trae toda la funcion como parámetro
-    //console.log(arguments);
+    
 
     if (App.sConceptos.find('ConceptoID', registro[0].get('ID')) == -1) {
 
@@ -549,6 +579,7 @@ var cmbConcepto_Select = function (combobox, registro) {
 
         //se actualiza el Store contenedor con datos del store del comboBox
         App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
+
     }
     else {
         Ext.Msg.show({
@@ -558,11 +589,11 @@ var cmbConcepto_Select = function (combobox, registro) {
             buttons: Ext.MessageBox.OK,
             onEsc: Ext.emptyFn,
             closable: false,
-            fn: function (btn) { 
-                if (btn === 'ok') { 
+            fn: function (btn) {
+                if (btn === 'ok') {
                     App.cmbConcepto.setValue('');
                     App.sConceptos.getAt(App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId).set('ConceptoID', '');
-                } 
+                }
             },
             icon: Ext.MessageBox.ERROR
         });
