@@ -25,6 +25,31 @@ namespace OSEF.APP.BL
 
         #endregion
 
+
+        #region Eliminar
+
+        /// <summary>
+        /// Método que borra un registro en base al concepto de la tabla de ImagenesVolumetriasD
+        /// </summary>
+        /// <param name="iImagenVolumetriaD"></param>
+        public static int BorrarImagenesVolumetria(int IdVolumetria, string strIDConcepto)
+        {
+            return ImagenVolumetriaDDataAccess.BorrarImagenesVolumetria(IdVolumetria, strIDConcepto);
+        }
+
+
+        /// <summary>
+        /// Método que borra registros de la tabla Imagenes Volumetria por ID de movimiento
+        /// </summary>
+        /// <param name="iImagenVolumetriaD"></param>
+        public static int BorrarImagenesVolumetriaPorID(int IdVolumetria)
+        {
+            return ImagenVolumetriaDDataAccess.BorrarImagenesVolumetriaPorID(IdVolumetria);
+        }
+
+
+        #endregion
+
         #region Consultar
 
         /// <summary>

@@ -302,3 +302,7 @@
 :r c:\SqlServerScripts\Insertar\ImagenVolumetriaD\web_spI_InsertarImagenVolumetriaD.sql
 -- ImagenVolumetriaD (Consultar)
 :r c:\SqlServerScripts\Consultar\ImagenVolumetriaD\web_spS_ObtenerImagenVolumetriaDPorVolumetriaPreciarioConcepto.sql
+-- ImagenVolumetriaD (Borrar)
+:r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorConceptoVolumetria.sql
+:r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorVolumetria.sql
+
