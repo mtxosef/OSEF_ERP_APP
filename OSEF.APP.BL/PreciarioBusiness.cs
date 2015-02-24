@@ -57,12 +57,9 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static List<Preciario> ObtenerPreciarios()
         {
-
             List<Preciario> lPreciario = PreciarioDataAccess.ObtenerPreciarios();
-         
             foreach (Preciario sd in lPreciario)
                 sd.RSucursal = SucursalBusiness.ObtenerSucursalPorID(sd.Sucursal);
-
 
             return lPreciario;
         }
@@ -74,12 +71,9 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static List<Preciario> ObtenerPreciariosActivos()
         {
-
             List<Preciario> lPreciario = PreciarioDataAccess.ObtenerPreciariosActivos();
-
             foreach (Preciario sd in lPreciario)
                 sd.RSucursal = SucursalBusiness.ObtenerSucursalPorID(sd.Sucursal);
-
 
             return lPreciario;
         }
@@ -115,8 +109,6 @@ namespace OSEF.APP.BL
         {
             return PreciarioDataAccess.ObtenerPreciariosEnVolumetriasPorID(strID);
         }
-
-
 
         #endregion
     }

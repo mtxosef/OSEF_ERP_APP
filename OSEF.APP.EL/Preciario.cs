@@ -16,13 +16,12 @@ namespace OSEF.APP.EL
         string descripcion;
         string sucursal;
         string archivo;
+        string usuario;
         string estatus;
         DateTime fechaalta;
-        Sucursal rsucursal;
-
         
-
-       
+        Sucursal rsucursal;
+        List<PreciarioCategoria> rpreciariocategorias;
 
         #endregion
 
@@ -52,6 +51,12 @@ namespace OSEF.APP.EL
             set { archivo = value; }
         }
 
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
+
         public string Estatus
         {
             get { return estatus; }
@@ -68,6 +73,12 @@ namespace OSEF.APP.EL
         {
             get { return rsucursal; }
             set { rsucursal = value; }
+        }
+
+        public List<PreciarioCategoria> RPreciarioCategorias
+        {
+            get { return rpreciariocategorias; }
+            set { rpreciariocategorias = value; }
         }
 
         #endregion

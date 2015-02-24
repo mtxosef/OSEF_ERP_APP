@@ -6,7 +6,7 @@ using System.Text;
 namespace OSEF.APP.EL
 {
     /// <summary>
-    /// Clase que controla la entidad de PreciarioCategorias
+    /// Clase que controla la entidad de PreciariosCategorias
     /// </summary>
     public class PreciarioCategoria
     {
@@ -19,8 +19,6 @@ namespace OSEF.APP.EL
         string estatus;
         DateTime fechaalta;
         string tipo;
-
-        
 
         #endregion
 

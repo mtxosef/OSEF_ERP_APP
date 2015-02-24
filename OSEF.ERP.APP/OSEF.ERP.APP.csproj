@@ -216,6 +216,7 @@
     <Content Include="Colonias.aspx" />
     <Content Include="Conceptos.aspx" />
     <Content Include="Conceptos2.aspx" />
+    <Content Include="ConsultarPreciario.aspx" />
     <Content Include="css\customControls2.css" />
     <Content Include="css\customControls.css" />
     <Content Include="css\login2.css" />
@@ -298,6 +299,7 @@
     <Content Include="js\clientes.js" />
     <Content Include="js\colonias.js" />
     <Content Include="js\conceptos2.js" />
+    <Content Include="js\consultarPreciario.js" />
     <Content Include="js\cuentasContables.js" />
     <Content Include="js\finalidades.js" />
     <Content Include="js\login.js" />
@@ -426,6 +428,13 @@
     </Compile>
     <Compile Include="Conceptos2.aspx.designer.cs">
       <DependentUpon>Conceptos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarPreciario.aspx.cs">
+      <DependentUpon>ConsultarPreciario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarPreciario.aspx.designer.cs">
+      <DependentUpon>ConsultarPreciario.aspx</DependentUpon>
     </Compile>
     <Compile Include="CuentasContables.aspx.cs">
       <DependentUpon>CuentasContables.aspx</DependentUpon>

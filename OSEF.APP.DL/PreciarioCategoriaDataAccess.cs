@@ -10,6 +10,9 @@ using OSEF.LIBRARY.COMMON.Generics;
 
 namespace OSEF.APP.DL
 {
+    /// <summary>
+    /// Clase que controla todo el Acceso a la Base de Datos de la table PreciariosCategorias
+    /// </summary>
     public class PreciarioCategoriaDataAccess
     {
         #region Insertar
@@ -219,7 +222,7 @@ namespace OSEF.APP.DL
         /// Obtener todos los registros de PreciariosCategorias
         /// </summary>
         /// <returns></returns>
-        public static List<PreciarioCategoria> ObtenerPreciarioCategoria()
+        public static List<PreciarioCategoria> ObtenerPreciariosCategorias()
         {
             try
             {
@@ -251,16 +254,16 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static List<PreciarioCategoria> ObtenerPreciarioCategoria()): " + ex.Message);
+                throw new Exception("Error capa de datos (public static List<PreciarioCategoria> ObtenerPreciariosCategorias()): " + ex.Message);
             }
         }
 
         /// <summary>
-        /// Obtener un registro de Preciario por su ID
+        /// Obtener un registro de PreciarioCategoria por su ID
         /// </summary>
         /// <param name="strID"></param>
         /// <returns></returns>
-        public static PreciarioCategoria ObtenerPreciarioCategroiaPorID(string strID)
+        public static PreciarioCategoria ObtenerPreciarioCategoriaPorID(string strID)
         {
             try
             {
@@ -269,7 +272,7 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spS_ObtenerPreciariosCategoriaPorID";
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioCategoriaPorID";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();
@@ -302,8 +305,53 @@ namespace OSEF.APP.DL
             }
         }
 
- 
-        #endregion
+        /// <summary>
+        /// Obtener todos los registros de PreciariosCategorias por el ID del Preciario
+        /// </summary>
+        /// <param name="strPreciario"></param>
+        /// <returns></returns>
+        public static List<PreciarioCategoria> ObtenerPreciarioCategoriasPorPreciario(string strPreciario)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioCategoriasPorPreciario";
 
+                //2. Declarar los parametros
+                SqlParameter sqlpPreciario = new SqlParameter();
+                sqlpPreciario.ParameterName = "@Preciario";
+                sqlpPreciario.SqlDbType = SqlDbType.Char;
+                sqlpPreciario.Size = 7;
+                sqlpPreciario.Value = strPreciario;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpPreciario);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<PreciarioCategoria> result = LibraryGenerics<PreciarioCategoria>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<PreciarioCategoria> ObtenerPreciarioCategoriasPorPreciario(string " + strPreciario + ")): " + ex.Message);
+            }
+        }
+
+        #endregion
     }
 }

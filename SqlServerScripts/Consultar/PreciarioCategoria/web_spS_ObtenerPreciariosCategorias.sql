@@ -18,18 +18,17 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciariosCategoriaPorID' AND
+			WHERE  name = 'web_spS_ObtenerPreciariosCategorias' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciariosCategoriaPorID
+	DROP PROCEDURE web_spS_ObtenerPreciariosCategorias
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener un registro de Articulos por su ID
+-- Description:	Obtener todos los registros de Articulos
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciariosCategoriaPorID
+CREATE PROCEDURE web_spS_ObtenerPreciariosCategorias
 	-- Add the parameters for the stored procedure here
-	@ID		CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -39,15 +38,12 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT
 		ID,
-		clave,
+		Clave,
 		Preciario,
 		Descripcion,
 		Estatus,
 		FechaAlta
-		
 	FROM
 		PreciarioCategorias
-	WHERE
-		ID = @ID
 END
 GO

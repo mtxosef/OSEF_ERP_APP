@@ -7,6 +7,9 @@ using OSEF.APP.DL;
 
 namespace OSEF.APP.BL
 {
+    /// <summary>
+    /// Clase que controla todas la acciones de PreciarioCategoria
+    /// </summary>
     public class PreciarioCategoriaBuisness
     {
         #region Insertar
@@ -55,9 +58,9 @@ namespace OSEF.APP.BL
         /// Método que obtiene todos los registros de PreciarioCategoria
         /// </summary>
         /// <returns></returns>
-        public static List<PreciarioCategoria> ObtenerPreciariosCategoria()
+        public static List<PreciarioCategoria> ObtenerPreciariosCategorias()
         {
-            return PreciarioCategoriaDataAccess.ObtenerPreciarioCategoria();
+            return PreciarioCategoriaDataAccess.ObtenerPreciariosCategorias();
         }
 
         /// <summary>
@@ -67,7 +70,17 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static PreciarioCategoria ObtenerPreciarioCategoriaPorID(string strID)
         {
-            return PreciarioCategoriaDataAccess.ObtenerPreciarioCategroiaPorID(strID);
+            return PreciarioCategoriaDataAccess.ObtenerPreciarioCategoriaPorID(strID);
+        }
+
+        /// <summary>
+        /// Obtener una lista de todos los objetos PreciarioCategoria por el ID del Preciario
+        /// </summary>
+        /// <param name="strPreciario"></param>
+        /// <returns></returns>
+        public static List<PreciarioCategoria> ObtenerPreciarioCategoriasPorPreciario(string strPreciario)
+        {
+            return PreciarioCategoriaDataAccess.ObtenerPreciarioCategoriasPorPreciario(strPreciario);
         }
 
         #endregion
