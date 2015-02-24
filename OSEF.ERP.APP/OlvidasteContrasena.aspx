@@ -58,7 +58,7 @@
                 <ext:Container
                     ID="cErrorOlvidasteContrasena"
                     runat="server"
-                    Hidden="true" 
+                    Hidden="false" 
                     StyleSpec="margin:0 auto;">
                     <Content>
                         <table>
@@ -127,17 +127,11 @@
                     runat="server"
                     EmptyText="Usuario/Dirección E-mail"
                     AutoFocus="true">
-                    <DirectEvents>
-                        <SpecialKey
-                            OnEvent="txtfEnviarCorreo_SpecialKey"
-                            Before="return e.getKey() == Ext.EventObject.ENTER"
-                            Success="txtfEnviarCorreo_SpecialKey_Success">
-                            <ExtraParams>
-                                <ext:Parameter Name="dato" Value="App.txtfEnviarCorreo.getValue()" Mode="Raw" />
-                            </ExtraParams>
-                            <EventMask ShowMask="true" MinDelay="1000" Msg="Enviando correo..." />
-                        </SpecialKey>
-                    </DirectEvents>
+                    <Listeners>
+                     <SpecialKey Fn="txtffEnviarCorreo_SpecialKey_Click" />
+                 
+                    </Listeners>
+                    
                 </ext:TextField>
             </Items>
             <Buttons>
