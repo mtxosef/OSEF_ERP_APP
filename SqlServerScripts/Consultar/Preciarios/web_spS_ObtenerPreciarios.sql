@@ -42,6 +42,7 @@ BEGIN
 		Sucursal,
 		FechaAlta,
 		Archivo,
+		Usuario,
 		Estatus
 	FROM
 		Preciarios

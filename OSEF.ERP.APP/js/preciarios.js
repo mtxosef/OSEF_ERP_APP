@@ -355,3 +355,28 @@ var cmbSucursalFiltro_Select = function (combobox, registro) {
         });
     }
 };
+
+
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbUsuarioFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sPreciarios.clearFilter();
+    }
+    else {
+        App.sPreciarios.filterBy(function (elemento) {
+            console.log(elemento);
+            if (elemento.get('Usuario') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};

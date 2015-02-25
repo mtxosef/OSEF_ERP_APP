@@ -45,6 +45,7 @@
                         <ext:ModelField Name="Sucursal" Type="String" />
                         <ext:ModelField Name="Archivo" Type="String" />
                         <ext:ModelField Name="Estatus" Type="String" />
+                        <ext:ModelField Name="Usuario" Type="String" />
                         <ext:ModelField Name="FechaAlta" Type="Date" />
                         <ext:ModelField Name="RSucursal" Type="Object" />
                     </Fields>
@@ -307,6 +308,7 @@
                                     Width="23">
                                         <DirectEvents>
                                             <Click OnEvent="btnImportar_Click" Success="btnImportar_Click_Success">
+                                            <EventMask ShowMask="true" Msg="Importando datos..." />
                                         </Click>
                                 </DirectEvents>
                                 </ext:ImageButton>

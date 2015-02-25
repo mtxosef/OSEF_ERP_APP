@@ -87,6 +87,7 @@
                              <ext:ComboBox
                                 ID="cmbUsuario"
                                 runat="server"
+                                Editable="false"
                                 FieldLabel="Usuario"
                                 DisplayField="Nombre"
                                 ValueField="ID">
@@ -127,6 +128,8 @@
 
                         <ext:ToolbarSpacer ID="tbsVolumetrias" runat="server" Width="235">
                         </ext:ToolbarSpacer>
+
+
                         <ext:ImageButton
                             ID="imgbtnActualizar"
                             runat="server"
