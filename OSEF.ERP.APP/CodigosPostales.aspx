@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type="text/javascript" src="js/codigosPostales.js"></script>
+    <script type="text/javascript" src="js/reportes.js"></script>
 </head>
 <body class="xCustomBody">
    <form id="form1" runat="server">
@@ -49,7 +49,7 @@
                             ID="TreePanel1" 
                             runat="server" 
                             Width="270" 
-                            Height="400" 
+                            Height="310"  
                             Icon="BookOpen" 
                             AutoScroll="true"
                             Header="false">           

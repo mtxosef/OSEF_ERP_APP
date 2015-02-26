@@ -307,6 +307,7 @@
     <Content Include="js\olvidarContrasena.js" />
     <Content Include="js\preciarios.js" />
     <Content Include="js\profesiones.js" />
+    <Content Include="js\reportes.js" />
     <Content Include="js\subirImagenesCliente.js" />
     <Content Include="js\subirImagenesPreciario.js" />
     <Content Include="js\tableroAvances.js" />
@@ -355,6 +356,7 @@
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
+    <Content Include="Reportes.aspx" />
     <Content Include="Subcategorias.aspx" />
     <Content Include="Sucursales.aspx" />
     <Content Include="tVtasUnidadesVsTiempo.aspx" />
@@ -797,6 +799,13 @@
     </Compile>
     <Compile Include="Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Subcategorias.aspx.cs">
       <DependentUpon>Subcategorias.aspx</DependentUpon>
