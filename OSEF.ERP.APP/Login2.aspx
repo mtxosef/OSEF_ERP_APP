@@ -6,8 +6,25 @@
 <head runat="server">
     <title>OSEF Technology</title>
     <link rel="shortcut icon" href="images/myApp2.ico" />
-    <link rel="Stylesheet" href="css/login2.css" />
-    <link rel="Stylesheet" href="css/customControls2.css" />
+    <link rel="Stylesheet" href="css/login.css" />
+    <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/xMask.css" />
+    <link rel="stylesheet" href="css/xDatePicker.css" />
+    <link rel="stylesheet" href="css/xSplitButton.css" />
+    <link rel="stylesheet" href="css/xGridPanel.css" />
+    <link rel="stylesheet" href="css/xWindowPopup.css" />
+    <link rel="stylesheet" href="css/xTabPanel.css"/>
+    <link rel="stylesheet" href="css/xComboBox.css"/>
+    <link rel="stylesheet" href="css/xCustomChart.css"/>
+    <link rel="stylesheet" href="css/xIcons.css"/>
+    <link rel="stylesheet" href="css/xToolbar.css"/>
+    <link rel="stylesheet" href="css/xLabel.css"/>
+    <link rel="stylesheet" href="css/xTreePanel.css"/>
+    <link rel="stylesheet" href="css/xHiperlink.css"/>
+    <link rel="stylesheet" href="css/xTextField.css"/>
+    <link rel="stylesheet" href="css/xFieldSet.css"/>
+    <link rel="stylesheet" href="css/xPanel.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <style type="text/css">
         #lLogin_Password-indicator {
             position: absolute;
@@ -17,120 +34,187 @@
 <body>
     <div id="wrapper">
         <form id="form1" runat="server">
-            <ext:ResourceManager ID="rmLogin" runat="server" HideInDesign="true" Theme="Neptune" />
+            <ext:ResourceManager ID="rmLogin" runat="server" HideInDesign="true" />
 
-            <%--  Header--%>
-            <div id="left-pane" class="l_pane">
-            </div>
-            <div id="top-panel">
-            </div>
-            <%--  Header--%>
-
-            <%--  cuerpo--%>
-            <div id="right-panel">
-                <img src="images/logo-banco2.png" alt="logo" class="imgs logo-image" />
-            </div>
+            <img src="images/logo-banco2.png" alt="logo" class="imgs logo-image" />
 
             <%--  Panel de Error--%>
-            <div id="center-panel-error">
-                <table>
-                    <tr>
-                        <td>
-                            <img src="images/btnLogin_Adv.png" alt="img-error" />
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                            Error, usuario incorrecto
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            <ext:Container ID="cError" runat="server" Hidden="true">
+                <Content>
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/btnLogin_Adv.png" alt="img-error" />
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <ext:Label ID="lblError" runat="server" Text="Error, usuario incorrecto" />
+                            </td>
+                        </tr>
+                    </table>
+                </Content>
+            </ext:Container>
             <%-- Fin panel de error --%>
 
-            <div id="center-panel-login">
-                <div id="login-right">
-                    <img src="images/login.png" alt="logo" width="120px" height="110px" />
-                </div>
-                <div id="login-left">
-                    <asp:Login ID="lLogin" runat="server">
-                        <LayoutTemplate>
-                            <ext:TextField
-                                ID="UserName"
+        <%-- Inicio del cuerpo--%>
+        <div id="center-panel-login">
+            <asp:Login
+                ID="lLogin"
+                runat="server"
+                OnAuthenticate="lLogin_Authenticate">
+                <LayoutTemplate>
+                    <ext:Panel 
+                    ID="pDivisorColumnas" 
+                    runat="server"
+                    Width="400" 
+                    BodyStyle="background-color:transparent;"
+                    Layout="ColumnLayout">
+                        <Items>
+                            <ext:Panel 
+                                ID="pImagen" 
                                 runat="server"
-                                AutoFocus="true"
-                                EmptyText="Usuario"
-                                Width="200"
-                                Height="30"
-                                Cls="customTxtfield customFocus">
-                            </ext:TextField>
-                            <br />
-                            <ext:TextField
-                                ID="Password"
+                                BodyStyle="background-color:transparent;">
+                                <Items>
+                                    <ext:Image
+                                        ID="imgLogin" 
+                                        runat="server" 
+                                        ImageUrl="images/user-login.png"
+                                        Height="120" 
+                                        Width="120">
+                                    </ext:Image>
+                                </Items>
+                            </ext:Panel>
+                            <ext:Panel 
+                                ID="pLogin" 
                                 runat="server"
-                                EmptyText="Contraseña"
-                                InputType="Password"
-                                Width="200"
-                                Height="30"
-                                Cls="customTxtfield customFocus">
-                                <Plugins>
-                                    <ext:CapsLockDetector ID="cldPassword" runat="server">
-                                        <Listeners>
-                                            <CapsLockOn Handler="#{Password}.showIndicator({iconCls : '#Error', tip : 'BloqMayús esta activado'});" />
-                                            <CapsLockOff Handler="#{Password}.hideIndicator();" />
-                                        </Listeners>
-                                    </ext:CapsLockDetector>
-                                </Plugins>
-                            </ext:TextField>
-                            <ext:HyperLink
-                                ID="lnkOlvidoPsw"
-                                runat="server"
-                                Text="¿Olvidaste tu contraseña?">
-                            </ext:HyperLink>
-                            <br />
-                            <br />
-                            <ext:Button
-                                ID="Button1"
-                                runat="server"
-                                Text="Accesar"
-                                Width="200"
-                                Height="30"
-                                Cls="w8-icon green customLblButton btnlogin">
-                            </ext:Button>
-                        </LayoutTemplate>
-                    </asp:Login>
-                </div>
-            </div>
-            <%-- Fin cuerpo--%>
-            <%--  Footer--%>
-            <div id="footer">
-                <div id="creditos" class="creditos" >
-                    <p>
-                        © 2014 Osef Technology
-                    </p>
-                   <%-- Descomentar si se desean redes sociales e ir a login.css y despues 
-                   a la clase .footer y foter-menu y comentar las lineas de margin --%>
+                                BodyStyle="background-color:transparent;"
+                                StyleSpec="margin-left: 20px;">
+                                <Items>
+                                    <ext:FieldContainer 
+                                        ID="fcLoginbanner" 
+                                        runat="server" 
+                                        FieldLabel="Bienvenido" 
+                                        AnchorHorizontal="100%"
+                                        StyleSpec="margin-bottom: 18px;" 
+                                        Cls="xCustomEncabezadoLogin"
+                                        Layout="ColumnLayout">
+                                    </ext:FieldContainer>
+                                    <ext:FieldContainer 
+                                        ID="fcUser" 
+                                        runat="server" 
+                                        AnchorHorizontal="100%" 
+                                        Layout="ColumnLayout">
+                                        <Items>
+                                            <ext:TextField 
+                                                ID="UserName" 
+                                                runat="server" 
+                                                AutoFocus="true" 
+                                                EmptyText="Usuario"
+                                                Width="250" 
+                                                Height="30" 
+                                                StyleSpec="margin-bottom: 8px;" 
+                                                Cls="customTxtfield customFocus">
+                                            </ext:TextField>
+                                        </Items>
+                                    </ext:FieldContainer>
+                                    <ext:FieldContainer 
+                                        ID="fcUserPassword" 
+                                        runat="server" 
+                                        AnchorHorizontal="100%" 
+                                        Layout="ColumnLayout"
+                                        StyleSpec="margin-bottom: 10px;" >
+                                        <Items>
+                                            <ext:TextField 
+                                                ID="Password" 
+                                                runat="server" 
+                                                EmptyText="Contraseña" 
+                                                InputType="Password"
+                                                Width="250" 
+                                                Height="30" 
+                                                Cls="customTxtfield customFocus">
+                                                <DirectEvents>
+                                                    <SpecialKey
+                                                        OnEvent="Password_SpecialKey"
+                                                        Before="return e.getKey() == Ext.EventObject.ENTER"
+                                                        Success="Password_SpecialKey_Success">
+                                                        <EventMask ShowMask="true" MinDelay="1000" Msg="Ingresando..." />
+                                                    </SpecialKey>
+                                                </DirectEvents>
+                                                <Plugins>
+                                                    <ext:CapsLockDetector 
+                                                        ID="cldPassword" 
+                                                        runat="server">
+                                                        <Listeners>
+                                                            <CapsLockOn Handler="#{Password}.showIndicator({iconCls : '#Error', tip : 'BloqMayús esta activado'});" />
+                                                            <CapsLockOff Handler="#{Password}.hideIndicator();" />
+                                                        </Listeners>
+                                                    </ext:CapsLockDetector>
+                                                </Plugins>
+                                                <RightButtons>
+                                                    <ext:ImageButton 
+                                                        ID="imbtnLogin" 
+                                                        runat="server" 
+                                                        ImageUrl="assets/img/controles/login.png"
+                                                        OverImageUrl="assets/img/controles/login-hover.png" 
+                                                        PressedImageUrl="assets/img/controles/login-pressed.png"
+                                                        ToolTip="Entrar" 
+                                                        Width="20">
+                                                        <DirectEvents>
+                                                            <Click OnEvent="imgbtnLogin_Click" Success="Password_SpecialKey_Success">
+                                                                <EventMask ShowMask="true" MinDelay="1000" Msg="Ingresando..." />
+                                                            </Click>
+                                                        </DirectEvents>
+                                                    </ext:ImageButton>
+                                                </RightButtons>
+                                            </ext:TextField>
+                                        </Items>
+                                    </ext:FieldContainer>
+                                    <ext:HyperLink 
+                                    ID="lnkOlvidoPsw" 
+                                    runat="server" 
+                                    Text="¿Olvidaste tu contraseña?"
+                                    NavigateUrl="OlvidasteContrasena.aspx"
+                                    Cls="customHiperlink">
+                                    </ext:HyperLink>
+                                </Items>
+                            </ext:Panel>
+                        </Items>
+                    </ext:Panel>
+                </LayoutTemplate>
+            </asp:Login>
+        </div>
+        <%-- Fin cuerpo--%>
+
+        <%--  Footer--%>
+        <div id="footer">
+            <div id="creditos" class="creditos" >
+                <p>
+                    © 2014 Osef Technology
+                </p>
+                <%-- Descomentar si se desean redes sociales e ir a login.css y despues 
+                a la clase .footer y foter-menu y comentar las lineas de margin --%>
                
-                   <div id="social-login">
-                    <ul>
-                        <li ><a href="#">
+                <div id="social-login">
+                <ul>
+                    <li ><a href="#">
                     
-                            <img src="images/fb.png" alt="Facebook" class="imgs"  />
+                        <img src="images/fb.png" alt="Facebook" class="imgs"  />
                         
-                            </a></li>
-                        <li><a href="#">
-                            <img src="images/twiter.png" alt="Twitter" class="imgs"  /></a></li>
-                        <li><a href="#">
-                            <img src="images/youtube.png" alt="YouTube" class="imgs"  /></a></li>
-                        <li><a href="#">
-                            <img src="images/linked.png" alt="LinkedIn" class="imgs"  /></a></li>
-                    </ul>
-                </div>
-                </div>
+                        </a></li>
+                    <li><a href="#">
+                        <img src="images/twiter.png" alt="Twitter" class="imgs"  /></a></li>
+                    <li><a href="#">
+                        <img src="images/youtube.png" alt="YouTube" class="imgs"  /></a></li>
+                    <li><a href="#">
+                        <img src="images/linked.png" alt="LinkedIn" class="imgs"  /></a></li>
+                </ul>
             </div>
-            <%--  Footer--%>
+            </div>
+        </div>
+        <%--  Footer--%>
 
         </form>
     </div>
