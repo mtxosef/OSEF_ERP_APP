@@ -6,8 +6,8 @@
 <head runat="server">
     <title>OSEF Technology</title>
     <link rel="shortcut icon" href="images/myApp2.ico" />
-    <link rel="Stylesheet" href="css/login.css" />
-    <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="Stylesheet" href="css/login2.css" />
+    <link rel="Stylesheet" href="css/customControls2.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
     <link rel="stylesheet" href="css/xSplitButton.css" />
@@ -36,7 +36,7 @@
         <form id="form1" runat="server">
             <ext:ResourceManager ID="rmLogin" runat="server" HideInDesign="true" />
 
-            <img src="images/logo-banco2.png" alt="logo" class="imgs logo-image" />
+            <img src="images/logo-banco3.png" alt="logo" class="imgs logo-image" />
 
             <%--  Panel de Error--%>
             <ext:Container ID="cError" runat="server" Hidden="true">
@@ -157,9 +157,9 @@
                                                     <ext:ImageButton 
                                                         ID="imbtnLogin" 
                                                         runat="server" 
-                                                        ImageUrl="assets/img/controles/login.png"
-                                                        OverImageUrl="assets/img/controles/login-hover.png" 
-                                                        PressedImageUrl="assets/img/controles/login-pressed.png"
+                                                        ImageUrl="assets/img/controles/login2.png"
+                                                        OverImageUrl="assets/img/controles/login2hover.png" 
+                                                        PressedImageUrl="assets/img/controles/login2pressed.png"
                                                         ToolTip="Entrar" 
                                                         Width="20">
                                                         <DirectEvents>

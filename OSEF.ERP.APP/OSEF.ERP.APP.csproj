@@ -142,6 +142,9 @@
     <Content Include="assets\img\controles\login-hover.png" />
     <Content Include="assets\img\controles\login-pressed.png" />
     <Content Include="assets\img\controles\login.png" />
+    <Content Include="assets\img\controles\login2.png" />
+    <Content Include="assets\img\controles\login2Hover.png" />
+    <Content Include="assets\img\controles\login2Pressed.png" />
     <Content Include="assets\img\controles\new.png" />
     <Content Include="assets\img\controles\nuevo-disable.png" />
     <Content Include="assets\img\controles\nuevo-normal.png" />
