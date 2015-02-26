@@ -32,22 +32,21 @@ namespace OSEF.AVANCES.SUCURSALES
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void txtfEnviarCorreo_SpecialKey(object sender, DirectEventArgs e)
+        [DirectMethod]
+        public string txtfEnviarCorreo_SpecialKey(string strIDCorreo)
         {
-            string strIDCorreo = e.ExtraParams["dato"];
             Usuario oUsuario = UsuarioBusiness.ObtenerUsuarioPorIDCorreo(strIDCorreo);
-
+            string banderaValida = "";
             if (oUsuario == null)
             {
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
+                banderaValida = "0";
             }
+             
             else
             {
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));
-
+             
                 try
                 {
-
                     Configuration c = WebConfigurationManager.OpenWebConfiguration(HttpContext.Current.Request.ApplicationPath);
                     MailSettingsSectionGroup settings = (MailSettingsSectionGroup)c.GetSectionGroup("system.net/mailSettings");
 
@@ -67,14 +66,16 @@ namespace OSEF.AVANCES.SUCURSALES
                     mmMensaje.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure | DeliveryNotificationOptions.OnSuccess;
                     servidorDeCorreo.Send(mmMensaje);
 
-                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("correcto", "true", ParameterMode.Raw));
+                  
                 }
                 catch (Exception ex)
                 {
-                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("correcto", "false", ParameterMode.Raw));
-                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mensaje", ex.Message, ParameterMode.Raw));
+                 
                 }
+                banderaValida = "1";
             }
+
+            return banderaValida;
         }
 
         /// <summary>

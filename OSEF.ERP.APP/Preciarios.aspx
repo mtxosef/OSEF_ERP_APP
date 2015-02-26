@@ -101,11 +101,56 @@
                                     </ExtraParams>
                                 </Click>
                              </DirectEvents>
-
-
                         </ext:ImageButton>
-                        <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="500">
+
+
+                       <ext:ComboBox
+                                ID="cmbUsuario"
+                                runat="server"
+                                Editable="false"
+                                FieldLabel="Usuario"
+                                DisplayField="Nombre"
+                                ValueField="ID">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Store>
+                                <ext:Store ID="sUsuarios" runat="server">
+                                    <Model>
+                                        <ext:Model ID="mUsuarios" runat="server" IDProperty="ID">
+                                            <Fields>
+                                                <ext:ModelField Name="ID" Type="String" />
+                                                <ext:ModelField Name="Correo" Type="String" />
+                                                <ext:ModelField Name="Nombre" Type="String" />
+                                                <ext:ModelField Name="APaterno" Type="String" />
+                                                <ext:ModelField Name="AMaterno" Type="String" />
+                                                <ext:ModelField Name="Estatus" Type="String" />
+                                                <ext:ModelField Name="Bloqueado" Type="Boolean" />
+                                                <ext:ModelField Name="EnLinea" Type="Boolean" />
+                                                <ext:ModelField Name="FechaAlta" Type="Date" />
+                                                <ext:ModelField Name="FechaBloqueo" Type="Date" />
+                                                <ext:ModelField Name="UltimoAcceso" Type="Date" />
+                                                <ext:ModelField Name="CambioContrasena" Type="Date" />
+                                            </Fields>
+                                        </ext:Model>
+                                    </Model>
+                                </ext:Store>
+                                </Store>
+                                 <Listeners>
+                                    <Select Fn="cmbUsuarioFiltro_Select" />
+                                </Listeners>
+                            </ext:ComboBox>
+
+                       
+
+                        <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="235">
                         </ext:ToolbarSpacer>
+
+
+
                         <ext:ImageButton
                             ID="imgbtnActualizar"
                             runat="server"
@@ -155,6 +200,7 @@
                                 <ext:ModelField Name="Descripcion" Type="String" />
                                 <ext:ModelField Name="Sucursal" Type="String" />
                                 <ext:ModelField Name="Estatus" Type="String" />
+                                <ext:ModelField Name="Usuario" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>

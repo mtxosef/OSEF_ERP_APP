@@ -193,6 +193,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.DateColumn dcFechaEmision;
         
         /// <summary>
+        /// Control cmbFechaRevision.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbFechaRevision;
+        
+        /// <summary>
         /// Control cEstatus.
         /// </summary>
         /// <remarks>

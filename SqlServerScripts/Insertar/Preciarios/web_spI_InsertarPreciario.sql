@@ -34,6 +34,7 @@ CREATE PROCEDURE web_spI_InsertarPreciario
 	@Sucursal		VARCHAR(50),
 	@Archivo		VARCHAR(50),
 	@Estatus		VARCHAR(20),
+	@Usuario		VARCHAR(50),
 	@FechaAlta		SMALLDATETIME
 AS
 BEGIN
@@ -86,6 +87,7 @@ BEGIN
 			Sucursal,
 			Archivo,
 			Estatus,
+			Usuario,
 			FechaAlta
 		)
 	VALUES
@@ -95,6 +97,7 @@ BEGIN
 			@Sucursal,
 			@Archivo,
 			@Estatus,
+			@Usuario,
 			@FechaAlta
 		)
 END

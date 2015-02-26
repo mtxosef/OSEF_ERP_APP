@@ -236,8 +236,9 @@
 -- PreciarioCategoria (Borrar)
 :r c:\SqlServerScripts\Borrar\PreciarioCategoria\web_spD_BorrarPreciarioCategorias.sql
 -- PreciarioCategoria (Consultar)
-:r c:\SqlServerScripts\Consultar\PreciarioCategoria\web_spS_ObtenerPreciarioCategorias.sql
-:r c:\SqlServerScripts\Consultar\PreciarioCategoria\web_spS_ObtenerPreciarioCategoriasPorID.sql
+:r c:\SqlServerScripts\Consultar\PreciarioCategoria\web_spS_ObtenerPreciariosCategorias.sql
+:r c:\SqlServerScripts\Consultar\PreciarioCategoria\web_spS_ObtenerPreciarioCategoriasPorPreciario.sql
+:r c:\SqlServerScripts\Consultar\PreciarioCategoria\web_spS_ObtenerPreciarioCategoriaPorID.sql
 -- PreciarioCategoria (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciarioCategoria\web_spI_InsertarPreciarioCategorias.sql
 -- PreciarioCategoria (Modificar)

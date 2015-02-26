@@ -56,6 +56,11 @@ namespace OSEF.APP.DL
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
                 sqlpEstatus.Value = iPreciario.Estatus;
 
+                SqlParameter sqlpUsuario = new SqlParameter();
+                sqlpUsuario.ParameterName = "@Usuario";
+                sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+                sqlpUsuario.Value = iPreciario.Usuario;
+
                 SqlParameter sqlpFechaAlta = new SqlParameter();
                 sqlpFechaAlta.ParameterName = "@FechaAlta";
                 sqlpFechaAlta.SqlDbType = SqlDbType.SmallDateTime;
@@ -68,6 +73,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpSucursal);
                 sqlcComando.Parameters.Add(sqlpArchivo);
                 sqlcComando.Parameters.Add(sqlpEstatus);
+                sqlcComando.Parameters.Add(sqlpUsuario);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();

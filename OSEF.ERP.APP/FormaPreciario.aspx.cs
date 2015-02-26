@@ -84,6 +84,11 @@ namespace OSEF.AVANCES.SUCURSALES
             if (strcookieEditarPreciario.Equals("Nuevo"))
             {
                 oPreciario.FechaAlta = DateTime.Now;
+                //Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                oPreciario.Usuario = oUsuario.ID;
+
+
                 oPreciario.Estatus = strEstatus;
                 //5. Insertar en la base de datos
                 oPreciario.ID = PreciarioBusiness.Insertar(oPreciario);
@@ -198,7 +203,8 @@ namespace OSEF.AVANCES.SUCURSALES
                     RSucursal = oPreciario.RSucursal,
                     Archivo = oPreciario.Archivo,
                     Estatus = oPreciario.Estatus,
-                    FechaAlta = oPreciario.FechaAlta
+                    FechaAlta = oPreciario.FechaAlta,
+                    Usuario = oPreciario.Usuario
 
                 });
             }

@@ -46,6 +46,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 sSucursal.Add(new
                 {
                     ID = oSucursal.ID,
+                    CR = oSucursal.CR,
                     Nombre = oSucursal.Nombre,
                     GerenteBBVANombre = oSucursal.GerenteBBVANombre,
                     GerenteBBVAAPaterno = oSucursal.GerenteBBVAAPaterno,
