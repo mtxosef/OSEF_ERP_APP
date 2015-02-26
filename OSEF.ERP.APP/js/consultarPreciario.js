@@ -3,8 +3,9 @@ var tpConsultarPreciario_BeforeRender = function (tabPanel, opciones) {
     App.direct.CargarPreciario('PRC0001', {
         success: function (result) {
             var categoria;
+            //console.log(App.Store1.getAt(0));
             //console.log(App.sConsultarPreciario.getAt(0).get('RPreciarioCategorias'));
-            console.log(App.sConsultarPreciario.getAt(0));
+            //console.log(App.sConsultarPreciario.getAt(0));
 
 //            App.sConsultarPreciario.getAt(0).get('RPreciarioCategorias').each(function (registro, indice, total) {
 //                if (categoria == registro.get('ID')) {

@@ -18,7 +18,8 @@
                 <ext:Model
                     ID="mConsultarPreciario"
                     runat="server"
-                    IDProperty="ID">
+                    IDProperty="ID"
+                    Name="Preciario">
                     <Fields>
                         <ext:ModelField Name="ID" Type="String" />
                         <ext:ModelField Name="Descripcion" Type="String" />
@@ -30,13 +31,13 @@
                         <ext:ModelField Name="RSucursal" Type="Object" />
                     </Fields>
                     <Associations>
-                        <ext:HasManyAssociation Model="RPreciarioCategorias" Name="PreciarioCategorias" AssociationKey="RPreciarioCategorias"/>
+                        <ext:HasManyAssociation Model="PreciarioCategoria" Name="hmaPreciarioCategorias" AssociationKey="RPreciarioCategorias"/>
                     </Associations>
                 </ext:Model>
             </Model>
         </ext:Store>
 
-        <ext:Model ID="mPreciarioCategorias" runat="server" Name="RPreciarioCategorias" IDProperty="ID">
+        <ext:Model ID="mPreciarioCategorias" runat="server" Name="PreciarioCategoria" IDProperty="ID">
             <Fields>
                 <ext:ModelField Name="ID" Type="String" />
                 <ext:ModelField Name="Clave" Type="String" />
@@ -48,6 +49,27 @@
             </Fields>
         </ext:Model>
 
+        <ext:Model ID="Model1" runat="server" Name="Product" IDProperty="Id">
+            <Fields>
+                <ext:ModelField Name="Id" Type="Int" />
+                <ext:ModelField Name="Name" Type="String" />
+            </Fields>
+        </ext:Model>
+
+        <ext:Store ID="Store1" runat="server">
+            <Model>
+                <ext:Model ID="Model2" runat="server" Name="User" IDProperty="Id">
+                    <Fields>
+                        <ext:ModelField Name="Id" Type="Int" />
+                        <ext:ModelField Name="Name" Type="String" />
+                    </Fields>
+                    <Associations>
+                        <ext:HasManyAssociation Model="Product" Name="products" AssociationKey="Products" />
+                    </Associations>
+                </ext:Model>
+            </Model>
+        </ext:Store>
+
         <ext:TabPanel
             ID="tpConsultarPreciario"
             runat="server"
@@ -57,6 +79,15 @@
                 <BeforeRender Fn="tpConsultarPreciario_BeforeRender" />
             </Listeners>
         </ext:TabPanel>
+
+        <ext:Button
+            ID="btnCarar"
+            runat="server"
+            Text="Mostrar">
+            <Listeners>
+                <Click Handler="console.log(App.Store1.getAt(0));" />
+            </Listeners>
+        </ext:Button>
 
     </form>
 </body>
