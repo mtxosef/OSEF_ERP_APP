@@ -851,7 +851,7 @@
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Estimaciones.cs">
+    <Compile Include="reports\Estimaciones.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Estimaciones.rpt</DependentUpon>
@@ -951,7 +951,7 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Estimaciones.rpt">
+    <EmbeddedResource Include="reports\Estimaciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Estimaciones.cs</LastGenOutput>
     </EmbeddedResource>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSEF.ERP.APP {
+namespace OSEF.ERP.APP.reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.Estimaciones.rpt";
+                return "OSEF.ERP.APP.reports.Estimaciones.rpt";
             }
             set {
                 // Do nothing

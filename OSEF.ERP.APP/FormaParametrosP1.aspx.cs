@@ -40,7 +40,7 @@ namespace OSEF.ERP.APP
             try
             {
                 var reporte = new ReportDocument();
-                reporte.Load(Server.MapPath("Estimaciones.rpt"));
+                reporte.Load(Server.MapPath("reports/Estimaciones.rpt"));
 
                 Session["imprimir"] = reporte;
 
