@@ -5,8 +5,8 @@
 
     if (reporte == 'P1') {
         window.parent.App.wEmergente.load('FormaParametrosP1.aspx');
-        window.parent.App.wEmergente.setHeight(425);
-        window.parent.App.wEmergente.setWidth(770);
+        window.parent.App.wEmergente.setHeight(370);
+        window.parent.App.wEmergente.setWidth(740);
         window.parent.App.wEmergente.center();
         window.parent.App.wEmergente.setTitle('Especificar Parámetros');
         window.parent.App.wEmergente.show();

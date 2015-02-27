@@ -12,13 +12,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <ext:ResourceManager ID="ResourceManager1" runat="server">
-        </ext:ResourceManager>
-
-        <ext:Button ID="Button1" runat="server" Text="Submit">
-        </ext:Button>
-
-        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
+        
+        <asp:Button ID="Button2" runat="server" Text="Generar" OnClick="getReportEstimaciones" />
+        <CR:CrystalReportViewer ID="Productos" runat="server" AutoDataBind="true" />
 
     </div>
     </form>

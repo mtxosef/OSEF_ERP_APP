@@ -278,6 +278,7 @@
     <Content Include="FormaMenu.aspx" />
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
+    <Content Include="FormaParametrosP1.aspx" />
     <Content Include="FormaPreciario.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirImagenesCliente.aspx" />
@@ -314,6 +315,7 @@
     <Content Include="js\login.js" />
     <Content Include="js\menus2.js" />
     <Content Include="js\olvidarContrasena.js" />
+    <Content Include="js\parametrosP1.js" />
     <Content Include="js\preciarios.js" />
     <Content Include="js\profesiones.js" />
     <Content Include="js\reportes.js" />
@@ -483,15 +485,6 @@
     <Compile Include="Estados2.aspx.designer.cs">
       <DependentUpon>Estados2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Estimaciones.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Estimaciones1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Estimaciones.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Finalidades.aspx.cs">
       <DependentUpon>Finalidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -631,6 +624,13 @@
     </Compile>
     <Compile Include="FormaCliente.aspx.designer.cs">
       <DependentUpon>FormaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaParametrosP1.aspx.cs">
+      <DependentUpon>FormaParametrosP1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaParametrosP1.aspx.designer.cs">
+      <DependentUpon>FormaParametrosP1.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaPreciario.aspx.cs">
       <DependentUpon>FormaPreciario.aspx</DependentUpon>
@@ -920,10 +920,6 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Estimaciones.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Estimaciones1.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="reports\Prueba.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Prueba.cs</LastGenOutput>

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Web;
 
 namespace OSEF.ERP.APP
 {
@@ -13,5 +15,25 @@ namespace OSEF.ERP.APP
         {
 
         }
+
+        protected void getReportEstimaciones(object sender, EventArgs e)
+        {
+            try
+            {
+                var reporte = new ReportDocument();
+
+                reporte.Load(Server.MapPath("reports/Prueba.rpt"));
+           
+                Productos.ReportSource = reporte;
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+
+
+        }
+
     }
 }
