@@ -29,7 +29,7 @@
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
-     <ext:ResourceManager ID="rmCodigosPostales" runat="server" HideInDesign="true" />
+     <ext:ResourceManager ID="rmReportes" runat="server" HideInDesign="true" />
 
 
      <ext:GridPanel
@@ -50,73 +50,53 @@
                            <ext:TreePanel 
                             ID="tpReportes" 
                             runat="server" 
-                            Width="270" 
-                            Height="310" 
+                            Width="950" 
+                            Height="270" 
                             Icon="BookOpen" 
                             AutoScroll="true"
                             Header="false">           
                             <Root>
                                 <ext:Node Text="Reportes" Expanded="true">
                                     <Children>
-                                                <ext:Node Text="Avances" >
-                                                    <Children>
-                                                        <ext:Node Text="Hijo">
-                                                            <Children>
-                                                            <ext:Node Text="No. 1 - C"  Leaf="true" />
-                                                            <ext:Node Text="No. 2 - B-Flat Major"  Leaf="true" />
-                                                            <ext:Node Text="No. 3 - C Minor"  Leaf="true" />
-                                                            <ext:Node Text="No. 4 - G Major"  Leaf="true" />
-                                                            <ext:Node Text="No. 5 - E-Flat Major" Leaf="true" />
-                                                            </Children>
-                                                     </ext:Node>
-                                                    </Children>
-                                                </ext:Node>
-                                                <ext:Node Text="Volumetrías" >
-                                                    <Children>
-                                                        <ext:Node Text="Hijo">
-                                                            <Children>
-                                                            <ext:Node Text="No. 1 - C"  Leaf="true" />
-                                                            <ext:Node Text="No. 2 - B-Flat Major"  Leaf="true" />
-                                                            <ext:Node Text="No. 3 - C Minor"  Leaf="true" />
-                                                            <ext:Node Text="No. 4 - G Major"  Leaf="true" />
-                                                            <ext:Node Text="No. 5 - E-Flat Major" Leaf="true" />
-                                                            </Children>
-                                                     </ext:Node>
-                                                    </Children>
-                                                </ext:Node>
-                                                <ext:Node Text="Preciarios" >
-                                                    <Children>
-                                                        <ext:Node Text="Hijo">
-                                                            <Children>
-                                                            <ext:Node Text="No. 1 - C"  Leaf="true" />
-                                                            <ext:Node Text="No. 2 - B-Flat Major"  Leaf="true" />
-                                                            <ext:Node Text="No. 3 - C Minor"  Leaf="true" />
-                                                            <ext:Node Text="No. 4 - G Major"  Leaf="true" />
-                                                            <ext:Node Text="No. 5 - E-Flat Major" Leaf="true" />
-                                                            </Children>
-                                                     </ext:Node>
-                                                    </Children>
-                                                </ext:Node>
-                                           </Children>
-                                       </ext:Node>
+                                          
+                                        <ext:Node Text="Preciarios">
+                                            <Children>
+                                            <ext:Node Text="Reporte Prueba 1" NodeID="P1"   Leaf="true" />
+                                            <ext:Node Text="Reporte Prueba 2" NodeID="P2"   Leaf="true" />
+                                            <ext:Node Text="Reporte Prueba 3" NodeID="P3"   Leaf="true" />
+                                            
+                                            </Children>
+                                        </ext:Node>
+                                        
 
+                                    </Children>
+                                </ext:Node>
                             </Root>
-                            <BottomBar>
-                                <ext:StatusBar ID="StatusBar1" runat="server" AutoClear="1500" />
-                            </BottomBar>
-                            <Listeners>
-                                <ItemClick 
-                                    Handler="#{StatusBar1}.setStatus({text: 'Node Selected: <b>' + record.data.text + '<br />', clear: false});"                     
-                                    />
-                                <ItemExpand 
-                                    Handler="#{StatusBar1}.setStatus({text: 'Node Expanded: <b>' + item.data.text + '<br />', clear: false});" 
-                                    Buffer="30"
-                                    />
-                                <ItemCollapse 
-                                    Handler="#{StatusBar1}.setStatus({text: 'Node Collapsed: <b>' + item.data.text + '<br />', clear: false});" 
-                                    Buffer="30"
-                                    />
-                            </Listeners>
+                            <ColumnModel>
+                                <Columns>
+                                    <ext:TreeColumn 
+                                    ID="tcReportes" 
+                                    runat="server" 
+                                    Flex="1" 
+                                    DataIndex="text" />
+                                    <ext:CommandColumn 
+                                    ID="ccReportes" 
+                                    runat="server" 
+                                    Align="Left"
+                                    Width="720">
+                                        <Commands>
+                                            <ext:GridCommand 
+                                            CommandName="VerReporte" 
+                                            Icon="PageWhiteExcel" 
+                                            ToolTip-Text="Ver Reporte" />
+                                        </Commands>
+                                        <PrepareToolbar Handler="return record.data.leaf;" />
+                                        <Listeners>
+                                            <Command Fn="ccAcciones_Command" />
+                                        </Listeners>
+                                    </ext:CommandColumn>
+                                </Columns>
+                            </ColumnModel>
                         </ext:TreePanel>            
                     </Items>
                 </ext:Toolbar>
@@ -127,6 +107,7 @@
                         <ext:ImageButton
                             ID="imgbtnNuevo"
                             runat="server"
+                            Disabled="true"
                             ImageUrl="assets/img/controles/nuevo-normal.png"
                             DisabledImageUrl="assets/img/controles/nuevo-disable.png"
                             OverImageUrl="assets/img/controles/nuevo-over.png"
@@ -167,11 +148,13 @@
                             PressedImageUrl="assets/img/controles/update-pressed.png"
                             ToolTip="Actualizar códigos postales"
                             Height="50"
+                            Disabled="true"
                             Width="50">
                         </ext:ImageButton>
                         <ext:TextField 
                             ID="txtBuscar"
                             runat="server"
+                            Disabled="true"
                             AutoFocus="true"
                             EmptyText="Buscar"
                             Width="200">
@@ -181,6 +164,7 @@
                                     runat="server"
                                     ImageUrl="assets/img/controles/search.png"
                                     OverImageUrl=""
+                                    Disabled="true"
                                     PressedImageUrl=""
                                     Height="22px"
                                     Width="22px">                                              
@@ -190,49 +174,11 @@
                     </Items>
                 </ext:Toolbar>
             </TopBar>
-            <ColumnModel>
-                <Columns>
-                    <ext:Column
-                        ID="cEstado"
-                        runat="server"
-                        Text="ESTADO"
-                        Align="Left"
-                        Width="137"
-                        DataIndex="Estado" />
-                    <ext:Column 
-                        ID="cMunicipio"
-                        runat="server"
-                        Text="MUNICIPIO"
-                        Align="Center"
-                        Width="148"
-                        DataIndex="Municipio" />
-                    <ext:Column
-                        ID="cColonia"
-                        runat="server"
-                        Text="COLONIA"
-                        Align="Left"
-                        Width="198"
-                        DataIndex="Colonia" />
-                    <ext:NumberColumn
-                        ID="ncCodigoPostal"
-                        runat="server"
-                        Text="CÓDIGO POSTAL"
-                        Align="Left"
-                        Width="138"
-                        DataIndex="CodigoPostal" />
-                </Columns>
-            </ColumnModel>
-            <SelectionModel>
-                <ext:RowSelectionModel
-                    ID="rsmCodigosPostales"
-                    runat="server">
-                </ext:RowSelectionModel>
-            </SelectionModel>
             <FooterBar>
                 <ext:StatusBar
                     ID="sbCodigosPostales"
                     runat="server"
-                    Text="ESTATUS"
+                    Text="Selecciona el reporte que desees visualizar"
                     StatusAlign="Left">
                 </ext:StatusBar>
             </FooterBar>

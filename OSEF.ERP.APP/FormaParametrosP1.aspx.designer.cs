@@ -10,7 +10,7 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class Reportes {
+    public partial class FormaParametrosP1 {
         
         /// <summary>
         /// Control form1.
@@ -22,138 +22,147 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmReportes.
+        /// Control rmEspecificarFechas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmReportes;
+        protected global::Ext.Net.ResourceManager rmEspecificarFechas;
         
         /// <summary>
-        /// Control gpReportes.
+        /// Control fpEspecificarParametros.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gpReportes;
+        protected global::Ext.Net.FormPanel fpEspecificarParametros;
         
         /// <summary>
-        /// Control tReportes.
+        /// Control fcPreciario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tReportes;
+        protected global::Ext.Net.FieldContainer fcPreciario;
         
         /// <summary>
-        /// Control tpReportes.
+        /// Control cmbPreciario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TreePanel tpReportes;
+        protected global::Ext.Net.ComboBox cmbPreciario;
         
         /// <summary>
-        /// Control tcReportes.
+        /// Control sPreciario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TreeColumn tcReportes;
+        protected global::Ext.Net.Store sPreciario;
         
         /// <summary>
-        /// Control ccReportes.
+        /// Control mPreciario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.CommandColumn ccReportes;
+        protected global::Ext.Net.Model mPreciario;
         
         /// <summary>
-        /// Control tbReportes.
+        /// Control txtfDescripcionPreciario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbReportes;
+        protected global::Ext.Net.TextField txtfDescripcionPreciario;
         
         /// <summary>
-        /// Control imgbtnNuevo.
+        /// Control fcSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnNuevo;
+        protected global::Ext.Net.FieldContainer fcSucursal;
         
         /// <summary>
-        /// Control imgbtnEditar.
+        /// Control txtfIDSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnEditar;
+        protected global::Ext.Net.TextField txtfIDSucursal;
         
         /// <summary>
-        /// Control imgbtnBorrar.
+        /// Control txtfSucursalNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBorrar;
+        protected global::Ext.Net.TextField txtfSucursalNombre;
         
         /// <summary>
-        /// Control tbsReportes.
+        /// Control fcFechas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ToolbarSpacer tbsReportes;
+        protected global::Ext.Net.FieldContainer fcFechas;
         
         /// <summary>
-        /// Control imgbtnActualizar.
+        /// Control DateField1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnActualizar;
+        protected global::Ext.Net.DateField DateField1;
         
         /// <summary>
-        /// Control txtBuscar.
+        /// Control DateField2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtBuscar;
+        protected global::Ext.Net.DateField DateField2;
         
         /// <summary>
-        /// Control imgbtnBuscar.
+        /// Control sbParametros1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBuscar;
+        protected global::Ext.Net.StatusBar sbParametros1;
         
         /// <summary>
-        /// Control sbCodigosPostales.
+        /// Control imgbtnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar sbCodigosPostales;
+        protected global::Ext.Net.ImageButton imgbtnGuardar;
+        
+        /// <summary>
+        /// Control imgbtnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnCancelar;
     }
 }
