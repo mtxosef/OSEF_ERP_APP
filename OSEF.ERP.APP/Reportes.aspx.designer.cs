@@ -22,13 +22,13 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmCodigosPostales.
+        /// Control rmReportes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmCodigosPostales;
+        protected global::Ext.Net.ResourceManager rmReportes;
         
         /// <summary>
         /// Control gpReportes.
@@ -58,13 +58,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TreePanel tpReportes;
         
         /// <summary>
-        /// Control StatusBar1.
+        /// Control tcReportes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar StatusBar1;
+        protected global::Ext.Net.TreeColumn tcReportes;
+        
+        /// <summary>
+        /// Control ccReportes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn ccReportes;
         
         /// <summary>
         /// Control tbReportes.
@@ -137,51 +146,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ImageButton imgbtnBuscar;
-        
-        /// <summary>
-        /// Control cEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cEstado;
-        
-        /// <summary>
-        /// Control cMunicipio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cMunicipio;
-        
-        /// <summary>
-        /// Control cColonia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cColonia;
-        
-        /// <summary>
-        /// Control ncCodigoPostal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.NumberColumn ncCodigoPostal;
-        
-        /// <summary>
-        /// Control rsmCodigosPostales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.RowSelectionModel rsmCodigosPostales;
         
         /// <summary>
         /// Control sbCodigosPostales.
