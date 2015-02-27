@@ -22,11 +22,10 @@ namespace OSEF.ERP.APP
             try
             {
                 var reporte = new ReportDocument();
-
                 reporte.Load(Server.MapPath("uno.rpt"));
-                CrystalReportViewer1.ToolPanelView = ToolPanelViewType.None;
-                CrystalReportViewer1.Visible = true;
-                CrystalReportViewer1.ReportSource = reporte;
+               
+                Session["imprimir"] = reporte;
+                Server.Transfer("VistaPreliminar.aspx", true);
 
             }
             catch (Exception ex)

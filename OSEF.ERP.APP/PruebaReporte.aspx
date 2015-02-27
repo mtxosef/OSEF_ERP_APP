@@ -12,11 +12,20 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <ext:ResourceManager ID="ResourceManager1" runat="server">
+        </ext:ResourceManager>
+
+
+      <%--  <ext:Button ID="Button2" runat="server" Text="Submit">
+        <DirectEvents>
+        <Click OnEvent="generar"></Click>
+        </DirectEvents>
+        </ext:Button>--%>
+
         <asp:Button ID="Button1" runat="server" Text="Button" OnClick="generar" />
-
-        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
-
-
+    
+                      <%--<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true"  />--%>
+         
         
     </div>
     </form>
