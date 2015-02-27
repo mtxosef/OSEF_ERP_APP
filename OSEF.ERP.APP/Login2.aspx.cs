@@ -29,10 +29,10 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void Page_PreInit(object sender, EventArgs e)
         {
-            //if (Request.IsAuthenticated)
-            //{
-            //    Response.Redirect("~/Default.aspx", true);
-            //}
+            if (Request.IsAuthenticated)
+            {
+                Response.Redirect("~/Default.aspx", true);
+            }
         }
 
         /// <summary>

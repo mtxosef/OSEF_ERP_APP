@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
+    <script type="text/javascript" src="js/login.js"></script>
     <style type="text/css">
         #lLogin_Password-indicator {
             position: absolute;
