@@ -16,17 +16,13 @@
         </ext:ResourceManager>
 
 
-      <%--  <ext:Button ID="Button2" runat="server" Text="Submit">
+        <ext:Button ID="Button2" runat="server" Text="Submit">
         <DirectEvents>
-        <Click OnEvent="generar"></Click>
+        <Click OnEvent="generar" Success="window.open('VistaPreliminar.aspx', '_blank');"></Click>
         </DirectEvents>
-        </ext:Button>--%>
+        </ext:Button>
 
-        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="generar" />
     
-                      <%--<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true"  />--%>
-         
-        
     </div>
     </form>
 </body>
