@@ -17,7 +17,7 @@ namespace OSEF.ERP.APP
           
         }
 
-        protected void generar(object sender, EventArgs e)
+        protected void generar(object sender, DirectEventArgs e)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace OSEF.ERP.APP
                 reporte.Load(Server.MapPath("uno.rpt"));
                
                 Session["imprimir"] = reporte;
-                Server.Transfer("VistaPreliminar.aspx", true);
+                
 
             }
             catch (Exception ex)

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using OSEF.APP.EL;
 using Ext.Net;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace OSEF.ERP.APP
 {
@@ -32,5 +33,26 @@ namespace OSEF.ERP.APP
            
 
         }
+
+
+        protected void imgbtnExportar_Click(object sender, DirectEventArgs e)
+        {
+            try
+            {
+                var reporte = new ReportDocument();
+                reporte.Load(Server.MapPath("reports/Estimaciones.rpt"));
+
+                Session["imprimir"] = reporte;
+
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+
+
+        }
+
     }
 }

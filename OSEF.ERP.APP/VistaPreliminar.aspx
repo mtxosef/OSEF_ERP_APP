@@ -13,8 +13,6 @@
     <form id="form1" runat="server">
     <div>
 
-
-        <asp:Button ID="Button1" runat="server" Text="Button" />
  
         <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
 

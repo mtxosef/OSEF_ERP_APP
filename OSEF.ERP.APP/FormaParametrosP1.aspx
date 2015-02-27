@@ -219,14 +219,12 @@
                     Height="50" 
                     Width="50"
                     Disabled="true">
-                    <%--<DirectEvents>
-                        <Click OnEvent="imgbtnGuardar_Click">
-                            <EventMask ShowMask="true" Msg="Registrando información..." />
-                            <ExtraParams>
-                                <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
-                            </ExtraParams>
+                    <DirectEvents>
+                        <Click OnEvent="imgbtnExportar_Click" Success="window.open('VistaPreliminar.aspx', '_blank');">
+                            <EventMask ShowMask="true" Msg="Cargando Reporte..." />
+                            
                         </Click>
-                    </DirectEvents>--%>
+                    </DirectEvents>
                 </ext:ImageButton>
                 <ext:ImageButton 
                     ID="imgbtnCancelar" 
