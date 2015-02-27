@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Web;
+using Ext.Net;
 
 namespace OSEF.ERP.APP
 {
@@ -13,18 +14,19 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+          
         }
 
-        protected void getReportEstimaciones(object sender, EventArgs e)
+        protected void generar(object sender, EventArgs e)
         {
             try
             {
                 var reporte = new ReportDocument();
 
-                reporte.Load(Server.MapPath("reports/Prueba.rpt"));
-           
-                Productos.ReportSource = reporte;
+                reporte.Load(Server.MapPath("uno.rpt"));
+                CrystalReportViewer1.ToolPanelView = ToolPanelViewType.None;
+                CrystalReportViewer1.Visible = true;
+                CrystalReportViewer1.ReportSource = reporte;
 
             }
             catch (Exception ex)

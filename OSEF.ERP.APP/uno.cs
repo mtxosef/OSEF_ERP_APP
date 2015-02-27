@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSEF.ERP.APP.reports {
+namespace OSEF.ERP.APP {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP.reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Prueba : ReportClass {
+    public class uno : ReportClass {
         
-        public Prueba() {
+        public uno() {
         }
         
         public override string ResourceName {
             get {
-                return "Prueba.rpt";
+                return "uno.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP.reports {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.reports.Prueba.rpt";
+                return "OSEF.ERP.APP.uno.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace OSEF.ERP.APP.reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPrueba : Component, ICachedReport {
+    public class Cacheduno : Component, ICachedReport {
         
-        public CachedPrueba() {
+        public Cacheduno() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace OSEF.ERP.APP.reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Prueba rpt = new Prueba();
+            uno rpt = new uno();
             rpt.Site = this.Site;
             return rpt;
         }

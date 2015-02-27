@@ -833,12 +833,6 @@
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="reports\Prueba.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Prueba.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Subcategorias.aspx.cs">
       <DependentUpon>Subcategorias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -859,6 +853,12 @@
     </Compile>
     <Compile Include="tVtasUnidadesVsTiempo.aspx.designer.cs">
       <DependentUpon>tVtasUnidadesVsTiempo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="uno.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>uno.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
@@ -886,6 +886,7 @@
     <Folder Include="assets\img\menu\" />
     <Folder Include="imagesVolumetrias\" />
     <Folder Include="images\menu\" />
+    <Folder Include="reports\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSEF.APP.BL\OSEF.APP.BL.csproj">
@@ -920,9 +921,9 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="reports\Prueba.rpt">
+    <EmbeddedResource Include="uno.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Prueba.cs</LastGenOutput>
+      <LastGenOutput>uno.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
