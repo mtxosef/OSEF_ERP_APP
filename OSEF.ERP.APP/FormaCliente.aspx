@@ -358,7 +358,7 @@
                                                         Editable="true"
                                                         MaxLength="15"
                                                         EnforceMaxLength="true"
-                                                        AllowBlank="false"
+                                                        AllowBlank="true"
                                                         Note="Ejemplo: (449) 999-00-00">
                                                         <Plugins>
                                                             <ext:InputMask
@@ -404,7 +404,7 @@
                                                         Vtype="email"
                                                         MaxLength="100"
                                                         EnforceMaxLength="true"
-                                                        AllowBlank="false"
+                                                        AllowBlank="true"
                                                         StyleSpec="margin-right: 6px;">
                                                     </ext:TextField>
                                                     <ext:ComboBox
@@ -943,7 +943,7 @@
                                         </Items>
                                     </ext:Panel>
                                      <%--Terminado--%>
-                                    <ext:Panel 
+<%--                                    <ext:Panel 
                                         ID="pBeneficiarios" 
                                         runat="server" 
                                         Title="Beneficiarios" 
@@ -1051,7 +1051,7 @@
                                                 </Items>
                                             </ext:FieldContainer>
                                         </Items>
-                                    </ext:Panel>
+                                    </ext:Panel>--%>
                                 </Items>
                             </ext:TabPanel>
                         </Items>
