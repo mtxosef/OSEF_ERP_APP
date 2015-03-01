@@ -16,6 +16,7 @@ namespace OSEF.APP.EL
         string clave;
         string preciario;
         string descripcion;
+        string usuario;
         string estatus;
         DateTime fechaalta;
         string tipo;
@@ -46,6 +47,12 @@ namespace OSEF.APP.EL
         {
             get { return descripcion; }
             set { descripcion = value; }
+        }
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
         }
 
         public string Estatus
