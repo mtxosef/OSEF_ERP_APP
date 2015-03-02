@@ -74,7 +74,8 @@
                         <ext:ModelField Name="RSucursal" Type="Object" />
                     </Fields>
                     <Associations>
-                        <ext:HasManyAssociation Model="PreciarioCategoria" Name="hmaPreciarioCategorias" AssociationKey="RPreciarioCategorias" />
+                        <ext:HasManyAssociation Model="PreciarioCategoria" Name="hmaPreciarioCategorias" AssociationKey="RPreciarioCategorias">
+                        </ext:HasManyAssociation>
                     </Associations>
                 </ext:Model>
             </Model>
@@ -88,9 +89,6 @@
             runat="server"
             Height="300"
             Width="600">
-            <Listeners>
-                <Render Fn="tpConsultarPreciario_BeforeRender" />
-            </Listeners>
         </ext:TabPanel>
 
         <ext:Button

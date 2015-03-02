@@ -47,14 +47,5 @@ namespace OSEF.ERP.APP
             //    RPreciarioCategorias = oPreciario.RPreciarioCategorias
             //});
         }
-
-        public List<Preciario> Preciarios()
-        {
-            List<Preciario> lPreciario = new List<Preciario>();
-            Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID("PRC0001");
-            oPreciario.RPreciarioCategorias = PreciarioCategoriaBuisness.ObtenerPreciarioCategoriasPorPreciario("PRC0001");
-            lPreciario.Add(oPreciario);
-            return lPreciario;
-        }
     }
 }

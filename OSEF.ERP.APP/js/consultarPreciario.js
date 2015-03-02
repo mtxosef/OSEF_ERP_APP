@@ -1,9 +1,9 @@
 ﻿//Lanzar antes de pintar el TabPanel
-var tpConsultarPreciario_BeforeRender = function (tabPanel, opciones) {
+var sConsultarPreciario_Load = function () {
     App.direct.CargarPreciario('PRC0001', {
         success: function (result) {
             var categoria;
-            //console.log(App.Store1.getAt(0));
+            console.log(App.sConsultarPreciario.getAt(0), 'Load');
             //console.log(App.sConsultarPreciario.getAt(0).get('RPreciarioCategorias'));
             //console.log(App.sConsultarPreciario.getAt(0));
 
