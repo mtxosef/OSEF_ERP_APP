@@ -96,6 +96,12 @@ namespace OSEF.APP.DL
                 sqlpImporte.SqlDbType = SqlDbType.Decimal;
                 sqlpImporte.Value = iPreciarioConcepto.Importe;
 
+
+                SqlParameter sqlpImporteFinal = new SqlParameter();
+                sqlpImporteFinal.ParameterName = "@ImporteFinal";
+                sqlpImporteFinal.SqlDbType = SqlDbType.Decimal;
+                sqlpImporteFinal.Value = iPreciarioConcepto.Importefinal;
+
                 SqlParameter sqlpEstatus = new SqlParameter();
                 sqlpEstatus.ParameterName = "@Estatus";
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
@@ -120,6 +126,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpCantidad);
                 sqlcComando.Parameters.Add(sqlpUtilizada);
                 sqlcComando.Parameters.Add(sqlpImporte);
+                sqlcComando.Parameters.Add(sqlpImporteFinal);
                 sqlcComando.Parameters.Add(sqlpEstatus);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
                 //4. Abrir la conexión
@@ -306,7 +313,8 @@ namespace OSEF.APP.DL
                 //2. Declarar los parametros
                 SqlParameter sqlpPreciario = new SqlParameter();
                 sqlpPreciario.ParameterName = "@Preciario";
-                sqlpPreciario.SqlDbType = SqlDbType.VarChar;
+                sqlpPreciario.SqlDbType = SqlDbType.Char;
+                sqlpPreciario.Size = 7;
                 sqlpPreciario.Value = strPreciario;
 
                 //3. Agregar los parametros al comando

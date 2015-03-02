@@ -7,7 +7,6 @@
     <title></title>
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
-    <script type="text/javascript" src="js/avance.js"></script>
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
     <link rel="stylesheet" href="css/xSplitButton.css" />

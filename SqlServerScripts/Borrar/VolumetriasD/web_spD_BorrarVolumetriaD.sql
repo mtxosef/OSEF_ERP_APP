@@ -37,6 +37,8 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
+
+	
     -- Insert statements for procedure here
     DELETE FROM
 		VolumetriasD

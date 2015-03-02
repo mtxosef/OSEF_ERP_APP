@@ -13,10 +13,37 @@
     }
 
     if (reporte == 'P2') {
-    alert("En construccion")
+        window.parent.App.wEmergente.load('FormaParametrosP2.aspx');
+        window.parent.App.wEmergente.setHeight(370);
+        window.parent.App.wEmergente.setWidth(740);
+        window.parent.App.wEmergente.center();
+        window.parent.App.wEmergente.setTitle('Especificar Parámetros');
+        window.parent.App.wEmergente.show();
     }
 
-    if (reporte == 'P2') {
-        alert("En construccion")
+    if (reporte == 'P3') {
+        window.parent.App.wEmergente.load('FormaParametrosP3.aspx');
+        window.parent.App.wEmergente.setHeight(370);
+        window.parent.App.wEmergente.setWidth(740);
+        window.parent.App.wEmergente.center();
+        window.parent.App.wEmergente.setTitle('Especificar Parámetros');
+        window.parent.App.wEmergente.show();
+    }
+    if (reporte == 'P4') {
+        window.parent.App.wEmergente.load('FormaParametrosP4.aspx');
+        window.parent.App.wEmergente.setHeight(370);
+        window.parent.App.wEmergente.setWidth(740);
+        window.parent.App.wEmergente.center();
+        window.parent.App.wEmergente.setTitle('Especificar Parámetros');
+        window.parent.App.wEmergente.show();
+    }
+
+    if (reporte == 'P5') {
+        window.parent.App.wEmergente.load('FormaParametrosP5.aspx');
+        window.parent.App.wEmergente.setHeight(370);
+        window.parent.App.wEmergente.setWidth(740);
+        window.parent.App.wEmergente.center();
+        window.parent.App.wEmergente.setTitle('Especificar Parámetros');
+        window.parent.App.wEmergente.show();
     }
 };

@@ -63,6 +63,16 @@ namespace OSEF.APP.BL
             return SucursalDataAccess.ObtenerSucursales();
         }
 
+
+        /// <summary>
+        /// Método que obtiene todos los regsitros de Sucursales
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesDisponibles()
+        {
+            return SucursalDataAccess.ObtenerSucursalesDisponibles();
+        }
+
         /// <summary>
         /// Obtener un registro de Sucursal por su ID
         /// </summary>
@@ -82,6 +92,17 @@ namespace OSEF.APP.BL
         {
             return SucursalDataAccess.ObtenerSucursalesEnRevisionesPorID(strID);
         }
+
+        /// <summary>
+        /// Revisar si existen registros de Sucursales en los preciarios por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static bool ObtenerSucursalesEnPreciariosPorID(string strID)
+        {
+            return SucursalDataAccess.ObtenerSucursalesEnPreciariosPorID(strID);
+        }
+
 
         #endregion
     }

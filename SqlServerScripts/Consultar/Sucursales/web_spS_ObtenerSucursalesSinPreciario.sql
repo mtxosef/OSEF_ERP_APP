@@ -1,3 +1,4 @@
+
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -18,18 +19,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarioConceptoPorPreciario' AND
+			WHERE  name = 'web_spS_ObtenerSucursalesSinPreciario' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarioConceptoPorPreciario
+	DROP PROCEDURE web_spS_ObtenerSucursalesSinPreciario
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener un registro de Articulos por su ID
+-- Create date: Miercoles 14 de Enero de 2015
+-- Description:	Obtener los registros de Sucursales por su Revisión
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarioConceptoPorPreciario
+CREATE PROCEDURE web_spS_ObtenerSucursalesSinPreciario
 	-- Add the parameters for the stored procedure here
-	@Preciario		VARCHAR(50)
+	@ID	CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,25 +38,13 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		CLAVE,
-		Preciario,
-		Descripcion,
-		Categoria,
-		SubCategoria,
-		SubSubCategoria,
-		Unidad,
-		Costo,
-		Cantidad,
-		Utilizada,
-		Importe,
-		Estatus,
-		FechaAlta
-		
-	FROM
-		PreciarioConceptos
-	WHERE
-		Preciario = @Preciario
+	IF EXISTS(SELECT A.ID FROM Sucursales A INNER JOIN Preciarios B ON A.ID = B.Sucursal WHERE A.ID = @ID)
+	BEGIN
+		SELECT CAST(1 AS BIT)
+	END
+	ELSE
+	BEGIN
+		SELECT CAST(0 AS BIT)
+	END
 END
 GO

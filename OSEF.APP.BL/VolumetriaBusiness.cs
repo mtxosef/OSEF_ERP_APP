@@ -130,6 +130,16 @@ namespace OSEF.APP.BL
             return VolumetriaDataAccess.CancelarVolumetriaPorID(iID);
         }
 
+        /// <summary>
+        /// Método que restablece el preciario cuando se borra una captura
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <returns></returns>
+        public static int BorrarVolumetriaAfectaPreciario(int iID)
+        {
+            return VolumetriaDataAccess.BorrarVolumetriaAfectaPreciario(iID);
+        }
+
         #endregion
 
 

@@ -51,6 +51,7 @@ BEGIN
 		Cantidad,
 		Utilizada,
 		Importe,
+		ImporteFinal,
 		Estatus,
 		FechaAlta
 		

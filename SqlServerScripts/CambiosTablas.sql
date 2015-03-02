@@ -1,5 +1,4 @@
 -- Cambio 25 de Enero 2015
-
 -- Cambio 3 de Febreo 2015
 ALTER TABLE Revisiones ADD Origen VARCHAR(50) NULL
 ALTER TABLE Revisiones ADD OrigenID VARCHAR(50) NULL
@@ -29,4 +28,8 @@ ALTER TABLE Volumetrias ADD Usuario VARCHAR(50)NOT NULL FOREIGN KEY REFERENCES U
 
 --Cambio 21 de Febrero 2015
 ALTER TABLE Preciarios ADD Usuario VARCHAR(50)NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
+
+--Cambio 3 de Marzo 2015
+ALTER TABLE PreciarioConceptos ADD ImporteFinal DECIMAL(20,2) NULL 
+
 

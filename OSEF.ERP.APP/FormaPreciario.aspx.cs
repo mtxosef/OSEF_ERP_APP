@@ -25,10 +25,36 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
+
                 //2. Cargar sucursales
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesDisponibles();
                 sSucursales.DataBind();
 
+            }
+        }
+
+
+
+        /// <summary>
+        /// Evento que se lanza al escoger un elemento de Sucursales
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbSucursales_Change(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
+            string strSucursal = e.ExtraParams["valor"];
+
+
+            //2. Validar si se elimina el registro
+            if (SucursalBusiness.ObtenerSucursalesEnPreciariosPorID(strSucursal))
+            {
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));
+            }
+            else
+            {
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
+           
             }
         }
 
@@ -146,6 +172,7 @@ namespace OSEF.AVANCES.SUCURSALES
                         pc.Utilizada = sd.Utilizada;
                         pc.Costo = sd.Costo;
                         pc.Importe = sd.Importe;
+                        pc.Importefinal = sd.Importefinal;
                         PreciarioConceptoBusiness.Insertar(pc);
                     }
                 
@@ -191,9 +218,6 @@ namespace OSEF.AVANCES.SUCURSALES
             {
                 Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strcookieEditarPreciario);
 
-                //Cargar el detalle del movimiento
-                sCarga.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(oPreciario.ID);
-                sCarga.DataBind();
 
                 sPreciario.Add(new
                 {
@@ -207,6 +231,11 @@ namespace OSEF.AVANCES.SUCURSALES
                     Usuario = oPreciario.Usuario
 
                 });
+
+
+                //Cargar el detalle del movimiento
+                sCarga.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(oPreciario.ID);
+                sCarga.DataBind();
             }
         }
 
@@ -322,6 +351,7 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Utilizada = row["Cantidad"],
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
+                                Importefinal = row["Importe"],
                                 Categoria = "",
                                 Subcategoria = "",
                                 SubSubCategoria = "",
@@ -346,6 +376,7 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Utilizada = row["Cantidad"],
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
+                                ImporteFinal = row["Importe"],
                                 Categoria = categoria,
                                 SubCategoria = "",
                                 SubSubCategoria = "",
@@ -369,6 +400,7 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Utilizada = row["Cantidad"],
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
+                                Importefinal = row["Importe"],
                                 Categoria = categoria,
                                 SubCategoria = scategoria,
                                 SubSubCategoria = "",
@@ -392,6 +424,7 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Utilizada = row["Cantidad"],
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
+                                Importefinal = row["Importe"],
                                 Categoria = categoria,
                                 SubCategoria = scategoria,
                                 SubSubCategoria = sscategoria,
@@ -415,11 +448,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "error", ParameterMode.Value));
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", id , ParameterMode.Value));
 
-                //foreach (var valor in lValoresDiferentes)
-                //{
-                //    Console.WriteLine(valor);
-                    
-                //}
+           
                 connExcel.Close();
             }
 

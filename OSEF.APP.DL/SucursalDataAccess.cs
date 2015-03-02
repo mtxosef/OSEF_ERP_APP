@@ -544,6 +544,49 @@ namespace OSEF.APP.DL
             }
         }
 
+
+
+        /// <summary>
+        /// Obtener todos los registros de Sucursales
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesDisponibles()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerSucursalesDisponibles";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<Sucursal> result = LibraryGenerics<Sucursal>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<Sucursal> ObtenerSucursalesDisponibles()): " + ex.Message);
+            }
+        }
+
+
         /// <summary>
         /// Obtener un registro de Sucursales  por su ID
         /// </summary>
@@ -634,6 +677,54 @@ namespace OSEF.APP.DL
                 throw new Exception("Error capa de datos (public static bool ObtenerSucursalesEnRevisionesPorID(string " + strID + ")): " + ex.Message);
             }
         }
+
+
+
+        /// <summary>
+        /// Revisar si existen registros de Sucursales en los preciarios por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static bool ObtenerSucursalesEnPreciariosPorID(string strID)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerSucursalesSinPreciario";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Value = strID;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                bool result = Convert.ToBoolean(sqlcComando.ExecuteScalar());
+
+                //6. Asignar la lista de objetos
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static bool ObtenerSucursalesEnPreciariosPorID(string " + strID + ")): " + ex.Message);
+            }
+        }
+
 
         #endregion
     }

@@ -58,6 +58,7 @@
             <Listeners>
                 <Load Fn="sVolumetria_Load" />
                 <Add Fn="sVolumetria_Add" />
+                <BeforeLoad Handler="console.log(App.sVolumetria)"></BeforeLoad>
             </Listeners>
         </ext:Store>
 
@@ -151,7 +152,7 @@
                             Width="30"
                             Disabled="true">
                             <DirectEvents>
-                                <Click OnEvent="imgbtnAfectar_Click" Before="imgbtnAfectar_Click_Before" Success="imgbtnAfectar_Click_Success">
+                                <Click OnEvent="imgbtnAfectar_Click"  Success="imgbtnAfectar_Click_Success">
                                     <EventMask ShowMask="true" Msg="Afectando movimiento..." />
                                     <ExtraParams>
                                            <ext:Parameter Name="VolumetriaForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
@@ -382,12 +383,12 @@
                                         DisplayField="ID"
                                         ValueField="ID"
                                         Width="200"
-                                        MatchFieldWidth="false"
                                         Margins="0 3 0 0"
                                         Cls="spanCustomCombo xEspacioCmbxCustom"
-                                        PageSize="10"
                                         AllowBlank="false"
+                                        PageSize="10"
                                         ForceSelection="true"
+                                        MatchFieldWidth="false"
                                         QueryMode="Local"
                                         TypeAhead="true">
                                         <ListConfig ID="lcPreciario" runat="server" Width="350" Cls="xEspacioCmbxCustom">
@@ -409,12 +410,8 @@
                                                             ID="mPreciario"
                                                             runat="server">
                                                             <Fields>
-                                                                <ext:ModelField Name="ID" />
-                                                                <ext:ModelField Name="Descripcion" />
-                                                                <ext:ModelField Name="Sucursal" />
-                                                                <ext:ModelField Name="Archivo" />
-                                                                <ext:ModelField Name="Estatus" />
-                                                                 <ext:ModelField Name="FechaAlta" />
+                                                                <ext:ModelField Name="ID" Type="String" />
+                                                                <ext:ModelField Name="Descripcion" Type="String" />
                                                                  <ext:ModelField Name="RSucursal" Type="Object" />
                                                         
                                                             </Fields>

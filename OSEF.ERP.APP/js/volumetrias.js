@@ -223,6 +223,8 @@ var sVolumetria_Load = function () {
 
 //Evento lanzado al agregar un registro al store
 var sVolumetria_Add = function (avance, registro) {
+
+
     //Valida el estatus para ver si permite seguir capturando o no
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
         App.cmbMov.setValue(registro[0].get('Mov'));
@@ -282,6 +284,8 @@ var sVolumetria_Add = function (avance, registro) {
         var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
         App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
         App.imgbtnBorrar.setDisabled(false);
+
+
     }
 
 };
@@ -356,7 +360,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     //Deshabilita boton de afectar porque aqui concluye el flujo
     App.imgbtnAfectar.setDisabled(true);
     App.imgbtnCancelar.setDisabled(false);
-
+    App.imgbtnBorrar.setDisabled(true);
     //3. Remover la útima fila
     var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
     if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Utilizada') == 0) {
@@ -374,27 +378,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
 };
 
-//Método que se lanza antes de llamar al procedimiento de Afectar
-var imgbtnAfectar_Click_Before = function () {
-    if (App.sVolumetria.getCount() != 0) {
-        if (App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
-            App.wEmergente.load('FormaAvanzarVolumetria.aspx');
-            App.wEmergente.setHeight(170);
-            App.wEmergente.setWidth(220);
-            App.wEmergente.center();
-            App.wEmergente.setTitle('Avanzar Movimiento');
-            App.wEmergente.show();
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-    else {
-        return true;
-    }
-};
 
 
 //-----------------------------------------DETALLE----------------------------------------------------------------
@@ -649,11 +633,19 @@ function HabilitarGuardar() {
 
 //Validar si se habilita el botón d Afectar
 function HabilitarAfectar() {
+
+   
+
     //Obtiene la fecha de emision del store
     if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null) {
+     
         if (App.cmbMov.isValid() && App.cmbPreciario.isValid()) {
+       
+          
             if (App.gpVolumetriaDetalle.getStore().getCount() != 0) {
+        
                 if (App.sConceptos.getAt(0).get('ConceptoID').length != 0 && App.sConceptos.getAt(0).get('Utilizada') != 0) {
+                
                     App.imgbtnAfectar.setDisabled(false);
                 }
             }

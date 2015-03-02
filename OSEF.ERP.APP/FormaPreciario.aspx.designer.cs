@@ -364,6 +364,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Column cImporte;
         
         /// <summary>
+        /// Control cImporteUtilizado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cImporteUtilizado;
+        
+        /// <summary>
         /// Control cCategoria.
         /// </summary>
         /// <remarks>
@@ -407,6 +416,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.GridView gvPreciario;
+        
+        /// <summary>
+        /// Control tPreciarioConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar tPreciarioConcepto;
+        
+        /// <summary>
+        /// Control dfTotalInicial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField dfTotalInicial;
+        
+        /// <summary>
+        /// Control dfTotalFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField dfTotalFinal;
         
         /// <summary>
         /// Control sbFormaPreciario.

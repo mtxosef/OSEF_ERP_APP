@@ -43,7 +43,7 @@
                             </div>
                             <%--Reportes--%>
                             <div class="tile-column-span-1">
-                                <a class="tile squarepeek bg-color-orange" href="#" id="reportes">
+                                <a class="tile squarepeek bg-color-green" href="#" id="reportes">
                                    <img src="assets/img/menu-reportes.png" alt="Reportes" />
                                     <div class="text-inner">
                                         <div class="text4">Reportes</div>

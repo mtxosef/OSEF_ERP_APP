@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSEF.ERP.APP {
+namespace OSEF.ERP.APP.reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class uno : ReportClass {
+    public class ResumenPartidas : ReportClass {
         
-        public uno() {
+        public ResumenPartidas() {
         }
         
         public override string ResourceName {
             get {
-                return "uno.rpt";
+                return "ResumenPartidas.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.uno.rpt";
+                return "OSEF.ERP.APP.reports.ResumenPartidas.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,20 @@ namespace OSEF.ERP.APP {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_path {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cacheduno : Component, ICachedReport {
+    public class CachedResumenPartidas : Component, ICachedReport {
         
-        public Cacheduno() {
+        public CachedResumenPartidas() {
         }
         
         [Browsable(false)]
@@ -129,7 +137,7 @@ namespace OSEF.ERP.APP {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            uno rpt = new uno();
+            ResumenPartidas rpt = new ResumenPartidas();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -37,12 +37,25 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
+DECLARE @PRECIO DECIMAL (20,2),
+@TOTALFINAL DECIMAL(20,2)
 
-    -- Insert statements for procedure here
+SELECT 
+@PRECIO = Costo 
+FROM 
+PreciarioConceptos 
+WHERE 
+ID =  @ID
+SET 
+@TOTALFINAL = @PRECIO * @Utilizada
+
+    -- UPDATE statements for procedure here
     UPDATE
 		PreciarioConceptos
 	SET
-		Utilizada =@Utilizada
+		Utilizada =@Utilizada,
+		ImporteFinal = @TOTALFINAL
+		
 	WHERE
 		ID = @ID
 END

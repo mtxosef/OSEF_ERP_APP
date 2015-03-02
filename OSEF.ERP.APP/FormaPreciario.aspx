@@ -25,20 +25,19 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/preciarios.js"></script>
+
+
+   
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
+  <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaPreciario" runat="server" HideInDesign="true" />
 
-        <ext:Store
+         <ext:Store
             ID="sPreciario"
             runat="server">
             <Model>
-                <ext:Model
-                    ID="mPreciario"
-                    runat="server"
-                    IDProperty="ID">
+                <ext:Model ID="mPreciario" runat="server" IDProperty="ID">
                     <Fields>
                         <ext:ModelField Name="ID" Type="String" />
                         <ext:ModelField Name="Descripcion" Type="String" />
@@ -61,7 +60,7 @@
             ID="fpPreciario"
             runat="server"
             MonitorResize="true"
-            Height="500"
+            Height="530"
             Width="910"
             BodyStyle="background-color:#fff;">
           <TopBar>
@@ -107,6 +106,7 @@
                                 <Click Handler="window.parent.App.wEmergente.hide();" />
                             </Listeners>
                         </ext:ImageButton>
+                      
                     </Items>
                 </ext:Toolbar>
               </TopBar>
@@ -207,6 +207,13 @@
                                                 <Select Fn="cmbSucursal_Select" />
                                                 <Change Fn="cmbSucursal_Change" />
                                             </Listeners>
+                                            <DirectEvents>
+                                                <Select OnEvent="cmbSucursales_Change" Success="cmbSucursal_Change_Success"> 
+                                                    <ExtraParams>
+                                                        <ext:Parameter Name="valor" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                                    </ExtraParams>
+                                                </Select>
+                                            </DirectEvents>
                                         </ext:ComboBox>
                                     <ext:TextField
                                         ID="txtfSucursalNombre"
@@ -359,7 +366,7 @@
                         <ext:FieldSet
                             ID="fsPreciario" 
                             runat="server" 
-                            Height="265" 
+                            Height="295" 
                             Title="Preciario"
                             DefaultAnchor="100%">
                             <Items>
@@ -367,7 +374,7 @@
                                     ID="gpPreciario"
                                     runat="server"
                                     Width="850"
-                                    Height="240">
+                                    Height="270">
                                     <Store>
                                         <ext:Store
                                             ID="sCarga"
@@ -377,12 +384,14 @@
                                                     <Fields>
                                                         <ext:ModelField Name="ID" Type="String" />
                                                         <ext:ModelField Name="Clave" Type="String" />
+                                                        <ext:ModelField Name="Preciario" Type="String" />
                                                         <ext:ModelField Name="Descripcion" Type="String" />
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />
                                                         <ext:ModelField Name="Utilizada" Type="Float" />
                                                         <ext:ModelField Name="Costo" Type="Float" />
                                                         <ext:ModelField Name="Importe" Type="Float" />
+                                                        <ext:ModelField Name="Importefinal" Type="Float" />
                                                         <ext:ModelField Name="Categoria" Type="String" />
                                                         <ext:ModelField Name="SubCategoria" Type="String" />
                                                         <ext:ModelField Name="SubSubCategoria" Type="String" />
@@ -395,7 +404,12 @@
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
+                                          <Listeners>
+        
+          
+            </Listeners>
                                         </ext:Store>
+                                        
                                     </Store>
 
                                     <ColumnModel 
@@ -431,12 +445,13 @@
                                                 Text="Utilizada"
                                                 DataIndex="Utilizada"
                                                 Width="100">
+                                                <Renderer Fn="renderCantidadUtilizada" />
                                             </ext:Column>
                                              <ext:Column
                                                 ID="cUnidad"
                                                 runat="server"
                                                 Text="Unidad"
-                                                Width="90"
+                                                Width="60"
                                                 DataIndex="Unidad">
                                             </ext:Column>
                                             <ext:Column 
@@ -451,9 +466,19 @@
                                                 ID="cImporte"
                                                 runat="server"
                                                 Align="Center"
-                                                Text="Importe"
+                                                Text="Importe Preciario"
                                                 DataIndex="Importe"
                                                 Width="130">
+                                                   <Renderer Fn="renderImporte" />
+                                            </ext:Column>
+                                            <ext:Column 
+                                                ID="cImporteUtilizado"
+                                                runat="server"
+                                                Align="Center"
+                                                Text="Importe Final"
+                                                Width="130"
+                                                DataIndex="Importefinal">
+                                                   <Renderer Fn="renderImporteUtilizado" />
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cCategoria"
@@ -497,6 +522,34 @@
                                             StripeRows="true">
                                         </ext:GridView>
                                     </View>
+                                    
+                                      <Listeners>
+                                        <AfterRender Handler="GetColumnTotal(this,6);" Delay="2000" />
+                                    </Listeners>  
+                                    <BottomBar>
+
+                                        <ext:Toolbar ID="tPreciarioConcepto" runat="server">
+                                                <Items>
+                                               <ext:DisplayField ID="dfTotalInicial"
+                                                    runat="server"
+                                                    FieldLabel="Total Cargado"
+                                                    Cls="total-field"
+                                                    Margins="0 0 0 340px"
+                                                    Width="240"
+                                                    Text="$">
+                                                    </ext:DisplayField>
+                                                     <ext:DisplayField ID="dfTotalFinal"
+                                                    runat="server"
+                                                    FieldLabel="Total Final"
+                                                    Cls="total-field"
+                                                    Width="240"
+                                                    Text="$" >
+                                                    </ext:DisplayField>
+              
+                                                </Items>
+                                            </ext:Toolbar>
+                                    </BottomBar>
+                                
                                 </ext:GridPanel>
                                 <%--Fin Detalle PRECIARIO--%>
                             </Items>
@@ -510,17 +563,24 @@
                                                 iconCls: valid ? 'icon-accept' : 'icon-exclamation'
                                             });
                                             #{imgbtnGuardar}.setDisabled(!valid);" />
+
+            
             </Listeners>
+          
             <BottomBar>
                 <ext:StatusBar 
                 ID="sbFormaPreciario" 
                 runat="server" 
                 Cls="x-colorToolbar" 
-                Text="BORRADOR" />
+                Text="BORRADOR">
+                </ext:StatusBar>
+               
+             
+
             </BottomBar>
              
         </ext:FormPanel>
-    </div>
+ 
     </form>
 </body>
 </html>

@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>¿Olvidaste tu contraseña?</title>
+      <link rel="shortcut icon" href="images/myApp.ico" />
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />

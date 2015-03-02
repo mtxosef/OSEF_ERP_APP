@@ -48,7 +48,8 @@ BEGIN
 	
 	UPDATE PreciarioConceptos
 	SET 
-		Utilizada = VD.Cantidad
+		Utilizada = VD.Cantidad,
+		ImporteFinal = PreciarioConceptos.Importe
 	FROM 
 		PreciarioConceptos
 	INNER JOIN 
@@ -56,6 +57,8 @@ BEGIN
 	ON
 		PreciarioConceptos.ID =VD.ConceptoID
 	WHERE VD.Volumetria= @ID
+	
+	
 
     
 END

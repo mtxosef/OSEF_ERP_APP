@@ -63,9 +63,12 @@ namespace OSEF.AVANCES.SUCURSALES
                     FechaEmision = oVolumetria.FechaEmision,
                     Observaciones = oVolumetria.Observaciones,
                     Estatus = oVolumetria.Estatus,
+                    Usuario = oVolumetria.Usuario,
                     Preciario = oVolumetria.Preciario,
                     RPreciario= oVolumetria.RPreciario,
-                    RSucursal = oVolumetria.RSucursal
+                    RSucursal = oVolumetria.RSucursal,
+                    Origen= oVolumetria.Origen,
+                    OrigenID = oVolumetria.Origenid
                 });
             }
         }
@@ -312,6 +315,7 @@ namespace OSEF.AVANCES.SUCURSALES
             int strID = Convert.ToInt32(strcookieEditarVolumetria);
             //Borra de la base de datos el encabezado, detalle y fotos
             borrarImagenesPorMovimiento(strID);
+            VolumetriaBusiness.BorrarVolumetriaAfectaPreciario(strID);
             VolumetriaDBusiness.BorrarPorVolumetria(strID);
             VolumetriaBusiness.Borrar(strID);
            

@@ -199,6 +199,8 @@
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursales.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalPorID.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnRevisionesPorID.sql
+:r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesSinPreciario.sql
+:r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesDisponibles.sql
 -- Sucursales (Insertar)
 :r c:\SqlServerScripts\Insertar\Sucursales\web_spI_InsertarSucursal.sql
 -- Sucursales (Modificar)
@@ -267,7 +269,7 @@
 -- PreciarioConcepto (Borrar)
 :r c:\SqlServerScripts\Borrar\PreciarioConcepto\web_spD_BorrarPreciarioConcepto.sql
 -- PreciarioConcepto (Consultar)
-:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptosPorPreciario.sql
+:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptoPorPreciario.sql
 :r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptos.sql
 -- PreciarioConcepto (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciarioConcepto\web_spI_InsertarPreciarioConcepto.sql
@@ -287,6 +289,7 @@
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spS_AfectarVolumetriaPorID.sql
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spS_AvanzarVolumetriaPorID.sql
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spS_CancelarVolumetriaPorID.sql
+:r c:\SqlServerScripts\Accion\Volumetrias\web_spD_BorrarVolumetriaAfectaPreciario.sql
 -----------------------------------------------------------------------------------
 -- VolumetriasD (Borrar)
 :r c:\SqlServerScripts\Borrar\VolumetriasD\web_spD_BorrarVolumetriaD.sql

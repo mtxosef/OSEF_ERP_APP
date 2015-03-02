@@ -37,3 +37,10 @@
 filter: alpha(opacity=30);
 opacity: .5;
 }
+
+ .total-field {
+            font-weight      : bold !important;
+            color            : #000;
+            margin-right     : 3px;
+        }
+  

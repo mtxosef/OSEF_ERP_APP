@@ -138,6 +138,10 @@
     <Content Include="assets\img\controles\EnviarNormal.png" />
     <Content Include="assets\img\controles\EnviarOver.png" />
     <Content Include="assets\img\controles\EnviarPressed.png" />
+    <Content Include="assets\img\controles\ExcelDisabled.png" />
+    <Content Include="assets\img\controles\ExcelNormal.png" />
+    <Content Include="assets\img\controles\ExcelOver.png" />
+    <Content Include="assets\img\controles\ExcelPressed.png" />
     <Content Include="assets\img\controles\GaleriaDisabled.png" />
     <Content Include="assets\img\controles\GaleriaNormal.png" />
     <Content Include="assets\img\controles\GaleriaOver.png" />
@@ -166,6 +170,10 @@
     <Content Include="assets\img\controles\nuevo-normal.png" />
     <Content Include="assets\img\controles\nuevo-over.png" />
     <Content Include="assets\img\controles\nuevo-pressed.png" />
+    <Content Include="assets\img\controles\pdfDisabled.png" />
+    <Content Include="assets\img\controles\pdfNormal.png" />
+    <Content Include="assets\img\controles\pdfOver.png" />
+    <Content Include="assets\img\controles\pdfPressed.png" />
     <Content Include="assets\img\controles\PrimeroDisabled.png" />
     <Content Include="assets\img\controles\PrimeroNormal.png" />
     <Content Include="assets\img\controles\PrimeroOver.png" />
@@ -207,6 +215,7 @@
     <Content Include="assets\img\menu-preciarios.png" />
     <Content Include="assets\img\menu-prestamos.png" />
     <Content Include="assets\img\menu-profesiones.png" />
+    <Content Include="assets\img\menu-reportes.png" />
     <Content Include="assets\img\menu-saldos.png" />
     <Content Include="assets\img\menu-socios.png" />
     <Content Include="assets\img\menu-solicitudes.png" />
@@ -244,6 +253,7 @@
     <Content Include="css\osef_bancomer.css" />
     <Content Include="css\osef_cajapopular.css" />
     <Content Include="css\osef_combobox.css" />
+    <Content Include="css\preliminar.css" />
     <Content Include="css\xButton.css" />
     <Content Include="css\xComboBox.css" />
     <Content Include="css\xCustomChart.css" />
@@ -289,6 +299,10 @@
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
     <Content Include="FormaParametrosP1.aspx" />
+    <Content Include="FormaParametrosP2.aspx" />
+    <Content Include="FormaParametrosP3.aspx" />
+    <Content Include="FormaParametrosP4.aspx" />
+    <Content Include="FormaParametrosP5.aspx" />
     <Content Include="FormaPreciario.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirImagenesCliente.aspx" />
@@ -372,7 +386,6 @@
     <Content Include="Menu.aspx" />
     <Content Include="Menus.aspx" />
     <Content Include="Municipios.aspx" />
-    <Content Include="ParaPruebas.aspx" />
     <Content Include="Plants.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -381,7 +394,6 @@
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
-    <Content Include="PruebaReporte.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="reports\images\A&amp;R-Imagotipo ICONO.jpg" />
     <Content Include="reports\images\bbva.jpg" />
@@ -650,6 +662,34 @@
     <Compile Include="FormaParametrosP1.aspx.designer.cs">
       <DependentUpon>FormaParametrosP1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaParametrosP2.aspx.cs">
+      <DependentUpon>FormaParametrosP2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaParametrosP2.aspx.designer.cs">
+      <DependentUpon>FormaParametrosP2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaParametrosP3.aspx.cs">
+      <DependentUpon>FormaParametrosP3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaParametrosP3.aspx.designer.cs">
+      <DependentUpon>FormaParametrosP3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaParametrosP4.aspx.cs">
+      <DependentUpon>FormaParametrosP4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaParametrosP4.aspx.designer.cs">
+      <DependentUpon>FormaParametrosP4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaParametrosP5.aspx.cs">
+      <DependentUpon>FormaParametrosP5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaParametrosP5.aspx.designer.cs">
+      <DependentUpon>FormaParametrosP5.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaPreciario.aspx.cs">
       <DependentUpon>FormaPreciario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -793,13 +833,6 @@
     <Compile Include="Municipios.aspx.designer.cs">
       <DependentUpon>Municipios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ParaPruebas.aspx.cs">
-      <DependentUpon>ParaPruebas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ParaPruebas.aspx.designer.cs">
-      <DependentUpon>ParaPruebas.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Plant.cs" />
     <Compile Include="Plants.ashx.cs">
       <DependentUpon>Plants.ashx</DependentUpon>
@@ -837,13 +870,6 @@
     <Compile Include="Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PruebaReporte.aspx.cs">
-      <DependentUpon>PruebaReporte.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PruebaReporte.aspx.designer.cs">
-      <DependentUpon>PruebaReporte.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -851,10 +877,28 @@
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="reports\AdministracionDeInmuebles.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdministracionDeInmuebles.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reports\Estimaciones.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Estimaciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\Presupuesto.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Presupuesto.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\ResumenPartidas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResumenPartidas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Subcategorias.aspx.cs">
@@ -877,12 +921,6 @@
     </Compile>
     <Compile Include="tVtasUnidadesVsTiempo.aspx.designer.cs">
       <DependentUpon>tVtasUnidadesVsTiempo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="uno.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>uno.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
@@ -951,13 +989,21 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="reports\AdministracionDeInmuebles.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AdministracionDeInmuebles.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\Estimaciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Estimaciones.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="uno.rpt">
+    <EmbeddedResource Include="reports\Presupuesto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>uno.cs</LastGenOutput>
+      <LastGenOutput>Presupuesto.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\ResumenPartidas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ResumenPartidas.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

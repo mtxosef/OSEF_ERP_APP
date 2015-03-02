@@ -7,7 +7,7 @@ var imgbtnNuevo_Click = function () {
 
     window.parent.App.wEmergente.load('FormaPreciario.aspx');
     Ext.util.Cookies.set('cookieEditarPreciario', 'Nuevo');
-    window.parent.App.wEmergente.setHeight(550);
+    window.parent.App.wEmergente.setHeight(580);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nuevo Preciario');
@@ -28,7 +28,7 @@ var imgbtnEditar_Click = function () {
 
     window.parent.App.wEmergente.load('FormaPreciario.aspx');
     Ext.util.Cookies.set('cookieEditarPreciario', App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID'));
-    window.parent.App.wEmergente.setHeight(550);
+    window.parent.App.wEmergente.setHeight(580);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Editar Preciario ' + Ext.util.Cookies.get('cookieEditarPreciario'));
@@ -203,6 +203,7 @@ var sPreciario_Load = function () {
     store = window.parent.App.pCentro.getBody().App.sPreciarios;
     var d = new Date();
     App.dfFechaEmision.setValue(d);
+  
 };
 
 //Evento lanzado al agregar un registro al store
@@ -210,7 +211,7 @@ var sPreciario_Add = function (avance, registro) {
     //Lo que pasa cuando se selecciona un registro y es diferente de nuevo
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo') {
 
-
+      
         App.txtfID.setValue(registro[0].get('ID'));
         App.txtfDescripcion.setValue(registro[0].get('Descripcion'));
         App.cmbSucursal.setValue(registro[0].get('Sucursal'));
@@ -380,3 +381,89 @@ var cmbUsuarioFiltro_Select = function (combobox, registro) {
         });
     }
 };
+
+
+//Para el botón de eliminar, Eliminar un registro
+var cmbSucursal_Change_Success = function (response, result) {
+    if (result.extraParamsResponse.existe) {
+        Ext.Msg.show({
+            id: 'msgPreciarios',
+            title: 'Advertencia Preciario',
+            msg: 'La sucursal ya esta siendo utilizada en otro preciario',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+
+        App.cmbSucursal.clearValue();
+        App.txtfSucursalNombre.setValue("");
+    }
+    else {
+
+    }
+};
+
+
+
+//Pone todas las celdas de color 
+var renderImporte = function (value, metadata) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+
+    metadata.style = "background-color: #85F978;";
+    return F.number(value, "000,000,000.00");
+};
+
+var renderImporteUtilizado = function (value, metadata, registro) {
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+
+    if (parseFloat(registro.get('Importe')) != parseFloat(registro.get('Importefinal'))) {
+        metadata.style = "background-color: #0C8D1B; color: #fff;";
+
+
+    }
+    else {
+        metadata.style = "background-color: #FEBB5D;";
+      
+    }
+
+    return F.number(value, "000,000,000.00");
+
+};
+//Pone todas las celdas de color segun la validacion
+var renderCantidadUtilizada = function (value, metadata, registro) {
+
+    if (parseFloat(registro.get('Utilizada')) != parseFloat(registro.get('Cantidad'))) {
+        metadata.style = "background-color: #7E6FEB;";
+
+    }
+
+    return value;
+};
+
+
+var GetColumnTotal = function (grid, index) {
+    var sum = 0;
+    var sum2 = 0;
+    grid.getStore().each(function (record) {
+
+        sum += record.get('Importe');
+
+        sum2 += record.get('Importefinal');
+    });
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+
+   
+    App.dfTotalInicial.setValue('$' + F.number(sum, "000,000,000.00"));
+    App.dfTotalFinal.setValue('$' + F.number(sum2, "000,000,000.00"));
+
+};
+

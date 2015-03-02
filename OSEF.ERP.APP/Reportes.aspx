@@ -61,9 +61,11 @@
                                           
                                         <ext:Node Text="Preciarios">
                                             <Children>
-                                            <ext:Node Text="Reporte Prueba 1" NodeID="P1"   Leaf="true" />
-                                            <ext:Node Text="Reporte Prueba 2" NodeID="P2"   Leaf="true" />
-                                            <ext:Node Text="Reporte Prueba 3" NodeID="P3"   Leaf="true" />
+                                            <ext:Node Text="Reporte Estimaciones" NodeID="P1"   Leaf="true" />
+                                            <ext:Node Text="Reporte Administracion de Inmuebles" NodeID="P2"   Leaf="true" />
+                                            <ext:Node Text="Reporte Resumen de Partidas" NodeID="P3"   Leaf="true" />
+                                            <ext:Node Text="Reporte Presupuesto" NodeID="P4"   Leaf="true" />
+                                            <ext:Node Text="Reporte 5(Aún no hay)" NodeID="P5"   Leaf="true" />
                                             
                                             </Children>
                                         </ext:Node>
@@ -83,7 +85,7 @@
                                     ID="ccReportes" 
                                     runat="server" 
                                     Align="Left"
-                                    Width="720">
+                                    Width="620">
                                         <Commands>
                                             <ext:GridCommand 
                                             CommandName="VerReporte" 

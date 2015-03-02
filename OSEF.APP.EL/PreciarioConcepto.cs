@@ -24,6 +24,9 @@ namespace OSEF.APP.EL
         decimal cantidad;
         decimal utilizada;
         decimal importe;
+        decimal importefinal;
+
+        
         string estatus;
         DateTime fechaalta;
         string tipo;
@@ -144,7 +147,12 @@ namespace OSEF.APP.EL
             get { return rsubsubcategoria; }
             set { rsubsubcategoria = value; }
         }
-       
+
+        public decimal Importefinal
+        {
+            get { return importefinal; }
+            set { importefinal = value; }
+        }
 
         #endregion
     }
