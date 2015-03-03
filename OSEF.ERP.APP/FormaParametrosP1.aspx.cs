@@ -30,7 +30,8 @@ namespace OSEF.ERP.APP
             //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
             string strPreciarios = e.ExtraParams["valor"];
             Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strPreciarios);
-           
+            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
+            sPreciarioConcepto.DataBind();
 
         }
 

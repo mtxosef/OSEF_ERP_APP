@@ -424,7 +424,7 @@ var renderImporteUtilizado = function (value, metadata, registro) {
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
 
-    if (parseFloat(registro.get('Importe')) != parseFloat(registro.get('Importefinal'))) {
+    if (parseFloat(registro.get('Importefinal')) > 0 ) {
         metadata.style = "background-color: #0C8D1B; color: #fff;";
 
 
@@ -440,7 +440,8 @@ var renderImporteUtilizado = function (value, metadata, registro) {
 //Pone todas las celdas de color segun la validacion
 var renderCantidadUtilizada = function (value, metadata, registro) {
 
-    if (parseFloat(registro.get('Utilizada')) != parseFloat(registro.get('Cantidad'))) {
+if (parseFloat(registro.get('Utilizada')) > 0)
+     {
         metadata.style = "background-color: #7E6FEB;";
 
     }
@@ -455,7 +456,7 @@ var sCarga_Load = function (avance, registro, index) {
     var sum = 0;
     var sum2 = 0;
     App.sCarga.each(function (record) {
-        console.log(record);
+    
         sum += record.get('Importe');
         sum2 += record.get('Importefinal');
     });

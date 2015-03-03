@@ -413,7 +413,6 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
    
    
         if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
-
             Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
             Ext.util.Cookies.set('cookieConceptoFotosVolumetria',  registro.get('ConceptoID'));
 
