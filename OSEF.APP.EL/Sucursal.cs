@@ -35,11 +35,11 @@ namespace OSEF.APP.EL
         string estado;
         string municipio;
         string contratista;
-        DateTime terminocontrato;
-        DateTime inicioobra;
-        DateTime finobra;
+        Nullable<DateTime> terminocontrato;
+        Nullable<DateTime> inicioobra;
+        Nullable<DateTime> finobra;
         short semanasobra;
-        DateTime fechaalta;
+        Nullable<DateTime> fechaalta;
         string estatus;
 
         #endregion
@@ -184,19 +184,19 @@ namespace OSEF.APP.EL
             set { contratista = value; }
         }
 
-        public DateTime TerminoContrato
+        public Nullable<DateTime> TerminoContrato
         {
             get { return terminocontrato; }
             set { terminocontrato = value; }
         }
 
-        public DateTime InicioObra
+        public Nullable<DateTime> InicioObra
         {
             get { return inicioobra; }
             set { inicioobra = value; }
         }
 
-        public DateTime FinObra
+        public Nullable<DateTime> FinObra
         {
             get { return finobra; }
             set { finobra = value; }
@@ -208,7 +208,7 @@ namespace OSEF.APP.EL
             set { semanasobra = value; }
         }
 
-        public DateTime FechaAlta
+        public Nullable<DateTime> FechaAlta
         {
             get { return fechaalta; }
             set { fechaalta = value; }

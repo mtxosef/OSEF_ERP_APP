@@ -290,6 +290,7 @@
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spS_AvanzarVolumetriaPorID.sql
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spS_CancelarVolumetriaPorID.sql
 :r c:\SqlServerScripts\Accion\Volumetrias\web_spD_BorrarVolumetriaAfectaPreciario.sql
+:r c:\SqlServerScripts\Accion\Volumetrias\web_spS_ObtenerPreciariosEnVolumetriasPorID.sql
 -----------------------------------------------------------------------------------
 -- VolumetriasD (Borrar)
 :r c:\SqlServerScripts\Borrar\VolumetriasD\web_spD_BorrarVolumetriaD.sql

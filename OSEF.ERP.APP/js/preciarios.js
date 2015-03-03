@@ -223,6 +223,8 @@ var sPreciario_Add = function (avance, registro) {
 
         //Deshabilita botones cuando se edita un movimiento al cargar el store
         App.cmbEstatus.setDisabled(false);
+        App.cmbSucursal.setDisabled(true);
+        App.cmbEstatus.setDisabled(true);
         App.nfHoja.setDisabled(true);
         App.btnCargar.setDisabled(true);
         App.imgbtnBorrarCarga.setDisabled(true);
@@ -447,23 +449,21 @@ var renderCantidadUtilizada = function (value, metadata, registro) {
 };
 
 
-var GetColumnTotal = function (grid, index) {
+
+
+var sCarga_Load = function (avance, registro, index) {
     var sum = 0;
     var sum2 = 0;
-    grid.getStore().each(function (record) {
-
+    App.sCarga.each(function (record) {
+        console.log(record);
         sum += record.get('Importe');
-
         sum2 += record.get('Importefinal');
     });
 
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-
-   
     App.dfTotalInicial.setValue('$' + F.number(sum, "000,000,000.00"));
     App.dfTotalFinal.setValue('$' + F.number(sum2, "000,000,000.00"));
 
-};
-
+}

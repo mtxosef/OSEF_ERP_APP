@@ -21,7 +21,7 @@ namespace OSEF.AVANCES.SUCURSALES
               
 
                 //2. Cargar sucursales
-                sPreciario.DataSource = PreciarioBusiness.ObtenerPreciariosActivos();
+                sPreciario.DataSource = PreciarioBusiness.ObtenerPreciarios();
                 sPreciario.DataBind();
 
                 ////3. Cargar Conceptos
@@ -296,9 +296,24 @@ namespace OSEF.AVANCES.SUCURSALES
         {
             //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
             string strPreciarios = e.ExtraParams["valor"];
-            Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strPreciarios);
-            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
-            sPreciarioConcepto.DataBind();
+
+
+            //2. Validar si se escocoge una usucursal ya usada
+            if (VolumetriaBusiness.ObtenerPreciariosActivosPorID(strPreciarios))
+            {
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));
+               
+            }
+            else
+            {
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
+                Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strPreciarios);
+                sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
+                sPreciarioConcepto.DataBind();
+            }
+
+
+        
 
         }
 

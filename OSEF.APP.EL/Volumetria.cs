@@ -15,7 +15,7 @@ namespace OSEF.APP.EL
         string mov;
         string movid;
         string sucursal;
-        DateTime fechaemision;
+        Nullable<DateTime> fechaemision;
         string observaciones;
         string estatus;
         Sucursal rsucursal;
@@ -60,7 +60,7 @@ namespace OSEF.APP.EL
             set { sucursal = value; }
         }
 
-        public DateTime FechaEmision
+        public Nullable<DateTime> FechaEmision
         {
             get { return fechaemision; }
             set { fechaemision = value; }

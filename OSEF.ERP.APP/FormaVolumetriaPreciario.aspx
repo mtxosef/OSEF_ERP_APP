@@ -427,7 +427,7 @@
                                                 <Change Fn="cmbPreciario_Change" />
                                             </Listeners>  
                                              <DirectEvents>
-                                                <Select OnEvent="cmbPreciarios_Change" >
+                                                <Select OnEvent="cmbPreciarios_Change"  Success="cmbPreciario_Change_Success" >
                                                     <ExtraParams>
                                                         <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
                                                     </ExtraParams>

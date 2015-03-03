@@ -46,13 +46,17 @@ namespace OSEF.ERP.APP
                 e.PostedFile.SaveAs(strDireccion + "\\" + e.FileName);
             }
 
+         
+
             //3. Realizar el objeto e insertar en la base de datos
             ImagenVolumetriaD oImagenVolumetriaD = new ImagenVolumetriaD();
             oImagenVolumetriaD.Volumetria = iID;
             oImagenVolumetriaD.PreciarioConcepto = strConcepto;
             oImagenVolumetriaD.Nombre = e.FileName;
             oImagenVolumetriaD.Direccion = "\\imagesVolumetrias\\" + iID + "\\" + strConcepto + "\\" + e.FileName;
-            oImagenVolumetriaD.Usuario = "orlando";
+            //Traemos el usuario que realiza el movimiento
+            Usuario oUsuario = (Usuario)Session["Usuario"];
+            oImagenVolumetriaD.Usuario = oUsuario.ID;
             oImagenVolumetriaD.FechaAlta = DateTime.Now;
 
             ImagenVolumetriaDBusiness.Insertar(oImagenVolumetriaD);

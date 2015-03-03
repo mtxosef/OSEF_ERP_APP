@@ -25,19 +25,27 @@ namespace OSEF.ERP.APP
 
         protected void toPDF(object sender, DirectEventArgs e)
         {
-         
-            string path = AppDomain.CurrentDomain.BaseDirectory;
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
+            reporte.Load(Server.MapPath("reports/" + namereport+".rpt"));
+            string rutafinal = Server.MapPath("reports/" + namereport + ".rpt");
+            string rutafinal2 = Server.MapPath("reports//" + namereport + ".rpt");
+            reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports//" + namereport + ".pdf"));
+            ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reports//" + namereport + ".pdf');popup.focus();", true);
+        
+        
+        }
 
-            reporte.Load(Server.MapPath("reports/" + namereport));
-            //reporte.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "VistaPreliminar");
 
+        protected void toXls(object sender, DirectEventArgs e)
+        {
 
-            reporte.SetParameterValue("path", path);
-            reporte.ExportToDisk(ExportFormatType.PortableDocFormat, path + "//" + namereport + ".pdf");
-            ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('" + namereport + ".pdf');popup.focus();", true);
+            ReportDocument reporte = (ReportDocument)Session["imprimir"];
+            string namereport = Session["ReportName"].ToString();
+            reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
+            reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports/" + namereport + ".pdf"));
+            ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reports/" + namereport + ".pdf');popup.focus();", true);
         }
     }
 }

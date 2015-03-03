@@ -108,7 +108,7 @@ var imgbtnCancelar_Click_Success = function (response, result) {
 var cmbPreciario_Select = function (combobox, registro) {
     App.txtfDescripcionPreciario.setValue(registro[0].data.Descripcion);
 
-    console.log(App.sPreciario.getAt(0).get('Sucursal'));
+
 
     if (App.sPreciario.getAt(0) != undefined) {
         App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
@@ -119,7 +119,7 @@ var cmbPreciario_Select = function (combobox, registro) {
     if (App.cmbMov.getValue() == 'Fin') {
 
         //Valida si se habilita el boton de afectar cuando el movimiento es Fin
-        HabilitarAfectarFin();
+       
     }
 
     if (App.cmbMov.getValue() == 'Captura') {
@@ -185,7 +185,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
         App.dfFechaEmision.setValue(d);
         App.cmbPreciario.focus();
     }
-    
+
 
 };
 
@@ -213,6 +213,27 @@ var cmbMov_Select = function (combobox, registro) {
     HabilitarGuardar();
 };
 
+
+//Para el botón de eliminar, Eliminar un registro
+var cmbPreciario_Change_Success = function (response, result) {
+    if (result.extraParamsResponse.existe) {
+        Ext.Msg.show({
+            id: 'msgVolumetrias',
+            title: 'Advertencia Volumetria',
+            msg: 'El preciario que seleccionaste ya está concluido ',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+
+        App.cmbPreciario.clearValue();
+        App.txtfDescripcionPreciario.setValue("");
+    }
+    else {
+
+    }
+};
 
 //Evento lanzado al cargar el store de avance encabezado
 var sVolumetria_Load = function () {
@@ -270,6 +291,8 @@ var sVolumetria_Add = function (avance, registro) {
 
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
 
+      
+
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
@@ -284,10 +307,11 @@ var sVolumetria_Add = function (avance, registro) {
         var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
         App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
         App.imgbtnBorrar.setDisabled(false);
-
+        HabilitarAfectar();
+        HabilitarAfectarFin();
 
     }
-
+   
 };
 
 
@@ -634,7 +658,7 @@ function HabilitarGuardar() {
 //Validar si se habilita el botón d Afectar
 function HabilitarAfectar() {
 
-   
+
 
     //Obtiene la fecha de emision del store
     if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null) {
@@ -665,7 +689,7 @@ function HabilitarAfectar() {
 //Validar si se habilita el botón d Afectar cuando se selecciona FIN
 function HabilitarAfectarFin() {
 
-    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null && App.dfFechaEmision.getValue() != null) {
+    if (App.cmbMov.getValue() != null && App.cmbPreciario.getValue() != null) {
         App.imgbtnAfectar.setDisabled(false);
     }
     else {

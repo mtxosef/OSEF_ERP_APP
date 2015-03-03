@@ -35,32 +35,60 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
-    UPDATE 
-		Volumetrias
-    SET
-		Estatus = 'CANCELADO'
-	WHERE
-		ID = @ID
-		
-	-- Regresar cantidades originales a la columna utilizada del Preciario	
-
 	
-	UPDATE PreciarioConceptos
-	SET 
-		Utilizada = VD.Cantidad,
-		ImporteFinal = PreciarioConceptos.Importe
+	
+	--declaramos una variable que guarde el movimiento
+	 DECLARE @MOV VARCHAR(50),
+	 @PRECIARIO CHAR(7)
+	--asiganmos valor del movimeinto a la variable
+	SELECT 
+		@MOV = MOV ,
+		@PRECIARIO = Preciario
 	FROM 
-		PreciarioConceptos
-	INNER JOIN 
-		VolumetriasD VD
-	ON
-		PreciarioConceptos.ID =VD.ConceptoID
-	WHERE VD.Volumetria= @ID
-	
-	
+		Volumetrias 
+	WHERE 
+		ID=@ID
+	-- SI MOVIMIENTO ES--------------------------------FIN
+	IF(@MOV LIKE 'Fin')
+		BEGIN 
+			UPDATE 
+				Preciarios
+			SET
+				Estatus ='ACTIVO'
+				WHERE 
+				ID=@PRECIARIO
+			
+			 UPDATE 
+				Volumetrias
+			SET
+				Estatus = 'CANCELADO'
+			WHERE
+				ID = @ID	
+				
+		END
+	--- MOVIMIENTO ES--------------------------------CAPTURA
+	ELSE
 
-    
+		UPDATE 
+			Volumetrias
+		SET
+			Estatus = 'CANCELADO'
+		WHERE
+			ID = @ID
+			
+		-- Regresar cantidades originales a la columna utilizada del Preciario	
+		UPDATE PreciarioConceptos
+		SET 
+			Utilizada = VD.Cantidad,
+			ImporteFinal = PreciarioConceptos.Importe
+		FROM 
+			PreciarioConceptos
+		INNER JOIN 
+			VolumetriasD VD
+		ON
+			PreciarioConceptos.ID =VD.ConceptoID
+		WHERE VD.Volumetria= @ID
+
 END
 GO
 

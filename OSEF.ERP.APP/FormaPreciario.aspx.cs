@@ -27,7 +27,7 @@ namespace OSEF.AVANCES.SUCURSALES
             {
 
                 //2. Cargar sucursales
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesDisponibles();
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
                 sSucursales.DataBind();
 
             }
@@ -46,7 +46,7 @@ namespace OSEF.AVANCES.SUCURSALES
             string strSucursal = e.ExtraParams["valor"];
 
 
-            //2. Validar si se elimina el registro
+            //2. Validar si se escocoge una usucursal ya usada
             if (SucursalBusiness.ObtenerSucursalesEnPreciariosPorID(strSucursal))
             {
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));

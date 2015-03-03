@@ -140,6 +140,17 @@ namespace OSEF.APP.BL
             return VolumetriaDataAccess.BorrarVolumetriaAfectaPreciario(iID);
         }
 
+        /// <summary>
+        /// Obtener registros de Preciarios Concluidos por ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static bool ObtenerPreciariosActivosPorID(string strID)
+        {
+            return VolumetriaDataAccess.ObtenerPreciariosActivosPorID(strID);
+        }
+
+
         #endregion
 
 

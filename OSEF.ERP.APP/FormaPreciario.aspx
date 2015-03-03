@@ -135,7 +135,6 @@
                                     Disabled="true">
                                      <Listeners>
                                         <Blur Handler="App.txtfID.setValue(App.txtfID.getValue().toUpperCase());" />
-                                        
                                     </Listeners>
                                 </ext:TextField>
                                 <ext:TextField
@@ -145,7 +144,6 @@
                                     Width="360"
                                     AllowBlank="false">
                                     <Listeners>
-                                    
                                         <Blur Fn="txtfDescripcion_Change"></Blur>
                                         <%--<Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />--%>
                                     </Listeners>
@@ -178,8 +176,8 @@
                                                 <ItemTpl ID="itSucursal" runat="server">
                                                     <Html>
                                                         <div class="search-item">
-							                                <h3>{ID}</h3>
-                                                            <span>{Nombre}</span>
+							                                <h3>{CR}</h3>
+                                                            <span>{ID} {Nombre}</span>
 						                                </div>
                                                     </Html>
                                                 </ItemTpl>
@@ -195,6 +193,7 @@
                                                             <Fields>
                                                                 <ext:ModelField Name="ID" />
                                                                 <ext:ModelField Name="Nombre" />
+                                                                <ext:ModelField Name="CR" />
                                                             </Fields>
                                                         </ext:Model>                            
                                                     </Model>
@@ -281,7 +280,6 @@
                                 Text="">
                                     <Listeners>
                                         <Change Fn="CheckExtension" />
-                                       
                                     </Listeners>
                                 </ext:FileUploadField>
 
@@ -404,10 +402,9 @@
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
-                                          <Listeners>
-        
-          
-            </Listeners>
+                                             <Listeners>
+                                             <Load Fn="sCarga_Load" ></Load>
+                                        </Listeners>  
                                         </ext:Store>
                                         
                                     </Store>
@@ -522,10 +519,7 @@
                                             StripeRows="true">
                                         </ext:GridView>
                                     </View>
-                                    
-                                      <Listeners>
-                                        <AfterRender Handler="GetColumnTotal(this,6);" Delay="2000" />
-                                    </Listeners>  
+                                   
                                     <BottomBar>
 
                                         <ext:Toolbar ID="tPreciarioConcepto" runat="server">
