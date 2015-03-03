@@ -80,8 +80,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="5_b.jpg" />
-    <Content Include="5_s.jpg" />
     <Content Include="app.js" />
     <Content Include="app\controller\Navigation.js" />
     <Content Include="app\controller\Settings.js" />
