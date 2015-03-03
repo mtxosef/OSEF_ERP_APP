@@ -82,6 +82,19 @@
   <ItemGroup>
     <Content Include="5_b.jpg" />
     <Content Include="5_s.jpg" />
+    <Content Include="app.js" />
+    <Content Include="app\controller\Navigation.js" />
+    <Content Include="app\controller\Settings.js" />
+    <Content Include="app\model\Resource.js" />
+    <Content Include="app\store\TaskStore.js" />
+    <Content Include="app\view\Gantt.js" />
+    <Content Include="app\view\GanttToolbar.js" />
+    <Content Include="app\view\Navigation.js" />
+    <Content Include="app\view\ResourceHistogram.js" />
+    <Content Include="app\view\ResourceList.js" />
+    <Content Include="app\view\ResourceSchedule.js" />
+    <Content Include="app\view\Settings.js" />
+    <Content Include="app\view\Viewport.js" />
     <Content Include="Articulos.aspx" />
     <Content Include="assets\css\bootmetro-icons.css" />
     <Content Include="assets\css\bootmetro-responsive.css" />
@@ -276,10 +289,12 @@
     <Content Include="css\xTreePanel.css" />
     <Content Include="css\xWindowPopup.css" />
     <Content Include="CuentasContables.aspx" />
+    <Content Include="data.js" />
     <Content Include="Default.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="Estados.aspx" />
     <Content Include="Estados2.aspx" />
+    <Content Include="examples-shared.js" />
     <Content Include="fancylibs\blank.gif" />
     <Content Include="fancylibs\fancybox_loading%402x.gif" />
     <Content Include="fancylibs\fancybox_loading.gif" />
@@ -322,7 +337,9 @@
     <Content Include="FormaSubirImagenesPreciario.aspx" />
     <Content Include="FormaUsuario2.aspx" />
     <Content Include="FormaVolumetriaPreciario.aspx" />
+    <Content Include="gantt-scheduler.html" />
     <Content Include="Global.asax" />
+    <Content Include="gnt-all-debug.js" />
     <Content Include="GruposMenu2.aspx" />
     <Content Include="images\A&amp;R-Imagotipo ICONO.jpg" />
     <Content Include="images\banco.jpg" />
@@ -367,6 +384,7 @@
     <Content Include="js\volumetrias.js" />
     <Content Include="js\tablerovolumetrias.js" />
     <Content Include="Login2.aspx" />
+    <Content Include="lte-ie7.js" />
     <Content Include="Menu2.aspx" />
     <Content Include="Menus2.aspx" />
     <Content Include="Municipios2.aspx" />
@@ -411,6 +429,14 @@
     <Content Include="reports\images\A&amp;R-Imagotipo ICONO.jpg" />
     <Content Include="reports\images\bbva.jpg" />
     <Content Include="reports\images\logoBBVA.png" />
+    <Content Include="resources\css\gantt-scheduler.css" />
+    <Content Include="resources\css\sch-all.css" />
+    <Content Include="resources\css\sch-gantt-all.css" />
+    <Content Include="resources\css\style.css" />
+    <Content Include="resources\fonts\icomoon.dev.svg" />
+    <Content Include="resources\fonts\icomoon.svg" />
+    <Content Include="resources\images\column-weekend-header-bg.gif" />
+    <Content Include="sch-all-debug.js" />
     <Content Include="Subcategorias.aspx" />
     <Content Include="Sucursales.aspx" />
     <Content Include="tVtasUnidadesVsTiempo.aspx" />
@@ -1004,6 +1030,10 @@
     <Content Include="Plants.ashx" />
     <None Include="fonts\weblysleekuil.ttf" />
     <None Include="fonts\weblysleekuisl.ttf" />
+    <None Include="resources\fonts\icomoon.eot" />
+    <None Include="resources\fonts\icomoon.ttf" />
+    <None Include="resources\fonts\icomoon.woff" />
+    <None Include="save_data.php" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
