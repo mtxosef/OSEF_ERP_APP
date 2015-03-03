@@ -30,33 +30,47 @@ GO
 CREATE PROCEDURE web_spU_ActualizarPreciarioConcepto
 	-- Add the parameters for the stored procedure here
 	@ID				CHAR(10),
-	@Utilizada		DECIMAL(10,2)
-
+	@Utilizada		DECIMAL(10,2),
+	@Volumetria		INT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 DECLARE @PRECIO DECIMAL (20,2),
-@TOTALFINAL DECIMAL(20,2)
+@TOTALFINAL DECIMAL(20,2),
+@UTLIZADAFINAL DECIMAL(10,2),
+@ESTATUS VARCHAR(20)
 
-SELECT 
-@PRECIO = Costo 
-FROM 
-PreciarioConceptos 
-WHERE 
-ID =  @ID
-SET 
-@TOTALFINAL = @PRECIO * @Utilizada
+SELECT @ESTATUS = ESTATUS FROM Volumetrias WHERE ID =@Volumetria
 
-    -- UPDATE statements for procedure here
-    UPDATE
-		PreciarioConceptos
-	SET
-		Utilizada =@Utilizada,
-		ImporteFinal = @TOTALFINAL
-		
-	WHERE
-		ID = @ID
+
+IF(@ESTATUS LIKE 'CONCLUIDO')
+	BEGIN
+		SELECT 
+		@PRECIO = Costo,
+		@UTLIZADAFINAL=Utilizada
+		FROM 
+		PreciarioConceptos 
+		WHERE 
+		ID =  @ID
+		 
+
+
+		SET @UTLIZADAFINAL=@UTLIZADAFINAL+@Utilizada
+		SET @TOTALFINAL = @PRECIO * @UTLIZADAFINAL
+			-- UPDATE statements for procedure here
+			UPDATE
+				PreciarioConceptos
+			SET
+				Utilizada =@UTLIZADAFINAL,
+				ImporteFinal = @TOTALFINAL
+				
+			WHERE
+				ID = @ID
+	END
 END
 GO
+
+
+

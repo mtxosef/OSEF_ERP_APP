@@ -75,12 +75,25 @@ BEGIN
 			Estatus = 'CANCELADO'
 		WHERE
 			ID = @ID
-			
-		-- Regresar cantidades originales a la columna utilizada del Preciario	
+
+		
+		--ACTUALIZAMOS CAMPOS DE PRECIARIO CONCEPTO
+		
 		UPDATE PreciarioConceptos
 		SET 
-			Utilizada = VD.Cantidad,
-			ImporteFinal = PreciarioConceptos.Importe
+			Utilizada =(PreciarioConceptos.Utilizada- VD.Utilizada)
+		FROM 
+			PreciarioConceptos
+		INNER JOIN 
+			VolumetriasD VD
+		ON
+			PreciarioConceptos.ID =VD.ConceptoID
+		WHERE VD.Volumetria= @ID
+		
+		
+		UPDATE PreciarioConceptos
+		SET 
+			ImporteFinal = (PreciarioConceptos.Costo*PreciarioConceptos.Utilizada)
 		FROM 
 			PreciarioConceptos
 		INNER JOIN 

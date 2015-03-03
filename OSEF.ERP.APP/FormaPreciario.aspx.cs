@@ -169,10 +169,10 @@ namespace OSEF.AVANCES.SUCURSALES
                         pc.SubSubCategoria = subsubcategoria;
                         pc.Unidad = sd.Unidad;
                         pc.Cantidad = sd.Cantidad;
-                        pc.Utilizada = sd.Utilizada;
+                        pc.Utilizada = 0;
                         pc.Costo = sd.Costo;
                         pc.Importe = sd.Importe;
-                        pc.Importefinal = sd.Importefinal;
+                        pc.Importefinal = 0;
                         PreciarioConceptoBusiness.Insertar(pc);
                     }
                 
@@ -348,10 +348,10 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Descripcion = row["Concepto"],
                                 Unidad = row["Unidad"],
                                 Cantidad = row["Cantidad"],
-                                Utilizada = row["Cantidad"],
+                                Utilizada = 0,
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
-                                Importefinal = row["Importe"],
+                                Importefinal = 0,
                                 Categoria = "",
                                 Subcategoria = "",
                                 SubSubCategoria = "",
@@ -373,10 +373,10 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Descripcion = row["Concepto"],
                                 Unidad = row["Unidad"],
                                 Cantidad = row["Cantidad"],
-                                Utilizada = row["Cantidad"],
+                                Utilizada = 0,
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
-                                ImporteFinal = row["Importe"],
+                                ImporteFinal = 0,
                                 Categoria = categoria,
                                 SubCategoria = "",
                                 SubSubCategoria = "",
@@ -397,10 +397,10 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Descripcion = row["Concepto"],
                                 Unidad = row["Unidad"],
                                 Cantidad = row["Cantidad"],
-                                Utilizada = row["Cantidad"],
+                                Utilizada = 0,
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
-                                Importefinal = row["Importe"],
+                                Importefinal = 0,
                                 Categoria = categoria,
                                 SubCategoria = scategoria,
                                 SubSubCategoria = "",
@@ -421,10 +421,10 @@ namespace OSEF.AVANCES.SUCURSALES
                                 Descripcion = row["Concepto"],
                                 Unidad = row["Unidad"],
                                 Cantidad = row["Cantidad"],
-                                Utilizada = row["Cantidad"],
+                                Utilizada = 0,
                                 Costo = row["Precio"],
                                 Importe = row["Importe"],
-                                Importefinal = row["Importe"],
+                                Importefinal = 0,
                                 Categoria = categoria,
                                 SubCategoria = scategoria,
                                 SubSubCategoria = sscategoria,

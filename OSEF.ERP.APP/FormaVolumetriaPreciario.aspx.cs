@@ -154,6 +154,20 @@ namespace OSEF.AVANCES.SUCURSALES
             //4. Lanzar la afectación del Movimiento
             VolumetriaBusiness.AfectarVolumetriaPorID(oVolumetriaForma);
 
+
+
+
+            
+            foreach (VolumetriaD sd in lVolumetriaD)
+            {
+
+                PreciarioConceptoBusiness.Actualizar(sd.ConceptoID, sd.Utilizada, sd.Volumetria);
+
+            }
+
+
+
+
             oVolumetria = VolumetriaBusiness.ObtenerVolumetriaPorID(oVolumetriaForma.ID);
             //7. Actualizar store de Revision
             sVolumetria.GetAt(0).Set("MovID", oVolumetria.MovID);
@@ -254,8 +268,8 @@ namespace OSEF.AVANCES.SUCURSALES
                 //8. Borrar todo el detalle e insertarlo de nuevo
                 VolumetriaDBusiness.BorrarPorVolumetria(oVolumetriaForma.ID);
                 GuardarDetalleVolumetria(lVolumetriaD, oVolumetriaForma);
-               
 
+               
                 //9. Regresar valor
                 return "modificar";
             }
@@ -280,7 +294,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 {
                     sd.Volumetria = oVolumetriaForma.ID;
                     VolumetriaDBusiness.Insertar(sd);
-                    PreciarioConceptoBusiness.Actualizar(sd.ConceptoID,sd.Utilizada);
+                    PreciarioConceptoBusiness.Actualizar(sd.ConceptoID,sd.Utilizada,sd.Volumetria);
                 }
             }
         }
@@ -330,7 +344,7 @@ namespace OSEF.AVANCES.SUCURSALES
             int strID = Convert.ToInt32(strcookieEditarVolumetria);
             //Borra de la base de datos el encabezado, detalle y fotos
             borrarImagenesPorMovimiento(strID);
-            VolumetriaBusiness.BorrarVolumetriaAfectaPreciario(strID);
+            //VolumetriaBusiness.BorrarVolumetriaAfectaPreciario(strID);
             VolumetriaDBusiness.BorrarPorVolumetria(strID);
             VolumetriaBusiness.Borrar(strID);
            
