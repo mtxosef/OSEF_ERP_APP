@@ -26,6 +26,37 @@
     <link rel="stylesheet" href="css/xButton.css"/>
     <link rel="stylesheet" href="css/xDisplayImages.css"/>
 
+    <%--FancyGallery--%>
+	<script type="text/javascript" src="fancylibs/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="fancylibs/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="fancylibs/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.fancybox').fancybox();
+
+            // Remove padding, set opening and closing animations, close if clicked and disable overlay
+            $(".fancybox-effects-d").fancybox({
+                padding: 0,
+
+                openEffect: 'elastic',
+                openSpeed: 150,
+
+                closeEffect: 'elastic',
+                closeSpeed: 150,
+
+                closeClick: true,
+
+                helpers: {
+                    overlay: null
+                }
+            });
+
+        });
+	</script>
+
     <ext:XScript runat="server">
         <script>
             var prepareData = function (data) {
@@ -77,7 +108,10 @@
                         <Html>
                             <tpl for=".">
                                 <div class="thumb-wrap" id="{Nombre}">
-                                    <div class="thumb"><img src="{Direccion}" title="{Nombre}"></img></div>
+
+                                
+
+                                    <div class="thumb"><a class="fancybox-effects-d" href="{Direccion}" title="{PreciarioConcepto}"><img src="{Direccion}" title="{Nombre}"></img></a></div>
                                     <span class="x-editable">{Nombre}</span>
                                 </div>
                             </tpl>

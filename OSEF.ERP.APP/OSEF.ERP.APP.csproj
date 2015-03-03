@@ -80,6 +80,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="5_b.jpg" />
+    <Content Include="5_s.jpg" />
     <Content Include="Articulos.aspx" />
     <Content Include="assets\css\bootmetro-icons.css" />
     <Content Include="assets\css\bootmetro-responsive.css" />
@@ -278,12 +280,23 @@
     <Content Include="Default2.aspx" />
     <Content Include="Estados.aspx" />
     <Content Include="Estados2.aspx" />
+    <Content Include="fancylibs\blank.gif" />
+    <Content Include="fancylibs\fancybox_loading%402x.gif" />
+    <Content Include="fancylibs\fancybox_loading.gif" />
+    <Content Include="fancylibs\fancybox_overlay.png" />
+    <Content Include="fancylibs\fancybox_sprite%402x.png" />
+    <Content Include="fancylibs\fancybox_sprite.png" />
+    <Content Include="fancylibs\jquery-1.10.1.min.js" />
+    <Content Include="fancylibs\jquery.fancybox.css" />
+    <Content Include="fancylibs\jquery.fancybox.js" />
+    <Content Include="fancylibs\jquery.fancybox.pack.js" />
     <Content Include="Finalidades.aspx" />
     <Content Include="FormaAccesoMenus.aspx" />
     <Content Include="FormaAccesoSucursales.aspx" />
     <Content Include="FormaAnexosSocio.aspx" />
     <Content Include="FormaAvance.aspx" />
     <Content Include="FormaAvanzarVolumetria.aspx" />
+    <Content Include="FormaBuscaPreciarioConcepto.aspx" />
     <Content Include="FormaCambiarContrasena.aspx" />
     <Content Include="FormaCargaMultiImagenes.aspx" />
     <Content Include="FormaColonia.aspx" />
@@ -556,6 +569,13 @@
     </Compile>
     <Compile Include="FormaAvanzarVolumetria.aspx.designer.cs">
       <DependentUpon>FormaAvanzarVolumetria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaBuscaPreciarioConcepto.aspx.cs">
+      <DependentUpon>FormaBuscaPreciarioConcepto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaPreciarioConcepto.aspx.designer.cs">
+      <DependentUpon>FormaBuscaPreciarioConcepto.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaCambiarContrasena.aspx.cs">
       <DependentUpon>FormaCambiarContrasena.aspx</DependentUpon>
