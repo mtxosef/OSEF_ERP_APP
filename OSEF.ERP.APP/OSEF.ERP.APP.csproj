@@ -358,6 +358,7 @@
     <Content Include="images\twiter.png" />
     <Content Include="images\user-login.png" />
     <Content Include="images\youtube.png" />
+    <Content Include="InnerForm.aspx" />
     <Content Include="js\articulos.js" />
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
@@ -424,6 +425,7 @@
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
+    <Content Include="Prueba.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="reports\images\A&amp;R-Imagotipo ICONO.jpg" />
     <Content Include="reports\images\bbva.jpg" />
@@ -787,6 +789,13 @@
     <Compile Include="GruposMenu2.aspx.designer.cs">
       <DependentUpon>GruposMenu2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InnerForm.aspx.cs">
+      <DependentUpon>InnerForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InnerForm.aspx.designer.cs">
+      <DependentUpon>InnerForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login2.aspx.cs">
       <DependentUpon>Login2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -914,6 +923,13 @@
     </Compile>
     <Compile Include="Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>

@@ -10,16 +10,7 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class FormaCambiarPass {
-        
-        /// <summary>
-        /// Control Head1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+    public partial class InnerForm {
         
         /// <summary>
         /// Control form1.
@@ -31,30 +22,30 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmFormaCambiarContrasena.
+        /// Control rmInnerForm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmFormaCambiarContrasena;
+        protected global::Ext.Net.ResourceManager rmInnerForm;
         
         /// <summary>
-        /// Control txtfContrasenaActual.
+        /// Control txtfText1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfContrasenaActual;
+        protected global::Ext.Net.TextField txtfText1;
         
         /// <summary>
-        /// Control txtfContrasena.
+        /// Control TextField2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfContrasena;
+        protected global::Ext.Net.TextField TextField2;
     }
 }

@@ -31,20 +31,20 @@ namespace OSEF.AVANCES.SUCURSALES
         protected void sUsuario_Load(object sender, DirectEventArgs e)
         {
             Usuario oUsuario = (Usuario)Session["Usuario"];
-            sUsuario.Add(new { 
-                ID = oUsuario.ID,
-                Correo = oUsuario.Correo,
-                Nombre = oUsuario.Nombre,
-                AMaterno = oUsuario.AMaterno,
-                APaterno = oUsuario.APaterno,
-                Estatus = oUsuario.Estatus,
-                Bloqueado = oUsuario.Bloqueado,
-                EnLinea = oUsuario.EnLinea,
-                FechaAlta = oUsuario.FechaAlta,
-                FechaBloqueo = oUsuario.FechaBloqueo,
-                UltimoAcceso = oUsuario.UltimoAcceso,
-                CambioContrasena = oUsuario.CambioContrasena
-            });
+            //sUsuario.Add(new { 
+            //    ID = oUsuario.ID,
+            //    Correo = oUsuario.Correo,
+            //    Nombre = oUsuario.Nombre,
+            //    AMaterno = oUsuario.AMaterno,
+            //    APaterno = oUsuario.APaterno,
+            //    Estatus = oUsuario.Estatus,
+            //    Bloqueado = oUsuario.Bloqueado,
+            //    EnLinea = oUsuario.EnLinea,
+            //    FechaAlta = oUsuario.FechaAlta,
+            //    FechaBloqueo = oUsuario.FechaBloqueo,
+            //    UltimoAcceso = oUsuario.UltimoAcceso,
+            //    CambioContrasena = oUsuario.CambioContrasena
+            //});
         }
 
         /// <summary>

@@ -6,11 +6,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width" />
+<%--    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />--%>
     <title>Revisiones de obra</title>
-    <link rel="shortcut icon" href="images/myApp.ico" />
-    <link rel="stylesheet" type="text/css" href="assets/css/bootmetro.css" />
+<%--    <link rel="shortcut icon" href="images/myApp.ico" />--%>
+<%--    <link rel="stylesheet" type="text/css" href="assets/css/bootmetro.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
@@ -30,14 +30,14 @@
     <link rel="stylesheet" href="css/xTextField.css"/>
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
-    <link rel="stylesheet" href="css/xButton.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>--%>
     <script type="text/javascript" src="js/default.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmDefault" runat="server" HideInDesign="true" />
 
-        <ext:Store ID="sUsuario" runat="server">
+<%--        <ext:Store ID="sUsuario" runat="server">
             <Model>
                 <ext:Model ID="mUsuario" runat="server" IDProperty="ID">
                     <Fields>
@@ -59,11 +59,11 @@
             <DirectEvents>
                 <Load OnEvent="sUsuario_Load" Success="sUsuario_Load_Success" />
             </DirectEvents>
-        </ext:Store>
+        </ext:Store>--%>
 
-        <div id="wrap">
+        <%--<div id="wrap">--%>
             <!-- Header -->
-            <div id="nav-bar" class="">
+<%--            <div id="nav-bar" class="">
                 <div class="pull-left">
                     <div id="header-container">
                         <a href="Default.aspx"><img src="images/logo.png" class="imgs" alt="logo" /></a>
@@ -77,7 +77,7 @@
                         <a id="logged-user" href="#" class="win-command pull-right">
                             <span></span>
                         </a>
-                        <div class="pull-left">
+                        <div class="pull-left">--%>
                             <ext:Button 
                                 ID="btnUsuario"
                                 runat="server"
@@ -103,11 +103,11 @@
                                     </ext:Menu>
                                 </Menu>
                             </ext:Button>
-                        </div>
+<%--                        </div>
                     </div>
-                </div>
+                </div>--%>
                 <!--Boton Regresar-->
-                <ext:ImageButton
+<%--                <ext:ImageButton
                     ID="imgbtnRegresar"
                     runat="server"
                     ImageUrl="assets/img/controles/btnRegresar.png"
@@ -123,7 +123,7 @@
                             parent.App.pCentro.getLoader().load('Menu.aspx');">
                         </Click>
                     </Listeners>
-               </ext:ImageButton>
+               </ext:ImageButton>--%>
                <%-- <ext:Label
                     ID="lblRegresar"
                     runat="server"
@@ -133,7 +133,7 @@
                 </ext:Label>--%>
                  <!--Fin Boton Regresar-->
                
-            </div>
+            <%--</div>
             <ext:Panel 
                 ID="pCentro"
                 runat="server"
@@ -155,11 +155,11 @@
                     </LoadMask>
                 </Loader>
             </ext:Panel>
-        </div>
+        </div>--%>
         <%-- Footer--%>
-        <div id="footer-menu">
-            <div id="creditos" class="creditos-menu" >
-                <p>© 2014 Osef Technology</p>
+<%--        <div id="footer-menu">
+            <div id="creditos" class="creditos-menu" >--%>
+              <%--  <p>© 2014 Osef Technology</p>--%>
                 <%--<div id="social">
                     <ul>
                         <li ><a href="#">
@@ -175,8 +175,8 @@
                             <img src="img/social/linked.png" alt="LinkedIn" class="imgs"  /></a></li>
                     </ul>
                 </div>--%>
-            </div>
-        </div>
+<%--            </div>
+        </div>--%>
         <%-- Footer--%>
 
         <ext:Window 
@@ -194,7 +194,7 @@
             </Loader>
         </ext:Window>
 
-        <ext:Window 
+<%--        <ext:Window 
             ID="wEmergenteGraficas"
             runat="server"
             Icon="Application"
@@ -207,7 +207,7 @@
             <Loader ID="Loader1" runat="server" Mode="Frame" AutoLoad="false">
                 <LoadMask ShowMask="true" Msg="Cargando..." />
             </Loader>
-        </ext:Window>
+        </ext:Window>--%>
 
     </form>
 </body>

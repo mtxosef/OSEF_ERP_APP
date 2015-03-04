@@ -18,7 +18,32 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!X.IsAjaxRequest)
+            //{
+            //    //1. Dar formato al español en mensajes de la contraseña
+            //    PasswordMask maskA = pmContrasenaActual;
+            //    PasswordMask mask = pmContrasena;
+            //    PasswordMask maskC = pmConfirmarContrasena;
+            //    Ext.Net.JsonObject messages = new Ext.Net.JsonObject();
 
+            //    messages["pass"] = "contraseña";
+            //    messages["and"] = "y";
+            //    messages["passTooShort"] = "contraseña es muy corta (tamaño mínimo: {0})";
+            //    messages["noCharType"] = "contraseña debe contener {0}";
+            //    messages["digits"] = "dígitos";
+            //    messages["letters"] = "letras";
+            //    messages["lettersUp"] = "letras en mayúsculas";
+            //    messages["symbols"] = "símbolos";
+            //    messages["inBlackList"] = "contraseña esta en la lista de las más utilizadas";
+            //    messages["passRequired"] = "contraseña requerida";
+            //    messages["equalTo"] = "contraseña es igual al usuario";
+            //    messages["repeat"] = "contraseña consiste de caracteres repetidos";
+            //    messages["badChars"] = "contraseña contiene caracteres no admitidos: â€œ{0}â€";
+
+            //    maskA.Messages = messages;
+            //    mask.Messages = messages;
+            //    maskC.Messages = messages;
+            //}
         }
 
         /// <summary>

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link rel="stylesheet" href="css/login.css" />
+<%--    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -24,13 +24,13 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type="text/javascript" src="js/cambiarContrasena.js"></script>
+    <script type="text/javascript" src="js/cambiarContrasena.js"></script>--%>
 </head>
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaCambiarContrasena" runat="server" HideInDesign="true" />
 
-        <ext:FormPanel 
+<%--        <ext:FormPanel 
             ID="fpCambiarContrasena" 
             runat="server"
             BodyPadding="10"
@@ -40,8 +40,20 @@
                     ID="fsDivisorDatos" 
                     runat="server"
                     Title="Cambiar Contraseña">
-                    <Items>
+                    <Items>--%>
                         <ext:TextField
+                            ID="txtfContrasenaActual"
+                            runat="server">
+                        </ext:TextField>
+                        <ext:TextField
+                            ID="txtfContrasena"
+                            runat="server">
+                        </ext:TextField>
+<%--                        <ext:TextField
+                            ID="txtfConfirmarContrasena"
+                            runat="server">
+                        </ext:TextField>--%>
+<%--                        <ext:TextField
                             ID="txtfContrasenaActual"
                             runat="server"
                             LabelWidth="150"
@@ -50,8 +62,8 @@
                             AllowBlank="false"
                             AutoFocus="true"
                             MaxLength="50"
-                            EnforceMaxLength="true">
-                            <Plugins>
+                            EnforceMaxLength="true">--%>
+<%--                            <Plugins>
                                 <ext:PasswordMask ID="pmContrasenaActual" runat="server">
                                 </ext:PasswordMask>
                                 <ext:CapsLockDetector ID="cldContrasenaActual" runat="server">
@@ -60,9 +72,9 @@
                                         <CapsLockOff Handler="#{txtfContrasenaActual}.hideIndicator();" />
                                     </Listeners>
                                 </ext:CapsLockDetector>
-                            </Plugins>
-                        </ext:TextField>
-                        <ext:TextField
+                            </Plugins>--%>
+                        <%--</ext:TextField>--%>
+<%--                        <ext:TextField
                             ID="txtfContrasena"
                             runat="server"
                             LabelWidth="150"
@@ -70,8 +82,8 @@
                             FieldLabel="Contraseña" 
                             AllowBlank="false"
                             MaxLength="50"
-                            EnforceMaxLength="true">
-                        <Validator Fn="txtfContrasena_Validator" />
+                            EnforceMaxLength="true">--%>
+<%--                        <Validator Fn="txtfContrasena_Validator" />
                            <Plugins>
                                 <ext:PasswordMask ID="pmContrasena" runat="server">
                                 </ext:PasswordMask>
@@ -81,9 +93,9 @@
                                         <CapsLockOff Handler="#{txtfContrasena}.hideIndicator();" />
                                     </Listeners>
                                 </ext:CapsLockDetector>
-                            </Plugins>
-                        </ext:TextField>
-                        <ext:TextField
+                            </Plugins>--%>
+                        <%--</ext:TextField>--%>
+<%--                        <ext:TextField
                             ID="txtfConfirmarContrasena"
                             runat="server"
                             LabelWidth="150"
@@ -91,8 +103,8 @@
                             FieldLabel="Confirmar contraseña"
                             AllowBlank="false"
                             MaxLength="50"
-                            EnforceMaxLength="true">
-                            <Validator Fn="txtfConfirmarContrasena_Validator" />
+                            EnforceMaxLength="true">--%>
+<%--                            <Validator Fn="txtfConfirmarContrasena_Validator" />
                            <Plugins>
                                 <ext:PasswordMask ID="pmConfirmarContrasena" runat="server">
                                 </ext:PasswordMask>
@@ -102,9 +114,9 @@
                                         <CapsLockOff Handler="#{txtfConfirmarContrasena}.hideIndicator();" />
                                     </Listeners>
                                 </ext:CapsLockDetector>
-                            </Plugins>
-                        </ext:TextField>
-                    </Items>
+                            </Plugins>--%>
+                        <%--</ext:TextField>--%>
+<%--                    </Items>
                 </ext:FieldSet> 
             </Items>
             <Listeners>
@@ -160,7 +172,7 @@
                     Cls="x-colorToolbar"
                     Text="Sin validar información" />
             </BottomBar>
-        </ext:FormPanel>
+        </ext:FormPanel>--%>
     </form>
 </body>
 </html>

@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES {
+namespace OSEF.ERP.APP {
     
     
-    public partial class Default {
+    public partial class Prueba {
         
         /// <summary>
         /// Control form1.
@@ -31,49 +31,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmDefault;
         
         /// <summary>
-        /// Control btnUsuario.
+        /// Control btnWindow.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Button btnUsuario;
-        
-        /// <summary>
-        /// Control mOpciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Menu mOpciones;
-        
-        /// <summary>
-        /// Control miConfiguracion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem miConfiguracion;
-        
-        /// <summary>
-        /// Control miCambiarContrasena.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem miCambiarContrasena;
-        
-        /// <summary>
-        /// Control miCerrarSesion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem miCerrarSesion;
+        protected global::Ext.Net.Button btnWindow;
         
         /// <summary>
         /// Control wEmergente.
