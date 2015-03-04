@@ -55,5 +55,15 @@ namespace OSEF.ERP.APP
 
         }
 
+
+        //CargaConceptosAyuda
+        protected void imgBtnSeleccionarConcepto_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
+            string strPreciarios = e.ExtraParams["preciario"];
+
+            Session["preciario"] = strPreciarios;
+        }
+
     }
 }

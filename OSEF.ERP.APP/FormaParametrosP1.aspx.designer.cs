@@ -148,6 +148,33 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mPreciarioConcepto;
         
         /// <summary>
+        /// Control FieldContainer1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer FieldContainer1;
+        
+        /// <summary>
+        /// Control txtConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtConcepto;
+        
+        /// <summary>
+        /// Control imgbtnSeleccionarPreciario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnSeleccionarPreciario;
+        
+        /// <summary>
         /// Control sbParametros1.
         /// </summary>
         /// <remarks>

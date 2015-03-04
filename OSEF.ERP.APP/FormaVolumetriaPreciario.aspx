@@ -58,7 +58,6 @@
             <Listeners>
                 <Load Fn="sVolumetria_Load" />
                 <Add Fn="sVolumetria_Add" />
-                <BeforeLoad Handler="console.log(App.sVolumetria)"></BeforeLoad>
             </Listeners>
         </ext:Store>
 
