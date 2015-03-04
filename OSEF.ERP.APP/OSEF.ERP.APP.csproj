@@ -80,8 +80,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="5_b.jpg" />
-    <Content Include="5_s.jpg" />
     <Content Include="app.js" />
     <Content Include="app\controller\Navigation.js" />
     <Content Include="app\controller\Settings.js" />
@@ -225,6 +223,7 @@
     <Content Include="assets\img\menu-conta.png" />
     <Content Include="assets\img\menu-corte.png" />
     <Content Include="assets\img\menu-cuentas.png" />
+    <Content Include="assets\img\menu-gantt.png" />
     <Content Include="assets\img\menu-inversiones.png" />
     <Content Include="assets\img\menu-mayor.png" />
     <Content Include="assets\img\menu-preciarios.png" />

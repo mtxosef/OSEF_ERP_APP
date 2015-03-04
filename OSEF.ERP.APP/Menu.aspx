@@ -49,16 +49,16 @@
                                         <div class="text4">Reportes</div>
                                     </div>
                                 </a>
-                            </div>
 
-                            <div class="tile-column-span-1">
-                                <a class="tile squarepeek bg-color-green" href="#" id="gantt">
-                                   <img src="assets/img/menu-reportes.png" alt="Gantt" />
-                                    <div class="text-inner">
-                                        <div class="text4">Gantt</div>
+                                <a class="tile square image bg-color-yellow" id="gantt" href="#">
+                                    <img src="assets/img/menu-gantt.png" alt="Gantt" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Visual Gantt</div>
                                     </div>
                                 </a>
                             </div>
+
+                         
 
                         </div>
                         <!-- Fin Primer pagina Procesos -->

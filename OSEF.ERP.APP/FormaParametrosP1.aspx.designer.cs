@@ -112,31 +112,40 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfSucursalNombre;
         
         /// <summary>
-        /// Control fcFechas.
+        /// Control fcPreciarioConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcFechas;
+        protected global::Ext.Net.FieldContainer fcPreciarioConcepto;
         
         /// <summary>
-        /// Control DateField1.
+        /// Control cmbConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateField DateField1;
+        protected global::Ext.Net.ComboBox cmbConcepto;
         
         /// <summary>
-        /// Control DateField2.
+        /// Control sPreciarioConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateField DateField2;
+        protected global::Ext.Net.Store sPreciarioConcepto;
+        
+        /// <summary>
+        /// Control mPreciarioConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mPreciarioConcepto;
         
         /// <summary>
         /// Control sbParametros1.

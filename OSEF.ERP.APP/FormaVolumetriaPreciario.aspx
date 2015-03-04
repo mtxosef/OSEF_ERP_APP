@@ -568,7 +568,6 @@
                                                 <PrepareToolbar Fn="ccAcciones_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
-                                                        
                                                         Icon="Delete"
                                                         CommandName="Borrar">
                                                         <ToolTip Text="Borrar" />

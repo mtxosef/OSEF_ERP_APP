@@ -142,55 +142,65 @@
             </ext:FieldContainer>
 
             <ext:FieldContainer
-                ID="fcFechas"
+                ID="fcPreciarioConcepto"
                 runat="server"
-                FieldLabel="Desde"
+                FieldLabel="Concepto"
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">
                 <Items>
-                    <ext:DateField 
-                    ID="DateField1" 
-                    runat="server"
-                    Margins="0 3 0 0"
-                    Vtype="daterange"
-                     Width="200"
-                     AllowBlank="false"
-                    EnableKeyEvents="true">  
-                    <CustomConfig>
-                        <ext:ConfigItem 
-                        Name="endDateField" 
-                        Value="DateField2" 
-                        Mode="Value" />
-                    </CustomConfig>
-                    
-                      <PickerOptions 
-                        Cls="my-date-picker"
-                        ID="pOFechaDesde" 
-                        runat="server">
-                        </PickerOptions>
-                </ext:DateField>
-                <ext:DateField 
-                    ID="DateField2"
-                    runat="server" 
-                    Vtype="daterange"
-                    Width="300"
-                    AllowBlank="false"
-                    FieldLabel="Hasta"
-                    EnableKeyEvents="true">    
-                    <CustomConfig>
-                        <ext:ConfigItem 
-                        Name="startDateField" 
-                        Value="DateField1"
-                        Mode="Value" />
-                    </CustomConfig>
-                 
-                       <PickerOptions 
-                        Cls="my-date-picker"
-                        ID="pOfechaHasta" 
-                        runat="server">
-                        </PickerOptions>
-                </ext:DateField>
+                 <ext:ComboBox
+                        ID="cmbConcepto"
+                        runat="server"
+                        DisplayField="ID"
+                        ValueField="ID"
+                        Width="564"
+                        MatchFieldWidth="false"
+                        Margins="0 3 0 0"
+                        Cls="spanCustomCombo xEspacioCmbxCustom"
+                        PageSize="10"
+                        AllowBlank="false"
+                        ForceSelection="true"
+                        QueryMode="Local"
+                        TypeAhead="true">
+                        <ListConfig ID="ListConfig1" runat="server" Width="350" Cls="xEspacioCmbxCustom">
+                            <ItemTpl ID="ItemTpl1" runat="server">
+                                <Html>
+                                    <div class="search-item">
+							            <h3>{ID}</h3>
+                                        <span>{Descripcion}</span>
+						            </div>
+                                </Html>
+                            </ItemTpl>
+                        </ListConfig>
+                            <Store>
+                                <ext:Store
+                                    ID="sPreciarioConcepto"
+                                    runat="server">
+                                    <Model>
+                                        <ext:Model
+                                            ID="mPreciarioConcepto"
+                                            runat="server">
+                                            <Fields>
+                                             <ext:ModelField Name="ID" Type="String" />
+                                            <ext:ModelField Name="Clave" Type="String" />
+                                            <ext:ModelField Name="Descripcion" Type="String" />
+                                            <ext:ModelField Name="Unidad" Type="String" />
+                                            <ext:ModelField Name="Cantidad" Type="Float" />
+                                            <ext:ModelField Name="Costo" Type="Float" />
+                                            <ext:ModelField Name="Importe" Type="Float" />
+                                            <ext:ModelField Name="Categoria" Type="String" />
+                                            <ext:ModelField Name="SubCategoria" Type="String" />
+                                            <ext:ModelField Name="SubSubCategoria" Type="String" />
+                                            <ext:ModelField Name="FechaAlta" Type="Date" />
+                                            <ext:ModelField Name="Estatus" Type="String" />
+                                            <ext:ModelField Name="Tipo" Type="String" />
+                                            </Fields>
+                                        </ext:Model>                            
+                                    </Model>
+                                </ext:Store>
+                            </Store>
+                    </ext:ComboBox>
                 </Items>
             </ext:FieldContainer>
         </Items>

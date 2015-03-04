@@ -155,7 +155,7 @@ namespace OSEF.APP.DL
         /// Método que actualiza un nuevo registro a la tabla de PreciarioConcepto
         /// </summary>
         /// <param name="uPreciarioConcepto"></param>
-        public static int Actualizar(string strConcepto, decimal utilizada)
+        public static int Actualizar(string strConcepto, decimal utilizada, int volumetria)
         {
             try
             {
@@ -179,12 +179,15 @@ namespace OSEF.APP.DL
                 sqlpUtilizada.SqlDbType = SqlDbType.Decimal;
                 sqlpUtilizada.Value = utilizada;
 
-
+                SqlParameter sqlpVolumetria = new SqlParameter();
+                sqlpVolumetria.ParameterName = "@Volumetria";
+                sqlpVolumetria.SqlDbType = SqlDbType.Int;
+                sqlpVolumetria.Value = volumetria;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpUtilizada);
-
+                sqlcComando.Parameters.Add(sqlpVolumetria);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
