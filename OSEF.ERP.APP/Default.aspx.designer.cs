@@ -121,6 +121,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Window wEmergente;
         
         /// <summary>
+        /// Control wAyudaConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wAyudaConcepto;
+        
+        /// <summary>
         /// Control wEmergenteGraficas.
         /// </summary>
         /// <remarks>

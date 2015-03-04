@@ -195,6 +195,21 @@
         </ext:Window>
 
         <ext:Window 
+            ID="wAyudaConcepto"
+            runat="server"
+            Icon="Application"
+            Hidden="true"
+            Modal="true"
+            Padding="5"
+            Resizable="False"
+            Region="Center"
+            XOnEsc="Ext.emptyFn">
+            <Loader ID="lAyudaConcepto" runat="server" Mode="Frame" AutoLoad="false">
+                <LoadMask ShowMask="true" Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
+        <ext:Window 
             ID="wEmergenteGraficas"
             runat="server"
             Icon="Application"

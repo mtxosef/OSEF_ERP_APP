@@ -425,5 +425,17 @@ namespace OSEF.AVANCES.SUCURSALES
             ImagenVolumetriaDBusiness.BorrarImagenesVolumetriaPorID(strID);
         }
 
+
+
+        //CargaConceptosAyuda
+        protected void imgBtnPreciarioPrueba_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
+            string strPreciarios = e.ExtraParams["preciario"];
+
+            Session["imprimir"] = strPreciarios;
+        }
+
+
     }
 }

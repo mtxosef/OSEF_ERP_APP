@@ -297,6 +297,68 @@ namespace OSEF.APP.DL
             }
         }
 
+
+
+        /// <summary>
+        /// Obtener todos los registros de PreciarioConcepto filtrando sus categorias
+        /// </summary>
+        /// <returns></returns>
+        public static List<PreciarioConcepto> ObtenerPreciarioConceptoFiltro(string strCategoria,string strSubCategoria, string strSubsubCategoria)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioConceptosFiltro";
+
+                //2. Declarar los parametros
+                
+                SqlParameter sqlpCategoria = new SqlParameter();
+                sqlpCategoria.ParameterName = "@CATEGORIA";
+                sqlpCategoria.SqlDbType = SqlDbType.Char;
+                sqlpCategoria.Size = 10;
+                sqlpCategoria.Value = strCategoria;
+
+                SqlParameter sqlpSubCategoria = new SqlParameter();
+                sqlpSubCategoria.ParameterName = "@subCategoria";
+                sqlpSubCategoria.SqlDbType = SqlDbType.Char;
+                sqlpSubCategoria.Size = 10;
+                sqlpSubCategoria.Value = strSubCategoria;
+
+                SqlParameter sqlpSubSubCategoria = new SqlParameter();
+                sqlpSubSubCategoria.ParameterName = "@SubSubCategoria";
+                sqlpSubSubCategoria.SqlDbType = SqlDbType.Char;
+                sqlpSubSubCategoria.Size = 10;
+                sqlpSubSubCategoria.Value = strSubsubCategoria;
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpCategoria);
+                sqlcComando.Parameters.Add(sqlpSubCategoria);
+                sqlcComando.Parameters.Add(sqlpSubSubCategoria);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<PreciarioConcepto> result = LibraryGenerics<PreciarioConcepto>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<PreciarioConcepto> ObtenerPreciarioConcepto()): " + ex.Message);
+            }
+        }
+
         /// <summary>
         /// Obtener un registro de PreciarioSubSubCategoria por su Preciario
         /// </summary>

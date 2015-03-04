@@ -62,6 +62,15 @@ namespace OSEF.APP.BL
         }
 
         /// <summary>
+        /// Método que obtiene todos los registros de PreciarioConcepto filtrandolos
+        /// </summary>
+        /// <returns></returns>
+        public static List<PreciarioConcepto> ObtenerPreciarioConceptoFiltro(string strCategoria, string strSubCategoria, string strSubsubCategoria)
+        {
+            return PreciarioConceptosDataAccess.ObtenerPreciarioConceptoFiltro(strCategoria,strSubCategoria,strSubsubCategoria);
+        }
+
+        /// <summary>
         /// Obtener un registro de PreciarioConcepto por su ID
         /// </summary>
         /// <param name="strID"></param>
