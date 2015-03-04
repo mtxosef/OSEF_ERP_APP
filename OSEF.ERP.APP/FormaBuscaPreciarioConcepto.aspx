@@ -24,15 +24,10 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-
-
-   
 </head>
 <body>
   <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaBuscarPreciarioConcepto" runat="server" HideInDesign="true" />
-
-        
 
          <ext:FormPanel 
             ID="fpBuscaPreciarioConcepto"
@@ -41,7 +36,6 @@
             Height="450"
             Width="665"
             BodyStyle="background-color:#fff;">
-       
             <Items>
                 <ext:Panel 
                     ID="pFiltros" 
@@ -60,14 +54,26 @@
                                 Layout="ColumnLayout">
                                 <Items>
                                     <ext:ComboBox
-                                            ID="cmbCategoria"
-                                            runat="server"
-                                            Width="200"
-                                            MatchFieldWidth="false"
-                                            StyleSpec="margin-right: 6px;"
-                                            Cls="spanCustomCombo xEspacioCmbxCustom"
-                                            AllowBlank="false">
-                                        </ext:ComboBox>
+                                        ID="cmbCategoria"
+                                        runat="server"
+                                        Width="200"
+                                        MatchFieldWidth="false"
+                                        StyleSpec="margin-right: 6px;"
+                                        Cls="spanCustomCombo xEspacioCmbxCustom"
+                                        AllowBlank="false">
+                                        <Store>
+                                            <ext:Store ID="sCategoria" runat="server">
+                                                <Model>
+                                                    <ext:Model ID="mCategoria" runat="server">
+                                                        <Fields>
+                                                            <ext:ModelField Name="ID" Type="String" />
+                                                            <ext:ModelField Name="Descripcion" Type="String" />
+                                                        </Fields>
+                                                    </ext:Model>
+                                                </Model>
+                                            </ext:Store>
+                                        </Store>
+                                    </ext:ComboBox>
                                     <ext:TextField
                                         ID="txtCategoria"
                                         runat="server"
@@ -145,7 +151,6 @@
                             </ext:FieldContainer>
                     </Items>
                 </ext:Panel>
-     
                 <%--  DETALLE PRECIARIO--%>
                 <ext:Panel
                     ID="pConceptos"
@@ -178,14 +183,11 @@
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />
                                                         <ext:ModelField Name="Utilizada" Type="Float" />
-                                                    
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
                                         </ext:Store>
-                                        
                                     </Store>
-
                                     <ColumnModel 
                                         ID="cmPreciario" 
                                         runat="server">
@@ -242,8 +244,6 @@
                                             StripeRows="true">
                                         </ext:GridView>
                                     </View>
-                                  
-                                
                                 </ext:GridPanel>
                                 <%--Fin Detalle PRECIARIO--%>
                             </Items>
@@ -254,7 +254,7 @@
              <Listeners>
                 <ValidityChange Handler=" #{imgbtnGuardar}.setDisabled(!valid);" />
             </Listeners>
-             <Buttons>
+            <Buttons>
                 <ext:ImageButton
                     ID="imgbtnGuardar" 
                     runat="server" 
@@ -284,7 +284,6 @@
                 </ext:ImageButton>
             </Buttons> 
         </ext:FormPanel>
- 
     </form>
 </body>
 </html>

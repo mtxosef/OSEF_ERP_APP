@@ -383,7 +383,7 @@ CREATE TABLE PreciariosCategorias(
 	FechaAlta		SMALLDATETIME	NOT NULL
 )
 
-CREATE TABLE PreciarioSubCategorias(
+CREATE TABLE PreciariosSubCategorias(
  ID CHAR(10) NOT NULL PRIMARY KEY,
  CLAVE   CHAR(7) NULL,
  Preciario CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
@@ -393,7 +393,7 @@ CREATE TABLE PreciarioSubCategorias(
  FechaAlta SMALLDATETIME NOT NULL
 )
 
-CREATE TABLE PreciarioSubSubCategorias(
+CREATE TABLE PreciariosSubSubCategorias(
  ID CHAR(10) NOT NULL PRIMARY KEY,
  CLAVE   CHAR(7) NULL,
  Preciario  CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
@@ -404,7 +404,7 @@ CREATE TABLE PreciarioSubSubCategorias(
  FechaAlta  SMALLDATETIME NOT NULL
 )
 
-CREATE TABLE PreciarioConceptos(
+CREATE TABLE PreciariosConceptos(
 	ID					CHAR(10) NOT NULL PRIMARY KEY,
 	CLAVE				CHAR(7) NULL,
 	Preciario			CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
