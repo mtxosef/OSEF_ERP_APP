@@ -269,7 +269,11 @@
                     <DirectEvents>
                         <Click OnEvent="imgbtnExportar_Click" Success="window.open('VistaPreliminar.aspx', '_blank');">
                             <EventMask ShowMask="true" Msg="Cargando Reporte..." />
-                            
+                             <ExtraParams>
+                                <ext:Parameter Name="preciario" Value="App.cmbPreciario.getValue()" Mode="Raw" />
+                                <ext:Parameter Name="conceptoID" Value="App.cmbConcepto.getValue()" Mode="Raw" />
+                            </ExtraParams>
+
                         </Click>
                     </DirectEvents>
                 </ext:ImageButton>

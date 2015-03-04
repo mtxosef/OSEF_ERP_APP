@@ -8,6 +8,9 @@ using OSEF.APP.BL;
 using OSEF.APP.EL;
 using Ext.Net;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace OSEF.ERP.APP
 {
@@ -38,18 +41,52 @@ namespace OSEF.ERP.APP
 
         protected void imgbtnExportar_Click(object sender, DirectEventArgs e)
         {
+            string strPreciario = e.ExtraParams["preciario"];
+            string strConceptoID = e.ExtraParams["conceptoID"];
+            string nombre = "CPreciario";
+
+            //1. Configurar la conexión y el tipo de comando
+            var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+              string connectionString = ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString;
             try
             {
-                var reporte = new ReportDocument();
-                string nombre = "Estimaciones";
-                reporte.Load(Server.MapPath("reports/Estimaciones.rpt"));
-                Session["ReportName"] = nombre;
-                Session["imprimir"] = reporte;
+              
+                
+                using (var comando = new SqlCommand("web_spS_ObtenerCambiosPreciario", conn))
+                {
+                    using (var adaptador = new SqlDataAdapter(comando))
+                    {
+                        DataTable dt = new DataTable();
+                        adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                        adaptador.SelectCommand.Parameters.Add(@"idconcepto", SqlDbType.NVarChar).Value = strConceptoID;
+                        adaptador.SelectCommand.Parameters.Add(@"idpreciario", SqlDbType.NVarChar).Value = strPreciario;
+                        adaptador.Fill(dt);
+                        string path = AppDomain.CurrentDomain.BaseDirectory;
 
+                        var reporte = new ReportDocument();
+                        reporte.Load(Server.MapPath("reports/CPreciario.rpt"));
+                        reporte.SetDataSource(dt);
+
+                        SqlConnectionStringBuilder SConn = new SqlConnectionStringBuilder(connectionString);
+                        reporte.DataSourceConnections[0].SetConnection(SConn.DataSource, SConn.InitialCatalog, SConn.UserID, SConn.Password);
+                        reporte.SetParameterValue("path", path);
+
+
+                        Session["ReportName"] = nombre;
+                        Session["imprimir"] = reporte;
+
+                    } // end using adaptador
+                } // end using comando
             }
             catch (Exception ex)
             {
                 ex.Message.ToString();
+            }
+            finally
+            {
+                if (conn.State != ConnectionState.Closed)
+                    conn.Close();
+                conn.Dispose();
             }
 
 
