@@ -77,7 +77,6 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-<<<<<<< HEAD
                             <DirectEvents>
                                 <Click OnEvent="imgbtnGuardar_Click">
                                     <EventMask ShowMask="true" Msg="Registrando información..." />
@@ -86,24 +85,10 @@
                                         <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="archivo" Value="App.txfArchivoActual.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
-=======
-                          <DirectEvents>
-                            <Click OnEvent="imgbtnGuardar_Click">
-                                <EventMask ShowMask="true" Msg="Registrando información..." />
-                                <ExtraParams>
-                                    <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
-                                    <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
-                                    <ext:Parameter Name="archivo" Value="App.txfArchivoActual.getValue()" Mode="Raw" />
-                                    <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
-                                      <ext:Parameter Name="sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
-                                
-                                </ExtraParams>
-                            </Click>
-                    </DirectEvents>
->>>>>>> c96b484ffe05ee70f99e4c9de17be1b0a425e18a
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnCancelar"
@@ -157,12 +142,7 @@
                                     AllowBlank="false"
                                     AutoFocus="true">
                                     <Listeners>
-<<<<<<< HEAD
-                                        <Blur Fn="txtfDescripcion_Change"></Blur>
-=======
                                         <Change Fn="txtfDescripcion_Change"></Change>
-                                        <%--<Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />--%>
->>>>>>> c96b484ffe05ee70f99e4c9de17be1b0a425e18a
                                     </Listeners>
                                 </ext:TextField>
                             </Items>

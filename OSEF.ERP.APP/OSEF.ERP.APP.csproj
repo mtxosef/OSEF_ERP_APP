@@ -958,6 +958,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CPreciario.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reports\Estimaciones.cs">
       <AutoGen>True</AutoGen>
