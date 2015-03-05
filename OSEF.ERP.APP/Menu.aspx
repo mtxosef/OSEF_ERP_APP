@@ -58,6 +58,17 @@
                                 </a>
                             </div>
 
+                            <div class="tile-column-span-2">
+                                <a class="tile wide imagetext wideimage bg-color-blue" id="exploradorPreciarioConcepto" href="#">
+                                    <img src="assets/img/Search.png" alt="Explorador" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Explorador Preciario Concepto</div>
+                                    </div>
+                                </a>
+                               
+
+                            </div>
+
                          
 
                         </div>

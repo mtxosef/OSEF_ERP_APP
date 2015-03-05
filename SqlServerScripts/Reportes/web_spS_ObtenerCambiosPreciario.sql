@@ -43,7 +43,7 @@ BEGIN
                          dbo.ImagenesVolumetriasD.PreciarioConcepto, dbo.VolumetriasD.ConceptoID, dbo.VolumetriasD.Cantidad, dbo.VolumetriasD.Utilizada, dbo.VolumetriasD.Volumetria, 
                          dbo.ImagenesVolumetriasD.Direccion, dbo.Volumetrias.FechaEmision, dbo.Volumetrias.Observaciones, dbo.Volumetrias.Preciario, dbo.Preciarios.Descripcion, 
                          dbo.ImagenesVolumetriasD.Nombre AS ImgVoluNombre, dbo.PreciarioConceptos.Descripcion AS PreConDescripcion, dbo.PreciarioConceptos.Categoria, 
-                         dbo.PreciarioConceptos.SubCategoria, dbo.PreciarioConceptos.SubSubCategoria, dbo.PreciarioConceptos.Unidad, dbo.PreciarioConceptos.Costo, 
+                         dbo.PreciarioConceptos.SubCategoria, dbo.PreciarioConceptos.SubSubCategoria, dbo.PreciarioConceptos.Unidad,dbo.PreciarioConceptos.CLAVE AS CLAVECONCEPTO, dbo.PreciarioConceptos.Costo, 
                          dbo.PreciarioConceptos.Cantidad AS PreConceptoCantidad, dbo.PreciarioConceptos.Utilizada AS PreConceptoUtilizada, dbo.PreciarioConceptos.Importe, 
                          dbo.PreciarioConceptos.ImporteFinal
 FROM            dbo.ImagenesVolumetriasD INNER JOIN
