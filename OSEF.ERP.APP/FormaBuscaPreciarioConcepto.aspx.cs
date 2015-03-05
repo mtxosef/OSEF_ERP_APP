@@ -18,7 +18,7 @@ namespace OSEF.ERP.APP
             if (!X.IsAjaxRequest)
             {
 
-                string preciario = Session["imprimir"].ToString();
+                string preciario = Session["preciario"].ToString();
                 ////2. Cargar Conceptos
                 sCategoria.DataSource = PreciarioCategoriaBuisness.ObtenerPreciarioCategoriasPorPreciario(preciario);
                 sCategoria.DataBind();

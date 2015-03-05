@@ -433,7 +433,7 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
             string strPreciarios = e.ExtraParams["preciario"];
 
-            Session["imprimir"] = strPreciarios;
+            Session["preciario"] = strPreciarios;
         }
 
 

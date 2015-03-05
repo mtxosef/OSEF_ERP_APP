@@ -161,7 +161,7 @@
                                     <ext:ComboBox
                                             ID="cmbSucursal"
                                             runat="server"
-                                            DisplayField="ID"
+                                            DisplayField="CR"
                                             ValueField="ID"
                                             Width="200"
                                             MatchFieldWidth="false"

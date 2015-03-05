@@ -945,6 +945,12 @@
       <DependentUpon>AdministracionDeInmuebles.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reports\CPreciario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CPreciario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reports\Estimaciones.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1058,6 +1064,10 @@
     <EmbeddedResource Include="reports\AdministracionDeInmuebles.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AdministracionDeInmuebles.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\CPreciario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CPreciario.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\Estimaciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

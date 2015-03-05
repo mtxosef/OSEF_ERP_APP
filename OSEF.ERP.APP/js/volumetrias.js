@@ -385,6 +385,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     App.imgbtnAfectar.setDisabled(true);
     App.imgbtnCancelar.setDisabled(false);
     App.imgbtnBorrar.setDisabled(true);
+  
     //3. Remover la útima fila
     var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
     if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Utilizada') == 0) {
@@ -392,8 +393,9 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     }
 
     //4. Deseleccionar datos del GridPanel y deshabilitar los controles
-    App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
     DeshabilitarControlesAfectar();
+    App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
+    
 
     //Deshabilita los comandos de Fotos
     App.ccFotos.commands[0].disabled = true;
@@ -728,7 +730,6 @@ function DeshabilitarControlesAfectar() {
     App.cmbPreciario.setDisabled(true);
     App.dfFechaEmision.setDisabled(true);
     App.txtfObservaciones.setDisabled(true);
-    // App.gpVolumetriaDetalle.setDisabled(true);
     App.imgbtnGuardar.setDisabled(true);
     App.imgbtnBorrar.setDisabled(true);
 }

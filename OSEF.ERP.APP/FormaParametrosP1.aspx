@@ -203,6 +203,44 @@
                     </ext:ComboBox>
                 </Items>
             </ext:FieldContainer>
+
+            <ext:FieldContainer
+                ID="FieldContainer1"
+                runat="server"
+                FieldLabel="Concepto"
+                AnchorHorizontal="100%"
+                LabelWidth="120"
+                Layout="HBoxLayout">
+                <Items>
+                 <ext:TextField
+                        ID="txtConcepto"
+                        runat="server"
+                        Width="200"
+                        Margins="0 3 0 0"
+                        Disabled="true"> 
+                          <RightButtons>
+                                <ext:ImageButton 
+                                    ID="imgbtnSeleccionarPreciario" 
+                                    runat="server" 
+                                    ImageUrl="assets/img/controles/login.png"
+                                    OverImageUrl="assets/img/controles/login-hover.png" 
+                                    PressedImageUrl="assets/img/controles/login-pressed.png"
+                                    ToolTip="Buscar Concepto" 
+                                    Width="20">
+                                    <DirectEvents>
+                             
+                                         <Click OnEvent="imgBtnSeleccionarConcepto_Click" Success="imgBtnSeleccionarConcepto_Click_Success">
+                                                <EventMask ShowMask="true" Msg="Cargando conceptos..." />
+                                               <ExtraParams>
+                                                <ext:Parameter Name="preciario" Value="App.cmbPreciario.getValue()" Mode="Raw" />
+                                                </ExtraParams>
+                                         </Click>
+                                       </DirectEvents>
+                                </ext:ImageButton>
+                            </RightButtons>                                      
+                    </ext:TextField>
+                </Items>
+            </ext:FieldContainer>
         </Items>
          <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
@@ -231,7 +269,11 @@
                     <DirectEvents>
                         <Click OnEvent="imgbtnExportar_Click" Success="window.open('VistaPreliminar.aspx', '_blank');">
                             <EventMask ShowMask="true" Msg="Cargando Reporte..." />
-                            
+                             <ExtraParams>
+                                <ext:Parameter Name="preciario" Value="App.cmbPreciario.getValue()" Mode="Raw" />
+                                <ext:Parameter Name="conceptoID" Value="App.cmbConcepto.getValue()" Mode="Raw" />
+                            </ExtraParams>
+
                         </Click>
                     </DirectEvents>
                 </ext:ImageButton>

@@ -314,4 +314,8 @@
 -- ImagenVolumetriaD (Borrar)
 :r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorConceptoVolumetria.sql
 :r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorVolumetria.sql
+----------------------------------------------------------------------------------------
+--Reportes
+:r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciario.sql
+:r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciarios.sql
 

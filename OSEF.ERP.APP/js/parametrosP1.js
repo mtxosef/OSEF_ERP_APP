@@ -1,11 +1,12 @@
 ﻿//Evento que se lanza al seleccionar algun valor de la sucursal
 var cmbPreciario_Select = function (combobox, registro) {
     App.txtfDescripcionPreciario.setValue(registro[0].data.Descripcion);
-
+    App.txtConcepto.setDisabled(false);
 
     if (App.sPreciario.getAt(0) != undefined) {
         App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
         App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
+        
     }
 
 
@@ -33,3 +34,15 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     }
 
 };
+
+
+var imgBtnSeleccionarConcepto_Click_Success = function (response, result) {
+
+    window.parent.App.wAyudaConcepto.load('FormaBuscaPreciarioConcepto.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(500);
+    window.parent.App.wAyudaConcepto.setWidth(685);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
+    window.parent.App.wAyudaConcepto.show();
+
+}
