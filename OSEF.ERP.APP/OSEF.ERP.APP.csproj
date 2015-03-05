@@ -294,6 +294,7 @@
     <Content Include="Estados.aspx" />
     <Content Include="Estados2.aspx" />
     <Content Include="examples-shared.js" />
+    <Content Include="ExploradorPreciarioConceptos.aspx" />
     <Content Include="fancylibs\blank.gif" />
     <Content Include="fancylibs\fancybox_loading%402x.gif" />
     <Content Include="fancylibs\fancybox_loading.gif" />
@@ -370,6 +371,7 @@
     <Content Include="js\conceptos2.js" />
     <Content Include="js\consultarPreciario.js" />
     <Content Include="js\cuentasContables.js" />
+    <Content Include="js\exploradorConceptoPreciario.js" />
     <Content Include="js\finalidades.js" />
     <Content Include="js\login.js" />
     <Content Include="js\menus2.js" />
@@ -555,6 +557,13 @@
     </Compile>
     <Compile Include="Estados2.aspx.designer.cs">
       <DependentUpon>Estados2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExploradorPreciarioConceptos.aspx.cs">
+      <DependentUpon>ExploradorPreciarioConceptos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExploradorPreciarioConceptos.aspx.designer.cs">
+      <DependentUpon>ExploradorPreciarioConceptos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finalidades.aspx.cs">
       <DependentUpon>Finalidades.aspx</DependentUpon>
@@ -949,7 +958,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CPreciario.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reports\Estimaciones.cs">
       <AutoGen>True</AutoGen>

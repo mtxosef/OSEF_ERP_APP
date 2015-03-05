@@ -88,6 +88,8 @@
                                     <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
                                     <ext:Parameter Name="archivo" Value="App.txfArchivoActual.getValue()" Mode="Raw" />
                                     <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
+                                      <ext:Parameter Name="sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                
                                 </ExtraParams>
                             </Click>
                     </DirectEvents>
@@ -144,7 +146,7 @@
                                     Width="360"
                                     AllowBlank="false">
                                     <Listeners>
-                                        <Blur Fn="txtfDescripcion_Change"></Blur>
+                                        <Change Fn="txtfDescripcion_Change"></Change>
                                         <%--<Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />--%>
                                     </Listeners>
                                     </ext:TextField>
@@ -406,7 +408,6 @@
                                              <Load Fn="sCarga_Load" ></Load>
                                         </Listeners>  
                                         </ext:Store>
-                                        
                                     </Store>
 
                                     <ColumnModel 

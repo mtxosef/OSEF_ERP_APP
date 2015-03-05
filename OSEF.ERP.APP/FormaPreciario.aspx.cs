@@ -69,6 +69,7 @@ namespace OSEF.AVANCES.SUCURSALES
             string strRegistro = e.ExtraParams["registro"];
             string strEstatus = e.ExtraParams["estatus"];
             string strArchivo = e.ExtraParams["archivo"];
+            string strSucursal = e.ExtraParams["sucursal"];
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciario").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
 
@@ -197,8 +198,9 @@ namespace OSEF.AVANCES.SUCURSALES
                 {
                     oPreciario.Archivo = fufArchivoExcel.FileName;
                 }
-                
-
+                //Tomamos la sucursal y estatus como parametro independiente por que ya esta desabilitada
+                oPreciario.Sucursal = strSucursal;
+                oPreciario.Estatus = strEstatus;
                 //7. Actualizar los datos del Preciario
                 PreciarioBusiness.Actualizar(oPreciario);
                 //8. Mandar mensaje con el código del preciario
