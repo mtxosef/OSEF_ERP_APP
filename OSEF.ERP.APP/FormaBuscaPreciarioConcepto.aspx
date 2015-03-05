@@ -27,10 +27,10 @@
     <script type='text/javascript' src="js/buscaConceptoPreciario.js"></script>
 </head>
 <body>
-  <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaBuscarPreciarioConcepto" runat="server" HideInDesign="true" />
 
-         <ext:FormPanel 
+        <ext:FormPanel 
             ID="fpBuscaPreciarioConcepto"
             runat="server"
             MonitorResize="true"
@@ -43,192 +43,189 @@
                     runat="server" 
                     BodyPadding="10"
                     Width="700"
-                    Height="180" 
+                    Height="150" 
                     AutoScroll="false">
                     <Items>
                         <ext:FieldContainer
-                                ID="fcFiltros"
-                                runat="server"
-                                FieldLabel="Categoría"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="ColumnLayout">
-                                <Items>
-                                    <ext:ComboBox
-                                        ID="cmbCategoria"
-                                        runat="server"
-                                        Width="200"
-                                        DisplayField="Descripcion"
-                                        ValueField="ID"
-                                        EnforceMaxLength="true"
-                                        StyleSpec="margin-right: 6px;"
-                                        AllowBlank="false">
-                                        <Store>
-                                            <ext:Store ID="sCategoria" runat="server">
-                                                <Model>
-                                                    <ext:Model ID="mCategoria" runat="server">
-                                                        <Fields>
-                                                            <ext:ModelField Name="ID" Type="String" />
-                                                            <ext:ModelField Name="Descripcion" Type="String" />
-                                                        </Fields>
-                                                    </ext:Model>
-                                                </Model>
-                                            </ext:Store>
-                                        </Store>
-                                        <DirectEvents>
-                                            <Change OnEvent="cmbCategoria_Change">
-                                                <ExtraParams>
-                                                    <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
-                                                </ExtraParams>
-                                            </Change>
-                                        </DirectEvents>
-                                    </ext:ComboBox>
-                                </Items>
-                            </ext:FieldContainer>
-                          <ext:FieldContainer
-                                ID="fcFiltro2"
-                                runat="server"
-                                FieldLabel="SubCategoría"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="ColumnLayout">
-                                <Items>
-                                    <ext:ComboBox
-                                            ID="cmbSubCategoria"
+                            ID="fcFiltros"
+                            runat="server"
+                            FieldLabel="Categoría"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:ComboBox
+                                    ID="cmbCategoria"
+                                    runat="server"
+                                    Width="200"
+                                    DisplayField="Descripcion"
+                                    ValueField="ID"
+                                    EnforceMaxLength="true"
+                                    StyleSpec="margin-right: 6px;"
+                                    AllowBlank="true">
+                                    <Store>
+                                        <ext:Store ID="sCategoria" runat="server">
+                                            <Model>
+                                                <ext:Model ID="mCategoria" runat="server">
+                                                    <Fields>
+                                                        <ext:ModelField Name="ID" Type="String" />
+                                                        <ext:ModelField Name="Descripcion" Type="String" />
+                                                    </Fields>
+                                                </ext:Model>
+                                            </Model>
+                                        </ext:Store>
+                                    </Store>
+                                    <DirectEvents>
+                                        <Change OnEvent="cmbCategoria_Change">
+                                            <ExtraParams>
+                                                <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
+                                            </ExtraParams>
+                                        </Change>
+                                    </DirectEvents>
+                                </ext:ComboBox>
+                            </Items>
+                        </ext:FieldContainer>
+                        <ext:FieldContainer
+                            ID="fcFiltro2"
+                            runat="server"
+                            FieldLabel="SubCategoría"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:ComboBox
+                                    ID="cmbSubCategoria"
+                                    runat="server"
+                                    Width="200"
+                                    DisplayField="Descripcion"
+                                    ValueField="ID"
+                                    EnforceMaxLength="true"
+                                    StyleSpec="margin-right: 6px;"
+                                    AllowBlank="true">
+                                    <Store>
+                                        <ext:Store
+                                            ID="sSubCategoria"
+                                            runat="server">
+                                            <Model>
+                                                <ext:Model ID="mSubCategoria" runat="server" IDProperty="ID">
+                                                    <Fields>
+                                                        <ext:ModelField Name="ID" Type="String" />
+                                                        <ext:ModelField Name="Descripcion" Type="String" />
+                                                    </Fields>
+                                                </ext:Model>
+                                            </Model>
+                                        </ext:Store>
+                                    </Store>
+                                    <DirectEvents>
+                                        <Select OnEvent="cmbSubCategoria_Select">
+                                            <ExtraParams>
+                                                <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
+                                            </ExtraParams>
+                                        </Select>
+                                    </DirectEvents>
+                                </ext:ComboBox>
+                            </Items>
+                        </ext:FieldContainer>
+                        <ext:FieldContainer
+                            ID="fcFiltro3"
+                            runat="server"
+                            FieldLabel="SubSubCategoría"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:ComboBox
+                                    ID="cmbSubSubCategoria"
+                                    runat="server"
+                                    Width="200"
+                                    DisplayField="Descripcion"
+                                    ValueField="ID"
+                                    EnforceMaxLength="true"
+                                    StyleSpec="margin-right: 6px;"
+                                    AllowBlank="true">
+                                    <Store>
+                                        <ext:Store
+                                            ID="sSubSubCategorias"
+                                            runat="server">
+                                            <Model>
+                                                <ext:Model ID="mSubSubcategorias" runat="server" IDProperty="ID">
+                                                    <Fields>
+                                                        <ext:ModelField Name="ID" Type="String" />
+                                                        <ext:ModelField Name="Descripcion" Type="String" />
+                                                    </Fields>
+                                                </ext:Model>
+                                            </Model>
+                                        </ext:Store>
+                                    </Store>
+                                </ext:ComboBox>
+                                <ext:Button
+                                    ID="btnBuscar"
+                                    runat="server"
+                                    Text="Buscar"
+                                    Icon="Find">
+                                    <DirectEvents>
+                                        <Click OnEvent="btnBuscar_Click">
+                                            <EventMask ShowMask="true" Msg="Cargando conceptos..." />
+                                            <ExtraParams>
+                                                <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
+                                                <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
+                                                <ext:Parameter Name="subsubcategoria" Value="App.cmbSubSubCategoria.getValue()" Mode="Raw" />
+                                            </ExtraParams>
+                                        </Click>
+                                    </DirectEvents>
+                                </ext:Button>
+                            </Items>
+                        </ext:FieldContainer>
+<%--                        <ext:FieldContainer
+                            ID="fcFiltroID"
+                            runat="server"
+                            FieldLabel="ID Concepto"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:TextField
+                                    ID="txtBuscar"
+                                    runat="server"
+                                    EmptyText="Buscar ID/Concepto"
+                                    Width="295"
+                                    Disabled="false">
+                                    <Listeners>
+                                        <Change Fn="txtBuscar_Change" />
+                                    </Listeners> 
+                                    <RightButtons>
+                                        <ext:ImageButton
+                                            ID="imgbtnBuscar"
                                             runat="server"
-                                            Width="200"
-                                            DisplayField="Descripcion"
-                                            ValueField="ID"
-                                            EnforceMaxLength="true"
-                                            StyleSpec="margin-right: 6px;"
-                                            AllowBlank="false">
-                                            <Store>
-                                                <ext:Store
-                                                    ID="sSubCategoria"
-                                                    runat="server">
-                                                    <Model>
-                                                        <ext:Model ID="mSubCategoria" runat="server" IDProperty="ID">
-                                                            <Fields>
-                                                                <ext:ModelField Name="ID" Type="String" />
-                                                                <ext:ModelField Name="Descripcion" Type="String" />
-                                                            </Fields>
-                                                        </ext:Model>
-                                                    </Model>
-                                                </ext:Store>
-                                            </Store>
-                                            <DirectEvents>
-                                                <Select OnEvent="cmbSubCategoria_Select">
-                                                    <ExtraParams>
-                                                        <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
-                                                    </ExtraParams>
-                                                </Select>
-                                            </DirectEvents>
-                                        </ext:ComboBox>
-                                  
-                                </Items>
-                            </ext:FieldContainer>
-                            <ext:FieldContainer
-                                ID="fcFiltro3"
-                                runat="server"
-                                FieldLabel="SubSubCategoría"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="ColumnLayout">
-                                <Items>
-                                     <ext:ComboBox
-                                            ID="cmbSubSubCategoria"
-                                            runat="server"
-                                            Width="200"
-                                            DisplayField="Descripcion"
-                                            ValueField="ID"
-                                            EnforceMaxLength="true"
-                                            StyleSpec="margin-right: 6px;"
-                                            AllowBlank="false">
-                                             <Store>
-                                                <ext:Store
-                                                    ID="sSubSubCategorias"
-                                                    runat="server">
-                                                    <Model>
-                                                        <ext:Model ID="mSubSubcategorias" runat="server" IDProperty="ID">
-                                                            <Fields>
-                                                                <ext:ModelField Name="ID" Type="String" />
-                                                                <ext:ModelField Name="Descripcion" Type="String" />
-                                                            </Fields>
-                                                        </ext:Model>
-                                                    </Model>
-                                                </ext:Store>
-                                            </Store>
-                                             <DirectEvents>
-                                                <Select OnEvent="cmbSubSubCategoria_Select">
-                                                    <ExtraParams>
-                                                        <ext:Parameter Name="subsubcategoria" Value="App.cmbSubSubCategoria.getValue()" Mode="Raw" />
-                                                        <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
-                                                        <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
-                                               
-                                                    </ExtraParams>
-                                                </Select>
-                                            </DirectEvents>
-                                        </ext:ComboBox>
-                                </Items>
-                            </ext:FieldContainer>
-                             <ext:FieldContainer
-                                ID="fcFiltroID"
-                                runat="server"
-                                FieldLabel="ID Concepto"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="ColumnLayout">
-                                <Items>
-                                    <ext:TextField
-                                        ID="txtConcepto"
-                                        runat="server"
-                                        Width="200"
-                                         StyleSpec="margin-right: 16px;"
-                                        AllowBlank="false"
-                                        Disabled="true">
-                                    </ext:TextField>
-                                    <ext:TextField
-                                        ID="txtBuscar"
-                                        runat="server"
-                                        EmptyText="Buscar ID/Concepto"
-                                        Width="295"
-                                        Disabled="false">
-                                                 <Listeners>
-                                                    <Change Fn="txtBuscar_Change" />
-                                                </Listeners> 
-                                        <RightButtons>
-                                            <ext:ImageButton
-                                                ID="imgbtnBuscar"
-                                                runat="server"
-                                                ImageUrl="assets/img/controles/search.png"
-                                                OverImageUrl=""
-                                                PressedImageUrl=""
-                                                Height="22px"
-                                                Width="22px">                                             
-                                            </ext:ImageButton>
-                                        </RightButtons>
-                                    </ext:TextField>
-                                </Items>
-                            </ext:FieldContainer>
-                            <ext:FieldContainer
-                                ID="fcDescripcion"
-                                runat="server"
-                                FieldLabel="Descripcion"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="ColumnLayout">
-                                <Items>
-                                    <ext:TextArea
-                                        ID="txtDescripcion"
-                                        runat="server"
-                                        Width="514"
-                                        Height="50"
-                                         StyleSpec="margin-right: 16px;"
-                                        AllowBlank="false"
-                                        Disabled="true">
-                                    </ext:TextArea>
-                                </Items>
-                            </ext:FieldContainer>
+                                            ImageUrl="assets/img/controles/search.png"
+                                            OverImageUrl=""
+                                            PressedImageUrl=""
+                                            Height="22px"
+                                            Width="22px">                                             
+                                        </ext:ImageButton>
+                                    </RightButtons>
+                                </ext:TextField>
+                            </Items>
+                        </ext:FieldContainer>--%>
+                        <ext:FieldContainer
+                            ID="fcDescripcion"
+                            runat="server"
+                            FieldLabel="Descripcion"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:TextArea
+                                    ID="txtDescripcion"
+                                    runat="server"
+                                    Width="514"
+                                    Height="50"
+                                    StyleSpec="margin-right: 16px;"
+                                    AllowBlank="false"
+                                    Disabled="true">
+                                </ext:TextArea>
+                            </Items>
+                        </ext:FieldContainer>
                     </Items>
                 </ext:Panel>
                 <%--  conceptos filtrados--%>
@@ -287,7 +284,7 @@
                                                 Width="250"
                                                 DataIndex="Descripcion">
                                             </ext:Column>
-                                             <ext:Column
+                                                <ext:Column
                                                 ID="cCantidad"
                                                 runat="server"
                                                 Align="Center"
@@ -303,7 +300,7 @@
                                                 DataIndex="Utilizada"
                                                 Width="100">
                                             </ext:Column>
-                                             <ext:Column
+                                                <ext:Column
                                                 ID="cUnidad"
                                                 runat="server"
                                                 Text="Unidad"
@@ -314,12 +311,13 @@
                                     </ColumnModel>
                                     <Listeners>
                                         <ItemClick Fn="gpConceptos_ItemClick" />
+                                        <ItemDblClick Fn="gpConceptos_ItemDblClick" />
                                     </Listeners>
                                     <SelectionModel>
-                                        <ext:CellSelectionModel
-                                            ID="csmPreciario" 
+                                        <ext:RowSelectionModel
+                                            ID="rsmConceptos"
                                             runat="server">
-                                        </ext:CellSelectionModel>
+                                        </ext:RowSelectionModel>
                                     </SelectionModel>
                                     <View>
                                         <ext:GridView
@@ -334,39 +332,7 @@
                         </ext:FieldSet>
                     </Items>
                 </ext:Panel>
-            </Items>
-             <Listeners>
-                <ValidityChange Handler=" #{imgbtnGuardar}.setDisabled(!valid);" />
-            </Listeners>
-            <Buttons>
-                <ext:ImageButton
-                    ID="imgbtnGuardar" 
-                    runat="server" 
-                    ImageUrl="assets/img/controles/Guardar.png" 
-                    DisabledImageUrl="assets/img/controles/GuardarDisabled.png"
-                    OverImageUrl="assets/img/controles/GuardarOver.png" 
-                    PressedImageUrl="assets/img/controles/GuardarPressed.png" 
-                    ToolTip="Seleccionar" 
-                    Height="50" 
-                    Width="50"
-                    Disabled="true">
-                </ext:ImageButton>
-                <ext:ImageButton
-                    ID="imgbtnCancelar"
-                    runat="server"
-                    ImageUrl="assets/img/controles/Cancelar.png"
-                    DisabledImageUrl="assets/img/controles/CancelarDisabled.png"
-                    OverImageUrl="assets/img/controles/CancelarOver.png"
-                    PressedImageUrl="assets/img/controles/CancelarPressed.png"
-                    ToolTip="Cancelar"
-                    Height="50"
-                    Width="50"
-                    MarginSpec="0 20 0 0">
-                    <Listeners>
-                        <Click Handler="window.parent.App.wEmergente.hide();" />
-                    </Listeners>
-                </ext:ImageButton>
-            </Buttons> 
+            </Items> 
         </ext:FormPanel>
     </form>
 </body>

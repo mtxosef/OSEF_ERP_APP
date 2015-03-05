@@ -302,13 +302,11 @@ namespace OSEF.APP.DL
             }
         }
 
-
-
         /// <summary>
-        /// Obtener todos los registros de PreciarioConcepto filtrando sus categorias
+        /// Obtener todos los registros de PreciarioConcepto filtrando su Preciario, Categoria, SubCategoria y SubSubCategoria
         /// </summary>
         /// <returns></returns>
-        public static List<PreciarioConcepto> ObtenerPreciarioConceptoFiltro(string strCategoria,string strSubCategoria, string strSubsubCategoria)
+        public static List<PreciarioConcepto> ObtenerPreciarioConceptoFiltro(string strPreciario, string strCategoria,string strSubCategoria, string strSubsubCategoria)
         {
             try
             {
@@ -320,15 +318,20 @@ namespace OSEF.APP.DL
                 sqlcComando.CommandText = "web_spS_ObtenerPreciarioConceptosFiltro";
 
                 //2. Declarar los parametros
-                
+                SqlParameter sqlpPreciario = new SqlParameter();
+                sqlpPreciario.ParameterName = "@Preciario";
+                sqlpPreciario.SqlDbType = SqlDbType.Char;
+                sqlpPreciario.Size = 7;
+                sqlpPreciario.Value = strPreciario;
+
                 SqlParameter sqlpCategoria = new SqlParameter();
-                sqlpCategoria.ParameterName = "@CATEGORIA";
+                sqlpCategoria.ParameterName = "@Categoria";
                 sqlpCategoria.SqlDbType = SqlDbType.Char;
                 sqlpCategoria.Size = 10;
                 sqlpCategoria.Value = strCategoria;
 
                 SqlParameter sqlpSubCategoria = new SqlParameter();
-                sqlpSubCategoria.ParameterName = "@subCategoria";
+                sqlpSubCategoria.ParameterName = "@SubCategoria";
                 sqlpSubCategoria.SqlDbType = SqlDbType.Char;
                 sqlpSubCategoria.Size = 10;
                 sqlpSubCategoria.Value = strSubCategoria;
@@ -338,7 +341,9 @@ namespace OSEF.APP.DL
                 sqlpSubSubCategoria.SqlDbType = SqlDbType.Char;
                 sqlpSubSubCategoria.Size = 10;
                 sqlpSubSubCategoria.Value = strSubsubCategoria;
+
                 //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpPreciario);
                 sqlcComando.Parameters.Add(sqlpCategoria);
                 sqlcComando.Parameters.Add(sqlpSubCategoria);
                 sqlcComando.Parameters.Add(sqlpSubSubCategoria);
@@ -360,7 +365,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static List<PreciarioConcepto> ObtenerPreciarioConcepto()): " + ex.Message);
+                throw new Exception("Error capa de datos (public static List<PreciarioConcepto> ObtenerPreciarioConceptoFiltro(string " + strPreciario + ", string " + strCategoria + ", string " + strSubCategoria + ", string " + strSubsubCategoria + ")): " + ex.Message);
             }
         }
 

@@ -433,6 +433,15 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     HabilitarAfectar();
 };
 
+var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
+    window.parent.App.wAyudaConcepto.load('FormaBuscaPreciarioConcepto.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(500);
+    window.parent.App.wAyudaConcepto.setWidth(685);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
+    window.parent.App.wAyudaConcepto.show();
+};
+
 
 //Evento que muestra el valor de la columna Concepto por su descripción y no por su ID del Detalle
 var cDescripcion_Renderer = function (valor) {

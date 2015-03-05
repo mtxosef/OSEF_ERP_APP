@@ -589,9 +589,9 @@
                                                 ID="cIDPreciario"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="350"
+                                                Width="325"
                                                 DataIndex="ConceptoID">
-                                                <Renderer Fn="cDescripcion_Renderer" />
+<%--                                                <Renderer Fn="cDescripcion_Renderer" />
                                                 <Editor>
                                                     <ext:ComboBox
                                                         ID="cmbConcepto"
@@ -631,9 +631,23 @@
                                                             <Select Fn="cmbConcepto_Select" />
                                                         </Listeners>
                                                     </ext:ComboBox>
-                                                </Editor>
+                                                </Editor>--%>
                                             </ext:Column>
-                                           
+                                            <ext:CommandColumn
+                                                ID="ccConcepto"
+                                                runat="server" 
+                                                Width="25">
+                                                <Commands>
+                                                    <ext:GridCommand
+                                                        Icon="Add"
+                                                        CommandName="Agregar">
+                                                        <ToolTip Text="Agregar concepto" />
+                                                    </ext:GridCommand>
+                                                </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccConcepto_Command" />
+                                                </Listeners>
+                                            </ext:CommandColumn>
                                             <ext:NumberColumn
                                                 ID="cCantidad"
                                                 runat="server"

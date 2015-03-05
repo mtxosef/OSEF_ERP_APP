@@ -7,14 +7,14 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     }
     }]);
     App.gpConceptos.getSelectionModel().deselectAll();
-
 };
-
 
 //Acciones al hacer clic en un registro
 var gpConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
-   
-    App.txtConcepto.setValue(registro.get('ID'));
     App.txtDescripcion.setValue(registro.get('Descripcion'));
-    indice = index;
+};
+
+//Hacer doble clic sobre algun concepto del GridPanel
+var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
+    console.log(window.parent.App.wEmergente.getBody().App.sConceptos);
 };

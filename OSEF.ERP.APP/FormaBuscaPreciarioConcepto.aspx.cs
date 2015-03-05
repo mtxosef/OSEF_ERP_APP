@@ -11,23 +11,22 @@ namespace OSEF.ERP.APP
 {
     public partial class FormaBuscaPreciarioConcepto : System.Web.UI.Page
     {
+        /// <summary>
+        /// Evento que se lanza al cargar la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
-
                 string preciario = Session["preciario"].ToString();
-                ////2. Cargar Conceptos
+                //2. Cargar Conceptos
                 sCategoria.DataSource = PreciarioCategoriaBuisness.ObtenerPreciarioCategoriasPorPreciario(preciario);
                 sCategoria.DataBind();
-
-
-
             }
         }
-
 
         /// <summary>
         /// Evento que se lanza al escoger una categoria
@@ -42,7 +41,6 @@ namespace OSEF.ERP.APP
             sSubCategoria.DataBind();
         }
 
-
         /// <summary>
         /// Evento que se lanza al seleccionar una subcategoria
         /// </summary>
@@ -56,20 +54,19 @@ namespace OSEF.ERP.APP
             sSubSubCategorias.DataBind();
         }
 
-
         /// <summary>
-        /// Evento que se lanza al seleccionar una subbsubcategoria
+        /// Evento de click que realiza la búsqueda de los conceptos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void cmbSubSubCategoria_Select(object sender, DirectEventArgs e)
+        protected void btnBuscar_Click(object sender, DirectEventArgs e)
         {
-            //1. Obtener el valor seleccionado 
-            string strCategoria = e.ExtraParams["categoria"];
-            string strSubCategoria = e.ExtraParams["subcategoria"];
-            string strSubSubCategoria = e.ExtraParams["subsubcategoria"];
+            //1. Obtener los valores para filtros
+            string strCategoria = e.ExtraParams["categoria"].Equals("null") ? string.Empty : e.ExtraParams["categoria"];
+            string strSubCategoria = e.ExtraParams["subcategoria"].Equals("null") ? string.Empty : e.ExtraParams["subcategoria"];
+            string strSubSubCategoria = e.ExtraParams["subsubcategoria"].Equals("null") ? string.Empty : e.ExtraParams["subsubcategoria"];            
 
-            sConceptosFiltrados.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(strCategoria, strSubCategoria, strSubSubCategoria);
+            sConceptosFiltrados.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(Session["preciario"].ToString(), strCategoria, strSubCategoria, strSubSubCategoria);
             sConceptosFiltrados.DataBind();
         }
     }

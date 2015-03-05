@@ -74,7 +74,7 @@ namespace OSEF.ERP.APP
             string strSubCategoria = e.ExtraParams["subcategoria"];
             string strSubSubCategoria = e.ExtraParams["subsubcategoria"];
 
-            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(strCategoria, strSubCategoria, strSubSubCategoria);
+            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(Session["preciario"].ToString(), strCategoria, strSubCategoria, strSubSubCategoria);
             sPreciarioConcepto.DataBind();
         }
     }

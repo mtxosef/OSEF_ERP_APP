@@ -166,40 +166,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mSubSubcategorias;
         
         /// <summary>
-        /// Control fcFiltroID.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcFiltroID;
-        
-        /// <summary>
-        /// Control txtConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtConcepto;
-        
-        /// <summary>
-        /// Control txtBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtBuscar;
-        
-        /// <summary>
-        /// Control imgbtnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBuscar;
+        protected global::Ext.Net.Button btnBuscar;
         
         /// <summary>
         /// Control fcDescripcion.
@@ -310,13 +283,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cUnidad;
         
         /// <summary>
-        /// Control csmPreciario.
+        /// Control rsmConceptos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.CellSelectionModel csmPreciario;
+        protected global::Ext.Net.RowSelectionModel rsmConceptos;
         
         /// <summary>
         /// Control gvPreciario.
@@ -326,23 +299,5 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.GridView gvPreciario;
-        
-        /// <summary>
-        /// Control imgbtnGuardar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnGuardar;
-        
-        /// <summary>
-        /// Control imgbtnCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnCancelar;
     }
 }
