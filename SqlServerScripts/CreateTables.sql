@@ -373,7 +373,7 @@ CREATE TABLE Preciarios(
 	FechaAlta		SMALLDATETIME	NOT NULL
 )
 
-CREATE TABLE PreciariosCategorias(
+CREATE TABLE PreciarioCategorias(
 	ID				CHAR(10)		NOT NULL PRIMARY KEY,
 	Clave			VARCHAR(7)		NULL,
 	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
@@ -384,43 +384,46 @@ CREATE TABLE PreciariosCategorias(
 )
 
 CREATE TABLE PreciarioSubCategorias(
- ID CHAR(10) NOT NULL PRIMARY KEY,
- CLAVE   CHAR(7) NULL,
- Preciario CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
- Descripcion VARCHAR(500)  NOT NULL,
- Categoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
- Estatus  VARCHAR(20)  NOT NULL,
- FechaAlta SMALLDATETIME NOT NULL
+	ID				CHAR(10)		NOT NULL PRIMARY KEY,
+	CLAVE			CHAR(7)			NULL,
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Descripcion		VARCHAR(500)	NOT NULL,
+	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus			VARCHAR(20)		NOT NULL,
+	FechaAlta		SMALLDATETIME	NOT NULL
 )
 
 CREATE TABLE PreciarioSubSubCategorias(
- ID CHAR(10) NOT NULL PRIMARY KEY,
- CLAVE   CHAR(7) NULL,
- Preciario  CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
- Descripcion  VARCHAR(500)  NOT NULL,
- Categoria  CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
- SubCategoria CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
- Estatus   VARCHAR(20)  NOT NULL,
- FechaAlta  SMALLDATETIME NOT NULL
+	ID				CHAR(10)		NOT NULL PRIMARY KEY,
+	CLAVE			CHAR(7)			NULL,
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Descripcion		VARCHAR(500)	NOT NULL,
+	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
+	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus			VARCHAR(20)		NOT NULL,
+	FechaAlta		SMALLDATETIME	NOT NULL
 )
 
 CREATE TABLE PreciarioConceptos(
-	ID					CHAR(10) NOT NULL PRIMARY KEY,
-	CLAVE				CHAR(7) NULL,
-	Preciario			CHAR(7)   NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
-	Descripcion			VARCHAR(2000)  NOT NULL,
-	Categoria			CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
-	SubCategoria		CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
-	SubSubCategoria		CHAR(10)   NOT NULL FOREIGN KEY REFERENCES PreciarioSubSubCategorias(ID),
-	Unidad				VARCHAR(30)  NULL,
-	Costo				DECIMAL(20,2),
-	Cantidad			DECIMAL(10,2),
-	Utilizada			DECIMAL(10,2) NULL,
-	Importe				DECIMAL(20,2),
-	Estatus				VARCHAR(20)  NOT NULL,
-	FechaAlta			SMALLDATETIME NOT NULL
+	ID				CHAR(10)		NOT NULL PRIMARY KEY,
+	CLAVE			CHAR(7)			NULL,
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Descripcion		VARCHAR(2000)	NOT NULL,
+	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
+	SubSubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioSubSubCategorias(ID),
+	Unidad			VARCHAR(30)		NULL,
+	Costo			DECIMAL(20,2),
+	Cantidad		DECIMAL(10,2),
+	Utilizada		DECIMAL(10,2)	NULL,
+	Importe			DECIMAL(20,2),
+	ImporteFinal	DECIMAL(20,2)	NULL,
+	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus			VARCHAR(20)		NOT NULL,
+	FechaAlta		SMALLDATETIME	NOT NULL
 )
-
 
 CREATE TABLE Volumetrias(
 	ID				INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -478,14 +481,11 @@ CREATE TABLE ImagenesVolumetriasD(
 --DROP TABLE Municipios
 --DROP TABLE Estados
 --DROP TABLE Usuarios
---DROP TABLE Preciarios
---DROP TABLE PreciarioCategorias
---DROP TABLE PreciarioSubCategorias
---DROP TABLE PreciarioSubSubCategorias
---DROP TABLE PreciarioConceptos
---DROP TABLE Volumetrias
 --DROP TABLE VolumetriasD
 --DROP TABLE ImagenesVolumetriasD
-
--- CORREGIR
---ALTER TABLE Sucursales ADD CR SMALLINT NOT NULL
+--DROP TABLE Volumetrias
+--DROP TABLE PreciarioConceptos
+--DROP TABLE PreciarioSubCategorias
+--DROP TABLE PreciarioSubSubCategorias
+--DROP TABLE PreciarioCategorias
+--DROP TABLE Preciarios

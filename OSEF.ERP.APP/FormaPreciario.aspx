@@ -25,15 +25,12 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/preciarios.js"></script>
-
-
-   
 </head>
 <body>
-  <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaPreciario" runat="server" HideInDesign="true" />
 
-         <ext:Store
+        <ext:Store
             ID="sPreciario"
             runat="server">
             <Model>
@@ -56,20 +53,20 @@
             </Listeners>
         </ext:Store>
 
-         <ext:FormPanel 
+        <ext:FormPanel 
             ID="fpPreciario"
             runat="server"
             MonitorResize="true"
             Height="530"
             Width="910"
             BodyStyle="background-color:#fff;">
-          <TopBar>
+            <TopBar>
                 <ext:Toolbar 
                     ID="tbFormaAvance" 
                     runat="server" 
                     Height="40">
                     <Items>
-                     <ext:ImageButton
+                        <ext:ImageButton
                             ID="imgbtnGuardar"
                             runat="server"
                             ImageUrl="assets/img/controles/SaveNormal.png"
@@ -80,19 +77,19 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                          <DirectEvents>
-                            <Click OnEvent="imgbtnGuardar_Click">
-                                <EventMask ShowMask="true" Msg="Registrando información..." />
-                                <ExtraParams>
-                                    <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
-                                    <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
-                                    <ext:Parameter Name="archivo" Value="App.txfArchivoActual.getValue()" Mode="Raw" />
-                                    <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
-                                </ExtraParams>
-                            </Click>
-                    </DirectEvents>
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnGuardar_Click">
+                                    <EventMask ShowMask="true" Msg="Registrando información..." />
+                                    <ExtraParams>
+                                        <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                        <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="archivo" Value="App.txfArchivoActual.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
+                                    </ExtraParams>
+                                </Click>
+                            </DirectEvents>
                         </ext:ImageButton>
-                       <ext:ImageButton 
+                        <ext:ImageButton 
                             ID="imgbtnCancelar"
                             runat="server"
                             ImageUrl="assets/img/controles/Cancelar.png"
@@ -102,14 +99,13 @@
                             ToolTip="Cancelar Movimiento"
                             Height="30"
                             Width="30">
-                             <Listeners>
+                            <Listeners>
                                 <Click Handler="window.parent.App.wEmergente.hide();" />
                             </Listeners>
                         </ext:ImageButton>
-                      
                     </Items>
                 </ext:Toolbar>
-              </TopBar>
+            </TopBar>
             <Items>
                 <ext:Panel 
                     ID="pDatosGenerales" 
@@ -133,7 +129,7 @@
                                     Width="200" 
                                     StyleSpec="margin-right: 6px;"
                                     Disabled="true">
-                                     <Listeners>
+                                    <Listeners>
                                         <Blur Handler="App.txtfID.setValue(App.txtfID.getValue().toUpperCase());" />
                                     </Listeners>
                                 </ext:TextField>
@@ -142,124 +138,123 @@
                                     runat="server"
                                     EmptyText="Nombre Preciario"
                                     Width="360"
-                                    AllowBlank="false">
+                                    AllowBlank="false"
+                                    AutoFocus="true">
                                     <Listeners>
                                         <Blur Fn="txtfDescripcion_Change"></Blur>
-                                        <%--<Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />--%>
                                     </Listeners>
-                                    </ext:TextField>
+                                </ext:TextField>
                             </Items>
                         </ext:FieldContainer>
                         <ext:FieldContainer
-                                ID="fcSucursal"
-                                runat="server"
-                                FieldLabel="Sucursal"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="ColumnLayout">
-                                <Items>
-                                    <ext:ComboBox
-                                            ID="cmbSucursal"
-                                            runat="server"
-                                            DisplayField="CR"
-                                            ValueField="ID"
-                                            Width="200"
-                                            MatchFieldWidth="false"
-                                            StyleSpec="margin-right: 6px;"
-                                            Cls="spanCustomCombo xEspacioCmbxCustom"
-                                            PageSize="10"
-                                            AllowBlank="false"
-                                            ForceSelection="true"
-                                            QueryMode="Local"
-                                            TypeAhead="true">
-                                            <ListConfig ID="lcEstado" runat="server" Width="350" Cls="xEspacioCmbxCustom">
-                                                <ItemTpl ID="itSucursal" runat="server">
-                                                    <Html>
-                                                        <div class="search-item">
-							                                <h3>{CR}</h3>
-                                                            <span>{ID} {Nombre}</span>
-						                                </div>
-                                                    </Html>
-                                                </ItemTpl>
-                                            </ListConfig>
-                                            <Store>
-                                                <ext:Store
-                                                    ID="sSucursales"
-                                                    runat="server">
-                                                    <Model>
-                                                        <ext:Model
-                                                            ID="mSucursales"
-                                                            runat="server">
-                                                            <Fields>
-                                                                <ext:ModelField Name="ID" />
-                                                                <ext:ModelField Name="Nombre" />
-                                                                <ext:ModelField Name="CR" />
-                                                            </Fields>
-                                                        </ext:Model>                            
-                                                    </Model>
-                                                    <Listeners>
-                                                        <Load Fn="sSucursales_Load" />
-                                                    </Listeners>
-                                                </ext:Store>
-                                            </Store>
-                                            <Listeners>
-                                                <Select Fn="cmbSucursal_Select" />
-                                                <Change Fn="cmbSucursal_Change" />
-                                            </Listeners>
-                                            <DirectEvents>
-                                                <Select OnEvent="cmbSucursales_Change" Success="cmbSucursal_Change_Success"> 
-                                                    <ExtraParams>
-                                                        <ext:Parameter Name="valor" Value="App.cmbSucursal.getValue()" Mode="Raw" />
-                                                    </ExtraParams>
-                                                </Select>
-                                            </DirectEvents>
-                                        </ext:ComboBox>
-                                    <ext:TextField
-                                        ID="txtfSucursalNombre"
-                                        runat="server"
-                                        Width="360"
-                                        Disabled="true">
-                                    </ext:TextField>
-                                </Items>
-                            </ext:FieldContainer>
-                        <ext:FieldContainer 
-                                    ID="fcFechaEmision"
+                            ID="fcSucursal"
+                            runat="server"
+                            FieldLabel="Sucursal"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:ComboBox
+                                    ID="cmbSucursal"
                                     runat="server"
-                                    LabelWidth="120"
-                                    FieldLabel="Fecha de Emisión"
-                                    AnchorHorizontal="100%"
-                                    Layout="ColumnLayout">
+                                    DisplayField="CR"
+                                    ValueField="ID"
+                                    Width="200"
+                                    MatchFieldWidth="false"
+                                    StyleSpec="margin-right: 6px;"
+                                    Cls="spanCustomCombo xEspacioCmbxCustom"
+                                    PageSize="10"
+                                    AllowBlank="false"
+                                    ForceSelection="true"
+                                    QueryMode="Local"
+                                    TypeAhead="true">
+                                    <ListConfig ID="lcEstado" runat="server" Width="350" Cls="xEspacioCmbxCustom">
+                                        <ItemTpl ID="itSucursal" runat="server">
+                                            <Html>
+                                                <div class="search-item">
+							                        <h3>{CR}</h3>
+                                                    <span>{ID} {Nombre}</span>
+						                        </div>
+                                            </Html>
+                                        </ItemTpl>
+                                    </ListConfig>
+                                    <Store>
+                                        <ext:Store
+                                            ID="sSucursales"
+                                            runat="server">
+                                            <Model>
+                                                <ext:Model
+                                                    ID="mSucursales"
+                                                    runat="server">
+                                                    <Fields>
+                                                        <ext:ModelField Name="ID" />
+                                                        <ext:ModelField Name="Nombre" />
+                                                        <ext:ModelField Name="CR" />
+                                                    </Fields>
+                                                </ext:Model>                            
+                                            </Model>
+                                            <Listeners>
+                                                <Load Fn="sSucursales_Load" />
+                                            </Listeners>
+                                        </ext:Store>
+                                    </Store>
+                                    <Listeners>
+                                        <Select Fn="cmbSucursal_Select" />
+                                        <Change Fn="cmbSucursal_Change" />
+                                    </Listeners>
+                                    <DirectEvents>
+                                        <Select OnEvent="cmbSucursales_Change" Success="cmbSucursal_Change_Success"> 
+                                            <ExtraParams>
+                                                <ext:Parameter Name="valor" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                            </ExtraParams>
+                                        </Select>
+                                    </DirectEvents>
+                                </ext:ComboBox>
+                                <ext:TextField
+                                    ID="txtfSucursalNombre"
+                                    runat="server"
+                                    Width="360"
+                                    Disabled="true">
+                                </ext:TextField>
+                            </Items>
+                        </ext:FieldContainer>
+                        <ext:FieldContainer 
+                            ID="fcFechaEmision"
+                            runat="server"
+                            LabelWidth="120"
+                            FieldLabel="Fecha de Emisión"
+                            AnchorHorizontal="100%"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:DateField
+                                    ID="dfFechaEmision"
+                                    runat="server"
+                                    Width="200"
+                                    StyleSpec="margin-right: 6px;"
+                                    Disabled="true">
+                                    <PickerOptions 
+                                        ID="pOFechaEmision"
+                                        runat="server"
+                                        Cls="my-date-picker">
+                                    </PickerOptions>
+                                </ext:DateField>
+                                <ext:ComboBox 
+                                    ID="cmbEstatus"
+                                    runat="server"
+                                    Width="200"
+                                    Disabled="true">
+                                    <SelectedItems >
+                                        <ext:ListItem Index="0">
+                                        </ext:ListItem>
+                                    </SelectedItems>
                                     <Items>
-                                        <ext:DateField
-                                            ID="dfFechaEmision"
-                                            runat="server"
-                                            Width="200"
-                                            StyleSpec="margin-right: 6px;"
-                                            Disabled="true">
-                                            <PickerOptions 
-                                                ID="pOFechaEmision"
-                                                runat="server"
-                                                Cls="my-date-picker">
-                                            </PickerOptions>
-                                           
-                                        </ext:DateField>
-                                        <ext:ComboBox 
-                                            ID="cmbEstatus"
-                                            runat="server"
-                                            Width="200"
-                                            Disabled="true">
-                                            <SelectedItems >
-                                                <ext:ListItem Index="0">
-                                                </ext:ListItem>
-                                            </SelectedItems>
-                                            <Items>
-                                                <ext:ListItem Index="0" Text="ACTIVO" Value="ACTIVO" />
-                                                <ext:ListItem Index="1" Text="INACTIVO" Value="INACTIVO" />
-                                                <ext:ListItem Index="2" Text="BORRADOR" Value="BORRADOR" />
-                                            </Items>
-                                        </ext:ComboBox>
+                                        <ext:ListItem Index="0" Text="ACTIVO" Value="ACTIVO" />
+                                        <ext:ListItem Index="1" Text="INACTIVO" Value="INACTIVO" />
+                                        <ext:ListItem Index="2" Text="BORRADOR" Value="BORRADOR" />
                                     </Items>
-                                </ext:FieldContainer>
+                                </ext:ComboBox>
+                            </Items>
+                        </ext:FieldContainer>
                         <ext:FieldContainer
                             ID="fcSeleccionar"
                             runat="server"
@@ -268,22 +263,20 @@
                             LabelWidth="120"
                             Layout="ColumnLayout">
                             <Items>
-                            <ext:FileUploadField 
-                                ID="fufArchivoExcel" 
-                                runat="server" 
-                                Icon="Attach"
-                                EmptyText="No haz seleccionado un archivo"
-                                AllowBlank="false" 
-                                
-                                Width="304"
-                                StyleSpec="margin-right: 6px;" 
-                                Text="">
-                                    <Listeners>
-                                        <Change Fn="CheckExtension" />
-                                    </Listeners>
+                                <ext:FileUploadField 
+                                    ID="fufArchivoExcel" 
+                                    runat="server" 
+                                    Icon="Attach"
+                                    EmptyText="No haz seleccionado un archivo"
+                                    AllowBlank="false"
+                                    Width="304"
+                                    StyleSpec="margin-right: 6px;" 
+                                    Text="">
+                                        <Listeners>
+                                            <Change Fn="CheckExtension" />
+                                        </Listeners>
                                 </ext:FileUploadField>
-
-                                    <ext:NumberField
+                                <ext:NumberField
                                     ID="nfHoja"
                                     runat="server"
                                     Width="207"
@@ -299,7 +292,6 @@
                                     LabelWidth="120"
                                     AllowBlank="false">
                                 </ext:NumberField>
-                             
                                 <ext:ImageButton 
                                     ID="btnCargar"
                                     runat="server"
@@ -311,11 +303,11 @@
                                     ToolTip="Cargar Archivo"
                                     Height="23"
                                     Width="23">
-                                        <DirectEvents>
-                                            <Click OnEvent="btnImportar_Click" Success="btnImportar_Click_Success">
+                                    <DirectEvents>
+                                        <Click OnEvent="btnImportar_Click" Success="btnImportar_Click_Success">
                                             <EventMask ShowMask="true" Msg="Importando datos..." />
                                         </Click>
-                                </DirectEvents>
+                                    </DirectEvents>
                                 </ext:ImageButton>
                                 <ext:ImageButton 
                                     ID="imgbtnBorrarCarga"
@@ -335,24 +327,23 @@
                             </Items>
                         </ext:FieldContainer> 
                         <ext:FieldContainer
-                                ID="fcSeleccionado"
-                                runat="server"
-                                FieldLabel="Archivo Actual"
-                                AnchorHorizontal="100%"
-                                LabelWidth="120"
-                                Layout="ColumnLayout">
-                                <Items>
-                                     <ext:TextField
-                                        ID="txfArchivoActual"
-                                        runat="server"
-                                        Width="406"
-                                        Disabled="true">
-                                    </ext:TextField>
-                                </Items>
-                            </ext:FieldContainer> 
+                            ID="fcSeleccionado"
+                            runat="server"
+                            FieldLabel="Archivo Actual"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:TextField
+                                    ID="txfArchivoActual"
+                                    runat="server"
+                                    Width="406"
+                                    Disabled="true">
+                                </ext:TextField>
+                            </Items>
+                        </ext:FieldContainer> 
                     </Items>
                 </ext:Panel>
-     
                 <%--  DETALLE PRECIARIO--%>
                 <ext:Panel
                     ID="pPreciario"
@@ -406,9 +397,7 @@
                                              <Load Fn="sCarga_Load" ></Load>
                                         </Listeners>  
                                         </ext:Store>
-                                        
                                     </Store>
-
                                     <ColumnModel 
                                         ID="cmPreciario" 
                                         runat="server">
@@ -519,9 +508,7 @@
                                             StripeRows="true">
                                         </ext:GridView>
                                     </View>
-                                   
                                     <BottomBar>
-
                                         <ext:Toolbar ID="tPreciarioConcepto" runat="server">
                                                 <Items>
                                                <ext:DisplayField ID="dfTotalInicial"
@@ -539,11 +526,9 @@
                                                     Width="240"
                                                     Text="$" >
                                                     </ext:DisplayField>
-              
                                                 </Items>
                                             </ext:Toolbar>
                                     </BottomBar>
-                                
                                 </ext:GridPanel>
                                 <%--Fin Detalle PRECIARIO--%>
                             </Items>
@@ -557,24 +542,16 @@
                                                 iconCls: valid ? 'icon-accept' : 'icon-exclamation'
                                             });
                                             #{imgbtnGuardar}.setDisabled(!valid);" />
-
-            
             </Listeners>
-          
             <BottomBar>
                 <ext:StatusBar 
-                ID="sbFormaPreciario" 
-                runat="server" 
-                Cls="x-colorToolbar" 
-                Text="BORRADOR">
+                    ID="sbFormaPreciario" 
+                    runat="server" 
+                    Cls="x-colorToolbar" 
+                    Text="BORRADOR">
                 </ext:StatusBar>
-               
-             
-
             </BottomBar>
-             
         </ext:FormPanel>
- 
     </form>
 </body>
 </html>

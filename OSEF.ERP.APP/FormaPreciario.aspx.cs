@@ -25,15 +25,11 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
-
                 //2. Cargar sucursales
                 sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
                 sSucursales.DataBind();
-
             }
         }
-
-
 
         /// <summary>
         /// Evento que se lanza al escoger un elemento de Sucursales
