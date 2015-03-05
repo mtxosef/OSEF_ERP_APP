@@ -50,8 +50,6 @@ namespace OSEF.ERP.APP
               string connectionString = ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString;
             try
             {
-              
-                
                 using (var comando = new SqlCommand("web_spS_ObtenerCambiosPreciario", conn))
                 {
                     using (var adaptador = new SqlDataAdapter(comando))
@@ -88,7 +86,6 @@ namespace OSEF.ERP.APP
                     conn.Close();
                 conn.Dispose();
             }
-
 
         }
 
