@@ -94,15 +94,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mCategoria;
         
         /// <summary>
-        /// Control txtCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCategoria;
-        
-        /// <summary>
         /// Control fcFiltro2.
         /// </summary>
         /// <remarks>
@@ -121,13 +112,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbSubCategoria;
         
         /// <summary>
-        /// Control txtSubcategoria.
+        /// Control sSubCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSubcategoria;
+        protected global::Ext.Net.Store sSubCategoria;
+        
+        /// <summary>
+        /// Control mSubCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSubCategoria;
         
         /// <summary>
         /// Control fcFiltro3.
@@ -148,13 +148,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbSubSubCategoria;
         
         /// <summary>
-        /// Control txtSubSubCategoria.
+        /// Control sSubSubCategorias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSubSubCategoria;
+        protected global::Ext.Net.Store sSubSubCategorias;
+        
+        /// <summary>
+        /// Control mSubSubcategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSubSubcategorias;
         
         /// <summary>
         /// Control fcFiltroID.
@@ -173,6 +182,42 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtConcepto;
+        
+        /// <summary>
+        /// Control txtBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtBuscar;
+        
+        /// <summary>
+        /// Control imgbtnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnBuscar;
+        
+        /// <summary>
+        /// Control fcDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcDescripcion;
+        
+        /// <summary>
+        /// Control txtDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextArea txtDescripcion;
         
         /// <summary>
         /// Control pConceptos.
@@ -202,13 +247,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.GridPanel gpConceptos;
         
         /// <summary>
-        /// Control sCarga.
+        /// Control sConceptosFiltrados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sCarga;
+        protected global::Ext.Net.Store sConceptosFiltrados;
         
         /// <summary>
         /// Control mCarga.

@@ -138,7 +138,16 @@
                             ToolTip="Información"
                             Height="30"
                             Width="30"
-                            Disabled="true">
+                            Disabled="false">
+                            <DirectEvents>
+                             
+                             <Click OnEvent="imgBtnPreciarioPrueba_Click" Success="imgBtnPreciarioPrueba_Click_Success">
+                                    <EventMask ShowMask="true" Msg="Cargando conceptos..." />
+                                   <ExtraParams>
+                                    <ext:Parameter Name="preciario" Value="App.cmbPreciario.getValue()" Mode="Raw" />
+                                    </ExtraParams>
+                             </Click>
+                           </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnAfectar"

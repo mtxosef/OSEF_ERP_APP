@@ -732,3 +732,16 @@ function DeshabilitarControlesAfectar() {
     App.imgbtnGuardar.setDisabled(true);
     App.imgbtnBorrar.setDisabled(true);
 }
+
+
+
+var imgBtnPreciarioPrueba_Click_Success = function (response, result) {
+
+    window.parent.App.wAyudaConcepto.load('FormaBuscaPreciarioConcepto.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(500);
+    window.parent.App.wAyudaConcepto.setWidth(685);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
+    window.parent.App.wAyudaConcepto.show();
+
+}

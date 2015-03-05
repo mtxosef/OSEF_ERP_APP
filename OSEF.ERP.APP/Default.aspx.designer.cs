@@ -31,6 +31,24 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmDefault;
         
         /// <summary>
+        /// Control sUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sUsuario;
+        
+        /// <summary>
+        /// Control mUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mUsuario;
+        
+        /// <summary>
         /// Control btnUsuario.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,24 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.MenuItem miCerrarSesion;
         
         /// <summary>
+        /// Control imgbtnRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnRegresar;
+        
+        /// <summary>
+        /// Control pCentro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel pCentro;
+        
+        /// <summary>
         /// Control wEmergente.
         /// </summary>
         /// <remarks>
@@ -83,5 +119,23 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Window wEmergente;
+        
+        /// <summary>
+        /// Control wAyudaConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wAyudaConcepto;
+        
+        /// <summary>
+        /// Control wEmergenteGraficas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wEmergenteGraficas;
     }
 }

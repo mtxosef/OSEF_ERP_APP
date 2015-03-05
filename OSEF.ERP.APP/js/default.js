@@ -1,8 +1,8 @@
 ﻿//Método que abre la pantalla de cambiar contraseña
 var miCambiarContrasena_Click = function () {
     window.parent.App.wEmergente.load('FormaCambiarContrasena.aspx');
-    window.parent.App.wEmergente.setHeight(275);
-    window.parent.App.wEmergente.setWidth(415);
+    window.parent.App.wEmergente.setHeight(258);
+    window.parent.App.wEmergente.setWidth(420);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Cambiar contraseña usuario: ');
     window.parent.App.wEmergente.show();

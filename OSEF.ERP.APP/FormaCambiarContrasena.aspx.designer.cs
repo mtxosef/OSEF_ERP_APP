@@ -10,7 +10,7 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class FormaCambiarPass {
+    public partial class FormaCambiarContrasena {
         
         /// <summary>
         /// Control Head1.
@@ -56,5 +56,14 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfContrasena;
+        
+        /// <summary>
+        /// Control txtfConfirmarContrasena.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfConfirmarContrasena;
     }
 }

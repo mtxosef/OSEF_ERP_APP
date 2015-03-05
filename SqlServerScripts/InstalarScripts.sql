@@ -251,6 +251,7 @@
 -- PreciarioSubCategoria (Consultar)
 :r c:\SqlServerScripts\Consultar\PreciarioSubCategoria\web_spS_ObtenerPreciarioSubCategorias.sql
 :r c:\SqlServerScripts\Consultar\PreciarioSubCategoria\web_spS_ObtenerPreciarioSubCategoriasPorID.sql
+:r c:\SqlServerScripts\Consultar\PreciarioSubCategoria\web_spS_ObtenerPreciarioSubCategoriasPorCategoria.sql
 -- PreciarioSubCategoria (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciarioSubCategoria\web_spI_InsertarPreciarioSubCategorias.sql
 -- PreciarioSubCategoria (Modificar)
@@ -261,6 +262,8 @@
 -- PreciarioSubSubCategoria (Consultar)
 :r c:\SqlServerScripts\Consultar\PreciarioSubSubCategoria\web_spS_ObtenerPreciarioSubSubCategorias.sql
 :r c:\SqlServerScripts\Consultar\PreciarioSubSubCategoria\web_spS_ObtenerPreciarioSubSubCategoriasPorID.sql
+:r c:\SqlServerScripts\Consultar\PreciarioSubSubCategoria\web_spS_ObtenerPreciarioSubSubCategoriasPorSubCategoria.sql
+
 -- PreciarioSubSubCategoria (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciarioSubSubCategoria\web_spI_InsertarPreciarioSubSubCategorias.sql
 -- PreciarioSubSubCategoria (Modificar)
@@ -271,6 +274,7 @@
 -- PreciarioConcepto (Consultar)
 :r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptoPorPreciario.sql
 :r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptos.sql
+:r c:\SqlServerScripts\Consultar\PreciarioConcepto\web_spS_ObtenerPreciarioConceptosFiltro.sql
 -- PreciarioConcepto (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciarioConcepto\web_spI_InsertarPreciarioConcepto.sql
 -- PreciarioConcepto (Modificar)

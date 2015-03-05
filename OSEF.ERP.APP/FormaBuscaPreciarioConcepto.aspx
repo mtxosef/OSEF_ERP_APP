@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
+      <script type='text/javascript' src="js/buscaConceptoPreciario.js"></script>
 </head>
 <body>
   <form id="form1" runat="server">
@@ -42,7 +43,7 @@
                     runat="server" 
                     BodyPadding="10"
                     Width="700"
-                    Height="127" 
+                    Height="180" 
                     AutoScroll="false">
                     <Items>
                         <ext:FieldContainer
@@ -57,9 +58,10 @@
                                         ID="cmbCategoria"
                                         runat="server"
                                         Width="200"
-                                        MatchFieldWidth="false"
+                                        DisplayField="Descripcion"
+                                        ValueField="ID"
+                                        EnforceMaxLength="true"
                                         StyleSpec="margin-right: 6px;"
-                                        Cls="spanCustomCombo xEspacioCmbxCustom"
                                         AllowBlank="false">
                                         <Store>
                                             <ext:Store ID="sCategoria" runat="server">
@@ -73,13 +75,14 @@
                                                 </Model>
                                             </ext:Store>
                                         </Store>
+                                        <DirectEvents>
+                                            <Change OnEvent="cmbCategoria_Change">
+                                                <ExtraParams>
+                                                    <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
+                                                </ExtraParams>
+                                            </Change>
+                                        </DirectEvents>
                                     </ext:ComboBox>
-                                    <ext:TextField
-                                        ID="txtCategoria"
-                                        runat="server"
-                                        Width="300"
-                                        Disabled="true">
-                                    </ext:TextField>
                                 </Items>
                             </ext:FieldContainer>
                           <ext:FieldContainer
@@ -94,17 +97,34 @@
                                             ID="cmbSubCategoria"
                                             runat="server"
                                             Width="200"
-                                            MatchFieldWidth="false"
+                                            DisplayField="Descripcion"
+                                            ValueField="ID"
+                                            EnforceMaxLength="true"
                                             StyleSpec="margin-right: 6px;"
-                                            Cls="spanCustomCombo xEspacioCmbxCustom"
                                             AllowBlank="false">
+                                            <Store>
+                                                <ext:Store
+                                                    ID="sSubCategoria"
+                                                    runat="server">
+                                                    <Model>
+                                                        <ext:Model ID="mSubCategoria" runat="server" IDProperty="ID">
+                                                            <Fields>
+                                                                <ext:ModelField Name="ID" Type="String" />
+                                                                <ext:ModelField Name="Descripcion" Type="String" />
+                                                            </Fields>
+                                                        </ext:Model>
+                                                    </Model>
+                                                </ext:Store>
+                                            </Store>
+                                            <DirectEvents>
+                                                <Select OnEvent="cmbSubCategoria_Select">
+                                                    <ExtraParams>
+                                                        <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
+                                                    </ExtraParams>
+                                                </Select>
+                                            </DirectEvents>
                                         </ext:ComboBox>
-                                    <ext:TextField
-                                        ID="txtSubcategoria"
-                                        runat="server"
-                                        Width="300"
-                                        Disabled="true">
-                                    </ext:TextField>
+                                  
                                 </Items>
                             </ext:FieldContainer>
                             <ext:FieldContainer
@@ -119,17 +139,36 @@
                                             ID="cmbSubSubCategoria"
                                             runat="server"
                                             Width="200"
-                                            MatchFieldWidth="false"
+                                            DisplayField="Descripcion"
+                                            ValueField="ID"
+                                            EnforceMaxLength="true"
                                             StyleSpec="margin-right: 6px;"
-                                            Cls="spanCustomCombo xEspacioCmbxCustom"
                                             AllowBlank="false">
+                                             <Store>
+                                                <ext:Store
+                                                    ID="sSubSubCategorias"
+                                                    runat="server">
+                                                    <Model>
+                                                        <ext:Model ID="mSubSubcategorias" runat="server" IDProperty="ID">
+                                                            <Fields>
+                                                                <ext:ModelField Name="ID" Type="String" />
+                                                                <ext:ModelField Name="Descripcion" Type="String" />
+                                                            </Fields>
+                                                        </ext:Model>
+                                                    </Model>
+                                                </ext:Store>
+                                            </Store>
+                                             <DirectEvents>
+                                                <Select OnEvent="cmbSubSubCategoria_Select">
+                                                    <ExtraParams>
+                                                        <ext:Parameter Name="subsubcategoria" Value="App.cmbSubSubCategoria.getValue()" Mode="Raw" />
+                                                        <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
+                                                        <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
+                                               
+                                                    </ExtraParams>
+                                                </Select>
+                                            </DirectEvents>
                                         </ext:ComboBox>
-                                    <ext:TextField
-                                        ID="txtSubSubCategoria"
-                                        runat="server"
-                                        Width="300"
-                                        Disabled="true">
-                                    </ext:TextField>
                                 </Items>
                             </ext:FieldContainer>
                              <ext:FieldContainer
@@ -144,14 +183,55 @@
                                         ID="txtConcepto"
                                         runat="server"
                                         Width="200"
+                                         StyleSpec="margin-right: 16px;"
                                         AllowBlank="false"
-                                        Disabled="false">
+                                        Disabled="true">
                                     </ext:TextField>
+                                    <ext:TextField
+                                        ID="txtBuscar"
+                                        runat="server"
+                                        EmptyText="Buscar ID/Concepto"
+                                        Width="295"
+                                        Disabled="false">
+                                                 <Listeners>
+                                                    <Change Fn="txtBuscar_Change" />
+                                                </Listeners> 
+                                        <RightButtons>
+                                            <ext:ImageButton
+                                                ID="imgbtnBuscar"
+                                                runat="server"
+                                                ImageUrl="assets/img/controles/search.png"
+                                                OverImageUrl=""
+                                                PressedImageUrl=""
+                                                Height="22px"
+                                                Width="22px">                                             
+                                            </ext:ImageButton>
+                                        </RightButtons>
+                                    </ext:TextField>
+                                </Items>
+                            </ext:FieldContainer>
+                            <ext:FieldContainer
+                                ID="fcDescripcion"
+                                runat="server"
+                                FieldLabel="Descripcion"
+                                AnchorHorizontal="100%"
+                                LabelWidth="120"
+                                Layout="ColumnLayout">
+                                <Items>
+                                    <ext:TextArea
+                                        ID="txtDescripcion"
+                                        runat="server"
+                                        Width="514"
+                                        Height="50"
+                                         StyleSpec="margin-right: 16px;"
+                                        AllowBlank="false"
+                                        Disabled="true">
+                                    </ext:TextArea>
                                 </Items>
                             </ext:FieldContainer>
                     </Items>
                 </ext:Panel>
-                <%--  DETALLE PRECIARIO--%>
+                <%--  conceptos filtrados--%>
                 <ext:Panel
                     ID="pConceptos"
                     runat="server"
@@ -162,7 +242,7 @@
                         <ext:FieldSet
                             ID="fsConceptos" 
                             runat="server" 
-                            Height="245" 
+                            Height="190" 
                             Title="Conceptos"
                             DefaultAnchor="100%">
                             <Items>
@@ -170,15 +250,16 @@
                                     ID="gpConceptos"
                                     runat="server"
                                     Width="700"
-                                    Height="220">
+                                    Height="170">
                                     <Store>
                                         <ext:Store
-                                            ID="sCarga"
+                                            ID="sConceptosFiltrados"
                                             runat="server">
                                             <Model>
                                                 <ext:Model ID="mCarga" runat="server">
                                                     <Fields>
                                                         <ext:ModelField Name="ID" Type="String" />
+                                                        <ext:ModelField Name="Clave" Type="String" />
                                                         <ext:ModelField Name="Descripcion" Type="String" />
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />
@@ -203,7 +284,7 @@
                                                 ID="cConcepto"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="260"
+                                                Width="250"
                                                 DataIndex="Descripcion">
                                             </ext:Column>
                                              <ext:Column
@@ -226,11 +307,14 @@
                                                 ID="cUnidad"
                                                 runat="server"
                                                 Text="Unidad"
-                                                Width="60"
+                                                Width="80"
                                                 DataIndex="Unidad">
                                             </ext:Column>
                                         </Columns>
                                     </ColumnModel>
+                                    <Listeners>
+                                        <ItemClick Fn="gpConceptos_ItemClick" />
+                                    </Listeners>
                                     <SelectionModel>
                                         <ext:CellSelectionModel
                                             ID="csmPreciario" 
@@ -245,7 +329,7 @@
                                         </ext:GridView>
                                     </View>
                                 </ext:GridPanel>
-                                <%--Fin Detalle PRECIARIO--%>
+                                <%--Fin conceptos filtro--%>
                             </Items>
                         </ext:FieldSet>
                     </Items>

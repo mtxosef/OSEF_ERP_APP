@@ -9,7 +9,7 @@ using OSEF.APP.BL;
 
 namespace OSEF.ERP.APP
 {
-    public partial class FormaCambiarPass : System.Web.UI.Page
+    public partial class FormaCambiarContrasena : System.Web.UI.Page
     {
         /// <summary>
         /// Evento que se lanza al cargar la página

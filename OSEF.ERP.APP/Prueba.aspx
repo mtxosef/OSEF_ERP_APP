@@ -8,8 +8,8 @@
     <script type="text/javascript">
         var btnWindow_Click = function () {
             App.wEmergente.load('InnerForm.aspx');
-            App.wEmergente.setHeight(400);
-            App.wEmergente.setWidth(600);
+            App.wEmergente.setHeight(258);
+            App.wEmergente.setWidth(500);
             App.wEmergente.center();
             App.wEmergente.setTitle('Inner Form in a Window');
             App.wEmergente.show();

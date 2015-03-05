@@ -12,12 +12,14 @@
 
         <ext:TextField
             ID="txtfText1"
-            runat="server">
+            runat="server"
+            FieldLabel="Test1">
         </ext:TextField>
 
         <ext:TextField
             ID="TextField2"
-            runat="server">
+            runat="server"
+            FieldLabel="Test2">
         </ext:TextField>
     </form>
 </body>

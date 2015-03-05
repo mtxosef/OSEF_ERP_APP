@@ -71,6 +71,16 @@ namespace OSEF.APP.BL
             return PreciarioSubSubCategoriaDataAccess.ObtenerPreciarioSubSubCategoriaPorID(strID);
         }
 
+        /// <summary>
+        /// Obtener un registro de PreciarioSubSubCategoria por su SubCategoria
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static List<PreciarioSubSubCategoria> ObtenerPreciarioSubSubCategoriaPorSubCategoria(string strID)
+        {
+            return PreciarioSubSubCategoriaDataAccess.ObtenerPreciarioSubSubCategoriaPorSubCategoria(strID);
+        }
+
         #endregion
 
     }

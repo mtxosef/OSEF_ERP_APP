@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaCambiarContrasena.aspx.cs" Inherits="OSEF.ERP.APP.FormaCambiarPass" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaCambiarContrasena.aspx.cs" Inherits="OSEF.ERP.APP.FormaCambiarContrasena" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -33,32 +33,41 @@
 <%--        <ext:FormPanel 
             ID="fpCambiarContrasena" 
             runat="server"
-            BodyPadding="10"
+            BodyPadding="0"
             Width="400">
             <Items>
-            <ext:FieldSet
+                <ext:FieldSet
                     ID="fsDivisorDatos" 
                     runat="server"
                     Title="Cambiar Contraseña">
                     <Items>--%>
                         <ext:TextField
                             ID="txtfContrasenaActual"
-                            runat="server">
+                            runat="server"
+                            LabelWidth="130"
+                            Width="400"
+                            FieldLabel="Contraseña actual">
                         </ext:TextField>
                         <ext:TextField
                             ID="txtfContrasena"
-                            runat="server">
+                            runat="server"
+                            LabelWidth="130"
+                            Width="400"
+                            FieldLabel="Contraseña">
                         </ext:TextField>
-<%--                        <ext:TextField
+                        <ext:TextField
                             ID="txtfConfirmarContrasena"
-                            runat="server">
-                        </ext:TextField>--%>
+                            runat="server"
+                            LabelWidth="130"
+                            Width="400"
+                            FieldLabel="Confirmar contraseña">
+                        </ext:TextField>
 <%--                        <ext:TextField
                             ID="txtfContrasenaActual"
                             runat="server"
-                            LabelWidth="150"
+                            LabelWidth="130"
                             Width="350"
-                            FieldLabel="Contraseña actual" 
+                            FieldLabel="Contraseña actual"
                             AllowBlank="false"
                             AutoFocus="true"
                             MaxLength="50"
@@ -77,14 +86,14 @@
 <%--                        <ext:TextField
                             ID="txtfContrasena"
                             runat="server"
-                            LabelWidth="150"
+                            LabelWidth="130"
                             Width="350"
-                            FieldLabel="Contraseña" 
+                            FieldLabel="Contraseña"
                             AllowBlank="false"
                             MaxLength="50"
                             EnforceMaxLength="true">--%>
-<%--                        <Validator Fn="txtfContrasena_Validator" />
-                           <Plugins>
+<%--                            <Validator Fn="txtfContrasena_Validator" />
+                            <Plugins>
                                 <ext:PasswordMask ID="pmContrasena" runat="server">
                                 </ext:PasswordMask>
                                 <ext:CapsLockDetector ID="cldContrasena" runat="server">
@@ -98,14 +107,14 @@
 <%--                        <ext:TextField
                             ID="txtfConfirmarContrasena"
                             runat="server"
-                            LabelWidth="150"
+                            LabelWidth="130"
                             Width="350"
                             FieldLabel="Confirmar contraseña"
                             AllowBlank="false"
                             MaxLength="50"
                             EnforceMaxLength="true">--%>
 <%--                            <Validator Fn="txtfConfirmarContrasena_Validator" />
-                           <Plugins>
+                            <Plugins>
                                 <ext:PasswordMask ID="pmConfirmarContrasena" runat="server">
                                 </ext:PasswordMask>
                                 <ext:CapsLockDetector ID="cldConfirmarContrasena" runat="server">
