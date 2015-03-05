@@ -35,7 +35,6 @@ namespace OSEF.APP.DL
                 sqlpID.SqlDbType = SqlDbType.Char;
                 sqlpID.Size = 10;
                 sqlpID.Direction = ParameterDirection.Output;
-              
 
                 //2. Declarar los parametros
                 SqlParameter sqlpClave = new SqlParameter();
@@ -61,6 +60,11 @@ namespace OSEF.APP.DL
                 sqlpCategoria.Size = 10;
                 sqlpCategoria.Value = iPreciarioSubCategoria.Categoria;
 
+                SqlParameter sqlpUsuario = new SqlParameter();
+                sqlpUsuario.ParameterName = "@Usuario";
+                sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+                sqlpUsuario.Value = iPreciarioSubCategoria.Usuario;
+
                 SqlParameter sqlpEstatus = new SqlParameter();
                 sqlpEstatus.ParameterName = "@Estatus";
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
@@ -71,15 +75,16 @@ namespace OSEF.APP.DL
                 sqlpFechaAlta.SqlDbType = SqlDbType.SmallDateTime;
                 sqlpFechaAlta.Value = iPreciarioSubCategoria.FechaAlta;
 
-
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpClave);
                 sqlcComando.Parameters.Add(sqlpPreciario);
                 sqlcComando.Parameters.Add(sqlpDescripcion);
                 sqlcComando.Parameters.Add(sqlpCategoria);
+                sqlcComando.Parameters.Add(sqlpUsuario);
                 sqlcComando.Parameters.Add(sqlpEstatus);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
+
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
                
@@ -94,7 +99,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Insertar(PreciarioSubCategoria " + iPreciarioSubCategoria.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Insertar(PreciarioSubCategoria " + iPreciarioSubCategoria.Clave + ")): " + ex.Message);
             }
         }
 

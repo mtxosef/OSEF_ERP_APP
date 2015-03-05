@@ -18,11 +18,10 @@ namespace OSEF.APP.EL
         string descripcion;
         string categoria;
         string subcategoria;
+        string usuario;
         string estatus;
         DateTime fechaalta;
         string tipo;
-
-       
 
         #endregion
 
@@ -62,6 +61,12 @@ namespace OSEF.APP.EL
         {
             get { return subcategoria; }
             set { subcategoria = value; }
+        }
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
         }
 
         public string Estatus

@@ -38,9 +38,7 @@ namespace OSEF.APP.DL
                 sqlpID.SqlDbType = SqlDbType.Char;
                 sqlpID.Size = 10;
                 sqlpID.Direction = ParameterDirection.Output;
-               
 
-             
                 SqlParameter sqlpClave = new SqlParameter();
                 sqlpClave.ParameterName = "@Clave";
                 sqlpClave.SqlDbType = SqlDbType.Char;
@@ -58,6 +56,11 @@ namespace OSEF.APP.DL
                 sqlpDescripcion.SqlDbType = SqlDbType.VarChar;
                 sqlpDescripcion.Value = iPreciarioCategoria.Descripcion;
 
+                SqlParameter sqlpUsuario = new SqlParameter();
+                sqlpUsuario.ParameterName = "@Usuario";
+                sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+                sqlpUsuario.Value = iPreciarioCategoria.Usuario;
+
                 SqlParameter sqlpEstatus = new SqlParameter();
                 sqlpEstatus.ParameterName = "@Estatus";
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
@@ -68,14 +71,15 @@ namespace OSEF.APP.DL
                 sqlpFechaAlta.SqlDbType = SqlDbType.SmallDateTime;
                 sqlpFechaAlta.Value = iPreciarioCategoria.FechaAlta;
 
-
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpClave);
                 sqlcComando.Parameters.Add(sqlpPreciario);
                 sqlcComando.Parameters.Add(sqlpDescripcion);
+                sqlcComando.Parameters.Add(sqlpUsuario);
                 sqlcComando.Parameters.Add(sqlpEstatus);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
+
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -90,7 +94,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Insertar(PreciarioCategoria " + iPreciarioCategoria.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Insertar(PreciarioCategoria " + iPreciarioCategoria.Clave + ")): " + ex.Message);
             }
         }
 

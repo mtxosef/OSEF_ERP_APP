@@ -273,9 +273,9 @@
                                     Width="304"
                                     StyleSpec="margin-right: 6px;" 
                                     Text="">
-                                        <Listeners>
-                                            <Change Fn="CheckExtension" />
-                                        </Listeners>
+                                    <Listeners>
+                                        <Change Fn="CheckExtension" />
+                                    </Listeners>
                                 </ext:FileUploadField>
                                 <ext:NumberField
                                     ID="nfHoja"
@@ -394,9 +394,9 @@
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
-                                             <Listeners>
-                                             <Load Fn="sCarga_Load" ></Load>
-                                        </Listeners>  
+                                            <Listeners>
+                                                <Load Fn="sCarga_Load" ></Load>
+                                            </Listeners>  
                                         </ext:Store>
                                     </Store>
                                     <ColumnModel 
@@ -456,7 +456,7 @@
                                                 Text="Importe Preciario"
                                                 DataIndex="Importe"
                                                 Width="130">
-                                                   <Renderer Fn="renderImporte" />
+                                                <Renderer Fn="renderImporte" />
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cImporteUtilizado"
@@ -465,7 +465,7 @@
                                                 Text="Importe Final"
                                                 Width="130"
                                                 DataIndex="Importefinal">
-                                                   <Renderer Fn="renderImporteUtilizado" />
+                                                <Renderer Fn="renderImporteUtilizado" />
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cCategoria"
@@ -485,7 +485,7 @@
                                                 Width="90">
                                                 <Renderer Fn="cSubcategoria_Renderer" />
                                             </ext:Column>
-                                              <ext:Column 
+                                            <ext:Column 
                                                 ID="cSubCubCategoria"
                                                 runat="server"
                                                 Align="Center"
@@ -511,24 +511,26 @@
                                     </View>
                                     <BottomBar>
                                         <ext:Toolbar ID="tPreciarioConcepto" runat="server">
-                                                <Items>
-                                               <ext:DisplayField ID="dfTotalInicial"
+                                            <Items>
+                                                <ext:DisplayField
+                                                    ID="dfTotalInicial"
                                                     runat="server"
                                                     FieldLabel="Total Cargado"
                                                     Cls="total-field"
                                                     Margins="0 0 0 340px"
                                                     Width="240"
                                                     Text="$">
-                                                    </ext:DisplayField>
-                                                     <ext:DisplayField ID="dfTotalFinal"
+                                                </ext:DisplayField>
+                                                <ext:DisplayField
+                                                    ID="dfTotalFinal"
                                                     runat="server"
                                                     FieldLabel="Total Final"
                                                     Cls="total-field"
                                                     Width="240"
                                                     Text="$" >
-                                                    </ext:DisplayField>
-                                                </Items>
-                                            </ext:Toolbar>
+                                                </ext:DisplayField>
+                                            </Items>
+                                        </ext:Toolbar>
                                     </BottomBar>
                                 </ext:GridPanel>
                                 <%--Fin Detalle PRECIARIO--%>

@@ -17,11 +17,10 @@ namespace OSEF.APP.EL
         string preciario;
         string descripcion;
         string categoria;
+        string usuario;
         string estatus;
         DateTime fechaalta;
-        string tipo;
-
-       
+        string tipo;       
 
         #endregion
 
@@ -32,8 +31,6 @@ namespace OSEF.APP.EL
             get { return id; }
             set { id = value; }
         }
-
-
 
         public string Clave
         {
@@ -57,6 +54,12 @@ namespace OSEF.APP.EL
         {
             get { return categoria; }
             set { categoria = value; }
+        }
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
         }
 
         public string Estatus

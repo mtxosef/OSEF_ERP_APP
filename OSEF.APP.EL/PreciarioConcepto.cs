@@ -25,8 +25,7 @@ namespace OSEF.APP.EL
         decimal utilizada;
         decimal importe;
         decimal importefinal;
-
-        
+        string usuario;
         string estatus;
         DateTime fechaalta;
         string tipo;
@@ -34,7 +33,6 @@ namespace OSEF.APP.EL
         PreciarioCategoria rcategoria;
         PreciarioSubCategoria rsubcategoria;
         PreciarioSubSubCategoria rsubsubcategoria;
-
        
         #endregion
 
@@ -112,6 +110,24 @@ namespace OSEF.APP.EL
             set { importe = value; }
         }
 
+        public decimal Importefinal
+        {
+            get { return importefinal; }
+            set { importefinal = value; }
+        }
+
+        public string Tipo
+        {
+            get { return tipo; }
+            set { tipo = value; }
+        }
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
+
         public string Estatus
         {
             get { return estatus; }
@@ -122,12 +138,6 @@ namespace OSEF.APP.EL
         {
             get { return fechaalta; }
             set { fechaalta = value; }
-        }
-        
-        public string Tipo
-        {
-            get { return tipo; }
-            set { tipo = value; }
         }
 
         public PreciarioCategoria RCategoria
@@ -146,12 +156,6 @@ namespace OSEF.APP.EL
         {
             get { return rsubsubcategoria; }
             set { rsubsubcategoria = value; }
-        }
-
-        public decimal Importefinal
-        {
-            get { return importefinal; }
-            set { importefinal = value; }
         }
 
         #endregion

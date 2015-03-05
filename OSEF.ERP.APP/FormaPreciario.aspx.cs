@@ -41,17 +41,11 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
             string strSucursal = e.ExtraParams["valor"];
 
-
             //2. Validar si se escocoge una usucursal ya usada
             if (SucursalBusiness.ObtenerSucursalesEnPreciariosPorID(strSucursal))
-            {
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));
-            }
             else
-            {
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
-           
-            }
         }
 
         /// <summary>
@@ -68,23 +62,18 @@ namespace OSEF.AVANCES.SUCURSALES
             string strSucursal = e.ExtraParams["sucursal"];
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciario").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
-
             string strPreciarioDetalle = e.ExtraParams["DetallePreciario"];
-            //Deserializar los renglones del detalle y se meten a una lista
 
-
-            //Se guarda en una lista el Store que contiene todos los campos para deserealizarlos y usarlos para el insert
+            //2. Se guarda en una lista el Store que contiene todos los campos para deserealizarlos y usarlos para el insert
             List<PreciarioConcepto> lDetallePreciario = JSON.Deserialize<List<PreciarioConcepto>>(strPreciarioDetalle);
-
             Preciario oPreciario = new Preciario();
 
-
-            //2. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
+            //3. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
             foreach (KeyValuePair<string, string> sd in dRegistro)
             {
                 switch (sd.Key)
                 {
-                    //3. Datos del preciario
+                    //4. Datos del preciario
                     case "txtfID":
                         oPreciario.ID = sd.Value;
                         break;
@@ -100,106 +89,109 @@ namespace OSEF.AVANCES.SUCURSALES
                 }
             }
 
-            //Se toma el nombre del archivo de Excel que se está cargando
+            //5. Se toma el nombre del archivo de Excel que se está cargando
             oPreciario.Archivo = fufArchivoExcel.FileName;
 
-            //4. Validar si es nuevo o es uno existente
+            //6. Validar si es nuevo o es uno existente
             if (strcookieEditarPreciario.Equals("Nuevo"))
             {
+                //7. Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
                 oPreciario.FechaAlta = DateTime.Now;
-                //Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 oPreciario.Usuario = oUsuario.ID;
-
-
                 oPreciario.Estatus = strEstatus;
-                //5. Insertar en la base de datos
+
+                //8. Insertar en la base de datos
                 oPreciario.ID = PreciarioBusiness.Insertar(oPreciario);
                 string categoria = "";
                 string subcategoria = "";
                 string subsubcategoria = "";
+
                 foreach (PreciarioConcepto sd in lDetallePreciario) 
                 {
+                    //9. Insertar Categoria
                     if (sd.Tipo.Equals("1")) 
                     {
                         PreciarioCategoria c = new PreciarioCategoria();
                         c.Clave = sd.Clave;
                         c.Preciario = oPreciario.ID;
                         c.Descripcion = sd.Descripcion;
+                        c.Usuario = oUsuario.ID;
                         c.Estatus = sd.Estatus;
                         c.FechaAlta = sd.FechaAlta;
                         categoria =PreciarioCategoriaBuisness.Insertar(c);
                     }
+                    //10. Insertar SubCategoria
                     if (sd.Tipo.Equals("2"))
                     {
                         PreciarioSubCategoria sc = new PreciarioSubCategoria();
                         sc.Clave = sd.Clave;
                         sc.Preciario = oPreciario.ID;
                         sc.Descripcion = sd.Descripcion;
-                        sc.Estatus = sd.Estatus;
                         sc.Categoria = categoria;
+                        sc.Usuario = oUsuario.ID;
+                        sc.Estatus = sd.Estatus;
                         sc.FechaAlta = sd.FechaAlta;
-                       subcategoria= PreciarioSubCategoriaBusiness.Insertar(sc);
+                        subcategoria= PreciarioSubCategoriaBusiness.Insertar(sc);
                     }
+                    //11. Insertar SubSubCategoria
                     if (sd.Tipo.Equals("3"))
                     {
                         PreciarioSubSubCategoria ssc = new PreciarioSubSubCategoria();
                         ssc.Clave = sd.Clave;
                         ssc.Preciario = oPreciario.ID;
                         ssc.Descripcion = sd.Descripcion;
-                        ssc.Estatus = sd.Estatus;
-                        ssc.FechaAlta = sd.FechaAlta;
                         ssc.Categoria = categoria;
                         ssc.SubCategoria = subcategoria;
+                        ssc.Usuario = oUsuario.ID;
+                        ssc.Estatus = sd.Estatus;
+                        ssc.FechaAlta = sd.FechaAlta;
                         subsubcategoria= PreciarioSubSubCategoriaBusiness.Insertar(ssc);
                     }
+                    //12. Insertar Concepto
                     if (sd.Tipo.Equals(""))
                     {
                         PreciarioConcepto pc = new PreciarioConcepto();
                         pc.Clave = sd.Clave;
                         pc.Preciario = oPreciario.ID;
                         pc.Descripcion = sd.Descripcion;
-                        pc.Estatus = sd.Estatus;
-                        pc.FechaAlta = sd.FechaAlta;
-                        pc.Categoria = categoria;
-                        pc.SubCategoria = subcategoria;
-                        pc.SubSubCategoria = subsubcategoria;
                         pc.Unidad = sd.Unidad;
                         pc.Cantidad = sd.Cantidad;
                         pc.Utilizada = 0;
                         pc.Costo = sd.Costo;
                         pc.Importe = sd.Importe;
                         pc.Importefinal = 0;
+                        pc.Categoria = categoria;
+                        pc.SubCategoria = subcategoria;
+                        pc.SubSubCategoria = subsubcategoria;
+                        pc.Usuario = oUsuario.ID;
+                        pc.Estatus = sd.Estatus;
+                        pc.FechaAlta = sd.FechaAlta;
                         PreciarioConceptoBusiness.Insertar(pc);
-                    }
-                
+                    }                
                 }
 
-                //6. Mandar mensaje con el código del Preciario
+                //13. Mandar mensaje con el código del Preciario
                 var success = new JFunction { Fn = "imgbtnGuardar_Click_Success" };
                 X.Msg.Alert("Registro completo", "<p align='center'>Preciario registrada con ID: <br/>" + oPreciario.ID + ".</p>", success).Show();
             }
             else
             {
-
-                oPreciario.ID = strcookieEditarPreciario;
-
-
-                //Valida que archivo guardar
+                //14. Valida que archivo guardar
                 if (fufArchivoExcel.FileName.Equals(""))
-                {
                     oPreciario.Archivo = strArchivo;
-                }
                 else
-                {
                     oPreciario.Archivo = fufArchivoExcel.FileName;
-                }
-                //Tomamos la sucursal y estatus como parametro independiente por que ya esta desabilitada
+
+                //15. Tomamos la sucursal y estatus como parametro independiente por que ya esta desabilitada
+                oPreciario.ID = strcookieEditarPreciario;
                 oPreciario.Sucursal = strSucursal;
                 oPreciario.Estatus = strEstatus;
-                //7. Actualizar los datos del Preciario
+
+                //16. Actualizar los datos del Preciario
                 PreciarioBusiness.Actualizar(oPreciario);
-                //8. Mandar mensaje con el código del preciario
+
+                //17. Mandar mensaje con el código del preciario
                 var success = new JFunction { Fn = "imgbtnGuardar_Click_Success" };
                 X.Msg.Alert("Actualización completa", "<p align='center'>Se han actualizado los datos del preciario <br/>" + oPreciario.ID + ".</p>", success).Show();
             }

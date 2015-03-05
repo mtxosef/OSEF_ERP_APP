@@ -42,6 +42,7 @@ CREATE PROCEDURE web_spI_InsertarPreciarioConcepto
 	@Utilizada		DECIMAL(10,2),
 	@Importe		DECIMAL(20,2),
 	@ImporteFinal	DECIMAL(20,2),
+	@Usuario		VARCHAR(50),
 	@Estatus		VARCHAR(20),
 	@FechaAlta		SMALLDATETIME
 AS
@@ -123,6 +124,7 @@ BEGIN
 			Utilizada,
 			Importe,
 			ImporteFinal,
+			Usuario,
 			Estatus,
 			FechaAlta
 		)
@@ -141,6 +143,7 @@ BEGIN
 			@Utilizada,
 			@Importe,
 			@ImporteFinal,
+			@Usuario,
 			@Estatus,
 			@FechaAlta
 		)

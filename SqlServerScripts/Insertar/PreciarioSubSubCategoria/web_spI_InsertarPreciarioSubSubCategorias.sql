@@ -35,6 +35,7 @@ CREATE PROCEDURE web_spI_InsertarPreciarioSubSubCategoria
 	@Descripcion	VARCHAR(100),
 	@Categoria		CHAR(10),
 	@SubCategoria	CHAR(10),
+	@Usuario		VARCHAR(50),
 	@Estatus		VARCHAR(20),
 	@FechaAlta		SMALLDATETIME
 AS
@@ -93,6 +94,7 @@ BEGIN
 			Descripcion,
 			categoria,
 			SubCategoria,
+			Usuario,
 			Estatus,
 			FechaAlta
 		)
@@ -104,6 +106,7 @@ BEGIN
 			@Descripcion,
 			@Categoria,
 			@SubCategoria,
+			@Usuario,
 			@Estatus,
 			@FechaAlta
 		)

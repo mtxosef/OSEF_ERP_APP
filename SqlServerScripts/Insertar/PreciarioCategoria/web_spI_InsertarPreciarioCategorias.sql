@@ -33,6 +33,7 @@ CREATE PROCEDURE web_spI_InsertarPreciarioCategoria
 	@CLAVE			CHAR(7),
 	@Preciario		VARCHAR(50),
 	@Descripcion	VARCHAR(100),
+	@Usuario		VARCHAR(50),
 	@Estatus		VARCHAR(20),
 	@FechaAlta		SMALLDATETIME
 AS
@@ -99,6 +100,7 @@ BEGIN
 			CLAVE,
 			Preciario,
 			Descripcion,
+			Usuario,
 			Estatus,
 			FechaAlta
 		)
@@ -108,6 +110,7 @@ BEGIN
 			@CLAVE,
 			@Preciario,
 			@Descripcion,
+			@Usuario,
 			@Estatus,
 			@FechaAlta
 		)

@@ -96,11 +96,15 @@ namespace OSEF.APP.DL
                 sqlpImporte.SqlDbType = SqlDbType.Decimal;
                 sqlpImporte.Value = iPreciarioConcepto.Importe;
 
-
                 SqlParameter sqlpImporteFinal = new SqlParameter();
                 sqlpImporteFinal.ParameterName = "@ImporteFinal";
                 sqlpImporteFinal.SqlDbType = SqlDbType.Decimal;
                 sqlpImporteFinal.Value = iPreciarioConcepto.Importefinal;
+
+                SqlParameter sqlpUsuario = new SqlParameter();
+                sqlpUsuario.ParameterName = "@Usuario";
+                sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+                sqlpUsuario.Value = iPreciarioConcepto.Usuario;
 
                 SqlParameter sqlpEstatus = new SqlParameter();
                 sqlpEstatus.ParameterName = "@Estatus";
@@ -111,7 +115,6 @@ namespace OSEF.APP.DL
                 sqlpFechaAlta.ParameterName = "@FechaAlta";
                 sqlpFechaAlta.SqlDbType = SqlDbType.SmallDateTime;
                 sqlpFechaAlta.Value = iPreciarioConcepto.FechaAlta;
-
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -127,8 +130,10 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpUtilizada);
                 sqlcComando.Parameters.Add(sqlpImporte);
                 sqlcComando.Parameters.Add(sqlpImporteFinal);
+                sqlcComando.Parameters.Add(sqlpUsuario);
                 sqlcComando.Parameters.Add(sqlpEstatus);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
+
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -143,7 +148,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Insertar(PreciarioConcepto " + iPreciarioConcepto.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Insertar(PreciarioConcepto " + iPreciarioConcepto.Clave + ")): " + ex.Message);
             }
         }
 
