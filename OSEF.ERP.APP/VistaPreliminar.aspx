@@ -44,11 +44,9 @@
                                     OverImageUrl="assets/img/controles/pdfOver.png"
                                     PressedImageUrl="assets/img/controles/pdfPressed.png" ToolTip="Exportar a PDF"
                                     Height="50"
-                                    OnClientClick="myFunction();"
                                      StyleSpec="margin-right: 10px;"
                                     Width="50"
-                                    Hidden="false" 
-                                    >
+                                    Hidden="false" >
                                     <DirectEvents>
                                     <Click OnEvent="toPDF" Success="myFunction"></Click>
                                     </DirectEvents>
@@ -62,6 +60,9 @@
                                         Height="50"
                                         Width="50"
                                         Hidden="false" >
+                                     <DirectEvents>
+                                    <Click OnEvent="toXLS" Success="myFunction"></Click>
+                                    </DirectEvents>
                              </ext:ImageButton>
                     </Items>
                 </ext:FieldContainer>

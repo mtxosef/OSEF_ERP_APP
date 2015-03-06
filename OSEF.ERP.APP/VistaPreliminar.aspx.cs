@@ -34,19 +34,36 @@ namespace OSEF.ERP.APP
             string rutafinal2 = Server.MapPath("reports//" + namereport + ".rpt");
             reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports//" + namereport + ".pdf"));
             rutaJavaScript = "reports//" + namereport + ".pdf";
-            //ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reports//" + namereport + ".pdf');popup.focus();", true);
-            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
+             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
         }
 
 
-        protected void toXls(object sender, DirectEventArgs e)
+        protected void toXLS(object sender, DirectEventArgs e)
         {
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
+            string rutaJavaScript = "";
             reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
-            reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports/" + namereport + ".pdf"));
-            ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reports/" + namereport + ".pdf');popup.focus();", true);
+
+
+            ExportOptions CrExportOptions;
+            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+            ExcelFormatOptions CrFormatTypeOptions = new ExcelFormatOptions();
+            CrDiskFileDestinationOptions.DiskFileName = Server.MapPath("reports//" + namereport + ".xls");
+            CrExportOptions = reporte.ExportOptions;
+            CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+            CrExportOptions.ExportFormatType = ExportFormatType.Excel;
+            CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+            CrExportOptions.FormatOptions = CrFormatTypeOptions;
+            reporte.Export();
+           
+
+            rutaJavaScript = "reports//" + namereport + ".xls";
+            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
+  
+    
+           
         }
     }
 }
