@@ -332,6 +332,7 @@
     <Content Include="FormaParametrosP4.aspx" />
     <Content Include="FormaParametrosP5.aspx" />
     <Content Include="FormaPreciario.aspx" />
+    <Content Include="FormaPreciarioExplorador.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirImagenesCliente.aspx" />
     <Content Include="FormaSubirImagenesPreciario.aspx" />
@@ -753,6 +754,13 @@
     </Compile>
     <Compile Include="FormaPreciario.aspx.designer.cs">
       <DependentUpon>FormaPreciario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaPreciarioExplorador.aspx.cs">
+      <DependentUpon>FormaPreciarioExplorador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaPreciarioExplorador.aspx.designer.cs">
+      <DependentUpon>FormaPreciarioExplorador.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>

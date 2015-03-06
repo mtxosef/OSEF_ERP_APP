@@ -93,3 +93,35 @@ var cmbCantidadFiltro_Select = function (combobox, registro) {
 
     }
 };
+
+
+var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
+    window.parent.App.wEmergente.load('FormaPreciarioExplorador.aspx');
+    window.parent.App.wEmergente.setHeight(365);
+    window.parent.App.wEmergente.setWidth(540);
+    window.parent.App.wEmergente.center();
+    window.parent.App.wEmergente.setTitle('Datos del concepto');
+    window.parent.App.wEmergente.show();
+
+    Ext.util.Cookies.set('cookiePreciario', registro.get('Preciario'));
+    Ext.util.Cookies.set('cookieConceptoID', registro.get('ID'));
+    Ext.util.Cookies.set('cookieConcepto', registro.get('Clave'));
+    Ext.util.Cookies.set('cookieDescripcion', registro.get('Descripcion'));
+
+};
+
+//Evento lanzado al agregar un registro al store
+var sParametrosExporador_Add = function (concepto, registro) {
+
+
+};
+
+
+var sParametrosExporador_Load = function () {
+
+    App.txtPreciario.setValue(Ext.util.Cookies.get('cookiePreciario'));
+    App.txtfConcepto.setValue(Ext.util.Cookies.get('cookieConcepto'));
+    App.txtConceptoID.setValue(Ext.util.Cookies.get('cookieConceptoID'));
+    App.txtADescripcion.setValue(Ext.util.Cookies.get('cookieDescripcion'));
+  
+};

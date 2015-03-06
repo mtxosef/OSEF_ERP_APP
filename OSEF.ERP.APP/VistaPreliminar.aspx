@@ -14,7 +14,7 @@
     <script type="text/javascript">
         var myFunction = function (response, result) {
          var ruta=   result.extraParamsResponse.ruta;
-         window.open(ruta, 'Reporte', 'status = 1,width=600, resizable = 1');
+         window.open(ruta, 'Reporte', 'status = 1,width=900, resizable = 1');
 
         }
  </script>

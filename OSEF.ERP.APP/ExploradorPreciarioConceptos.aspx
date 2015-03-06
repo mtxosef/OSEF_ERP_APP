@@ -96,7 +96,7 @@
                                 <DirectEvents>
                                 <Select OnEvent="cmbPreciarios_Change" >
                                 
-                                    <EventMask ShowMask="true" Msg="Cargando Preciario..." />
+                                    <%--<EventMask ShowMask="true" Msg="Cargando Preciario..." />--%>
                                     <ExtraParams>
                                         <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
                                     </ExtraParams>
@@ -192,16 +192,6 @@
                                         </Model>
                                     </ext:Store>
                                 </Store>
-                                   <%-- <DirectEvents>
-                                    <Select OnEvent="cmbSubSubCategoria_Select">
-                                        <ExtraParams>
-                                            <ext:Parameter Name="subsubcategoria" Value="App.cmbSubSubCategoria.getValue()" Mode="Raw" />
-                                            <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
-                                            <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
-                                               
-                                        </ExtraParams>
-                                    </Select>
-                                </DirectEvents>--%>
                             </ext:ComboBox>
 
                         <ext:ImageButton
@@ -353,9 +343,9 @@
                     </ext:Column>
                 </Columns>
             </ColumnModel>
-          <%--  <Listeners>
-                <ItemClick Fn="gpVolumetrias_ItemClick" />
-            </Listeners>--%>
+            <Listeners>
+                <ItemDblClick Fn="gpExploradorConceptos_ItemClick" />
+            </Listeners>
             <View>
                 <ext:GridView
                     ID="gvExploradorPreciarioConcepto"

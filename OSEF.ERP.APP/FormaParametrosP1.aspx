@@ -25,12 +25,16 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/parametrosP1.js"></script>
+     <script type='text/javascript' src="js/exploradorConceptoPreciario.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
 
-    <ext:ResourceManager ID="rmEspecificarFechas" runat="server" />
+    <ext:ResourceManager ID="rmFormaParametros1" runat="server" />
+
+  
+
         <ext:FormPanel 
         ID="fpEspecificarParametros" 
         runat="server"

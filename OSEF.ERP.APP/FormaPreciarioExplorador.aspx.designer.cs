@@ -10,7 +10,16 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class FormaParametrosP1 {
+    public partial class FormaPreciarioExplorador {
+        
+        /// <summary>
+        /// Control Head1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
         /// Control form1.
@@ -22,13 +31,31 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmFormaParametros1.
+        /// Control rmFormaPreciarioExplorador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmFormaParametros1;
+        protected global::Ext.Net.ResourceManager rmFormaPreciarioExplorador;
+        
+        /// <summary>
+        /// Control sPreciarioConceptoForma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sPreciarioConceptoForma;
+        
+        /// <summary>
+        /// Control mPreciarioConceptoForma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mPreciarioConceptoForma;
         
         /// <summary>
         /// Control fpEspecificarParametros.
@@ -49,130 +76,58 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcPreciario;
         
         /// <summary>
-        /// Control cmbPreciario.
+        /// Control txtPreciario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbPreciario;
+        protected global::Ext.Net.TextField txtPreciario;
         
         /// <summary>
-        /// Control sPreciario.
+        /// Control fcConceptoID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sPreciario;
+        protected global::Ext.Net.FieldContainer fcConceptoID;
         
         /// <summary>
-        /// Control mPreciario.
+        /// Control txtfConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mPreciario;
+        protected global::Ext.Net.TextField txtfConcepto;
         
         /// <summary>
-        /// Control txtfDescripcionPreciario.
+        /// Control txtConceptoID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfDescripcionPreciario;
+        protected global::Ext.Net.TextField txtConceptoID;
         
         /// <summary>
-        /// Control fcSucursal.
+        /// Control fcConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcSucursal;
+        protected global::Ext.Net.FieldContainer fcConcepto;
         
         /// <summary>
-        /// Control txtfIDSucursal.
+        /// Control txtADescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfIDSucursal;
-        
-        /// <summary>
-        /// Control txtfSucursalNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfSucursalNombre;
-        
-        /// <summary>
-        /// Control fcPreciarioConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcPreciarioConcepto;
-        
-        /// <summary>
-        /// Control cmbConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbConcepto;
-        
-        /// <summary>
-        /// Control sPreciarioConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sPreciarioConcepto;
-        
-        /// <summary>
-        /// Control mPreciarioConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mPreciarioConcepto;
-        
-        /// <summary>
-        /// Control FieldContainer1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer1;
-        
-        /// <summary>
-        /// Control txtConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtConcepto;
-        
-        /// <summary>
-        /// Control imgbtnSeleccionarPreciario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnSeleccionarPreciario;
+        protected global::Ext.Net.TextArea txtADescripcion;
         
         /// <summary>
         /// Control sbParametros1.
