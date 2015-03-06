@@ -40,6 +40,7 @@ BEGIN
 		ID,
 		CR,
 		Nombre,
+		DireccionZona,
 		GerenteBBVANombre,
 		GerenteBBVAAPaterno,
 		GerenteBBVAAMaterno,

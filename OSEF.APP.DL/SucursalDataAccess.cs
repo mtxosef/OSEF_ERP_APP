@@ -50,6 +50,11 @@ namespace OSEF.APP.DL
                 sqlpNombre.SqlDbType = SqlDbType.VarChar;
                 sqlpNombre.Value = iSucursal.Nombre;
 
+                SqlParameter sqlpDireccionZona = new SqlParameter();
+                sqlpDireccionZona.ParameterName = "@DireccionZona";
+                sqlpDireccionZona.SqlDbType = SqlDbType.VarChar;
+                sqlpDireccionZona.Value = iSucursal.Direccionzona;
+
                 SqlParameter sqlpGerenteBBVANombre = new SqlParameter();
                 sqlpGerenteBBVANombre.ParameterName = "@GerenteBBVANombre";
                 sqlpGerenteBBVANombre.SqlDbType = SqlDbType.VarChar;
@@ -191,6 +196,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpCR);
                 sqlcComando.Parameters.Add(sqlpNombre);
+                sqlcComando.Parameters.Add(sqlpDireccionZona);
                 sqlcComando.Parameters.Add(sqlpGerenteBBVANombre);
                 sqlcComando.Parameters.Add(sqlpGerenteBBVAAPaterno);
                 sqlcComando.Parameters.Add(sqlpGerenteBBVAAMaterno);
@@ -271,6 +277,11 @@ namespace OSEF.APP.DL
                 sqlpNombre.ParameterName = "@Nombre";
                 sqlpNombre.SqlDbType = SqlDbType.VarChar;
                 sqlpNombre.Value = uSucursal.Nombre;
+
+                SqlParameter sqlpDireccionZona = new SqlParameter();
+                sqlpDireccionZona.ParameterName = "@DireccionZona";
+                sqlpDireccionZona.SqlDbType = SqlDbType.VarChar;
+                sqlpDireccionZona.Value = uSucursal.Direccionzona;
 
                 SqlParameter sqlpGerenteBBVANombre = new SqlParameter();
                 sqlpGerenteBBVANombre.ParameterName = "@GerenteBBVANombre";
@@ -408,6 +419,7 @@ namespace OSEF.APP.DL
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpCR);
+                sqlcComando.Parameters.Add(sqlpDireccionZona);
                 sqlcComando.Parameters.Add(sqlpNombre);
                 sqlcComando.Parameters.Add(sqlpGerenteBBVANombre);
                 sqlcComando.Parameters.Add(sqlpGerenteBBVAAPaterno);

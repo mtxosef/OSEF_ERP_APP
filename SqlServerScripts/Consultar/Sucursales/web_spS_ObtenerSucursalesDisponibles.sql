@@ -42,6 +42,7 @@ BEGIN
 		A.ID,
 		A.CR,
 		A.Nombre,
+		A.DireccionZona,
 		A.GerenteBBVANombre,
 		A.GerenteBBVAAPaterno,
 		A.GerenteBBVAAMaterno,

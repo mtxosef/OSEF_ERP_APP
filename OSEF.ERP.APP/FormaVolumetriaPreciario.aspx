@@ -591,14 +591,31 @@
                                                 Text="Concepto"
                                                 Width="325"
                                                 DataIndex="ConceptoID">
-<%--                                                <Renderer Fn="cDescripcion_Renderer" />
+                                                <Renderer Fn="cDescripcion_Renderer" />
                                                 <Editor>
                                                     <ext:ComboBox
                                                         ID="cmbConcepto"
                                                         runat="server"
                                                         DisplayField="Descripcion"
                                                         Editable="false"
-                                                        ValueField="ID">
+                                                        ValueField="ID"
+                                                        
+                                                         PageSize="10"
+                                        ForceSelection="true"
+                                        MatchFieldWidth="false"
+                                        QueryMode="Local"
+                                        TypeAhead="true"
+                                                        >
+                                                            <ListConfig ID="ListConfig1" runat="server" Width="350" Cls="xEspacioCmbxCustom">
+                                                                <ItemTpl ID="ItemTpl1" runat="server">
+                                                                    <Html>
+                                                                        <div class="search-item">
+							                                                <h3>{Clave}</h3>
+                                                                            <span>{Descripcion}</span>
+						                                                </div>
+                                                                    </Html>
+                                                                </ItemTpl>
+                                                            </ListConfig>
                                                         <Store>
                                                             <ext:Store
                                                                 ID="sPreciarioConcepto"
@@ -631,9 +648,9 @@
                                                             <Select Fn="cmbConcepto_Select" />
                                                         </Listeners>
                                                     </ext:ComboBox>
-                                                </Editor>--%>
+                                                </Editor>
                                             </ext:Column>
-                                            <ext:CommandColumn
+                                         <%--   <ext:CommandColumn
                                                 ID="ccConcepto"
                                                 runat="server" 
                                                 Width="25">
@@ -647,7 +664,7 @@
                                                 <Listeners>
                                                     <Command Fn="ccConcepto_Command" />
                                                 </Listeners>
-                                            </ext:CommandColumn>
+                                            </ext:CommandColumn>--%>
                                             <ext:NumberColumn
                                                 ID="cCantidad"
                                                 runat="server"

@@ -112,6 +112,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.NumberField nfCR;
         
         /// <summary>
+        /// Control txtfDireccionZona.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfDireccionZona;
+        
+        /// <summary>
         /// Control ContenedorNombre.
         /// </summary>
         /// <remarks>
@@ -166,60 +175,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfGerenteBBVAAMaterno;
         
         /// <summary>
-        /// Control ContenedorSupervisor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer ContenedorSupervisor;
-        
-        /// <summary>
-        /// Control txtfSupervisorNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfSupervisorNombre;
-        
-        /// <summary>
-        /// Control txtfSupervisorAPaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfSupervisorAPaterno;
-        
-        /// <summary>
-        /// Control txtfSupervisorAMaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfSupervisorAMaterno;
-        
-        /// <summary>
-        /// Control ContenedorProvEnergia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer ContenedorProvEnergia;
-        
-        /// <summary>
-        /// Control txtfProveedorEnergia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfProveedorEnergia;
-        
-        /// <summary>
         /// Control ContenedorSuperficie.
         /// </summary>
         /// <remarks>
@@ -236,78 +191,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.NumberField nfSuperficie;
-        
-        /// <summary>
-        /// Control ContenedorCordinador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer ContenedorCordinador;
-        
-        /// <summary>
-        /// Control txtfCoordinadorNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfCoordinadorNombre;
-        
-        /// <summary>
-        /// Control txtfCoordinadorAPaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfCoordinadorAPaterno;
-        
-        /// <summary>
-        /// Control txtfCoordinadorAMaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfCoordinadorAMaterno;
-        
-        /// <summary>
-        /// Control ContenedorFechas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer ContenedorFechas;
-        
-        /// <summary>
-        /// Control dfFechaAlta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.DateField dfFechaAlta;
-        
-        /// <summary>
-        /// Control cmbEstatus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbEstatus;
-        
-        /// <summary>
-        /// Control pDireccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Panel pDireccion;
         
         /// <summary>
         /// Control FieldContainerCalles.
@@ -481,6 +364,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Model mColonias;
         
         /// <summary>
+        /// Control ContenedorFechas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer ContenedorFechas;
+        
+        /// <summary>
+        /// Control dfFechaAlta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DateField dfFechaAlta;
+        
+        /// <summary>
+        /// Control cmbEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEstatus;
+        
+        /// <summary>
         /// Control pContrato.
         /// </summary>
         /// <remarks>
@@ -499,13 +409,31 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.FieldContainer ContenedorContratista;
         
         /// <summary>
-        /// Control txtfContratista.
+        /// Control cmbProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfContratista;
+        protected global::Ext.Net.ComboBox cmbProveedor;
+        
+        /// <summary>
+        /// Control sProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sProveedores;
+        
+        /// <summary>
+        /// Control mProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mProveedores;
         
         /// <summary>
         /// Control ContenedorTermino.
@@ -544,6 +472,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.DateField dfInicioObra;
         
         /// <summary>
+        /// Control txtDiasObra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField txtDiasObra;
+        
+        /// <summary>
         /// Control dfFinObra.
         /// </summary>
         /// <remarks>
@@ -569,6 +506,96 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.NumberField nfSemanasObra;
+        
+        /// <summary>
+        /// Control ContenedorCordinador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer ContenedorCordinador;
+        
+        /// <summary>
+        /// Control txtfCoordinadorNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfCoordinadorNombre;
+        
+        /// <summary>
+        /// Control txtfCoordinadorAPaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfCoordinadorAPaterno;
+        
+        /// <summary>
+        /// Control txtfCoordinadorAMaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfCoordinadorAMaterno;
+        
+        /// <summary>
+        /// Control ContenedorProvEnergia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer ContenedorProvEnergia;
+        
+        /// <summary>
+        /// Control txtfProveedorEnergia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfProveedorEnergia;
+        
+        /// <summary>
+        /// Control ContenedorSupervisor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer ContenedorSupervisor;
+        
+        /// <summary>
+        /// Control txtfSupervisorNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfSupervisorNombre;
+        
+        /// <summary>
+        /// Control txtfSupervisorAPaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfSupervisorAPaterno;
+        
+        /// <summary>
+        /// Control txtfSupervisorAMaterno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfSupervisorAMaterno;
         
         /// <summary>
         /// Control sbSucursal.

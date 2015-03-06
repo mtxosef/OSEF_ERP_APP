@@ -39,6 +39,7 @@
                         <ext:ModelField Name="ID" Type="String" />
                         <ext:ModelField Name="CR" Type="String" />
                         <ext:ModelField Name="Nombre" Type="String" />
+                        <ext:ModelField Name="DireccionZona" Type="String" />
                         <ext:ModelField Name="GerenteBBVANombre" Type="String" />
                         <ext:ModelField Name="GerenteBBVAAPaterno" Type="String" />
                         <ext:ModelField Name="GerenteBBVAAMaterno" Type="String" />
@@ -84,7 +85,7 @@
                     <ext:FormPanel 
                         ID="fpFormaSucursales" 
                         runat="server" 
-                        Height="385"
+                        Height="410"
                         MonitorResize="true">
                         <Items>
                              <ext:TabPanel 
@@ -122,17 +123,28 @@
                                                     <ext:NumberField
                                                         ID="nfCR"
                                                         runat="server"
-                                                        Width="405"
+                                                        Width="200"
                                                         MaxLength="4"
                                                         EnforceMaxLength="true"
                                                         MinValue="0"
                                                         MaxValue="9999"
                                                         AllowDecimals="false"
                                                         Step="1"
+                                                        StyleSpec="margin-right: 6px;"
                                                         FieldLabel="CR"
                                                         LabelWidth="30"
                                                         AutoFocus="true">
                                                     </ext:NumberField>
+                                                    <ext:TextField
+                                                        ID="txtfDireccionZona"
+                                                        runat="server"
+                                                        EmptyText="Dirección Zona"
+                                                        Width="200"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        MaxLength="50"
+                                                        EnforceMaxLength="true">
+                                                      
+                                                    </ext:TextField>
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer 
@@ -160,7 +172,7 @@
                                             <ext:FieldContainer 
                                                 ID="ContenedorGerente" 
                                                 runat="server" 
-                                                FieldLabel="Gerente BBVA"
+                                                FieldLabel="Contacto"
                                                 LabelWidth="120" 
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
@@ -199,68 +211,7 @@
                                                     </ext:TextField>
                                                 </Items>
                                             </ext:FieldContainer>
-                                            <ext:FieldContainer 
-                                                ID="ContenedorSupervisor" 
-                                                runat="server" 
-                                                LabelWidth="120" 
-                                                FieldLabel="Supervisor"
-                                                AnchorHorizontal="100%" 
-                                                Layout="ColumnLayout">
-                                                <Items>
-                                                    <ext:TextField 
-                                                        ID="txtfSupervisorNombre"
-                                                        runat="server"
-                                                        Width="200"
-                                                        StyleSpec="margin-right: 6px;"
-                                                        MaxLength="50"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfSupervisorNombre.setValue(App.txtfSupervisorNombre.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                    <ext:TextField
-                                                        ID="txtfSupervisorAPaterno"
-                                                        runat="server"
-                                                        Width="200"
-                                                        StyleSpec="margin-right: 6px;"
-                                                        MaxLength="50"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfSupervisorAPaterno.setValue(App.txtfSupervisorAPaterno.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                    <ext:TextField
-                                                        ID="txtfSupervisorAMaterno"
-                                                        runat="server"
-                                                        Width="200"
-                                                        MaxLength="50"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfSupervisorAMaterno.setValue(App.txtfSupervisorAMaterno.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                </Items>
-                                            </ext:FieldContainer>
-                                            <ext:FieldContainer 
-                                                ID="ContenedorProvEnergia" 
-                                                runat="server" 
-                                                LabelWidth="120" 
-                                                FieldLabel="Proveedor Energía"
-                                                AnchorHorizontal="100%" 
-                                                Layout="ColumnLayout">
-                                                <Items>
-                                                    <ext:TextField
-                                                        ID="txtfProveedorEnergia"
-                                                        runat="server"
-                                                        Width="612"
-                                                        MaxLength="100"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfProveedorEnergia.setValue(App.txtfProveedorEnergia.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                </Items>
-                                            </ext:FieldContainer>
+                                            
                                             <ext:FieldContainer 
                                                 ID="ContenedorSuperficie" 
                                                 runat="server" 
@@ -282,99 +233,10 @@
                                                     </ext:NumberField>
                                                 </Items>
                                             </ext:FieldContainer>
-                                            <ext:FieldContainer 
-                                                ID="ContenedorCordinador" 
-                                                runat="server" 
-                                                LabelWidth="120" 
-                                                FieldLabel="Coordinador"
-                                                AnchorHorizontal="100%" 
-                                                Layout="ColumnLayout">
-                                                <Items>
-                                                    <ext:TextField
-                                                        ID="txtfCoordinadorNombre"
-                                                        runat="server"
-                                                        Width="200"
-                                                        StyleSpec="margin-right: 6px;"
-                                                        MaxLength="50"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfCoordinadorNombre.setValue(App.txtfCoordinadorNombre.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                    <ext:TextField
-                                                        ID="txtfCoordinadorAPaterno"
-                                                        runat="server"
-                                                        Width="200"
-                                                        StyleSpec="margin-right: 6px;"
-                                                        MaxLength="50"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfCoordinadorAPaterno.setValue(App.txtfCoordinadorAPaterno.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                    <ext:TextField
-                                                        ID="txtfCoordinadorAMaterno"
-                                                        runat="server"
-                                                        Width="200"
-                                                        MaxLength="50"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfCoordinadorAMaterno.setValue(App.txtfCoordinadorAMaterno.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                </Items>
-                                            </ext:FieldContainer>
-                                            <ext:FieldContainer 
-                                                ID="ContenedorFechas" 
-                                                runat="server" 
-                                                FieldLabel="Fecha Alta"
-                                                LabelWidth="120" 
-                                                AnchorHorizontal="100%" 
-                                                Layout="ColumnLayout">
-                                                <Items>
-                                                    <ext:DateField
-                                                        ID="dfFechaAlta"
-                                                        runat="server"
-                                                        Width="200"
-                                                        StyleSpec="margin-right: 6px;"
-                                                        Disabled="true">
-                                                        <PickerOptions 
-                                                        Cls="my-date-picker"
-                                                        ID="pOFechaAlta" 
-                                                        runat="server">
-                                                        </PickerOptions>
-                                                    </ext:DateField>
-                                                   <ext:ComboBox
-                                                        ID="cmbEstatus"
-                                                        runat="server"
-                                                        Width="305"
-                                                        FieldLabel="Estatus"
-                                                        StyleSpec="margin-left: 101px;"
-                                                        Disabled="true">
-                                                       <Items>
-                                                            <ext:ListItem Text="ALTA" />
-                                                            <ext:ListItem Text="BAJA" />
-                                                            <ext:ListItem Text="BLOQUEADO" />
-                                                            <ext:ListItem Text="PENDIENTE" />
-                                                        </Items>
-                                                        <SelectedItems>
-                                                            <ext:ListItem Index="0" />
-                                                        </SelectedItems>
-                                                    </ext:ComboBox>
-                                                </Items>
-                                            </ext:FieldContainer>
-                                        </Items>
-                                    </ext:Panel>
-                                    <ext:Panel 
-                                        ID="pDireccion" 
-                                        runat="server" 
-                                        Title="Domicilio" 
-                                        BodyPadding="10" 
-                                        AutoScroll="true">
-                                        <Items>
-                                            <ext:FieldContainer 
+                                           <ext:FieldContainer 
                                                 ID="FieldContainerCalles" 
                                                 runat="server" 
+                                                LabelWidth="120" 
                                                 FieldLabel="Calle" 
                                                 AnchorHorizontal="100%"
                                                 Layout="ColumnLayout">
@@ -406,6 +268,7 @@
                                             <ext:FieldContainer 
                                                 ID="FieldContainerNumInt" 
                                                 runat="server" 
+                                                LabelWidth="120" 
                                                 FieldLabel="N° Exterior"
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
@@ -437,6 +300,7 @@
                                             <ext:FieldContainer 
                                                 ID="FieldContainerCPCol" 
                                                 runat="server" 
+                                                LabelWidth="120" 
                                                 FieldLabel="Código Postal"
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
@@ -495,14 +359,12 @@
                                                             </Change>
                                                         </DirectEvents>
                                                     </ext:ComboBox>
-
-
-
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer 
                                                 ID="ContenedorEstMun" 
                                                 runat="server"
+                                                LabelWidth="120" 
                                                 FieldLabel="Municipio"
                                                 Layout="ColumnLayout">
                                                 <Items>
@@ -576,12 +438,50 @@
                                                 </ext:ComboBox>
                                                 </Items>
                                             </ext:FieldContainer>
+                                            <ext:FieldContainer 
+                                                ID="ContenedorFechas" 
+                                                runat="server" 
+                                                FieldLabel="Fecha Alta"
+                                                LabelWidth="120" 
+                                                AnchorHorizontal="100%" 
+                                                Layout="ColumnLayout">
+                                                <Items>
+                                                    <ext:DateField
+                                                        ID="dfFechaAlta"
+                                                        runat="server"
+                                                        Width="200"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        Disabled="true">
+                                                        <PickerOptions 
+                                                        Cls="my-date-picker"
+                                                        ID="pOFechaAlta" 
+                                                        runat="server">
+                                                        </PickerOptions>
+                                                    </ext:DateField>
+                                                   <ext:ComboBox
+                                                        ID="cmbEstatus"
+                                                        runat="server"
+                                                        Width="300"
+                                                        FieldLabel="Estatus"
+                                                        Disabled="true">
+                                                       <Items>
+                                                            <ext:ListItem Text="ALTA" />
+                                                            <ext:ListItem Text="BAJA" />
+                                                            <ext:ListItem Text="BLOQUEADO" />
+                                                            <ext:ListItem Text="PENDIENTE" />
+                                                        </Items>
+                                                        <SelectedItems>
+                                                            <ext:ListItem Index="0" />
+                                                        </SelectedItems>
+                                                    </ext:ComboBox>
+                                                </Items>
+                                            </ext:FieldContainer>
                                         </Items>
                                     </ext:Panel>
                                     <ext:Panel 
                                         ID="pContrato" 
                                         runat="server" 
-                                        Title="Contrato" 
+                                        Title="P Ulises" 
                                         BodyPadding="10" 
                                         AutoScroll="true">
                                         <Items>
@@ -593,17 +493,37 @@
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
                                                 <Items>
-                                                    <ext:TextField 
-                                                        ID="txtfContratista"
-                                                        runat="server" 
-                                                        Width="400" 
+                                                         <ext:ComboBox
+                                                        ID="cmbProveedor"
+                                                        runat="server"
+                                                        Width="200"
                                                         StyleSpec="margin-right: 6px;"
-                                                        MaxLength="100"
-                                                        EnforceMaxLength="true">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfContratista.setValue(App.txtfContratista.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
+                                                        DisplayField="Nombre"
+                                                        ValueField="ID"
+                                                        ForceSelection="true"
+                                                        Editable="false"
+                                                        AllowBlank="false"
+                                                        MatchFieldWidth="false">
+                                                        <ListConfig Width="200" MaxHeight="195">
+                                                        </ListConfig>
+                                                        <Store>
+                                                            <ext:Store
+                                                                ID="sProveedores"
+                                                                runat="server">
+                                                                <Model>
+                                                                    <ext:Model ID="mProveedores" runat="server">
+                                                                        <Fields>
+                                                                            <ext:ModelField Name="ID" Type="String" />
+                                                                            <ext:ModelField Name="Nombre" Type="String" />
+                                                                        </Fields>
+                                                                    </ext:Model>
+                                                                </Model>
+                                                            </ext:Store>
+                                                        </Store>
+                                                    </ext:ComboBox>
+
+
+
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer 
@@ -633,12 +553,34 @@
                                                     <ext:DateField
                                                         ID="dfInicioObra"
                                                         runat="server"
+                                                        Editable="false"
                                                         Width="200"
                                                         StyleSpec="margin-right: 6px;">
+                                                         <Listeners>
+                                                            <Blur Fn="validarFechaInicio" />
+                                                        </Listeners>
                                                     </ext:DateField>
+                                                    <ext:NumberField
+                                                        ID="txtDiasObra"
+                                                        runat="server"
+                                                        Width="100"
+                                                        EmptyText="Días"
+                                                        Disabled="true"
+                                                        StyleSpec="margin-right: 6px;"
+                                                         MaxLength="4"
+                                                        EnforceMaxLength="true"
+                                                        MinValue="0"
+                                                        MaxValue="9999"
+                                                        AllowDecimals="false"
+                                                        Step="1">
+                                                        <Listeners>
+                                                            <Change Handler="sumarDias(this.getValue(),App.dfInicioObra.getValue());" />
+                                                        </Listeners>
+                                                    </ext:NumberField>
                                                     <ext:DateField 
                                                         ID="dfFinObra"
                                                         runat="server" 
+                                                        Disabled="true"
                                                         FieldLabel="Fin Obra" 
                                                         Width="300">
                                                     </ext:DateField>
@@ -663,6 +605,112 @@
                                                         AllowDecimals="false"
                                                         Step="1">
                                                     </ext:NumberField>
+                                                </Items>
+                                            </ext:FieldContainer>
+
+                                             <ext:FieldContainer 
+                                                ID="ContenedorCordinador" 
+                                                runat="server" 
+                                                LabelWidth="120" 
+                                                FieldLabel="Coordinador"
+                                                AnchorHorizontal="100%" 
+                                                Layout="ColumnLayout">
+                                                <Items>
+                                                    <ext:TextField
+                                                        ID="txtfCoordinadorNombre"
+                                                        runat="server"
+                                                        Width="200"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        MaxLength="50"
+                                                        EnforceMaxLength="true">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfCoordinadorNombre.setValue(App.txtfCoordinadorNombre.getValue().toUpperCase());" />
+                                                        </Listeners>
+                                                    </ext:TextField>
+                                                    <ext:TextField
+                                                        ID="txtfCoordinadorAPaterno"
+                                                        runat="server"
+                                                        Width="200"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        MaxLength="50"
+                                                        EnforceMaxLength="true">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfCoordinadorAPaterno.setValue(App.txtfCoordinadorAPaterno.getValue().toUpperCase());" />
+                                                        </Listeners>
+                                                    </ext:TextField>
+                                                    <ext:TextField
+                                                        ID="txtfCoordinadorAMaterno"
+                                                        runat="server"
+                                                        Width="200"
+                                                        MaxLength="50"
+                                                        EnforceMaxLength="true">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfCoordinadorAMaterno.setValue(App.txtfCoordinadorAMaterno.getValue().toUpperCase());" />
+                                                        </Listeners>
+                                                    </ext:TextField>
+                                                </Items>
+                                            </ext:FieldContainer>
+                                            <ext:FieldContainer 
+                                                ID="ContenedorProvEnergia" 
+                                                runat="server" 
+                                                LabelWidth="120" 
+                                                FieldLabel="Proveedor Energía"
+                                                AnchorHorizontal="100%" 
+                                                Layout="ColumnLayout">
+                                                <Items>
+                                                    <ext:TextField
+                                                        ID="txtfProveedorEnergia"
+                                                        runat="server"
+                                                        Width="612"
+                                                        MaxLength="100"
+                                                        EnforceMaxLength="true">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfProveedorEnergia.setValue(App.txtfProveedorEnergia.getValue().toUpperCase());" />
+                                                        </Listeners>
+                                                    </ext:TextField>
+                                                </Items>
+                                            </ext:FieldContainer>
+                                            
+                                            <ext:FieldContainer 
+                                                ID="ContenedorSupervisor" 
+                                                runat="server" 
+                                                LabelWidth="120" 
+                                                FieldLabel="Supervisor"
+                                                AnchorHorizontal="100%" 
+                                                Layout="ColumnLayout">
+                                                <Items>
+                                                    <ext:TextField 
+                                                        ID="txtfSupervisorNombre"
+                                                        runat="server"
+                                                        Width="200"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        MaxLength="50"
+                                                        EnforceMaxLength="true">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfSupervisorNombre.setValue(App.txtfSupervisorNombre.getValue().toUpperCase());" />
+                                                        </Listeners>
+                                                    </ext:TextField>
+                                                    <ext:TextField
+                                                        ID="txtfSupervisorAPaterno"
+                                                        runat="server"
+                                                        Width="200"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        MaxLength="50"
+                                                        EnforceMaxLength="true">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfSupervisorAPaterno.setValue(App.txtfSupervisorAPaterno.getValue().toUpperCase());" />
+                                                        </Listeners>
+                                                    </ext:TextField>
+                                                    <ext:TextField
+                                                        ID="txtfSupervisorAMaterno"
+                                                        runat="server"
+                                                        Width="200"
+                                                        MaxLength="50"
+                                                        EnforceMaxLength="true">
+                                                        <Listeners>
+                                                            <Blur Handler="App.txtfSupervisorAMaterno.setValue(App.txtfSupervisorAMaterno.getValue().toUpperCase());" />
+                                                        </Listeners>
+                                                    </ext:TextField>
                                                 </Items>
                                             </ext:FieldContainer>
                                         </Items>
@@ -697,6 +745,7 @@
                                         <EventMask ShowMask="true" Msg="Registrando información..." />
                                         <ExtraParams>
                                             <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                            <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
                                         </ExtraParams>
                                     </Click>
                                 </DirectEvents>

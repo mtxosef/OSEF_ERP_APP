@@ -28,13 +28,14 @@ namespace OSEF.ERP.APP
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
+            string rutaJavaScript = "";
             reporte.Load(Server.MapPath("reports/" + namereport+".rpt"));
             string rutafinal = Server.MapPath("reports/" + namereport + ".rpt");
             string rutafinal2 = Server.MapPath("reports//" + namereport + ".rpt");
             reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports//" + namereport + ".pdf"));
-            ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reports//" + namereport + ".pdf');popup.focus();", true);
-        
-        
+            rutaJavaScript = "reports//" + namereport + ".pdf";
+            //ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reports//" + namereport + ".pdf');popup.focus();", true);
+            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
         }
 
 

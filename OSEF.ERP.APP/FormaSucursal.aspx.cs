@@ -30,6 +30,9 @@ namespace OSEF.AVANCES.SUCURSALES
 
                 sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
                 sColonias.DataBind();
+
+                sProveedores.DataSource = ProveedorBusiness.ObtenerProveedores();
+                sProveedores.DataBind();
             }
         }
 
@@ -48,6 +51,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     ID = oSucursal.ID,
                     CR = oSucursal.CR,
                     Nombre = oSucursal.Nombre,
+                    DireccionZona = oSucursal.Direccionzona,
                     GerenteBBVANombre = oSucursal.GerenteBBVANombre,
                     GerenteBBVAAPaterno = oSucursal.GerenteBBVAAPaterno,
                     GerenteBBVAAMaterno = oSucursal.GerenteBBVAAMaterno,
@@ -100,6 +104,7 @@ namespace OSEF.AVANCES.SUCURSALES
         {
             //1. Obtener datos de la Forma y saber si es edición o nuevo
             string strRegistro = e.ExtraParams["registro"];
+            string strEstatus = e.ExtraParams["estatus"];
             string strcookieEditarSucursal = Cookies.GetCookie("cookieEditarSucursal").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             Sucursal oSucursal = new Sucursal();
@@ -116,6 +121,9 @@ namespace OSEF.AVANCES.SUCURSALES
                         break;
                     case "txtfNombre":
                         oSucursal.Nombre = sd.Value;
+                        break;
+                    case "txtfDireccionZona":
+                        oSucursal.Direccionzona = sd.Value;
                         break;
                     case "txtfGerenteBBVANombre":
                         oSucursal.GerenteBBVANombre = sd.Value;
@@ -174,7 +182,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "cmbMunicipio":
                         oSucursal.Municipio = sd.Value;
                         break;
-                    case "txtfContratista":
+                    case "cmbProveedor":
                         oSucursal.Contratista = sd.Value;
                         break;
                     case "dfTerminoContrato":
@@ -212,6 +220,7 @@ namespace OSEF.AVANCES.SUCURSALES
             else
             {
                 oSucursal.ID = strcookieEditarSucursal;
+                oSucursal.Estatus = strEstatus;
                 //7. Actualizar los datos del proveedor
                 SucursalBusiness.Actualizar(oSucursal);
                 //8. Mandar mensaje con el código del proveedor

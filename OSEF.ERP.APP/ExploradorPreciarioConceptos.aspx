@@ -95,6 +95,8 @@
                             </Store>
                                 <DirectEvents>
                                 <Select OnEvent="cmbPreciarios_Change" >
+                                
+                                    <EventMask ShowMask="true" Msg="Cargando Preciario..." />
                                     <ExtraParams>
                                         <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
                                     </ExtraParams>
@@ -218,7 +220,8 @@
                                             <ext:Parameter Name="subsubcategoria" Value="App.cmbSubSubCategoria.getValue()" Mode="Raw" />
                                             <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
                                             <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
-                                               
+                                            <ext:Parameter Name="preciario" Value="App.cmbPreciario.getValue()" Mode="Raw" />
+                                              
                                         </ExtraParams>
                                     </Click>
                                 </DirectEvents>
@@ -309,8 +312,7 @@
                         Text="CANTIDAD"
                         Align="Center"
                         Width="120"
-                        DataIndex="Cantidad"><%--
-                        <Renderer Fn="cSucursal_Renderer" />--%>
+                        DataIndex="Cantidad">
                     </ext:Column>
                     <ext:Column
                         ID="cUtilizada"
@@ -347,8 +349,7 @@
                         Text="TOTAL ACTUAL"
                         Align="Center"
                         Width="125"
-                        DataIndex="Importefinal"><%--
-                        <Renderer Fn="cPreciario_Renderer" />--%>
+                        DataIndex="Importefinal">
                     </ext:Column>
                 </Columns>
             </ColumnModel>

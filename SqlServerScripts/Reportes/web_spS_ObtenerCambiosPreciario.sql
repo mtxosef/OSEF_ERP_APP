@@ -38,22 +38,23 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT        dbo.Volumetrias.Sucursal, dbo.Sucursales.Nombre, dbo.Sucursales.CR, dbo.Sucursales.Calle, dbo.Sucursales.EntreCalles, dbo.Sucursales.NoExterior, 
-                         dbo.Sucursales.NoInterior, dbo.Sucursales.CodigoPostal, dbo.Sucursales.Colonia, dbo.Sucursales.Estado, dbo.Sucursales.Municipio, 
-                         dbo.ImagenesVolumetriasD.PreciarioConcepto, dbo.VolumetriasD.ConceptoID, dbo.VolumetriasD.Cantidad, dbo.VolumetriasD.Utilizada, dbo.VolumetriasD.Volumetria, 
-                         dbo.ImagenesVolumetriasD.Direccion, dbo.Volumetrias.FechaEmision, dbo.Volumetrias.Observaciones, dbo.Volumetrias.Preciario, dbo.Preciarios.Descripcion, 
-                         dbo.ImagenesVolumetriasD.Nombre AS ImgVoluNombre, dbo.PreciarioConceptos.Descripcion AS PreConDescripcion, dbo.PreciarioConceptos.Categoria, 
-                         dbo.PreciarioConceptos.SubCategoria, dbo.PreciarioConceptos.SubSubCategoria, dbo.PreciarioConceptos.Unidad,dbo.PreciarioConceptos.CLAVE AS CLAVECONCEPTO, dbo.PreciarioConceptos.Costo, 
-                         dbo.PreciarioConceptos.Cantidad AS PreConceptoCantidad, dbo.PreciarioConceptos.Utilizada AS PreConceptoUtilizada, dbo.PreciarioConceptos.Importe, 
-                         dbo.PreciarioConceptos.ImporteFinal
-FROM            dbo.ImagenesVolumetriasD INNER JOIN
-                         dbo.PreciarioConceptos ON dbo.ImagenesVolumetriasD.PreciarioConcepto = dbo.PreciarioConceptos.ID INNER JOIN
-                         dbo.Preciarios ON dbo.PreciarioConceptos.Preciario = dbo.Preciarios.ID INNER JOIN
-                         dbo.Sucursales ON dbo.Preciarios.Sucursal = dbo.Sucursales.ID INNER JOIN
-                         dbo.Volumetrias ON dbo.ImagenesVolumetriasD.Volumetria = dbo.Volumetrias.ID AND dbo.Preciarios.ID = dbo.Volumetrias.Preciario AND 
-                         dbo.Sucursales.ID = dbo.Volumetrias.Sucursal INNER JOIN
-                         dbo.VolumetriasD ON dbo.PreciarioConceptos.ID = dbo.VolumetriasD.ConceptoID AND dbo.Volumetrias.ID = dbo.VolumetriasD.Volumetria
-WHERE        (dbo.ImagenesVolumetriasD.PreciarioConcepto = @idconcepto) AND (dbo.Volumetrias.Preciario = @idpreciario);
+	SELECT V.Sucursal,V.Observaciones,V.Preciario,P.Descripcion,S.Nombre,S.CR,S.Calle,
+S.NoExterior,S.NoInterior,S.CodigoPostal,S.Colonia,S.Estado,S.Municipio,VD.ConceptoID,
+PC.Descripcion AS DESC_CONCEPTO,PC.Utilizada,PC.Cantidad ,V.FechaEmision, IVD.Nombre,IVD.Direccion,PC.Categoria,
+PC.SubCategoria,PC.SubSubCategoria,PC.Unidad,PC.ImporteFinal, PC.Importe,PC.CLAVE,PC.Costo
+FROM Volumetrias V
+LEFT JOIN VolumetriasD VD 
+ON V.ID= VD.Volumetria
+LEFT JOIN ImagenesVolumetriasD IVD 
+ON IVD.Volumetria =  V.ID
+LEFT JOIN PreciarioS P 
+ON P.ID = V.Preciario
+LEFT JOIN PreciarioConceptos PC 
+ON PC.Preciario = P.ID AND VD.ConceptoID = PC.ID
+LEFT JOIN Sucursales S
+ON S.ID = V.Sucursal
+WHERE VD.ConceptoID=@idconcepto
+AND V.Preciario=@idpreciario
 
 END
 GO

@@ -32,6 +32,7 @@ CREATE PROCEDURE web_spU_ActualizarSucursal
 	@ID						CHAR(10),
 	@CR						SMALLINT,
 	@Nombre					VARCHAR(50),
+	@DireccionZona			VARCHAR(50),
 	@GerenteBBVANombre		VARCHAR(50),
 	@GerenteBBVAAPaterno	VARCHAR(50),
 	@GerenteBBVAAMaterno	VARCHAR(50),
@@ -70,6 +71,7 @@ BEGIN
 	SET
 		CR = @CR,
 		Nombre = @Nombre,
+		DireccionZona=@DireccionZona,
 		GerenteBBVANombre = @GerenteBBVANombre,
 		GerenteBBVAAPaterno = @GerenteBBVAAPaterno,
 		GerenteBBVAAMaterno = @GerenteBBVAAMaterno,

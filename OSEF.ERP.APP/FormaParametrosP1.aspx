@@ -167,7 +167,7 @@
                             <ItemTpl ID="ItemTpl1" runat="server">
                                 <Html>
                                     <div class="search-item">
-							            <h3>{ID}</h3>
+							            <h3>{ID} - {Clave}</h3>
                                         <span>{Descripcion}</span>
 						            </div>
                                 </Html>

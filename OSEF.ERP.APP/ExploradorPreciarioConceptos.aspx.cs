@@ -28,8 +28,8 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener el Preciario seleccionado y obtener sus datos junto con su sucursal
             string strPreciarios = e.ExtraParams["valor"];
-            //sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
-            //sPreciarioConcepto.DataBind();
+            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
+            sPreciarioConcepto.DataBind();
 
             sCategoria.DataSource = PreciarioCategoriaBuisness.ObtenerPreciarioCategoriasPorPreciario(strPreciarios);
             sCategoria.DataBind();
@@ -70,11 +70,12 @@ namespace OSEF.ERP.APP
         protected void cmbSubSubCategoria_Select(object sender, DirectEventArgs e)
         {
             //1. Obtener el valor seleccionado 
+            string strPreciario = e.ExtraParams["preciario"];
             string strCategoria = e.ExtraParams["categoria"];
             string strSubCategoria = e.ExtraParams["subcategoria"];
             string strSubSubCategoria = e.ExtraParams["subsubcategoria"];
 
-            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(Session["preciario"].ToString(), strCategoria, strSubCategoria, strSubSubCategoria);
+            sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(strPreciario, strCategoria, strSubCategoria, strSubSubCategoria);
             sPreciarioConcepto.DataBind();
         }
     }

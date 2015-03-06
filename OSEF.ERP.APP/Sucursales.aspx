@@ -180,14 +180,14 @@
                         runat="server"
                         Text="ID"
                         Align="Center"
-                        Width="100"
+                        Width="110"
                         DataIndex="ID" />
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
                         Text="SUCURSAL"
                         Align="Left"
-                        Width="300"
+                        Width="290"
                         DataIndex="Nombre" />
                     <ext:Column
                         ID="cGerente"

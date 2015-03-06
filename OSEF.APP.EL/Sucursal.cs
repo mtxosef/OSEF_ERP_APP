@@ -15,6 +15,7 @@ namespace OSEF.APP.EL
         string id;
         short cr;
         string nombre;
+        string direccionzona;
         string gerentebbvanombre;
         string gerentebbvaapaterno;
         string gerentebbvaamaterno;
@@ -218,6 +219,12 @@ namespace OSEF.APP.EL
         {
             get { return estatus; }
             set { estatus = value; }
+        }
+
+        public string Direccionzona
+        {
+            get { return direccionzona; }
+            set { direccionzona = value; }
         }
 
         #endregion

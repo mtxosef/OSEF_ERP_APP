@@ -10,6 +10,14 @@
     <title>Vista Preliminar</title>
      <link rel="shortcut icon" href="images/myApp.ico" />
     <link rel="stylesheet" href="css/preliminar.css" />
+
+    <script type="text/javascript">
+        var myFunction = function (response, result) {
+         var ruta=   result.extraParamsResponse.ruta;
+         window.open(ruta, 'Reporte', 'status = 1,width=600, resizable = 1');
+
+        }
+ </script>
 </head>
 <body style="">
     <form id="form1" runat="server">
@@ -36,12 +44,13 @@
                                     OverImageUrl="assets/img/controles/pdfOver.png"
                                     PressedImageUrl="assets/img/controles/pdfPressed.png" ToolTip="Exportar a PDF"
                                     Height="50"
+                                    OnClientClick="myFunction();"
                                      StyleSpec="margin-right: 10px;"
                                     Width="50"
                                     Hidden="false" 
                                     >
                                     <DirectEvents>
-                                    <Click OnEvent="toPDF"></Click>
+                                    <Click OnEvent="toPDF" Success="myFunction"></Click>
                                     </DirectEvents>
                          </ext:ImageButton>
                            <ext:ImageButton

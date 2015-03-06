@@ -25,8 +25,8 @@ namespace OSEF.AVANCES.SUCURSALES
                 sPreciario.DataBind();
 
                 ////3. Cargar Conceptos
-                //sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConcepto();
-                //sPreciarioConcepto.DataBind();
+                sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConcepto();
+                sPreciarioConcepto.DataBind();
 
 
 
@@ -157,15 +157,13 @@ namespace OSEF.AVANCES.SUCURSALES
 
 
 
-            
+            //Actualiza las cantidades despues de afectar
             foreach (VolumetriaD sd in lVolumetriaD)
             {
 
                 PreciarioConceptoBusiness.Actualizar(sd.ConceptoID, sd.Utilizada, sd.Volumetria);
 
             }
-
-
 
 
             oVolumetria = VolumetriaBusiness.ObtenerVolumetriaPorID(oVolumetriaForma.ID);
@@ -322,8 +320,8 @@ namespace OSEF.AVANCES.SUCURSALES
             {
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
                 Preciario oPreciario = PreciarioBusiness.ObtenerPreciarioPorID(strPreciarios);
-                //sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
-                //sPreciarioConcepto.DataBind();
+                sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorPreciario(strPreciarios);
+                sPreciarioConcepto.DataBind();
             }
 
 

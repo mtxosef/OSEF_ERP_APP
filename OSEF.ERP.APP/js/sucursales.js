@@ -2,7 +2,7 @@
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarSucursal', 'Nuevo');
     window.parent.App.wEmergente.load('FormaSucursal.aspx');
-    window.parent.App.wEmergente.setHeight(436);
+    window.parent.App.wEmergente.setHeight(460);
     window.parent.App.wEmergente.setWidth(800);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nueva sucursal');
@@ -19,7 +19,7 @@ var imgbtnGuardar_Click_Success = function () {
 var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieEditarSucursal', App.gpSucursales.getSelectionModel().getSelection()[0].get('ID'));
     window.parent.App.wEmergente.load('FormaSucursal.aspx');
-    window.parent.App.wEmergente.setHeight(436);
+    window.parent.App.wEmergente.setHeight(460);
     window.parent.App.wEmergente.setWidth(800);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Editar sucursal ' + Ext.util.Cookies.get('cookieEditarSucursal'));
@@ -107,6 +107,7 @@ var sSucursal_Add = function (sucursal, registro) {
     App.txtfID.setValue(registro[0].get('ID'));
     App.nfCR.setValue(registro[0].get('CR'));
     App.txtfNombre.setValue(registro[0].get('Nombre'));
+    App.txtfDireccionZona.setValue(registro[0].get('DireccionZona'));
     App.txtfGerenteBBVANombre.setValue(registro[0].get('GerenteBBVANombre'));
     App.txtfGerenteBBVAAPaterno.setValue(registro[0].get('GerenteBBVAAPaterno'));
     App.txtfGerenteBBVAAMaterno.setValue(registro[0].get('GerenteBBVAAMaterno'));
@@ -128,7 +129,7 @@ var sSucursal_Add = function (sucursal, registro) {
     App.cmbColonia.setValue(registro[0].get('Colonia'));
     App.cmbEstado.setValue(registro[0].get('Estado'));
     App.cmbMunicipio.setValue(registro[0].get('Municipio'));
-    App.txtfContratista.setValue(registro[0].get('Contratista'));
+    App.cmbProveedor.setValue(registro[0].get('Contratista'));
     App.dfTerminoContrato.setValue(registro[0].get('TerminoContrato'));
     App.dfInicioObra.setValue(registro[0].get('InicioObra'));
     App.dfFinObra.setValue(registro[0].get('FinObra'));
@@ -142,3 +143,33 @@ var sMunicipios_Load = function () {
         App.cmbMunicipio.setValue(App.sSucursal.getAt(0).get('Municipio'));
     }
 };
+
+//Suma dias
+function sumarDias(d, fecha) {
+    //Auxiliar para realizar la conversión
+    var date = new Date(fecha);
+    fecha = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    var Fecha = new Date();
+    var sFecha = fecha || (Fecha.getDate() + "/" + (Fecha.getMonth() + 1) + "/" + Fecha.getFullYear());
+    var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
+    var aFecha = sFecha.split(sep);
+    var fecha = aFecha[2] + '/' + aFecha[1] + '/' + aFecha[0];
+    fecha = new Date(fecha);
+    fecha.setDate(fecha.getDate() + parseInt(d));
+    var anno = fecha.getFullYear();
+    var mes = fecha.getMonth() + 1;
+    var dia = fecha.getDate();
+    mes = (mes < 10) ? ("0" + mes) : mes;
+    dia = (dia < 10) ? ("0" + dia) : dia;
+    var fechaFinal = dia + sep + mes + sep + anno;
+
+    App.dfFinObra.setValue(fechaFinal);
+}
+
+function validarFechaInicio(valor, evento, registro ) {
+
+    if (valor.rawValue != '') {
+
+        App.txtDiasObra.setDisabled(false);
+    }
+}
