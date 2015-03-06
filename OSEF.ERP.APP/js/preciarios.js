@@ -3,8 +3,6 @@ var store;
 
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
-
-
     window.parent.App.wEmergente.load('FormaPreciario.aspx');
     Ext.util.Cookies.set('cookieEditarPreciario', 'Nuevo');
     window.parent.App.wEmergente.setHeight(580);
@@ -12,20 +10,15 @@ var imgbtnNuevo_Click = function () {
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nuevo Preciario');
     window.parent.App.wEmergente.show();
-
 };
 
 //Evento que borra el preciario, sí se equivocó de archivo
 var BorrarDetallePreciario = function () {
     App.sCarga.removeAll();
-
 };
-
-
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
-
     window.parent.App.wEmergente.load('FormaPreciario.aspx');
     Ext.util.Cookies.set('cookieEditarPreciario', App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID'));
     window.parent.App.wEmergente.setHeight(580);
@@ -33,8 +26,6 @@ var imgbtnEditar_Click = function () {
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Editar Preciario ' + Ext.util.Cookies.get('cookieEditarPreciario'));
     window.parent.App.wEmergente.show();
-   
-
 };
 
 //Evento que ocurre al dar clic en imgbtnGuardar
@@ -43,7 +34,6 @@ var imgbtnGuardar_Click_Success = function () {
     window.parent.App.pCentro.getBody().App.sPreciarios.reload();
     App.sbFormaPreciario.setText('ACTIVO');
 };
-
 
 //Para el botón de eliminar, Eliminar un registro
 var imgbtnBorrar_Click_Success = function (response, result) {
@@ -74,15 +64,12 @@ var imgbtnBorrar_Click_Success = function (response, result) {
         App.gpPreciarios.getSelectionModel().deselectAll();
         App.imgbtnEditar.setDisabled(true);
         App.imgbtnBorrar.setDisabled(true);
-
     }
 };
-
 
 //Revisa la extencion del archivo de excel forzosamente
 var CheckExtension = function (FileUploadField1, file) {
     //Se declara un arreglo con las extenciones que serán permitidas
-
     var validFilesTypes = ["xls", "xlsx"];
     //se pasa el parametro que contiene el archivo
     var filePath = file;
@@ -113,13 +100,11 @@ var CheckExtension = function (FileUploadField1, file) {
             icon: Ext.MessageBox.WARNING
         });
 
-//        alert("Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "));
+    //alert("Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "));
     }
-
     HabilitarGuardar();
     return isValidFile;
 };
-
 
 //Cambio en los datos del tablero
 var sPreciarios_DataChanged = function () {
@@ -128,9 +113,7 @@ var sPreciarios_DataChanged = function () {
     }
     else {
         App.sbPreciarios.setText(App.sPreciarios.getCount() + ' ' + 'PRECIARIOS');
-    }
-
-   
+    }   
 };
 
 //Acciones al hacer clic en un registro
@@ -139,7 +122,6 @@ var gpPreciarios_ItemClick = function (gridview, registro, gvhtml, index) {
     App.imgbtnBorrar.setDisabled(false);
     indice = index;
 };
-
 
 //Hacer la busqueda de información
 var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
@@ -154,13 +136,11 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     App.imgbtnBorrar.setDisabled(true);
 };
 
-
 //Evento que se lanza al seleccionar algun valor de la sucursal
 var cmbSucursal_Select = function (combobox, registro) {
     App.txtfSucursalNombre.setValue(registro[0].data.Nombre);
     //Validar si se habilita Guardar
-    HabilitarGuardar();
-   
+    HabilitarGuardar();   
 };
 
 //Evento que se lanza al poner algun caracter en el control de la Sucursal
@@ -176,26 +156,15 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
     else {
         App.txtfSucursalNombre.setValue('');
     }
-
     //Validar si se habilita Guardar
     HabilitarGuardar();
-
 };
 
 //Evento que se lanza al poner algun texto en la descripcion
 var txtfDescripcion_Change = function (txtDescripcion, Evento) {
-
-    App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());
     //Validar si se habilita Guardar
     HabilitarGuardar();
-
 };
-
-var sSucursales_Load = function () {
-};
-
-
-
 
 //Evento lanzado al cargar el store de avance encabezado
 var sPreciario_Load = function () {
@@ -203,15 +172,12 @@ var sPreciario_Load = function () {
     store = window.parent.App.pCentro.getBody().App.sPreciarios;
     var d = new Date();
     App.dfFechaEmision.setValue(d);
-  
 };
 
 //Evento lanzado al agregar un registro al store
 var sPreciario_Add = function (avance, registro) {
     //Lo que pasa cuando se selecciona un registro y es diferente de nuevo
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo') {
-
-      
         App.txtfID.setValue(registro[0].get('ID'));
         App.txtfDescripcion.setValue(registro[0].get('Descripcion'));
         App.cmbSucursal.setValue(registro[0].get('Sucursal'));
@@ -219,7 +185,6 @@ var sPreciario_Add = function (avance, registro) {
         App.txfArchivoActual.setValue(registro[0].get('Archivo'));
         App.cmbEstatus.setValue(registro[0].get('Estatus'));
         App.dfFechaEmision.setValue(registro[0].get('FechaAlta'));
-
 
         //Deshabilita botones cuando se edita un movimiento al cargar el store
         App.cmbEstatus.setDisabled(false);
@@ -230,18 +195,14 @@ var sPreciario_Add = function (avance, registro) {
         App.imgbtnBorrarCarga.setDisabled(true);
         App.fufArchivoExcel.setDisabled(true);
         App.sbFormaPreciario.setText(registro[0].get('Estatus'));
-
     }
 };
 
-
 //Renderizar objeos con descripciones de categorias
-
 //Asignar la descripción de la categoria a esta columna
 var cCategoria_Renderer = function (valor, columna, registro) {
     if (valor.length != 0) {
-        var Categoria = registro.get('RCategoria');
-        
+        var Categoria = registro.get('RCategoria');        
         return Categoria.Descripcion;
     }
 };
@@ -254,7 +215,6 @@ var cSubcategoria_Renderer = function (valor, columna, registro) {
     }
 };
 
-
 //Asignar la descripción de la subsubcategoria a esta columna
 var cSubsubcategoria_Renderer = function (valor, columna, registro) {
     if (valor.length != 0) {
@@ -263,12 +223,9 @@ var cSubsubcategoria_Renderer = function (valor, columna, registro) {
     }
 };
 
-
-
 var btnImportar_Click_Success = function (response, result) {
 //Valida si se habilita el boton de guardar
     HabilitarGuardar();
-
     if (result.extraParamsResponse.accion == 'error') {
         Ext.Msg.show({
             id: 'msgPreciarioConcepto',
@@ -281,19 +238,11 @@ var btnImportar_Click_Success = function (response, result) {
             icon: Ext.MessageBox.WARNING
         });
     }
-
     //alert(result.extraParamsResponse.data);
-
- 
-
 }
 
-
-
 //Función que valida si se habilita el botón de Guardar
-function HabilitarGuardar() {
-
-    
+function HabilitarGuardar() {    
     //Valida que el control de subir archivo contenga algo, si no, se le asigna un caracter, para que entre a la validacion de habilitarGuarda();
     var FileUploadValue = "";
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo' && App.fufArchivoExcel.getValue()=="" ) {
@@ -312,7 +261,6 @@ function HabilitarGuardar() {
         App.imgbtnGuardar.setDisabled(true);
     }
 }
-
 
 //Evento que hace el filtro al seleccionar algun elemento
 var cmbEstatusFiltro_Select = function (combobox, registro) {
@@ -335,10 +283,8 @@ var cmbEstatusFiltro_Select = function (combobox, registro) {
     }
 };
 
-
 //Evento que hace el filtro al seleccionar algun elemento
 var cmbSucursalFiltro_Select = function (combobox, registro) {
-
     //1. Obtener el valor
     var valor = registro[0].get('ID');
  
@@ -359,14 +305,10 @@ var cmbSucursalFiltro_Select = function (combobox, registro) {
     }
 };
 
-
-
-
 //Evento que hace el filtro al seleccionar algun elemento
 var cmbUsuarioFiltro_Select = function (combobox, registro) {
     //1. Obtener el valor
     var valor = combobox.getValue();
-
     //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
     if (valor == 'Todos') {
         App.sPreciarios.clearFilter();
@@ -383,7 +325,6 @@ var cmbUsuarioFiltro_Select = function (combobox, registro) {
         });
     }
 };
-
 
 //Para el botón de eliminar, Eliminar un registro
 var cmbSucursal_Change_Success = function (response, result) {
@@ -406,8 +347,6 @@ var cmbSucursal_Change_Success = function (response, result) {
     }
 };
 
-
-
 //Pone todas las celdas de color 
 var renderImporte = function (value, metadata) {
     var F = Ext.util.Format;
@@ -419,38 +358,27 @@ var renderImporte = function (value, metadata) {
 };
 
 var renderImporteUtilizado = function (value, metadata, registro) {
-
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
 
     if (parseFloat(registro.get('Importefinal')) > 0 ) {
-        metadata.style = "background-color: #0C8D1B; color: #fff;";
-
-
+        metadata.style = "background-color: #0C8D1B; color: #fff;";        
     }
     else {
-        metadata.style = "background-color: #FEBB5D;";
-      
+        metadata.style = "background-color: #FEBB5D;";      
     }
-
     return F.number(value, "000,000,000.00");
-
 };
+
 //Pone todas las celdas de color segun la validacion
 var renderCantidadUtilizada = function (value, metadata, registro) {
-
 if (parseFloat(registro.get('Utilizada')) > 0)
      {
         metadata.style = "background-color: #7E6FEB;";
-
     }
-
     return value;
 };
-
-
-
 
 var sCarga_Load = function (avance, registro, index) {
     var sum = 0;
@@ -466,5 +394,4 @@ var sCarga_Load = function (avance, registro, index) {
     F.decimalSeparator = '.';
     App.dfTotalInicial.setValue('$' + F.number(sum, "000,000,000.00"));
     App.dfTotalFinal.setValue('$' + F.number(sum2, "000,000,000.00"));
-
 }

@@ -34,7 +34,10 @@
             ID="sPreciario"
             runat="server">
             <Model>
-                <ext:Model ID="mPreciario" runat="server" IDProperty="ID">
+                <ext:Model
+                    ID="mPreciario"
+                    runat="server"
+                    IDProperty="ID">
                     <Fields>
                         <ext:ModelField Name="ID" Type="String" />
                         <ext:ModelField Name="Descripcion" Type="String" />
@@ -142,7 +145,8 @@
                                     AllowBlank="false"
                                     AutoFocus="true">
                                     <Listeners>
-                                        <Change Fn="txtfDescripcion_Change"></Change>
+                                        <Change Fn="txtfDescripcion_Change" />
+                                        <Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />
                                     </Listeners>
                                 </ext:TextField>
                             </Items>
@@ -186,7 +190,8 @@
                                             <Model>
                                                 <ext:Model
                                                     ID="mSucursales"
-                                                    runat="server">
+                                                    runat="server"
+                                                    IDProperty="ID">
                                                     <Fields>
                                                         <ext:ModelField Name="ID" />
                                                         <ext:ModelField Name="Nombre" />
@@ -194,9 +199,6 @@
                                                     </Fields>
                                                 </ext:Model>                            
                                             </Model>
-                                            <Listeners>
-                                                <Load Fn="sSucursales_Load" />
-                                            </Listeners>
                                         </ext:Store>
                                     </Store>
                                     <Listeners>
