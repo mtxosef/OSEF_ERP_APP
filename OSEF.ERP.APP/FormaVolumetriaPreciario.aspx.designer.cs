@@ -463,6 +463,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Model mPreciarioConcepto;
         
         /// <summary>
+        /// Control ccConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn ccConcepto;
+        
+        /// <summary>
         /// Control cCantidad.
         /// </summary>
         /// <remarks>

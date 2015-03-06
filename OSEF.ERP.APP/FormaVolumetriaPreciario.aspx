@@ -560,6 +560,7 @@
                                                             <ext:ModelField Name="Cantidad" Type="Float" />
                                                             <ext:ModelField Name="Utilizada" Type="Float" />
                                                             <ext:ModelField Name="Fotos" Type="String" />
+                                                            <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
                                                         </Fields>
                                                     </ext:Model>
                                                 </Model>
@@ -650,7 +651,7 @@
                                                     </ext:ComboBox>
                                                 </Editor>
                                             </ext:Column>
-                                         <%--   <ext:CommandColumn
+                                            <ext:CommandColumn
                                                 ID="ccConcepto"
                                                 runat="server" 
                                                 Width="25">
@@ -664,7 +665,7 @@
                                                 <Listeners>
                                                     <Command Fn="ccConcepto_Command" />
                                                 </Listeners>
-                                            </ext:CommandColumn>--%>
+                                            </ext:CommandColumn>
                                             <ext:NumberColumn
                                                 ID="cCantidad"
                                                 runat="server"
