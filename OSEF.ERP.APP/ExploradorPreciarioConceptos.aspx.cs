@@ -7,6 +7,10 @@ using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using Ext.Net;
 using OSEF.APP.EL;
+using System.Xml;
+using System.Xml.Xsl;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace OSEF.ERP.APP
 {
@@ -78,5 +82,70 @@ namespace OSEF.ERP.APP
             sPreciarioConcepto.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(strPreciario, strCategoria, strSubCategoria, strSubSubCategoria);
             sPreciarioConcepto.DataBind();
         }
+
+
+
+        protected void ExportEt(object sender, DirectEventArgs e)
+        {
+            try
+            {
+                string name = "Exportado";
+
+                #region Convert Data JSON
+                object o = JSON.Deserialize<object>(e.ExtraParams["data"]);
+                #endregion
+
+                #region JSON for use XML
+                StringBuilder SB = new StringBuilder();
+                SB.Append("{");
+                SB.Append("\"?xml\":");
+                SB.Append("{");
+                SB.Append("\"@version\": \"1.0\",");
+                SB.Append("\"@standalone\": \"no\"");
+                SB.Append("},");
+                SB.Append("\"records\":");
+                SB.Append("{");
+                SB.Append("\"record\":");
+                SB.Append(o.ToString());
+                SB.Append("}}");
+                #endregion
+
+                #region Convert JSON to XML
+                XmlDocument XD = (XmlDocument)JsonConvert.DeserializeXmlNode(@SB.ToString());
+                XmlNode XN = XD as XmlNode;
+                #endregion
+
+                #region Clear Buffer
+                Response.Clear();
+                #endregion
+
+                switch (e.ExtraParams["format"].ToString())
+                {
+               
+
+                    #region Document Type XLS
+                    case "xls":
+                        Response.ContentType = "application/vnd.ms-excel";
+                        Response.AddHeader("Content-Disposition", "attachment; filename=" + name + ".xls");
+                        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                        XslCompiledTransform XCT1 = new XslCompiledTransform();
+                        XCT1.Load(Server.MapPath("Excel.xsl"));
+                        XCT1.Transform(XN, null, Response.OutputStream);
+                        break;
+                    #endregion
+
+                    
+                }
+
+                #region Close Buffer
+                Response.End();
+                #endregion
+            }
+            catch
+            {
+            }
+        }
+
+
     }
 }

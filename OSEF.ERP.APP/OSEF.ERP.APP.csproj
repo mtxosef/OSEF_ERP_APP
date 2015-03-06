@@ -294,6 +294,7 @@
     <Content Include="Estados.aspx" />
     <Content Include="Estados2.aspx" />
     <Content Include="examples-shared.js" />
+    <Content Include="Excel.xsl" />
     <Content Include="ExploradorPreciarioConceptos.aspx" />
     <Content Include="fancylibs\blank.gif" />
     <Content Include="fancylibs\fancybox_loading%402x.gif" />

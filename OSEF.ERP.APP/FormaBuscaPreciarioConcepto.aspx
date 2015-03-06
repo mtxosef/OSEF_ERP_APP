@@ -34,7 +34,7 @@
             ID="fpBuscaPreciarioConcepto"
             runat="server"
             MonitorResize="true"
-            Height="450"
+            Height="360"
             Width="665"
             BodyStyle="background-color:#fff;">
             <Items>

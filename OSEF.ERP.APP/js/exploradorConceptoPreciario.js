@@ -123,5 +123,12 @@ var sParametrosExporador_Load = function () {
     App.txtfConcepto.setValue(Ext.util.Cookies.get('cookieConcepto'));
     App.txtConceptoID.setValue(Ext.util.Cookies.get('cookieConceptoID'));
     App.txtADescripcion.setValue(Ext.util.Cookies.get('cookieDescripcion'));
-  
+
 };
+
+
+var sPreciarioConcepto_Load = function () {
+        if (App.sPreciarioConcepto.getCount() != 0) {
+        App.imgbtnExporToExcel.setDisabled(false);
+    }
+}

@@ -137,16 +137,7 @@
                             ToolTip="Información"
                             Height="30"
                             Width="30"
-                            Disabled="false">
-                            <DirectEvents>
-                             
-                             <Click OnEvent="imgBtnPreciarioPrueba_Click" Success="imgBtnPreciarioPrueba_Click_Success">
-                                    <EventMask ShowMask="true" Msg="Cargando conceptos..." />
-                                   <ExtraParams>
-                                    <ext:Parameter Name="preciario" Value="App.cmbPreciario.getValue()" Mode="Raw" />
-                                    </ExtraParams>
-                             </Click>
-                           </DirectEvents>
+                            Disabled="true">
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnAfectar"
@@ -440,6 +431,7 @@
                                                         <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
                                                     </ExtraParams>
                                                 </Select>
+                                              
                                             </DirectEvents>
                                                                    
                                     </ext:ComboBox>
@@ -592,8 +584,7 @@
                                                 Text="Concepto"
                                                 Width="325"
                                                 DataIndex="ConceptoID">
-                                                <Renderer Fn="cDescripcion_Renderer" />
-                                                <Editor>
+                                                <%--<Editor>
                                                     <ext:ComboBox
                                                         ID="cmbConcepto"
                                                         runat="server"
@@ -602,11 +593,11 @@
                                                         ValueField="ID"
                                                         
                                                          PageSize="10"
-                                        ForceSelection="true"
-                                        MatchFieldWidth="false"
-                                        QueryMode="Local"
-                                        TypeAhead="true"
-                                                        >
+                                                        ForceSelection="true"
+                                                        MatchFieldWidth="false"
+                                                        QueryMode="Local"
+                                                        TypeAhead="true"
+                                                                        >
                                                             <ListConfig ID="ListConfig1" runat="server" Width="350" Cls="xEspacioCmbxCustom">
                                                                 <ItemTpl ID="ItemTpl1" runat="server">
                                                                     <Html>
@@ -649,12 +640,13 @@
                                                             <Select Fn="cmbConcepto_Select" />
                                                         </Listeners>
                                                     </ext:ComboBox>
-                                                </Editor>
+                                                </Editor>--%>
                                             </ext:Column>
                                             <ext:CommandColumn
                                                 ID="ccConcepto"
                                                 runat="server" 
                                                 Width="25">
+                                                  <PrepareToolbar Fn="ccConcepto_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="Add"

@@ -433,24 +433,25 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     HabilitarAfectar();
 };
 
+
+//Acciones del boton d agregar concepto en el detalle
 var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
+
+
     window.parent.App.wAyudaConcepto.load('FormaBuscaPreciarioConcepto.aspx');
-    window.parent.App.wAyudaConcepto.setHeight(500);
+    window.parent.App.wAyudaConcepto.setHeight(410);
     window.parent.App.wAyudaConcepto.setWidth(685);
     window.parent.App.wAyudaConcepto.center();
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
     window.parent.App.wAyudaConcepto.show();
+    //Asigno el indicie del renglon
+    Ext.util.Cookies.set('cookieRenglonVolumetriaD', fila);
+
+    //Asignamos el id del preciario
+    Ext.util.Cookies.set('cookiePreciarioBusqueda', App.sVolumetria.getAt(0).get('Preciario'));
+
 };
 
-
-//Evento que muestra el valor de la columna Concepto por su descripción y no por su ID del Detalle
-var cDescripcion_Renderer = function (valor) {
-    var registro;
-    if (valor.length != 0) {
-        registro = App.sPreciarioConcepto.findRecord('ID', valor);
-        return registro.get('Descripcion');
-    }
-};
 
 
 //Darle formato a la columna de Cantidad
@@ -493,6 +494,43 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
         var botonEliminar = toolbar.items.get(0);
         botonEliminar.setDisabled(true);
         botonEliminar.setTooltip("No se puede borrar un concepto");
+    }
+
+};
+
+//Validaciones de comandos para conceptos
+var ccConcepto_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+    //alert('Si entro');
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') == 'Nuevo' && App.sVolumetria.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(false);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de conceptos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(false);
     }
 
 };
@@ -583,40 +621,40 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 };
 
 
-//Evento que pondra la cantidad según el concepto obtenido
-var cmbConcepto_Select = function (combobox, registro) {
-    //Ayuda para traer lo que trae toda la funcion como parámetro
-    
+////Evento que pondra la cantidad según el concepto obtenido
+//var cmbConcepto_Select = function (combobox, registro) {
+//    //Ayuda para traer lo que trae toda la funcion como parámetro
+//    
 
-    if (App.sConceptos.find('ConceptoID', registro[0].get('ID')) == -1) {
+//    if (App.sConceptos.find('ConceptoID', registro[0].get('ID')) == -1) {
 
-        //Variable que contiene el indicie del elemento seleccionado del comboBox
-        var indiceCombo = registro[0].index;
-        //Variale que guarda el indicie del renglon del GridPanel segun la posicion en la que se encuentre capturando el usuario
-        var indice = App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId;
+//        //Variable que contiene el indicie del elemento seleccionado del comboBox
+//        var indiceCombo = registro[0].index;
+//        //Variale que guarda el indicie del renglon del GridPanel segun la posicion en la que se encuentre capturando el usuario
+//        var indice = App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId;
 
-        //se actualiza el Store contenedor con datos del store del comboBox
-        App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
+//        //se actualiza el Store contenedor con datos del store del comboBox
+//        App.sConceptos.getAt(indice).set("Cantidad", App.sPreciarioConcepto.getAt(indiceCombo).get('Cantidad'));
 
-    }
-    else {
-        Ext.Msg.show({
-            id: 'msgConceptoError',
-            title: 'Error',
-            msg: 'El concepto ya ha sido capturado ',
-            buttons: Ext.MessageBox.OK,
-            onEsc: Ext.emptyFn,
-            closable: false,
-            fn: function (btn) {
-                if (btn === 'ok') {
-                    App.cmbConcepto.setValue('');
-                    App.sConceptos.getAt(App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId).set('ConceptoID', '');
-                }
-            },
-            icon: Ext.MessageBox.ERROR
-        });
-    }
-}
+//    }
+//    else {
+//        Ext.Msg.show({
+//            id: 'msgConceptoError',
+//            title: 'Error',
+//            msg: 'El concepto ya ha sido capturado ',
+//            buttons: Ext.MessageBox.OK,
+//            onEsc: Ext.emptyFn,
+//            closable: false,
+//            fn: function (btn) {
+//                if (btn === 'ok') {
+//                    App.cmbConcepto.setValue('');
+//                    App.sConceptos.getAt(App.gpVolumetriaDetalle.getSelectionModel().getSelection()[0].internalId).set('ConceptoID', '');
+//                }
+//            },
+//            icon: Ext.MessageBox.ERROR
+//        });
+//    }
+//}
 
 
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
