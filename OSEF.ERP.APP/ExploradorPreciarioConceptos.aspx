@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExploradorPreciarioConceptos.aspx.cs" Inherits="OSEF.ERP.APP.ExploradorVolumetrias" %>
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,13 +27,16 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/exploradorConceptoPreciario.js"></script>
+
+
+   
 </head>
 <body class="xCustomBody">
      <ext:ResourceManager ID="rmExploradorConceptosPreciario" runat="server" HideInDesign="true">
         </ext:ResourceManager>
     
     <form id="form1" runat="server">
-
+     <ext:Hidden ID="GridData" runat="server" />
         <ext:GridPanel
             ID="gpExploradorConceptosPreciario"
             runat="server"
@@ -85,8 +90,8 @@
                                                 <ext:ModelField Name="Sucursal" />
                                                 <ext:ModelField Name="Archivo" />
                                                 <ext:ModelField Name="Estatus" />
-                                                    <ext:ModelField Name="FechaAlta" />
-                                                    <ext:ModelField Name="RSucursal" Type="Object" />
+                                                <ext:ModelField Name="FechaAlta" />
+                                                <ext:ModelField Name="RSucursal" Type="Object" />
                                                         
                                             </Fields>
                                         </ext:Model>                            
@@ -95,8 +100,6 @@
                             </Store>
                                 <DirectEvents>
                                 <Select OnEvent="cmbPreciarios_Change" >
-                                
-                                    <%--<EventMask ShowMask="true" Msg="Cargando Preciario..." />--%>
                                     <ExtraParams>
                                         <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
                                     </ExtraParams>
@@ -109,7 +112,7 @@
                             <ext:ComboBox
                                 ID="cmbCategoria"
                                 runat="server"
-                                Width="190"
+                                Width="175"
                                 DisplayField="Descripcion"
                                 ValueField="ID"
                                 EmptyText="CATEGORÍA"
@@ -139,7 +142,7 @@
                              <ext:ComboBox
                                 ID="cmbSubCategoria"
                                 runat="server"
-                                Width="190"
+                                Width="175"
                                 EmptyText="SUBCATEGORÍA"
                                 ValueField="ID"
                                 DisplayField="Descripcion"
@@ -171,7 +174,7 @@
                              <ext:ComboBox
                                 ID="cmbSubSubCategoria"
                                 runat="server"
-                                Width="190"
+                                Width="175"
                                 EmptyText="SUBSUBCATEGORÍAS"
                                 DisplayField="Descripcion"
                                 ValueField="ID"
@@ -197,6 +200,7 @@
                         <ext:ImageButton
                             ID="imgbtnActualizar"
                             runat="server"
+                            
                             ImageUrl="assets/img/controles/login.png"
                             OverImageUrl="assets/img/controles/login-hover.png"
                             PressedImageUrl="assets/img/controles/login-pressed.png"
@@ -206,6 +210,7 @@
                             Width="23">
                            <DirectEvents>
                                     <Click OnEvent="cmbSubSubCategoria_Select">
+                                    <EventMask ShowMask="true" Msg="Cargando Preciario..." />
                                         <ExtraParams>
                                             <ext:Parameter Name="subsubcategoria" Value="App.cmbSubSubCategoria.getValue()" Mode="Raw" />
                                             <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
@@ -216,6 +221,32 @@
                                     </Click>
                                 </DirectEvents>
                         </ext:ImageButton>
+                        <ext:ImageButton
+                            ID="imgbtnExporToExcel"
+                            runat="server"
+                            ImageUrl="assets/img/controles/ExcelNormal.png"
+                            OverImageUrl="assets/img/controles/ExcelOver.png"
+                            PressedImageUrl="assets/img/controles/ExcelPressed.png"
+                            DisabledImageUrl="assets/img/controles/ExcelDisabled.png"
+                            Height="23"
+                            ToolTip="Exportar a excel"
+                            Disabled="true"
+                            Width="23">
+						    <DirectEvents>
+							    <Click OnEvent="ExportEt" IsUpload="true"  >
+								    <ExtraParams>
+									    <ext:Parameter Name="data" Value="#{gpExploradorConceptosPreciario}.getRowsValues({ filterField : function (r,name, value) { 
+                                                                         return name == 'Clave' || name == 'Descripcion' || name == 'Cantidad' || name == 'Utilizada' || name == 'Importefinal';
+                                                                         }})" 
+                                     Mode="Raw" 
+                                     Encode="true" />
+									    <ext:Parameter Name="format" Value="xls" Mode="Value" />
+								    </ExtraParams>
+							    </Click>
+						    </DirectEvents>
+                         </ext:ImageButton>
+
+
                         <ext:TextField 
                             ID="txtfBuscar"
                             runat="server"
@@ -273,6 +304,7 @@
                     </Sorters>
                     <Listeners>
                         <DataChanged Fn="sExploradorPConcepto_DataChanged" />
+                        <Load Fn="sPreciarioConcepto_Load"></Load>
                     </Listeners>
                 </ext:Store>
             </Store>

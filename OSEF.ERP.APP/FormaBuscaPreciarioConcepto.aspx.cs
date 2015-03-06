@@ -21,7 +21,8 @@ namespace OSEF.ERP.APP
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
-                string preciario = Session["preciario"].ToString();
+            
+                string preciario = Cookies.GetCookie("cookiePreciarioBusqueda").Value;
                 //2. Cargar Conceptos
                 sCategoria.DataSource = PreciarioCategoriaBuisness.ObtenerPreciarioCategoriasPorPreciario(preciario);
                 sCategoria.DataBind();
@@ -64,9 +65,10 @@ namespace OSEF.ERP.APP
             //1. Obtener los valores para filtros
             string strCategoria = e.ExtraParams["categoria"].Equals("null") ? string.Empty : e.ExtraParams["categoria"];
             string strSubCategoria = e.ExtraParams["subcategoria"].Equals("null") ? string.Empty : e.ExtraParams["subcategoria"];
-            string strSubSubCategoria = e.ExtraParams["subsubcategoria"].Equals("null") ? string.Empty : e.ExtraParams["subsubcategoria"];            
+            string strSubSubCategoria = e.ExtraParams["subsubcategoria"].Equals("null") ? string.Empty : e.ExtraParams["subsubcategoria"];
+            string preciario = Cookies.GetCookie("cookiePreciarioBusqueda").Value;
 
-            sConceptosFiltrados.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(Session["preciario"].ToString(), strCategoria, strSubCategoria, strSubSubCategoria);
+            sConceptosFiltrados.DataSource = PreciarioConceptoBusiness.ObtenerPreciarioConceptoFiltro(preciario, strCategoria, strSubCategoria, strSubSubCategoria);
             sConceptosFiltrados.DataBind();
         }
     }

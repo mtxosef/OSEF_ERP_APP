@@ -16,5 +16,43 @@ var gpConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
 
 //Hacer doble clic sobre algun concepto del GridPanel
 var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
-    console.log(window.parent.App.wEmergente.getBody().App.sConceptos);
+
+
+    //Valida que el movimiento sea diferente de nuevo y que la columna en la que se obtenga el valor original seal la unica que se mande al metodo del lado del servidor
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
+
+        Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('ID'));
+        Ext.util.Cookies.set('cookieConceptoFotosVolumetria', window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).get('ConceptoID'));
+
+        window.parent.App.wEmergente.getBody().App.direct.obtenerImagenesPorConcepto();
+
+    }
+
+    if (window.parent.App.wEmergente.getBody().App.sConceptos.find('ConceptoID', App.sConceptosFiltrados.getAt(index).get('ID')) == -1) {
+        //se actualiza el Store contenedor con datos del store del grid de ayuda
+        window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).set("ConceptoID", App.sConceptosFiltrados.getAt(index).get('ID'));
+        window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).set("Cantidad", App.sConceptosFiltrados.getAt(index).get('Cantidad'));
+
+        window.parent.App.wAyudaConcepto.hide();
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgConceptoError',
+            title: 'Error',
+            msg: 'El concepto ya ha sido capturado ',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            fn: function (btn) {
+                if (btn === 'ok') {
+                    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).set("ConceptoID", '');
+                    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).set("Cantidad", '');
+
+                }
+            },
+            icon: Ext.MessageBox.ERROR
+        });
+    }
+
+
 };

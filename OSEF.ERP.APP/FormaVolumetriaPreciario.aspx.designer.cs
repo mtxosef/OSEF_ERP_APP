@@ -436,31 +436,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Column cIDPreciario;
         
         /// <summary>
-        /// Control cmbConcepto.
+        /// Control ccConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbConcepto;
-        
-        /// <summary>
-        /// Control sPreciarioConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sPreciarioConcepto;
-        
-        /// <summary>
-        /// Control mPreciarioConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mPreciarioConcepto;
+        protected global::Ext.Net.CommandColumn ccConcepto;
         
         /// <summary>
         /// Control ccConcepto.
