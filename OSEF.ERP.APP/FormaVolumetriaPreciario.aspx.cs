@@ -314,7 +314,7 @@ namespace OSEF.AVANCES.SUCURSALES
             //2. Validar si se escocoge una usucursal ya usada
             if (VolumetriaBusiness.ObtenerPreciariosActivosPorID(strPreciarios))
             {
-               
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));
             }
             else
             {

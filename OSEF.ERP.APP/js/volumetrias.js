@@ -20,12 +20,14 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtfObservaciones.setValue(null);
     App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
 
+    Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
+    window.parent.App.wEmergente.setTitle('Nueva Volumetría');
     //Borrar el GridPanel del Detalle y Encabezado
     App.sConceptos.removeAll();
     App.sPreciarioConcepto.removeAll();
     App.sVolumetria.removeAll();
-    Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
-    window.parent.App.wEmergente.setTitle('Nueva Volumetría');
+    
+ 
 };
 
 //Boton de abrir o cerrar de la forma
@@ -132,6 +134,8 @@ var cmbPreciario_Select = function (combobox, registro) {
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
+    //Asiganmos la cookie
+    Ext.util.Cookies.set('cookiePreciarioBusqueda', combobox.getValue());
 
 };
 
@@ -170,6 +174,8 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
+    //Asiganmos la cookie
+    Ext.util.Cookies.set('cookiePreciarioBusqueda', combobox.getValue());
 };
 
 
@@ -239,7 +245,8 @@ var cmbPreciario_Change_Success = function (response, result) {
 var sVolumetria_Load = function () {
     App.direct.sVolumetria_Load();
     store = window.parent.App.pCentro.getBody().App.sVolumetrias;
-
+ 
+   
 };
 
 //Evento lanzado al agregar un registro al store
@@ -291,7 +298,7 @@ var sVolumetria_Add = function (avance, registro) {
 
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
 
-      
+
 
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
@@ -311,7 +318,32 @@ var sVolumetria_Add = function (avance, registro) {
         HabilitarAfectarFin();
 
     }
-   
+
+  
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
+    && registro[0].get('Mov') == "Fin                                               ") {
+
+
+
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.cmbPreciario.setValue(registro[0].get('Preciario'));
+        App.txtfDescripcionPreciario.setValue(registro[0].get('RPreciario').Descripcion);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+
+        App.cmbMov.setReadOnly(true);
+        App.cmbPreciario.setDisabled(true);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
+        App.imgbtnCancelar.setDisabled(false);
+        App.gpVolumetriaDetalle.removeAll();
+    }
+
 };
 
 
@@ -374,7 +406,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     });
 
     Ext.util.Cookies.set('cookieEditarVolumetria', App.sVolumetria.getAt(0).get('ID'));
-
+    App.cmbMov.setReadOnly(true);
+    App.cmbPreciario.setDisabled(true);
     //Actualizar campos afetados
     App.txtfMovID.setValue(App.sVolumetria.getAt(0).get('MovID'));
     App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
@@ -385,7 +418,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     App.imgbtnAfectar.setDisabled(true);
     App.imgbtnCancelar.setDisabled(false);
     App.imgbtnBorrar.setDisabled(true);
-  
+
     //3. Remover la útima fila
     var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
     if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Utilizada') == 0) {
@@ -395,7 +428,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     //4. Deseleccionar datos del GridPanel y deshabilitar los controles
     DeshabilitarControlesAfectar();
     App.gpVolumetriaDetalle.getSelectionModel().deselectAll();
-    
+
 
     //Deshabilita los comandos de Fotos
     App.ccFotos.commands[0].disabled = true;
@@ -538,7 +571,7 @@ var ccConcepto_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 //Validaciones de comandos para fotos
 var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-    //alert('Si entro');
+
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
