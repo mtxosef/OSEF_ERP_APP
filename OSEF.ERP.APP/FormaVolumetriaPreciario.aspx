@@ -307,7 +307,7 @@
                     runat="server" 
                     BodyPadding="5"
                     Width="900"
-                    Height="193" 
+                    Height="236" 
                     AutoScroll="false">
                     <Items>
                         <ext:FieldSet 
@@ -365,9 +365,6 @@
                                         Disabled="true" />
                                 </Items>
                             </ext:FieldContainer>
-
-
-                            
                             <ext:FieldContainer
                                 ID="fcPreciario"
                                 runat="server"
@@ -444,7 +441,6 @@
                                     </ext:TextField>
                                 </Items>
                             </ext:FieldContainer>
-
                             <ext:FieldContainer
                                 ID="fcSucursal"
                                 runat="server"
@@ -511,9 +507,19 @@
                             </ext:FieldContainer>
                             </Items>
                         </ext:FieldSet>
+                           <ext:DisplayField
+                            ID="dfDescripcionConcepto"
+                            runat="server"
+                            Disabled="false"
+                               StyleSpec="margin-left: 9px;  margin-top:-10px;"
+                            FieldLabel="Concepto"
+                            Text=""
+                            Height="90"
+                            Width="240" >
+                        </ext:DisplayField>
                     </Items>
                 </ext:Panel>
-     
+             
                 <%--  DETALLE--%>
                 <ext:Panel
                     ID="pDetalleVolumetria"
@@ -525,7 +531,7 @@
                         <ext:FieldSet
                             ID="fsDetalleVolumetria" 
                             runat="server" 
-                            Height="275" 
+                            Height="235" 
                             Title="Volumetría Detalle"
                             DefaultAnchor="100%">
                             <Items>
@@ -533,7 +539,7 @@
                                     ID="gpVolumetriaDetalle"
                                     runat="server"
                                     Width="870"
-                                    Height="210"
+                                    Height="140"
                                     EnableColumnHide="false"
                                     EnableColumnMove="false">
                                         <Store>
@@ -553,6 +559,7 @@
                                                             <ext:ModelField Name="Utilizada" Type="Float" />
                                                             <ext:ModelField Name="Fotos" Type="String" />
                                                             <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
+                                                            
                                                         </Fields>
                                                     </ext:Model>
                                                 </Model>
@@ -716,6 +723,9 @@
                                             </ext:CommandColumn>
                                         </Columns>
                                     </ColumnModel>
+                                    <Listeners>
+                                        <ItemClick Fn="gpPreciarioConceptos_ItemClick" />
+                                    </Listeners>
                                     <SelectionModel>
                                         <ext:CellSelectionModel
                                             ID="csmVolumetriaDetalle" 

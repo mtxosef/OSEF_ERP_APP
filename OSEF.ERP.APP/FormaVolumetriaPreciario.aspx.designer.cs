@@ -373,6 +373,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfObservaciones;
         
         /// <summary>
+        /// Control dfDescripcionConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField dfDescripcionConcepto;
+        
+        /// <summary>
         /// Control pDetalleVolumetria.
         /// </summary>
         /// <remarks>
@@ -434,15 +443,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cIDPreciario;
-        
-        /// <summary>
-        /// Control ccConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CommandColumn ccConcepto;
         
         /// <summary>
         /// Control ccConcepto.

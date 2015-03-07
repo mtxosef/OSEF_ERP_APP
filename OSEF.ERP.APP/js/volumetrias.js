@@ -621,6 +621,14 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 };
 
 
+
+//Trae la descripcion al displayfield
+var gpPreciarioConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
+
+    //se actualiza el Store contenedor con datos del store del comboBox
+
+};
+
 ////Evento que pondra la cantidad según el concepto obtenido
 //var cmbConcepto_Select = function (combobox, registro) {
 //    //Ayuda para traer lo que trae toda la funcion como parámetro

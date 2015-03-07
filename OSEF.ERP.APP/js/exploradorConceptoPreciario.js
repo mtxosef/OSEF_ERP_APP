@@ -52,8 +52,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 //Asignar la descripción de la sucursal a este combobox
 var cPreciario_Renderer = function (combo, registro) {
     console.log(registro);
-//    var Sucursal = registro.get('RSucursal');
-//    return Sucursal.Nombre;
+
 
 };
 
@@ -132,3 +131,29 @@ var sPreciarioConcepto_Load = function () {
         App.imgbtnExporToExcel.setDisabled(false);
     }
 }
+
+
+//Darle formato a la columna de Programado
+var cCosto_renderer = function (valor) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    return F.number(valor, "$000,000,000.00");
+};
+
+//Darle formato a la columna de Programado
+var cImporte_renderer = function (valor, metadata, registro) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+
+    if (parseFloat(registro.get('Importefinal')) > parseFloat(registro.get('Importe'))) {
+        metadata.style = "background-color: #AE0000; color: #FFFFFF";
+
+    }
+    else {
+        metadata.style = "background-color: #173300; color: #FFFFFF";
+    }
+
+    return F.number(valor, "$000,000,000.00");
+};

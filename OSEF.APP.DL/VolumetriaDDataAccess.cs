@@ -336,7 +336,7 @@ namespace OSEF.APP.DL
         /// </summary>
         /// <param name="iPreciario"></param>
         /// <returns></returns>
-        public static List<VolumetriaD> ObtenerVolumetriaDPorPreciario(int iPreciario)
+        public static List<VolumetriaD> ObtenerVolumetriaDPorPreciario(string iPreciario)
         {
             try
             {

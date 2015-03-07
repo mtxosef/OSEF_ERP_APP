@@ -107,8 +107,6 @@
                             </DirectEvents>
                                                                    
                     </ext:ComboBox>
-                 
-
                             <ext:ComboBox
                                 ID="cmbCategoria"
                                 runat="server"
@@ -316,7 +314,7 @@
                         runat="server"
                         Text="CLAVE"
                         Align="Center"
-                        Width="150"
+                        Width="120"
                         DataIndex="Clave">
                          <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
@@ -325,7 +323,7 @@
                         runat="server"
                         Text="CONCEPTO"
                         Align="Center"
-                        Width="400"
+                        Width="350"
                         DataIndex="Descripcion">
                     </ext:Column>
                     <ext:Column
@@ -341,7 +339,7 @@
                         runat="server"
                         Text="UTLIZADA"
                         Align="Center"
-                        Width="150"
+                        Width="120"
                         DataIndex="Utilizada">
                         <Renderer Fn="renderCantidadUtilizada" />
                         <HeaderItems>
@@ -366,12 +364,22 @@
                         </HeaderItems>
                     </ext:Column>
                      <ext:Column
+                        ID="ccPrecio"
+                        runat="server"
+                        Text="PRECIO"
+                        Align="Center"
+                        Width="150"
+                        DataIndex="Costo">
+                        <Renderer Fn="cCosto_renderer" />
+                    </ext:Column>
+                     <ext:Column
                         ID="cTotal"
                         runat="server"
                         Text="TOTAL ACTUAL"
                         Align="Center"
                         Width="125"
                         DataIndex="Importefinal">
+                         <Renderer Fn="cImporte_renderer" />
                     </ext:Column>
                 </Columns>
             </ColumnModel>
