@@ -658,8 +658,8 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 //Trae la descripcion al displayfield
 var gpPreciarioConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
 
-    //se actualiza el Store contenedor con datos del store del comboBox
 
+    App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
 };
 
 ////Evento que pondra la cantidad según el concepto obtenido

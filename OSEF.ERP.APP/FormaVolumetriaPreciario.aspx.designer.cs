@@ -373,13 +373,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfObservaciones;
         
         /// <summary>
-        /// Control dfDescripcionConcepto.
+        /// Control taDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DisplayField dfDescripcionConcepto;
+        protected global::Ext.Net.TextArea taDescripcion;
         
         /// <summary>
         /// Control pDetalleVolumetria.

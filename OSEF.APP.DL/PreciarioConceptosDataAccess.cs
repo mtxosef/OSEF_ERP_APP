@@ -417,6 +417,51 @@ namespace OSEF.APP.DL
         }
 
 
+        /// <summary>
+        /// Obtener todos los registros de PreciarioConcepto
+        /// </summary>
+        /// <returns></returns>
+        public static PreciarioConcepto ObtenerPreciarioConceptoPorId(string IDConcepto)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioConceptoPorId";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpConceptoId = new SqlParameter();
+                sqlpConceptoId.ParameterName = "@ID";
+                sqlpConceptoId.SqlDbType = SqlDbType.Char;
+                sqlpConceptoId.Size = 10;
+                sqlpConceptoId.Value = IDConcepto;
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpConceptoId);
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                PreciarioConcepto result = LibraryGenerics<PreciarioConcepto>.ConvertDataSetToList(reader).FirstOrDefault();
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static PreciarioConcepto ObtenerPreciarioConceptoPorId()): " + ex.Message);
+            }
+        }
+
+
         #endregion
     }
 }

@@ -507,16 +507,18 @@
                             </ext:FieldContainer>
                             </Items>
                         </ext:FieldSet>
-                           <ext:DisplayField
-                            ID="dfDescripcionConcepto"
+                           <ext:TextArea
+                            ID="taDescripcion"
                             runat="server"
-                            Disabled="false"
-                               StyleSpec="margin-left: 9px;  margin-top:-10px;"
-                            FieldLabel="Concepto"
+                            Disabled="true"
+                            LabelWidth="70"
+                            StyleSpec="margin-left: 9px;  margin-top:-10px;"
+                            FieldLabel="Descripcion"
                             Text=""
-                            Height="90"
-                            Width="240" >
-                        </ext:DisplayField>
+                            Cls="xcustomtextAreaSinBorde"
+                            Height="66"
+                            Width="880" >
+                        </ext:TextArea>
                     </Items>
                 </ext:Panel>
              
@@ -563,6 +565,9 @@
                                                         </Fields>
                                                     </ext:Model>
                                                 </Model>
+                                                   <%--   <Listeners>
+                                                    <Load Handler="console.log(App.sConceptos);"></Load>
+                                                    </Listeners>--%>
                                             </ext:Store>
                                         </Store>
                                     <ColumnModel 

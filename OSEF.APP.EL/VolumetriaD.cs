@@ -13,6 +13,10 @@ namespace OSEF.APP.EL
         string conceptoID;
         decimal cantidad;
         decimal utilizada;
+        PreciarioConcepto rpreciarioconceptos;
+
+  
+       
         string fotos;
         #endregion
 
@@ -52,6 +56,13 @@ namespace OSEF.APP.EL
             get { return fotos; }
             set { fotos = value; }
         }
+
+        public PreciarioConcepto RPreciarioConceptos
+        {
+            get { return rpreciarioconceptos; }
+            set { rpreciarioconceptos = value; }
+        }
+
 
         #endregion
 

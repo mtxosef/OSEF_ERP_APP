@@ -73,7 +73,16 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static List<VolumetriaD> ObtenerVolumetriaDPorVolumetria(int iVolumetria)
         {
-            return VolumetriaDDataAccess.ObtenerVolumetriaDPorVolumetria(iVolumetria);
+      
+
+            List<VolumetriaD> oVolumetriaD = VolumetriaDDataAccess.ObtenerVolumetriaDPorVolumetria(iVolumetria);
+
+            foreach (VolumetriaD sd in oVolumetriaD)
+                sd.RPreciarioConceptos = PreciarioConceptoBusiness.ObtenerPreciarioConceptoPorID(sd.ConceptoID);
+
+            return oVolumetriaD;
+
+           // return VolumetriaDDataAccess.ObtenerVolumetriaDPorVolumetria(iVolumetria);
         }
 
         /// <summary>
@@ -81,10 +90,10 @@ namespace OSEF.APP.BL
         /// </summary>
         /// <param name="iPreciario"></param>
         /// <returns></returns>
-        public static List<VolumetriaD> ObtenerVolumetriaDPorPreciario(int iPreciario)
-        {
-            return VolumetriaDDataAccess.ObtenerVolumetriaDPorPreciario(iPreciario);
-        }
+        //public static List<VolumetriaD> ObtenerVolumetriaDPorPreciario(int iPreciario)
+        //{
+        //    return VolumetriaDDataAccess.ObtenerVolumetriaDPorPreciario(iPreciario);
+        //}
 
 
         #endregion

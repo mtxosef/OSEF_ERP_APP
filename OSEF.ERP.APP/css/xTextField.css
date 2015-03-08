@@ -43,4 +43,16 @@ opacity: .5;
             color            : #000;
             margin-right     : 3px;
         }
-  
+        
+        /*Descripcion del detalle en Volumetrias*/
+
+        
+
+
+/*Fuente para los controles de un formulario*/
+.xcustomtextAreaSinBorde .x-form-field
+{
+    border: none !important;
+    font-family: "WeblySleek UI Semilight" !important; 
+    font-size:12px;
+}

@@ -89,7 +89,7 @@ namespace OSEF.ERP.APP
         {
             try
             {
-                string name = "Exportado";
+                string name = "Preciario Conceptos";
 
                 #region Convert Data JSON
                 object o = JSON.Deserialize<object>(e.ExtraParams["data"]);

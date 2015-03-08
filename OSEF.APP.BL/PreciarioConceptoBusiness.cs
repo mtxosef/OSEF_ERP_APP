@@ -61,6 +61,7 @@ namespace OSEF.APP.BL
             return PreciarioConceptosDataAccess.ObtenerPreciarioConcepto();
         }
 
+
         /// <summary>
         /// Método que obtiene todos los registros de PreciarioConcepto filtrandolos
         /// </summary>
@@ -92,6 +93,16 @@ namespace OSEF.APP.BL
 
             return lPreciarioConcepto;
 
+        }
+
+
+        /// <summary>
+        /// Método que obtiene todos los registros de PreciarioConcepto
+        /// </summary>
+        /// <returns></returns>
+        public static PreciarioConcepto ObtenerPreciarioConceptoPorID(string IDConcepto)
+        {
+            return PreciarioConceptosDataAccess.ObtenerPreciarioConceptoPorId(IDConcepto);
         }
 
         #endregion
