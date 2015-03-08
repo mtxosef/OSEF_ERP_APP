@@ -541,7 +541,7 @@
                                     ID="gpVolumetriaDetalle"
                                     runat="server"
                                     Width="870"
-                                    Height="140"
+                                    Height="210"
                                     EnableColumnHide="false"
                                     EnableColumnMove="false">
                                         <Store>

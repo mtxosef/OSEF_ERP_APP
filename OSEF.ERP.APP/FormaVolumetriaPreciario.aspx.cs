@@ -378,6 +378,7 @@ namespace OSEF.AVANCES.SUCURSALES
             //2. Validar si existe el directorio donde se guardaran las imagenes
             if (Directory.Exists(strDireccion))
             {
+
                 try
                 {
                     System.IO.Directory.Delete(strDireccion, true);
@@ -389,9 +390,9 @@ namespace OSEF.AVANCES.SUCURSALES
                 }
 
             }
- 
-            //3. Borrar en la base de datos
-            ImagenVolumetriaDBusiness.BorrarImagenesVolumetria(iID,strConcepto);
+    
+                //3. Borrar en la base de datos
+                ImagenVolumetriaDBusiness.BorrarImagenesVolumetria(iID, strConcepto);
         }
 
 
