@@ -61,7 +61,6 @@ BEGIN
 		Estado,
 		Municipio,
 		Contratista,
-		TerminoContrato,
 		InicioObra,
 		FinObra,
 		SemanasObra,

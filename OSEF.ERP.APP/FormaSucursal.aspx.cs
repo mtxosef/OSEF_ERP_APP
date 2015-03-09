@@ -72,12 +72,12 @@ namespace OSEF.AVANCES.SUCURSALES
                     Estado = oSucursal.Estado,
                     Municipio = oSucursal.Municipio,
                     Contratista = oSucursal.Contratista,
-                    TerminoContrato = oSucursal.TerminoContrato,
                     InicioObra = oSucursal.InicioObra,
                     FinObra = oSucursal.FinObra,
                     SemanasObra = oSucursal.SemanasObra,
                     FechaAlta = oSucursal.FechaAlta,
-                    Estatus = oSucursal.Estatus
+                    Estatus = oSucursal.Estatus,
+                    RProvedor= oSucursal.RProvedor
                 });
             }
         }
@@ -105,6 +105,8 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Obtener datos de la Forma y saber si es edición o nuevo
             string strRegistro = e.ExtraParams["registro"];
             string strEstatus = e.ExtraParams["estatus"];
+            string strFinObra = e.ExtraParams["FInObra"];
+            string strSemanasObra = e.ExtraParams["semanasObra"];
             string strcookieEditarSucursal = Cookies.GetCookie("cookieEditarSucursal").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             Sucursal oSucursal = new Sucursal();
@@ -185,17 +187,8 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "cmbProveedor":
                         oSucursal.Contratista = sd.Value;
                         break;
-                    case "dfTerminoContrato":
-                        oSucursal.TerminoContrato = Convert.ToDateTime(sd.Value);
-                        break;
                     case "dfInicioObra":
                         oSucursal.InicioObra = Convert.ToDateTime(sd.Value);
-                        break;
-                    case "dfFinObra":
-                        oSucursal.FinObra = Convert.ToDateTime(sd.Value);
-                        break;
-                    case "nfSemanasObra":
-                        oSucursal.SemanasObra = Convert.ToInt16(sd.Value);
                         break;
                     case "dfFechaAlta":
                         oSucursal.FechaAlta = Convert.ToDateTime(sd.Value);
@@ -206,6 +199,9 @@ namespace OSEF.AVANCES.SUCURSALES
                 }
             }
 
+            oSucursal.FinObra = Convert.ToDateTime(strFinObra);
+            oSucursal.SemanasObra = Convert.ToInt16(strSemanasObra);
+            
             //4. Validar si es nuevo o es uno existente
             if (strcookieEditarSucursal.Equals("Nuevo"))
             {

@@ -104,6 +104,24 @@ var sSucursal_Load = function () {
 
 //Evento lanzado al agregar un registro al store
 var sSucursal_Add = function (sucursal, registro) {
+    //Calculo de dias para que el texfield de dias 
+    var f1 = registro[0].get('FinObra');
+    var f2 = registro[0].get('InicioObra');
+
+    fechaFormateada1 = f1.getDate() + '/' + (f1.getMonth() + 1) + '/' + f1.getFullYear();
+    fechaFormateada2 = f2.getDate() + '/' + (f2.getMonth() + 1) + '/' + f2.getFullYear();
+
+    var aFecha1 = fechaFormateada1.split('/');
+    var aFecha2 = fechaFormateada2.split('/');
+
+    var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+    var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+
+    var dif = fFecha1 - fFecha2;
+    var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+
+
+
     App.txtfID.setValue(registro[0].get('ID'));
     App.nfCR.setValue(registro[0].get('CR'));
     App.txtfNombre.setValue(registro[0].get('Nombre'));
@@ -129,11 +147,15 @@ var sSucursal_Add = function (sucursal, registro) {
     App.cmbColonia.setValue(registro[0].get('Colonia'));
     App.cmbEstado.setValue(registro[0].get('Estado'));
     App.cmbMunicipio.setValue(registro[0].get('Municipio'));
-    App.cmbProveedor.setValue(registro[0].get('Contratista'));
-    App.dfTerminoContrato.setValue(registro[0].get('TerminoContrato'));
+    App.cmbProveedor.setValue(registro[0].get('RProvedor').ID);
     App.dfInicioObra.setValue(registro[0].get('InicioObra'));
     App.dfFinObra.setValue(registro[0].get('FinObra'));
     App.nfSemanasObra.setValue(registro[0].get('SemanasObra'));
+
+    //llena el campo de fecha
+    App.txtDiasObra.setValue(dias);
+
+
     App.cmbEstatus.setDisabled(false);
 };
 
@@ -146,6 +168,8 @@ var sMunicipios_Load = function () {
 
 //Suma dias
 function sumarDias(d, fecha) {
+
+
     //Auxiliar para realizar la conversión
     var date = new Date(fecha);
     fecha = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
@@ -163,13 +187,21 @@ function sumarDias(d, fecha) {
     dia = (dia < 10) ? ("0" + dia) : dia;
     var fechaFinal = dia + sep + mes + sep + anno;
 
+    var semanas = d / 7;
+
+    App.nfSemanasObra.setValue(semanas);
     App.dfFinObra.setValue(fechaFinal);
 }
+
+
+
+
 
 function validarFechaInicio(valor, evento, registro ) {
 
     if (valor.rawValue != '') {
 
         App.txtDiasObra.setDisabled(false);
+      
     }
 }

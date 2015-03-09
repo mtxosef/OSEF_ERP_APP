@@ -80,7 +80,9 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static Sucursal ObtenerSucursalPorID(string strID)
         {
-            return SucursalDataAccess.ObtenerSucursalPorID(strID);
+            Sucursal oSucursal = SucursalDataAccess.ObtenerSucursalPorID(strID);
+            oSucursal.RProvedor = ProveedorBusiness.ObtenerProveedorPorID(oSucursal.Contratista);
+            return oSucursal ;
         }
 
         /// <summary>
