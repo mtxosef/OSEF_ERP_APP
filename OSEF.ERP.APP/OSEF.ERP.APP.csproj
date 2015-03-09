@@ -423,6 +423,7 @@
     <Content Include="Menu.aspx" />
     <Content Include="Menus.aspx" />
     <Content Include="Municipios.aspx" />
+    <Content Include="OlvidasteContrasena2.aspx" />
     <Content Include="Plants.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -906,6 +907,13 @@
     </Compile>
     <Compile Include="Municipios.aspx.designer.cs">
       <DependentUpon>Municipios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OlvidasteContrasena2.aspx.cs">
+      <DependentUpon>OlvidasteContrasena2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OlvidasteContrasena2.aspx.designer.cs">
+      <DependentUpon>OlvidasteContrasena2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Plant.cs" />
     <Compile Include="Plants.ashx.cs">

@@ -1,13 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OlvidasteContrasena.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.FormaOlvidoContrasena" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OlvidasteContrasena2.aspx.cs" Inherits="OSEF.ERP.APP.OlvidasteContrasena2" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
+<head runat="server">
     <title>¿Olvidaste tu contraseña?</title>
     <link rel="shortcut icon" href="images/myApp.ico" />
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="Stylesheet" href="css/customControls.css" />
+    <link rel="stylesheet" href="css/login2.css" />
+    <link rel="Stylesheet" href="css/customControls2.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
     <link rel="stylesheet" href="css/xSplitButton.css" />
@@ -32,8 +32,8 @@
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmOlvidoContraseña" runat="server" HideInDesign="true" />
-
-        <img src="images/logo.png" alt="logo" class="imgs logo-image" />
+        
+        <img src="images/logo-banco3.png" alt="logo" class="imgs logo-image" />
 
         <ext:Container
             ID="cCorreoEnviado"
@@ -54,7 +54,7 @@
             runat="server"
             StyleSpec=" margin-top: 120px;">
             <Content>
-                <%--  Panel de Error--%>
+                <%--Panel de Error--%>
                 <ext:Container
                     ID="cErrorOlvidasteContrasena"
                     runat="server"
@@ -78,7 +78,6 @@
                     </Content>
                 </ext:Container>
                 <%-- Fin panel de error --%>
-
                 <ext:FormPanel
                     ID="fpOlvidarContrasena"
                     runat="server"
@@ -127,10 +126,8 @@
                             EmptyText="Usuario/Dirección E-mail"
                             AutoFocus="true">
                             <Listeners>
-                             <SpecialKey Fn="txtffEnviarCorreo_SpecialKey_Click" />
-                 
+                                <SpecialKey Fn="txtffEnviarCorreo_SpecialKey_Click" />
                             </Listeners>
-                    
                         </ext:TextField>
                     </Items>
                     <Buttons>
@@ -162,7 +159,7 @@
                             OverImageUrl="assets/img/controles/CancelarOver.png" 
                             PressedImageUrl="assets/img/controles/CancelarPressed.png" 
                             ToolTip="Cancelar" 
-                            Href="login.aspx"
+                            Href="Login.aspx"
                             Height="50" 
                             Width="50">
                         </ext:ImageButton>
@@ -171,30 +168,19 @@
             </Content>
         </ext:Container>
 
-
         <div id="footer">
             <div id="creditos" class="creditos">
                 <p>
                     © 2015 Osef Technology
-                </p>
-                <%-- Descomentar si se desean redes sociales e ir a login.css y despues 
-                       a la clase .footer y foter-menu y comentar las lineas de margin
-               
-                       <div id="social-login">
-                        <ul>
-                            <li ><a href="#">
-                    
-                                <img src="img/social/fb.png" alt="Facebook" class="imgs"  />
-                        
-                                </a></li>
-                            <li><a href="#">
-                                <img src="img/social/twiter.png" alt="Twitter" class="imgs"  /></a></li>
-                            <li><a href="#">
-                                <img src="img/social/youtube.png" alt="YouTube" class="imgs"  /></a></li>
-                            <li><a href="#">
-                                <img src="img/social/linked.png" alt="LinkedIn" class="imgs"  /></a></li>
-                        </ul>
-                    </div>--%>
+                </p>               
+                <div id="social-login">
+                    <ul>
+                        <li ><a href="#"><img src="images/fb.png" alt="Facebook" class="imgs" /></a></li>
+                        <li><a href="#"><img src="images/twiter.png" alt="Twitter" class="imgs" /></a></li>
+                        <li><a href="#"><img src="images/youtube.png" alt="YouTube" class="imgs" /></a></li>
+                        <li><a href="#"><img src="images/linked.png" alt="LinkedIn" class="imgs" /></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </form>

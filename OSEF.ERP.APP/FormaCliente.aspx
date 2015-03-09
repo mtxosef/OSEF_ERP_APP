@@ -375,6 +375,7 @@
                                                         FieldLabel="Teléfono móvil"
                                                         ForceSelection="true"
                                                         Editable="true"
+                                                        AllowBlank="true"
                                                         Note="Ejemplo: (044-449) 999-00-00"
                                                         MaxLength="19"
                                                         EnforceMaxLength="true">
@@ -1083,7 +1084,7 @@
                                         <ExtraParams>
                                             <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                             <ext:Parameter Name="edad" Value="App.txtfEdad.getValue()" Mode="Raw" />
-                                            <ext:Parameter Name="usuario" Value="window.parent.App.sUsuario" Mode="Raw" />
+                                            <ext:Parameter Name="usuario" Value="Ext.encode(window.parent.App.sUsuario.getRecordsValues())" Mode="Raw" />
                                         </ExtraParams>
                                     </Click>
                                 </DirectEvents>
@@ -1125,8 +1126,6 @@
                                 Msg="Cargando..." />
                         </Loader>
                     </ext:Window>
-
-
                 </Items>
             </ext:Panel>
         </div>

@@ -26,39 +26,33 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
     <script type="text/javascript" src="js/login.js"></script>
-    <style type="text/css">
-        #lLogin_Password-indicator {
-            position: absolute;
-        }
-    </style>
 </head>
 <body>
-    <div id="wrapper">
-        <form id="form1" runat="server">
-            <ext:ResourceManager ID="rmLogin" runat="server" HideInDesign="true" />
+    <form id="form1" runat="server">
+        <ext:ResourceManager ID="rmLogin" runat="server" HideInDesign="true" />
 
-            <img src="images/logo-banco3.png" alt="logo" class="imgs logo-image" />
+        <img src="images/logo-banco3.png" alt="logo" class="imgs logo-image" />
 
-            <%--  Panel de Error--%>
-            <ext:Container ID="cError" runat="server" Hidden="true">
-                <Content>
-                    <table>
-                        <tr>
-                            <td>
-                                <img src="images/btnLogin_Adv.png" alt="img-error" />
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <ext:Label ID="lblError" runat="server" Text="Error, usuario incorrecto" />
-                            </td>
-                        </tr>
-                    </table>
-                </Content>
-            </ext:Container>
-            <%-- Fin panel de error --%>
+        <%--  Panel de Error--%>
+        <ext:Container ID="cError" runat="server" Hidden="true">
+            <Content>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="images/btnLogin_Adv.png" alt="img-error" />
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <ext:Label ID="lblError" runat="server" Text="Error, usuario incorrecto" />
+                        </td>
+                    </tr>
+                </table>
+            </Content>
+        </ext:Container>
+        <%-- Fin panel de error --%>
 
         <%-- Inicio del cuerpo--%>
         <div id="center-panel-login">
@@ -197,27 +191,17 @@
                 </p>
                 <%-- Descomentar si se desean redes sociales e ir a login.css y despues 
                 a la clase .footer y foter-menu y comentar las lineas de margin --%>
-               
                 <div id="social-login">
-                <ul>
-                    <li ><a href="#">
-                    
-                        <img src="images/fb.png" alt="Facebook" class="imgs"  />
-                        
-                        </a></li>
-                    <li><a href="#">
-                        <img src="images/twiter.png" alt="Twitter" class="imgs"  /></a></li>
-                    <li><a href="#">
-                        <img src="images/youtube.png" alt="YouTube" class="imgs"  /></a></li>
-                    <li><a href="#">
-                        <img src="images/linked.png" alt="LinkedIn" class="imgs"  /></a></li>
-                </ul>
-            </div>
+                    <ul>
+                        <li ><a href="#"><img src="images/fb.png" alt="Facebook" class="imgs" /></a></li>
+                        <li><a href="#"><img src="images/twiter.png" alt="Twitter" class="imgs" /></a></li>
+                        <li><a href="#"><img src="images/youtube.png" alt="YouTube" class="imgs" /></a></li>
+                        <li><a href="#"><img src="images/linked.png" alt="LinkedIn" class="imgs" /></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <%--  Footer--%>
-
-        </form>
-    </div>
+    </form>
 </body>
 </html>

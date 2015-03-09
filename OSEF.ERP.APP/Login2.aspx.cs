@@ -29,6 +29,14 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void Page_PreInit(object sender, EventArgs e)
         {
+            string ReturnUrl = Request.QueryString["ReturnUrl"];
+
+            if (ReturnUrl == null) { }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "window.parent.location.href = 'login.aspx';", true);
+            }
+
             if (Request.IsAuthenticated)
             {
                 Response.Redirect("~/Default.aspx", true);
