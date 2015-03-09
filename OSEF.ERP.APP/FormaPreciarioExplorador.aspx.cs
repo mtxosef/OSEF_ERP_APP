@@ -28,7 +28,7 @@ namespace OSEF.ERP.APP
 
             //1. Configurar la conexión y el tipo de comando
             var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
-            string connectionString = ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString;
+         //   string connectionString = ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString;
             try
             {
                 using (var comando = new SqlCommand("web_spS_ObtenerCambiosPreciario", conn))
@@ -46,13 +46,13 @@ namespace OSEF.ERP.APP
                         reporte.Load(Server.MapPath("reports/CPreciario.rpt"));
                         reporte.SetDataSource(dt);
 
-                        SqlConnectionStringBuilder SConn = new SqlConnectionStringBuilder(connectionString);
-                        reporte.DataSourceConnections[0].SetConnection(SConn.DataSource, SConn.InitialCatalog, SConn.UserID, SConn.Password);
+                        //SqlConnectionStringBuilder SConn = new SqlConnectionStringBuilder(connectionString);
+                        //reporte.DataSourceConnections[0].SetConnection(SConn.DataSource, SConn.InitialCatalog, SConn.UserID, SConn.Password);
                        
 
                         reporte.SetParameterValue("path", path);
 
-
+                      
                         Session["ReportName"] = nombre;
                         Session["imprimir"] = reporte;
 

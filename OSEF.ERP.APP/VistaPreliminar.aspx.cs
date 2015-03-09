@@ -10,6 +10,7 @@ using CrystalDecisions.Web;
 using Ext.Net;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace OSEF.ERP.APP
 {
@@ -30,13 +31,16 @@ namespace OSEF.ERP.APP
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
-            string rutaJavaScript = "";
+           // string rutaJavaScript = "";
             reporte.Load(Server.MapPath("reports/" + namereport+".rpt"));
-            string rutafinal = Server.MapPath("reports/" + namereport + ".rpt");
-            string rutafinal2 = Server.MapPath("reports//" + namereport + ".rpt");
-            reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports//" + namereport + ".pdf"));
-            rutaJavaScript = "reports//" + namereport + ".pdf";
-             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
+           // reporte.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "VistaPreliminar");
+
+
+            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Vista Preliminar");
+          //  reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports/" + namereport + ".pdf"));
+
+        //        rutaJavaScript = "reports/" + namereport + ".pdf";
+         //    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
         }
 
 
@@ -49,20 +53,21 @@ namespace OSEF.ERP.APP
             reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
 
 
-            ExportOptions CrExportOptions;
-            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-            ExcelFormatOptions CrFormatTypeOptions = new ExcelFormatOptions();
-            CrDiskFileDestinationOptions.DiskFileName = Server.MapPath("reports//" + namereport + ".xls");
-            CrExportOptions = reporte.ExportOptions;
-            CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-            CrExportOptions.ExportFormatType = ExportFormatType.Excel;
-            CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
-            CrExportOptions.FormatOptions = CrFormatTypeOptions;
-            reporte.Export();
-           
+            //ExportOptions CrExportOptions;
+            //DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+            //ExcelFormatOptions CrFormatTypeOptions = new ExcelFormatOptions();
+            //CrDiskFileDestinationOptions.DiskFileName = Server.MapPath("reports/" + namereport + ".xls");
+            //CrExportOptions = reporte.ExportOptions;
+            //CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+            //CrExportOptions.ExportFormatType = ExportFormatType.Excel;
+            //CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+            //CrExportOptions.FormatOptions = CrFormatTypeOptions;
+            //reporte.Export();
 
-            rutaJavaScript = "reports//" + namereport + ".xls";
-            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
+            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Vista Preliminar");
+
+            //rutaJavaScript = "reports/" + namereport + ".xls";
+            //e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
   
     
            

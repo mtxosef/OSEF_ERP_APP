@@ -11,13 +11,13 @@
      <link rel="shortcut icon" href="images/myApp.ico" />
     <link rel="stylesheet" href="css/preliminar.css" />
 
-    <script type="text/javascript">
+  <%--  <script type="text/javascript">
         var myFunction = function (response, result) {
          var ruta=   result.extraParamsResponse.ruta;
          window.open(ruta, 'Reporte', 'status = 1,width=900, resizable = 1');
 
         }
- </script>
+ </script>--%>
 </head>
 <body style="">
     <form id="form1" runat="server">
@@ -61,7 +61,7 @@
                                         Width="50"
                                         Hidden="false" >
                                      <DirectEvents>
-                                    <Click OnEvent="toXLS" Success="myFunction"></Click>
+                                    <Click OnEvent="toXLS" ></Click> <%--Success="myFunction"--%>
                                     </DirectEvents>
                              </ext:ImageButton>
                     </Items>
