@@ -59,13 +59,13 @@
                         <ext:ModelField Name="Colonia" Type="String" />
                         <ext:ModelField Name="Estado" Type="String" />
                         <ext:ModelField Name="Municipio" Type="String" />
-                        <ext:ModelField Name="Contratista" Type="String" />
                         <ext:ModelField Name="TerminoContrato" Type="Date" />
                         <ext:ModelField Name="InicioObra" Type="Date" />
                         <ext:ModelField Name="FinObra" Type="Date" />
                         <ext:ModelField Name="SemanasObra" Type="Int" />
                         <ext:ModelField Name="FechaAlta" Type="Date" />
                         <ext:ModelField Name="Estatus" Type="String" />
+                        <ext:ModelField Name="RProvedor" Type="Object" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -125,6 +125,7 @@
                                                         runat="server"
                                                         Width="200"
                                                         MaxLength="4"
+                                                        AllowBlank="false"
                                                         EnforceMaxLength="true"
                                                         MinValue="0"
                                                         MaxValue="9999"
@@ -500,10 +501,8 @@
                                                         StyleSpec="margin-right: 6px;"
                                                         DisplayField="Nombre"
                                                         ValueField="ID"
-                                                        ForceSelection="true"
                                                         Editable="false"
-                                                        AllowBlank="false"
-                                                        MatchFieldWidth="false">
+                                                        AllowBlank="false">
                                                         <ListConfig Width="200" MaxHeight="195">
                                                         </ListConfig>
                                                         <Store>
@@ -527,22 +526,6 @@
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer 
-                                                ID="ContenedorTermino" 
-                                                runat="server" 
-                                                FieldLabel="Termino Contrato"
-                                                LabelWidth="120" 
-                                                AnchorHorizontal="100%" 
-                                                Layout="ColumnLayout">
-                                                <Items>
-                                                    <ext:DateField
-                                                        ID="dfTerminoContrato"
-                                                        runat="server"
-                                                        Width="200"
-                                                        StyleSpec="margin-right: 6px;">
-                                                    </ext:DateField>
-                                                </Items>
-                                            </ext:FieldContainer>
-                                            <ext:FieldContainer 
                                                 ID="ContenedorInicioObra" 
                                                 runat="server" 
                                                 FieldLabel="Inicio Obra"
@@ -553,19 +536,21 @@
                                                     <ext:DateField
                                                         ID="dfInicioObra"
                                                         runat="server"
-                                                        Editable="false"
                                                         Width="200"
+                                                        AllowBlank="false"
                                                         StyleSpec="margin-right: 6px;">
-                                                         <Listeners>
+                                                     <%--    <Listeners>
                                                             <Blur Fn="validarFechaInicio" />
-                                                        </Listeners>
+                                                        </Listeners>--%>
                                                     </ext:DateField>
                                                     <ext:NumberField
                                                         ID="txtDiasObra"
                                                         runat="server"
                                                         Width="100"
                                                         EmptyText="Días"
-                                                        Disabled="true"
+                                                        AllowBlank="false"
+                                                        Disabled="false"
+                                                        Editable="false"
                                                         StyleSpec="margin-right: 6px;"
                                                          MaxLength="4"
                                                         EnforceMaxLength="true"
@@ -575,11 +560,13 @@
                                                         Step="1">
                                                         <Listeners>
                                                             <Change Handler="sumarDias(this.getValue(),App.dfInicioObra.getValue());" />
+                                                             
                                                         </Listeners>
                                                     </ext:NumberField>
                                                     <ext:DateField 
                                                         ID="dfFinObra"
                                                         runat="server" 
+
                                                         Disabled="true"
                                                         FieldLabel="Fin Obra" 
                                                         Width="300">
@@ -597,10 +584,13 @@
                                                         ID="nfSemanasObra"
                                                         runat="server"
                                                         Width="200"
+                                                        Editable="false"
+                                                        Enabled="false"
                                                         StyleSpec="margin-right: 6px;"
                                                         MaxLength="4"
                                                         EnforceMaxLength="true"
                                                         MinValue="0"
+                                                        Disabled="true"
                                                         MaxValue="9999"
                                                         AllowDecimals="false"
                                                         Step="1">
@@ -746,6 +736,10 @@
                                         <ExtraParams>
                                             <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                             <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
+                                             <ext:Parameter Name="FInObra" Value="App.dfFinObra.getValue()" Mode="Raw" />
+                                             <ext:Parameter Name="semanasObra" Value="App.nfSemanasObra.getValue()" Mode="Raw" />
+                                             
+                                            
                                         </ExtraParams>
                                     </Click>
                                 </DirectEvents>

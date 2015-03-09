@@ -162,10 +162,7 @@ namespace OSEF.APP.DL
                 sqlpContratista.SqlDbType = SqlDbType.VarChar;
                 sqlpContratista.Value = iSucursal.Contratista;
 
-                SqlParameter sqlpTerminoContrato = new SqlParameter();
-                sqlpTerminoContrato.ParameterName = "@TerminoContrato";
-                sqlpTerminoContrato.SqlDbType = SqlDbType.Date;
-                sqlpTerminoContrato.Value = iSucursal.TerminoContrato;
+             
 
                 SqlParameter sqlpInicioObra = new SqlParameter();
                 sqlpInicioObra.ParameterName = "@InicioObra";
@@ -217,7 +214,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpEstado);
                 sqlcComando.Parameters.Add(sqlpMunicipio);
                 sqlcComando.Parameters.Add(sqlpContratista);
-                sqlcComando.Parameters.Add(sqlpTerminoContrato);
                 sqlcComando.Parameters.Add(sqlpInicioObra);
                 sqlcComando.Parameters.Add(sqlpFinObra);
                 sqlcComando.Parameters.Add(sqlpSemanasObra);
@@ -386,10 +382,6 @@ namespace OSEF.APP.DL
                 sqlpContratista.SqlDbType = SqlDbType.VarChar;
                 sqlpContratista.Value = uSucursal.Contratista;
 
-                SqlParameter sqlpTerminoContrato = new SqlParameter();
-                sqlpTerminoContrato.ParameterName = "@TerminoContrato";
-                sqlpTerminoContrato.SqlDbType = SqlDbType.Date;
-                sqlpTerminoContrato.Value = uSucursal.TerminoContrato;
 
                 SqlParameter sqlpInicioObra = new SqlParameter();
                 sqlpInicioObra.ParameterName = "@InicioObra";
@@ -441,7 +433,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpEstado);
                 sqlcComando.Parameters.Add(sqlpMunicipio);
                 sqlcComando.Parameters.Add(sqlpContratista);
-                sqlcComando.Parameters.Add(sqlpTerminoContrato);
                 sqlcComando.Parameters.Add(sqlpInicioObra);
                 sqlcComando.Parameters.Add(sqlpFinObra);
                 sqlcComando.Parameters.Add(sqlpSemanasObra);

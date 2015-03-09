@@ -160,7 +160,6 @@
                                 <ext:ModelField Name="GerenteBBVAAMaterno" Type="String" />
                                 <ext:ModelField Name="InicioObra" Type="Date" />
                                 <ext:ModelField Name="FinObra" Type="Date" />
-                                <ext:ModelField Name="TerminoContrato" Type="Date" />
                                 <ext:ModelField Name="Estatus" Type="String" />
                             </Fields>
                         </ext:Model>

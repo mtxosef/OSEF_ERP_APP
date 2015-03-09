@@ -36,12 +36,13 @@ namespace OSEF.APP.EL
         string estado;
         string municipio;
         string contratista;
-        Nullable<DateTime> terminocontrato;
         Nullable<DateTime> inicioobra;
         Nullable<DateTime> finobra;
         short semanasobra;
         Nullable<DateTime> fechaalta;
         string estatus;
+        Proveedor rprovedor;
+
 
         #endregion
 
@@ -185,11 +186,7 @@ namespace OSEF.APP.EL
             set { contratista = value; }
         }
 
-        public Nullable<DateTime> TerminoContrato
-        {
-            get { return terminocontrato; }
-            set { terminocontrato = value; }
-        }
+       
 
         public Nullable<DateTime> InicioObra
         {
@@ -225,6 +222,13 @@ namespace OSEF.APP.EL
         {
             get { return direccionzona; }
             set { direccionzona = value; }
+        }
+
+
+        public Proveedor RProvedor
+        {
+            get { return rprovedor; }
+            set { rprovedor = value; }
         }
 
         #endregion

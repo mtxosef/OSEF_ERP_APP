@@ -23,9 +23,9 @@ IF EXISTS (	SELECT name
 	DROP PROCEDURE web_spS_ObtenerCambiosPreciario
 GO
 -- =============================================
--- Author:		Giovanni Flores
--- Create date: Miercoles 25 de Febrero de 2015
--- Description:	Obtiene los cambios en el preciario por concepto y por preciario
+-- Author:		Orlando Esparza
+-- Create date: Miercoles 07 de Enero de 2015
+-- Description:	Obtener un registro de Clientes por su ID
 -- =============================================
 CREATE PROCEDURE web_spS_ObtenerCambiosPreciario
 	-- Add the parameters for the stored procedure here
@@ -37,22 +37,31 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here 
-SELECT        V.Observaciones, V.Preciario, P.Descripcion, S.Nombre, S.CR, S.Calle, S.NoExterior, S.NoInterior, S.CodigoPostal, S.Colonia, VD.ConceptoID, 
-                         PC.Descripcion AS DESC_CONCEPTO, PC.Utilizada, PC.Cantidad, V.FechaEmision, IVD.Nombre AS Expr1, IVD.Direccion, PC.Categoria, PC.SubCategoria, 
-                         PC.SubSubCategoria, PC.Unidad, PC.ImporteFinal, PC.Importe, PC.CLAVE, PC.Costo, dbo.Estados.Descripcion AS Estado, 
-                         dbo.Municipios.Descripcion AS Municipios,COL.Descripcion AS COLONIA_DESC
-FROM            dbo.Municipios INNER JOIN
-                         dbo.Sucursales AS S ON dbo.Municipios.ID = S.Municipio INNER JOIN
-						 dbo.Colonias AS COL ON COL.ID=S.Colonia INNER JOIN
-                         dbo.Estados ON dbo.Municipios.Estado = dbo.Estados.ID AND S.Estado = dbo.Estados.ID RIGHT OUTER JOIN
-                         dbo.Volumetrias AS V LEFT OUTER JOIN
-                         dbo.Preciarios AS P ON P.ID = V.Preciario LEFT OUTER JOIN
-                         dbo.VolumetriasD AS VD ON V.ID = VD.Volumetria LEFT OUTER JOIN
-                         dbo.ImagenesVolumetriasD AS IVD ON IVD.Volumetria = V.ID LEFT OUTER JOIN
-                         dbo.PreciarioConceptos AS PC ON PC.Preciario = P.ID AND VD.ConceptoID = PC.ID ON S.ID = V.Sucursal
-
+    -- Insert statements for procedure here
+	SELECT V.Sucursal,V.Observaciones,V.Preciario,P.Descripcion,S.Nombre,S.CR,S.Calle,
+S.NoExterior,S.NoInterior,S.CodigoPostal,S.Colonia,S.Estado,S.Municipio,VD.ConceptoID,
+PC.Descripcion AS DESC_CONCEPTO,PC.Utilizada,PC.Cantidad ,V.FechaEmision, IVD.Nombre,IVD.Direccion,PC.Categoria,
+PC.SubCategoria,PC.SubSubCategoria,PC.Unidad,PC.ImporteFinal, PC.Importe,PC.CLAVE,PC.Costo, 
+M.Descripcion AS DESC_MUNICIPIO, E.Descripcion AS EDO_DESCRIPCION, C.Descripcion AS COL_DESCRIPCION
+FROM Volumetrias V
+LEFT JOIN VolumetriasD VD 
+ON V.ID= VD.Volumetria
+LEFT JOIN ImagenesVolumetriasD IVD 
+ON IVD.Volumetria =  V.ID AND IVD.PreciarioConcepto = VD.ConceptoID
+LEFT JOIN PreciarioS P 
+ON P.ID = V.Preciario
+LEFT JOIN PreciarioConceptos PC 
+ON PC.Preciario = P.ID AND VD.ConceptoID = PC.ID
+LEFT JOIN Sucursales S
+ON S.ID = V.Sucursal
+LEFT JOIN Municipios M
+ON M.ID =  S.Municipio
+LEFT JOIN Estados E
+ON E.ID =  S.Estado
+LEFT JOIN Colonias C
+ON C.ID = S.Colonia
 WHERE VD.ConceptoID=@idconcepto
-AND V.Preciario=@idpreciario;
+AND V.Preciario=@idpreciario
 
 END
+GO

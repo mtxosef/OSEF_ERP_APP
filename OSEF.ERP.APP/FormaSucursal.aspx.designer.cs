@@ -436,24 +436,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Model mProveedores;
         
         /// <summary>
-        /// Control ContenedorTermino.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer ContenedorTermino;
-        
-        /// <summary>
-        /// Control dfTerminoContrato.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.DateField dfTerminoContrato;
-        
-        /// <summary>
         /// Control ContenedorInicioObra.
         /// </summary>
         /// <remarks>

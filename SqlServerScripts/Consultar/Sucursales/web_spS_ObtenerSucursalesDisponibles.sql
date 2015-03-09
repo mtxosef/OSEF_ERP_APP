@@ -63,7 +63,6 @@ BEGIN
 		A.Estado,
 		A.Municipio,
 		A.Contratista,
-		A.TerminoContrato,
 		A.InicioObra,
 		A.FinObra,
 		A.SemanasObra,

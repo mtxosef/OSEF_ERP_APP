@@ -41,6 +41,7 @@ BEGIN
 		ID,
 		CR,
 		Nombre,
+		DireccionZona,
 		GerenteBBVANombre,
 		GerenteBBVAAPaterno,
 		GerenteBBVAAMaterno,
@@ -61,7 +62,6 @@ BEGIN
 		Estado,
 		Municipio,
 		Contratista,
-		TerminoContrato,
 		InicioObra,
 		FinObra,
 		SemanasObra,
@@ -73,3 +73,6 @@ BEGIN
 		ID = @ID
 END
 GO
+
+
+
