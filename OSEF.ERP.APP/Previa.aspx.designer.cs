@@ -10,7 +10,7 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class VistaPreliminar {
+    public partial class Previa {
         
         /// <summary>
         /// Control form1.
@@ -22,12 +22,30 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control crvEstimaciones.
+        /// Control imgbtnPdf.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::CrystalDecisions.Web.CrystalReportViewer crvEstimaciones;
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnPdf;
+        
+        /// <summary>
+        /// Control imgbtnXls.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnXls;
+        
+        /// <summary>
+        /// Control crvVisor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::CrystalDecisions.Web.CrystalReportViewer crvVisor;
     }
 }

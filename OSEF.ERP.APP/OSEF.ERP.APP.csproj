@@ -429,6 +429,7 @@
     </Content>
     <Content Include="PlantService.asmx" />
     <Content Include="Preciarios.aspx" />
+    <Content Include="Previa.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
@@ -929,6 +930,13 @@
     </Compile>
     <Compile Include="Preciarios.aspx.designer.cs">
       <DependentUpon>Preciarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Previa.aspx.cs">
+      <DependentUpon>Previa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previa.aspx.designer.cs">
+      <DependentUpon>Previa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesiones.aspx.cs">
       <DependentUpon>Profesiones.aspx</DependentUpon>

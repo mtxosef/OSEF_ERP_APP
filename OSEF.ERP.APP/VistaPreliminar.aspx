@@ -25,11 +25,12 @@
         <div id="header">
             <img src="images/logo.png" alt="logo" class="imgs logo-image" />
         </div>
-        <ext:ResourceManager ID="rmVistaPreliminar" runat="server">
-        </ext:ResourceManager>
+       <%-- <ext:ResourceManager ID="rmVistaPreliminar" runat="server">
+        </ext:ResourceManager>--%>
 
+    
 
-        <ext:FieldContainer
+      <%--  <ext:FieldContainer
                     ID="ContenedorID" 
                     runat="server" 
                     FieldLabel="EXPORTAR A" 
@@ -48,7 +49,7 @@
                                     Width="50"
                                     Hidden="false" >
                                     <DirectEvents>
-                                    <Click OnEvent="toPDF" Success="myFunction"></Click>
+                                    <Click OnEvent="toPDF"></Click>
                                     </DirectEvents>
                          </ext:ImageButton>
                            <ext:ImageButton
@@ -61,11 +62,11 @@
                                         Width="50"
                                         Hidden="false" >
                                      <DirectEvents>
-                                    <Click OnEvent="toXLS" ></Click> <%--Success="myFunction"--%>
+                                    <Click OnEvent="toXLS" ></Click>
                                     </DirectEvents>
                              </ext:ImageButton>
                     </Items>
-                </ext:FieldContainer>
+                </ext:FieldContainer>--%>
 
 
        

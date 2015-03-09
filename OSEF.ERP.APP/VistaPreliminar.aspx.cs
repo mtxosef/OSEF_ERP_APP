@@ -43,6 +43,23 @@ namespace OSEF.ERP.APP
          //    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
         }
 
+        protected void toPDF(object sender, EventArgs e)
+        {
+
+            ReportDocument reporte = (ReportDocument)Session["imprimir"];
+            string namereport = Session["ReportName"].ToString();
+            // string rutaJavaScript = "";
+            reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
+            // reporte.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "VistaPreliminar");
+
+
+            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Vista Preliminar");
+            //  reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reports/" + namereport + ".pdf"));
+
+            //        rutaJavaScript = "reports/" + namereport + ".pdf";
+            //    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ruta", rutaJavaScript, ParameterMode.Value));
+        }
+
 
         protected void toXLS(object sender, DirectEventArgs e)
         {

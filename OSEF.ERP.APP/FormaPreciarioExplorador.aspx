@@ -197,7 +197,7 @@
                     Width="50"
                     Disabled="false">
                     <DirectEvents>
-                        <Click OnEvent="imgbtnExportar_Click" Success="window.open('VistaPreliminar.aspx', '_blank');">
+                        <Click OnEvent="imgbtnExportar_Click" Success="window.open('Previa.aspx', '_blank');">
                             <EventMask ShowMask="true" Msg="Cargando Reporte..." />
                              <ExtraParams>
                                 <ext:Parameter Name="preciario" Value="App.txtPreciario.getValue()" Mode="Raw" />
