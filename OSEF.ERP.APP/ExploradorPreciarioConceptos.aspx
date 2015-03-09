@@ -370,6 +370,7 @@
                         Align="Center"
                         Width="150"
                         DataIndex="Costo">
+                        <Renderer Fn="txtCosto_renderer" />
                     </ext:Column>
                      <ext:Column
                         ID="cTotal"

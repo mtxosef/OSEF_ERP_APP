@@ -116,9 +116,6 @@
                         Cls="xDeshabilitados"
                         Margins="0 3 0 0"
                         Disabled="true">
-                         <Listeners>
-                <AfterRender Fn="rFormatoCosto" />
-            </Listeners>
                     </ext:TextField>
                     <ext:TextField
                         ID="txtImporteInicial"

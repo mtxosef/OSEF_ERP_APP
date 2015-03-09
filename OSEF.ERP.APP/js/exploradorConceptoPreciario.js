@@ -119,13 +119,19 @@ var sParametrosExporador_Add = function (concepto, registro) {
 
 var sParametrosExporador_Load = function () {
 
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+
+
+
     App.txtPreciario.setValue(Ext.util.Cookies.get('cookiePreciario'));
     App.txtClave.setValue(Ext.util.Cookies.get('cookieConcepto'));
     App.txtConceptoID.setValue(Ext.util.Cookies.get('cookieConceptoID'));
     App.txtADescripcion.setValue(Ext.util.Cookies.get('cookieDescripcion'));
-    App.txtImporteInicial.setValue(Ext.util.Cookies.get('cookieImporteInicial'));
-    App.txtImporteFinal.setValue(Ext.util.Cookies.get('cookieImporteFinal'));
-    App.txtPrecioInicial.setValue(Ext.util.Cookies.get('cookiePrecioInicial'));
+    App.txtImporteInicial.setValue(F.number(Ext.util.Cookies.get('cookieImporteInicial'), "$000,000,000.00"));
+    App.txtImporteFinal.setValue(F.number(Ext.util.Cookies.get('cookieImporteFinal'), "$000,000,000.00"));
+    App.txtPrecioInicial.setValue(F.number(Ext.util.Cookies.get('cookiePrecioInicial'), "$000,000,000.00"));
 };
 
 
@@ -165,13 +171,4 @@ var txtCosto_renderer = function (valor) {
     return F.number(valor, "$000,000,000.00");
 };
 
-//Darle formato a la columna de Programado
-var rFormatoCosto = function (valor) {
-
-    console.log(valor);
-    var F = Ext.util.Format;
-    F.thousandSeparator = ',';
-    F.decimalSeparator = '.';
-    return F.number(valor, "$000,000,000.00");
-};
 
