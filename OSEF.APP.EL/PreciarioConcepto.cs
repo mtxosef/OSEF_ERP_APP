@@ -158,6 +158,9 @@ namespace OSEF.APP.EL
             set { rsubsubcategoria = value; }
         }
 
+
+
+
         #endregion
     }
 }

@@ -96,8 +96,8 @@ var cmbCantidadFiltro_Select = function (combobox, registro) {
 
 var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
     window.parent.App.wEmergente.load('FormaPreciarioExplorador.aspx');
-    window.parent.App.wEmergente.setHeight(365);
-    window.parent.App.wEmergente.setWidth(540);
+    window.parent.App.wEmergente.setHeight(385);
+    window.parent.App.wEmergente.setWidth(580);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Datos del concepto');
     window.parent.App.wEmergente.show();
@@ -106,7 +106,9 @@ var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, inde
     Ext.util.Cookies.set('cookieConceptoID', registro.get('ID'));
     Ext.util.Cookies.set('cookieConcepto', registro.get('Clave'));
     Ext.util.Cookies.set('cookieDescripcion', registro.get('Descripcion'));
-
+    Ext.util.Cookies.set('cookieImporteInicial', registro.get('Importe'));
+    Ext.util.Cookies.set('cookieImporteFinal', registro.get('Importefinal'));
+    Ext.util.Cookies.set('cookiePrecioInicial', registro.get('Costo'));
 };
 
 //Evento lanzado al agregar un registro al store
@@ -115,14 +117,15 @@ var sParametrosExporador_Add = function (concepto, registro) {
 
 };
 
-
 var sParametrosExporador_Load = function () {
 
     App.txtPreciario.setValue(Ext.util.Cookies.get('cookiePreciario'));
-    App.txtfConcepto.setValue(Ext.util.Cookies.get('cookieConcepto'));
+    App.txtClave.setValue(Ext.util.Cookies.get('cookieConcepto'));
     App.txtConceptoID.setValue(Ext.util.Cookies.get('cookieConceptoID'));
     App.txtADescripcion.setValue(Ext.util.Cookies.get('cookieDescripcion'));
-
+    App.txtImporteInicial.setValue(Ext.util.Cookies.get('cookieImporteInicial'));
+    App.txtImporteFinal.setValue(Ext.util.Cookies.get('cookieImporteFinal'));
+    App.txtPrecioInicial.setValue(Ext.util.Cookies.get('cookiePrecioInicial'));
 };
 
 
@@ -133,13 +136,6 @@ var sPreciarioConcepto_Load = function () {
 }
 
 
-//Darle formato a la columna de Programado
-var cCosto_renderer = function (valor) {
-    var F = Ext.util.Format;
-    F.thousandSeparator = ',';
-    F.decimalSeparator = '.';
-    return F.number(valor, "$000,000,000.00");
-};
 
 //Darle formato a la columna de Programado
 var cImporte_renderer = function (valor, metadata, registro) {
@@ -157,3 +153,25 @@ var cImporte_renderer = function (valor, metadata, registro) {
 
     return F.number(valor, "$000,000,000.00");
 };
+
+
+//Darle formato a la columna de Programado
+var txtCosto_renderer = function (valor) {
+
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    return F.number(valor, "$000,000,000.00");
+};
+
+//Darle formato a la columna de Programado
+var rFormatoCosto = function (valor) {
+
+    console.log(valor);
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    return F.number(valor, "$000,000,000.00");
+};
+

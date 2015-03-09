@@ -322,8 +322,8 @@
                         ID="cDescripcion"
                         runat="server"
                         Text="CONCEPTO"
-                        Align="Center"
-                        Width="350"
+                        Align="Left"
+                        Width="340"
                         DataIndex="Descripcion">
                     </ext:Column>
                     <ext:Column
@@ -370,12 +370,11 @@
                         Align="Center"
                         Width="150"
                         DataIndex="Costo">
-                        <Renderer Fn="cCosto_renderer" />
                     </ext:Column>
                      <ext:Column
                         ID="cTotal"
                         runat="server"
-                        Text="TOTAL ACTUAL"
+                        Text="IMPORTE"
                         Align="Center"
                         Width="125"
                         DataIndex="Importefinal">

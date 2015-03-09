@@ -485,8 +485,6 @@ var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
 
 };
 
-
-
 //Darle formato a la columna de Cantidad
 var cCantidad_Renderer = function (valor) {
     var F = Ext.util.Format;
@@ -659,6 +657,7 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 var gpPreciarioConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
 
 
+    App.txtClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
 };
 

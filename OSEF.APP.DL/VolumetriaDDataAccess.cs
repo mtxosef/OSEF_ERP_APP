@@ -68,6 +68,8 @@ namespace OSEF.APP.DL
                 sqlpUtilizada.Scale = 2;
                 sqlpUtilizada.Value = iVolumetriaD.Utilizada;
 
+             
+
                 SqlParameter sqlpFotos = new SqlParameter();
                 sqlpFotos.ParameterName = "@Fotos";
                 sqlpFotos.SqlDbType = SqlDbType.VarChar;
@@ -142,6 +144,7 @@ namespace OSEF.APP.DL
                 sqlpCantidad.Precision = 10;
                 sqlpCantidad.Scale = 2;
                 sqlpCantidad.Value = uVolumetriaD.Cantidad;
+
 
                 SqlParameter sqlpUtilizada = new SqlParameter();
                 sqlpUtilizada.ParameterName = "@Utilizada";

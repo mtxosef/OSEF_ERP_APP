@@ -67,8 +67,8 @@
         <ext:FormPanel 
         ID="fpEspecificarParametros" 
         runat="server"
-        Width="520"
-        Height="320"
+        Width="560"
+        Height="340"
         BodyPadding="10"
         DefaultAnchor="100%">
         <Items>
@@ -83,33 +83,79 @@
                       <ext:TextField
                         ID="txtPreciario"
                         runat="server"
-                        Width="360"
+                        Width="140"
+                          Cls="xDeshabilitados"
                         Margins="0 3 0 0"
                         Disabled="true">
                     </ext:TextField>
-                  
+                   <ext:TextField
+                        ID="txtClave"
+                        runat="server"
+                        FieldLabel="Clave Concepto"
+                        Width="255"
+                          Cls="xDeshabilitados"
+                        Margins="0 3 0 0"
+                        Disabled="true">
+                    </ext:TextField>
                 </Items>
             </ext:FieldContainer>
+
+
             <ext:FieldContainer
-                ID="fcConceptoID"
+                ID="fcContenedorCantidades"
                 runat="server"
-                FieldLabel="Concepto ID"
+                FieldLabel="Costo"
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">
                 <Items>
                       <ext:TextField
-                        ID="txtfConcepto"
+                        ID="txtPrecioInicial"
                         runat="server"
-                        Width="360"
+                        Width="140"
+                        Cls="xDeshabilitados"
                         Margins="0 3 0 0"
+                        Disabled="true">
+                         <Listeners>
+                <AfterRender Fn="rFormatoCosto" />
+            </Listeners>
+                    </ext:TextField>
+                    <ext:TextField
+                        ID="txtImporteInicial"
+                        runat="server"
+                        FieldLabel="Importe Inicial"
+                        Width="255"
+                        Cls="xDeshabilitados"
+                        Margins="0 3 0 0"
+                        Disabled="true">
+                       
+                    </ext:TextField>
+                   
+                </Items>
+            </ext:FieldContainer>
+
+
+            <ext:FieldContainer
+                ID="fcConceptoID"
+                runat="server"
+                FieldLabel="Importe Final"
+                AnchorHorizontal="100%"
+                LabelWidth="120"
+                Layout="HBoxLayout">
+                <Items>
+                      
+                     <ext:TextField
+                        ID="txtImporteFinal"
+                        runat="server"
+                        Cls="xDeshabilitados"
+                        Width="140"
                         Disabled="true">
                     </ext:TextField>
                       <ext:TextField
                         ID="txtConceptoID"
                         runat="server"
-                        Width="360"
                         Hidden="true"
+                        Cls="xDeshabilitados"
                         Margins="0 3 0 0"
                         Disabled="true">
                     </ext:TextField>
@@ -119,7 +165,7 @@
             <ext:FieldContainer
                 ID="fcConcepto"
                 runat="server"
-                FieldLabel="Concepto"
+                FieldLabel="Descripcion"
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">
@@ -127,8 +173,9 @@
                       <ext:TextArea
                         ID="txtADescripcion"
                         runat="server"
-                        Width="360"
+                        Width="400"
                         Height="140"
+                        Cls="xDeshabilitados"
                         Margins="0 3 0 0"
                         Disabled="true">
                     </ext:TextArea>

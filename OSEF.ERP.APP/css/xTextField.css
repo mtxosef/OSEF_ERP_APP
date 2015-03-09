@@ -54,5 +54,11 @@ opacity: .5;
 {
     border: none !important;
     font-family: "WeblySleek UI Semilight" !important; 
-    font-size:12px;
+    font-size:10.5px;
+    font-weight: bold;
+}
+/*Clase para deshabilitados que se notan mas*/
+.xDeshabilitados .x-item-disabled .x-form-item-label, .x-item-disabled .x-form-field, .x-item-disabled .x-form-display-field, .x-item-disabled .x-form-cb-label, .x-item-disabled .x-form-trigger {
+filter: alpha(opacity=30);
+opacity: .8;
 }

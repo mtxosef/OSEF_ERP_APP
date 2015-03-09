@@ -32,7 +32,7 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static int Actualizar(string strConcepto, decimal utilizada, int Volumetria)
         {
-            return PreciarioConceptosDataAccess.Actualizar(strConcepto,utilizada, Volumetria);
+            return PreciarioConceptosDataAccess.Actualizar(strConcepto, utilizada, Volumetria);
         }
 
         #endregion

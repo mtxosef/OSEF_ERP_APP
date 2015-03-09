@@ -81,6 +81,7 @@ namespace OSEF.APP.DL
                 sqlpCosto.SqlDbType = SqlDbType.Decimal;
                 sqlpCosto.Value = iPreciarioConcepto.Costo;
 
+
                 SqlParameter sqlpCantidad = new SqlParameter();
                 sqlpCantidad.ParameterName = "@Cantidad";
                 sqlpCantidad.SqlDbType = SqlDbType.Decimal;
@@ -188,6 +189,8 @@ namespace OSEF.APP.DL
                 sqlpVolumetria.ParameterName = "@Volumetria";
                 sqlpVolumetria.SqlDbType = SqlDbType.Int;
                 sqlpVolumetria.Value = volumetria;
+
+         
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);

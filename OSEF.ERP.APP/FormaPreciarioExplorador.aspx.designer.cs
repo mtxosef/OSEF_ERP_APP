@@ -85,6 +85,42 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtPreciario;
         
         /// <summary>
+        /// Control txtClave.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtClave;
+        
+        /// <summary>
+        /// Control fcContenedorCantidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcContenedorCantidades;
+        
+        /// <summary>
+        /// Control txtPrecioInicial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtPrecioInicial;
+        
+        /// <summary>
+        /// Control txtImporteInicial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtImporteInicial;
+        
+        /// <summary>
         /// Control fcConceptoID.
         /// </summary>
         /// <remarks>
@@ -94,13 +130,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcConceptoID;
         
         /// <summary>
-        /// Control txtfConcepto.
+        /// Control txtImporteFinal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfConcepto;
+        protected global::Ext.Net.TextField txtImporteFinal;
         
         /// <summary>
         /// Control txtConceptoID.

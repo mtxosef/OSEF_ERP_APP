@@ -101,6 +101,7 @@ BEGIN
 		ON
 			PreciarioConceptos.ID =VD.ConceptoID
 		WHERE VD.Volumetria= @ID
+		
 
 END
 GO
