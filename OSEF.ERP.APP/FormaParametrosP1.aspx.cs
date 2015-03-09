@@ -11,6 +11,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using CrystalDecisions.Shared;
 
 namespace OSEF.ERP.APP
 {
@@ -65,7 +66,20 @@ namespace OSEF.ERP.APP
                         reporte.Load(Server.MapPath("reports/CPreciario.rpt"));
                         reporte.SetDataSource(dt);
 
+                
                         SqlConnectionStringBuilder SConn = new SqlConnectionStringBuilder(connectionString);
+
+
+
+                        ConnectionInfo connectionInfo = new ConnectionInfo();
+                        connectionInfo.ServerName = SConn.DataSource;
+                        connectionInfo.DatabaseName = SConn.InitialCatalog;
+                        connectionInfo.UserID = SConn.UserID;
+                        connectionInfo.Password = SConn.Password;
+                        SetDBLogonForReport(connectionInfo, reporte);
+
+
+
                         reporte.DataSourceConnections[0].SetConnection(SConn.DataSource, SConn.InitialCatalog, SConn.UserID, SConn.Password);
                         reporte.SetParameterValue("path", path);
 
@@ -88,6 +102,19 @@ namespace OSEF.ERP.APP
             }
 
         }
+
+
+        private void SetDBLogonForReport(ConnectionInfo connectionInfo, ReportDocument reportDocument)
+        {
+            Tables tables = reportDocument.Database.Tables;
+            foreach (CrystalDecisions.CrystalReports.Engine.Table table in tables)
+            {
+                TableLogOnInfo tableLogonInfo = table.LogOnInfo;
+                tableLogonInfo.ConnectionInfo = connectionInfo;
+                table.ApplyLogOnInfo(tableLogonInfo);
+            }
+        }
+
 
 
         //CargaConceptosAyuda

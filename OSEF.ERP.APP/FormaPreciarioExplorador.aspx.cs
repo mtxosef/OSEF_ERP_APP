@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace OSEF.ERP.APP
 {
@@ -26,8 +27,8 @@ namespace OSEF.ERP.APP
             string nombre = "CPreciario";
 
             //1. Configurar la conexión y el tipo de comando
-            var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
-            string connectionString = ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString;
+            var conn = new SqlConnection("Data Source = localhost; Initial Catalog = OSEF_ERP; User Id = sa; Password = 1234;");
+       
             try
             {
                 using (var comando = new SqlCommand("web_spS_ObtenerCambiosPreciario", conn))
@@ -45,8 +46,7 @@ namespace OSEF.ERP.APP
                         reporte.Load(Server.MapPath("reports/CPreciario.rpt"));
                         reporte.SetDataSource(dt);
 
-                        SqlConnectionStringBuilder SConn = new SqlConnectionStringBuilder(connectionString);
-                        reporte.DataSourceConnections[0].SetConnection(SConn.DataSource, SConn.InitialCatalog, SConn.UserID, SConn.Password);
+            
                         reporte.SetParameterValue("path", path);
 
 
@@ -68,5 +68,19 @@ namespace OSEF.ERP.APP
             }
 
         }
+
+
+
+        private void SetDBLogonForReport(ConnectionInfo connectionInfo, ReportDocument reportDocument)
+        {
+            Tables tables = reportDocument.Database.Tables;
+            foreach (CrystalDecisions.CrystalReports.Engine.Table table in tables)
+            {
+                TableLogOnInfo tableLogonInfo = table.LogOnInfo;
+                tableLogonInfo.ConnectionInfo = connectionInfo;
+                table.ApplyLogOnInfo(tableLogonInfo);
+            }
+        }
+
     }
 }

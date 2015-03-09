@@ -8,6 +8,8 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using CrystalDecisions.Web;
 using Ext.Net;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace OSEF.ERP.APP
 {
@@ -15,13 +17,13 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        
             crvEstimaciones.ToolPanelView = ToolPanelViewType.None;
             crvEstimaciones.ReportSource = (ReportDocument)Session["imprimir"];
             //reporte.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "VistaPreliminar");
             //reporte.Close();
             //reporte.Dispose();
         }
+
 
         protected void toPDF(object sender, DirectEventArgs e)
         {
