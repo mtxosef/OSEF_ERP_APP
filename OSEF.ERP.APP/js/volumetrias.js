@@ -2,36 +2,91 @@
 
 //Boton de nuevo de la forma no del tablero
 var imgbtnFormaNuevo_Click = function () {
+    //Asignar la fecha en una variable
     var d = new Date();
 
-    //Limpiar controles del encabezado  
+    //Habilitar o Deshabilitar controles
     App.cmbMov.setReadOnly(false);
-    App.txtfMovID.setValue(null);
-    App.cmbPreciario.clearValue();
     App.cmbPreciario.setDisabled(false);
-    App.txtfDescripcionPreciario.setValue(null);
+    App.dfFechaEmision.setDisabled(false);
+    App.imgbtnCancelar.setDisabled(true);
+
+    //Limpiar campos
+    App.cmbPreciario.clearValue();
+    App.txtfMovID.setValue('');
+    App.txtfDescripcionPreciario.setValue('');
     App.txtfIDSucursal.setValue('');
     App.txtfSucursalNombre.setValue('');
-
-    App.dfFechaEmision.setDisabled(false);
+    App.txtfObservaciones.setValue('');
     App.dfFechaEmision.setValue(d);
+    App.txtfClave.setValue('');
+    App.taDescripcion.setValue('');
 
-    App.imgbtnCancelar.setDisabled(true);
-    App.txtfObservaciones.setValue(null);
+    //Cambiar Estatus, Cookie y Titulo Window
     App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
-
     Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
     window.parent.App.wEmergente.setTitle('Nueva Volumetría');
 
     //Borrar el GridPanel del Detalle y Encabezado
     App.sConceptos.removeAll();
-    App.sPreciarioConcepto.removeAll();
-    App.sVolumetria.removeAll(); 
+    App.sVolumetria.removeAll();
 };
 
 //Boton de abrir o cerrar de la forma
 var imgbtnAbrir_Click = function () {
     window.parent.App.wEmergente.hide();
+};
+
+//Evento que ocurre al dar clic en imgbtnGuardar
+var imgbtnGuardar_Click_Success = function (response, result) {
+
+    //1. Validar si se hizo un INSERT o UPDATE
+    if (result.extraParamsResponse.accion == 'insertar') {
+        Ext.Msg.show({
+            id: 'msgVolumetria',
+            title: 'GUARDAR',
+            msg: '<p align="center">Movimiento registrado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.INFO
+        });
+
+        //2. Activa el boton de borrar movimiento
+        App.imgbtnBorrar.setDisabled(false);
+
+        //3. Actualiza al estatus BORRADOR de la captura
+        App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
+
+        //4. Recargar el tablero
+        window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
+
+        //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
+        Ext.util.Cookies.set('cookieEditarVolumetria', App.sVolumetria.getAt(0).get('ID'));
+        window.parent.App.wEmergente.setTitle('Editar Volumetría ' + App.sVolumetria.getAt(0).get('ID'));
+
+        //6. Deshabilita los comandos de Fotos
+        App.ccFotos.commands[0].disabled = false;
+        App.ccFotos.commands[1].disabled = false;
+        App.gpVolumetriaDetalle.reconfigure();
+
+
+        console.log(App.ccFotos.commands[0]);
+        //console.log(App.ccFotos.cache.length);
+        //console.log(App.ccFotos.cache);
+        //console.log(App.ccFotos.getMenuItems());
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgVolumetria',
+            title: 'ACTUALIZAR',
+            msg: '<p align="center">Movimiento actualizado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.INFO
+        });
+    }
 };
 
 //Para el botón de eliminar de la forma, Eliminar un registro 
@@ -312,46 +367,6 @@ var sVolumetria_Add = function (avance, registro) {
     }
 };
 
-//Evento que ocurre al dar clic en imgbtnGuardar
-var imgbtnGuardar_Click_Success = function (response, result) {    
-    if (result.extraParamsResponse.accion == 'insertar') {
-        Ext.Msg.show({
-            id: 'msgVolumetria',
-            title: 'GUARDAR',
-            msg: '<p align="center">Movimiento registrado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
-            buttons: Ext.MessageBox.OK,
-            onEsc: Ext.emptyFn,
-            closable: false,
-            icon: Ext.MessageBox.INFO
-        });
-        Ext.util.Cookies.set('cookieEditarVolumetria', App.sVolumetria.getAt(0).get('ID'));
-        //Activa el boton de borrar movimiento
-        App.imgbtnBorrar.setDisabled(false);
-        //Actualiza al estatus BORRADOR de la captura
-        App.sbFormaVolumetriaDetalle.setText(App.sVolumetria.getAt(0).get('Estatus'));
-
-        window.parent.App.pCentro.getBody().App.sVolumetrias.reload();
-
-        window.parent.App.wEmergente.setTitle('Editar Volumetría ' + Ext.util.Cookies.get('cookieEditarVolumetria'));
-
-        //Deshabilita los comandos de Fotos
-        App.ccFotos.commands[0].disabled = false;
-        App.ccFotos.commands[1].disabled = false;
-        App.gpVolumetriaDetalle.reconfigure();
-    }
-    else {
-        Ext.Msg.show({
-            id: 'msgVolumetria',
-            title: 'ACTUALIZAR',
-            msg: '<p align="center">Movimiento actualizado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
-            buttons: Ext.MessageBox.OK,
-            onEsc: Ext.emptyFn,
-            closable: false,
-            icon: Ext.MessageBox.INFO
-        });
-    }
-};
-
 //Afectar el movimiento
 var imgbtnAfectar_Click_Success = function (response, result) {
     //1. Actualizar el store del tablero
@@ -593,7 +608,7 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 
 //Trae la descripcion al displayfield
 var gpPreciarioConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
-    App.txtClave.setValue(registro.get('RPreciarioConceptos').Clave);
+    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
 };
 

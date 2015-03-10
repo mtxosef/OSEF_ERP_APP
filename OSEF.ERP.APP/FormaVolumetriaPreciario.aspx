@@ -119,7 +119,7 @@
                                     <ExtraParams>
                                         <ext:Parameter Name="VolumetriaForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                         <ext:Parameter Name="Volumetria" Value="Ext.encode(#{sVolumetria}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="sucursal" Value="App.txtfIDSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="Sucursal" Value="App.txtfIDSucursal.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="VolumetriaD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
@@ -504,7 +504,7 @@
                             Layout="ColumnLayout">
                             <Items>
                                 <ext:TextField 
-                                    ID="txtClave" 
+                                    ID="txtfClave" 
                                     runat="server" 
                                     Width="80" 
                                     Disabled="true"
