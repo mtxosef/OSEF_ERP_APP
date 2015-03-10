@@ -8,10 +8,8 @@ var imgbtnFormaNuevo_Click = function () {
     //Habilitar o Deshabilitar controles
     App.cmbMov.setReadOnly(false);
     App.cmbPreciario.setDisabled(false);
-<<<<<<< HEAD
     App.txtfObservaciones.setDisabled(false);
     App.txtfDescripcionPreciario.setValue(null);
-=======
     App.dfFechaEmision.setDisabled(false);
     App.imgbtnCancelar.setDisabled(true);
 
@@ -19,7 +17,6 @@ var imgbtnFormaNuevo_Click = function () {
     App.cmbPreciario.clearValue();
     App.txtfMovID.setValue('');
     App.txtfDescripcionPreciario.setValue('');
->>>>>>> origin/master
     App.txtfIDSucursal.setValue('');
     App.txtfSucursalNombre.setValue('');
     App.txtfObservaciones.setValue('');
