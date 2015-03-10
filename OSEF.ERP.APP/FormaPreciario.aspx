@@ -450,6 +450,7 @@
                                                 Text="Precio"
                                                 DataIndex="Costo"
                                                 Width="110">
+                                                <Renderer Fn="rendererCosto"></Renderer>
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cImporte"

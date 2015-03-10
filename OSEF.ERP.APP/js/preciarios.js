@@ -170,6 +170,9 @@ var txtfDescripcion_Change = function (txtDescripcion, Evento) {
 var sPreciario_Load = function () {
     App.direct.sPreciario_Load();
     store = window.parent.App.pCentro.getBody().App.sPreciarios;
+
+    if(sPreciario )
+
     var d = new Date();
     App.dfFechaEmision.setValue(d);
 };
@@ -354,7 +357,7 @@ var renderImporte = function (value, metadata) {
     F.decimalSeparator = '.';
 
     metadata.style = "background-color: #85F978;";
-    return F.number(value, "000,000,000.00");
+    return F.number(value, "$000,000,000.00");
 };
 
 var renderImporteUtilizado = function (value, metadata, registro) {
@@ -368,7 +371,7 @@ var renderImporteUtilizado = function (value, metadata, registro) {
     else {
         metadata.style = "background-color: #FEBB5D;";      
     }
-    return F.number(value, "000,000,000.00");
+    return F.number(value, "$000,000,000.00");
 };
 
 //Pone todas las celdas de color segun la validacion
@@ -380,7 +383,18 @@ if (parseFloat(registro.get('Utilizada')) > 0)
     return value;
 };
 
+
+//Formato numerico a Precio
+var rendererCosto = function (value) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    return F.number(value, "$000,000,000.00");
+};
+
+
 var sCarga_Load = function (avance, registro, index) {
+  
     var sum = 0;
     var sum2 = 0;
     App.sCarga.each(function (record) {
@@ -394,4 +408,5 @@ var sCarga_Load = function (avance, registro, index) {
     F.decimalSeparator = '.';
     App.dfTotalInicial.setValue('$' + F.number(sum, "000,000,000.00"));
     App.dfTotalFinal.setValue('$' + F.number(sum2, "000,000,000.00"));
+   
 }
