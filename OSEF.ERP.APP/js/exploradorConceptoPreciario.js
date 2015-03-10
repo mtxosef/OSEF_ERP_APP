@@ -96,8 +96,8 @@ var cmbCantidadFiltro_Select = function (combobox, registro) {
 
 var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
     window.parent.App.wEmergente.load('FormaPreciarioExplorador.aspx');
-    window.parent.App.wEmergente.setHeight(385);
-    window.parent.App.wEmergente.setWidth(580);
+    window.parent.App.wEmergente.setHeight(460);
+    window.parent.App.wEmergente.setWidth(600);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Datos del concepto');
     window.parent.App.wEmergente.show();
@@ -109,6 +109,8 @@ var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, inde
     Ext.util.Cookies.set('cookieImporteInicial', registro.get('Importe'));
     Ext.util.Cookies.set('cookieImporteFinal', registro.get('Importefinal'));
     Ext.util.Cookies.set('cookiePrecioInicial', registro.get('Costo'));
+    Ext.util.Cookies.set('cookieCantidadInicial', registro.get('Cantidad') + ' (' + registro.get('Unidad')+')');
+    Ext.util.Cookies.set('cookieCantidadFinal', registro.get('Utilizada') + ' (' + registro.get('Unidad') + ')');
 };
 
 //Evento lanzado al agregar un registro al store
@@ -132,6 +134,9 @@ var sParametrosExporador_Load = function () {
     App.txtImporteInicial.setValue(F.number(Ext.util.Cookies.get('cookieImporteInicial'), "$000,000,000.00"));
     App.txtImporteFinal.setValue(F.number(Ext.util.Cookies.get('cookieImporteFinal'), "$000,000,000.00"));
     App.txtPrecioInicial.setValue(F.number(Ext.util.Cookies.get('cookiePrecioInicial'), "$000,000,000.00"));
+    App.txtCantidadInicial.setValue(Ext.util.Cookies.get('cookieCantidadInicial'));
+    App.txtCantidadUtilizada.setValue(Ext.util.Cookies.get('cookieCantidadFinal'));
+
 };
 
 

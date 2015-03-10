@@ -22,8 +22,14 @@ namespace OSEF.ERP.APP
 
         protected void imgbtnExportar_Click(object sender, DirectEventArgs e)
         {
+            //Parametros del store procedure
             string strPreciario = e.ExtraParams["preciario"];
             string strConceptoID = e.ExtraParams["conceptoID"];
+
+            //Firmas documento(Parametros)
+            string strElaboro = e.ExtraParams["elaboro"];
+            string strReviso = e.ExtraParams["reviso"];
+            string strAutorizo = e.ExtraParams["autorizo"];
             string nombre = "CPreciario";
 
             //1. Configurar la conexión y el tipo de comando
@@ -48,7 +54,9 @@ namespace OSEF.ERP.APP
 
                         //SqlConnectionStringBuilder SConn = new SqlConnectionStringBuilder(connectionString);
                         //reporte.DataSourceConnections[0].SetConnection(SConn.DataSource, SConn.InitialCatalog, SConn.UserID, SConn.Password);
-                       
+                        reporte.SetParameterValue("elaboro", strElaboro);
+                        reporte.SetParameterValue("reviso", strReviso);
+                        reporte.SetParameterValue("autorizo", strAutorizo);
 
                         reporte.SetParameterValue("path", path);
 
