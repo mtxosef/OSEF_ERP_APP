@@ -144,7 +144,9 @@
                                                         StyleSpec="margin-right: 6px;"
                                                         MaxLength="50"
                                                         EnforceMaxLength="true">
-                                                      
+                                                       <Listeners>
+                                                            <Blur Handler="App.txtfDireccionZona.setValue(App.txtfDireccionZona.getValue().toUpperCase());" />
+                                                        </Listeners>
                                                     </ext:TextField>
                                                 </Items>
                                             </ext:FieldContainer>
@@ -539,6 +541,11 @@
                                                         Width="200"
                                                         AllowBlank="false"
                                                         StyleSpec="margin-right: 6px;">
+                                                         <PickerOptions 
+                                                            ID="pOFechaEmision"
+                                                            runat="server"
+                                                            Cls="my-date-picker">
+                                                        </PickerOptions>
                                                      <%--    <Listeners>
                                                             <Blur Fn="validarFechaInicio" />
                                                         </Listeners>--%>

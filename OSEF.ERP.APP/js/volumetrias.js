@@ -9,6 +9,7 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtfMovID.setValue(null);
     App.cmbPreciario.clearValue();
     App.cmbPreciario.setDisabled(false);
+    App.txtfObservaciones.setDisabled(false);
     App.txtfDescripcionPreciario.setValue(null);
     App.txtfIDSucursal.setValue('');
     App.txtfSucursalNombre.setValue('');
@@ -272,6 +273,7 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
+        App.txtfObservaciones.setDisabled(false);
     }
 
     //Valida el estatus para ver si permite seguir capturando o no
@@ -294,6 +296,7 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(true);
+        App.txtfObservaciones.setDisabled(false);
     }
 
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
