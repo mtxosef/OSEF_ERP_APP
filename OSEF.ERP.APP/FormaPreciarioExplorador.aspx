@@ -67,8 +67,8 @@
         <ext:FormPanel 
         ID="fpEspecificarParametros" 
         runat="server"
-        Width="560"
-        Height="340"
+        Width="580"
+        Height="410"
         BodyPadding="10"
         DefaultAnchor="100%">
         <Items>
@@ -92,19 +92,18 @@
                         ID="txtClave"
                         runat="server"
                         FieldLabel="Clave Concepto"
-                        Width="255"
+                        LabelWidth="120"
+                        Width="285"
                           Cls="xDeshabilitados"
                         Margins="0 3 0 0"
                         Disabled="true">
                     </ext:TextField>
                 </Items>
             </ext:FieldContainer>
-
-
-            <ext:FieldContainer
+             <ext:FieldContainer
                 ID="fcContenedorCantidades"
                 runat="server"
-                FieldLabel="Costo"
+                FieldLabel="Precio"
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">
@@ -117,36 +116,33 @@
                         Margins="0 3 0 0"
                         Disabled="true">
                     </ext:TextField>
-                    <ext:TextField
-                        ID="txtImporteInicial"
-                        runat="server"
-                        FieldLabel="Importe Inicial"
-                        Width="255"
-                        Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                       
-                    </ext:TextField>
-                   
                 </Items>
             </ext:FieldContainer>
-
-
-            <ext:FieldContainer
+             <ext:FieldContainer
                 ID="fcConceptoID"
                 runat="server"
-                FieldLabel="Importe Final"
+                FieldLabel="Importe Inicial"
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">
                 <Items>
-                      
                      <ext:TextField
-                        ID="txtImporteFinal"
+                        ID="txtImporteInicial"
                         runat="server"
                         Cls="xDeshabilitados"
                         Width="140"
+                         Margins="0 3 0 0"
                         Disabled="true">
+                    </ext:TextField>
+                     <ext:TextField
+                        ID="txtImporteFinal"
+                        runat="server"
+                        FieldLabel="Final"
+                        LabelWidth="120"
+                        Width="285"
+                        Cls="xDeshabilitados"
+                        Disabled="true">
+                       
                     </ext:TextField>
                       <ext:TextField
                         ID="txtConceptoID"
@@ -159,7 +155,80 @@
                   
                 </Items>
             </ext:FieldContainer>
-            <ext:FieldContainer
+             <ext:FieldContainer
+                ID="fcCantidadess"
+                runat="server"
+                FieldLabel="Cantidad Inicial"
+                AnchorHorizontal="100%"
+                LabelWidth="120"
+                Layout="HBoxLayout">
+                <Items>
+                     <ext:TextField
+                        ID="txtCantidadInicial"
+                        runat="server"
+                        Cls="xDeshabilitados"
+                        Width="140"
+                         Margins="0 3 0 0"
+                        Disabled="true">
+                    </ext:TextField>
+                     <ext:TextField
+                        ID="txtCantidadUtilizada"
+                        runat="server"
+                        FieldLabel="Utilizada"
+                        LabelWidth="120"
+                        Width="285"
+                        Cls="xDeshabilitados"
+                        Disabled="true">
+                       
+                    </ext:TextField>
+                  
+                </Items>
+            </ext:FieldContainer>
+             <ext:FieldContainer
+                ID="fcFirmas"
+                runat="server"
+                FieldLabel="Firmas"
+                AnchorHorizontal="100%"
+                LabelWidth="120"
+                Layout="HBoxLayout">
+                <Items>
+                      <ext:TextField
+                        ID="txtElaboro"
+                        runat="server"
+                        Width="140"
+                        EmptyText="Firma Elaboró"
+                        Margins="0 3 0 0"
+                        AutoFocus="true"
+                         AllowBlank="false">
+                         <Listeners>
+                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                            </Listeners>
+                    </ext:TextField>
+                    <ext:TextField
+                        ID="txtReviso"
+                        runat="server"
+                        Width="140"
+                        EmptyText="Firma Revisó"
+                        Margins="0 3 0 0"
+                         AllowBlank="false">
+                       <Listeners>
+                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                            </Listeners>
+                    </ext:TextField>
+                      <ext:TextField
+                        ID="txtAutorizo"
+                        runat="server"
+                        Width="140"
+                        EmptyText="Firma Autorizó"
+                        Margins="0 3 0 0"
+                        AllowBlank="false">
+                       <Listeners>
+                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                            </Listeners>
+                    </ext:TextField>
+                </Items>
+            </ext:FieldContainer>
+             <ext:FieldContainer
                 ID="fcConcepto"
                 runat="server"
                 FieldLabel="Descripcion"
@@ -170,7 +239,7 @@
                       <ext:TextArea
                         ID="txtADescripcion"
                         runat="server"
-                        Width="400"
+                        Width="426"
                         Height="140"
                         Cls="xDeshabilitados"
                         Margins="0 3 0 0"
@@ -179,10 +248,18 @@
                 </Items>
             </ext:FieldContainer>     
         </Items>
+            <Listeners>
+                <ValidityChange Handler="this.dockedItems.get(0).setStatus({
+                                                text : valid ? 'La información esta completa/correcta' : 'Especifica el personal que firmará el documento', 
+                                                iconCls: valid ? 'icon-accept' : 'icon-exclamation'
+                                            });
+                                            #{imgbtnGuardar}.setDisabled(!valid);" />
+            </Listeners>
             <BottomBar>
                 <ext:StatusBar ID="sbParametros1" 
                 runat="server"
-                Cls="x-colorToolbar" Text="Clic en Aceptar para visualizar reporte" />
+                Cls="x-colorToolbar" 
+                Text="" />
             </BottomBar>
         <Buttons>
                 <ext:ImageButton
@@ -195,13 +272,16 @@
                     ToolTip="Ver Reporte" 
                     Height="50" 
                     Width="50"
-                    Disabled="false">
+                    Disabled="true">
                     <DirectEvents>
                         <Click OnEvent="imgbtnExportar_Click" Success="window.open('Previa.aspx', '_blank');">
                             <EventMask ShowMask="true" Msg="Cargando Reporte..." />
                              <ExtraParams>
                                 <ext:Parameter Name="preciario" Value="App.txtPreciario.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="conceptoID" Value="App.txtConceptoID.getValue()" Mode="Raw" />
+                                <ext:Parameter Name="elaboro" Value="App.txtElaboro.getValue()" Mode="Raw" />
+                                <ext:Parameter Name="reviso" Value="App.txtReviso.getValue()" Mode="Raw" />
+                                <ext:Parameter Name="autorizo" Value="App.txtAutorizo.getValue()" Mode="Raw" />
                             </ExtraParams>
 
                         </Click>

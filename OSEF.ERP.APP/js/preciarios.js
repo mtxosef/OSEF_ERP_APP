@@ -171,7 +171,6 @@ var sPreciario_Load = function () {
     App.direct.sPreciario_Load();
     store = window.parent.App.pCentro.getBody().App.sPreciarios;
 
-    if(sPreciario )
 
     var d = new Date();
     App.dfFechaEmision.setValue(d);
