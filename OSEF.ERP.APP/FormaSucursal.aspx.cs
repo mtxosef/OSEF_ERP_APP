@@ -28,8 +28,8 @@ namespace OSEF.AVANCES.SUCURSALES
                 //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
                 //sMunicipios.DataBind();
 
-                sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
-                sColonias.DataBind();
+                //sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
+                //sColonias.DataBind();
 
                 sProveedores.DataSource = ProveedorBusiness.ObtenerProveedores();
                 sProveedores.DataBind();

@@ -284,7 +284,7 @@
                             MatchFieldWidth="true"
                              ForceSelection="true"
                              QueryMode="Local"
-                            TypeAhead="true"">
+                            TypeAhead="true">
                             <Store>
                                 <ext:Store
                                     ID="sEstados"
@@ -304,11 +304,11 @@
                                 </ext:Store>
                             </Store>
                             <DirectEvents>
-                                <Select OnEvent="cmbEstado_Select">
+                                <Change OnEvent="cmbEstado_Select">
                                     <ExtraParams>
                                         <ext:Parameter Name="valor" Value="App.cmbEstado.getValue()" Mode="Raw" />
                                     </ExtraParams>
-                                </Select>
+                                </Change>
                             </DirectEvents>
                         </ext:ComboBox>
                     </Items>
@@ -353,11 +353,11 @@
                                 </ext:Store>
                             </Store>
                             <DirectEvents>
-                                <Select OnEvent="cmbMunicipio_Select">
+                                <Change OnEvent="cmbMunicipio_Select">
                                     <ExtraParams>
                                         <ext:Parameter Name="valorMunicipio" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
                                     </ExtraParams>
-                                </Select>
+                                </Change>
                             </DirectEvents>
                         </ext:ComboBox>
                          <ext:ComboBox

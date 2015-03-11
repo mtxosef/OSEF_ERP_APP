@@ -408,11 +408,11 @@
                                                             </ext:Store>
                                                         </Store>
                                                         <DirectEvents>
-                                                            <Select OnEvent="cmbMunicipio_Select">
+                                                            <Change OnEvent="cmbMunicipio_Select">
                                                                 <ExtraParams>
                                                                     <ext:Parameter Name="valorMunicipio" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
                                                                 </ExtraParams>
-                                                            </Select>
+                                                            </Change>
                                                         </DirectEvents>
                                                     </ext:ComboBox>
                                                      <ext:ComboBox
@@ -446,6 +446,9 @@
                                                               <Sorters>
                                                                     <ext:DataSorter Property="Descripcion" Direction="ASC" />
                                                                 </Sorters>
+                                                             <Listeners>
+                                                                    <Load Fn="sColonias_Load" />
+                                                                </Listeners>
                                                         </ext:Store>
                                                     </Store>
                                                 </ext:ComboBox>

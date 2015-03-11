@@ -109,7 +109,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 
 //Evento al cargar el store de municipios
 var sMunicipios_Load = function () {
-
+   
     if (App.sProveedor.getAt(0) != undefined) {
         App.cmbMunicipio.setValue(App.sProveedor.getAt(0).get('Municipio'));
     }
