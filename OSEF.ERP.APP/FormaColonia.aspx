@@ -55,6 +55,7 @@
             runat="server"
             Height="230"
             Width="450"
+            DefaultButton="imgbtnGuardar"
             BodyPadding="10"
             MonitorResize="true">
             <Items>
@@ -69,6 +70,7 @@
                             ID="txtIDColonia" 
                             runat="server" 
                             Width="200" 
+                            Disabled="true"
                             Margins="0 3 0 0"
                             >
 
@@ -112,7 +114,12 @@
                             EnforceMaxLength="true"
                             DisplayField="Descripcion"
                             ValueField="ID"
-                            AllowBlank="false">
+                            AllowBlank="false"
+                            Editable="true"
+                            MatchFieldWidth="true"
+                            ForceSelection="true"
+                            QueryMode="Local"
+                            TypeAhead="true">
                             <Store>
                                 <ext:Store
                                     ID="sEstados"
@@ -126,6 +133,9 @@
                                             </Fields>
                                         </ext:Model>
                                     </Model>
+                                    <Sorters>
+                                        <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                    </Sorters>
                                 </ext:Store>
                             </Store>
                             <DirectEvents>
@@ -154,7 +164,12 @@
                             DisplayField="Descripcion"
                             ValueField="ID"
                             EnforceMaxLength="true"
-                            AllowBlank="false">
+                            AllowBlank="false"
+                            Editable="true"
+                            MatchFieldWidth="true"
+                            ForceSelection="true"
+                            QueryMode="Local"
+                            TypeAhead="true">
                             <Store>
                                 <ext:Store
                                     ID="sMunicipios"
@@ -168,6 +183,9 @@
                                             </Fields>
                                         </ext:Model>
                                     </Model>
+                                    <Sorters>
+                                        <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                    </Sorters>
                                     <Listeners>
                                         <Load Fn="sMunicipios_Load" />
                                     </Listeners>

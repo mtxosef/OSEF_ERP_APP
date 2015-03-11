@@ -68,6 +68,7 @@
         ID="fpEspecificarParametros" 
         runat="server"
         Width="580"
+        DefaultButton="imgbtnGuardar"
         Height="410"
         BodyPadding="10"
         DefaultAnchor="100%">

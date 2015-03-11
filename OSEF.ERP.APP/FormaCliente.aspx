@@ -77,6 +77,7 @@
                         ID="fpCliente" 
                         runat="server" 
                         Height="404"
+                        DefaultButton="imgbtnGuardar"
                         MonitorResize="true">
                         <Items>
                              <ext:TabPanel 

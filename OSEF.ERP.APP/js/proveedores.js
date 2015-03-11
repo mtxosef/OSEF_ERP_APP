@@ -110,8 +110,6 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 //Evento al cargar el store de municipios
 var sMunicipios_Load = function () {
 
-    console.log(App.sProveedor.getAt(0));
-
     if (App.sProveedor.getAt(0) != undefined) {
         App.cmbMunicipio.setValue(App.sProveedor.getAt(0).get('Municipio'));
     }
@@ -121,7 +119,6 @@ var sMunicipios_Load = function () {
 //Evento al cargar el store de municipios
 var sColonias_Load = function () {
 
-    console.log(App.sProveedor.getAt(0));
 
     if (App.sProveedor.getAt(0) != undefined) {
         App.cmbColonia.setValue(App.sProveedor.getAt(0).get('Colonia'));

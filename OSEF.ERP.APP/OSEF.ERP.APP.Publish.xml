@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
   <publishProfile publishUrl="C:\Users\Christian\Desktop\publish" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Perfil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="Menu.aspx" publishTime="03/05/2015 00:24:29" />
+    <file relUrl="Menu.aspx" publishTime="03/10/2015 18:05:17" />
     <file relUrl="assets/img/controles/AbrirPressed.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="assets/img/controles/AfectarPressed.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/edos.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="OlvidasteContrasena.aspx" publishTime="03/09/2015 15:40:05" />
     <file relUrl="CodigosPostales2.aspx" publishTime="02/18/2015 00:49:02" />
@@ -21,23 +22,24 @@
     <file relUrl="css/xTreePanel.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="js/default.js" publishTime="03/05/2015 00:24:27" />
     <file relUrl="Login.aspx" publishTime="03/09/2015 15:40:05" />
+    <file relUrl="resources/fonts/icomoon.svg" publishTime="03/03/2015 16:22:38" />
     <file relUrl="FormaAvanzarMovimiento.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="FormaConcepto.aspx" publishTime="02/18/2015 00:49:03" />
     <file relUrl="app/view/ResourceList.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="app/controller/Navigation.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="assets/img/menu-socios.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="images/pendiente.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="css/xButton.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="FormaAccesoMenus.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="assets/img/controles/GuardarPressed.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/pdfOver.png" publishTime="03/02/2015 10:43:23" />
     <file relUrl="FormaMenu2.aspx" publishTime="02/18/2015 00:49:03" />
     <file relUrl="assets/img/menu-gantt.png" publishTime="03/03/2015 16:43:11" />
-    <file relUrl="Menus.aspx" publishTime="02/18/2015 00:49:04" />
     <file relUrl="css/osef_combobox.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/UltimoPressed.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="css/xHiperlink.css" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="assets/img/controles/adjuntoDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/AnteriorDisabled.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="bin/OSEF.INTELISIS.BL.pdb" publishTime="03/09/2015 23:04:04" />
+    <file relUrl="bin/OSEF.INTELISIS.BL.pdb" publishTime="03/10/2015 18:23:37" />
     <file relUrl="assets/img/controles/GaleriaOver.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/new.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/login-hover.png" publishTime="02/18/2015 00:49:06" />
@@ -54,32 +56,34 @@
     <file relUrl="Sucursales.aspx" publishTime="03/09/2015 12:29:19" />
     <file relUrl="assets/img/controles/ExcelDisabled.png" publishTime="03/02/2015 10:43:23" />
     <file relUrl="css/xSplitButton.css" publishTime="02/22/2015 01:12:10" />
-    <file relUrl="FormaSolicitudPrestamo.aspx" publishTime="02/18/2015 00:49:04" />
     <file relUrl="assets/img/cp.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="images/btnConfig2.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/menu-reportes.png" publishTime="02/26/2015 10:40:21" />
     <file relUrl="examples-shared.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="assets/img/controles/back.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="FormaSubirImagenesPreciario.aspx" publishTime="02/19/2015 22:20:11" />
     <file relUrl="assets/img/controles/update-hover.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="app/view/Settings.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="reports/images/bbva.jpg" publishTime="02/27/2015 01:58:23" />
     <file relUrl="assets/img/controles/AnteriorPressed.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="css/xToolbar.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="js/usuarios2.js" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="resources/css/sch-gantt-all.css" publishTime="03/03/2015 16:22:38" />
     <file relUrl="FormaAnexosSocio.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="assets/img/controles/PrimeroNormal.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="bin/OSEF.INTELISIS.EL.pdb" publishTime="03/09/2015 23:04:03" />
+    <file relUrl="bin/OSEF.INTELISIS.EL.pdb" publishTime="03/10/2015 18:23:37" />
     <file relUrl="FormaGaleria.aspx" publishTime="02/18/2015 00:49:03" />
-    <file relUrl="js/volumetrias.js" publishTime="03/08/2015 12:25:10" />
+    <file relUrl="js/volumetrias.js" publishTime="03/10/2015 17:02:24" />
     <file relUrl="images/caja.jpg" publishTime="02/26/2015 10:59:10" />
     <file relUrl="images/btnLogin_Adv.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/menu-inversiones.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="bin/OSEF.APP.BL.dll" publishTime="03/09/2015 23:04:04" />
+    <file relUrl="bin/OSEF.APP.BL.dll" publishTime="03/10/2015 18:23:38" />
     <file relUrl="assets/img/controles/btnRegresarPressed.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/AbrirOver.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/CancelarPressed.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="Default2.aspx" publishTime="02/27/2015 01:33:34" />
+    <file relUrl="FormaPreciario.aspx" publishTime="03/09/2015 23:46:37" />
     <file relUrl="Estados.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="assets/img/controles/SavePressed.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="Web.config" publishTime="03/10/2015 10:07:51" />
     <file relUrl="assets/img/controles/AfectarDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="FormaConcepto2.aspx" publishTime="02/18/2015 00:49:03" />
     <file relUrl="assets/img/revisiones.png" publishTime="02/18/2015 00:49:06" />
@@ -88,7 +92,6 @@
     <file relUrl="assets/img/controles/UltimoDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="Proveedores.aspx" publishTime="02/18/2015 00:49:05" />
     <file relUrl="Preciarios.aspx" publishTime="02/24/2015 13:56:48" />
-    <file relUrl="js/clientes.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="ExploradorPreciarioConceptos.aspx" publishTime="03/09/2015 00:19:33" />
     <file relUrl="PlantService.asmx" publishTime="02/18/2015 00:49:04" />
     <file relUrl="js/colonias.js" publishTime="02/18/2015 00:49:06" />
@@ -98,6 +101,7 @@
     <file relUrl="Reportes.aspx" publishTime="03/03/2015 17:06:21" />
     <file relUrl="js/gruposMenu.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/delete-over.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="assets/img/controles/delete-disable.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="Estados2.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="js/avanzarMovimiento.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/ImprimirPressed.png" publishTime="02/18/2015 00:49:05" />
@@ -105,24 +109,22 @@
     <file relUrl="assets/img/controles/ExcelOver.png" publishTime="03/02/2015 10:43:23" />
     <file relUrl="FormaUsuario.aspx" publishTime="02/22/2015 23:22:00" />
     <file relUrl="resources/css/gantt-scheduler.css" publishTime="03/03/2015 16:22:38" />
-    <file relUrl="bin/OSEF.LIBRARY.COMMON.dll" publishTime="03/09/2015 23:04:03" />
-    <file relUrl="assets/font/icomoon.dev.svg" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="js/subcategorias.js" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="bin/OSEF.LIBRARY.COMMON.dll" publishTime="03/10/2015 18:23:37" />
     <file relUrl="assets/js/bootmetro-panorama.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/provedores.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/categorias.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="css/metroButtons.css" publishTime="02/22/2015 00:14:43" />
     <file relUrl="assets/css/bootmetro.css" publishTime="03/03/2015 16:35:53" />
+    <file relUrl="assets/img/controles/nuevo-disable.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/login2.png" publishTime="02/26/2015 11:16:23" />
     <file relUrl="Excel.xsl" publishTime="03/06/2015 15:26:52" />
     <file relUrl="js/categorias.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="css/login.css" publishTime="02/27/2015 16:39:53" />
     <file relUrl="CodigosPostales.aspx" publishTime="02/26/2015 10:40:21" />
-    <file relUrl="assets/img/controles/AfectarPressed.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="js/proveedores.js" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="js/proveedores.js" publishTime="03/10/2015 17:51:47" />
     <file relUrl="assets/img/controles/EnviarPressed.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="app.js" publishTime="03/03/2015 16:22:37" />
-    <file relUrl="assets/img/menu-conta.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="app/store/TaskStore.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="assets/img/controles/CancelarOver.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/AfectarNormal.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="ConsultarPreciario.aspx" publishTime="03/02/2015 10:43:18" />
@@ -130,47 +132,45 @@
     <file relUrl="assets/img/menu-solicitudes.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/sucursales.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/css/bootmetro-icons.css" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="assets/img/controles/nuevo-disable.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="images/youtube.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="sch-all-debug.js" publishTime="03/03/2015 16:22:38" />
     <file relUrl="css/xIcons.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/menu-volumetria.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="bin/OSEF.INTELISIS.EL.dll" publishTime="03/09/2015 23:04:04" />
     <file relUrl="Plants.xml" publishTime="02/18/2015 00:49:04" />
     <file relUrl="assets/img/controles/edit.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="assets/img/controles/CancelarDisabled.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="assets/img/controles/AutorizarNormal.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="css/customControls2.css" publishTime="02/26/2015 11:22:42" />
     <file relUrl="assets/img/controles/login2Pressed.png" publishTime="02/26/2015 11:16:23" />
     <file relUrl="assets/img/controles/cleanPressed.png" publishTime="02/21/2015 15:35:13" />
     <file relUrl="fancylibs/fancybox_loading.gif" publishTime="03/03/2015 10:22:20" />
     <file relUrl="FormaInfoGraficas.aspx" publishTime="02/18/2015 00:49:03" />
+    <file relUrl="bin/Transformer.NET.dll" publishTime="02/08/2015 12:46:47" />
     <file relUrl="FormaPreciarioExplorador.aspx" publishTime="03/09/2015 22:53:34" />
-    <file relUrl="FormaProveedor.aspx" publishTime="03/01/2015 18:48:44" />
+    <file relUrl="FormaProveedor.aspx" publishTime="03/10/2015 17:50:56" />
     <file relUrl="js/cuentasContables.js" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="FormaCliente.aspx" publishTime="03/09/2015 15:40:05" />
     <file relUrl="assets/img/controles/pdfPressed.png" publishTime="03/02/2015 10:43:23" />
     <file relUrl="assets/img/menu-balanza.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="app/view/Gantt.js" publishTime="03/03/2015 16:22:37" />
+    <file relUrl="css/xWindowPopup.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="Usuarios.aspx" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/pdfDisabled.png" publishTime="03/02/2015 10:43:23" />
     <file relUrl="assets/img/controles/PrimeroOver.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="images/youtube.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="bin/OSEF.ERP.APP.dll" publishTime="03/09/2015 23:04:05" />
+    <file relUrl="bin/OSEF.ERP.APP.dll" publishTime="03/10/2015 18:23:38" />
+    <file relUrl="app/view/Viewport.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="Global.asax" publishTime="02/18/2015 00:49:04" />
     <file relUrl="fancylibs/fancybox_sprite@2x.png" publishTime="03/03/2015 10:22:20" />
-    <file relUrl="assets/img/controles/AutorizarNormal.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/groupsMenu.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/GaleriaDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="fancylibs/jquery.fancybox.js" publishTime="03/03/2015 10:22:20" />
-    <file relUrl="fancylibs/fancybox_loading@2x.gif" publishTime="03/03/2015 10:22:20" />
     <file relUrl="FormaAccesoSucursales.aspx" publishTime="02/18/2015 00:49:02" />
-    <file relUrl="Conceptos2.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="assets/img/conceptos.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="images/cancelar.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="app/view/ResourceHistogram.js" publishTime="03/03/2015 16:22:37" />
-    <file relUrl="css/xLabel.css" publishTime="03/02/2015 10:43:23" />
-    <file relUrl="bin/OSEF.APP.DL.dll" publishTime="03/09/2015 23:04:04" />
+    <file relUrl="bin/OSEF.APP.DL.dll" publishTime="03/10/2015 18:23:37" />
     <file relUrl="assets/img/controles/edit-normal.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/GaleriaPressed.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="bin/OSEF.APP.DL.pdb" publishTime="03/09/2015 23:04:04" />
-    <file relUrl="bin/OSEF.INTELISIS.BL.dll" publishTime="03/09/2015 23:04:04" />
+    <file relUrl="bin/OSEF.INTELISIS.BL.dll" publishTime="03/10/2015 18:23:37" />
     <file relUrl="FormaImagenesPreciarios.aspx" publishTime="03/03/2015 10:31:48" />
     <file relUrl="assets/img/menu-conceptos.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="js/conceptos.js" publishTime="02/18/2015 00:49:06" />
@@ -178,6 +178,7 @@
     <file relUrl="assets/js/modernizr-2.6.2.min.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="js/reportes.js" publishTime="03/02/2015 10:43:23" />
     <file relUrl="FormaParametrosP1.aspx" publishTime="03/06/2015 02:30:38" />
+    <file relUrl="resources/images/column-weekend-header-bg.gif" publishTime="03/03/2015 16:22:38" />
     <file relUrl="FormaParametrosP3.aspx" publishTime="03/02/2015 10:43:23" />
     <file relUrl="VistaPreliminar.aspx" publishTime="03/09/2015 16:52:16" />
     <file relUrl="assets/img/controles/SaveDisabled.png" publishTime="02/18/2015 00:49:05" />
@@ -185,7 +186,7 @@
     <file relUrl="assets/js/jquery.touchSwipe.min.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="images/linked.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="Menus2.aspx" publishTime="02/18/2015 00:49:04" />
-    <file relUrl="js/sucursales.js" publishTime="03/09/2015 14:02:19" />
+    <file relUrl="js/sucursales.js" publishTime="03/10/2015 17:48:13" />
     <file relUrl="bin/Newtonsoft.Json.dll" publishTime="02/08/2015 12:46:47" />
     <file relUrl="assets/img/menu-cuentas.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="FormaCargaMultiImagenes.aspx" publishTime="02/18/2015 00:49:02" />
@@ -194,9 +195,9 @@
     <file relUrl="js/tableroAvances.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="CuentasContables.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="assets/img/subcategorias.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="bin/OSEF.INTELISIS.DL.dll" publishTime="03/09/2015 23:04:04" />
+    <file relUrl="bin/OSEF.INTELISIS.DL.dll" publishTime="03/10/2015 18:23:37" />
     <file relUrl="resources/css/style.css" publishTime="03/03/2015 16:22:38" />
-    <file relUrl="js/libs/jquery-2.0.3.min.js" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="js/conceptos2.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="images/twiter.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/EnviarNormal.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="css/xCustomChart.css" publishTime="02/18/2015 00:49:06" />
@@ -207,69 +208,67 @@
     <file relUrl="assets/img/controles/SiguienteNormal.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="css/xTabPanel.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="resources/fonts/icomoon.dev.svg" publishTime="03/03/2015 16:22:38" />
-    <file relUrl="app/store/TaskStore.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="assets/img/controles/adjuntoNormal.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="bin/OSEF.ERP.APP.pdb" publishTime="03/09/2015 23:04:05" />
+    <file relUrl="bin/OSEF.ERP.APP.pdb" publishTime="03/10/2015 18:23:38" />
     <file relUrl="Avances.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="Previa.aspx" publishTime="03/09/2015 17:09:01" />
     <file relUrl="assets/img/Menus.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="Conceptos.aspx" publishTime="02/18/2015 00:49:02" />
+    <file relUrl="Conceptos.aspx" publishTime="03/10/2015 13:25:51" />
     <file relUrl="js/exploradorConceptoPreciario.js" publishTime="03/09/2015 22:43:42" />
     <file relUrl="assets/img/controles/ExcelNormal.png" publishTime="03/02/2015 10:43:23" />
+    <file relUrl="js/finalidades.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="js/avanzarVolumetria.js" publishTime="02/19/2015 13:05:34" />
     <file relUrl="gnt-all-debug.js" publishTime="03/03/2015 16:22:38" />
+    <file relUrl="Profesiones.aspx" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/nuevo-over.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="resources/css/sch-gantt-all.css" publishTime="03/03/2015 16:22:38" />
+    <file relUrl="assets/img/controles/adjuntoPressed.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="images/btnConfigurar.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="app/view/Navigation.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="app/model/Resource.js" publishTime="03/03/2015 16:22:37" />
+    <file relUrl="assets/img/controles/CancelarDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="css/xDisplayImages.css" publishTime="02/22/2015 01:09:26" />
-    <file relUrl="Default.aspx" publishTime="03/05/2015 00:24:27" />
+    <file relUrl="Default.aspx" publishTime="03/10/2015 13:31:54" />
     <file relUrl="images/logoBBVA.png" publishTime="02/27/2015 01:58:43" />
-    <file relUrl="assets/img/controles/delete-pressed.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="images/borrador.png" publishTime="02/20/2015 21:43:22" />
     <file relUrl="assets/img/controles/ImprimirOver.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="assets/img/Search.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="fancylibs/jquery-1.10.1.min.js" publishTime="03/03/2015 10:22:20" />
     <file relUrl="js/tablerovolumetrias.js" publishTime="03/04/2015 19:16:39" />
     <file relUrl="assets/img/controles/edit-over.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="bin/OSEF.APP.EL.dll" publishTime="03/09/2015 23:04:03" />
+    <file relUrl="bin/OSEF.APP.EL.dll" publishTime="03/10/2015 18:23:37" />
     <file relUrl="fancylibs/fancybox_sprite.png" publishTime="03/03/2015 10:22:20" />
     <file relUrl="Articulos.aspx" publishTime="02/18/2015 00:49:02" />
-    <file relUrl="bin/OSEF.LIBRARY.COMMON.pdb" publishTime="03/09/2015 23:04:03" />
+    <file relUrl="bin/OSEF.LIBRARY.COMMON.pdb" publishTime="03/10/2015 18:23:37" />
     <file relUrl="app/view/GanttToolbar.js" publishTime="03/03/2015 16:22:37" />
+    <file relUrl="assets/img/menu-articulo.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/ImprimirNormal.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/menu-auxiliar.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="assets/img/controles/delete-disable.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="assets/img/menu-prestamos.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="Categorias.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="assets/img/controles/login2Hover.png" publishTime="02/26/2015 11:16:23" />
     <file relUrl="fancylibs/fancybox_overlay.png" publishTime="03/03/2015 10:22:20" />
-    <file relUrl="FormaSucursal.aspx" publishTime="03/09/2015 13:30:39" />
-    <file relUrl="fancylibs/blank.gif" publishTime="03/03/2015 10:22:20" />
-    <file relUrl="assets/img/controles/CleanHover.png" publishTime="02/21/2015 15:35:13" />
+    <file relUrl="FormaSucursal.aspx" publishTime="03/10/2015 17:42:58" />
     <file relUrl="assets/font/IcoMoon.svg" publishTime="02/18/2015 00:49:05" />
     <file relUrl="images/logo-banco3.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/edit-pressed.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/css/bootmetro-responsive.css" publishTime="02/18/2015 00:49:05" />
     <file relUrl="gantt-scheduler.html" publishTime="03/03/2015 16:22:37" />
-    <file relUrl="assets/img/controles/adjuntoPressed.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="assets/js/jquery-1.10.0.js" publishTime="03/10/2015 18:04:00" />
     <file relUrl="FormaAvanzarVolumetria.aspx" publishTime="02/19/2015 13:13:15" />
     <file relUrl="images/user-login.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="js/conceptos2.js" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="FormaVolumetriaPreciario.aspx" publishTime="03/08/2015 23:12:24" />
+    <file relUrl="FormaVolumetriaPreciario.aspx" publishTime="03/10/2015 16:48:45" />
     <file relUrl="js/menu-usuario.js" publishTime="03/05/2015 00:24:29" />
     <file relUrl="assets/img/postal.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/login-pressed.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/left-nav.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="css/xComboBox.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="Municipios.aspx" publishTime="02/18/2015 00:49:04" />
+    <file relUrl="FormaUsuario2.aspx" publishTime="02/18/2015 00:49:04" />
     <file relUrl="assets/img/menu-colonias.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/menu-certificados.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="assets/img/menu-mayor.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="fancylibs/jquery.fancybox.pack.js" publishTime="03/03/2015 10:22:20" />
     <file relUrl="css/preliminar.css" publishTime="03/09/2015 17:08:49" />
     <file relUrl="images/bbva.jpg" publishTime="02/27/2015 01:58:43" />
-    <file relUrl="css/xWindowPopup.css" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="assets/img/controles/nuevo-normal.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="assets/font/icomoon.dev.svg" publishTime="02/18/2015 00:49:05" />
     <file relUrl="js/cambiarContrasena.js" publishTime="02/23/2015 19:29:25" />
     <file relUrl="FormaSubirImagenesCliente.aspx" publishTime="02/19/2015 14:39:03" />
     <file relUrl="assets/img/controles/ExcelPressed.png" publishTime="03/02/2015 10:43:23" />
@@ -277,20 +276,22 @@
     <file relUrl="images/concluido.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/GuardarDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="tVtasUnidadesVsTiempo.aspx" publishTime="02/18/2015 00:49:08" />
+    <file relUrl="js/libs/jquery-2.0.3.min.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/css/bootmetro2.css" publishTime="02/18/2015 00:49:05" />
     <file relUrl="GruposMenu.aspx" publishTime="02/18/2015 00:49:04" />
     <file relUrl="assets/img/controles/GuardarOver.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="assets/js/jquery-1.10.0.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/update.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="images/fb.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/InfoOver.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="FormaEspecificarFechas.aspx" publishTime="02/18/2015 00:49:03" />
     <file relUrl="Prueba.aspx" publishTime="03/05/2015 00:24:27" />
     <file relUrl="assets/img/controles/InfoPressed.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="assets/img/menu-conta.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="app/controller/Settings.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="css/xMask.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/InfoDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="js/subirImagenesPreciario.js" publishTime="02/22/2015 14:39:20" />
-    <file relUrl="css/customControls2.css" publishTime="02/26/2015 11:22:42" />
+    <file relUrl="Default2.aspx" publishTime="02/27/2015 01:33:34" />
     <file relUrl="css/xDatePicker.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="FormaInversion.aspx" publishTime="02/18/2015 00:49:03" />
     <file relUrl="Colonias.aspx" publishTime="02/18/2015 00:49:02" />
@@ -304,17 +305,16 @@
     <file relUrl="assets/js/jquery.mousewheel.min.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/UltimoOver.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="resources/css/sch-all.css" publishTime="03/03/2015 16:22:38" />
-    <file relUrl="images/pendiente.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="js/clientes.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/pdfNormal.png" publishTime="03/02/2015 10:43:23" />
     <file relUrl="assets/img/controles/login.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="bin/OSEF.INTELISIS.DL.pdb" publishTime="03/09/2015 23:04:04" />
+    <file relUrl="bin/OSEF.INTELISIS.DL.pdb" publishTime="03/10/2015 18:23:37" />
     <file relUrl="Municipios2.aspx" publishTime="02/18/2015 00:49:04" />
-    <file relUrl="assets/img/menu-prestamos.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/cleanNormal.png" publishTime="02/21/2015 15:35:13" />
     <file relUrl="bin/Ext.Net.dll" publishTime="02/08/2015 12:46:47" />
     <file relUrl="assets/img/controles/AnteriorNormal.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="app/view/Viewport.js" publishTime="03/03/2015 16:22:37" />
-    <file relUrl="FormaCliente.aspx" publishTime="03/09/2015 15:40:05" />
+    <file relUrl="css/xHiperlink.css" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="bin/OSEF.APP.DL.pdb" publishTime="03/10/2015 18:23:37" />
     <file relUrl="images/A&amp;R-Imagotipo ICONO.jpg" publishTime="02/27/2015 01:58:43" />
     <file relUrl="css/osef_cajapopular.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="css/xTextField.css" publishTime="03/08/2015 23:37:12" />
@@ -323,7 +323,7 @@
     <file relUrl="assets/img/controles/AutorizarOver.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="images/login.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="images/myApp2.ico" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="FormaColonia.aspx" publishTime="02/18/2015 00:49:03" />
+    <file relUrl="FormaColonia.aspx" publishTime="03/10/2015 17:39:56" />
     <file relUrl="VolumetriasPreciario.aspx" publishTime="02/24/2015 13:56:59" />
     <file relUrl="data.js" publishTime="03/03/2015 16:22:37" />
     <file relUrl="assets/css/demo.css" publishTime="02/18/2015 00:49:05" />
@@ -331,52 +331,52 @@
     <file relUrl="assets/img/controles/SiguienteOver.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="Subcategorias.aspx" publishTime="02/18/2015 00:49:05" />
     <file relUrl="js/consultarPreciario.js" publishTime="03/02/2015 10:43:18" />
-    <file relUrl="assets/img/menu-articulo.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="resources/images/column-weekend-header-bg.gif" publishTime="03/03/2015 16:22:38" />
+    <file relUrl="assets/img/controles/nuevo-normal.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="js/subcategorias.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="css/xGridPanel.css" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="assets/img/menu-mayor.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="bin/OSEF.INTELISIS.EL.dll" publishTime="03/10/2015 18:23:37" />
     <file relUrl="assets/img/controles/SaveOver.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="bin/OSEF.APP.EL.pdb" publishTime="03/09/2015 23:04:03" />
+    <file relUrl="bin/OSEF.APP.EL.pdb" publishTime="03/10/2015 18:23:37" />
     <file relUrl="css/xPanel.css" publishTime="03/02/2015 10:43:23" />
     <file relUrl="InnerForm.aspx" publishTime="03/05/2015 00:24:27" />
-    <file relUrl="bin/Transformer.NET.dll" publishTime="02/08/2015 12:46:47" />
-    <file relUrl="FormaCambiarContrasena.aspx" publishTime="03/05/2015 00:24:27" />
-    <file relUrl="bin/OSEF.APP.BL.pdb" publishTime="03/09/2015 23:04:04" />
+    <file relUrl="assets/img/Search.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="FormaCambiarContrasena.aspx" publishTime="03/10/2015 13:12:54" />
+    <file relUrl="bin/OSEF.APP.BL.pdb" publishTime="03/10/2015 18:23:38" />
     <file relUrl="assets/img/controles/UltimoNormal.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/delete.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="FormaMenu.aspx" publishTime="02/18/2015 00:49:03" />
     <file relUrl="images/logo-banco.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="assets/img/controles/adjuntoDisabled.png" publishTime="02/18/2015 00:49:05" />
+    <file relUrl="assets/img/controles/CleanHover.png" publishTime="02/21/2015 15:35:13" />
     <file relUrl="assets/img/controles/CleanDisabled.png" publishTime="02/21/2015 15:35:13" />
     <file relUrl="assets/img/controles/EnviarDisabled.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="js/usuarios.js" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="Profesiones.aspx" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="FormaPreciario.aspx" publishTime="03/09/2015 23:46:37" />
+    <file relUrl="fancylibs/blank.gif" publishTime="03/03/2015 10:22:20" />
+    <file relUrl="Conceptos2.aspx" publishTime="02/18/2015 00:49:02" />
+    <file relUrl="js/menus2.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/css/demo2.css" publishTime="02/26/2015 11:01:38" />
     <file relUrl="js/articulos.js" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/update-pressed.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="assets/img/controles/nuevo-pressed.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="images/myApp.ico" publishTime="02/18/2015 00:49:06" />
     <file relUrl="js/preciarios.js" publishTime="03/09/2015 23:37:48" />
-    <file relUrl="resources/fonts/icomoon.svg" publishTime="03/03/2015 16:22:38" />
-    <file relUrl="images/btnConfig2.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="assets/img/controles/nuevo-pressed.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="FormaSolicitudPrestamo.aspx" publishTime="02/18/2015 00:49:04" />
     <file relUrl="assets/img/controles/InfoNormal.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="app/view/Settings.js" publishTime="03/03/2015 16:22:37" />
+    <file relUrl="Web.config" publishTime="03/10/2015 18:23:39" />
     <file relUrl="js/olvidarContrasena.js" publishTime="02/24/2015 13:11:15" />
-    <file relUrl="FormaSubirImagenesPreciario.aspx" publishTime="02/19/2015 22:20:11" />
+    <file relUrl="css/xLabel.css" publishTime="03/02/2015 10:43:23" />
     <file relUrl="js/buscaConceptoPreciario.js" publishTime="03/08/2015 23:14:04" />
-    <file relUrl="FormaUsuario2.aspx" publishTime="02/18/2015 00:49:04" />
+    <file relUrl="Menus.aspx" publishTime="02/18/2015 00:49:04" />
     <file relUrl="assets/img/menu-corte.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="Clientes.aspx" publishTime="02/18/2015 00:49:02" />
     <file relUrl="assets/img/controles/edit-disable.png" publishTime="02/18/2015 00:49:06" />
-    <file relUrl="js/menus2.js" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="fancylibs/fancybox_loading@2x.gif" publishTime="03/03/2015 10:22:20" />
     <file relUrl="FormaParametrosP4.aspx" publishTime="03/02/2015 10:43:23" />
     <file relUrl="assets/img/controles/GaleriaNormal.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="images/fb.png" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="css/xComboBox.css" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/municipio.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/AbrirNormal.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="assets/img/controles/Search.png" publishTime="02/18/2015 00:49:05" />
-    <file relUrl="js/finalidades.js" publishTime="02/18/2015 00:49:06" />
+    <file relUrl="assets/img/controles/delete-pressed.png" publishTime="02/18/2015 00:49:06" />
     <file relUrl="assets/img/controles/AutorizarPressed.png" publishTime="02/18/2015 00:49:05" />
     <file relUrl="Login2.aspx" publishTime="03/09/2015 15:40:05" />
     <file relUrl="FormaParametrosP5.aspx" publishTime="03/02/2015 10:43:23" />
