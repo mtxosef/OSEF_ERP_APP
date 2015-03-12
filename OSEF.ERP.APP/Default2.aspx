@@ -163,7 +163,7 @@
         <ext:Window 
             ID="wEmergente"
             runat="server"
-            Cls="xQuitarTachaCerrar xQuitarFondoTachaCerrar"
+         Cls="xEstiloCaja"
             Hidden="true"
             Modal="true"
             Padding="5"

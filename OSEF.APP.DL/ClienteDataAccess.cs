@@ -82,13 +82,23 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEstadoCivil = new SqlParameter();
                 sqlpEstadoCivil.ParameterName = "@EstadoCivil";
                 sqlpEstadoCivil.SqlDbType = SqlDbType.VarChar;
-                sqlpEstadoCivil.Value = iCliente.EstadoCivil;
+
+                if (iCliente.EstadoCivil == null)
+                    sqlpEstadoCivil.Value = DBNull.Value;
+                else
+                    sqlpEstadoCivil.Value = iCliente.EstadoCivil;
+               
 
                 SqlParameter sqlpProfesion = new SqlParameter();
                 sqlpProfesion.ParameterName = "@Profesion";
                 sqlpProfesion.SqlDbType = SqlDbType.Char;
                 sqlpProfesion.Size = 7;
-                sqlpProfesion.Value = iCliente.Profesion;
+
+                if (iCliente.Profesion == null)
+                    sqlpProfesion.Value = DBNull.Value;
+                else
+                    sqlpProfesion.Value = iCliente.Profesion;
+
 
                 SqlParameter sqlpCorreo = new SqlParameter();
                 sqlpCorreo.ParameterName = "@Correo";
@@ -374,13 +384,24 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEstadoCivil = new SqlParameter();
                 sqlpEstadoCivil.ParameterName = "@EstadoCivil";
                 sqlpEstadoCivil.SqlDbType = SqlDbType.VarChar;
-                sqlpEstadoCivil.Value = uCliente.EstadoCivil;
+
+                if (uCliente.EstadoCivil == null)
+                    sqlpEstadoCivil.Value = DBNull.Value;
+                else
+                    sqlpEstadoCivil.Value = uCliente.EstadoCivil;
+               
+
 
                 SqlParameter sqlpProfesion = new SqlParameter();
                 sqlpProfesion.ParameterName = "@Profesion";
                 sqlpProfesion.SqlDbType = SqlDbType.Char;
                 sqlpProfesion.Size = 7;
-                sqlpProfesion.Value = uCliente.Profesion;
+
+                if (uCliente.Profesion == null)
+                    sqlpProfesion.Value = DBNull.Value;
+                else
+                    sqlpProfesion.Value = uCliente.Profesion;
+
 
                 SqlParameter sqlpCorreo = new SqlParameter();
                 sqlpCorreo.ParameterName = "@Correo";

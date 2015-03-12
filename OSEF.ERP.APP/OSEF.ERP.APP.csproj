@@ -219,6 +219,7 @@
     <Content Include="assets\img\menu-auxiliar.png" />
     <Content Include="assets\img\menu-balanza.png" />
     <Content Include="assets\img\menu-certificados.png" />
+    <Content Include="assets\img\Menu-Clientes.png" />
     <Content Include="assets\img\menu-colonias.png" />
     <Content Include="assets\img\menu-conceptos.png" />
     <Content Include="assets\img\menu-conta.png" />
@@ -386,6 +387,7 @@
     <Content Include="js\subirImagenesCliente.js" />
     <Content Include="js\subirImagenesPreciario.js" />
     <Content Include="js\tableroAvances.js" />
+    <Content Include="js\tableroClientesCss.js" />
     <Content Include="js\usuarios2.js" />
     <Content Include="js\volumetrias.js" />
     <Content Include="js\tablerovolumetrias.js" />

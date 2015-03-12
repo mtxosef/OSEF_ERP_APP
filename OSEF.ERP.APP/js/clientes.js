@@ -71,6 +71,7 @@ var cmbEstatus_AfterRender = function (combobox, opciones) {
 var ListConfig_BeforeRender = function (boundlist, opciones) {
     if (Ext.util.Cookies.get('osefTheme') == 'caja') {
         boundlist.cls = 'cajaComboboxLista';
+   
     }
     else {
         boundlist.cls = 'bancomerComboboxLista';
@@ -168,9 +169,28 @@ var sCliente_Load = function () {
     store = window.parent.App.pCentro.getBody().App.sClientes;
 };
 
+var fcEstadoCivilRender = function () {
+
+
+
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+
+        App.fcCliente5.hide();
+        App.cmbEstadoCivil.allowBlank = true;
+        App.cmbProfesion.allowBlank = true;
+    }
+    else {
+
+    }
+}
+
 //Evento lanzado al agregar un registro al store
 var sCliente_Add = function (store, registro) {
     console.log(registro[0]);
+
+
+
+
 
     //Primera parte
     App.txtfID.setValue(registro[0].get('ID'));

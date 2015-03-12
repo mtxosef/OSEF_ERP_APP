@@ -13,6 +13,10 @@
     color: #FFF;
     font-family: "WeblySleek UI Semilight" !important;   
 }
+.xCustomBody
+{
+    background: transparent !important;
+}
 
 /*Aumenta el tamaño a 300px que pertenescan a la clase form_fields*/
 #form_Fields
@@ -379,7 +383,7 @@ color: #fff;
 
 /*Popups*/
 
-/*Windows*/
+/*Windows
 .x-window-default
 {
     -webkit-border-radius: 0px;
@@ -388,7 +392,7 @@ color: #fff;
     -o-border-radius: 0px;
     border-radius: 0px !important;
 }
-
+*/
 
 .x-window-header-text-container-default
 {
@@ -836,18 +840,18 @@ a
     background: #8f7449;
     color: #FFFFFF !important;
 }
-
-.x-window-default
+/*Window cafe*/
+ .xEstiloCaja 
 {
-    border-color: #8f7449;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
+    border-color: #8f7449 !important;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px !important;
 }
 
-.x-window-header-default
+.xEstiloCaja .x-window-header-default
 {
     font-size: 13px;
     border-color: #8f7449;
@@ -856,7 +860,7 @@ a
 }
 
 /*Quitar tacha para cerrar de tablero*/
-.xQuitarTachaCerrar .x-tool-img
+.xEstiloCaja .x-tool-img
 {
     overflow: hidden;
     width: 16px;
@@ -866,7 +870,7 @@ a
 }
 
 
-.xQuitarFondoTachaCerrar .x-window-header-default .x-tool-img
+.xEstiloCaja .x-window-header-default .x-tool-img
 {
     background-color: transparent;
 }
