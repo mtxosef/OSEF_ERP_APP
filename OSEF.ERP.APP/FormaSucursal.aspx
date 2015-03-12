@@ -86,6 +86,7 @@
                         ID="fpFormaSucursales" 
                         runat="server" 
                         Height="410"
+                        DefaultButton="imgbtnGuardar"
                         MonitorResize="true">
                         <Items>
                              <ext:TabPanel 
@@ -333,11 +334,11 @@
                                                         StyleSpec="margin-right: 6px;"
                                                         DisplayField="Descripcion"
                                                         ValueField="ID"
+                                                          Editable="true"
+                                                         MatchFieldWidth="true"
                                                         ForceSelection="true"
-                                                        Editable="false"
-                                                        FireSelectOnLoad="true"
-                                                        AllowBlank="false"
-                                                        MatchFieldWidth="false">
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
                                                         <ListConfig Width="200" MaxHeight="195">
                                                         </ListConfig>
                                                         <Store>
@@ -378,10 +379,11 @@
                                                         StyleSpec="margin-right: 6px;"
                                                         DisplayField="Descripcion"
                                                         ValueField="ID"
+                                                        Editable="true"
+                                                         MatchFieldWidth="true"
                                                         ForceSelection="true"
-                                                        Editable="false"
-                                                        AllowBlank="false"
-                                                        MatchFieldWidth="false">
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
                                                         <ListConfig Width="200" MaxHeight="195">
                                                         </ListConfig>
                                                         <Store>
@@ -397,29 +399,34 @@
                                                                         </Fields>
                                                                     </ext:Model>
                                                                 </Model>
+                                                                 <Sorters>
+                                                                    <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                </Sorters>
                                                                 <Listeners>
                                                                     <Load Fn="sMunicipios_Load" />
                                                                 </Listeners>
                                                             </ext:Store>
                                                         </Store>
                                                         <DirectEvents>
-                                                            <Select OnEvent="cmbMunicipio_Select">
+                                                            <Change OnEvent="cmbMunicipio_Select">
                                                                 <ExtraParams>
                                                                     <ext:Parameter Name="valorMunicipio" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
                                                                 </ExtraParams>
-                                                            </Select>
+                                                            </Change>
                                                         </DirectEvents>
                                                     </ext:ComboBox>
                                                      <ext:ComboBox
                                                     ID="cmbColonia"
                                                     runat="server"
                                                     FieldLabel="Colonia"
+                                                     DisplayField="Descripcion"
+                                                        ValueField="ID"
                                                     Width="300"
-                                                    DisplayField="Descripcion"
-                                                    ValueField="ID"
-                                                    ForceSelection="true"
-                                                    Editable="false"
-                                                    MatchFieldWidth="true">
+                                                     Editable="true"
+                                                         MatchFieldWidth="true"
+                                                        ForceSelection="true"
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
                                                     <Store>
                                                         <ext:Store
                                                             ID="sColonias"
@@ -436,6 +443,12 @@
                                                                     </Fields>
                                                                 </ext:Model>
                                                             </Model>
+                                                              <Sorters>
+                                                                    <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                </Sorters>
+                                                             <Listeners>
+                                                                    <Load Fn="sColonias_Load" />
+                                                                </Listeners>
                                                         </ext:Store>
                                                     </Store>
                                                 </ext:ComboBox>

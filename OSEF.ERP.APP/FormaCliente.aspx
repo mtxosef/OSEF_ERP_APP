@@ -5,12 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link rel="stylesheet" href="css/login2.css" />
-    <link rel="Stylesheet" href="css/customControls2.css" />
-    <link rel="Stylesheet" href="css/osef_combobox.css" />
-    <script type="text/javascript" src="js/clientes.js"></script>
+   <script type='text/javascript' src="js/clientes.js"></script>
+    <script type='text/javascript' src="js/tableroClientesCss.js"></script>
+
+    <script type="text/javascript">
+
+        window.onload = cargarEstilo;
+</script>
+
 </head>
-<body>
+<body class="xCustomBody">
     <form id="Form1" runat="server">
         <ext:ResourceManager ID="rmFormaCliente" runat="server" HideInDesign="true" />
 
@@ -77,6 +81,7 @@
                         ID="fpCliente" 
                         runat="server" 
                         Height="404"
+                        DefaultButton="imgbtnGuardar"
                         MonitorResize="true">
                         <Items>
                              <ext:TabPanel 
@@ -275,10 +280,14 @@
                                             <ext:FieldContainer 
                                                 ID="fcCliente5" 
                                                 runat="server" 
+                                                HideMode="Display"
                                                 FieldLabel="Estado Civil"
                                                 LabelWidth="120" 
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
+                                                <Listeners>
+                                                <Render Fn="fcEstadoCivilRender"></Render>
+                                                </Listeners>
                                                 <Items>
                                                     <ext:ComboBox
                                                         ID="cmbEstadoCivil"

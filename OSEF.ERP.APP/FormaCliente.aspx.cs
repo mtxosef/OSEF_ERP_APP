@@ -191,9 +191,12 @@ namespace OSEF.AVANCES.SUCURSALES
             //Complementar datos
             if (strcookieEditarCliente.Equals("Nuevo"))
             {
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+               
+
                 oCliente.FechaAlta = DateTime.Now;
                 oCliente.Estatus = "ALTA";
-                oCliente.Usuario = "orlando";
+                oCliente.Usuario = oUsuario.ID;
                 oCliente.ID = ClienteBusiness.Insertar(oCliente);
             }
             else

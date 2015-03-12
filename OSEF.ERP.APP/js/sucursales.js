@@ -120,7 +120,7 @@ var sSucursal_Add = function (sucursal, registro) {
     var dif = fFecha1 - fFecha2;
     var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
 
-
+ 
 
     App.txtfID.setValue(registro[0].get('ID'));
     App.nfCR.setValue(registro[0].get('CR'));
@@ -162,7 +162,19 @@ var sSucursal_Add = function (sucursal, registro) {
 //Evento al cargar el store de municipios
 var sMunicipios_Load = function () {
     if (App.sSucursal.getAt(0) != undefined) {
+
+
         App.cmbMunicipio.setValue(App.sSucursal.getAt(0).get('Municipio'));
+       
+    }
+};
+
+//Evento al cargar el store de municipios
+var sColonias_Load = function () {
+
+    if (App.sSucursal.getAt(0) != undefined) {
+
+        App.cmbColonia.setValue(App.sSucursal.getAt(0).get('Colonia'));
     }
 };
 

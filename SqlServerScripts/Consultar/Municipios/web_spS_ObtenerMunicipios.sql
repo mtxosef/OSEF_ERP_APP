@@ -42,5 +42,7 @@ BEGIN
 		Estado
 	FROM
 		Municipios
+	ORDER BY 
+	Descripcion ASC
 END
 GO

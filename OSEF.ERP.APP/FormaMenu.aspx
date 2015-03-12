@@ -53,6 +53,7 @@
             ID="FormPanelMenus" 
             runat="server"
             Width="470"
+            DefaultButton="imgbtnGuardar"
             BodyPadding="10"
             DefaultAnchor="100%">
             <Items>

@@ -5,11 +5,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    <link rel="stylesheet" href="css/login2.css" />
-    <link rel="Stylesheet" href="css/customControls2.css" />
+
+ 
     <script type='text/javascript' src="js/clientes.js"></script>
+    <script type='text/javascript' src="js/tableroClientesCss.js"></script>
+
+    <script type="text/javascript">
+        
+        window.onload = cargarEstilo;
+</script>
+
 </head>
-<body class="xCustomBody">
+<body class="xCustomBody" >
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmClientes" runat="server" HideInDesign="true" />
 
@@ -24,6 +31,7 @@
             Header="true"
             TitleAlign="Left"
             StyleSpec="margin:0 auto; margin-top: 20px;">
+           
             <TopBar>
                 <ext:Toolbar ID="tbClientes" runat="server">
                     <Items>
@@ -179,6 +187,7 @@
             </ColumnModel>
             <Listeners>
                 <ItemClick Fn="gpClientes_ItemClick" />
+               <%-- <BeforeRender Fn="gpEstilo_Renderer" ></BeforeRender>--%>
             </Listeners>
             <SelectionModel>
                 <ext:RowSelectionModel
@@ -192,6 +201,9 @@
                     runat="server"
                     Text=""
                     StatusAlign="Left">
+                 <%--   <Listeners>
+                        <BeforeRender Fn="sbEstilo_Render"></BeforeRender>
+                    </Listeners>--%>
                 </ext:StatusBar>
             </FooterBar>
         </ext:GridPanel>

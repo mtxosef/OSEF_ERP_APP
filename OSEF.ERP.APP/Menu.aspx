@@ -113,6 +113,12 @@
                                         <div class="text4">Conceptos</div>
                                     </div>
                                 </a>
+                                 <a class="tile square bg-color-purple" href="#" id="clientes">
+                                    <img src="assets/img/Menu-Clientes.png" alt="Clientes" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Clientes</div>
+                                    </div>
+                                </a>
                             </div>
                             <%--  Division Extra--%>
                             <div class="tile-column-span-2">

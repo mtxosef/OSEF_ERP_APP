@@ -65,6 +65,7 @@
             runat="server"
             Height="380"
             Width="650"
+            DefaultButton="imgbtnGuardar"
             BodyPadding="10"
             MonitorResize="true">
             <Items>
@@ -279,8 +280,11 @@
                             FieldLabel="Estado"
                             DisplayField="Descripcion"
                             ValueField="ID"
-                            ForceSelection="true"
-                            Editable="false">
+                              Editable="true"
+                            MatchFieldWidth="true"
+                             ForceSelection="true"
+                             QueryMode="Local"
+                            TypeAhead="true">
                             <Store>
                                 <ext:Store
                                     ID="sEstados"
@@ -293,14 +297,18 @@
                                             </Fields>
                                         </ext:Model>
                                     </Model>
+                                    
+                                    <Sorters>
+                                        <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                    </Sorters>
                                 </ext:Store>
                             </Store>
                             <DirectEvents>
-                                <Select OnEvent="cmbEstado_Select">
+                                <Change OnEvent="cmbEstado_Select">
                                     <ExtraParams>
                                         <ext:Parameter Name="valor" Value="App.cmbEstado.getValue()" Mode="Raw" />
                                     </ExtraParams>
-                                </Select>
+                                </Change>
                             </DirectEvents>
                         </ext:ComboBox>
                     </Items>
@@ -318,9 +326,11 @@
                             Margins="0 3 0 0"
                             DisplayField="Descripcion"
                             ValueField="ID"
+                              Editable="true"
+                            MatchFieldWidth="true"
                             ForceSelection="true"
-                            Editable="false"
-                            MatchFieldWidth="true">
+                            QueryMode="Local"
+                            TypeAhead="true">
                             <Store>
                                 <ext:Store
                                     ID="sMunicipios"
@@ -334,17 +344,20 @@
                                             </Fields>
                                         </ext:Model>
                                     </Model>
+                                     <Sorters>
+                                        <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                    </Sorters>
                                      <Listeners>
                                         <Load Fn="sMunicipios_Load" />
                                     </Listeners>
                                 </ext:Store>
                             </Store>
                             <DirectEvents>
-                                <Select OnEvent="cmbMunicipio_Select">
+                                <Change OnEvent="cmbMunicipio_Select">
                                     <ExtraParams>
                                         <ext:Parameter Name="valorMunicipio" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
                                     </ExtraParams>
-                                </Select>
+                                </Change>
                             </DirectEvents>
                         </ext:ComboBox>
                          <ext:ComboBox
@@ -354,9 +367,11 @@
                             Width="300"
                             DisplayField="Descripcion"
                             ValueField="ID"
-                            ForceSelection="true"
-                            Editable="false"
-                            MatchFieldWidth="true">
+                             Editable="true"
+                            MatchFieldWidth="true"
+                        ForceSelection="true"
+                        QueryMode="Local"
+                        TypeAhead="true">
                             <Store>
                                 <ext:Store
                                     ID="sColonias"
@@ -373,6 +388,9 @@
                                             </Fields>
                                         </ext:Model>
                                     </Model>
+                                     <Sorters>
+                                        <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                    </Sorters>
                                     <Listeners>
                                         <Load Fn="sColonias_Load" />
                                     </Listeners>

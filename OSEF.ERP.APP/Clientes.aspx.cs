@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using OSEF.APP.BL;
+using System.Configuration;
 
 namespace OSEF.AVANCES.SUCURSALES
 {
@@ -23,6 +24,8 @@ namespace OSEF.AVANCES.SUCURSALES
                 sClientes.DataSource = ClienteBusiness.ObtenerClientes();
                 sClientes.DataBind();
                 rmClientes.RegisterIcon(Icon.Delete);
+                Cookies.Set("osefTheme", ConfigurationManager.AppSettings["osefTheme"].ToString(), DateTime.Now.AddDays(30), "/", null, false);
+           
             }
         }
 

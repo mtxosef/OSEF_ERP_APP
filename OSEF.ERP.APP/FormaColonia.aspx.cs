@@ -18,8 +18,8 @@ namespace OSEF.AVANCES.SUCURSALES
             //Llenar los combos de Categorias
             if (!X.IsAjaxRequest)
             {
-                sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
-                sMunicipios.DataBind();
+                //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
+                //sMunicipios.DataBind();
                 sEstados.DataSource = EstadoBusiness.ObtenerEstados();
                 sEstados.DataBind();
             }

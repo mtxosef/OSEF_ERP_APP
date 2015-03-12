@@ -26,11 +26,11 @@ namespace OSEF.AVANCES.SUCURSALES
                 sEstados.DataBind();
 
 
-                sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
-                sMunicipios.DataBind();
+                //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
+                //sMunicipios.DataBind();
 
-                sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
-                sColonias.DataBind();
+                //sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
+                //sColonias.DataBind();
             }
         }
 

@@ -60,6 +60,7 @@
             ID="PanelConcepto"
             runat="server"
             Height="250"
+            DefaultButton="imgbtnGuardar"
             Width="650"
             BodyPadding="10"
             MonitorResize="true">

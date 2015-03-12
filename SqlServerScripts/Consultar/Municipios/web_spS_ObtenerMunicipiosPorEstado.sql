@@ -45,5 +45,7 @@ BEGIN
 		Municipios
 	WHERE
 		Estado = @Estado
+	ORDER BY 
+	Descripcion ASC
 END
 GO

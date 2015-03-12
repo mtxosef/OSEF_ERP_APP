@@ -27,6 +27,12 @@ font-weight:normal;
 }
 
 
+/*Header*/
+.xCustomHeaderGrid  .x-panel-header-default {
+  background-image: none;
+  background-color: #157fcc !important;
+}
+
 .x-grid-cell
 {
     font-family: "WeblySleek UI Semilight" !important; 
@@ -37,6 +43,12 @@ font-weight:normal;
 .x-toolbar-footer
 {
     background: #157fcc;
+    color: #FFFFFF !important;
+}
+
+.xCustomToolbarGrid 
+{
+    background: #157fcc !important;
     color: #FFFFFF !important;
 }
 

@@ -62,6 +62,7 @@
             ID="fpUsuario"
             runat="server"
             BodyPadding="10"
+            DefaultButton="imgbtnGuardar"
             ButtonAlign="Right"
             Width="750"
             Height="380">
