@@ -124,9 +124,9 @@
                         </Click>
                     </Listeners>
                 </ext:ImageButton>
-                <!--Fin Boton Regresar-->
-               
+                <!--Fin Boton Regresar-->               
             </div>
+
             <ext:Panel 
                 ID="pCentro"
                 runat="server"

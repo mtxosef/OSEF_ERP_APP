@@ -15,7 +15,6 @@
     border-radius: 0px !important;
 }
 
-
 .x-window-header-text-container-default
 {
     color: white;
@@ -29,6 +28,7 @@
     font-family: "WeblySleek UI Semilight" !important; 
     font-size: 13px;
 }
+
 /*Estas propiedades son para el mensaje emergente que se lanza cuando se elimina algun registro del tablero*/
 .deletePop
 {
@@ -38,7 +38,6 @@
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
 }
-
 
 /*Esta linea es para que las notificaciones emergentes no salgan por detras del tablero*/
 .x-docked

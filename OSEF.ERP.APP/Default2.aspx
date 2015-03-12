@@ -105,13 +105,6 @@
                         </Click>
                     </Listeners>
                </ext:ImageButton>
-<%--                <ext:Label
-                    ID="lblRegresar"
-                    runat="server"
-                    Text="Regresar"
-                    Hidden="true" 
-                    StyleSpec="margin-left: 1095px; margin-right: auto; margin-top:0px;">
-                </ext:Label>--%>
                  <!--Fin Boton Regresar-->
                
             </div>
@@ -163,20 +156,20 @@
         <ext:Window 
             ID="wEmergente"
             runat="server"
-            Cls="xQuitarTachaCerrar xQuitarFondoTachaCerrar"
+            Icon="Application"
             Hidden="true"
             Modal="true"
             Padding="5"
-            Resizable="False"
+            Resizable="true"
             Region="Center"
             XOnEsc="Ext.emptyFn">
             <Loader ID="lEmergente" runat="server" Mode="Frame" AutoLoad="false">
                 <LoadMask ShowMask="true" Msg="Cargando..." />
             </Loader>
+            <Listeners>
+                <Show Handler="this.resizer.disable();" Single="true" />
+            </Listeners>
         </ext:Window>
-
-
-         
 
     </form>
 </body>
