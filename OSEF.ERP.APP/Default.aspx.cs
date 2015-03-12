@@ -8,6 +8,7 @@ using Ext.Net;
 using OSEF.APP.EL;
 using OSEF.APP.BL;
 using System.Web.Security;
+using System.Configuration;
 
 namespace OSEF.AVANCES.SUCURSALES
 {

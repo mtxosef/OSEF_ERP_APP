@@ -156,11 +156,8 @@
         <ext:Window 
             ID="wEmergente"
             runat="server"
-<<<<<<< HEAD
             Icon="Application"
-=======
-         Cls="xEstiloCaja"
->>>>>>> ae9626c4fa476b149fdf5595ea5e750ef33ed8f0
+            Cls="xEstiloCaja"
             Hidden="true"
             Modal="true"
             Padding="5"
