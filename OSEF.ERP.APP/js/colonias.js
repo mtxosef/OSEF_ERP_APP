@@ -65,20 +65,20 @@ var imgbtnGuardar_Click_Success = function () {
 
 
 //Asignar la descripción de la colonia a esta columna
-var cEstado_Renderer = function (valor, columna, registro) {
-    if (valor.length != 0) {
-        var Estado = registro.get('REstado');
-        return Estado.Descripcion;
-    }
-};
+//var cEstado_Renderer = function (valor, columna, registro) {
+//    if (valor.length != 0) {
+//        var Estado = registro.get('REstado');
+//        return Estado.Descripcion;
+//    }
+//};
 
 //Asignar la descripción de la colonia a esta columna
-var cMunicipio_Renderer = function (valor, columna, registro) {
-    if (valor.length != 0) {
-        var Municipio = registro.get('RMunicipio');
-        return Municipio.Descripcion;
-    }
-};
+//var cMunicipio_Renderer = function (valor, columna, registro) {
+//    if (valor.length != 0) {
+//        var Municipio = registro.get('RMunicipio');
+//        return Municipio.Descripcion;
+//    }
+//};
 
 //Acciones al hacer clic en un registro
 var gpColonias_ItemClick = function (gridview, registro, gvhtml, index) {
@@ -96,13 +96,7 @@ var sColonias_DataChanged = function () {
         App.sbColonias.setText(App.sColonias.getCount() + ' ' + 'COLONIAS');
     }
 
-    //Resize column Description when records are 11
-    if (App.sColonias.getCount() > 10) {
-        App.gpColonias.columns[3].setWidth(280);
-    }
-    else {
-        App.gpColonias.columns[3].setWidth(300);
-    }
+   
 };
 
 //Hacer la busqueda de información

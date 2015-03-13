@@ -435,6 +435,7 @@
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
     <Content Include="Prueba.aspx" />
+    <Content Include="pruebaagrega.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="reports\images\A&amp;R-Imagotipo ICONO.jpg" />
     <Content Include="reports\images\bbva.jpg" />
@@ -967,6 +968,13 @@
     </Compile>
     <Compile Include="Prueba.aspx.designer.cs">
       <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pruebaagrega.aspx.cs">
+      <DependentUpon>pruebaagrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pruebaagrega.aspx.designer.cs">
+      <DependentUpon>pruebaagrega.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>

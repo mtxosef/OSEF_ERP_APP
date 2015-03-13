@@ -104,7 +104,95 @@
                                 </Click>
                              </DirectEvents>
                         </ext:ImageButton>
-                        <ext:ToolbarSpacer ID="tbsColonias" runat="server" Width="500">
+
+                           <ext:ComboBox
+                                ID="cmbEstado"
+                                runat="server"
+                                DisplayField="Descripcion"
+                                ValueField="ID"
+                                 Editable="true"
+                                  Width="220"
+                                  FieldLabel="Estado"
+                            MatchFieldWidth="true"
+                            LabelWidth="50"
+                            ForceSelection="true"
+                            QueryMode="Local"
+                            TypeAhead="true">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                         
+                                <Store>
+                                    <ext:Store
+                                        ID="sEstados"
+                                        runat="server">
+                                        <Model>
+                                            <ext:Model ID="mEstados" runat="server" IDProperty="ID">
+                                                <Fields>
+                                                    <ext:ModelField Name="ID" Type="String" />
+                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                </Fields>
+                                            </ext:Model>
+                                        </Model>
+                                    </ext:Store>
+                                </Store>
+                                <DirectEvents>
+                                <Change OnEvent="cmbEstado_Change">
+                                    <ExtraParams>
+                                        <ext:Parameter Name="valor" Value="App.cmbEstado.getValue()" Mode="Raw" />
+                                    </ExtraParams>
+                                </Change>
+                            </DirectEvents>
+                            </ext:ComboBox>
+
+                       
+
+                          <ext:ComboBox
+                                ID="cmbMunicipio"
+                                runat="server"
+                                DisplayField="Descripcion"
+                                ValueField="ID"
+                                LabelWidth="70"
+                                Width="250"
+                                 Editable="true"
+                            MatchFieldWidth="true"
+                            FieldLabel="Municipio"
+                            ForceSelection="true"
+                            QueryMode="Local"
+                            TypeAhead="true">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Store>
+                                    <ext:Store
+                                        ID="sMunicipios"
+                                        runat="server">
+                                        <Model>
+                                            <ext:Model ID="mMunicipios" runat="server" IDProperty="ID">
+                                                <Fields>
+                                                    <ext:ModelField Name="ID" Type="String" />
+                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                </Fields>
+                                            </ext:Model>
+                                        </Model>
+                                    </ext:Store>
+                                </Store>
+                                <DirectEvents>
+                                <Change OnEvent="cmbMunicipio_Select">
+                                    <ExtraParams>
+                                        <ext:Parameter Name="valorMunicipio" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
+                                    </ExtraParams>
+                                </Change>
+                            </DirectEvents>
+                            </ext:ComboBox>
+
+                            <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="15">
                         </ext:ToolbarSpacer>
                         <ext:ImageButton
                             ID="imgbtnActualizar"
@@ -175,7 +263,7 @@
                         runat="server"
                         Text="ID"
                         Align="Center"
-                        Width="140"
+                        Width="200"
                         DataIndex="ID">
                       
                     </ext:Column>
@@ -183,113 +271,9 @@
                         ID="cColonia"
                         runat="server"
                         Text="COLONIA"
-                        Align="Center"
-                        Width="270"
+                        Align="Left"
+                        Width="700"
                         DataIndex="Descripcion">
-                    </ext:Column>
-                    <ext:Column
-                        ID="cEstado"
-                        runat="server"
-                        Text="ESTADO"
-                        Align="Left"
-                        Width="250"
-                        DataIndex="Estado">
-                          <HeaderItems>
-                            <ext:ComboBox
-                                ID="cmbEstado"
-                                runat="server"
-                                DisplayField="Descripcion"
-                                ValueField="ID"
-                                 Editable="true"
-                            MatchFieldWidth="true"
-                            ForceSelection="true"
-                            QueryMode="Local"
-                            TypeAhead="true">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                             <%--   <Listeners>
-                                    <Select Fn="cmbSucursalFiltro_Select" />
-                                </Listeners>--%>
-                                <Store>
-                                    <ext:Store
-                                        ID="sEstados"
-                                        runat="server">
-                                        <Model>
-                                            <ext:Model ID="mEstados" runat="server" IDProperty="ID">
-                                                <Fields>
-                                                    <ext:ModelField Name="ID" Type="String" />
-                                                    <ext:ModelField Name="Descripcion" Type="String" />
-                                                </Fields>
-                                            </ext:Model>
-                                        </Model>
-                                    </ext:Store>
-                                </Store>
-                                <DirectEvents>
-                                <Change OnEvent="cmbEstado_Change">
-                                    <ExtraParams>
-                                        <ext:Parameter Name="valor" Value="App.cmbEstado.getValue()" Mode="Raw" />
-                                    </ExtraParams>
-                                </Change>
-                            </DirectEvents>
-                            </ext:ComboBox>
-                        </HeaderItems>
-                       <Renderer Fn="cEstado_Renderer" />
-                    </ext:Column>
-                    <ext:Column
-                        ID="cMunicipio"
-                        runat="server"
-                        Text="MUNICIPIO"
-                        Align="Left"
-                        Width="250"
-                        DataIndex="Municipio">
-                        <HeaderItems>
-                            <ext:ComboBox
-                                ID="cmbMunicipio"
-                                runat="server"
-                                DisplayField="Descripcion"
-                                ValueField="ID"
-                                 Editable="true"
-                            MatchFieldWidth="true"
-                            ForceSelection="true"
-                            QueryMode="Local"
-                            TypeAhead="true">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                             <%--   <Listeners>
-                                    <Select Fn="cmbSucursalFiltro_Select" />
-                                </Listeners>--%>
-                                <Store>
-                                    <ext:Store
-                                        ID="sMunicipios"
-                                        runat="server">
-                                        <Model>
-                                            <ext:Model ID="Model1" runat="server" IDProperty="ID">
-                                                <Fields>
-                                                    <ext:ModelField Name="ID" Type="String" />
-                                                    <ext:ModelField Name="Descripcion" Type="String" />
-                                                </Fields>
-                                            </ext:Model>
-                                        </Model>
-                                    </ext:Store>
-                                </Store>
-                                <DirectEvents>
-                                <Change OnEvent="cmbMunicipio_Select">
-                                    <ExtraParams>
-                                        <ext:Parameter Name="valorMunicipio" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
-                                    </ExtraParams>
-                                </Change>
-                            </DirectEvents>
-                            </ext:ComboBox>
-                        </HeaderItems>
-                        <Renderer Fn="cMunicipio_Renderer" />
                     </ext:Column>
                 </Columns>
             </ColumnModel>
