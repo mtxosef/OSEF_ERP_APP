@@ -387,7 +387,6 @@
     <Content Include="js\subirImagenesCliente.js" />
     <Content Include="js\subirImagenesPreciario.js" />
     <Content Include="js\tableroAvances.js" />
-    <Content Include="js\tableroClientesCss.js" />
     <Content Include="js\usuarios2.js" />
     <Content Include="js\volumetrias.js" />
     <Content Include="js\tablerovolumetrias.js" />

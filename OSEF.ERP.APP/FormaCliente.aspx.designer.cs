@@ -94,13 +94,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Panel pDatoGenerales;
         
         /// <summary>
-        /// Control fcCliente1.
+        /// Control fcID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcCliente1;
+        protected global::Ext.Net.FieldContainer fcID;
         
         /// <summary>
         /// Control txtfID.
@@ -130,13 +130,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ImageButton imgbtnAnexos;
         
         /// <summary>
-        /// Control fcCliente2.
+        /// Control fcNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcCliente2;
+        protected global::Ext.Net.FieldContainer fcNombre;
         
         /// <summary>
         /// Control txtfNombre.
@@ -166,13 +166,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfAMaterno;
         
         /// <summary>
-        /// Control fcCliente3.
+        /// Control fcRFC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcCliente3;
+        protected global::Ext.Net.FieldContainer fcRFC;
         
         /// <summary>
         /// Control txtfRFC.
@@ -193,13 +193,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfCURP;
         
         /// <summary>
-        /// Control fcCliente4.
+        /// Control fcFechaNac.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcCliente4;
+        protected global::Ext.Net.FieldContainer fcFechaNac;
         
         /// <summary>
         /// Control dfFechaNacimiento.
@@ -481,24 +481,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.InputMask imCodigoPostal;
         
         /// <summary>
-        /// Control txtfColonia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfColonia;
-        
-        /// <summary>
-        /// Control fcDireccion4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcDireccion4;
-        
-        /// <summary>
         /// Control cmbEstado.
         /// </summary>
         /// <remarks>
@@ -526,6 +508,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Model mEstados;
         
         /// <summary>
+        /// Control fcDireccion4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcDireccion4;
+        
+        /// <summary>
         /// Control cmbMunicipio.
         /// </summary>
         /// <remarks>
@@ -551,6 +542,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model mMunicipios;
+        
+        /// <summary>
+        /// Control cmbColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbColonia;
+        
+        /// <summary>
+        /// Control sColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sColonias;
+        
+        /// <summary>
+        /// Control mColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mColonias;
         
         /// <summary>
         /// Control pDatosEmpresa.

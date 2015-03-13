@@ -1,4 +1,141 @@
-﻿//Evento de clic del botón Nuevo
+﻿//Funcion que valida que tema va a ser utilizadp
+function cargarEstilo() {
+//Validamos la cookie
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+    //Asiganmos los elementos en el header
+        var fileref = document.createElement("link")
+        fileref.setAttribute("rel", "stylesheet")
+        fileref.setAttribute("type", "text/css")
+        fileref.setAttribute("href", 'css/login.css')
+        var fileref2 = document.createElement("link")
+        fileref2.setAttribute("rel", "stylesheet")
+        fileref2.setAttribute("type", "text/css")
+        fileref2.setAttribute("href", 'css/customControls.css')
+        var fileref3 = document.createElement("link")
+        fileref3.setAttribute("rel", "stylesheet")
+        fileref3.setAttribute("type", "text/css")
+        fileref3.setAttribute("href", 'css/xMask.css')
+        var fileref4 = document.createElement("link")
+        fileref4.setAttribute("rel", "stylesheet")
+        fileref4.setAttribute("type", "text/css")
+        fileref4.setAttribute("href", 'css/xDatePicker.css')
+        var fileref5 = document.createElement("link")
+        fileref5.setAttribute("rel", "stylesheet")
+        fileref5.setAttribute("type", "text/css")
+        fileref5.setAttribute("href", 'css/xSplitButton.css')
+        var fileref6 = document.createElement("link")
+        fileref6.setAttribute("rel", "stylesheet")
+        fileref6.setAttribute("type", "text/css")
+        fileref6.setAttribute("href", 'css/xGridPanel.css')
+        var fileref7 = document.createElement("link")
+        fileref7.setAttribute("rel", "stylesheet")
+        fileref7.setAttribute("type", "text/css")
+        fileref7.setAttribute("href", 'css/xWindowPopup.css')
+        var fileref8 = document.createElement("link")
+        fileref8.setAttribute("rel", "stylesheet")
+        fileref8.setAttribute("type", "text/css")
+        fileref8.setAttribute("href", 'css/xPanel.css')
+        var fileref9 = document.createElement("link")
+        fileref9.setAttribute("rel", "stylesheet")
+        fileref9.setAttribute("type", "text/css")
+        fileref9.setAttribute("href", 'css/xComboBox.css')
+        var fileref10 = document.createElement("link")
+        fileref10.setAttribute("rel", "stylesheet")
+        fileref10.setAttribute("type", "text/css")
+        fileref10.setAttribute("href", 'css/xCustomChart.css')
+        var fileref11 = document.createElement("link")
+        fileref11.setAttribute("rel", "stylesheet")
+        fileref11.setAttribute("type", "text/css")
+        fileref11.setAttribute("href", 'css/xToolbar.css')
+        var fileref12 = document.createElement("link")
+        fileref12.setAttribute("rel", "stylesheet")
+        fileref12.setAttribute("type", "text/css")
+        fileref12.setAttribute("href", 'css/xLabel.css')
+        var fileref13 = document.createElement("link")
+        fileref13.setAttribute("rel", "stylesheet")
+        fileref13.setAttribute("type", "text/css")
+        fileref13.setAttribute("href", 'css/xTreePanel.css')
+        var fileref14 = document.createElement("link")
+        fileref14.setAttribute("rel", "stylesheet")
+        fileref14.setAttribute("type", "text/css")
+        fileref14.setAttribute("href", 'css/xHiperlink.css')
+        var fileref15 = document.createElement("link")
+        fileref15.setAttribute("rel", "stylesheet")
+        fileref15.setAttribute("type", "text/css")
+        fileref15.setAttribute("href", 'css/xTextField.css')
+        var fileref16 = document.createElement("link")
+        fileref16.setAttribute("rel", "stylesheet")
+        fileref16.setAttribute("type", "text/css")
+        fileref16.setAttribute("href", 'css/xFieldSet.css')
+        var fileref17 = document.createElement("link")
+        fileref17.setAttribute("rel", "stylesheet")
+        fileref17.setAttribute("type", "text/css")
+        fileref17.setAttribute("href", 'css/xButton.css')
+        var fileref18 = document.createElement("link")
+        fileref18.setAttribute("rel", "stylesheet")
+        fileref18.setAttribute("type", "text/css")
+        fileref18.setAttribute("href", 'css/metroButtons.css')
+        var fileref19 = document.createElement("link")
+        fileref19.setAttribute("rel", "stylesheet")
+        fileref19.setAttribute("type", "text/css")
+        fileref19.setAttribute("href", 'css/metroButtons.css')
+        var fileref20 = document.createElement("link")
+        fileref20.setAttribute("rel", "stylesheet")
+        fileref20.setAttribute("type", "text/css")
+        fileref20.setAttribute("href", 'css/xDisplayImages.css')
+        var fileref21 = document.createElement("link")
+        fileref21.setAttribute("rel", "stylesheet")
+        fileref21.setAttribute("type", "text/css")
+        fileref21.setAttribute("href", 'css/xIcons.css')
+        var fileref22 = document.createElement("link")
+        fileref22.setAttribute("rel", "stylesheet")
+        fileref22.setAttribute("type", "text/css")
+        fileref22.setAttribute("href", 'css/xTabPanel.css')
+
+
+        document.getElementsByTagName("head")[0].appendChild(fileref);
+        document.getElementsByTagName("head")[0].appendChild(fileref2);
+        document.getElementsByTagName("head")[0].appendChild(fileref3);
+        document.getElementsByTagName("head")[0].appendChild(fileref4);
+        document.getElementsByTagName("head")[0].appendChild(fileref5);
+        document.getElementsByTagName("head")[0].appendChild(fileref6);
+        document.getElementsByTagName("head")[0].appendChild(fileref7);
+        document.getElementsByTagName("head")[0].appendChild(fileref8);
+        document.getElementsByTagName("head")[0].appendChild(fileref9);
+        document.getElementsByTagName("head")[0].appendChild(fileref10);
+        document.getElementsByTagName("head")[0].appendChild(fileref11);
+        document.getElementsByTagName("head")[0].appendChild(fileref12);
+        document.getElementsByTagName("head")[0].appendChild(fileref13);
+        document.getElementsByTagName("head")[0].appendChild(fileref14);
+        document.getElementsByTagName("head")[0].appendChild(fileref15);
+        document.getElementsByTagName("head")[0].appendChild(fileref16);
+        document.getElementsByTagName("head")[0].appendChild(fileref17);
+        document.getElementsByTagName("head")[0].appendChild(fileref18);
+        document.getElementsByTagName("head")[0].appendChild(fileref19);
+        document.getElementsByTagName("head")[0].appendChild(fileref20);
+        document.getElementsByTagName("head")[0].appendChild(fileref21);
+        document.getElementsByTagName("head")[0].appendChild(fileref22);
+    }
+
+    if (Ext.util.Cookies.get('osefTheme') == 'caja') {
+        var fileref = document.createElement("link")
+        fileref.setAttribute("rel", "stylesheet")
+        fileref.setAttribute("type", "text/css")
+        fileref.setAttribute("href", 'css/customControls2.css')
+        var fileref2 = document.createElement("link")
+        fileref2.setAttribute("rel", "stylesheet")
+        fileref2.setAttribute("type", "text/css")
+        fileref2.setAttribute("href", 'css/login2.css')
+        document.getElementsByTagName("head")[0].appendChild(fileref);
+        document.getElementsByTagName("head")[0].appendChild(fileref2);
+
+    }
+}
+
+
+
+
+//Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarCliente', 'Nuevo');
     window.parent.App.wEmergente.load('FormaCliente.aspx');
@@ -29,11 +166,21 @@ var gpClientes_ItemClick = function (gridview, registro, gvhtml, index) {
 
 //Cambio en los datos del tablero
 var sClientes_DataChanged = function () {
-    if (App.sClientes.getCount() > 1 || App.sClientes.getCount() == 0) {
-        App.sbClientes.setText(App.sClientes.getCount() + ' ' + 'SOCIOS');
+    var tipoCliente;
+    //Valida que tipo de cliente es para ponerla en el contador de la estatus bar
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+        tipoCliente = "CLIENTE";
     }
     else {
-        App.sbClientes.setText(App.sClientes.getCount() + ' ' + 'SOCIO');
+        tipoCliente = "SOCIO";
+    }
+
+
+    if (App.sClientes.getCount() > 1 || App.sClientes.getCount() == 0) {
+        App.sbClientes.setText(App.sClientes.getCount() + ' ' + tipoCliente+'S');
+    }
+    else {
+        App.sbClientes.setText(App.sClientes.getCount() + ' ' + tipoCliente);
     }
 
     //Resize column Description when records are 11
@@ -169,28 +316,10 @@ var sCliente_Load = function () {
     store = window.parent.App.pCentro.getBody().App.sClientes;
 };
 
-var fcEstadoCivilRender = function () {
 
-
-
-    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
-
-        App.fcCliente5.hide();
-        App.cmbEstadoCivil.allowBlank = true;
-        App.cmbProfesion.allowBlank = true;
-    }
-    else {
-
-    }
-}
 
 //Evento lanzado al agregar un registro al store
 var sCliente_Add = function (store, registro) {
-    console.log(registro[0]);
-
-
-
-
 
     //Primera parte
     App.txtfID.setValue(registro[0].get('ID'));
@@ -217,7 +346,7 @@ var sCliente_Add = function (store, registro) {
     App.txtfNoExterior.setValue(registro[0].get('NoExterior'));
     App.txtfNoInterior.setValue(registro[0].get('NoInterior'));
     App.txtfCodigoPostal.setValue(registro[0].get('CodigoPostal'));
-    App.txtfColonia.setValue(registro[0].get('Colonia'));
+    App.cmbColonia.setValue(registro[0].get('Colonia'));
     App.cmbEstado.select(registro[0].get('Estado'));
 
     //Tercera parte
@@ -262,4 +391,104 @@ var sCliente_Add = function (store, registro) {
             Ext.Msg.alert('Error', errorMsg);
         }
     });
+};
+
+
+//Valida para que empresa es y muestra campos segun la variable de cookie
+var fcEstadoCivilRender = function () {
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+
+        App.fcCliente5.hide();
+        App.cmbEstadoCivil.allowBlank = true;
+        App.cmbProfesion.allowBlank = true;
+    }
+    else {
+
+    }
+}
+//Evento que se lanza antes de pintar el contenedor del RFC
+var fcRFCRender = function () {
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+        App.fcRFC.hide();
+    }
+    else {
+
+    }
+}
+
+//Evento que se lanza antes de pintar Grid
+var gpClientesRender = function () {
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+
+        App.gpClientes.title = "CLIENTES";
+
+    }
+    else {
+        App.gpClientes.title = "SOCIOS";
+    }
+}
+
+
+//Evento que se lanza antes de pintar el contenedor del ID
+var fcIDRender = function () {
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+
+        App.fcID.fieldLabel = "Cliente";
+
+    }
+    else {
+        App.fcID.fieldLabel = "Socio";
+    }
+}
+
+//Evento que se lanza antes de pintar el contenedor del ID
+var fcFechaNac_Render = function () {
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+        App.txtfEdad.setValue('0');
+        App.fcFechaNac.hide();
+        App.dfFechaNacimiento.allowBlank = true;
+        App.cmbSexo.allowBlank = true;
+    }
+    else {
+    }
+}
+
+
+
+//Evento que se lanza antes de pintar el contenedor del Cliente
+var fcNombre_Render = function () {
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+
+        App.fcNombre.fieldLabel = "Contacto";
+
+    }
+    else {
+        App.fcID.fieldLabel = "Nombre(s)";
+    }
+}
+
+//Oculta el panel de datos de la empresa
+var pDatosEmpresa_Render = function () {
+
+    if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
+
+
+
+               App.tpCliente.remove(App.pDatosEmpresa.id, false);
+    
+    }
+    else {
+
+    }
+
+}
+
+
+//Evento al cargar el store de municipios
+var sColonias_Load = function () {
+
+
+    if (App.sCliente.getAt(0) != undefined) {
+        App.cmbColonia.setValue(App.sCliente.getAt(0).get('Colonia'));
+    }
 };

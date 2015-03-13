@@ -26,7 +26,6 @@ namespace OSEF.AVANCES.SUCURSALES
                 sProfesiones.DataBind();
                 sEstados.DataSource = EstadoBusiness.ObtenerEstados();
                 sEstados.DataBind();
-                Cookies.Set("osefTheme", ConfigurationManager.AppSettings["osefTheme"].ToString(), DateTime.Now.AddDays(30), "/", null, false);
             }
         }
 
@@ -64,13 +63,27 @@ namespace OSEF.AVANCES.SUCURSALES
         protected void imgbtnGuardar_Click(object sender, DirectEventArgs e)
         {
             //1. Obtener datos de la Forma y saber si es edición o nuevo
+            string edad = e.ExtraParams["edad"];
+            byte bEdad = 0;
+            if (edad.Equals("0"))
+            {
+                bEdad = 0;
+               
+            }
+            else {
+                 bEdad = Convert.ToByte(e.ExtraParams["edad"].Substring(0, e.ExtraParams["edad"].IndexOf(' ')));
+            }
+
+
             string strRegistro = e.ExtraParams["registro"];
-            byte bEdad = Convert.ToByte(e.ExtraParams["edad"].Substring(0, e.ExtraParams["edad"].IndexOf(' ')));
             string strUsuario = e.ExtraParams["usuario"];
             string strcookieEditarCliente = Cookies.GetCookie("cookieEditarCliente").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             Cliente oCliente = new Cliente();
             oCliente.Edad = bEdad;
+
+
+
             oCliente.TipoSocio = "";
             oCliente.NumeroSocio = "";
 
@@ -125,7 +138,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfNoInterior":
                         oCliente.NoInterior = sd.Value;
                         break;
-                    case "txtfColonia":
+                    case "cmbColonia":
                         oCliente.Colonia = sd.Value;
                         break;
                     case "txtfCodigoPostal":
@@ -141,7 +154,10 @@ namespace OSEF.AVANCES.SUCURSALES
                         oCliente.Municipio = sd.Value;
                         break;
                     case "txtfEmpresa":
-                        oCliente.Empresa = sd.Value;
+                        if (sd.Value.Equals(""))
+                            oCliente.Empresa = null;
+                        else
+                            oCliente.Empresa = sd.Value;
                         break;
                     case "txtfEmpresaCalle":
                         oCliente.EmpresaCalle = sd.Value;
@@ -192,7 +208,7 @@ namespace OSEF.AVANCES.SUCURSALES
             if (strcookieEditarCliente.Equals("Nuevo"))
             {
                 Usuario oUsuario = (Usuario)Session["Usuario"];
-               
+
 
                 oCliente.FechaAlta = DateTime.Now;
                 oCliente.Estatus = "ALTA";
@@ -283,5 +299,20 @@ namespace OSEF.AVANCES.SUCURSALES
             sEmpresaMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
             sEmpresaMunicipios.DataBind();
         }
+
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar un municipio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strMunicipio = e.ExtraParams["valorMunicipio"];
+            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColonias.DataBind();
+        }
+
     }
 }

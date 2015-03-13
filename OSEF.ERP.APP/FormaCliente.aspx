@@ -6,12 +6,9 @@
 <head id="Head1" runat="server">
     <title></title>
    <script type='text/javascript' src="js/clientes.js"></script>
-    <script type='text/javascript' src="js/tableroClientesCss.js"></script>
-
     <script type="text/javascript">
-
         window.onload = cargarEstilo;
-</script>
+    </script>
 
 </head>
 <body class="xCustomBody">
@@ -76,6 +73,9 @@
                 runat="server" 
                 Width="810"
                 BodyStyle="background-color:transparent;">
+                    <Listeners>        
+                            <BeforeRender Fn="pDatosEmpresa_Render"></BeforeRender>
+                        </Listeners>
                 <Items>
                     <ext:FormPanel 
                         ID="fpCliente" 
@@ -83,6 +83,7 @@
                         Height="404"
                         DefaultButton="imgbtnGuardar"
                         MonitorResize="true">
+                    
                         <Items>
                              <ext:TabPanel 
                                 ID="tpCliente" 
@@ -102,12 +103,15 @@
                                         MonitorResize="true">
                                         <Items>
                                             <ext:FieldContainer
-                                                ID="fcCliente1" 
+                                                ID="fcID" 
                                                 runat="server" 
                                                 LabelWidth="120" 
                                                 FieldLabel="Socio" 
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
+                                                <Listeners>
+                                                <BeforeRender Fn="fcIDRender"></BeforeRender>
+                                                </Listeners>
                                                 <Items>
                                                     <ext:TextField
                                                         ID="txtfID"
@@ -136,17 +140,20 @@
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer
-                                                ID="fcCliente2" 
+                                                ID="fcNombre" 
                                                 runat="server" 
                                                 LabelWidth="120" 
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout"
                                                 FieldLabel="Nombre(s)">
+                                                <Listeners>
+                                                    <BeforeRender Fn="fcNombre_Render"></BeforeRender>
+                                                </Listeners>
                                                 <Items>
                                                     <ext:TextField
                                                         ID="txtfNombre"
                                                         runat="server"
-                                                        EmptyText=""
+                                                        EmptyText="Nombre"
                                                         Width="250"
                                                         StyleSpec="margin-right: 6px;"
                                                         AllowBlank="false"
@@ -186,12 +193,15 @@
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer 
-                                                ID="fcCliente3" 
+                                                ID="fcRFC" 
                                                 runat="server" 
                                                 FieldLabel="RFC"
                                                 LabelWidth="120" 
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
+                                                <Listeners>
+                                                <BeforeRender Fn="fcRFCRender"></BeforeRender>
+                                                </Listeners>
                                                 <Items>
                                                     <ext:TextField
                                                         ID="txtfRFC"
@@ -220,12 +230,15 @@
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer 
-                                                ID="fcCliente4" 
+                                                ID="fcFechaNac" 
                                                 runat="server" 
                                                 LabelWidth="120" 
                                                 FieldLabel="Fecha Nacimiento" 
                                                 AnchorHorizontal="100%"
                                                 Layout="ColumnLayout">
+                                                   <Listeners>
+                                                <BeforeRender Fn="fcFechaNac_Render"></BeforeRender>
+                                                </Listeners>
                                                 <Items>
                                                     <ext:DateField
                                                         ID="dfFechaNacimiento"
@@ -286,7 +299,7 @@
                                                 AnchorHorizontal="100%" 
                                                 Layout="ColumnLayout">
                                                 <Listeners>
-                                                <Render Fn="fcEstadoCivilRender"></Render>
+                                                <BeforeRender Fn="fcEstadoCivilRender"></BeforeRender>
                                                 </Listeners>
                                                 <Items>
                                                     <ext:ComboBox
@@ -586,32 +599,11 @@
                                                             </ext:InputMask>
                                                         </Plugins>
                                                     </ext:TextField>
-                                                    <ext:TextField
-                                                        ID="txtfColonia"
-                                                        FieldLabel="Colonia"
-                                                        runat="server"
-                                                        Width="402"
-                                                        MaxLength="50"
-                                                        EnforceMaxLength="true"
-                                                        AllowBlank="false">
-                                                        <Listeners>
-                                                            <Blur Handler="App.txtfColonia.setValue(App.txtfColonia.getValue().toUpperCase());" />
-                                                        </Listeners>
-                                                    </ext:TextField>
-                                                </Items>
-                                            </ext:FieldContainer>
-                                            <ext:FieldContainer 
-                                                ID="fcDireccion4" 
-                                                runat="server"
-                                                LabelWidth="120"
-                                                FieldLabel="Estado" 
-                                                Layout="ColumnLayout">
-                                                <Items>
                                                     <ext:ComboBox 
                                                         ID="cmbEstado"
                                                         runat="server"
-                                                        Width="250"
-                                                        StyleSpec="margin-right: 6px;"
+                                                        Width="402"
+                                                        FieldLabel="Estado"
                                                         Editable="true"
                                                         AllowBlank="false"
                                                         DisplayField="Descripcion"
@@ -650,11 +642,20 @@
                                                             </Select>
                                                         </DirectEvents>
                                                     </ext:ComboBox>
+                                                </Items>
+                                            </ext:FieldContainer>
+                                            <ext:FieldContainer 
+                                                ID="fcDireccion4" 
+                                                runat="server"
+                                                LabelWidth="120"
+                                                FieldLabel="Municipio" 
+                                                Layout="ColumnLayout">
+                                                <Items>
                                                     <ext:ComboBox
                                                         ID="cmbMunicipio"
                                                         runat="server"
-                                                        FieldLabel="Municipio"
-                                                        Width="402"
+                                                        Width="250"
+                                                        StyleSpec="margin-right: 6px;"
                                                         Editable="true"
                                                         AllowBlank="false"
                                                         DisplayField="Descripcion"
@@ -686,7 +687,52 @@
                                                                 </Model>
                                                             </ext:Store>
                                                         </Store>
+                                                         <DirectEvents>
+                                                                <Change OnEvent="cmbMunicipio_Select">
+                                                                    <ExtraParams>
+                                                                        <ext:Parameter Name="valorMunicipio" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
+                                                                    </ExtraParams>
+                                                                </Change>
+                                                            </DirectEvents>
                                                     </ext:ComboBox>
+                                                         <ext:ComboBox
+                                                ID="cmbColonia"
+                                                runat="server"
+                                                FieldLabel="Colonia"
+                                                Width="402"
+                                                DisplayField="Descripcion"
+                                                ValueField="ID"
+                                                AllowBlank="false"
+                                                 Editable="true"
+                                                MatchFieldWidth="true"
+                                            ForceSelection="true"
+                                            QueryMode="Local"
+                                            TypeAhead="true">
+                                                <Store>
+                                                    <ext:Store
+                                                        ID="sColonias"
+                                                        runat="server">
+                                                        <Model>
+                                                            <ext:Model ID="mColonias" runat="server">
+                                                                <Fields>
+                                                                    <ext:ModelField Name="ID" Type="String" />
+                                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                                    <ext:ModelField Name="Estado" Type="String" />
+                                                                    <ext:ModelField Name="Municipio" Type="String" />
+                                                                    <ext:ModelField Name="REstado" Type="String" />
+                                                                    <ext:ModelField Name="RMunicipio" Type="String" />
+                                                                </Fields>
+                                                            </ext:Model>
+                                                        </Model>
+                                                         <Sorters>
+                                                            <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                        </Sorters>
+                                                        <Listeners>
+                                                            <Load Fn="sColonias_Load" />
+                                                        </Listeners>
+                                                    </ext:Store>
+                                                </Store>
+                                            </ext:ComboBox>
                                                 </Items>
                                             </ext:FieldContainer>
                                         </Items>
@@ -697,6 +743,7 @@
                                         runat="server" 
                                         Title="Datos Empresa" 
                                         BodyPadding="10" 
+                                        HideMode="Display"
                                         AutoScroll="true">
                                         <Items>
                                             <ext:FieldContainer

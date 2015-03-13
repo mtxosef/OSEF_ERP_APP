@@ -5,15 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-
- 
     <script type='text/javascript' src="js/clientes.js"></script>
-    <script type='text/javascript' src="js/tableroClientesCss.js"></script>
-
     <script type="text/javascript">
-        
         window.onload = cargarEstilo;
-</script>
+    </script>
 
 </head>
 <body class="xCustomBody" >
@@ -25,13 +20,15 @@
             runat="server"
             Height="420"
             Width="960"
-            Title="CLIENTES"
+            Title=""
             EnableColumnHide="false"
             EnableColumnMove="false"
             Header="true"
             TitleAlign="Left"
             StyleSpec="margin:0 auto; margin-top: 20px;">
-           
+           <Listeners>
+            <BeforeRender Fn="gpClientesRender"></BeforeRender>
+           </Listeners>
             <TopBar>
                 <ext:Toolbar ID="tbClientes" runat="server">
                     <Items>
@@ -150,7 +147,7 @@
                     <ext:Column 
                         ID="cSocio"
                         runat="server"
-                        Text="SOCIO"
+                        Text="CLIENTE"
                         Align="Left"
                         Width="280"
                         DataIndex="NombreCompleto" />
@@ -201,8 +198,8 @@
                     runat="server"
                     Text=""
                     StatusAlign="Left">
-                 <%--   <Listeners>
-                        <BeforeRender Fn="sbEstilo_Render"></BeforeRender>
+                   <%-- <Listeners>
+                        <BeforeRender Fn="sbClientes_Render"></BeforeRender>
                     </Listeners>--%>
                 </ext:StatusBar>
             </FooterBar>

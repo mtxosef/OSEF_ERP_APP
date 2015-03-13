@@ -21,10 +21,11 @@ namespace OSEF.AVANCES.SUCURSALES
         {
             if (!X.IsAjaxRequest)
             {
-                List<Colonia> lColonias = ColoniaBusiness.ObtenerColonias();
-                sColonias.DataSource = lColonias;
-                sColonias.DataBind();
-
+                //List<Colonia> lColonias = ColoniaBusiness.ObtenerColonias();
+                //sColonias.DataSource = lColonias;
+                //sColonias.DataBind();
+                sEstados.DataSource = EstadoBusiness.ObtenerEstados();
+                sEstados.DataBind();
                 rmColonias.RegisterIcon(Icon.Delete);
             }
 
@@ -63,5 +64,29 @@ namespace OSEF.AVANCES.SUCURSALES
                 ColoniaBusiness.Borrar(strID);
             }
         }
+
+
+        /// <summary>
+        /// Evento que se lanza al escoger un elemento de Estados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbEstado_Change(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el estado seleccionado y obtener los Municipios
+            string strEstado = e.ExtraParams["valor"];
+            sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            sMunicipios.DataBind();
+        }
+
+
+        protected void cmbMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strMunicipio = e.ExtraParams["valorMunicipio"];
+            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColonias.DataBind();
+        }
+
     }
 }
