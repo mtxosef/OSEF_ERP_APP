@@ -29,7 +29,7 @@
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaPreciario" runat="server" HideInDesign="true" />
-
+       
         <ext:Store
             ID="sPreciario"
             runat="server">
@@ -50,8 +50,14 @@
                     </Fields>
                 </ext:Model>
             </Model>
+            <DirectEvents>
+             
+                <Load OnEvent="sPreciario_Load" Success="sPreciario_Load_Success">
+                     <EventMask ShowMask="true" Msg="Cargando información..." />
+                </Load>
+            </DirectEvents>
             <Listeners>
-                <Load Fn="sPreciario_Load" />
+          <%--      <Load Fn="sPreciario_Load" />--%>
                 <Add Fn="sPreciario_Add" />
             </Listeners>
         </ext:Store>

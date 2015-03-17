@@ -197,11 +197,11 @@ namespace OSEF.AVANCES.SUCURSALES
             }
         }
 
-        /// <summary>
-        /// Evento que se lanza al cargar el store
-        /// </summary>
-        [DirectMethod]
-        public void sPreciario_Load()
+        ///// <summary>
+        ///// Evento que se lanza al cargar el store
+        ///// </summary>
+        //[DirectMethod]
+        public void sPreciario_Load(object sender, DirectEventArgs e)
         {
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciario").Value;
             if (!strcookieEditarPreciario.Equals("Nuevo"))

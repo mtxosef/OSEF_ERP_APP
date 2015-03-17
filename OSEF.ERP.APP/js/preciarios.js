@@ -167,10 +167,10 @@ var txtfDescripcion_Change = function (txtDescripcion, Evento) {
 };
 
 //Evento lanzado al cargar el store de avance encabezado
-var sPreciario_Load = function () {
-    App.direct.sPreciario_Load();
+var sPreciario_Load_Success = function () {
+//    App.direct.sPreciario_Load();
     store = window.parent.App.pCentro.getBody().App.sPreciarios;
-
+   
 
     var d = new Date();
     App.dfFechaEmision.setValue(d);
