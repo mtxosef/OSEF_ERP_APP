@@ -14,6 +14,11 @@ var gpConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
     App.txtDescripcion.setValue(registro.get('Descripcion'));
 };
 
+//Acciones al seleccionar un registro
+var gpConceptos_Select = function (gridview, registro, gvhtml, index) {
+    App.txtDescripcion.setValue(registro.get('Descripcion'));
+};
+
 //Hacer doble clic sobre algun concepto del GridPanel
 var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
 

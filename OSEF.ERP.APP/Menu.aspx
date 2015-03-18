@@ -41,31 +41,36 @@
                                 </a>
 
                             </div>
-                            <%--Reportes--%>
+                            <%--Cambio y Mto--%>
                             <div class="tile-column-span-1">
-                                <a class="tile squarepeek bg-color-green" href="#" id="reportes">
-                                   <img src="assets/img/menu-reportes.png" alt="Reportes" />
+                                 <a class="tile squarepeek bg-color-purple" href="#" id="OrdenesCambio">
+                                    <img src="assets/img/menu-cambio.png" alt="OrdenesCambio" />
                                     <div class="text-inner">
-                                        <div class="text4">Reportes</div>
+                                        <div class="text4">Órdenes de cambio</div>
                                     </div>
                                 </a>
 
-                                <a class="tile square image bg-color-yellow" id="gantt" href="#">
-                                    <img src="assets/img/menu-gantt.png" alt="Gantt" />
+                                <a class="tile square image bg-color-red" id="mantenimiento" href="#">
+                                    <img src="assets/img/menu-mnto.png" alt="Mantenimiento" />
                                     <div class="textover-wrapper transparent">
-                                        <div class="text2">Visual Gantt</div>
+                                        <div class="text2">Mantenimiento</div>
                                     </div>
                                 </a>
                             </div>
 
                             <div class="tile-column-span-2">
-                                <a class="tile wide imagetext wideimage bg-color-blue" id="exploradorPreciarioConcepto" href="#">
+                                <a class="tile wide imagetext wideimage bg-color-green" id="exploradorPreciarioConcepto" href="#">
                                     <img src="assets/img/Search.png" alt="Explorador" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Explorador Preciario Concepto</div>
                                     </div>
                                 </a>
-                               
+                               <a class="tile square image bg-color-yellow" id="gantt" href="#">
+                                    <img src="assets/img/menu-gantt.png" alt="Gantt" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Visual Gantt</div>
+                                    </div>
+                                </a>
 
                             </div>
 
@@ -134,12 +139,7 @@
                                         <div class="text2">Estados</div>
                                     </div>
                                 </a>
-                                <a class="tile square image bg-color-fucsia" id="colonias" href="#">
-                                    <img src="assets/img/menu-colonias.png" alt="" />
-                                    <div class="textover-wrapper transparent">
-                                        <div class="text2">Colonias</div>
-                                    </div>
-                                </a>
+
                                  <a class="tile wide imagetext wideimage bg-color-darkgreen" id="preciarios" href="#">
                                     <img src="assets/img/menu-preciarios.png" alt="Preciarios" />
                                     <div class="textover-wrapper transparent">
@@ -147,8 +147,14 @@
                                     </div>
                                 </a>
 
+                                <a class="tile square image bg-color-fucsia" id="colonias" href="#">
+                                    <img src="assets/img/menu-colonias.png" alt="" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Colonias</div>
+                                    </div>
+                                </a>
+
                             </div>
-                        
                             <div class="tile-column-span-1">
                                 <a class="tile square image bg-color-yellow" id="codigospostales" href="#">
                                     <img src="assets/img/postal.png" alt="Códigos Postales" />
@@ -156,6 +162,15 @@
                                         <div class="text2">Códigos Postales</div>
                                     </div>
                                 </a>
+                                
+                                
+                                   <a class="tile wide imagetext wideimage bg-color-green" id="preciariosGenerales" href="#">
+                                    <img src="assets/img/menu-preciariosG.png" alt="Preciarios" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Preciarios Generales</div>
+                                    </div>
+                                </a>
+
                             </div>
                         </div>
                         <!-- Fin Segunda pagina Catálogos -->
@@ -177,17 +192,32 @@
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Menú</div>
                                     </div>
-                                </a>                          
+                                </a> 
+                                                     
                             </div>
 
                             <div class="tile-column-span-1">
-                                <a class="tile squarepeek bg-color-purple" href="#" id="usuarios">
+                            <a class="tile square bg-color-green" href="#" id="reportes">
+                                   <img src="assets/img/menu-reportes.png" alt="Reportes" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text4">Reportes</div>
+                                    </div>
+                                </a>    
+
+                                
+                            </div>
+
+
+                            <div class="tile-column-span-1">
+                                 <a class="tile squarepeek bg-color-purple" href="#" id="usuarios">
                                     <img src="assets/img/usuarios.png" alt="Usuarios" />
                                     <div class="text-inner">
                                         <div class="text4">Usuarios</div>
                                     </div>
                                 </a>
                             </div>
+
+
                         </div>
                         <!-- Fin Tercera pagina Reportes -->
                     </div>

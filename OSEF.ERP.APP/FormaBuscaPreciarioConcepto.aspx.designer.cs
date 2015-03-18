@@ -193,6 +193,33 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextArea txtDescripcion;
         
         /// <summary>
+        /// Control fcFiltroID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcFiltroID;
+        
+        /// <summary>
+        /// Control txtBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtBuscar;
+        
+        /// <summary>
+        /// Control imgbtnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnBuscar;
+        
+        /// <summary>
         /// Control pConceptos.
         /// </summary>
         /// <remarks>

@@ -403,6 +403,7 @@
                                                 </ext:Model>
                                             </Model>
                                             <Listeners>
+                                       
                                                 <Load Fn="sCarga_Load" ></Load>
                                             </Listeners>  
                                         </ext:Store>
@@ -548,13 +549,6 @@
                     </Items>
                 </ext:Panel>
             </Items>
-            <Listeners>
-                <ValidityChange Handler="this.dockedItems.get(0).setStatus({
-                                                text : valid ? 'La información esta completa/correcta' : 'Existe información incompleta/incorrecta', 
-                                                iconCls: valid ? 'icon-accept' : 'icon-exclamation'
-                                            });
-                                            #{imgbtnGuardar}.setDisabled(!valid);" />
-            </Listeners>
             <BottomBar>
                 <ext:StatusBar 
                     ID="sbFormaPreciario" 

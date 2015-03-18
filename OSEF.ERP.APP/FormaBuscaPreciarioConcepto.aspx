@@ -34,7 +34,7 @@
             ID="fpBuscaPreciarioConcepto"
             runat="server"
             MonitorResize="true"
-            Height="360"
+            Height="380"
             Width="665"
             BodyStyle="background-color:#fff;">
             <Items>
@@ -43,7 +43,7 @@
                     runat="server" 
                     BodyPadding="10"
                     Width="700"
-                    Height="150" 
+                    Height="180" 
                     AutoScroll="false">
                     <Items>
                         <ext:FieldContainer
@@ -176,37 +176,7 @@
                                 </ext:Button>
                             </Items>
                         </ext:FieldContainer>
-<%--                        <ext:FieldContainer
-                            ID="fcFiltroID"
-                            runat="server"
-                            FieldLabel="ID Concepto"
-                            AnchorHorizontal="100%"
-                            LabelWidth="120"
-                            Layout="ColumnLayout">
-                            <Items>
-                                <ext:TextField
-                                    ID="txtBuscar"
-                                    runat="server"
-                                    EmptyText="Buscar ID/Concepto"
-                                    Width="295"
-                                    Disabled="false">
-                                    <Listeners>
-                                        <Change Fn="txtBuscar_Change" />
-                                    </Listeners> 
-                                    <RightButtons>
-                                        <ext:ImageButton
-                                            ID="imgbtnBuscar"
-                                            runat="server"
-                                            ImageUrl="assets/img/controles/search.png"
-                                            OverImageUrl=""
-                                            PressedImageUrl=""
-                                            Height="22px"
-                                            Width="22px">                                             
-                                        </ext:ImageButton>
-                                    </RightButtons>
-                                </ext:TextField>
-                            </Items>
-                        </ext:FieldContainer>--%>
+                      
                         <ext:FieldContainer
                             ID="fcDescripcion"
                             runat="server"
@@ -224,6 +194,37 @@
                                     AllowBlank="false"
                                     Disabled="true">
                                 </ext:TextArea>
+                            </Items>
+                        </ext:FieldContainer>
+                          <ext:FieldContainer
+                            ID="fcFiltroID"
+                            runat="server"
+                            FieldLabel="Búsqueda"
+                            AnchorHorizontal="100%"
+                            LabelWidth="120"
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:TextField
+                                    ID="txtBuscar"
+                                    runat="server"
+                                    EmptyText="Buscar por Clave/Descripcion"
+                                    Width="335"
+                                    Disabled="false">
+                                    <Listeners>
+                                        <Change Fn="txtBuscar_Change" />
+                                    </Listeners> 
+                                    <RightButtons>
+                                        <ext:ImageButton
+                                            ID="imgbtnBuscar"
+                                            runat="server"
+                                            ImageUrl="assets/img/controles/search.png"
+                                            OverImageUrl=""
+                                            PressedImageUrl=""
+                                            Height="22px"
+                                            Width="22px">                                             
+                                        </ext:ImageButton>
+                                    </RightButtons>
+                                </ext:TextField>
                             </Items>
                         </ext:FieldContainer>
                     </Items>
@@ -310,6 +311,7 @@
                                         </Columns>
                                     </ColumnModel>
                                     <Listeners>
+                                    <Select Fn="gpConceptos_Select"></Select>
                                         <ItemClick Fn="gpConceptos_ItemClick" />
                                         <ItemDblClick Fn="gpConceptos_ItemDblClick" />
                                     </Listeners>

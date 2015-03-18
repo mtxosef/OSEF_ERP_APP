@@ -429,7 +429,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 }
                 //cerramos la conexion con el adaptador de excel
                 connExcel.Close();
-              
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "ok", ParameterMode.Value));
             }
             //Caso contrario no hace nada y devuelve los valores sin coincidencia
             else {

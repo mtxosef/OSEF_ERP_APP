@@ -218,6 +218,7 @@
     <Content Include="assets\img\menu-articulo.png" />
     <Content Include="assets\img\menu-auxiliar.png" />
     <Content Include="assets\img\menu-balanza.png" />
+    <Content Include="assets\img\menu-cambio.png" />
     <Content Include="assets\img\menu-certificados.png" />
     <Content Include="assets\img\Menu-Clientes.png" />
     <Content Include="assets\img\menu-colonias.png" />
@@ -228,7 +229,9 @@
     <Content Include="assets\img\menu-gantt.png" />
     <Content Include="assets\img\menu-inversiones.png" />
     <Content Include="assets\img\menu-mayor.png" />
+    <Content Include="assets\img\menu-mnto.png" />
     <Content Include="assets\img\menu-preciarios.png" />
+    <Content Include="assets\img\menu-preciariosG.png" />
     <Content Include="assets\img\menu-prestamos.png" />
     <Content Include="assets\img\menu-profesiones.png" />
     <Content Include="assets\img\menu-reportes.png" />

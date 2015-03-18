@@ -444,7 +444,7 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
 //Acciones del boton d agregar concepto en el detalle
 var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
     window.parent.App.wAyudaConcepto.load('FormaBuscaPreciarioConcepto.aspx');
-    window.parent.App.wAyudaConcepto.setHeight(410);
+    window.parent.App.wAyudaConcepto.setHeight(430);
     window.parent.App.wAyudaConcepto.setWidth(685);
     window.parent.App.wAyudaConcepto.center();
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');

@@ -112,7 +112,7 @@ var sPreciarios_DataChanged = function () {
         App.sbPreciarios.setText(App.sPreciarios.getCount() + ' ' + 'PRECIARIOS');
     }
     else {
-        App.sbPreciarios.setText(App.sPreciarios.getCount() + ' ' + 'PRECIARIOS');
+        App.sbPreciarios.setText(App.sPreciarios.getCount() + ' ' + 'PRECIARIO');
     }   
 };
 
@@ -203,8 +203,9 @@ var sPreciario_Add = function (avance, registro) {
 //Renderizar objeos con descripciones de categorias
 //Asignar la descripción de la categoria a esta columna
 var cCategoria_Renderer = function (valor, columna, registro) {
+
     if (valor.length != 0) {
-        var Categoria = registro.get('RCategoria');        
+        var Categoria = registro.get('RCategoria');
         return Categoria.Descripcion;
     }
 };
@@ -226,7 +227,9 @@ var cSubsubcategoria_Renderer = function (valor, columna, registro) {
 };
 
 var btnImportar_Click_Success = function (response, result) {
-//Valida si se habilita el boton de guardar
+    //Valida si se habilita el boton de guardar
+    console.log(result.extraParamsResponse.accion);
+ 
     HabilitarGuardar();
     if (result.extraParamsResponse.accion == 'error') {
         Ext.Msg.show({
