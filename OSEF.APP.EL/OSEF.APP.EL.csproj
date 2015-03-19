@@ -57,6 +57,11 @@
     <Compile Include="Preciario.cs" />
     <Compile Include="PreciarioCategoria.cs" />
     <Compile Include="PreciarioConcepto.cs" />
+    <Compile Include="PreciarioGeneral.cs" />
+    <Compile Include="PreciarioGeneralCategoria.cs" />
+    <Compile Include="PreciarioGeneralConcepto.cs" />
+    <Compile Include="PreciarioGeneralSubCategoria.cs" />
+    <Compile Include="PreciarioGeneralSubSubCategoria.cs" />
     <Compile Include="PreciarioSubCategoria.cs" />
     <Compile Include="PreciarioSubSubCategoria.cs" />
     <Compile Include="Profesion.cs" />

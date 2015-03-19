@@ -339,6 +339,7 @@
     <Content Include="FormaParametrosP5.aspx" />
     <Content Include="FormaPreciario.aspx" />
     <Content Include="FormaPreciarioExplorador.aspx" />
+    <Content Include="FormaPreciarioGeneral.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirImagenesCliente.aspx" />
     <Content Include="FormaSubirImagenesPreciario.aspx" />
@@ -385,6 +386,7 @@
     <Content Include="js\olvidarContrasena.js" />
     <Content Include="js\parametrosP1.js" />
     <Content Include="js\preciarios.js" />
+    <Content Include="js\preciariosGenerales.js" />
     <Content Include="js\profesiones.js" />
     <Content Include="js\reportes.js" />
     <Content Include="js\subirImagenesCliente.js" />
@@ -433,6 +435,7 @@
     </Content>
     <Content Include="PlantService.asmx" />
     <Content Include="Preciarios.aspx" />
+    <Content Include="PreciariosGenerales.aspx" />
     <Content Include="Previa.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
@@ -771,6 +774,13 @@
     <Compile Include="FormaPreciarioExplorador.aspx.designer.cs">
       <DependentUpon>FormaPreciarioExplorador.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaPreciarioGeneral.aspx.cs">
+      <DependentUpon>FormaPreciarioGeneral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaPreciarioGeneral.aspx.designer.cs">
+      <DependentUpon>FormaPreciarioGeneral.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -935,6 +945,13 @@
     </Compile>
     <Compile Include="Preciarios.aspx.designer.cs">
       <DependentUpon>Preciarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PreciariosGenerales.aspx.cs">
+      <DependentUpon>PreciariosGenerales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreciariosGenerales.aspx.designer.cs">
+      <DependentUpon>PreciariosGenerales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Previa.aspx.cs">
       <DependentUpon>Previa.aspx</DependentUpon>

@@ -320,3 +320,60 @@
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciario.sql
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciarios.sql
 
+------------------------------------------------------------------------------------- PreciariosGenerales (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciariosGenerales\web_spD_BorrarPreciarioGeneral.sql
+-- PreciariosGenerales (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGenerales.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesPorID.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesPorSucursal.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesActivos.sql
+-- PreciariosGenerales (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciariosGenerales\web_spI_InsertarPreciarioGeneral.sql
+-- PreciariosGenerales (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciariosGenerales\web_spU_ActualizarPreciarioGeneral.sql
+-----------------------------------------------------------------------------------
+-- PreciarioGeneralCategoria (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciariosGeneralesCategorias\web_spD_BorrarPreciarioGeneralCategorias.sql
+-- PreciarioGeneralCategoria (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesCategorias\web_spS_ObtenerPreciariosGeneralCategorias.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesCategorias\web_spS_ObtenerPreciarioGeneralCategoriasPorPreciario.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesCategorias\web_spS_ObtenerPreciarioGeneralCategoriaPorID.sql
+-- PreciarioGeneralCategoria (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciariosGeneralesCategorias\web_spI_InsertarPreciarioGeneralCategorias.sql
+-- PreciarioGeneralCategoria (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciariosGeneralesCategorias\web_spU_ActualizarPreciarioGeneralCategorias.sql
+-----------------------------------------------------------------------------------
+-- PreciarioGeneralSubCategoria (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciariosGeneralesSubCategorias\web_spD_BorrarPreciarioGeneralSubCategorias.sql
+-- PreciarioGeneralSubCategoria (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubCategorias\web_spS_ObtenerPreciarioGeneralSubCategorias.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubCategorias\web_spS_ObtenerPreciarioGeneralSubCategoriasPorID.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubCategorias\web_spS_ObtenerPreciarioGeneralSubCategoriasPorCategoria.sql
+-- PreciarioGeneralSubCategoria (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciariosGeneralesSubCategorias\web_spI_InsertarPreciarioGeneralSubCategorias.sql
+-- PreciarioGeneralSubCategoria (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciariosGeneralesSubCategorias\web_spU_ActualizarPreciarioGeneralSubCategorias.sql
+-----------------------------------------------------------------------------------
+-- PreciarioGeneralSubSubCategoria (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciariosGeneralesSubSubCategorias\web_spD_BorrarPreciarioGeneralSubSubCategorias.sql
+-- PreciarioGeneralSubSubCategoria (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubSubCategorias\web_spS_ObtenerPreciarioGeneralSubSubCategorias.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubSubCategorias\web_spS_ObtenerPreciarioGeneralSubSubCategoriasPorID.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubSubCategorias\web_spS_ObtenerPreciarioGeneralSubSubCategoriasPorSubCategoria.sql
+
+-- PreciarioGeneralSubSubCategoria (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciariosGeneralesSubSubCategorias\web_spI_InsertarPreciarioGeneralSubSubCategorias.sql
+-- PreciarioGeneralSubSubCategoria (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciariosGeneralesSubSubCategorias\web_spU_ActualizarPreciarioGeneralSubSubCategorias.sql
+-----------------------------------------------------------------------------------
+-- PreciarioGeneralConcepto (Borrar)
+:r c:\SqlServerScripts\Borrar\PreciariosGeneralesConceptos\web_spD_BorrarPreciarioGeneralConcepto.sql
+-- PreciarioGeneralConcepto (Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptos\web_spS_ObtenerPreciarioGeneralConceptoPorPreciario.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptos\web_spS_ObtenerPreciarioGeneralConceptos.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptos\web_spS_ObtenerPreciarioGeneralConceptosFiltro.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptos\web_spS_ObtenerPreciarioGeneralConceptoPorId.sql
+-- PreciarioGeneralConcepto (Insertar)
+:r c:\SqlServerScripts\Insertar\PreciariosGeneralesConceptos\web_spI_InsertarPreciarioGeneralConcepto.sql
+-- PreciarioGeneralConcepto (Modificar)
+:r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptos\web_spU_ActualizarPreciarioGeneralConcepto.sql

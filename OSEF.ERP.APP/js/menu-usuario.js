@@ -256,5 +256,13 @@ $(document).ready(function () {
         });
     });
 
+    $("#preciariosGenerales").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            //            parent.App.lblRegresar.show();
+            parent.App.pCentro.getLoader().load('PreciariosGenerales.aspx');
+        });
+    });
+
 
 });
