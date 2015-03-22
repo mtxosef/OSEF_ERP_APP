@@ -15,15 +15,13 @@ namespace OSEF.APP.EL
 
         string id;
         string descripcion;
-        string sucursal;
         string archivo;
         string usuario;
         string estatus;
         DateTime fechaalta;
         bool tipoobra;
         bool tipomantenimiento;
-       
-        Sucursal rsucursal;
+   
        
 
         #endregion
@@ -43,12 +41,7 @@ namespace OSEF.APP.EL
             set { descripcion = value; }
         }
 
-        public string Sucursal
-        {
-            get { return sucursal; }
-            set { sucursal = value; }
-        }
-
+      
         public string Archivo
         {
             get { return archivo; }
@@ -72,13 +65,6 @@ namespace OSEF.APP.EL
             get { return fechaalta; }
             set { fechaalta = value; }
         }
-
-        public Sucursal RSucursal
-        {
-            get { return rsucursal; }
-            set { rsucursal = value; }
-        }
-
 
         public bool TipoObra
         {

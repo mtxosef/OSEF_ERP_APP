@@ -31,7 +31,6 @@ CREATE PROCEDURE web_spI_InsertarPreciarioGeneral
 	-- Add the parameters for the stored procedure here
 	@ID				CHAR(7) OUTPUT,
 	@Descripcion	VARCHAR(100),
-	@Sucursal		VARCHAR(50),
 	@Archivo		VARCHAR(50),
 	@Estatus		VARCHAR(20),
 	@TipoObra		BIT,
@@ -49,7 +48,7 @@ BEGIN
 		@ID_TEMP INT,
 		@VALOR CHAR(7)
 		
-		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT)) FROM Preciarios WHERE ID LIKE 'PRC%'
+		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT)) FROM PreciariosGenerales WHERE ID LIKE 'PRC%'
 		IF (@ID_TEMP IS NOT NULL)
 		BEGIN
 			SET @ID_TEMP = @ID_TEMP + 1
@@ -86,7 +85,6 @@ BEGIN
 		(
 			ID,
 			Descripcion,
-			Sucursal,
 			Archivo,
 			Estatus,
 			TipoMantenimiento,
@@ -98,7 +96,6 @@ BEGIN
 		(
 			@ID,
 			@Descripcion,
-			@Sucursal,
 			@Archivo,
 			@Estatus,
 			@TipoMantenimiento,

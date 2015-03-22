@@ -56,6 +56,11 @@
     <Compile Include="PreciarioCategoriaDataAccess.cs" />
     <Compile Include="PreciarioConceptosDataAccess.cs" />
     <Compile Include="PreciarioDataAccess.cs" />
+    <Compile Include="PreciarioGeneralCategoriaDataAccess.cs" />
+    <Compile Include="PreciarioGeneralConceptoDataAccess.cs" />
+    <Compile Include="PreciarioGeneralDataAccess.cs" />
+    <Compile Include="PreciarioGeneralSubCategoriaDataAccess.cs" />
+    <Compile Include="PreciarioGeneralSubSubCategoriaDataAccess.cs" />
     <Compile Include="PreciarioSubCategoriasDataAccess.cs" />
     <Compile Include="PreciarioSubSubCategoriaDataAccess.cs" />
     <Compile Include="ProfesionDataAccess.cs" />

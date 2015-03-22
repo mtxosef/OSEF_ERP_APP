@@ -38,7 +38,7 @@ BEGIN
 
     -- Insert statements for procedure here
     DELETE FROM
-		PreciarioGeneralesCategorias
+		PreciariosGeneralesCategorias
 	WHERE
 		Preciario = @PRECIARIO
 END

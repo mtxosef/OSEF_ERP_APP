@@ -18,18 +18,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciariosGeneralesPorSucursal' AND
+			WHERE  name = 'web_spS_ObtenerPreciarioGeneralConceptoPorId' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciariosGeneralesPorSucursal
+	DROP PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorId
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Martes 16 de Diciembre de 2014
 -- Description:	Obtener un registro de Articulos por su ID
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciariosGeneralesPorSucursal
+CREATE PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorId
 	-- Add the parameters for the stored procedure here
-	@SUCURSAL		VARCHAR(30)
+	@ID		CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -39,17 +39,21 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT
 		ID,
+		CLAVE,
+		Preciario,
 		Descripcion,
-		Sucursal,
-		FechaAlta,
-		Archivo,
-		TipoObra,
-		TipoMantenimiento,
-		Usuario,
-		Estatus
+		Categoria,
+		SubCategoria,
+		SubSubCategoria,
+		Unidad,
+		Costo,
+		Cantidad,
+		Estatus,
+		FechaAlta
+		
 	FROM
-		PreciariosGenerales
+		PreciariosGeneralesConceptos
 	WHERE
-		Sucursal = @SUCURSAL
+		ID = @ID
 END
 GO

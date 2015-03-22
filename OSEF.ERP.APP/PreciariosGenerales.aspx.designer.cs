@@ -31,22 +31,22 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmPreciarios.
+        /// Control rmPreciariosGenerales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmPreciarios;
+        protected global::Ext.Net.ResourceManager rmPreciariosGenerales;
         
         /// <summary>
-        /// Control gpPreciarios.
+        /// Control gpPreciariosGenerales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gpPreciarios;
+        protected global::Ext.Net.GridPanel gpPreciariosGenerales;
         
         /// <summary>
         /// Control tbPreciarios.
@@ -112,6 +112,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mUsuarios;
         
         /// <summary>
+        /// Control cmbTipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbTipo;
+        
+        /// <summary>
         /// Control tbsPreciarios.
         /// </summary>
         /// <remarks>
@@ -148,22 +157,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ImageButton imgbtnBuscar;
         
         /// <summary>
-        /// Control sPreciarios.
+        /// Control sPreciariosGenerales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sPreciarios;
+        protected global::Ext.Net.Store sPreciariosGenerales;
         
         /// <summary>
-        /// Control mPreciarios.
+        /// Control mPreciariosGenerales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mPreciarios;
+        protected global::Ext.Net.Model mPreciariosGenerales;
         
         /// <summary>
         /// Control cID.
@@ -184,40 +193,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cNombre;
         
         /// <summary>
-        /// Control cSucursal.
+        /// Control cFechaAlta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cSucursal;
-        
-        /// <summary>
-        /// Control cmbSucursalFiltro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSucursalFiltro;
-        
-        /// <summary>
-        /// Control sSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sSucursales;
-        
-        /// <summary>
-        /// Control mSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mSucursales;
+        protected global::Ext.Net.DateColumn cFechaAlta;
         
         /// <summary>
         /// Control cEstatus.
@@ -238,6 +220,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbFiltroEstatus;
         
         /// <summary>
+        /// Control cUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cUsuario;
+        
+        /// <summary>
         /// Control rsmPreciarios.
         /// </summary>
         /// <remarks>
@@ -247,12 +238,12 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.RowSelectionModel rsmPreciarios;
         
         /// <summary>
-        /// Control sbPreciarios.
+        /// Control sbPreciariosGenerales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar sbPreciarios;
+        protected global::Ext.Net.StatusBar sbPreciariosGenerales;
     }
 }

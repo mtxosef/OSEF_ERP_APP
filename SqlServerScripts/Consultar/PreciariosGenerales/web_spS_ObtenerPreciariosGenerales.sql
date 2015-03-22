@@ -39,7 +39,6 @@ BEGIN
 	SELECT
 		ID,
 		Descripcion,
-		Sucursal,
 		FechaAlta,
 		Archivo,
 		TipoObra,

@@ -325,8 +325,6 @@
 -- PreciariosGenerales (Consultar)
 :r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGenerales.sql
 :r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesPorID.sql
-:r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesPorSucursal.sql
-:r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesActivos.sql
 -- PreciariosGenerales (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciariosGenerales\web_spI_InsertarPreciarioGeneral.sql
 -- PreciariosGenerales (Modificar)
@@ -360,7 +358,6 @@
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubSubCategorias\web_spS_ObtenerPreciarioGeneralSubSubCategorias.sql
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubSubCategorias\web_spS_ObtenerPreciarioGeneralSubSubCategoriasPorID.sql
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesSubSubCategorias\web_spS_ObtenerPreciarioGeneralSubSubCategoriasPorSubCategoria.sql
-
 -- PreciarioGeneralSubSubCategoria (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciariosGeneralesSubSubCategorias\web_spI_InsertarPreciarioGeneralSubSubCategorias.sql
 -- PreciarioGeneralSubSubCategoria (Modificar)

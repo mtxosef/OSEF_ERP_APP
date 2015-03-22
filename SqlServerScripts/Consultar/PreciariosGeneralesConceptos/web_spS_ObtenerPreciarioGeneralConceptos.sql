@@ -18,20 +18,21 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarioGeneralConceptoPorPreciario' AND
+			WHERE  name = 'web_spS_ObtenerPreciarioGeneralConceptos' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorPreciario
+	DROP PROCEDURE web_spS_ObtenerPreciarioGeneralConceptos
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener un registro de Articulos por su ID
+-- Description:	Obtener todos los registros de Articulos
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorPreciario
+CREATE PROCEDURE web_spS_ObtenerPreciarioGeneralConceptos
 	-- Add the parameters for the stored procedure here
-	@Preciario		CHAR(7)
+	
 AS
 BEGIN
+
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
@@ -48,15 +49,11 @@ BEGIN
 		Unidad,
 		Costo,
 		Cantidad,
-		Utilizada,
-		Importe,
-		ImporteFinal,
 		Estatus,
 		FechaAlta
 		
 	FROM
 		PreciariosGeneralesConceptos
-	WHERE
-		Preciario = @Preciario
+	
 END
 GO
