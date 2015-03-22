@@ -367,6 +367,22 @@
                                         ID="cmPreciario" 
                                         runat="server">
                                         <Columns>
+                                            <ext:CommandColumn
+                                                    ID="ccAcciones"
+                                                    runat="server" 
+                                                    Width="25">
+                                                    <%--<PrepareToolbar Fn="ccAcciones_PrepareToolbar" />--%>
+                                                    <Commands>
+                                                        <ext:GridCommand
+                                                            Icon="Delete"
+                                                            CommandName="Borrar">
+                                                            <ToolTip Text="Borrar" />
+                                                        </ext:GridCommand>
+                                                    </Commands>
+                                                    <Listeners>
+                                                        <Command Fn="ccAcciones_Command" />
+                                                    </Listeners>
+                                                </ext:CommandColumn>
                                             <ext:Column
                                                 ID="cIDPreciario"
                                                 runat="server"
@@ -380,6 +396,12 @@
                                                 Text="Concepto"
                                                 Width="260"
                                                 DataIndex="Descripcion">
+                                                <Editor>
+                                                    <ext:TextField 
+                                                        ID="txtDescripcionConcepto"
+                                                        runat="server" >
+                                                    </ext:TextField>
+                                                </Editor>
                                             </ext:Column>
                                              <ext:Column
                                                 ID="cCantidad"
@@ -387,14 +409,23 @@
                                                 Align="Center"
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
-                                                Width="100">
-                                            </ext:Column>
-                                             <ext:Column
-                                                ID="cUnidad"
-                                                runat="server"
-                                                Text="Unidad"
-                                                Width="60"
-                                                DataIndex="Unidad">
+                                                Width="125">
+                                                <Renderer Fn="rendererCantidad"></Renderer>
+                                                <Editor>
+                                                    <ext:NumberField 
+                                                        ID="nfCantidad"
+                                                        runat="server"
+                                                        AllowDecimals="true"
+                                                        AllowExponential="false"
+                                                        DecimalPrecision="2"
+                                                        DecimalSeparator="."
+                                                        MaxLength="10"
+                                                        EnforceMaxLength="true"
+                                                        MaxValue="999999999"
+                                                        MinValue="0"
+                                                        Step="1">
+                                                    </ext:NumberField>
+                                                </Editor>
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cPrecio"
@@ -404,6 +435,21 @@
                                                 DataIndex="Costo"
                                                 Width="110">
                                                 <Renderer Fn="rendererCosto"></Renderer>
+                                                  <Editor>
+                                                    <ext:NumberField 
+                                                        ID="nfCosto"
+                                                        runat="server"
+                                                        AllowDecimals="true"
+                                                        AllowExponential="false"
+                                                        DecimalPrecision="2"
+                                                        DecimalSeparator="."
+                                                        MaxLength="10"
+                                                        EnforceMaxLength="true"
+                                                        MaxValue="999999999"
+                                                        MinValue="0"
+                                                        Step="1">
+                                                    </ext:NumberField>
+                                                </Editor>
                                             </ext:Column>
                                          
                                            
@@ -442,6 +488,17 @@
                                             runat="server">
                                         </ext:CellSelectionModel>
                                     </SelectionModel>
+                                    <Plugins>
+                                        <ext:CellEditing 
+                                            ID="ceFormaPreciarioGeneral" 
+                                            runat="server"
+                                            ClicksToEdit="1">
+                                           <%-- <Listeners>
+                                                <Edit Fn="cePreciarioConcepto_Edit" />
+                                                <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
+                                            </Listeners>--%>
+                                        </ext:CellEditing>
+                                    </Plugins>
                                     <View>
                                         <ext:GridView
                                             ID="gvPreciario"

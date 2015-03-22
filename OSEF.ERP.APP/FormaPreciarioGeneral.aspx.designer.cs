@@ -301,6 +301,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mCarga;
         
         /// <summary>
+        /// Control ccAcciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn ccAcciones;
+        
+        /// <summary>
         /// Control cIDPreciario.
         /// </summary>
         /// <remarks>
@@ -319,6 +328,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cConcepto;
         
         /// <summary>
+        /// Control txtDescripcionConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtDescripcionConcepto;
+        
+        /// <summary>
         /// Control cCantidad.
         /// </summary>
         /// <remarks>
@@ -328,13 +346,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cCantidad;
         
         /// <summary>
-        /// Control cUnidad.
+        /// Control nfCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cUnidad;
+        protected global::Ext.Net.NumberField nfCantidad;
         
         /// <summary>
         /// Control cPrecio.
@@ -344,6 +362,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cPrecio;
+        
+        /// <summary>
+        /// Control nfCosto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfCosto;
         
         /// <summary>
         /// Control cCategoria.
@@ -380,6 +407,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.CellSelectionModel csmPreciario;
+        
+        /// <summary>
+        /// Control ceFormaPreciarioGeneral.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CellEditing ceFormaPreciarioGeneral;
         
         /// <summary>
         /// Control gvPreciario.

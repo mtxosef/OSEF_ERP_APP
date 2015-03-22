@@ -127,6 +127,17 @@ var rendererCosto = function (value) {
     F.decimalSeparator = '.';
     return F.number(value, "$000,000,000.00");
 };
+//Formato Cantidades
+var rendererCantidad = function (valor, metaData, registro) {
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+
+
+    return F.number(registro.get('Cantidad'), "000,000,000.00") + " " + registro.get('Unidad');
+   
+};
 
 //Evento que ocurre al dar clic en imgbtnGuardar
 var imgbtnGuardar_Click_Success = function () {
@@ -189,3 +200,18 @@ var cSubsubcategoria_Renderer = function (valor, columna, registro) {
 };
 
 
+//Evento de la columna de acciones
+var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
+    //Eliminar registro
+    App.sCarga.removeAt(fila);
+
+    //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
+    //        Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
+    //        Ext.util.Cookies.set('cookieConceptoFotosVolumetria', registro.get('ConceptoID'));
+
+    //        App.direct.obtenerImagenesPorConcepto();
+    //    }
+
+
+
+};
