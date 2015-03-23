@@ -30,10 +30,7 @@ GO
 CREATE PROCEDURE web_spU_ActualizarPreciarioGeneral
 	-- Add the parameters for the stored procedure here
 	@ID				CHAR(10),
-	@Descripcion	VARCHAR(100),
-	@Sucursal		VARCHAR(50),
-	@Archivo		VARCHAR(50),
-	@Estatus		VARCHAR(20)
+	@Descripcion	VARCHAR(100)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -45,10 +42,7 @@ BEGIN
 		PreciariosGenerales
 	SET
 		
-		Descripcion = @Descripcion,
-		Sucursal =@Sucursal,
-		Archivo = @Archivo,
-		Estatus = @Estatus
+		Descripcion = @Descripcion
 		
 	WHERE
 		ID = @ID

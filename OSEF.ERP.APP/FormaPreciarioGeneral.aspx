@@ -24,14 +24,14 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type='text/javascript' src="js/preciarios.js"></script>
+    <script type='text/javascript' src="js/formaPreciarioGeneral.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmFormaPreciario" runat="server" HideInDesign="true" />
        
-      <%--  <ext:Store
-            ID="sPreciario"
+        <ext:Store
+            ID="sPreciarioGeneral"
             runat="server">
             <Model>
                 <ext:Model
@@ -41,12 +41,12 @@
                     <Fields>
                         <ext:ModelField Name="ID" Type="String" />
                         <ext:ModelField Name="Descripcion" Type="String" />
-                        <ext:ModelField Name="Sucursal" Type="String" />
                         <ext:ModelField Name="Archivo" Type="String" />
                         <ext:ModelField Name="Estatus" Type="String" />
                         <ext:ModelField Name="Usuario" Type="String" />
                         <ext:ModelField Name="FechaAlta" Type="Date" />
-                        <ext:ModelField Name="RSucursal" Type="Object" />
+                        <ext:ModelField Name="TipoObra" Type="Boolean" />
+                        <ext:ModelField Name="TipoMantenimiento" Type="Boolean" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -57,9 +57,11 @@
                 </Load>
             </DirectEvents>
             <Listeners>
-                <Add Fn="sPreciario_Add" />
+             <Add Fn="sPreciario_Add" />
             </Listeners>
-        </ext:Store>--%>
+        </ext:Store>
+
+      
 
         <ext:FormPanel 
             ID="fpPreciario"
@@ -85,7 +87,7 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                            <%--<DirectEvents>
+                            <DirectEvents>
                                 <Click OnEvent="imgbtnGuardar_Click">
                                     <EventMask ShowMask="true" Msg="Registrando información..." />
                                     <ExtraParams>
@@ -93,10 +95,12 @@
                                         <ext:Parameter Name="estatus" Value="App.cmbEstatus.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="archivo" Value="App.txfArchivoActual.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
-                                    </ExtraParams>
+                                         <ext:Parameter Name="tipoObra" Value="App.rObra.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="tipoMnto" Value="App.rMnto.getValue()" Mode="Raw" />
+                                        
+                                        </ExtraParams>
                                 </Click>
-                            </DirectEvents>--%>
+                            </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnCancelar"
@@ -121,7 +125,7 @@
                     runat="server" 
                     BodyPadding="10"
                     Width="900"
-                    Height="187" 
+                    Height="154" 
                     AutoScroll="false">
                     <Items>
                         <ext:FieldContainer 
@@ -150,99 +154,36 @@
                                     AllowBlank="false"
                                     AutoFocus="true">
                                     <Listeners>
-                                        <%--<Change Fn="txtfDescripcion_Change" />--%>
+                                        <Change Fn="txtfDescripcion_Change" />
                                         <Blur Handler="App.txtfDescripcion.setValue(App.txtfDescripcion.getValue().toUpperCase());" />
                                     </Listeners>
-                                </ext:TextField>
-                            </Items>
-                        </ext:FieldContainer>
-                        <ext:FieldContainer
-                            ID="fcSucursal"
-                            runat="server"
-                            FieldLabel="Sucursal"
-                            AnchorHorizontal="100%"
-                            LabelWidth="120"
-                            Layout="ColumnLayout">
-                            <Items>
-                                <ext:ComboBox
-                                    ID="cmbSucursal"
-                                    runat="server"
-                                    DisplayField="CR"
-                                    ValueField="ID"
-                                    Width="200"
-                                    MatchFieldWidth="false"
-                                    StyleSpec="margin-right: 6px;"
-                                    Cls="spanCustomCombo xEspacioCmbxCustom"
-                                    PageSize="10"
-                                    AllowBlank="false"
-                                    ForceSelection="true"
-                                    QueryMode="Local"
-                                    TypeAhead="true">
-                                    <ListConfig ID="lcEstado" runat="server" Width="350" Cls="xEspacioCmbxCustom">
-                                        <ItemTpl ID="itSucursal" runat="server">
-                                            <Html>
-                                                <div class="search-item">
-							                        <h3>{CR}</h3>
-                                                    <span>{ID} {Nombre}</span>
-						                        </div>
-                                            </Html>
-                                        </ItemTpl>
-                                    </ListConfig>
-                                    <Store>
-                                        <ext:Store
-                                            ID="sSucursales"
-                                            runat="server">
-                                            <Model>
-                                                <ext:Model
-                                                    ID="mSucursales"
-                                                    runat="server"
-                                                    IDProperty="ID">
-                                                    <Fields>
-                                                        <ext:ModelField Name="ID" />
-                                                        <ext:ModelField Name="Nombre" />
-                                                        <ext:ModelField Name="CR" />
-                                                    </Fields>
-                                                </ext:Model>                            
-                                            </Model>
-                                        </ext:Store>
-                                    </Store>
-                                   <%-- <Listeners>
-                                        <Select Fn="cmbSucursal_Select" />
-                                        <Change Fn="cmbSucursal_Change" />
-                                    </Listeners>--%>
-                                  <%--  <DirectEvents>
-                                        <Select OnEvent="cmbSucursales_Change" Success="cmbSucursal_Change_Success"> 
-                                            <ExtraParams>
-                                                <ext:Parameter Name="valor" Value="App.cmbSucursal.getValue()" Mode="Raw" />
-                                            </ExtraParams>
-                                        </Select>
-                                    </DirectEvents>--%>
-                                </ext:ComboBox>
-                                <ext:TextField
-                                    ID="txtfSucursalNombre"
-                                    runat="server"
-                                    Width="360"
-                                    Disabled="true">
                                 </ext:TextField>
                             </Items>
                         </ext:FieldContainer>
                         <ext:FieldContainer 
                                 ID="fcTipoPreciario" 
                                 runat="server"
-                                LabelWidth="120"  
+                                LabelWidth="115"  
                                 FieldLabel="Tipo de Preciario" 
                                 AnchorHorizontal="100%" 
                                 Layout="ColumnLayout">
                                 <Items>
                                     <ext:RadioGroup
-                                        ID="rgTipoVivienda"
+                                        ID="rgTipoPreciario"
                                         runat="server"
-                                        Width="500"
-                                        LabelWidth="140"
-                                        StyleSpec="margin-right: 6px;">
+                                        Width="210">
                                         <Items>
-                                            <ext:Radio ID="rObra" runat="server" BoxLabel="Obra" Checked="true" />
-                                            <ext:Radio ID="rMnto" runat="server" BoxLabel="Mantenimiento"  />
+                                            <ext:Radio ID="rObra" runat="server" BoxLabel="Obra">
+                                            <Listeners>
+                                                <Change Fn="rObra_Change"></Change>
+                                            </Listeners>
+                                            </ext:Radio>
+                                            <ext:Radio ID="rMnto" runat="server" BoxLabel="Mantenimiento">
+                                            <Listeners>
+                                                <Change Fn="rMnto_Change"></Change>
+                                            </Listeners>
+                                            </ext:Radio>
+
                                         </Items>
                                     </ext:RadioGroup>
                                 </Items>
@@ -302,9 +243,9 @@
                                     Width="304"
                                     StyleSpec="margin-right: 6px;" 
                                     Text="">
-                                  <%--  <Listeners>
+                                    <Listeners>
                                         <Change Fn="CheckExtension" />
-                                    </Listeners>--%>
+                                    </Listeners>
                                 </ext:FileUploadField>
                                 <ext:NumberField
                                     ID="nfHoja"
@@ -333,11 +274,11 @@
                                     ToolTip="Cargar Archivo"
                                     Height="23"
                                     Width="23">
-                                  <%--  <DirectEvents>
+                                    <DirectEvents>
                                         <Click OnEvent="btnImportar_Click" Success="btnImportar_Click_Success">
                                             <EventMask ShowMask="true" Msg="Importando datos..." />
                                         </Click>
-                                    </DirectEvents>--%>
+                                    </DirectEvents>
                                 </ext:ImageButton>
                                 <ext:ImageButton 
                                     ID="imgbtnBorrarCarga"
@@ -350,9 +291,9 @@
                                     ToolTip="Limpiar"
                                     Height="23"
                                     Width="23">
-                                   <%-- <Listeners>
+                                    <Listeners>
                                         <Click Fn="BorrarDetallePreciario"></Click>
-                                    </Listeners>--%>
+                                    </Listeners>
                                 </ext:ImageButton>
                             </Items>
                         </ext:FieldContainer> 
@@ -385,7 +326,7 @@
                         <ext:FieldSet
                             ID="fsPreciario" 
                             runat="server" 
-                            Height="295" 
+                            Height="330" 
                             Title="Preciario"
                             DefaultAnchor="100%">
                             <Items>
@@ -393,7 +334,7 @@
                                     ID="gpPreciario"
                                     runat="server"
                                     Width="850"
-                                    Height="270">
+                                    Height="305">
                                     <Store>
                                         <ext:Store
                                             ID="sCarga"
@@ -407,10 +348,7 @@
                                                         <ext:ModelField Name="Descripcion" Type="String" />
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />
-                                                        <ext:ModelField Name="Utilizada" Type="Float" />
                                                         <ext:ModelField Name="Costo" Type="Float" />
-                                                        <ext:ModelField Name="Importe" Type="Float" />
-                                                        <ext:ModelField Name="Importefinal" Type="Float" />
                                                         <ext:ModelField Name="Categoria" Type="String" />
                                                         <ext:ModelField Name="SubCategoria" Type="String" />
                                                         <ext:ModelField Name="SubSubCategoria" Type="String" />
@@ -423,16 +361,28 @@
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
-                                           <%-- <Listeners>
-                                       
-                                                <Load Fn="sCarga_Load" ></Load>
-                                            </Listeners>--%>  
                                         </ext:Store>
                                     </Store>
                                     <ColumnModel 
                                         ID="cmPreciario" 
                                         runat="server">
                                         <Columns>
+                                            <ext:CommandColumn
+                                                    ID="ccAcciones"
+                                                    runat="server" 
+                                                    Width="25">
+                                                    <%--<PrepareToolbar Fn="ccAcciones_PrepareToolbar" />--%>
+                                                    <Commands>
+                                                        <ext:GridCommand
+                                                            Icon="Delete"
+                                                            CommandName="Borrar">
+                                                            <ToolTip Text="Borrar" />
+                                                        </ext:GridCommand>
+                                                    </Commands>
+                                                    <Listeners>
+                                                        <Command Fn="ccAcciones_Command" />
+                                                    </Listeners>
+                                                </ext:CommandColumn>
                                             <ext:Column
                                                 ID="cIDPreciario"
                                                 runat="server"
@@ -446,6 +396,12 @@
                                                 Text="Concepto"
                                                 Width="260"
                                                 DataIndex="Descripcion">
+                                                <Editor>
+                                                    <ext:TextField 
+                                                        ID="txtDescripcionConcepto"
+                                                        runat="server" >
+                                                    </ext:TextField>
+                                                </Editor>
                                             </ext:Column>
                                              <ext:Column
                                                 ID="cCantidad"
@@ -453,23 +409,23 @@
                                                 Align="Center"
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
-                                                Width="100">
-                                            </ext:Column>
-                                            <ext:Column
-                                                ID="cUtilizada"
-                                                runat="server"
-                                                Align="Center"
-                                                Text="Utilizada"
-                                                DataIndex="Utilizada"
-                                                Width="100">
-                                               <%-- <Renderer Fn="renderCantidadUtilizada" />--%>
-                                            </ext:Column>
-                                             <ext:Column
-                                                ID="cUnidad"
-                                                runat="server"
-                                                Text="Unidad"
-                                                Width="60"
-                                                DataIndex="Unidad">
+                                                Width="125">
+                                                <Renderer Fn="rendererCantidad"></Renderer>
+                                                <Editor>
+                                                    <ext:NumberField 
+                                                        ID="nfCantidad"
+                                                        runat="server"
+                                                        AllowDecimals="true"
+                                                        AllowExponential="false"
+                                                        DecimalPrecision="2"
+                                                        DecimalSeparator="."
+                                                        MaxLength="10"
+                                                        EnforceMaxLength="true"
+                                                        MaxValue="999999999"
+                                                        MinValue="0"
+                                                        Step="1">
+                                                    </ext:NumberField>
+                                                </Editor>
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cPrecio"
@@ -478,26 +434,25 @@
                                                 Text="Precio"
                                                 DataIndex="Costo"
                                                 Width="110">
-                                                <%--<Renderer Fn="rendererCosto"></Renderer>--%>
+                                                <Renderer Fn="rendererCosto"></Renderer>
+                                                  <Editor>
+                                                    <ext:NumberField 
+                                                        ID="nfCosto"
+                                                        runat="server"
+                                                        AllowDecimals="true"
+                                                        AllowExponential="false"
+                                                        DecimalPrecision="2"
+                                                        DecimalSeparator="."
+                                                        MaxLength="10"
+                                                        EnforceMaxLength="true"
+                                                        MaxValue="999999999"
+                                                        MinValue="0"
+                                                        Step="1">
+                                                    </ext:NumberField>
+                                                </Editor>
                                             </ext:Column>
-                                            <ext:Column 
-                                                ID="cImporte"
-                                                runat="server"
-                                                Align="Center"
-                                                Text="Importe Preciario"
-                                                DataIndex="Importe"
-                                                Width="130">
-                                               <%-- <Renderer Fn="renderImporte" />--%>
-                                            </ext:Column>
-                                            <ext:Column 
-                                                ID="cImporteUtilizado"
-                                                runat="server"
-                                                Align="Center"
-                                                Text="Importe Final"
-                                                Width="130"
-                                                DataIndex="Importefinal">
-                                                <%--<Renderer Fn="renderImporteUtilizado" />--%>
-                                            </ext:Column>
+                                         
+                                           
                                             <ext:Column 
                                                 ID="cCategoria"
                                                 runat="server"
@@ -505,7 +460,7 @@
                                                 Text="Categoría"
                                                 DataIndex="Categoria"
                                                 Width="90">
-                                               <%-- <Renderer Fn="cCategoria_Renderer" />--%>
+                                                <Renderer Fn="cCategoria_Renderer" />
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cSubCategoria"
@@ -514,7 +469,7 @@
                                                 Text="SubCategoría"
                                                 DataIndex="SubCategoria"
                                                 Width="90">
-                                               <%-- <Renderer Fn="cSubcategoria_Renderer" />--%>
+                                               <Renderer Fn="cSubcategoria_Renderer" />
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cSubCubCategoria"
@@ -523,7 +478,7 @@
                                                 Text="SubSubCategoria"
                                                 DataIndex="SubSubCategoria"
                                                 Width="90">
-                                              <%--  <Renderer Fn="cSubsubcategoria_Renderer" />--%>
+                                              <Renderer Fn="cSubsubcategoria_Renderer" />
                                             </ext:Column>
                                         </Columns>
                                     </ColumnModel>
@@ -533,6 +488,17 @@
                                             runat="server">
                                         </ext:CellSelectionModel>
                                     </SelectionModel>
+                                    <Plugins>
+                                        <ext:CellEditing 
+                                            ID="ceFormaPreciarioGeneral" 
+                                            runat="server"
+                                            ClicksToEdit="1">
+                                           <%-- <Listeners>
+                                                <Edit Fn="cePreciarioConcepto_Edit" />
+                                                <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
+                                            </Listeners>--%>
+                                        </ext:CellEditing>
+                                    </Plugins>
                                     <View>
                                         <ext:GridView
                                             ID="gvPreciario"
@@ -540,29 +506,6 @@
                                             StripeRows="true">
                                         </ext:GridView>
                                     </View>
-                                    <BottomBar>
-                                        <ext:Toolbar ID="tPreciarioConcepto" runat="server">
-                                            <Items>
-                                                <ext:DisplayField
-                                                    ID="dfTotalInicial"
-                                                    runat="server"
-                                                    FieldLabel="Total Cargado"
-                                                    Cls="total-field"
-                                                    Margins="0 0 0 340px"
-                                                    Width="240"
-                                                    Text="$">
-                                                </ext:DisplayField>
-                                                <ext:DisplayField
-                                                    ID="dfTotalFinal"
-                                                    runat="server"
-                                                    FieldLabel="Total Final"
-                                                    Cls="total-field"
-                                                    Width="240"
-                                                    Text="$" >
-                                                </ext:DisplayField>
-                                            </Items>
-                                        </ext:Toolbar>
-                                    </BottomBar>
                                 </ext:GridPanel>
                                 <%--Fin Detalle PRECIARIO--%>
                             </Items>

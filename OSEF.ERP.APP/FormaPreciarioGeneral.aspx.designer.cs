@@ -40,6 +40,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ResourceManager rmFormaPreciario;
         
         /// <summary>
+        /// Control sPreciarioGeneral.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sPreciarioGeneral;
+        
+        /// <summary>
+        /// Control mPreciario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mPreciario;
+        
+        /// <summary>
         /// Control fpPreciario.
         /// </summary>
         /// <remarks>
@@ -112,51 +130,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfDescripcion;
         
         /// <summary>
-        /// Control fcSucursal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcSucursal;
-        
-        /// <summary>
-        /// Control cmbSucursal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSucursal;
-        
-        /// <summary>
-        /// Control sSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sSucursales;
-        
-        /// <summary>
-        /// Control mSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mSucursales;
-        
-        /// <summary>
-        /// Control txtfSucursalNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfSucursalNombre;
-        
-        /// <summary>
         /// Control fcTipoPreciario.
         /// </summary>
         /// <remarks>
@@ -166,13 +139,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcTipoPreciario;
         
         /// <summary>
-        /// Control rgTipoVivienda.
+        /// Control rgTipoPreciario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.RadioGroup rgTipoVivienda;
+        protected global::Ext.Net.RadioGroup rgTipoPreciario;
         
         /// <summary>
         /// Control rObra.
@@ -328,6 +301,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mCarga;
         
         /// <summary>
+        /// Control ccAcciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn ccAcciones;
+        
+        /// <summary>
         /// Control cIDPreciario.
         /// </summary>
         /// <remarks>
@@ -346,6 +328,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cConcepto;
         
         /// <summary>
+        /// Control txtDescripcionConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtDescripcionConcepto;
+        
+        /// <summary>
         /// Control cCantidad.
         /// </summary>
         /// <remarks>
@@ -355,22 +346,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cCantidad;
         
         /// <summary>
-        /// Control cUtilizada.
+        /// Control nfCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cUtilizada;
-        
-        /// <summary>
-        /// Control cUnidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cUnidad;
+        protected global::Ext.Net.NumberField nfCantidad;
         
         /// <summary>
         /// Control cPrecio.
@@ -382,22 +364,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cPrecio;
         
         /// <summary>
-        /// Control cImporte.
+        /// Control nfCosto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cImporte;
-        
-        /// <summary>
-        /// Control cImporteUtilizado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cImporteUtilizado;
+        protected global::Ext.Net.NumberField nfCosto;
         
         /// <summary>
         /// Control cCategoria.
@@ -436,6 +409,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.CellSelectionModel csmPreciario;
         
         /// <summary>
+        /// Control ceFormaPreciarioGeneral.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CellEditing ceFormaPreciarioGeneral;
+        
+        /// <summary>
         /// Control gvPreciario.
         /// </summary>
         /// <remarks>
@@ -443,33 +425,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.GridView gvPreciario;
-        
-        /// <summary>
-        /// Control tPreciarioConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Toolbar tPreciarioConcepto;
-        
-        /// <summary>
-        /// Control dfTotalInicial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.DisplayField dfTotalInicial;
-        
-        /// <summary>
-        /// Control dfTotalFinal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.DisplayField dfTotalFinal;
         
         /// <summary>
         /// Control sbFormaPreciario.

@@ -467,17 +467,17 @@ CREATE TABLE PreciariosGenerales(
 	Descripcion		VARCHAR(50)		NOT NULL,
 	TipoObra		BIT,
 	TipoMantenimiento BIT,
-	Sucursal		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
 	Archivo			VARCHAR(200)	NOT NULL,
 	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
 	Estatus			VARCHAR(20)		NOT NULL,
 	FechaAlta		SMALLDATETIME	NOT NULL
 )
 
+
 CREATE TABLE PreciariosGeneralesCategorias(
 	ID				CHAR(10)		NOT NULL PRIMARY KEY,
 	Clave			VARCHAR(7)		NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
 	Descripcion		VARCHAR(500)	NOT NULL,
 	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
 	Estatus			VARCHAR(20)		NOT NULL,
@@ -487,9 +487,9 @@ CREATE TABLE PreciariosGeneralesCategorias(
 CREATE TABLE PreciariosGeneralesSubCategorias(
 	ID				CHAR(10)		NOT NULL PRIMARY KEY,
 	CLAVE			CHAR(7)			NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
 	Descripcion		VARCHAR(500)	NOT NULL,
-	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
+	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
 	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
 	Estatus			VARCHAR(20)		NOT NULL,
 	FechaAlta		SMALLDATETIME	NOT NULL
@@ -498,10 +498,10 @@ CREATE TABLE PreciariosGeneralesSubCategorias(
 CREATE TABLE PreciariosGeneralesSubSubCategorias(
 	ID				CHAR(10)		NOT NULL PRIMARY KEY,
 	CLAVE			CHAR(7)			NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
 	Descripcion		VARCHAR(500)	NOT NULL,
-	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
-	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
+	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
+	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubCategorias(ID),
 	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
 	Estatus			VARCHAR(20)		NOT NULL,
 	FechaAlta		SMALLDATETIME	NOT NULL
@@ -510,17 +510,14 @@ CREATE TABLE PreciariosGeneralesSubSubCategorias(
 CREATE TABLE PreciariosGeneralesConceptos(
 	ID				CHAR(10)		NOT NULL PRIMARY KEY,
 	CLAVE			CHAR(7)			NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Preciarios(ID),
+	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
 	Descripcion		VARCHAR(2000)	NOT NULL,
-	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioCategorias(ID),
-	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioSubCategorias(ID),
-	SubSubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciarioSubSubCategorias(ID),
+	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
+	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubCategorias(ID),
+	SubSubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubSubCategorias(ID),
 	Unidad			VARCHAR(30)		NULL,
 	Costo			DECIMAL(20,2),
-	Cantidad		DECIMAL(10,2),
-	Utilizada		DECIMAL(10,2)	NULL,
-	Importe			DECIMAL(20,2),
-	ImporteFinal	DECIMAL(20,2)	NULL,
+	Cantidad		DECIMAL(10,2) NULL,
 	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
 	Estatus			VARCHAR(20)		NOT NULL,
 	FechaAlta		SMALLDATETIME	NOT NULL
@@ -563,7 +560,7 @@ CREATE TABLE PreciariosGeneralesConceptos(
 --DROP TABLE PreciarioCategorias
 --DROP TABLE Preciarios
 --DROP TABLE PreciariosGeneralesConceptos
---DROP TABLE PreciariosGeneralesSubCategorias
 --DROP TABLE PreciariosGeneralesSubSubCategorias
+--DROP TABLE PreciariosGeneralesSubCategorias
 --DROP TABLE PreciariosGeneralesCategorias
 --DROP TABLE PreciariosGenerales

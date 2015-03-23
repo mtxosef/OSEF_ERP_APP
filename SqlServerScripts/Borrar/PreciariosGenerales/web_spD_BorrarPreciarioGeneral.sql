@@ -29,7 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spD_BorrarPreciarioGeneral
 	-- Add the parameters for the stored procedure here
-	@ID		CHAR(7)
+	@ID		VARCHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

@@ -39,9 +39,6 @@ CREATE PROCEDURE web_spI_InsertarPreciarioGeneralConcepto
 	@Unidad			VARCHAR(30),
 	@Costo			DECIMAL(20,2),
 	@Cantidad		DECIMAL(10,2),
-	@Utilizada		DECIMAL(10,2),
-	@Importe		DECIMAL(20,2),
-	@ImporteFinal	DECIMAL(20,2),
 	@Usuario		VARCHAR(50),
 	@Estatus		VARCHAR(20),
 	@FechaAlta		SMALLDATETIME
@@ -57,7 +54,7 @@ BEGIN
 		@ID_TEMP INT,
 		@VALOR CHAR(10)
 		
-		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 2, LEN(ID)) AS INT)) FROM PreciarioConceptos WHERE ID LIKE 'C%'
+		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 2, LEN(ID)) AS INT)) FROM PreciariosGeneralesConceptos WHERE ID LIKE 'C%'
 		IF (@ID_TEMP IS NOT NULL)
 		BEGIN
 			SET @ID_TEMP = @ID_TEMP + 1
@@ -121,9 +118,6 @@ BEGIN
 			Unidad,
 			Costo,
 			Cantidad,
-			Utilizada,
-			Importe,
-			ImporteFinal,
 			Usuario,
 			Estatus,
 			FechaAlta
@@ -140,9 +134,6 @@ BEGIN
 			@Unidad,
 			@Costo,
 			@Cantidad,
-			@Utilizada,
-			@Importe,
-			@ImporteFinal,
 			@Usuario,
 			@Estatus,
 			@FechaAlta

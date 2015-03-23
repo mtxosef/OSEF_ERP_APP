@@ -81,16 +81,13 @@ namespace OSEF.APP.BL
 
             //1. Obtener lista de conceptos
             List<PreciarioConcepto> lPreciarioConcepto = PreciarioConceptosDataAccess.ObtenerPreciarioConceptoPorPreciario(strPreciario);
-            //2. Asignar a cada Colonia su correspondiente municipio
+            //2. Asignar a categorias
             foreach (PreciarioConcepto sd in lPreciarioConcepto)
+            {
                 sd.RCategoria = PreciarioCategoriaBuisness.ObtenerPreciarioCategoriaPorID(sd.Categoria);
-
-            foreach (PreciarioConcepto sd in lPreciarioConcepto)
                 sd.RSubcategoria = PreciarioSubCategoriaBusiness.ObtenerPreciarioSubCategoriaPorID(sd.SubCategoria);
-
-            foreach (PreciarioConcepto sd in lPreciarioConcepto)
                 sd.RSubsubcategoria = PreciarioSubSubCategoriaBusiness.ObtenerPreciarioSubSubCategoriaPorID(sd.SubSubCategoria);
-
+            }
             return lPreciarioConcepto;
 
         }

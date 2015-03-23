@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spD_BorrarPreciarioSubSubCategoria' AND
+			WHERE  name = 'web_spD_BorrarPreciarioGeneralSubSubCategorias' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spD_BorrarPreciarioSubSubCategoria
+	DROP PROCEDURE web_spD_BorrarPreciarioGeneralSubSubCategorias
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Martes 16 de Diciembre de 2014
 -- Description:	Borrar un registro de Articulos por su ID
 -- =============================================
-CREATE PROCEDURE web_spD_BorrarPreciarioSubSubCategoria
+CREATE PROCEDURE web_spD_BorrarPreciarioGeneralSubSubCategorias
 	-- Add the parameters for the stored procedure here
 	@Preciario			VARCHAR(50)
 AS
@@ -38,7 +38,7 @@ BEGIN
 
     -- Insert statements for procedure here
     DELETE FROM
-		PreciarioSubSubCategorias
+		PreciariosGeneralesSubSubCategorias
 	WHERE
 		Preciario = @Preciario
 END

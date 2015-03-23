@@ -29,14 +29,14 @@
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="rmPreciarios" runat="server" HideInDesign="true" />
+        <ext:ResourceManager ID="rmPreciariosGenerales" runat="server" HideInDesign="true" />
 
         <ext:GridPanel
-            ID="gpPreciarios"
+            ID="gpPreciariosGenerales"
             runat="server"
             Height="420"
             Width="960"
-            Title="PRECIARIOS"
+            Title="PRECIARIOS GENERALES"
             EnableColumnHide="false"
             EnableColumnMove="false"
             Header="true"
@@ -54,9 +54,9 @@
                             PressedImageUrl="assets/img/controles/nuevo-pressed.png"
                             Height="50"
                             Width="50">
-                          <%--  <Listeners>
+                            <Listeners>
                                 <Click Fn="imgbtnNuevo_Click" />
-                            </Listeners>--%>
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnEditar"
@@ -68,9 +68,9 @@
                             Height="50"
                             Width="50"
                             Disabled="true">
-                            <%--<Listeners>
+                            <Listeners>
                                 <Click Fn="imgbtnEditar_Click" />
-                            </Listeners>--%>
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:ImageButton
                             ID="imgbtnBorrar"
@@ -82,7 +82,7 @@
                             Height="50"
                             Width="50"
                             Disabled="true">
-                          <%--  <DirectEvents>
+                            <DirectEvents>
                                 <Click OnEvent="imgbtnBorrar_Click" Success="imgbtnBorrar_Click_Success">
                                     <Confirmation
                                         ConfirmRequest="true"
@@ -91,16 +91,16 @@
                                     </Confirmation>
                                     <EventMask
                                         ShowMask="true"
-                                        CustomTarget="App.gpPreciarios.body"
+                                        CustomTarget="App.gpPreciariosGenerales.body"
                                         Target="CustomTarget"
                                         Msg="Eliminando registro">
                                     </EventMask>
                                     <ExtraParams>
-                                        <ext:Parameter Name="ID" Value="App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID')" Mode="Raw">
+                                        <ext:Parameter Name="ID" Value="App.gpPreciariosGenerales.getSelectionModel().getSelection()[0].get('ID')" Mode="Raw">
                                         </ext:Parameter>
                                     </ExtraParams>
                                 </Click>
-                             </DirectEvents>--%>
+                             </DirectEvents>
                         </ext:ImageButton>
 
 
@@ -108,7 +108,8 @@
                                 ID="cmbUsuario"
                                 runat="server"
                                 Editable="false"
-                                FieldLabel="Usuario"
+                                LabelWidth="60"
+                                FieldLabel="USUARIO"
                                 DisplayField="Nombre"
                                 ValueField="ID">
                                 <Items>
@@ -139,14 +140,36 @@
                                     </Model>
                                 </ext:Store>
                                 </Store>
-                                 <%--<Listeners>
+                                 <Listeners>
                                     <Select Fn="cmbUsuarioFiltro_Select" />
-                                </Listeners>--%>
+                                </Listeners>
                             </ext:ComboBox>
 
+                            
+                            <ext:ComboBox
+                                ID="cmbTipo"
+                                runat="server"
+                                LabelWidth="80"
+                                FieldLabel="TIPO PRECIARIO"
+                                DisplayField="Tipo"
+                                ValueField="ID"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="MANTENIMIENTO" Value="Mantenimiento" />
+                                    <ext:ListItem Index="2" Text="OBRA" Value="Obra" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbTipoFiltro_Select" />
+                                </Listeners>
+                            </ext:ComboBox>
                        
 
-                        <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="235">
+                        <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="35">
                         </ext:ToolbarSpacer>
 
 
@@ -160,9 +183,9 @@
                             PressedImageUrl="assets/img/controles/update-pressed.png"
                             Height="50"
                             Width="50">
-                           <%-- <Listeners>
-                                <Click Handler="#{sPreciarios}.reload(); App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
-                            </Listeners>--%>
+                            <Listeners>
+                                <Click Handler="#{sPreciariosGenerales}.reload(); App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:TextField 
                             ID="txtfBuscar"
@@ -170,9 +193,9 @@
                             AutoFocus="true"
                             EmptyText="Buscar"
                             Width="200">
-                          <%--  <Listeners>
+                            <Listeners>
                                 <Change Fn="txtBuscar_Change" />
-                            </Listeners>--%>
+                            </Listeners>
                             <RightButtons>
                                 <ext:ImageButton
                                     ID="imgbtnBuscar"
@@ -189,18 +212,21 @@
                 </ext:Toolbar>
             </TopBar>
 
-             <%-- OnReadData="OnReadData_sPreciarios"--%>
+      
             <Store>
                 <ext:Store
-                    ID="sPreciarios"
-                    runat="server"
-                   >
+                    ID="sPreciariosGenerales"
+                    OnReadData="OnReadData_sPreciariosGenerales"
+                    runat="server">
                     <Model>
-                        <ext:Model ID="mPreciarios" runat="server">
+                        <ext:Model ID="mPreciariosGenerales" runat="server">
                             <Fields>
                                 <ext:ModelField Name="ID" Type="String" />
                                 <ext:ModelField Name="Descripcion" Type="String" />
                                 <ext:ModelField Name="Sucursal" Type="String" />
+                                <ext:ModelField Name="TipoObra" Type="Boolean" />
+                                <ext:ModelField Name="TipoMantenimiento" Type="Boolean" />
+                                <ext:ModelField Name="FechaAlta" Type="Date" />
                                 <ext:ModelField Name="Estatus" Type="String" />
                                 <ext:ModelField Name="Usuario" Type="String" />
                             </Fields>
@@ -209,9 +235,9 @@
                     <Sorters>
                         <ext:DataSorter Property="ID" Direction="ASC" />
                     </Sorters>
-                  <%--  <Listeners>
-                        <DataChanged Fn="sPreciarios_DataChanged" />
-                    </Listeners>--%>
+                    <Listeners>
+                        <DataChanged Fn="sPreciariosGenerales_DataChanged" />
+                    </Listeners>
                 </ext:Store>
             </Store>
             <ColumnModel>
@@ -229,58 +255,24 @@
                         runat="server"
                         Text="NOMBRE"
                         Align="Center"
-                        Width="260"
+                        Width="310"
                         DataIndex="Descripcion">
                     </ext:Column>
-                    <ext:Column
-                        ID="cSucursal"
+                    <ext:DateColumn
+                        ID="cFechaAlta"
                         runat="server"
-                        Text="SUCURSAL"
-                        Align="Left"
-                        Width="280"
-                        DataIndex="Sucursal">
-                         <HeaderItems>
-                            <ext:ComboBox
-                                ID="cmbSucursalFiltro"
-                                runat="server"
-                                DisplayField="Nombre"
-                                ValueField="ID"
-                                ForceSelection="true"
-                                Editable="false">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                              <%--  <Listeners>
-                                    <Select Fn="cmbSucursalFiltro_Select" />
-                                </Listeners>--%>
-                                <Store>
-                                    <ext:Store
-                                        ID="sSucursales"
-                                        runat="server">
-                                        <Model>
-                                            <ext:Model ID="mSucursales" runat="server" IDProperty="ID">
-                                                <Fields>
-                                                    <ext:ModelField Name="ID" Type="String" />
-                                                    <ext:ModelField Name="Nombre" Type="String" />
-                                                </Fields>
-                                            </ext:Model>
-                                        </Model>
-                                    </ext:Store>
-                                </Store>
-
-                            </ext:ComboBox>
-                        </HeaderItems>
-
-                    </ext:Column>
+                        Text="FECHA"
+                        Align="Center"
+                        Format="dd/mm/yyyy"
+                        Width="170"
+                        DataIndex="FechaAlta">
+                    </ext:DateColumn>
                     <ext:Column
                         ID="cEstatus"
                         runat="server"
                         Text="ESTATUS"
-                        Align="Left"
-                        Width="280"
+                        Align="Center"
+                        Width="170"
                         DataIndex="Estatus">
                         <HeaderItems>
                             <ext:ComboBox
@@ -298,19 +290,25 @@
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                             <%--   <Listeners>
+                                <Listeners>
                                     <Select Fn="cmbEstatusFiltro_Select" />
-                                </Listeners>--%>
-                              
-
+                                </Listeners>
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:Column>
+                    <ext:Column
+                        ID="cUsuario"
+                        runat="server"
+                        Text="USUARIO"
+                        Align="Center"
+                        Width="170"
+                        DataIndex="Usuario">
+                    </ext:Column>
                 </Columns>
             </ColumnModel>
-           <%--  <Listeners>
-                <ItemClick Fn="gpPreciarios_ItemClick" />
-            </Listeners>--%>
+             <Listeners>
+                <ItemClick Fn="gpPreciariosGenerales_ItemClick" />
+            </Listeners>
             <SelectionModel>
                 <ext:RowSelectionModel
                     ID="rsmPreciarios"
@@ -319,7 +317,7 @@
             </SelectionModel>
             <FooterBar>
                 <ext:StatusBar
-                    ID="sbPreciarios"
+                    ID="sbPreciariosGenerales"
                     runat="server"
                     Text=""
                     StatusAlign="Left">

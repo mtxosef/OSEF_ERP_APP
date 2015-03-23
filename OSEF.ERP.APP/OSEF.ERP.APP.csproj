@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -383,6 +384,7 @@
     <Content Include="js\cuentasContables.js" />
     <Content Include="js\exploradorConceptoPreciario.js" />
     <Content Include="js\finalidades.js" />
+    <Content Include="js\formaPreciarioGeneral.js" />
     <Content Include="js\login.js" />
     <Content Include="js\menus2.js" />
     <Content Include="js\olvidarContrasena.js" />
@@ -1106,6 +1108,7 @@
     <Folder Include="assets\img\menu\" />
     <Folder Include="imagesVolumetrias\" />
     <Folder Include="images\menu\" />
+    <Folder Include="preciariosGenerales\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSEF.APP.BL\OSEF.APP.BL.csproj">
