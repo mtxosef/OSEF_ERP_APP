@@ -34,7 +34,7 @@ namespace OSEF.AVANCES.SUCURSALES
             if (ReturnUrl == null) { }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "window.parent.location.href = 'login.aspx';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "window.parent.location.href = 'Login.aspx';", true);
             }
 
             if (Request.IsAuthenticated)

@@ -258,6 +258,7 @@
     <Content Include="assets\js\modernizr-2.6.2.min.js" />
     <Content Include="Avances.aspx" />
     <Content Include="Categorias.aspx" />
+    <Content Include="CertificadosInversiones.aspx" />
     <Content Include="CodigosPostales.aspx" />
     <Content Include="CodigosPostales2.aspx" />
     <Content Include="Colonias.aspx" />
@@ -328,7 +329,7 @@
     <Content Include="FormaGaleria.aspx" />
     <Content Include="FormaImagenesPreciarios.aspx" />
     <Content Include="FormaInfoGraficas.aspx" />
-    <Content Include="FormaInversion.aspx" />
+    <Content Include="FormaCertificadoInversion.aspx" />
     <Content Include="FormaMenu.aspx" />
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
@@ -374,6 +375,7 @@
     <Content Include="js\avanzarVolumetria.js" />
     <Content Include="js\buscaConceptoPreciario.js" />
     <Content Include="js\cambiarContrasena.js" />
+    <Content Include="js\certificadosInversiones.js" />
     <Content Include="js\clientes.js" />
     <Content Include="js\colonias.js" />
     <Content Include="js\conceptos2.js" />
@@ -387,8 +389,10 @@
     <Content Include="js\parametrosP1.js" />
     <Content Include="js\preciarios.js" />
     <Content Include="js\preciariosGenerales.js" />
+    <Content Include="js\prestamos.js" />
     <Content Include="js\profesiones.js" />
     <Content Include="js\reportes.js" />
+    <Content Include="js\solicitudesPrestamos.js" />
     <Content Include="js\subirImagenesCliente.js" />
     <Content Include="js\subirImagenesPreciario.js" />
     <Content Include="js\tableroAvances.js" />
@@ -454,6 +458,7 @@
     <Content Include="resources\fonts\icomoon.svg" />
     <Content Include="resources\images\column-weekend-header-bg.gif" />
     <Content Include="sch-all-debug.js" />
+    <Content Include="SolicitudesPrestamos.aspx" />
     <Content Include="Subcategorias.aspx" />
     <Content Include="Sucursales.aspx" />
     <Content Include="tVtasUnidadesVsTiempo.aspx" />
@@ -492,6 +497,13 @@
     </Compile>
     <Compile Include="Categorias.aspx.designer.cs">
       <DependentUpon>Categorias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CertificadosInversiones.aspx.cs">
+      <DependentUpon>CertificadosInversiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CertificadosInversiones.aspx.designer.cs">
+      <DependentUpon>CertificadosInversiones.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChartData.cs" />
     <Compile Include="CodigosPostales.aspx.cs">
@@ -697,12 +709,12 @@
     <Compile Include="FormaInfoGraficas.aspx.designer.cs">
       <DependentUpon>FormaInfoGraficas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormaInversion.aspx.cs">
-      <DependentUpon>FormaInversion.aspx</DependentUpon>
+    <Compile Include="FormaCertificadoInversion.aspx.cs">
+      <DependentUpon>FormaCertificadoInversion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormaInversion.aspx.designer.cs">
-      <DependentUpon>FormaInversion.aspx</DependentUpon>
+    <Compile Include="FormaCertificadoInversion.aspx.designer.cs">
+      <DependentUpon>FormaCertificadoInversion.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaMenu.aspx.cs">
       <DependentUpon>FormaMenu.aspx</DependentUpon>
@@ -1032,6 +1044,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResumenPartidas.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SolicitudesPrestamos.aspx.cs">
+      <DependentUpon>SolicitudesPrestamos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SolicitudesPrestamos.aspx.designer.cs">
+      <DependentUpon>SolicitudesPrestamos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Subcategorias.aspx.cs">
       <DependentUpon>Subcategorias.aspx</DependentUpon>

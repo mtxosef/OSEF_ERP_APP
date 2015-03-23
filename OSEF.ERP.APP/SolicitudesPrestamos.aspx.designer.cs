@@ -7,19 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES {
+namespace OSEF.ERP.APP {
     
     
-    public partial class FormaInversion {
-        
-        /// <summary>
-        /// Control Head1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+    public partial class SolicitudesPrestamos {
         
         /// <summary>
         /// Control form1.
@@ -31,201 +22,192 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmFormaProveedor.
+        /// Control rmSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmFormaProveedor;
+        protected global::Ext.Net.ResourceManager rmSolicitudesPrestamos;
         
         /// <summary>
-        /// Control sProveedor.
+        /// Control gpSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sProveedor;
+        protected global::Ext.Net.GridPanel gpSolicitudesPrestamos;
         
         /// <summary>
-        /// Control mProveedor.
+        /// Control tbSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mProveedor;
+        protected global::Ext.Net.Toolbar tbSolicitudesPrestamos;
         
         /// <summary>
-        /// Control pCertificadoInversion.
+        /// Control imgbtnNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel pCertificadoInversion;
+        protected global::Ext.Net.ImageButton imgbtnNuevo;
         
         /// <summary>
-        /// Control fscSocio.
+        /// Control imgbtnEditar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fscSocio;
+        protected global::Ext.Net.ImageButton imgbtnEditar;
         
         /// <summary>
-        /// Control cmbSocio.
+        /// Control imgbtnBorrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSocio;
+        protected global::Ext.Net.ImageButton imgbtnBorrar;
         
         /// <summary>
-        /// Control txtComplSocio.
+        /// Control tbsSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtComplSocio;
+        protected global::Ext.Net.ToolbarSpacer tbsSolicitudesPrestamos;
         
         /// <summary>
-        /// Control cSegundaSeccion.
+        /// Control imgbtnActualizar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer cSegundaSeccion;
+        protected global::Ext.Net.ImageButton imgbtnActualizar;
         
         /// <summary>
-        /// Control cmbTipoInversion.
+        /// Control txtfBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbTipoInversion;
+        protected global::Ext.Net.TextField txtfBuscar;
         
         /// <summary>
-        /// Control txtUnidadInversion.
+        /// Control imgbtnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtUnidadInversion;
+        protected global::Ext.Net.ImageButton imgbtnBuscar;
         
         /// <summary>
-        /// Control fc2.
+        /// Control sSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fc2;
+        protected global::Ext.Net.Store sSolicitudesPrestamos;
         
         /// <summary>
-        /// Control nfTasa.
+        /// Control mSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberField nfTasa;
+        protected global::Ext.Net.Model mSolicitudesPrestamos;
         
         /// <summary>
-        /// Control dfFechaVencimiento.
+        /// Control cID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateField dfFechaVencimiento;
+        protected global::Ext.Net.Column cID;
         
         /// <summary>
-        /// Control fc3.
+        /// Control cNombreCompleto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fc3;
+        protected global::Ext.Net.Column cNombreCompleto;
         
         /// <summary>
-        /// Control nfValorinversion.
+        /// Control ncCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberField nfValorinversion;
+        protected global::Ext.Net.NumberColumn ncCantidad;
         
         /// <summary>
-        /// Control fc4.
+        /// Control ncPlazo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fc4;
+        protected global::Ext.Net.NumberColumn ncPlazo;
         
         /// <summary>
-        /// Control nfInstruccionesCap.
+        /// Control dcInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox nfInstruccionesCap;
+        protected global::Ext.Net.DateColumn dcInicio;
         
         /// <summary>
-        /// Control fc5.
+        /// Control dcFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fc5;
+        protected global::Ext.Net.DateColumn dcFin;
         
         /// <summary>
-        /// Control nfIntruccionesInteres.
+        /// Control gvSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox nfIntruccionesInteres;
+        protected global::Ext.Net.GridView gvSolicitudesPrestamos;
         
         /// <summary>
-        /// Control sInversion.
+        /// Control rsmSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar sInversion;
+        protected global::Ext.Net.RowSelectionModel rsmSolicitudesPrestamos;
         
         /// <summary>
-        /// Control imgbtnGuardar.
+        /// Control sbSolicitudesPrestamos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnGuardar;
-        
-        /// <summary>
-        /// Control imgbtnCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnCancelar;
+        protected global::Ext.Net.StatusBar sbSolicitudesPrestamos;
     }
 }

@@ -5,11 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-   <script type='text/javascript' src="js/clientes.js"></script>
+    <script type='text/javascript' src="js/clientes.js"></script>
     <script type="text/javascript">
         window.onload = cargarEstilo;
     </script>
-
 </head>
 <body class="xCustomBody">
     <form id="Form1" runat="server">
@@ -695,44 +694,44 @@
                                                                 </Change>
                                                             </DirectEvents>
                                                     </ext:ComboBox>
-                                                         <ext:ComboBox
-                                                ID="cmbColonia"
-                                                runat="server"
-                                                FieldLabel="Colonia"
-                                                Width="402"
-                                                DisplayField="Descripcion"
-                                                ValueField="ID"
-                                                AllowBlank="false"
-                                                 Editable="true"
-                                                MatchFieldWidth="true"
-                                            ForceSelection="true"
-                                            QueryMode="Local"
-                                            TypeAhead="true">
-                                                <Store>
-                                                    <ext:Store
-                                                        ID="sColonias"
-                                                        runat="server">
-                                                        <Model>
-                                                            <ext:Model ID="mColonias" runat="server">
-                                                                <Fields>
-                                                                    <ext:ModelField Name="ID" Type="String" />
-                                                                    <ext:ModelField Name="Descripcion" Type="String" />
-                                                                    <ext:ModelField Name="Estado" Type="String" />
-                                                                    <ext:ModelField Name="Municipio" Type="String" />
-                                                                    <ext:ModelField Name="REstado" Type="String" />
-                                                                    <ext:ModelField Name="RMunicipio" Type="String" />
-                                                                </Fields>
-                                                            </ext:Model>
-                                                        </Model>
-                                                         <Sorters>
-                                                            <ext:DataSorter Property="Descripcion" Direction="ASC" />
-                                                        </Sorters>
-                                                        <Listeners>
-                                                            <Load Fn="sColonias_Load" />
-                                                        </Listeners>
-                                                    </ext:Store>
-                                                </Store>
-                                            </ext:ComboBox>
+                                                    <ext:ComboBox
+                                                        ID="cmbColonia"
+                                                        runat="server"
+                                                        FieldLabel="Colonia"
+                                                        Width="402"
+                                                        DisplayField="Descripcion"
+                                                        ValueField="ID"
+                                                        AllowBlank="true"
+                                                        Editable="true"
+                                                        MatchFieldWidth="true"
+                                                        ForceSelection="false"
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
+                                                        <Store>
+                                                            <ext:Store
+                                                                ID="sColonias"
+                                                                runat="server">
+                                                                <Model>
+                                                                    <ext:Model ID="mColonias" runat="server">
+                                                                        <Fields>
+                                                                            <ext:ModelField Name="ID" Type="String" />
+                                                                            <ext:ModelField Name="Descripcion" Type="String" />
+                                                                            <ext:ModelField Name="Estado" Type="String" />
+                                                                            <ext:ModelField Name="Municipio" Type="String" />
+                                                                            <ext:ModelField Name="REstado" Type="String" />
+                                                                            <ext:ModelField Name="RMunicipio" Type="String" />
+                                                                        </Fields>
+                                                                    </ext:Model>
+                                                                </Model>
+                                                                 <Sorters>
+                                                                    <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                </Sorters>
+                                                                <Listeners>
+                                                                    <Load Fn="sColonias_Load" />
+                                                                </Listeners>
+                                                            </ext:Store>
+                                                        </Store>
+                                                    </ext:ComboBox>
                                                 </Items>
                                             </ext:FieldContainer>
                                         </Items>

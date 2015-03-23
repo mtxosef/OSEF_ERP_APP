@@ -212,6 +212,7 @@ CREATE TABLE Clientes(
 	EmpresaEstado		CHAR(2)			NULL FOREIGN KEY REFERENCES Estados(ID),
 	EmpresaMunicipio	CHAR(4)			NULL FOREIGN KEY REFERENCES Municipios(ID),
 	EmpresaTelefono		VARCHAR(15)		NULL,
+	EmpresaTelefonoExt	SMALLINT		NULL,
 	Puesto				VARCHAR(50)		NULL,
 	FechaAlta			SMALLDATETIME	NULL,
 	Estatus				VARCHAR(20)		NULL,
@@ -233,6 +234,8 @@ CREATE TABLE SolicitudesPrestamos(
 	ColoniaAnterior				VARCHAR(50)		NULL,
 	CodigoPostalAnterior		INT				NULL,
 	EntreCallesAnterior			VARCHAR(100)	NULL,
+	EstadoAnterior				CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
+	MunicipioAnterior			CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
 	------------ Ocupación Actual del solicitante ------------
 	Antiguedad					TINYINT			NULL,
 	Ingresos					SMALLINT		NULL,
@@ -346,9 +349,11 @@ CREATE TABLE CertificadosInversiones(
 	ValorInversion				DECIMAL(9,2)	NULL,
 	InstruccionesCapital		VARCHAR(50)		NULL,
 	InstruccionesInteres		VARCHAR(50)		NULL,
-	Usuario						VARCHAR(50)		NOT NULL,
-	FechaAlta					SMALLDATETIME	NOT NULL,
 	Estatus						VARCHAR(20)		NOT NULL,
+	UsuarioAlta					VARCHAR(50)		NOT NULL,
+	FechaAlta					SMALLDATETIME	NOT NULL,
+	UsuarioModificacion			VARCHAR(50)		NOT NULL,
+	FechaModificacion			SMALLDATETIME	NOT NULL
 )
 
 CREATE TABLE Beneficiarios(

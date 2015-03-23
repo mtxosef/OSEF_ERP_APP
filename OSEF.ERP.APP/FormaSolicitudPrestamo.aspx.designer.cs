@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES {
+namespace OSEF.ERP.APP {
     
     
     public partial class FormaSolicitudPrestamo {
@@ -40,6 +40,42 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ResourceManager rmSolicitudPrestamo;
         
         /// <summary>
+        /// Control sEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEstados;
+        
+        /// <summary>
+        /// Control mEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEstados;
+        
+        /// <summary>
+        /// Control sSolicitudPrestamo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sSolicitudPrestamo;
+        
+        /// <summary>
+        /// Control mSolicitudPrestamo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSolicitudPrestamo;
+        
+        /// <summary>
         /// Control pSolicitudPrestamo.
         /// </summary>
         /// <remarks>
@@ -49,13 +85,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Panel pSolicitudPrestamo;
         
         /// <summary>
-        /// Control fpsolicitudPrestamo.
+        /// Control fpSolicitudPrestamo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel fpsolicitudPrestamo;
+        protected global::Ext.Net.FormPanel fpSolicitudPrestamo;
         
         /// <summary>
         /// Control tbSolicitudPrestamo.
@@ -67,13 +103,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TabPanel tbSolicitudPrestamo;
         
         /// <summary>
-        /// Control pDatoGenerales.
+        /// Control pDatosSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel pDatoGenerales;
+        protected global::Ext.Net.Panel pDatosSocio;
         
         /// <summary>
         /// Control fsDivisorDatos.
@@ -85,85 +121,193 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.FieldSet fsDivisorDatos;
         
         /// <summary>
-        /// Control C1.
+        /// Control cC1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer C1;
+        protected global::Ext.Net.Container cC1;
         
         /// <summary>
-        /// Control cmbSocio.
+        /// Control cmbCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSocio;
+        protected global::Ext.Net.ComboBox cmbCliente;
         
         /// <summary>
-        /// Control C2.
+        /// Control sCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer C2;
+        protected global::Ext.Net.Store sCliente;
         
         /// <summary>
-        /// Control txtfNombre.
+        /// Control mCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfNombre;
+        protected global::Ext.Net.Model mCliente;
         
         /// <summary>
-        /// Control txtApPaterno.
+        /// Control txtfNombreCompleto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtApPaterno;
+        protected global::Ext.Net.TextField txtfNombreCompleto;
         
         /// <summary>
-        /// Control txtApMaterno.
+        /// Control cC2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtApMaterno;
+        protected global::Ext.Net.Container cC2;
         
         /// <summary>
-        /// Control c3.
+        /// Control txtfRFC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer c3;
+        protected global::Ext.Net.TextField txtfRFC;
         
         /// <summary>
-        /// Control cmbNacionalidad.
+        /// Control cmbEstadoCivil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbNacionalidad;
+        protected global::Ext.Net.ComboBox cmbEstadoCivil;
         
         /// <summary>
-        /// Control rgRegMatrimonial.
+        /// Control cC3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.RadioGroup rgRegMatrimonial;
+        protected global::Ext.Net.Container cC3;
+        
+        /// <summary>
+        /// Control txtfTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfTelefono;
+        
+        /// <summary>
+        /// Control imTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask imTelefono;
+        
+        /// <summary>
+        /// Control txtfTelefonoMovil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfTelefonoMovil;
+        
+        /// <summary>
+        /// Control imTelefonoMovil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask imTelefonoMovil;
+        
+        /// <summary>
+        /// Control cC4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cC4;
+        
+        /// <summary>
+        /// Control txtfCorreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfCorreo;
+        
+        /// <summary>
+        /// Control txtfNacionalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfNacionalidad;
+        
+        /// <summary>
+        /// Control cC5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cC5;
+        
+        /// <summary>
+        /// Control nfDependientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfDependientes;
+        
+        /// <summary>
+        /// Control txtfEdades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEdades;
+        
+        /// <summary>
+        /// Control cC6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cC6;
+        
+        /// <summary>
+        /// Control rgRegistroMatrimonial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.RadioGroup rgRegistroMatrimonial;
         
         /// <summary>
         /// Control rBienesSeparados.
@@ -184,49 +328,22 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Radio rBienesMancomunados;
         
         /// <summary>
-        /// Control c4.
+        /// Control cC7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer c4;
+        protected global::Ext.Net.Container cC7;
         
         /// <summary>
-        /// Control nfNDependientes.
+        /// Control rgTipoCasa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberField nfNDependientes;
-        
-        /// <summary>
-        /// Control txtEdades.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtEdades;
-        
-        /// <summary>
-        /// Control c5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer c5;
-        
-        /// <summary>
-        /// Control rgTipoVivienda.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.RadioGroup rgTipoVivienda;
+        protected global::Ext.Net.RadioGroup rgTipoCasa;
         
         /// <summary>
         /// Control rPropia.
@@ -265,13 +382,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Radio rHipoteca;
         
         /// <summary>
-        /// Control c6.
+        /// Control cC8.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer c6;
+        protected global::Ext.Net.Container cC8;
         
         /// <summary>
         /// Control nAnosDomicilioActual.
@@ -283,22 +400,31 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.NumberField nAnosDomicilioActual;
         
         /// <summary>
-        /// Control fsDomicilioAnterior.
+        /// Control pDomicilioSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldSet fsDomicilioAnterior;
+        protected global::Ext.Net.Panel pDomicilioSocio;
         
         /// <summary>
-        /// Control FieldContainerCalles.
+        /// Control fsDomicilio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainerCalles;
+        protected global::Ext.Net.FieldSet fsDomicilio;
+        
+        /// <summary>
+        /// Control cDomicilioC1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cDomicilioC1;
         
         /// <summary>
         /// Control txtfCalle.
@@ -319,13 +445,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfEntreCalles;
         
         /// <summary>
-        /// Control FieldContainerNumInt.
+        /// Control cDomicilioC2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainerNumInt;
+        protected global::Ext.Net.Container cDomicilioC2;
         
         /// <summary>
         /// Control txtfNoExterior.
@@ -346,13 +472,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfNoInterior;
         
         /// <summary>
-        /// Control FieldContainerCPCol.
+        /// Control cDomicilioC3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainerCPCol;
+        protected global::Ext.Net.Container cDomicilioC3;
         
         /// <summary>
         /// Control txtfCodigoPostal.
@@ -364,22 +490,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfCodigoPostal;
         
         /// <summary>
-        /// Control txtfColonia.
+        /// Control imCodigoPostal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox txtfColonia;
-        
-        /// <summary>
-        /// Control ContenedorEstMun.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer ContenedorEstMun;
+        protected global::Ext.Net.InputMask imCodigoPostal;
         
         /// <summary>
         /// Control cmbEstado.
@@ -391,6 +508,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ComboBox cmbEstado;
         
         /// <summary>
+        /// Control cDomicilioC4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cDomicilioC4;
+        
+        /// <summary>
         /// Control cmbMunicipio.
         /// </summary>
         /// <remarks>
@@ -398,6 +524,195 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbMunicipio;
+        
+        /// <summary>
+        /// Control sMunicipios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sMunicipios;
+        
+        /// <summary>
+        /// Control mMunicipios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mMunicipios;
+        
+        /// <summary>
+        /// Control cmbColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbColonia;
+        
+        /// <summary>
+        /// Control fsDomicilioAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet fsDomicilioAnterior;
+        
+        /// <summary>
+        /// Control cDomicilioAnteriorC1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cDomicilioAnteriorC1;
+        
+        /// <summary>
+        /// Control txtfCalleAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfCalleAnterior;
+        
+        /// <summary>
+        /// Control txtfEntreCallesAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEntreCallesAnterior;
+        
+        /// <summary>
+        /// Control cDomicilioAnteriorC2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cDomicilioAnteriorC2;
+        
+        /// <summary>
+        /// Control txtfNoExteriorAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfNoExteriorAnterior;
+        
+        /// <summary>
+        /// Control txtfNoInteriorAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfNoInteriorAnterior;
+        
+        /// <summary>
+        /// Control cDomicilioAnteriorC3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cDomicilioAnteriorC3;
+        
+        /// <summary>
+        /// Control txtfCodigoPostalAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfCodigoPostalAnterior;
+        
+        /// <summary>
+        /// Control InputMask1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask InputMask1;
+        
+        /// <summary>
+        /// Control cmbEstadoAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEstadoAnterior;
+        
+        /// <summary>
+        /// Control cDomicilioAnteriorC4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cDomicilioAnteriorC4;
+        
+        /// <summary>
+        /// Control cmbMunicipioAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbMunicipioAnterior;
+        
+        /// <summary>
+        /// Control sMunicipiosAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sMunicipiosAnterior;
+        
+        /// <summary>
+        /// Control mMunicipiosAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mMunicipiosAnterior;
+        
+        /// <summary>
+        /// Control cmbColoniaAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbColoniaAnterior;
+        
+        /// <summary>
+        /// Control sColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sColonias;
+        
+        /// <summary>
+        /// Control mColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mColonias;
         
         /// <summary>
         /// Control pOcupacionActual.
@@ -409,40 +724,220 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Panel pOcupacionActual;
         
         /// <summary>
-        /// Control fcOcupacion0.
+        /// Control fsEmpresaDatos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcOcupacion0;
+        protected global::Ext.Net.FieldSet fsEmpresaDatos;
         
         /// <summary>
-        /// Control txtEmpresa.
+        /// Control cEmpresaC1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtEmpresa;
+        protected global::Ext.Net.Container cEmpresaC1;
         
         /// <summary>
-        /// Control txtPuesto.
+        /// Control txtfEmpresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtPuesto;
+        protected global::Ext.Net.TextField txtfEmpresa;
         
         /// <summary>
-        /// Control fcOcupacion1.
+        /// Control cEmpresaC2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcOcupacion1;
+        protected global::Ext.Net.Container cEmpresaC2;
+        
+        /// <summary>
+        /// Control txtfEmpresaCalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEmpresaCalle;
+        
+        /// <summary>
+        /// Control txtfEmpresaEntreCalles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEmpresaEntreCalles;
+        
+        /// <summary>
+        /// Control cEmpresaC3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cEmpresaC3;
+        
+        /// <summary>
+        /// Control txtfEmpresaNoExterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEmpresaNoExterior;
+        
+        /// <summary>
+        /// Control txtfEmpresaNoInterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEmpresaNoInterior;
+        
+        /// <summary>
+        /// Control cEmpresaC4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cEmpresaC4;
+        
+        /// <summary>
+        /// Control txtfEmpresaCodigoPostal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEmpresaCodigoPostal;
+        
+        /// <summary>
+        /// Control InputMask2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask InputMask2;
+        
+        /// <summary>
+        /// Control cmbEmpresaEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEmpresaEstado;
+        
+        /// <summary>
+        /// Control cEmpresaC5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cEmpresaC5;
+        
+        /// <summary>
+        /// Control cmbEmpresaMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEmpresaMunicipio;
+        
+        /// <summary>
+        /// Control sEmpresaMunicipios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEmpresaMunicipios;
+        
+        /// <summary>
+        /// Control mEmpresaMunicipios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEmpresaMunicipios;
+        
+        /// <summary>
+        /// Control cmbEmpresaColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEmpresaColonia;
+        
+        /// <summary>
+        /// Control cEmpresaC6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cEmpresaC6;
+        
+        /// <summary>
+        /// Control txtfEmpresaTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfEmpresaTelefono;
+        
+        /// <summary>
+        /// Control imEmpresaTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask imEmpresaTelefono;
+        
+        /// <summary>
+        /// Control nfEmpresaTelefonoExt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfEmpresaTelefonoExt;
+        
+        /// <summary>
+        /// Control fsEmpresaSocio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet fsEmpresaSocio;
+        
+        /// <summary>
+        /// Control cEmpresaSocioC1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cEmpresaSocioC1;
         
         /// <summary>
         /// Control nfAntiguedad.
@@ -472,67 +967,76 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.NumberField nfOtrosIngresos;
         
         /// <summary>
-        /// Control fcOcupacion2.
+        /// Control cEmpresaSocioC2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcOcupacion2;
+        protected global::Ext.Net.Container cEmpresaSocioC2;
         
         /// <summary>
-        /// Control txtOtrosIngresos.
+        /// Control txtfOtrosIngresos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtOtrosIngresos;
+        protected global::Ext.Net.TextField txtfOtrosIngresos;
         
         /// <summary>
-        /// Control fcOcupacion3.
+        /// Control cEmpresaSocioC3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcOcupacion3;
+        protected global::Ext.Net.Container cEmpresaSocioC3;
         
         /// <summary>
-        /// Control txtJefeInmediato.
+        /// Control txtfJefeNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtJefeInmediato;
+        protected global::Ext.Net.TextField txtfJefeNombre;
         
         /// <summary>
-        /// Control txtApPaternoJefe.
+        /// Control txtfJefeAPaterno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtApPaternoJefe;
+        protected global::Ext.Net.TextField txtfJefeAPaterno;
         
         /// <summary>
-        /// Control txtApMaternoJefe.
+        /// Control txtfJefeAMaterno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtApMaternoJefe;
+        protected global::Ext.Net.TextField txtfJefeAMaterno;
         
         /// <summary>
-        /// Control fcOcupacion4.
+        /// Control cEmpresaSocioC4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcOcupacion4;
+        protected global::Ext.Net.Container cEmpresaSocioC4;
+        
+        /// <summary>
+        /// Control txtfPuesto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfPuesto;
         
         /// <summary>
         /// Control txtEmpresaAnterior.

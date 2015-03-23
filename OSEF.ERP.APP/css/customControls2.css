@@ -305,6 +305,7 @@ color: #fff;
 {
     color: black;
 }
+
 .x-grid-custom .x-grid-row-selected .x-grid-cell
 {
     background: url(row-selected.png) repeat-x scroll 0 0 #7BBBCF;

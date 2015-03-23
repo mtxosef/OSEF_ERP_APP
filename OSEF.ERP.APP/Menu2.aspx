@@ -26,14 +26,14 @@
                         <div class="panorama-section">
                             <h2>Procesos</h2>
                             <div class="tile-column-span-2">
-                                <a class="tile widepeek" href="#" id="avances">
+                                <a class="tile widepeek" href="#" id="ahorros">
                                     <div class="tile wide image">
                                         <img src="assets/img/menu-ahorros.png" alt="Ahorros" />
                                         <div class="text-header">Ahorros</div>
                                     </div>
                                 </a>
 
-                                <a class="tile wide imagetext wideimage bg-color-green" href="#">
+                                <a class="tile wide imagetext wideimage bg-color-green" id="inversiones" href="#">
                                     <img src="assets/img/menu-inversiones.png" alt="Inversiones" class="img-large" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Inversiones</div>
@@ -47,7 +47,7 @@
                              <div class="tile-column-span-2">                            
                            
 
-                             <a class="tile square image bg-color-yellow" id="A6" href="#">
+                             <a class="tile square image bg-color-yellow" id="prestamos" href="#">
                                     <img src="assets/img/menu-prestamos.png" alt="Préstamos" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Préstamos</div>
@@ -136,7 +136,7 @@
                                         <div class="text2">Estados</div>
                                     </div>
                                 </a>
-                                 <a class="tile wide imagetext wideimage bg-color-green" id="A1" href="#">
+                                 <a class="tile wide imagetext wideimage bg-color-green" id="solicitudesPrestamos" href="#">
                                     <img src="assets/img/menu-solicitudes.png" alt="Solicitudes" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Solicitudes Préstamos</div>
@@ -154,7 +154,7 @@
                                     </div>
                                 </a>
 
-                                <a class="tile square image" id="A2" href="#">
+                                <a class="tile square image" id="certificadosInversiones" href="#">
                                     <img src="assets/img/menu-certificados.png" alt="" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Certificados de inversión </div>

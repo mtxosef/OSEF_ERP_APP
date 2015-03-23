@@ -264,5 +264,17 @@ $(document).ready(function () {
         });
     });
 
+    $("#solicitudesPrestamos").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            parent.App.pCentro.getLoader().load('SolicitudesPrestamos.aspx');
+        });
+    });
 
+    $("#certificadosInversiones").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            parent.App.pCentro.getLoader().load('CertificadosInversiones.aspx');
+        });
+    });
 });
