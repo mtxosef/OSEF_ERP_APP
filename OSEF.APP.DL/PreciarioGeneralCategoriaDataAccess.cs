@@ -196,6 +196,52 @@ namespace OSEF.APP.DL
             }
         }
 
+        /// <summary>
+        /// Obtener registros de PreciarioGeneralCategoria 
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public static List<PreciarioGeneralCategoria> ObtenerPreciarioGeneralCategoriaPorPreciario(string strPreciario)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioGeneralCategoriasPorPreciario";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpPreciario = new SqlParameter();
+                sqlpPreciario.ParameterName = "@Preciario";
+                sqlpPreciario.SqlDbType = SqlDbType.Char;
+                sqlpPreciario.Size = 7;
+                sqlpPreciario.Value = strPreciario;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpPreciario);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista 
+                List<PreciarioGeneralCategoria> result = LibraryGenerics<PreciarioGeneralCategoria>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<PreciarioGeneralCategoria> ObtenerPreciarioGeneralCategoriaPorPreciario(string " + strPreciario + ")): " + ex.Message);
+            }
+        }
 
         #endregion
     }

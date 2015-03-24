@@ -118,6 +118,22 @@ function HabilitarGuardar() {
 var sPreciario_Load_Success = function () {
     var d = new Date();
     App.dfFechaEmision.setValue(d);
+
+    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
+        App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
+        //    App.gpPreciario.getView().focusRow(App.sCarga.getCount()-1);
+        //    App.gpPreciario.editingPlugin.startEdit(App.gpPreciario.store.getAt(App.sCarga.getCount()-1), App.gpPreciario.columns[2]);
+    }
+};
+//Renglones nuevos
+var getRowClass = function (record) {
+    if (record.phantom) {
+        return "new-row";
+    }
+
+    if (record.dirty) {
+        return "dirty-row";
+    }
 };
 
 //Formato numerico a Precio
@@ -129,14 +145,14 @@ var rendererCosto = function (value) {
 };
 //Formato Cantidades
 var rendererCantidad = function (valor, metaData, registro) {
-
+  
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
 
 
-    return F.number(registro.get('Cantidad'), "000,000,000.00") + " " + registro.get('Unidad');
-   
+    return F.number(registro.get('Cantidad'), "000,000,000.00");
+
 };
 
 //Evento que ocurre al dar clic en imgbtnGuardar
@@ -150,7 +166,7 @@ var imgbtnGuardar_Click_Success = function () {
 var sPreciario_Add = function (avance, registro) {
     //Lo que pasa cuando se selecciona un registro y es diferente de nuevo
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
-        console.log(registro);
+
 
         App.txtfID.setValue(registro[0].get('ID'));
         App.txtfDescripcion.setValue(registro[0].get('Descripcion'));
@@ -170,16 +186,31 @@ var sPreciario_Add = function (avance, registro) {
         App.imgbtnBorrarCarga.setDisabled(true);
         App.fufArchivoExcel.setDisabled(true);
         App.sbFormaPreciario.setText(registro[0].get('Estatus'));
+
+     
+       
+
     }
 };
 
-//Renderizar objeos con descripciones de categorias
+//Renderizar objetos con descripciones de categorias
 //Asignar la descripción de la categoria a esta columna
-var cCategoria_Renderer = function (valor, columna, registro) {
+//var cCategoria_Renderer = function (valor, columna, registro) {
+//    console.log(registro);
+//    if (valor.length != 0) {
+//        var Categoria = registro.get('RCategoria');
+//       
+//        return Categoria.Descripcion;
+//        
+//    }
+//};
 
+//Evento que muestra el valor de la columna Concepto por su descripción y no por su ID
+var cCategoria_Renderer = function (valor) {
+    var registro;
     if (valor.length != 0) {
-        var Categoria = registro.get('RCategoria');
-        return Categoria.Descripcion;
+        registro = App.sCategoria.findRecord('ID', valor);
+        return registro.get('Descripcion');
     }
 };
 
@@ -214,4 +245,19 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
 
 
 
+};
+
+
+
+//Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
+var validaConcluidos = function (a, d, f) {
+    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') == 'Nuevo') {
+        return false;
+    }
+    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
+        return true;
+    }
+    else {
+        return true
+    }
 };

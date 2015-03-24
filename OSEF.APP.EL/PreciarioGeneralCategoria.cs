@@ -22,6 +22,10 @@ namespace OSEF.APP.EL
         DateTime fechaalta;
         string tipo;
 
+        PreciarioGeneralCategoria rcategoria;
+
+        
+
         #endregion
 
         #region Propiedades
@@ -72,6 +76,12 @@ namespace OSEF.APP.EL
         {
             get { return tipo; }
             set { tipo = value; }
+        }
+
+        public PreciarioGeneralCategoria RCategoria
+        {
+            get { return rcategoria; }
+            set { rcategoria = value; }
         }
 
         #endregion

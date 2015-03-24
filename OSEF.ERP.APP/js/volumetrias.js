@@ -595,8 +595,6 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
     if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
         //Verificar si toda la fila contiene datos
         var registro = App.sConceptos.getAt(columna.rowIdx);
-
-        //        var prueba =/^[a-zA-Z0-9]{1,2000}$/;
         if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
             //Obtener el Renglon anterior
             var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;

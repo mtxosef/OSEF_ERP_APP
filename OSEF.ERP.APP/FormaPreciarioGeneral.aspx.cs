@@ -17,9 +17,37 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
+            sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(Cookies.GetCookie("cookieEditarPreciarioGeneral").Value);
+            sCategoria.DataBind();
         }
 
+
+        /// <summary>
+        /// Evento que se lanza al escoger una categoria
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbCategoria_Change(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el estado seleccionado y obtener las subcategorias
+            string strCategoria = e.ExtraParams["categoria"];
+            sSubCategoria.DataSource = PreciarioGeneralSubCategoriaBusiness.ObtenerPreciarioGeneralSubCategoriaPorCategoria(strCategoria);
+            sSubCategoria.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar una subcategoria
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbSubCategoria_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado 
+            string strSubCategoria = e.ExtraParams["subcategoria"];
+            sSubSubCategorias.DataSource = PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorSubCategoria(strSubCategoria);
+            sSubSubCategorias.DataBind();
+        }
 
         /// <summary>
         /// Evento de clic del botón Guardar
@@ -148,6 +176,36 @@ namespace OSEF.ERP.APP
                         PreciarioGeneralConceptoBusiness.Insertar(pc);
                     }
                 }
+                //Inserta las categorias de otros
+                PreciarioGeneralCategoria catg = new PreciarioGeneralCategoria();
+                catg.Clave = "OTR-001";
+                catg.Preciario = oPreciario.ID;
+                catg.Descripcion = "OTROS ADICIONALES";
+                catg.Usuario = oUsuario.ID;
+                catg.Estatus = strEstatus;
+                catg.FechaAlta = DateTime.Now;
+                categoria = PreciarioGeneralCategoriaBusiness.Insertar(catg);
+
+                PreciarioGeneralSubCategoria scatg = new PreciarioGeneralSubCategoria();
+                scatg.Clave = "OTR-001";
+                scatg.Preciario = oPreciario.ID;
+                scatg.Descripcion = "OTROS ADICIONALES";
+                scatg.Usuario = oUsuario.ID;
+                scatg.Categoria=categoria;
+                scatg.Estatus = strEstatus;
+                scatg.FechaAlta = DateTime.Now;
+                subcategoria= PreciarioGeneralSubCategoriaBusiness.Insertar(scatg);
+
+                PreciarioGeneralSubSubCategoria sscatg = new PreciarioGeneralSubSubCategoria();
+                sscatg.Clave = "OTR-001";
+                sscatg.Preciario = oPreciario.ID;
+                sscatg.Descripcion = "OTROS ADICIONALES";
+                sscatg.Categoria = categoria;
+                sscatg.SubCategoria = subcategoria;
+                sscatg.Usuario = oUsuario.ID;
+                sscatg.Estatus = strEstatus;
+                sscatg.FechaAlta = DateTime.Now;
+                PreciarioGeneralSubSubCategoriaBusiness.Insertar(sscatg);
 
                 //13. Mandar mensaje con el código del Preciario
                 var success = new JFunction { Fn = "imgbtnGuardar_Click_Success" };

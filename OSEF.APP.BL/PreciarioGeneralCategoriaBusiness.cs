@@ -52,6 +52,26 @@ namespace OSEF.APP.BL
             return PreciarioGeneralCategoriaDataAccess.ObtenerPreciarioGeneralCategoriaPorID(strID);
         }
 
+        /// Obtener registros de PreciarioGeneralCategoria
+        public static List<PreciarioGeneralCategoria> ObtenerPreciarioGeneralCategoriaPorPreciario(string strPreciario)
+        {
+
+
+            //1. Obtener lista de conceptos
+            List<PreciarioGeneralCategoria> lPreciarioCategoria = PreciarioGeneralCategoriaDataAccess.ObtenerPreciarioGeneralCategoriaPorPreciario(strPreciario);
+            //2. Asignar a categorias
+            foreach (PreciarioGeneralCategoria sd in lPreciarioCategoria)
+            {
+                sd.RCategoria = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorID(sd.ID);
+                //sd.RSubcategoria = PreciarioSubCategoriaBusiness.ObtenerPreciarioSubCategoriaPorID(sd.SubCategoria);
+                //sd.RSubsubcategoria = PreciarioSubSubCategoriaBusiness.ObtenerPreciarioSubSubCategoriaPorID(sd.SubSubCategoria);
+            }
+            return lPreciarioCategoria;
+
+
+            return PreciarioGeneralCategoriaDataAccess.ObtenerPreciarioGeneralCategoriaPorPreciario(strPreciario);
+        }
+
         #endregion
 
     }

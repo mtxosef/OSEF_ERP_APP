@@ -25,6 +25,18 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/formaPreciarioGeneral.js"></script>
+
+      
+    <style type="text/css">
+        .dirty-row .x-grid-cell, .dirty-row .x-grid-rowwrap-div {
+	        background-color: #FFFDD8 !important;
+        }
+        
+        .new-row .x-grid-cell, .new-row .x-grid-rowwrap-div {
+	        background: #c8ffc8 !important;
+        } 
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -400,6 +412,9 @@
                                                     <ext:TextField 
                                                         ID="txtDescripcionConcepto"
                                                         runat="server" >
+                                                        <Listeners>
+                                                            <Change Handler="this.setValue(this.getValue().toUpperCase());" />
+                                                        </Listeners>
                                                     </ext:TextField>
                                                 </Editor>
                                             </ext:Column>
@@ -409,7 +424,7 @@
                                                 Align="Center"
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
-                                                Width="125">
+                                                Width="105">
                                                 <Renderer Fn="rendererCantidad"></Renderer>
                                                 <Editor>
                                                     <ext:NumberField 
@@ -427,6 +442,46 @@
                                                     </ext:NumberField>
                                                 </Editor>
                                             </ext:Column>
+                                            <ext:Column
+                                                ID="cUnidad"
+                                                runat="server"
+                                                Align="Center"
+                                                Text="Unidad"
+                                                DataIndex="Unidad"
+                                                Width="105">
+                                                <Editor>
+                                                    <ext:ComboBox 
+                                                        ID="cmbUnidad"
+                                                        runat="server"
+                                                         Editable="true"
+                                                        MatchFieldWidth="true"
+                                                        ForceSelection="true"
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
+                                                        <Items>
+                                                            
+                                                            <ext:ListItem Index="1" Text="BULTOS" Value="BULTOS" />
+                                                            <ext:ListItem Index="2" Text="JGO" Value="JGO" />
+                                                            <ext:ListItem Index="3" Text="KG" Value="KG" />
+                                                            <ext:ListItem Index="4" Text="LOTE" Value="LOTE" />
+                                                            <ext:ListItem Index="5" Text="M" Value="M" />
+                                                            <ext:ListItem Index="6" Text="M2" Value="M2" />
+                                                            <ext:ListItem Index="7" Text="M3" Value="M3" />
+                                                            <ext:ListItem Index="8" Text="MOD " Value="MOD" />
+                                                            <ext:ListItem Index="9" Text="MODULO" Value="MODULO" />
+                                                            <ext:ListItem Index="10" Text="PRUEBA" Value="PRUEBA" />
+                                                            <ext:ListItem Index="11" Text="PZA" Value="PZA" />
+                                                            <ext:ListItem Index="12" Text="RED" Value="RED" />
+                                                            <ext:ListItem Index="13" Text="SAL" Value="SAL" />
+                                                            <ext:ListItem Index="14" Text="SERVICIO" Value="SERVICIO" />
+                                                            <ext:ListItem Index="15" Text="SISTEMA" Value="SISTEMA" />
+                                                            <ext:ListItem Index="16" Text="SUCURSAL" Value="SUCURSAL" />
+                                                            <ext:ListItem Index="17" Text="% EQUIPO" Value="% EQUIPO" />
+                                                        </Items>
+                                                    </ext:ComboBox>
+                                                </Editor>
+                                            </ext:Column>
+
                                             <ext:Column 
                                                 ID="cPrecio"
                                                 runat="server"
@@ -451,16 +506,48 @@
                                                     </ext:NumberField>
                                                 </Editor>
                                             </ext:Column>
-                                         
-                                           
                                             <ext:Column 
                                                 ID="cCategoria"
                                                 runat="server"
                                                 Align="Center"
                                                 Text="Categoría"
                                                 DataIndex="Categoria"
-                                                Width="90">
+                                                Width="190">
                                                 <Renderer Fn="cCategoria_Renderer" />
+                                                <Editor>
+                                                    <ext:ComboBox
+                                                        ID="cmbCategoria"
+                                                        runat="server"
+                                                        DisplayField="Descripcion"
+                                                        ValueField="ID"
+                                                        EnforceMaxLength="true"
+                                                        StyleSpec="margin-right: 6px;"
+                                                        Editable="true"
+                                                        MatchFieldWidth="true"
+                                                        ForceSelection="true"
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
+                                                        <Store>
+                                                            <ext:Store ID="sCategoria" runat="server">
+                                                                <Model>
+                                                                    <ext:Model ID="mCategoria" runat="server">
+                                                                        <Fields>
+                                                                            <ext:ModelField Name="ID" Type="String" />
+                                                                            <ext:ModelField Name="Descripcion" Type="String" />
+                                                                        </Fields>
+                                                                    </ext:Model>
+                                                                </Model>
+                                                            </ext:Store>
+                                                        </Store>
+                                                        <DirectEvents>
+                                                            <Change OnEvent="cmbCategoria_Change">
+                                                                <ExtraParams>
+                                                                    <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
+                                                                </ExtraParams>
+                                                            </Change>
+                                                        </DirectEvents>
+                                                    </ext:ComboBox>
+                                                </Editor>
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cSubCategoria"
@@ -468,8 +555,43 @@
                                                 Align="Center"
                                                 Text="SubCategoría"
                                                 DataIndex="SubCategoria"
-                                                Width="90">
+                                                Width="190">
                                                <Renderer Fn="cSubcategoria_Renderer" />
+                                               <Editor>
+                                                <ext:ComboBox
+                                                    ID="cmbSubCategoria"
+                                                    runat="server"
+                                                    DisplayField="Descripcion"
+                                                    ValueField="ID"
+                                                    EnforceMaxLength="true"
+                                                    StyleSpec="margin-right: 6px;"
+                                                    MatchFieldWidth="true"
+                                                    ForceSelection="true"
+                                                    QueryMode="Local"
+                                                    TypeAhead="true">
+                                                    <Store>
+                                                        <ext:Store
+                                                            ID="sSubCategoria"
+                                                            runat="server">
+                                                            <Model>
+                                                                <ext:Model ID="mSubCategoria" runat="server" IDProperty="ID">
+                                                                    <Fields>
+                                                                        <ext:ModelField Name="ID" Type="String" />
+                                                                        <ext:ModelField Name="Descripcion" Type="String" />
+                                                                    </Fields>
+                                                                </ext:Model>
+                                                            </Model>
+                                                        </ext:Store>
+                                                    </Store>
+                                                    <DirectEvents>
+                                                        <Change OnEvent="cmbSubCategoria_Select">
+                                                            <ExtraParams>
+                                                                <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
+                                                            </ExtraParams>
+                                                        </Change>
+                                                    </DirectEvents>
+                                                </ext:ComboBox>
+                                               </Editor>
                                             </ext:Column>
                                             <ext:Column 
                                                 ID="cSubCubCategoria"
@@ -477,8 +599,38 @@
                                                 Align="Center"
                                                 Text="SubSubCategoria"
                                                 DataIndex="SubSubCategoria"
-                                                Width="90">
+                                                Width="190">
                                               <Renderer Fn="cSubsubcategoria_Renderer" />
+                                              <Editor>
+                                               <ext:ComboBox
+                                                    ID="cmbSubSubCategoria"
+                                                    runat="server"
+                                                    DisplayField="Descripcion"
+                                                    ValueField="ID"
+                                                    EnforceMaxLength="true"
+                                                    StyleSpec="margin-right: 6px;"
+                                                    AllowBlank="true"
+                                                     MatchFieldWidth="true"
+                                                    ForceSelection="true"
+                                                    QueryMode="Local"
+                                                    TypeAhead="true">
+                                                    <Store>
+                                                        <ext:Store
+                                                            ID="sSubSubCategorias"
+                                                            runat="server">
+                                                            <Model>
+                                                                <ext:Model ID="mSubSubcategorias" runat="server" IDProperty="ID">
+                                                                    <Fields>
+                                                                        <ext:ModelField Name="ID" Type="String" />
+                                                                        <ext:ModelField Name="Descripcion" Type="String" />
+                                                                    </Fields>
+                                                                </ext:Model>
+                                                            </Model>
+                                                        </ext:Store>
+                                                    </Store>
+                                                </ext:ComboBox>
+                                              
+                                              </Editor>
                                             </ext:Column>
                                         </Columns>
                                     </ColumnModel>
@@ -493,10 +645,10 @@
                                             ID="ceFormaPreciarioGeneral" 
                                             runat="server"
                                             ClicksToEdit="1">
-                                           <%-- <Listeners>
-                                                <Edit Fn="cePreciarioConcepto_Edit" />
+                                           <Listeners>
+                                                <%--<Edit Fn="cePreciarioConcepto_Edit" />--%>
                                                 <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
-                                            </Listeners>--%>
+                                            </Listeners>
                                         </ext:CellEditing>
                                     </Plugins>
                                     <View>
@@ -504,6 +656,7 @@
                                             ID="gvPreciario"
                                             runat="server"
                                             StripeRows="true">
+                                              <GetRowClass Fn="getRowClass" /> 
                                         </ext:GridView>
                                     </View>
                                 </ext:GridPanel>

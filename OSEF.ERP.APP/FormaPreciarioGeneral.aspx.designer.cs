@@ -355,6 +355,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.NumberField nfCantidad;
         
         /// <summary>
+        /// Control cUnidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cUnidad;
+        
+        /// <summary>
+        /// Control cmbUnidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbUnidad;
+        
+        /// <summary>
         /// Control cPrecio.
         /// </summary>
         /// <remarks>
@@ -382,6 +400,33 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cCategoria;
         
         /// <summary>
+        /// Control cmbCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbCategoria;
+        
+        /// <summary>
+        /// Control sCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sCategoria;
+        
+        /// <summary>
+        /// Control mCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mCategoria;
+        
+        /// <summary>
         /// Control cSubCategoria.
         /// </summary>
         /// <remarks>
@@ -391,6 +436,33 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cSubCategoria;
         
         /// <summary>
+        /// Control cmbSubCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbSubCategoria;
+        
+        /// <summary>
+        /// Control sSubCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sSubCategoria;
+        
+        /// <summary>
+        /// Control mSubCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSubCategoria;
+        
+        /// <summary>
         /// Control cSubCubCategoria.
         /// </summary>
         /// <remarks>
@@ -398,6 +470,33 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cSubCubCategoria;
+        
+        /// <summary>
+        /// Control cmbSubSubCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbSubSubCategoria;
+        
+        /// <summary>
+        /// Control sSubSubCategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sSubSubCategorias;
+        
+        /// <summary>
+        /// Control mSubSubcategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSubSubcategorias;
         
         /// <summary>
         /// Control csmPreciario.

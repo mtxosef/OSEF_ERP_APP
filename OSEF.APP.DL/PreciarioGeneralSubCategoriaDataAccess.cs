@@ -203,6 +203,53 @@ namespace OSEF.APP.DL
             }
         }
 
+        /// <summary>
+        /// Obtener un registro de PreciarioGeneralSubCategoria por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubCategoriaPorCategoria(string strID)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioGeneralSubCategoriasPorCategoria";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@Categoria";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Size = 10;
+                sqlpID.Value = strID;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+
+                List<PreciarioGeneralSubCategoria> result = LibraryGenerics<PreciarioGeneralSubCategoria>.ConvertDataSetToList(reader);
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubCategoriaPorCategoria> ObtenerPreciarioSubCategoriaPorCategoria(string " + strID + ")): " + ex.Message);
+            }
+        }
+
         #endregion
     }
 }
