@@ -400,6 +400,96 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.NumberField nAnosDomicilioActual;
         
         /// <summary>
+        /// Control cmbEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEstatus;
+        
+        /// <summary>
+        /// Control sEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEstatus;
+        
+        /// <summary>
+        /// Control mEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEstatus;
+        
+        /// <summary>
+        /// Control fsControl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet fsControl;
+        
+        /// <summary>
+        /// Control cAlta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cAlta;
+        
+        /// <summary>
+        /// Control txtfUsuarioAlta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfUsuarioAlta;
+        
+        /// <summary>
+        /// Control dfFechaAlta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DateField dfFechaAlta;
+        
+        /// <summary>
+        /// Control cModificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cModificacion;
+        
+        /// <summary>
+        /// Control txtfUsuarioModificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfUsuarioModificacion;
+        
+        /// <summary>
+        /// Control dfFechaModificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DateField dfFechaModificacion;
+        
+        /// <summary>
         /// Control pDomicilioSocio.
         /// </summary>
         /// <remarks>
@@ -553,6 +643,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbColonia;
         
         /// <summary>
+        /// Control sColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sColonias;
+        
+        /// <summary>
+        /// Control mColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mColonias;
+        
+        /// <summary>
         /// Control fsDomicilioAnterior.
         /// </summary>
         /// <remarks>
@@ -697,22 +805,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbColoniaAnterior;
         
         /// <summary>
-        /// Control sColonias.
+        /// Control sColoniasAnterior.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sColonias;
+        protected global::Ext.Net.Store sColoniasAnterior;
         
         /// <summary>
-        /// Control mColonias.
+        /// Control mColoniasAnterior.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mColonias;
+        protected global::Ext.Net.Model mColoniasAnterior;
         
         /// <summary>
         /// Control pOcupacionActual.

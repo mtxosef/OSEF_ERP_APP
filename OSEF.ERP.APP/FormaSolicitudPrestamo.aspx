@@ -170,22 +170,98 @@
                     <Fields>
                         <ext:ModelField Name="ID" Type="String" />
                         <ext:ModelField Name="Cliente" Type="String" />
-                        <ext:ModelField Name="Nombre" Type="String" />
-                        <ext:ModelField Name="APaterno" Type="String" />
-                        <ext:ModelField Name="AMaterno" Type="String" />
-                        <ext:ModelField Name="NombreCompleto" Type="String" />
-                        <ext:ModelField Name="TipoInversion" Type="String" />
-                        <ext:ModelField Name="UnidadCalculo" Type="Int" />
-                        <ext:ModelField Name="TasaInteres" Type="Float" />
-                        <ext:ModelField Name="FechaVencimiento" Type="Date" />
-                        <ext:ModelField Name="ValorInversion" Type="Float" />
-                        <ext:ModelField Name="InstruccionesCapital" Type="String" />
-                        <ext:ModelField Name="InstruccionesInteres" Type="String" />
+                        <ext:ModelField Name="Nacionalidad" Type="String" />
+                        <ext:ModelField Name="RegistroMatrimonial" Type="String" />
+                        <ext:ModelField Name="NumeroDependientes" Type="Int" />
+                        <ext:ModelField Name="Edades" Type="String" />
+                        <ext:ModelField Name="TipoCasa" Type="String" />
+                        <ext:ModelField Name="AniosDomicilio" Type="Int" />
+                        <ext:ModelField Name="CalleAnterior" Type="String" />
+                        <ext:ModelField Name="NoExteriorAnterior" Type="String" />
+                        <ext:ModelField Name="NoInteriorAnterior" Type="String" />
+                        <ext:ModelField Name="ColoniaAnterior" Type="String" />
+                        <ext:ModelField Name="CodigoPostalAnterior" Type="Int" />
+                        <ext:ModelField Name="EntreCallesAnterior" Type="String" />
+                        <ext:ModelField Name="EstadoAnterior" Type="String" />
+                        <ext:ModelField Name="MunicipioAnterior" Type="String" />
+                        <ext:ModelField Name="Antiguedad" Type="Int" />
+                        <ext:ModelField Name="Ingresos" Type="Int" />
+                        <ext:ModelField Name="OtrosIngresos" Type="Int" />
+                        <ext:ModelField Name="Concepto" Type="String" />
+                        <ext:ModelField Name="JefeNombre" Type="String" />
+                        <ext:ModelField Name="JefeAPAterno" Type="String" />
+                        <ext:ModelField Name="JefeAMaterno" Type="String" />
+                        <ext:ModelField Name="EmpresaAnterior" Type="String" />
+                        <ext:ModelField Name="ConyugeNombre" Type="String" />
+                        <ext:ModelField Name="ConyugeAPaterno" Type="String" />
+                        <ext:ModelField Name="ConyugeAMaterno" Type="String" />
+                        <ext:ModelField Name="ConyugeFechaNacimiento" Type="Date" />
+                        <ext:ModelField Name="ConyugeRFC" Type="String" />
+                        <ext:ModelField Name="ConyugeCalle" Type="String" />
+                        <ext:ModelField Name="ConyugeNoExterior" Type="String" />
+                        <ext:ModelField Name="ConyugeNoInterior" Type="String" />
+                        <ext:ModelField Name="ConyugeColonia" Type="String" />
+                        <ext:ModelField Name="ConyugeCodigoPostal" Type="Int" />
+                        <ext:ModelField Name="ConyugeEntreCalles" Type="String" />
+                        <ext:ModelField Name="ConyugeIngresos" Type="Int" />
+                        <ext:ModelField Name="ConyugeAntiguedad" Type="Int" />
+                        <ext:ModelField Name="ConyugeTelefono" Type="String" />
+                        <ext:ModelField Name="ConyugeTelefonoMovil" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresa" Type="String" />
+                        <ext:ModelField Name="ConyugePuesto" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaCalle" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaNoExterior" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaNoInterior" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaColonia" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaCodigoPostal" Type="Int" />
+                        <ext:ModelField Name="ConyugeEmpresaEntreCalles" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaJefeNombre" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaJefeAPAterno" Type="String" />
+                        <ext:ModelField Name="ConyugeEmpresaJefeAMAterno" Type="String" />
+                        <ext:ModelField Name="AvalNombre" Type="String" />
+                        <ext:ModelField Name="AvalAPaterno" Type="String" />
+                        <ext:ModelField Name="AvalAMaterno" Type="String" />
+                        <ext:ModelField Name="AvalSocio" Type="String" />
+                        <ext:ModelField Name="AvalEstadoCivil" Type="String" />
+                        <ext:ModelField Name="AvalRegistroMatrimonial" Type="String" />
+                        <ext:ModelField Name="AvalCalle" Type="String" />
+                        <ext:ModelField Name="AvalNoExterior" Type="String" />
+                        <ext:ModelField Name="AvalNoInterior" Type="String" />
+                        <ext:ModelField Name="AvalColonia" Type="String" />
+                        <ext:ModelField Name="AvalCodigoPostal" Type="String" />
+                        <ext:ModelField Name="AvalEntreCalles" Type="String" />
+                        <ext:ModelField Name="AvalTelefono" Type="String" />
+                        <ext:ModelField Name="AvalTelefonoMovil" Type="String" />
+                        <ext:ModelField Name="AvalAntiguedad" Type="String" />
+                        <ext:ModelField Name="AvalCasaPropia" Type="String" />
+                        <ext:ModelField Name="AvalTipoCasa" Type="String" />
+                        <ext:ModelField Name="AvalCalleAnterior" Type="String" />
+                        <ext:ModelField Name="AvalNoExteriorAnterior" Type="String" />
+                        <ext:ModelField Name="AvalNoInteriorAnterior" Type="String" />
+                        <ext:ModelField Name="AvalColoniaAnterior" Type="String" />
+                        <ext:ModelField Name="AvalCodigoPostalAnterior" Type="String" />
+                        <ext:ModelField Name="AvalEntreCallesAnterior" Type="String" />
+                        <ext:ModelField Name="AvalEmpresa" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaJefeNombre" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaJefeAPAterno" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaJefeAMAterno" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaPuesto" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaAntiguedad" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaIngresos" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaOtrosIngresos" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaConcepto" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaTelefono" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaPropietario" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaTipo" Type="String" />
+                        <ext:ModelField Name="AvalEmpresaAnterior" Type="String" />
+                        <ext:ModelField Name="Cantidad" Type="String" />
+                        <ext:ModelField Name="Plazo" Type="String" />
+                        <ext:ModelField Name="FormaPago" Type="String" />
+                        <ext:ModelField Name="Tipo" Type="String" />
+                        <ext:ModelField Name="TablaAmortizacion" Type="String" />
+                        <ext:ModelField Name="Usuario" Type="String" />
                         <ext:ModelField Name="Estatus" Type="String" />
-                        <ext:ModelField Name="UsuarioAlta" Type="String" />
-                        <ext:ModelField Name="FechaAlta" Type="Date" />
-                        <ext:ModelField Name="UsuarioModificacion" Type="String" />
-                        <ext:ModelField Name="FechaModificacion" Type="Date" />
+                        <ext:ModelField Name="FechaAlta" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>           
@@ -546,6 +622,106 @@
                                                                 FieldLabel="Antigüedad domicilio"
                                                                 LabelWidth="130">
                                                             </ext:NumberField>
+                                                            <ext:ComboBox
+                                                                ID="cmbEstatus"
+                                                                runat="server"
+                                                                AllowBlank="false"
+                                                                Editable="false"
+                                                                Width="340"
+                                                                LabelWidth="130"
+                                                                FieldLabel="Estatus"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Disabled="true"
+                                                                ValueField="ID"
+                                                                DisplayField="Descripcion">
+                                                                <Store>
+                                                                    <ext:Store ID="sEstatus" runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mEstatus" runat="server" IDProperty="ID">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="String" />
+                                                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                    </ext:Store>
+                                                                </Store>
+                                                                <Items>
+                                                                    <ext:ListItem Index="0" Text="ALTA" Value="ALTA" />
+                                                                    <ext:ListItem Index="1" Text="BLOQUEADO" Value="BLOQUEADO" />
+                                                                    <ext:ListItem Index="2" Text="BAJA" Value="BAJA" />
+                                                                </Items>
+                                                            </ext:ComboBox>
+                                                        </Items>
+                                                    </ext:Container>
+                                                </Items>
+                                            </ext:FieldSet>
+                                            <ext:FieldSet
+                                                ID="fsControl"
+                                                runat="server"
+                                                Title="Control de Datos"
+                                                DefaultAnchor="100%">
+                                                <Items>
+                                                    <ext:Container
+                                                        ID="cAlta"
+                                                        runat="server"
+                                                        Layout="ColumnLayout">
+                                                        <Items>
+                                                            <ext:TextField
+                                                                ID="txtfUsuarioAlta"
+                                                                runat="server"
+                                                                Width="340"
+                                                                Editable="false"
+                                                                MaxLength="50"
+                                                                EnforceMaxLength="true"
+                                                                AllowBlank="true"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Disabled="true"
+                                                                FieldLabel="Usuario alta"
+                                                                LabelWidth="130">
+                                                            </ext:TextField>
+                                                            <ext:DateField
+                                                                ID="dfFechaAlta"
+                                                                runat="server"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Width="340"
+                                                                LabelWidth="130"
+                                                                FieldLabel="Fecha alta"
+                                                                AllowBlank="true"
+                                                                Disabled="true"
+                                                                Vtype="daterange">
+                                                            </ext:DateField>
+                                                        </Items>
+                                                    </ext:Container>
+                                                    <ext:Container
+                                                        ID="cModificacion"
+                                                        runat="server"
+                                                        Layout="ColumnLayout">
+                                                        <Items>
+                                                            <ext:TextField
+                                                                ID="txtfUsuarioModificacion"
+                                                                runat="server"
+                                                                Width="340"
+                                                                Editable="false"
+                                                                MaxLength="50"
+                                                                EnforceMaxLength="true"
+                                                                AllowBlank="true"
+                                                                FieldLabel="Usuario modificación"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                LabelWidth="130"
+                                                                Disabled="true">
+                                                            </ext:TextField>
+                                                            <ext:DateField
+                                                                ID="dfFechaModificacion"
+                                                                runat="server"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Width="340"
+                                                                AllowBlank="true"
+                                                                Disabled="true"
+                                                                LabelWidth="130"
+                                                                FieldLabel="Fecha modificación"
+                                                                Vtype="daterange">
+                                                            </ext:DateField>
                                                         </Items>
                                                     </ext:Container>
                                                 </Items>
@@ -682,12 +858,14 @@
                                                                 TypeAhead="true"
                                                                 Disabled="false"
                                                                 StoreID="sEstados">
+                                                                <ListConfig Width="200" MaxHeight="195">
+                                                                </ListConfig>
                                                                 <DirectEvents>
-                                                                    <Select OnEvent="cmbEstado_Select">
+                                                                    <Change OnEvent="cmbEstado_Change">
                                                                         <ExtraParams>
                                                                             <ext:Parameter Name="valor" Value="App.cmbEstado.getValue()" Mode="Raw" />
                                                                         </ExtraParams>
-                                                                    </Select>
+                                                                    </Change>
                                                                 </DirectEvents>
                                                             </ext:ComboBox>
                                                         </Items>
@@ -713,6 +891,8 @@
                                                                 QueryMode="Local"
                                                                 TypeAhead="true"
                                                                 Disabled="false">
+                                                                <ListConfig Width="200" MaxHeight="195">
+                                                                </ListConfig>
                                                                 <Store>
                                                                     <ext:Store
                                                                         ID="sMunicipios"
@@ -726,8 +906,18 @@
                                                                                 </Fields>
                                                                             </ext:Model>
                                                                         </Model>
+                                                                        <Sorters>
+                                                                            <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                        </Sorters>
                                                                     </ext:Store>
                                                                 </Store>
+                                                                <DirectEvents>
+                                                                    <Change OnEvent="cmbMunicipio_Change">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="valor" Value="App.cmbMunicipio.getValue()" Mode="Raw" />
+                                                                        </ExtraParams>
+                                                                    </Change>
+                                                                </DirectEvents>
                                                             </ext:ComboBox>
                                                             <ext:ComboBox
                                                                 ID="cmbColonia"
@@ -743,6 +933,27 @@
                                                                 QueryMode="Local"
                                                                 TypeAhead="true"
                                                                 Disabled="false">
+                                                                <Store>
+                                                                    <ext:Store
+                                                                        ID="sColonias"
+                                                                        runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mColonias" runat="server">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="String" />
+                                                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                                                    <ext:ModelField Name="Estado" Type="String" />
+                                                                                    <ext:ModelField Name="Municipio" Type="String" />
+                                                                                    <ext:ModelField Name="REstado" Type="String" />
+                                                                                    <ext:ModelField Name="RMunicipio" Type="String" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                        <Sorters>
+                                                                            <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                        </Sorters>
+                                                                    </ext:Store>
+                                                                </Store>
                                                             </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
@@ -933,10 +1144,10 @@
                                                                 TypeAhead="true">
                                                                 <Store>
                                                                     <ext:Store
-                                                                        ID="sColonias"
+                                                                        ID="sColoniasAnterior"
                                                                         runat="server">
                                                                         <Model>
-                                                                            <ext:Model ID="mColonias" runat="server">
+                                                                            <ext:Model ID="mColoniasAnterior" runat="server">
                                                                                 <Fields>
                                                                                     <ext:ModelField Name="ID" Type="String" />
                                                                                     <ext:ModelField Name="Descripcion" Type="String" />
@@ -950,9 +1161,6 @@
                                                                         <Sorters>
                                                                             <ext:DataSorter Property="Descripcion" Direction="ASC" />
                                                                         </Sorters>
-<%--                                                                        <Listeners>
-                                                                            <Load Fn="sColonias_Load" />
-                                                                        </Listeners>--%>
                                                                     </ext:Store>
                                                                 </Store>
                                                             </ext:ComboBox>

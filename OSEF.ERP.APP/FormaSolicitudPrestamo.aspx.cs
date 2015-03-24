@@ -31,16 +31,29 @@ namespace OSEF.ERP.APP
         }
 
         /// <summary>
-        /// Evento que se lanza al seleccionar un Estado
+        /// Evento que se lanza al cambiar un Estado
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void cmbEstado_Select(object sender, DirectEventArgs e)
+        protected void cmbEstado_Change(object sender, DirectEventArgs e)
         {
             //1. Obtener el valor seleccionado y obtener los municipios
             string strEstado = e.ExtraParams["valor"];
             sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
             sMunicipios.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cambiar un municipio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbMunicipio_Change(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strMunicipio = e.ExtraParams["valor"];
+            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColonias.DataBind();
         }
 
         /// <summary>
