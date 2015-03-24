@@ -277,4 +277,21 @@ $(document).ready(function () {
             parent.App.pCentro.getLoader().load('CertificadosInversiones.aspx');
         });
     });
+
+    $("#OrdenesCambio").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            //            parent.App.lblRegresar.show();
+            parent.App.pCentro.getLoader().load('Mantenimientos.aspx');
+        });
+    });
+
+    $("#mantenimiento").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            //            parent.App.lblRegresar.show();
+            parent.App.pCentro.getLoader().load('OrdenesCambio.aspx');
+        });
+    });
+
 });

@@ -261,3 +261,30 @@ var validaConcluidos = function (a, d, f) {
         return true
     }
 };
+
+//Evento que se lanza antes de pintar la columna de comandos
+var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+    if (grid.getStore().getCount() - 1 == rowIndex) {
+        toolbar.items.get(0).hide();
+    }
+}
+
+//Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
+var cePreciarioConcepto_Edit = function (cellediting, columna) {
+
+    //Verificar si abajo de esta columna existe otra
+    if (App.sCarga.getAt(columna.rowIdx + 1) == undefined) {
+        //Verificar si toda la fila contiene datos
+        var registro = App.sCarga.getAt(columna.rowIdx);
+        if (registro.get('Descripcion').length != 0 && registro.get('Cantidad') != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
+            
+            
+            //Insertar un nuevo registro
+            App.sCarga.insert(App.sCarga.getCount(), { Clave:'ADC-002' });
+            //Actualiza el renglon anterior pintando el botón de borrar
+            App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
+            //Validar si se habilita el boton de afectar
+           // HabilitarGuardar();
+        }
+    }
+};

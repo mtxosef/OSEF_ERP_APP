@@ -29,7 +29,7 @@
       
     <style type="text/css">
         .dirty-row .x-grid-cell, .dirty-row .x-grid-rowwrap-div {
-	        background-color: #FFFDD8 !important;
+	        background-color: #fbf1c9 !important;
         }
         
         .new-row .x-grid-cell, .new-row .x-grid-rowwrap-div {
@@ -383,7 +383,7 @@
                                                     ID="ccAcciones"
                                                     runat="server" 
                                                     Width="25">
-                                                    <%--<PrepareToolbar Fn="ccAcciones_PrepareToolbar" />--%>
+                                                    <PrepareToolbar Fn="ccAcciones_PrepareToolbar" />
                                                     <Commands>
                                                         <ext:GridCommand
                                                             Icon="Delete"
@@ -556,7 +556,7 @@
                                                 Text="SubCategoría"
                                                 DataIndex="SubCategoria"
                                                 Width="190">
-                                               <Renderer Fn="cSubcategoria_Renderer" />
+                                               <%--<Renderer Fn="cSubcategoria_Renderer" />--%>
                                                <Editor>
                                                 <ext:ComboBox
                                                     ID="cmbSubCategoria"
@@ -600,7 +600,7 @@
                                                 Text="SubSubCategoria"
                                                 DataIndex="SubSubCategoria"
                                                 Width="190">
-                                              <Renderer Fn="cSubsubcategoria_Renderer" />
+                                             <%-- <Renderer Fn="cSubsubcategoria_Renderer" />--%>
                                               <Editor>
                                                <ext:ComboBox
                                                     ID="cmbSubSubCategoria"
@@ -646,7 +646,7 @@
                                             runat="server"
                                             ClicksToEdit="1">
                                            <Listeners>
-                                                <%--<Edit Fn="cePreciarioConcepto_Edit" />--%>
+                                                <Edit Fn="cePreciarioConcepto_Edit" />
                                                 <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
                                             </Listeners>
                                         </ext:CellEditing>

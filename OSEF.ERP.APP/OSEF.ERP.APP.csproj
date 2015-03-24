@@ -331,9 +331,11 @@
     <Content Include="FormaImagenesPreciarios.aspx" />
     <Content Include="FormaInfoGraficas.aspx" />
     <Content Include="FormaCertificadoInversion.aspx" />
+    <Content Include="FormaMantenimiento.aspx" />
     <Content Include="FormaMenu.aspx" />
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
+    <Content Include="FormaOrdenCambio.aspx" />
     <Content Include="FormaParametrosP1.aspx" />
     <Content Include="FormaParametrosP2.aspx" />
     <Content Include="FormaParametrosP3.aspx" />
@@ -398,11 +400,14 @@
     <Content Include="js\subirImagenesCliente.js" />
     <Content Include="js\subirImagenesPreciario.js" />
     <Content Include="js\tableroAvances.js" />
+    <Content Include="js\tableroMantenimientos.js" />
+    <Content Include="js\tableroOrdenesCambio.js" />
     <Content Include="js\usuarios2.js" />
     <Content Include="js\volumetrias.js" />
     <Content Include="js\tablerovolumetrias.js" />
     <Content Include="Login2.aspx" />
     <Content Include="lte-ie7.js" />
+    <Content Include="Mantenimientos.aspx" />
     <Content Include="Menu2.aspx" />
     <Content Include="Menus2.aspx" />
     <Content Include="Municipios2.aspx" />
@@ -436,6 +441,7 @@
     <Content Include="Menus.aspx" />
     <Content Include="Municipios.aspx" />
     <Content Include="OlvidasteContrasena2.aspx" />
+    <Content Include="OrdenesCambio.aspx" />
     <Content Include="Plants.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -718,6 +724,13 @@
     <Compile Include="FormaCertificadoInversion.aspx.designer.cs">
       <DependentUpon>FormaCertificadoInversion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaMantenimiento.aspx.cs">
+      <DependentUpon>FormaMantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaMantenimiento.aspx.designer.cs">
+      <DependentUpon>FormaMantenimiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaMenu.aspx.cs">
       <DependentUpon>FormaMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -738,6 +751,13 @@
     </Compile>
     <Compile Include="FormaCliente.aspx.designer.cs">
       <DependentUpon>FormaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaOrdenCambio.aspx.cs">
+      <DependentUpon>FormaOrdenCambio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaOrdenCambio.aspx.designer.cs">
+      <DependentUpon>FormaOrdenCambio.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaParametrosP1.aspx.cs">
       <DependentUpon>FormaParametrosP1.aspx</DependentUpon>
@@ -854,6 +874,13 @@
     <Compile Include="Login2.aspx.designer.cs">
       <DependentUpon>Login2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mantenimientos.aspx.cs">
+      <DependentUpon>Mantenimientos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenimientos.aspx.designer.cs">
+      <DependentUpon>Mantenimientos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menu2.aspx.cs">
       <DependentUpon>Menu2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -944,6 +971,13 @@
     </Compile>
     <Compile Include="OlvidasteContrasena2.aspx.designer.cs">
       <DependentUpon>OlvidasteContrasena2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenesCambio.aspx.cs">
+      <DependentUpon>OrdenesCambio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrdenesCambio.aspx.designer.cs">
+      <DependentUpon>OrdenesCambio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Plant.cs" />
     <Compile Include="Plants.ashx.cs">
