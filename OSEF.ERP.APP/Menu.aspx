@@ -43,19 +43,19 @@
                             </div>
                             <%--Cambio y Mto--%>
                             <div class="tile-column-span-1">
-                                 <a class="tile squarepeek bg-color-purple" href="#" id="OrdenesCambio">
-                                    <img src="assets/img/menu-cambio.png" alt="OrdenesCambio" />
+                                 <a class="tile squarepeek bg-color-purple" href="#" id="OrdenesEstimaciones">
+                                    <img src="assets/img/menu-cambio.png" alt="Ordenes & Estimaciones" />
                                     <div class="text-inner">
-                                        <div class="text4">Órdenes de cambio</div>
+                                        <div class="text4">Órdenes & Estimaciones</div>
                                     </div>
                                 </a>
 
-                                <a class="tile square image bg-color-red" id="mantenimiento" href="#">
+                               <%-- <a class="tile square image bg-color-red" id="mantenimiento" href="#">
                                     <img src="assets/img/menu-mnto.png" alt="Mantenimiento" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Mantenimiento</div>
                                     </div>
-                                </a>
+                                </a>--%>
                             </div>
 
                             <div class="tile-column-span-2">

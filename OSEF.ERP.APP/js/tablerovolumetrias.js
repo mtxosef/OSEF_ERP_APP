@@ -1,4 +1,6 @@
-﻿//Evento de clic del botón Nuevo
+﻿var indice;
+
+//Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
     window.parent.App.wEmergente.load('FormaVolumetriaPreciario.aspx');

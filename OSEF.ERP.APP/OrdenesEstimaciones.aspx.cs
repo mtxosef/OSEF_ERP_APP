@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using OSEF.APP.BL;
 
 namespace OSEF.ERP.APP
 {
@@ -11,7 +12,11 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
+            sUsuarios.DataBind();
 
+            sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+             sSucursales.DataBind();
         }
     }
 }

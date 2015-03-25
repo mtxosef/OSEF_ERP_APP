@@ -278,20 +278,20 @@ $(document).ready(function () {
         });
     });
 
-    $("#OrdenesCambio").click(function (event) {
+    $("#OrdenesEstimaciones").click(function (event) {
         $("#contenedor").fadeOut(timer, function () {
             parent.App.imgbtnRegresar.show();
             //            parent.App.lblRegresar.show();
-            parent.App.pCentro.getLoader().load('Mantenimientos.aspx');
+            parent.App.pCentro.getLoader().load('OrdenesEstimaciones.aspx');
         });
     });
 
-    $("#mantenimiento").click(function (event) {
-        $("#contenedor").fadeOut(timer, function () {
-            parent.App.imgbtnRegresar.show();
-            //            parent.App.lblRegresar.show();
-            parent.App.pCentro.getLoader().load('OrdenesCambio.aspx');
-        });
-    });
+//    $("#mantenimiento").click(function (event) {
+//        $("#contenedor").fadeOut(timer, function () {
+//            parent.App.imgbtnRegresar.show();
+//            //            parent.App.lblRegresar.show();
+//            parent.App.pCentro.getLoader().load('Mantenimientos.aspx');
+//        });
+//    });
 
 });
