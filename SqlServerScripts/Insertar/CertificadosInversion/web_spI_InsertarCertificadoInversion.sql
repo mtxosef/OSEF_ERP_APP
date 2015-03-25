@@ -38,9 +38,11 @@ CREATE PROCEDURE web_spI_InsertarCertificadoInversion
 	@ValorInversion			DECIMAL(9,2),
 	@InstruccionesCapital	VARCHAR(50),
 	@InstruccionesInteres	VARCHAR(50),
-	@Usuario				VARCHAR(50),
+	@Estatus				VARCHAR(20),
+	@UsuarioAlta			VARCHAR(50),
 	@FechaAlta				SMALLDATETIME,
-	@Estatus				VARCHAR(20)
+	@UsuarioModificacion	VARCHAR(50),
+	@FechaModificacion		SMALLDATETIME
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -103,9 +105,11 @@ BEGIN
 				ValorInversion,
 				InstruccionesCapital,
 				InstruccionesInteres,
-				Usuario,
+				Estatus,
+				UsuarioAlta,
 				FechaAlta,
-				Estatus
+				UsuarioModificacion,
+				FechaModificacion
 			)
 		VALUES
 			(
@@ -118,9 +122,11 @@ BEGIN
 				@ValorInversion,
 				@InstruccionesCapital,
 				@InstruccionesInteres,
-				@Usuario,
+				@Estatus,
+				@UsuarioAlta,
 				@FechaAlta,
-				@Estatus
+				@UsuarioModificacion,
+				@FechaModificacion
 			)
 END
 GO

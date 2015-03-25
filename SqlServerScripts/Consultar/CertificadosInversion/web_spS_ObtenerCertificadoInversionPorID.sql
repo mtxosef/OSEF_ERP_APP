@@ -47,9 +47,11 @@ BEGIN
 		ValorInversion,
 		InstruccionesCapital,
 		InstruccionesInteres,
-		Usuario,
+		Estatus,
+		UsuarioAlta,
 		FechaAlta,
-		Estatus
+		UsuarioModificacion,
+		FechaModificacion	
 	FROM
 		CertificadosInversiones
 	WHERE

@@ -333,7 +333,7 @@
 -- PreciarioGeneralCategoria (Borrar)
 :r c:\SqlServerScripts\Borrar\PreciariosGeneralesCategorias\web_spD_BorrarPreciarioGeneralCategorias.sql
 -- PreciarioGeneralCategoria (Consultar)
-:r c:\SqlServerScripts\Consultar\PreciariosGeneralesCategorias\web_spS_ObtenerPreciariosGeneralCategorias.sql
+--:r c:\SqlServerScripts\Consultar\PreciariosGeneralesCategorias\web_spS_ObtenerPreciariosGeneralCategorias.sql
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesCategorias\web_spS_ObtenerPreciarioGeneralCategoriasPorPreciario.sql
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesCategorias\web_spS_ObtenerPreciarioGeneralCategoriaPorID.sql
 -- PreciarioGeneralCategoria (Insertar)
@@ -373,4 +373,4 @@
 -- PreciarioGeneralConcepto (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciariosGeneralesConceptos\web_spI_InsertarPreciarioGeneralConcepto.sql
 -- PreciarioGeneralConcepto (Modificar)
-:r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptos\web_spU_ActualizarPreciarioGeneralConcepto.sql
+--:r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptos\web_spU_ActualizarPreciarioGeneralConcepto.sql

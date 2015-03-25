@@ -38,9 +38,9 @@ CREATE PROCEDURE web_spU_ActualizarCertificadoInversion
 	@ValorInversion			DECIMAL(9,2),
 	@InstruccionesCapital	VARCHAR(50),
 	@InstruccionesInteres	VARCHAR(50),
-	@Usuario				VARCHAR(50),
-	@FechaAlta				SMALLDATETIME,
-	@Estatus				VARCHAR(20)
+	@Estatus				VARCHAR(20),
+	@UsuarioModificacion	VARCHAR(50),
+	@FechaModificacion		SMALLDATETIME
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -59,9 +59,9 @@ BEGIN
 		ValorInversion = @ValorInversion,
 		InstruccionesCapital = @InstruccionesCapital,
 		InstruccionesInteres = @InstruccionesInteres,
-		Usuario = @Usuario,
-		FechaAlta = @FechaAlta,
-		Estatus = @Estatus
+		Estatus = @Estatus,
+		UsuarioModificacion = @UsuarioModificacion,
+		FechaModificacion = @FechaModificacion
 	WHERE
 		ID = @ID
 END
