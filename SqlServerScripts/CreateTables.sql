@@ -1,107 +1,108 @@
 CREATE TABLE GruposMenu(
-	ID			CHAR(3) NOT NULL PRIMARY KEY,
-	Descripcion VARCHAR(50) NULL
+	ID						CHAR(3)			NOT NULL PRIMARY KEY,
+	Descripcion				VARCHAR(50)		NULL
 )
 
 CREATE TABLE Menus(
-	ID					CHAR(4) NOT NULL PRIMARY KEY,
-	Descripcion			VARCHAR(50) NULL,
-	GrupoMenu			CHAR(3) NOT NULL FOREIGN KEY REFERENCES GruposMenu(ID),
-	ImagenNormal		VARCHAR(100) NULL,
-	ImagenSobre			VARCHAR(100) NULL,
-	ImagenSeleccionar	VARCHAR(100) NULL,
-	ImagenDeshabilitar	VARCHAR(100) NULL
+	ID						CHAR(4)			NOT NULL PRIMARY KEY,
+	Descripcion				VARCHAR(50)		NULL,
+	GrupoMenu				CHAR(3)			NOT NULL FOREIGN KEY REFERENCES GruposMenu(ID),
+	ImagenNormal			VARCHAR(100)	NULL,
+	ImagenSobre				VARCHAR(100)	NULL,
+	ImagenSeleccionar		VARCHAR(100)	NULL,
+	ImagenDeshabilitar		VARCHAR(100)	NULL
 )
 
 CREATE TABLE Estados(
-	ID			CHAR(2) NOT NULL PRIMARY KEY,
-	Abreviatura VARCHAR(6) NULL,
-	Descripcion VARCHAR(50) NULL
+	ID						CHAR(2)			NOT NULL PRIMARY KEY,
+	Abreviatura				VARCHAR(6)		NULL,
+	Descripcion				VARCHAR(50)		NULL
 )
 
 CREATE TABLE Municipios(
-	ID			CHAR(4)			NOT NULL PRIMARY KEY,
-	Descripcion VARCHAR(100)	NULL,
-	Estado		CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID)
+	ID						CHAR(4)			NOT NULL PRIMARY KEY,
+	Descripcion				VARCHAR(100)	NULL,
+	Estado					CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID)
 )
 
 CREATE TABLE Colonias(
-	ID			CHAR(10)		NOT NULL PRIMARY KEY,
-	Descripcion VARCHAR(100)	NULL,
-	Estado		CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
-	Municipio	CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID)
+	ID						CHAR(10)		NOT NULL PRIMARY KEY,
+	Descripcion				VARCHAR(100)	NULL,
+	Estado					CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
+	Municipio				CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID)
 )
 
 CREATE TABLE CodigosPostales(
-	ID			CHAR(7)			NOT NULL PRIMARY KEY,
-	Estado		CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
-	Municipio	CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
-	Colonia		CHAR(10)			NOT NULL FOREIGN KEY REFERENCES Colonias(ID),
-	Numero		INT				NULL
+	ID						CHAR(10)		NOT NULL PRIMARY KEY,
+	Estado					CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
+	Municipio				CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
+	Colonia					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Colonias(ID),
+	Numero					INT				NULL
 )
 
 CREATE TABLE Categorias(
-	ID			CHAR(5)		NOT NULL PRIMARY KEY,
-	Orden		TINYINT		NOT NULL,
-	Descripcion VARCHAR(50) NULL
+	ID						CHAR(5)			NOT NULL PRIMARY KEY,
+	Orden					TINYINT			NOT NULL,
+	Descripcion				VARCHAR(50)		NULL
 )
 
 CREATE TABLE SubCategorias(
-	ID			CHAR(6)		NOT NULL PRIMARY KEY,
-	Orden		TINYINT		NOT NULL,
-	Descripcion VARCHAR(50) NULL,
-	Categoria	CHAR(5)		NOT NULL FOREIGN KEY REFERENCES Categorias(ID)
+	ID						CHAR(6)			NOT NULL PRIMARY KEY,
+	Orden					TINYINT			NOT NULL,
+	Descripcion				VARCHAR(50)		NULL,
+	Categoria				CHAR(5)			NOT NULL FOREIGN KEY REFERENCES Categorias(ID)
 )
 
 CREATE TABLE Conceptos(
-	ID				CHAR(7)			NOT NULL PRIMARY KEY,
-	Modulo			VARCHAR(20)		NOT NULL,
-	Orden			SMALLINT		NOT NULL,
-	Descripcion		VARCHAR(50)		NULL,
-	Categoria		CHAR(5)			NULL FOREIGN KEY REFERENCES Categorias(ID),
-	SubCategoria	CHAR(6)			NULL FOREIGN KEY REFERENCES SubCategorias(ID),
-	TipoMovimiento	VARCHAR(50)		NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL,
-	Estatus			VARCHAR(50)		NOT NULL
+	ID						CHAR(7)			NOT NULL PRIMARY KEY,
+	Modulo					VARCHAR(20)		NOT NULL,
+	Orden					SMALLINT		NOT NULL,
+	Descripcion				VARCHAR(50)		NULL,
+	Categoria				CHAR(5)			NULL FOREIGN KEY REFERENCES Categorias(ID),
+	SubCategoria			CHAR(6)			NULL FOREIGN KEY REFERENCES SubCategorias(ID),
+	TipoMovimiento			VARCHAR(50)		NULL,
+	FechaAlta				SMALLDATETIME	NOT NULL,
+	Estatus					VARCHAR(50)		NOT NULL
 )
 
 CREATE TABLE Usuarios(
-	ID					VARCHAR(50)		NOT NULL PRIMARY KEY,
-	Correo				VARCHAR(50)		NOT NULL,
-	Nombre				VARCHAR(50)		NULL,
-	APaterno			VARCHAR(50)		NULL,
-	AMaterno			VARCHAR(50)		NULL,
-	Contrasena			VARCHAR(200)	NULL,
-	Estatus				VARCHAR(50)		NOT NULL,
-	Bloqueado			BIT				NOT NULL,
-	EnLinea				BIT				NOT NULL,
-	FechaAlta			SMALLDATETIME	NOT NULL,
-	FechaBloqueo		SMALLDATETIME	NULL,
-	UltimoAcceso		SMALLDATETIME	NULL,
-	CambioContrasena	SMALLDATETIME	NULL
+	ID						VARCHAR(50)		NOT NULL PRIMARY KEY,
+	Correo					VARCHAR(50)		NOT NULL,
+	Nombre					VARCHAR(50)		NULL,
+	APaterno				VARCHAR(50)		NULL,
+	AMaterno				VARCHAR(50)		NULL,
+	Contrasena				VARCHAR(200)	NULL,
+	Estatus					VARCHAR(50)		NOT NULL,
+	Bloqueado				BIT				NOT NULL,
+	EnLinea					BIT				NOT NULL,
+	FechaAlta				SMALLDATETIME	NOT NULL,
+	FechaBloqueo			SMALLDATETIME	NULL,
+	UltimoAcceso			SMALLDATETIME	NULL,
+	CambioContrasena		SMALLDATETIME	NULL
 )
 
 CREATE TABLE Proveedores(
-	ID					CHAR(7)			NOT NULL PRIMARY KEY,
-	Nombre				VARCHAR(50)		NOT NULL,
-	RFC					VARCHAR(15)		NULL,
-	ContactoNombre		VARCHAR(50)		NULL,
-	ContactoAPaterno	VARCHAR(50)		NULL,
-	ContactoAMaterno	VARCHAR(50)		NULL,
-	Correo				VARCHAR(100)	NULL,
-	Calle				VARCHAR(100)	NULL,
-	EntreCalles			VARCHAR(100)	NULL,
-	NoExterior			VARCHAR(10)		NULL,
-	NoInterior			VARCHAR(10)		NULL,
-	CodigoPostal		INT				NULL,
-	Colonia				VARCHAR(50)		NULL,
-	Estado				CHAR(2)			NULL FOREIGN KEY REFERENCES Estados(ID),
-	Municipio			CHAR(4)			NULL FOREIGN KEY REFERENCES Municipios(ID)
+	ID						CHAR(7)			NOT NULL PRIMARY KEY,
+	Nombre					VARCHAR(50)		NOT NULL,
+	RFC						VARCHAR(15)		NULL,
+	ContactoNombre			VARCHAR(50)		NULL,
+	ContactoAPaterno		VARCHAR(50)		NULL,
+	ContactoAMaterno		VARCHAR(50)		NULL,
+	Correo					VARCHAR(100)	NULL,
+	Calle					VARCHAR(100)	NULL,
+	EntreCalles				VARCHAR(100)	NULL,
+	NoExterior				VARCHAR(10)		NULL,
+	NoInterior				VARCHAR(10)		NULL,
+	CodigoPostal			INT				NULL,
+	Colonia					CHAR(10)		NULL FOREIGN KEY REFERENCES Colonias(ID),
+	Estado					CHAR(2)			NULL FOREIGN KEY REFERENCES Estados(ID),
+	Municipio				CHAR(4)			NULL FOREIGN KEY REFERENCES Municipios(ID)
 )
 
 CREATE TABLE Sucursales(
 	ID						CHAR(10)		NOT NULL PRIMARY KEY,
 	CR						SMALLINT		NOT NULL,
+	DireccionZona			VARCHAR(50)		NULL,
 	Nombre					VARCHAR(100)	NOT NULL,
 	GerenteBBVANombre		VARCHAR(50)		NULL,
 	GerenteBBVAAPaterno		VARCHAR(50)		NULL,
@@ -119,11 +120,10 @@ CREATE TABLE Sucursales(
 	NoExterior				VARCHAR(10)		NULL,
 	NoInterior				VARCHAR(10)		NULL,
 	CodigoPostal			INT				NULL,
-	Colonia					VARCHAR(50)		NULL,
+	Colonia					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Colonias(ID),
 	Estado					CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
 	Municipio				CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
 	Contratista				VARCHAR(100)	NULL,
-	TerminoContrato			DATE			NULL,
 	InicioObra				DATE			NULL,
 	FinObra					DATE			NULL,
 	SemanasObra				SMALLINT		NULL,
@@ -132,91 +132,91 @@ CREATE TABLE Sucursales(
 )
 
 CREATE TABLE Revisiones(
-	ID				INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	Mov				VARCHAR(50)		NOT NULL,
-	MovID			VARCHAR(10)		NULL,
-	Origen			VARCHAR(50)		NULL,
-	OrigenID		VARCHAR(10)		NULL,
-	Semana			TINYINT			NULL,
-	Sucursal		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
-	FechaEmision	SMALLDATETIME	NULL,
-	FechaRevision	DATE			NULL,
-	Observaciones	VARCHAR(200)	NULL,
-	Comentarios		VARCHAR(5000)	NULL,
-	Estatus			VARCHAR(20)		NOT NULL
+	ID						INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Mov						VARCHAR(50)		NOT NULL,
+	MovID					VARCHAR(10)		NULL,
+	Origen					VARCHAR(50)		NULL,
+	OrigenID				VARCHAR(10)		NULL,
+	Semana					TINYINT			NULL,
+	Sucursal				CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
+	FechaEmision			SMALLDATETIME	NULL,
+	FechaRevision			DATE			NULL,
+	Observaciones			VARCHAR(200)	NULL,
+	Comentarios				VARCHAR(5000)	NULL,
+	Estatus					VARCHAR(20)		NOT NULL
 )
 
 CREATE TABLE RevisionesD(
-	Revision	INT				NOT NULL FOREIGN KEY REFERENCES Revisiones(ID),
-	Renglon		SMALLINT		NOT NULL,
-	Concepto	char(7)			NOT NULL FOREIGN KEY REFERENCES Conceptos(ID),
-	Proveedor	char(7)			NULL FOREIGN KEY REFERENCES Proveedores(ID),
-	Programado	decimal(5, 2)	NULL,
-	Real		decimal(5, 2)	NULL
+	Revision				INT				NOT NULL FOREIGN KEY REFERENCES Revisiones(ID),
+	Renglon					SMALLINT		NOT NULL,
+	Concepto				CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Conceptos(ID),
+	Proveedor				CHAR(7)			NULL FOREIGN KEY REFERENCES Proveedores(ID),
+	Programado				DECIMAL(5, 2)	NULL,
+	Real					DECIMAL(5, 2)	NULL
 )
 
 CREATE TABLE CuentasContables(
-	Cuenta		VARCHAR(20)		NOT NULL PRIMARY KEY,
-	Descripcion	VARCHAR(100)	NULL,
-	Rama		VARCHAR(20)		NULL,
-	Tipo		VARCHAR(15)		NULL,
-	Estatus		VARCHAR(15)		NULL
+	Cuenta					VARCHAR(20)		NOT NULL PRIMARY KEY,
+	Descripcion				VARCHAR(100)	NULL,
+	Rama					VARCHAR(20)		NULL,
+	Tipo					VARCHAR(15)		NULL,
+	Estatus					VARCHAR(15)		NULL
 )
 
 CREATE TABLE Profesiones(
-	ID			CHAR(7)			NOT NULL PRIMARY KEY,
-	Descripcion	VARCHAR(100)	NULL
+	ID						CHAR(7)			NOT NULL PRIMARY KEY,
+	Descripcion				VARCHAR(100)	NULL
 )
 
 CREATE TABLE Finalidades(
-	ID			CHAR(6)			NOT NULL PRIMARY KEY,
-	Descripcion	VARCHAR(100)	NULL
+	ID						CHAR(6)			NOT NULL PRIMARY KEY,
+	Descripcion				VARCHAR(100)	NULL
 )
 
 CREATE TABLE Articulos(
-	ID			CHAR(2)			NOT NULL PRIMARY KEY,
-	Corta		VARCHAR(50)		NULL,
-	Descripcion	VARCHAR(100)	NULL
+	ID						CHAR(2)			NOT NULL PRIMARY KEY,
+	Corta					VARCHAR(50)		NULL,
+	Descripcion				VARCHAR(100)	NULL
 )
 
 CREATE TABLE Clientes(
-	ID					CHAR(8)			NOT NULL PRIMARY KEY,
-	Nombre				VARCHAR(50)		NULL,
-	APaterno			VARCHAR(50)		NULL,
-	AMaterno			VARCHAR(50)		NULL,
-	RFC					VARCHAR(15)		NULL,
-	CURP				VARCHAR(18)		NULL,
-	FechaNacimiento		DATE			NULL,
-	Edad				TINYINT			NULL,
-	Sexo				VARCHAR(9)		NULL,
-	EstadoCivil			VARCHAR(10)		NULL,
-	Profesion			CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Profesiones(ID),
-	Correo				VARCHAR(100)	NULL,
-	Telefono			VARCHAR(15)		NULL,
-	TelefonoMovil		VARCHAR(19)		NULL,
-	Calle				VARCHAR(100)	NULL,
-	NoExterior			VARCHAR(10)		NULL,
-	NoInterior			VARCHAR(10)		NULL,
-	Colonia				VARCHAR(50)		NULL,
-	CodigoPostal		INT				NULL,
-	EntreCalles			VARCHAR(100)	NULL,
-	Estado				CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
-	Municipio			CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
-	Empresa				VARCHAR(50)		NULL,
-	EmpresaCalles		VARCHAR(100)	NULL,
-	EmpresaNoExterior	VARCHAR(10)		NULL,
-	EmpresaNoInterior	VARCHAR(10)		NULL,
-	EmpresaColonia		VARCHAR(50)		NULL,
-	EmpresaCodigoPostal INT				NULL,
-	EmpresaEntreCalles	VARCHAR(100)	NULL,
-	EmpresaEstado		CHAR(2)			NULL FOREIGN KEY REFERENCES Estados(ID),
-	EmpresaMunicipio	CHAR(4)			NULL FOREIGN KEY REFERENCES Municipios(ID),
-	EmpresaTelefono		VARCHAR(15)		NULL,
-	EmpresaTelefonoExt	SMALLINT		NULL,
-	Puesto				VARCHAR(50)		NULL,
-	FechaAlta			SMALLDATETIME	NULL,
-	Estatus				VARCHAR(20)		NULL,
-	Usuario				VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
+	ID						CHAR(8)			NOT NULL PRIMARY KEY,
+	Nombre					VARCHAR(50)		NULL,
+	APaterno				VARCHAR(50)		NULL,
+	AMaterno				VARCHAR(50)		NULL,
+	RFC						VARCHAR(15)		NULL,
+	CURP					VARCHAR(18)		NULL,
+	FechaNacimiento			DATE			NULL,
+	Edad					TINYINT			NULL,
+	Sexo					VARCHAR(9)		NULL,
+	EstadoCivil				VARCHAR(10)		NULL,
+	Profesion				CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Profesiones(ID),
+	Correo					VARCHAR(100)	NULL,
+	Telefono				VARCHAR(15)		NULL,
+	TelefonoMovil			VARCHAR(19)		NULL,
+	Calle					VARCHAR(100)	NULL,
+	NoExterior				VARCHAR(10)		NULL,
+	NoInterior				VARCHAR(10)		NULL,
+	Colonia					CHAR(10)		NULL FOREIGN KEY REFERENCES Colonias(ID),
+	CodigoPostal			INT				NULL,
+	EntreCalles				VARCHAR(100)	NULL,
+	Estado					CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
+	Municipio				CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
+	Empresa					VARCHAR(50)		NULL,
+	EmpresaCalles			VARCHAR(100)	NULL,
+	EmpresaNoExterior		VARCHAR(10)		NULL,
+	EmpresaNoInterior		VARCHAR(10)		NULL,
+	EmpresaColonia			CHAR(10)		NULL FOREIGN KEY REFERENCES Colonias(ID),
+	EmpresaCodigoPostal		INT				NULL,
+	EmpresaEntreCalles		VARCHAR(100)	NULL,
+	EmpresaEstado			CHAR(2)			NULL FOREIGN KEY REFERENCES Estados(ID),
+	EmpresaMunicipio		CHAR(4)			NULL FOREIGN KEY REFERENCES Municipios(ID),
+	EmpresaTelefono			VARCHAR(15)		NULL,
+	EmpresaTelefonoExt		SMALLINT		NULL,
+	Puesto					VARCHAR(50)		NULL,
+	FechaAlta				SMALLDATETIME	NULL,
+	Estatus					VARCHAR(20)		NULL,
+	Usuario					VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
 )
 
 CREATE TABLE SolicitudesPrestamos(
@@ -463,69 +463,64 @@ CREATE TABLE ImagenesVolumetriasD(
 )
 
 CREATE TABLE PreciariosGenerales(
-	ID				CHAR(7)			NOT NULL PRIMARY KEY,
-	Descripcion		VARCHAR(50)		NOT NULL,
-	TipoObra		BIT,
-	TipoMantenimiento BIT,
-	Archivo			VARCHAR(200)	NOT NULL,
-	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+	ID					CHAR(7)			NOT NULL PRIMARY KEY,
+	Descripcion			VARCHAR(50)		NOT NULL,
+	TipoObra			BIT,
+	TipoMantenimiento	BIT,
+	Archivo				VARCHAR(200)	NOT NULL,
+	Usuario				VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus				VARCHAR(20)		NOT NULL,
+	FechaAlta			SMALLDATETIME	NOT NULL
 )
 
-
 CREATE TABLE PreciariosGeneralesCategorias(
-	ID				CHAR(10)		NOT NULL PRIMARY KEY,
-	Clave			VARCHAR(7)		NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
-	Descripcion		VARCHAR(500)	NOT NULL,
-	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+	ID					CHAR(10)		NOT NULL PRIMARY KEY,
+	Clave				VARCHAR(7)		NULL,
+	Preciario			CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
+	Descripcion			VARCHAR(500)	NOT NULL,
+	Usuario				VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus				VARCHAR(20)		NOT NULL,
+	FechaAlta			SMALLDATETIME	NOT NULL
 )
 
 CREATE TABLE PreciariosGeneralesSubCategorias(
-	ID				CHAR(10)		NOT NULL PRIMARY KEY,
-	CLAVE			CHAR(7)			NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
-	Descripcion		VARCHAR(500)	NOT NULL,
-	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
-	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+	ID					CHAR(10)		NOT NULL PRIMARY KEY,
+	CLAVE				CHAR(7)			NULL,
+	Preciario			CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
+	Descripcion			VARCHAR(500)	NOT NULL,
+	Categoria			CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
+	Usuario				VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus				VARCHAR(20)		NOT NULL,
+	FechaAlta			SMALLDATETIME	NOT NULL
 )
 
 CREATE TABLE PreciariosGeneralesSubSubCategorias(
-	ID				CHAR(10)		NOT NULL PRIMARY KEY,
-	CLAVE			CHAR(7)			NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
-	Descripcion		VARCHAR(500)	NOT NULL,
-	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
-	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubCategorias(ID),
-	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+	ID					CHAR(10)		NOT NULL PRIMARY KEY,
+	CLAVE				CHAR(7)			NULL,
+	Preciario			CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
+	Descripcion			VARCHAR(500)	NOT NULL,
+	Categoria			CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
+	SubCategoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubCategorias(ID),
+	Usuario				VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus				VARCHAR(20)		NOT NULL,
+	FechaAlta			SMALLDATETIME	NOT NULL
 )
 
 CREATE TABLE PreciariosGeneralesConceptos(
-	ID				CHAR(10)		NOT NULL PRIMARY KEY,
-	CLAVE			CHAR(7)			NULL,
-	Preciario		CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
-	Descripcion		VARCHAR(2000)	NOT NULL,
-	Categoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
-	SubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubCategorias(ID),
-	SubSubCategoria	CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubSubCategorias(ID),
-	Unidad			VARCHAR(30)		NULL,
-	Costo			DECIMAL(20,2),
-	Cantidad		DECIMAL(10,2) NULL,
-	Usuario			VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
-	Estatus			VARCHAR(20)		NOT NULL,
-	FechaAlta		SMALLDATETIME	NOT NULL
+	ID					CHAR(10)		NOT NULL PRIMARY KEY,
+	CLAVE				CHAR(7)			NULL,
+	Preciario			CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
+	Descripcion			VARCHAR(2000)	NOT NULL,
+	Categoria			CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
+	SubCategoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubCategorias(ID),
+	SubSubCategoria		CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubSubCategorias(ID),
+	Unidad				VARCHAR(30)		NULL,
+	Costo				DECIMAL(20,2),
+	Cantidad			DECIMAL(10,2)	NULL,
+	Usuario				VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus				VARCHAR(20)		NOT NULL,
+	FechaAlta			SMALLDATETIME	NOT NULL
 )
-
-
-
-
 
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
@@ -537,7 +532,7 @@ CREATE TABLE PreciariosGeneralesConceptos(
 --DROP TABLE Articulos
 --DROP TABLE Finalidades
 --DROP TABLE CuentasContables
---DROP TABLE Socios
+--DROP TABLE Clientes
 --DROP TABLE Profesiones
 --DROP TABLE RevisionesD
 --DROP TABLE Revisiones
