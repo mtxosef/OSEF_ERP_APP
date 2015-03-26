@@ -524,6 +524,29 @@ CREATE TABLE PreciariosGeneralesConceptos(
 	FechaAlta					SMALLDATETIME	NOT NULL
 )
 
+CREATE TABLE OrdenesEstimaciones(
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Mov							VARCHAR(50)		NOT NULL,
+	MovID						VARCHAR(10)		NULL,
+	Sucursal					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
+	FechaEmision				SMALLDATETIME	NULL,
+	Observaciones				VARCHAR(200)	NULL,
+	Estatus						VARCHAR(20)		NOT NULL,
+	Origen						VARCHAR(50)		NULL,
+	OrigenID					VARCHAR(50)		NULL,
+	Usuario						VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
+)
+
+CREATE TABLE OrdenesEstimacionesD(
+	ID							INT				NOT NULL FOREIGN KEY REFERENCES OrdenesEstimaciones(ID),
+	Renglon						SMALLINT		NOT NULL,
+	ConceptoID					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesConceptos(ID),
+	Cantidad					DECIMAL(10, 2)	NOT NULL,
+	Unidad						VARCHAR(30)		NOT NULL,
+	Precio						DECIMAL(20, 2)	NOT NULL,
+	Importe						DECIMAL(20, 2)	NOT NULL
+)
+
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
 --DROP TABLE Beneficiarios
@@ -561,3 +584,5 @@ CREATE TABLE PreciariosGeneralesConceptos(
 --DROP TABLE PreciariosGeneralesCategorias
 --DROP TABLE PreciariosGenerales
 --DROP TABLE Usuarios
+--DROP TABLE OrdenesEstimaciones
+--DROP TABLE OrdenesEstimacionesD

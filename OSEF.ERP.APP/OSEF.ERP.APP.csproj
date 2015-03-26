@@ -328,10 +328,10 @@
     <Content Include="FormaAvanzarMovimiento.aspx" />
     <Content Include="FormaEspecificarFechas.aspx" />
     <Content Include="FormaGaleria.aspx" />
+    <Content Include="FormaGenerador.aspx" />
     <Content Include="FormaImagenesPreciarios.aspx" />
     <Content Include="FormaInfoGraficas.aspx" />
     <Content Include="FormaCertificadoInversion.aspx" />
-    <Content Include="FormaMantenimiento.aspx" />
     <Content Include="FormaMenu.aspx" />
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
@@ -386,6 +386,7 @@
     <Content Include="js\cuentasContables.js" />
     <Content Include="js\exploradorConceptoPreciario.js" />
     <Content Include="js\finalidades.js" />
+    <Content Include="js\formaGenerador.js" />
     <Content Include="js\formaOrdenEstimacion.js" />
     <Content Include="js\formaPreciarioGeneral.js" />
     <Content Include="js\login.js" />
@@ -702,6 +703,13 @@
     <Compile Include="FormaGaleria.aspx.designer.cs">
       <DependentUpon>FormaGaleria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaGenerador.aspx.cs">
+      <DependentUpon>FormaGenerador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaGenerador.aspx.designer.cs">
+      <DependentUpon>FormaGenerador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaImagenesPreciarios.aspx.cs">
       <DependentUpon>FormaImagenesPreciarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -722,13 +730,6 @@
     </Compile>
     <Compile Include="FormaCertificadoInversion.aspx.designer.cs">
       <DependentUpon>FormaCertificadoInversion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormaMantenimiento.aspx.cs">
-      <DependentUpon>FormaMantenimiento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaMantenimiento.aspx.designer.cs">
-      <DependentUpon>FormaMantenimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaMenu.aspx.cs">
       <DependentUpon>FormaMenu.aspx</DependentUpon>

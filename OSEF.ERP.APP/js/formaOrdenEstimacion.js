@@ -139,9 +139,9 @@ var cImporte_Renderer = function (valor) {
 
 //Calular Importe cuando la columna de precio cambia
 var calcularImportePrecio_Change = function (component) {
+    var valorCantidad = App.sConceptos.getAt(indiceDetalle).data.Cantidad;
 
-    var valorCantidad = App.nfCantidad.getValue()
-    if (valorCantidad == null) {
+    if (valorCantidad == null || valorCantidad == "") {
         valorCantidad = 0;
     }
 
@@ -151,16 +151,16 @@ var calcularImportePrecio_Change = function (component) {
 
 //Calcula el importe cuando cambia la cantidad
 var calcularImporteCantidad_Change = function (component) {
+    var valorPrecio = App.sConceptos.getAt(indiceDetalle).data.Precio;
 
-    var valorPrecio = App.nfPrecio.getValue()
-    if (valorPrecio == null) {
+    if (valorPrecio == null || valorPrecio == "") {
         valorPrecio = 0;
     }
 
     var Importe = parseFloat(component.getValue() * parseFloat(valorPrecio))
     App.sConceptos.getAt(indiceDetalle).set('Importe', Importe);
 }
-//Obtner el id del grid panel del detalle
+//Obtner el indice del grid panel del detalle
 var obetenerRenglon_Select = function (a, b, c) {
     indiceDetalle= b.internalId;
 }
@@ -246,7 +246,17 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
     }
 };
 
+//Evento que abre el generador
+var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
+    window.parent.App.wGenerador.load('FormaGenerador.aspx');
+    window.parent.App.wGenerador.setHeight(295);
+    window.parent.App.wGenerador.setWidth(820);
+    window.parent.App.wGenerador.center();
+    window.parent.App.wGenerador.setTitle('Generador');
+    window.parent.App.wGenerador.show();
 
+
+};
 
 
 //-----------------------------------------------VALIDACIONES-----------------------------------------------

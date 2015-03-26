@@ -472,6 +472,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.NumberField nfCantidad;
         
         /// <summary>
+        /// Control ccGenerador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn ccGenerador;
+        
+        /// <summary>
+        /// Control cUnidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cUnidad;
+        
+        /// <summary>
         /// Control cPrecio.
         /// </summary>
         /// <remarks>
@@ -506,6 +524,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.CommandColumn ccFotos;
+        
+        /// <summary>
+        /// Control ccCroquis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn ccCroquis;
+        
+        /// <summary>
+        /// Control ccFacturas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CommandColumn ccFacturas;
         
         /// <summary>
         /// Control csmOrdenEstimacion.
