@@ -39,26 +39,24 @@ namespace OSEF.APP.BL
         #region Consultar
 
         /// <summary>
-        /// Obtener un registro de PreciarioConcepto por su ID
+        /// Obtener un registro de PreciarioConcepto por su Preciario
         /// </summary>
-        /// <param name="strID"></param>
+        /// <param name="strPreciario"></param>
         /// <returns></returns>
         public static List<PreciarioGeneralConcepto> ObtenerPreciarioGeneralConceptoPorPreciario(string strPreciario)
         {
-
             //1. Obtener lista de conceptos
             List<PreciarioGeneralConcepto> lPreciarioConcepto = PreciarioGeneralConceptoDataAccess.ObtenerPreciarioGeneralConceptoPorPreciario(strPreciario);
+
             //2. Asignar a cada Colonia su correspondiente municipio
             foreach (PreciarioGeneralConcepto sd in lPreciarioConcepto)
             {
                 sd.RCategoria = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorID(sd.Categoria);
-
-                sd.RSubcategoria = PreciarioGeneralSubCategoriaBusiness.ObtenerPreciarioGeneralSubCategoriaPorID(sd.SubCategoria);
-
-                sd.RSubsubcategoria = PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorID(sd.SubSubCategoria);
+                sd.RSubCategoria = PreciarioGeneralSubCategoriaBusiness.ObtenerPreciarioGeneralSubCategoriaPorID(sd.SubCategoria);
+                sd.RSubSubCategoria = PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorID(sd.SubSubCategoria);
             }
-            return lPreciarioConcepto;
 
+            return lPreciarioConcepto;
         }
 
         #endregion

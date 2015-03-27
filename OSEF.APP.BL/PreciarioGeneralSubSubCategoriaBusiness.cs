@@ -7,6 +7,9 @@ using OSEF.APP.DL;
 
 namespace OSEF.APP.BL
 {
+    /// <summary>
+    /// Clase que administra lo relacionado con el objeto PreciarioGeneralSubSubCategoria
+    /// </summary>
     public class PreciarioGeneralSubSubCategoriaBusiness
     {
         #region Insertar
@@ -50,13 +53,22 @@ namespace OSEF.APP.BL
         /// <summary>
         /// Obtener un registro de PreciarioGeneralSubSubCategoria por su SubCategoria
         /// </summary>
-        /// <param name="strID"></param>
+        /// <param name="strSubCategoria"></param>
         /// <returns></returns>
-        public static List<PreciarioGeneralSubSubCategoria> ObtenerPreciarioGeneralSubSubCategoriaPorSubCategoria(string strID)
+        public static List<PreciarioGeneralSubSubCategoria> ObtenerPreciarioGeneralSubSubCategoriaPorSubCategoria(string strSubCategoria)
         {
-            return PreciarioGeneralSubSubCategoriaDataAccess.ObtenerPreciarioGeneralSubSubCategoriaPorSubCategoria(strID);
+            return PreciarioGeneralSubSubCategoriaDataAccess.ObtenerPreciarioGeneralSubSubCategoriaPorSubCategoria(strSubCategoria);
         }
 
+        /// <summary>
+        /// Obtener una lista de registros de SubSubCategoria del PreciarioGeneral por el Preciario
+        /// </summary>
+        /// <param name="strPreciario"></param>
+        /// <returns></returns>
+        public static List<PreciarioGeneralSubSubCategoria> ObtenerPreciarioGeneralSubSubCategoriaPorPreciario(string strPreciario)
+        {
+            return PreciarioGeneralSubSubCategoriaDataAccess.ObtenerPreciarioGeneralSubSubCategoriasPorPreciario(strPreciario);
+        }
 
         #endregion
     }

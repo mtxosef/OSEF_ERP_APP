@@ -1,6 +1,4 @@
-﻿
-
-//Evento que se lanza al poner algun texto en la descripcion
+﻿//Evento que se lanza al poner algun texto en la descripcion
 var txtfDescripcion_Change = function (txtDescripcion, Evento) {
     //Validar si se habilita Guardar
     HabilitarGuardar();
@@ -53,9 +51,8 @@ var BorrarDetallePreciario = function () {
 //Evento que se lanza despues de cargar un archivo de Excel
 var btnImportar_Click_Success = function (response, result) {
     //Valida si se habilita el boton de guardar
-
-
     HabilitarGuardar();
+
     if (result.extraParamsResponse.accion == 'error') {
         Ext.Msg.show({
             id: 'msgPreciarioConcepto',
@@ -72,17 +69,11 @@ var btnImportar_Click_Success = function (response, result) {
 
 //Funciones que validan que este seleccionado un tipo preciario al meno
 var rObra_Change = function (radio) {
-
-
-
     App.rObra.setValue(radio.value);
-
-
     HabilitarGuardar();
 };
 
-var rMnto_Change = function (radio) {
-  
+var rMnto_Change = function (radio) {  
     App.rMnto.setValue(radio.value);    
     HabilitarGuardar();
 };
@@ -113,18 +104,20 @@ function HabilitarGuardar() {
     }
 }
 
-
 //Evento lanzado al cargar el store de avance encabezado
-var sPreciario_Load_Success = function () {
-    var d = new Date();
-    App.dfFechaEmision.setValue(d);
-
+var sPreciarioGeneral_Load_Success = function () {
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
         App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
+        //console.log(App.sCarga);
         //    App.gpPreciario.getView().focusRow(App.sCarga.getCount()-1);
         //    App.gpPreciario.editingPlugin.startEdit(App.gpPreciario.store.getAt(App.sCarga.getCount()-1), App.gpPreciario.columns[2]);
     }
+    else {
+        var d = new Date();
+        App.dfFechaEmision.setValue(d);
+    }
 };
+
 //Renglones nuevos
 var getRowClass = function (record) {
     if (record.phantom) {
@@ -143,16 +136,13 @@ var rendererCosto = function (value) {
     F.decimalSeparator = '.';
     return F.number(value, "$000,000,000.00");
 };
+
 //Formato Cantidades
-var rendererCantidad = function (valor, metaData, registro) {
-  
+var rendererCantidad = function (valor, metaData, registro) {  
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-
-
     return F.number(registro.get('Cantidad'), "000,000,000.00");
-
 };
 
 //Evento que ocurre al dar clic en imgbtnGuardar
@@ -166,8 +156,6 @@ var imgbtnGuardar_Click_Success = function () {
 var sPreciario_Add = function (avance, registro) {
     //Lo que pasa cuando se selecciona un registro y es diferente de nuevo
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
-
-
         App.txtfID.setValue(registro[0].get('ID'));
         App.txtfDescripcion.setValue(registro[0].get('Descripcion'));
         App.txfArchivoActual.setValue(registro[0].get('Archivo'));
@@ -186,71 +174,64 @@ var sPreciario_Add = function (avance, registro) {
         App.imgbtnBorrarCarga.setDisabled(true);
         App.fufArchivoExcel.setDisabled(true);
         App.sbFormaPreciario.setText(registro[0].get('Estatus'));
-
-     
-       
-
     }
 };
 
-//Renderizar objetos con descripciones de categorias
-//Asignar la descripción de la categoria a esta columna
-//var cCategoria_Renderer = function (valor, columna, registro) {
-//    console.log(registro);
-//    if (valor.length != 0) {
-//        var Categoria = registro.get('RCategoria');
-//       
-//        return Categoria.Descripcion;
-//        
-//    }
-//};
-
 //Evento que muestra el valor de la columna Concepto por su descripción y no por su ID
-var cCategoria_Renderer = function (valor) {
-    var registro;
+var cCategoria_Renderer = function (valor, columna, registro) {
     if (valor.length != 0) {
-        registro = App.sCategoria.findRecord('ID', valor);
-        return registro.get('Descripcion');
+        return registro.get('RCategoria').Descripcion;
     }
 };
 
 //Asignar la descripción de la subcategoria a esta columna
-var cSubcategoria_Renderer = function (valor, columna, registro) {
+var cSubCategoria_Renderer = function (valor, columna, registro) {
     if (valor.length != 0) {
-        var Subcategoria = registro.get('RSubcategoria');
-        return Subcategoria.Descripcion;
+        return registro.get('RSubCategoria').Descripcion;
     }
 };
 
 //Asignar la descripción de la subsubcategoria a esta columna
-var cSubsubcategoria_Renderer = function (valor, columna, registro) {
+var cSubSubCategoria_Renderer = function (valor, columna, registro) {
     if (valor.length != 0) {
-        var Subsubcategoria = registro.get('RSubsubcategoria');
-        return Subsubcategoria.Descripcion;
+        return registro.get('RSubSubCategoria').Descripcion;
     }
 };
-
 
 //Evento de la columna de acciones
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
     App.sCarga.removeAt(fila);
-
     //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
     //        Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
     //        Ext.util.Cookies.set('cookieConceptoFotosVolumetria', registro.get('ConceptoID'));
 
     //        App.direct.obtenerImagenesPorConcepto();
     //    }
-
-
-
 };
 
-
-
 //Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
-var validaConcluidos = function (a, d, f) {
+var ceFormaPreciarioGeneral_BeforeEdit = function (editor, context, opciones) {
+    //1. Validar si es el campo de SubCategoria
+    if (context.field == 'SubCategoria') {
+        App.direct.CargarSubCategoriasPorCategoria(context.record.get('Categoria'), {
+            success: function (result) {
+                App.cmbSubCategoria.select(context.record.get('SubCategoria'));
+            },
+
+            failure: function (errorMessage) { }
+        });
+    }
+    else if (context.field == 'SubSubCategoria') {
+        App.direct.CargarSubSubCategoriasPorSubCategoria(context.record.get('SubCategoria'), {
+            success: function (result) {
+                App.cmbSubSubCategoria.select(context.record.get('SubSubCategoria'));
+            },
+
+            failure: function (errorMessage) { }
+        });
+    }
+
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') == 'Nuevo') {
         return false;
     }
@@ -269,22 +250,53 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
     }
 }
 
-//Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
-var cePreciarioConcepto_Edit = function (cellediting, columna) {
+//Se lanza antes de terminar la edición del campo
+var ceFormaPreciarioGeneral_ValidateEdit = function (editor, context, opciones) {
+    if (context.field == 'Categoria') {
+        App.direct.CargarObjetoCategoriaPorID(context.value, {
+            success: function (result) {
+                context.record.set('RCategoria', result);
+                return true;
+            },
 
+            failure: function (errorMessage) { }
+        });
+    }
+    else if (context.field == 'SubCategoria') {
+        App.direct.CargarObjetoSubCategoriaPorID(context.value, {
+            success: function (result) {
+                context.record.set('RSubCategoria', result);
+                return true;
+            },
+
+            failure: function (errorMessage) { }
+        });
+    }
+    else if (context.field == 'SubSubCategoria') {
+        App.direct.CargarObjetoSubSubCategoriaPorID(context.value, {
+            success: function (result) {
+                context.record.set('RSubSubCategoria', result);
+                return true;
+            },
+
+            failure: function (errorMessage) { }
+        });
+    }
+};
+
+//Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
+var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
     //Verificar si abajo de esta columna existe otra
     if (App.sCarga.getAt(columna.rowIdx + 1) == undefined) {
         //Verificar si toda la fila contiene datos
         var registro = App.sCarga.getAt(columna.rowIdx);
         if (registro.get('Descripcion').length != 0 && registro.get('Cantidad') != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
-            
-            
             //Insertar un nuevo registro
-            App.sCarga.insert(App.sCarga.getCount(), { Clave:'ADC-002' });
+            App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' });
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
             //Validar si se habilita el boton de afectar
-           // HabilitarGuardar();
+            // HabilitarGuardar();
         }
     }
 };

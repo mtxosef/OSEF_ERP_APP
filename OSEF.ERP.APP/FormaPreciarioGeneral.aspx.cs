@@ -15,14 +15,30 @@ namespace OSEF.ERP.APP
 {
     public partial class FormaPreciarioGeneral : System.Web.UI.Page
     {
+        /// <summary>
+        /// Evento que se lanza al cargar la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //1. Validar peticiones AjaxRequest
+            if (!X.IsAjaxRequest)
+            {
+                //2. Asignar Categorias
+                sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(Cookies.GetCookie("cookieEditarPreciarioGeneral").Value);
+                sCategoria.DataBind();
 
-            sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(Cookies.GetCookie("cookieEditarPreciarioGeneral").Value);
-            sCategoria.DataBind();
+                //3. Asignar SubCategorias
+                //sSubCategoria.DataSource = PreciarioGeneralSubCategoriaBusiness.ObtenerPreciarioGeneralSubcategoriasPorPreciario(Cookies.GetCookie("cookieEditarPreciarioGeneral").Value);
+                //sSubCategoria.DataBind();
+
+                //4. Asignar SubSubCategorias
+                //sSubSubCategorias.DataSource = PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorPreciario(Cookies.GetCookie("cookieEditarPreciarioGeneral").Value);
+                //sSubSubCategorias.DataBind();
+            }
         }
-
-
+        
         /// <summary>
         /// Evento que se lanza al escoger una categoria
         /// </summary>
@@ -62,15 +78,13 @@ namespace OSEF.ERP.APP
             string strArchivo = e.ExtraParams["archivo"];
             string rTipoObra = e.ExtraParams["tipoObra"];
             string rTipoMtno = e.ExtraParams["tipoMnto"];
+            string strRegistrosUpdates = e.ExtraParams["registrosUpdates"];
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciarioGeneral").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             string strPreciarioDetalle = e.ExtraParams["DetallePreciario"];
 
-
-            
-
             //2. Se guarda en una lista el Store que contiene todos los campos para deserealizarlos y usarlos para el insert
-              List<PreciarioGeneralConcepto> lDetallePreciario = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strPreciarioDetalle);
+            List<PreciarioGeneralConcepto> lDetallePreciario = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strPreciarioDetalle);
             PreciarioGeneral oPreciario = new PreciarioGeneral();
 
             //3. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
@@ -79,11 +93,9 @@ namespace OSEF.ERP.APP
                 switch (sd.Key)
                 {
                     //4. Datos del preciario
-                   
                     case "txtfDescripcion":
                         oPreciario.Descripcion = sd.Value;
                         break;
-                   
                 }
             }
 
@@ -108,7 +120,6 @@ namespace OSEF.ERP.APP
                 {
                     oPreciario.TipoMantenimiento = true;
                 }
-
 
                 //8. Insertar en la base de datos
                 oPreciario.ID = PreciarioGeneralBusiness.Insertar(oPreciario);
@@ -235,20 +246,21 @@ namespace OSEF.ERP.APP
             }
         }
 
-
-
-        ///// <summary>
-        ///// Evento que se lanza al cargar el store
-        ///// </summary>
-        //[DirectMethod]
-        public void sPreciario_Load(object sender, DirectEventArgs e)
+        /// <summary>
+        /// Evento que se lanza al cargar el store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void sPreciarioGeneral_Load(object sender, DirectEventArgs e)
         {
+            //1. Obtener valor de la cookie
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciarioGeneral").Value;
+            
+            //2. Validar si es un nuevo registro o se va a editar
             if (!strcookieEditarPreciario.Equals("Nuevo"))
             {
+                //3. Cargar el Encabezado
                 PreciarioGeneral oPreciario = PreciarioGeneralBusiness.ObtenerPreciarioGeneralPorID(strcookieEditarPreciario);
-
-
                 sPreciarioGeneral.Add(new
                 {
                     ID = oPreciario.ID,
@@ -259,17 +271,13 @@ namespace OSEF.ERP.APP
                     Usuario = oPreciario.Usuario,
                     TipoMantenimiento=oPreciario.TipoMantenimiento,
                     TipoObra=oPreciario.TipoObra
-
                 });
 
-
-                //Cargar el detalle del movimiento
+                //4. Cargar el detalle del movimiento
                 sCarga.DataSource = PreciarioGeneralConceptoBusiness.ObtenerPreciarioGeneralConceptoPorPreciario(oPreciario.ID);
                 sCarga.DataBind();
             }
         }
-
-
 
         //Evento que se lanza al dar click en el boton de Cargar
         public void btnImportar_Click(object sender, DirectEventArgs e)
@@ -316,8 +324,7 @@ namespace OSEF.ERP.APP
 
             //se guarde el nombre de la hoja para poder realizar la consulta
             string SheetName = dtExcelSchema.Rows[nhoja]["TABLE_NAME"].ToString();
-
-
+            
             //Valores permitidos
             List<string> permitidos = new List<string>();
             permitidos.Add("id");
@@ -326,7 +333,6 @@ namespace OSEF.ERP.APP
             permitidos.Add("Cantidad");
             permitidos.Add("Precio");
             permitidos.Add("Tipo");
-
 
             //Extraemos e modelo de columnas del excel
             DataTable ExcelValues = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Columns, new object[] { null, null, SheetName, null });
@@ -364,7 +370,6 @@ namespace OSEF.ERP.APP
                 //Traemos el usuario
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 
-
                 // Por cada tabla en el DataSet, imprime los valores de cada renglon
                 foreach (DataTable thisTable in ds.Tables)
                 {
@@ -377,8 +382,7 @@ namespace OSEF.ERP.APP
                             //LLenamos la variable auxiliar con el Id de la Categoria, Subcategoria, subsubCategoria
                             categoria = row["id"].ToString();
                             //Agrega los datos del excell al store
-
-
+                            
                             sCarga.Add(new
                             {
                                 Clave = row["Id"],
@@ -394,13 +398,11 @@ namespace OSEF.ERP.APP
                                 Tipo = row["Tipo"]
 
                             });
-
                         }
 
                         if (row["Tipo"].ToString().Equals("2"))
                         {
                             scategoria = row["id"].ToString();
-
                             sCarga.Add(new
                             {
                                 Clave = row["Id"],
@@ -414,15 +416,11 @@ namespace OSEF.ERP.APP
                                 FechaAlta = FechaAlta,
                                 Estatus = strEstatus,
                                 Tipo = row["Tipo"]
-
                             });
-
                         }
                         if (row["Tipo"].ToString().Equals("3"))
                         {
                             sscategoria = row["id"].ToString();
-
-
                             sCarga.Add(new
                             {
                                 Clave = row["Id"],
@@ -436,14 +434,12 @@ namespace OSEF.ERP.APP
                                 FechaAlta = FechaAlta,
                                 Estatus = strEstatus,
                                 Tipo = row["Tipo"]
-
                             });
 
                         }
 
                         if (row["Tipo"].ToString().Equals(""))
                         {
-
                             sCarga.Add(new
                             {
                                 Clave = row["Id"],
@@ -457,7 +453,6 @@ namespace OSEF.ERP.APP
                                 FechaAlta = FechaAlta,
                                 Estatus = strEstatus,
                                 Tipo = row["Tipo"]
-
                             });
                         }
 
@@ -470,20 +465,19 @@ namespace OSEF.ERP.APP
             //Caso contrario no hace nada y devuelve los valores sin coincidencia
             else
             {
-
                 string id = JSON.Serialize(lValoresDiferentes);
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "error", ParameterMode.Value));
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", id, ParameterMode.Value));
-
-
                 connExcel.Close();
             }
-
         }
 
-
-
-        //Metodo que compara las listas y devuelve los que no coinciden
+        /// <summary>
+        /// Metodo que compara las listas y devuelve los que no coinciden
+        /// </summary>
+        /// <param name="lsubidos"></param>
+        /// <param name="lpermitidos"></param>
+        /// <returns></returns>
         public static List<string> Comparator(List<string> lsubidos, List<string> lpermitidos)
         {
             IEnumerable<string> differenceQuery = lsubidos.Except(lpermitidos);
@@ -493,6 +487,62 @@ namespace OSEF.ERP.APP
                 ldiferentes.Add(s);
 
             return ldiferentes;
+        }
+
+        /// <summary>
+        /// Evento que se lanza al querer editar un campo del GridPanel
+        /// </summary>
+        /// <param name="strCategoria"></param>
+        [DirectMethod]
+        public void CargarSubCategoriasPorCategoria(string strCategoria)
+        {
+            //Asignar los elementos del Store de SubCategorias
+            sSubCategoria.DataSource = PreciarioGeneralSubCategoriaBusiness.ObtenerPreciarioGeneralSubCategoriaPorCategoria(strCategoria);
+            sSubCategoria.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al querer editar un campo del GridPanel
+        /// </summary>
+        /// <param name="strSubCategoria"></param>
+        [DirectMethod]
+        public void CargarSubSubCategoriasPorSubCategoria(string strSubCategoria)
+        {
+            sSubSubCategorias.DataSource = PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorSubCategoria(strSubCategoria);
+            sSubSubCategorias.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que obtiene el objeto tipo PreciarioGeneralCategoria
+        /// </summary>
+        /// <param name="strCategoria"></param>
+        /// <returns></returns>
+        [DirectMethod]
+        public PreciarioGeneralCategoria CargarObjetoCategoriaPorID(string strCategoria)
+        {
+            return PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorID(strCategoria);
+        }
+
+        /// <summary>
+        /// Evento que obtiene el objeto tipo PreciarioGeneralSubCategoria
+        /// </summary>
+        /// <param name="strSubCategoria"></param>
+        /// <returns></returns>
+        [DirectMethod]
+        public PreciarioGeneralSubCategoria CargarObjetoSubCategoriaPorID(string strSubCategoria)
+        {
+            return PreciarioGeneralSubCategoriaBusiness.ObtenerPreciarioGeneralSubCategoriaPorID(strSubCategoria);
+        }
+
+        /// <summary>
+        /// Evento que obtiene un objeto SubSubCategoria por su ID
+        /// </summary>
+        /// <param name="strSubSubCategoria"></param>
+        /// <returns></returns>
+        [DirectMethod]
+        public PreciarioGeneralSubSubCategoria CargarObjetoSubSubCategoriaPorID(string strSubSubCategoria)
+        {
+            return PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorID(strSubSubCategoria);
         }
     }
 }

@@ -31,13 +31,13 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmFormaPreciario.
+        /// Control rmFormaPreciarioGeneral.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmFormaPreciario;
+        protected global::Ext.Net.ResourceManager rmFormaPreciarioGeneral;
         
         /// <summary>
         /// Control sPreciarioGeneral.
@@ -49,13 +49,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Store sPreciarioGeneral;
         
         /// <summary>
-        /// Control mPreciario.
+        /// Control mPreciarioGeneral.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mPreciario;
+        protected global::Ext.Net.Model mPreciarioGeneral;
         
         /// <summary>
         /// Control fpPreciario.
@@ -463,13 +463,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mSubCategoria;
         
         /// <summary>
-        /// Control cSubCubCategoria.
+        /// Control cSubSubCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cSubCubCategoria;
+        protected global::Ext.Net.Column cSubSubCategoria;
         
         /// <summary>
         /// Control cmbSubSubCategoria.

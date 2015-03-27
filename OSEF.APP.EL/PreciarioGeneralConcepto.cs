@@ -125,13 +125,13 @@ namespace OSEF.APP.EL
             set { rcategoria = value; }
         }
 
-        public PreciarioGeneralSubCategoria RSubcategoria
+        public PreciarioGeneralSubCategoria RSubCategoria
         {
             get { return rsubcategoria; }
             set { rsubcategoria = value; }
         }
 
-        public PreciarioGeneralSubSubCategoria RSubsubcategoria
+        public PreciarioGeneralSubSubCategoria RSubSubCategoria
         {
             get { return rsubsubcategoria; }
             set { rsubsubcategoria = value; }

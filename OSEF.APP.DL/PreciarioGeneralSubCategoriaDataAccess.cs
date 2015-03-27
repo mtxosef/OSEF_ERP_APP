@@ -10,6 +10,9 @@ using OSEF.LIBRARY.COMMON.Generics;
 
 namespace OSEF.APP.DL
 {
+    /// <summary>
+    /// Clase que administra todo el acceso de datos de PreciarioGeneralSubCategoria
+    /// </summary>
     public class PreciarioGeneralSubCategoriaDataAccess
     {
         #region Insertar
@@ -105,7 +108,6 @@ namespace OSEF.APP.DL
 
         #endregion
 
-
         #region Eliminar
 
         /// <summary>
@@ -155,9 +157,8 @@ namespace OSEF.APP.DL
 
         #region Consultar
 
-
         /// <summary>
-        /// Obtener un registro de PreciarioGeneralSubCategoria por su ID
+        /// Obtener un registro de la SubCategoria del PreciarioGeneral por su ID
         /// </summary>
         /// <param name="strID"></param>
         /// <returns></returns>
@@ -204,11 +205,11 @@ namespace OSEF.APP.DL
         }
 
         /// <summary>
-        /// Obtener un registro de PreciarioGeneralSubCategoria por su ID
+        /// Obtener una lista de registros de las SubCategorias del Preciario General por el ID de una Categoria
         /// </summary>
-        /// <param name="strID"></param>
+        /// <param name="strCategoria"></param>
         /// <returns></returns>
-        public static List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubCategoriaPorCategoria(string strID)
+        public static List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubCategoriaPorCategoria(string strCategoria)
         {
             try
             {
@@ -220,14 +221,61 @@ namespace OSEF.APP.DL
                 sqlcComando.CommandText = "web_spS_ObtenerPreciarioGeneralSubCategoriasPorCategoria";
 
                 //2. Declarar los parametros
-                SqlParameter sqlpID = new SqlParameter();
-                sqlpID.ParameterName = "@Categoria";
-                sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 10;
-                sqlpID.Value = strID;
+                SqlParameter sqlpCategoria = new SqlParameter();
+                sqlpCategoria.ParameterName = "@Categoria";
+                sqlpCategoria.SqlDbType = SqlDbType.Char;
+                sqlpCategoria.Size = 10;
+                sqlpCategoria.Value = strCategoria;
 
                 //3. Agregar los parametros al comando
-                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpCategoria);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<PreciarioGeneralSubCategoria> result = LibraryGenerics<PreciarioGeneralSubCategoria>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubCategoriaPorCategoria(string " + strCategoria + ")): " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Obtiene una lista de todas las SubCategorias del PreciarioGeneral por el ID del Preciario
+        /// </summary>
+        /// <param name="strPreciario"></param>
+        /// <returns></returns>
+        public static List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubcategoriasPorPreciario(string strPreciario)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioGeneralSubCategoriasPorPreciario";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpPreciario = new SqlParameter();
+                sqlpPreciario.ParameterName = "@Preciario";
+                sqlpPreciario.SqlDbType = SqlDbType.Char;
+                sqlpPreciario.Size = 7;
+                sqlpPreciario.Value = strPreciario;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpPreciario);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -246,7 +294,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubCategoriaPorCategoria> ObtenerPreciarioSubCategoriaPorCategoria(string " + strID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public List<PreciarioGeneralSubCategoria> ObtenerPreciarioGeneralSubcategoriasPorPreciario(string " + strPreciario + ")): " + ex.Message);
             }
         }
 
