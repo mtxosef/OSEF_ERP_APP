@@ -10,7 +10,7 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class OrdenesCambio {
+    public partial class FormaGenerador {
         
         /// <summary>
         /// Control form1.
@@ -22,264 +22,237 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmOrdenesEstimaciones.
+        /// Control rmFormaGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmOrdenesEstimaciones;
+        protected global::Ext.Net.ResourceManager rmFormaGenerador;
         
         /// <summary>
-        /// Control gpOrdenesEstimaciones.
+        /// Control gpFormaGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gpOrdenesEstimaciones;
+        protected global::Ext.Net.GridPanel gpFormaGenerador;
         
         /// <summary>
-        /// Control tbVolumetrias.
+        /// Control tbFormaGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbVolumetrias;
+        protected global::Ext.Net.Toolbar tbFormaGenerador;
         
         /// <summary>
-        /// Control imgbtnNuevo.
+        /// Control imgbtnAceptar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnNuevo;
+        protected global::Ext.Net.ImageButton imgbtnAceptar;
         
         /// <summary>
-        /// Control imgbtnEditar.
+        /// Control imgbtnCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnEditar;
+        protected global::Ext.Net.ImageButton imgbtnCancelar;
         
         /// <summary>
-        /// Control imgbtnBorrar.
+        /// Control sFormaGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBorrar;
+        protected global::Ext.Net.Store sFormaGenerador;
         
         /// <summary>
-        /// Control cmbUsuario.
+        /// Control mFormaGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbUsuario;
+        protected global::Ext.Net.Model mFormaGenerador;
         
         /// <summary>
-        /// Control sUsuarios.
+        /// Control ccAcciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sUsuarios;
+        protected global::Ext.Net.CommandColumn ccAcciones;
         
         /// <summary>
-        /// Control mUsuarios.
+        /// Control cNo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mUsuarios;
+        protected global::Ext.Net.Column cNo;
         
         /// <summary>
-        /// Control tbsOrdenesCambio.
+        /// Control txtfNo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ToolbarSpacer tbsOrdenesCambio;
+        protected global::Ext.Net.TextField txtfNo;
         
         /// <summary>
-        /// Control imgbtnActualizar.
+        /// Control cLocalizacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnActualizar;
+        protected global::Ext.Net.Column cLocalizacion;
         
         /// <summary>
-        /// Control txtfBuscar.
+        /// Control txtfLozalizacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfBuscar;
+        protected global::Ext.Net.TextField txtfLozalizacion;
         
         /// <summary>
-        /// Control imgbtnBuscar.
+        /// Control cLargo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBuscar;
+        protected global::Ext.Net.NumberColumn cLargo;
         
         /// <summary>
-        /// Control sOrdenesEstimaciones.
+        /// Control nfLargo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sOrdenesEstimaciones;
+        protected global::Ext.Net.NumberField nfLargo;
         
         /// <summary>
-        /// Control mOrdenesEstimaciones.
+        /// Control ncAncho.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mOrdenesEstimaciones;
+        protected global::Ext.Net.NumberColumn ncAncho;
         
         /// <summary>
-        /// Control cMovimiento.
+        /// Control nfAncho.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cMovimiento;
+        protected global::Ext.Net.NumberField nfAncho;
         
         /// <summary>
-        /// Control cmbMovimiento.
+        /// Control ncAlto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbMovimiento;
+        protected global::Ext.Net.NumberColumn ncAlto;
         
         /// <summary>
-        /// Control dcFechaEmision.
+        /// Control nfAlto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateColumn dcFechaEmision;
+        protected global::Ext.Net.NumberField nfAlto;
         
         /// <summary>
-        /// Control cmbFechaRevision.
+        /// Control ncCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbFechaRevision;
+        protected global::Ext.Net.NumberColumn ncCantidad;
         
         /// <summary>
-        /// Control cEstatus.
+        /// Control nfCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cEstatus;
+        protected global::Ext.Net.NumberField nfCantidad;
         
         /// <summary>
-        /// Control cmbFiltroEstatus.
+        /// Control ncTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbFiltroEstatus;
+        protected global::Ext.Net.NumberColumn ncTotal;
         
         /// <summary>
-        /// Control cSucursal.
+        /// Control csmGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cSucursal;
+        protected global::Ext.Net.CellSelectionModel csmGenerador;
         
         /// <summary>
-        /// Control cmbSucursalFiltro.
+        /// Control ceGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSucursalFiltro;
+        protected global::Ext.Net.CellEditing ceGenerador;
         
         /// <summary>
-        /// Control sSucursales.
+        /// Control gvOrdenEstimacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sSucursales;
+        protected global::Ext.Net.GridView gvOrdenEstimacion;
         
         /// <summary>
-        /// Control mSucursales.
+        /// Control tGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mSucursales;
+        protected global::Ext.Net.Toolbar tGenerador;
         
         /// <summary>
-        /// Control cUsuario.
+        /// Control dfTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cUsuario;
-        
-        /// <summary>
-        /// Control gvOrdenesEstimaciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.GridView gvOrdenesEstimaciones;
-        
-        /// <summary>
-        /// Control rsmOrdenesEstimaciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.RowSelectionModel rsmOrdenesEstimaciones;
-        
-        /// <summary>
-        /// Control sbOrdenesEstimacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.StatusBar sbOrdenesEstimacion;
+        protected global::Ext.Net.DisplayField dfTotal;
     }
 }

@@ -58,7 +58,7 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static List<Volumetria> ObtenerVolumetrias()
         {
-            //1. Obtener las revisiones en una lista
+            //1. Obtener las Volumetrias en una lista
             List<Volumetria> lVolumetrias = VolumetriaDataAccess.ObtenerVolumetrias();
 
             //2. Complementarlas con sucursal

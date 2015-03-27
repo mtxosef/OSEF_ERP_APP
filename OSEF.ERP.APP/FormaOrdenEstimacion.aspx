@@ -49,14 +49,14 @@
                         <ext:ModelField Name="Usuario" Type="String" />
                         <ext:ModelField Name="RSucursal" Type="Object" />
                         <ext:ModelField Name="Origen" Type="String" />
-                        <ext:ModelField Name="OrigenID" Type="String" />
+                        <ext:ModelField Name="OrigenId" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
-         <%--   <Listeners>
-                <Load Fn="sVolumetria_Load" />
-                <Add Fn="sVolumetria_Add" />
-            </Listeners>--%>
+            <Listeners>
+                <Load Fn="sOrdenesMantenimiento_Load" />
+                <Add Fn="sOrdenesMantenimiento_Add" />
+            </Listeners>
         </ext:Store>
 
         <ext:FormPanel
@@ -111,17 +111,16 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                           <%-- <DirectEvents>
+                            <DirectEvents>
                                 <Click OnEvent="imgbtnGuardar_Click" Success="imgbtnGuardar_Click_Success">
                                     <EventMask ShowMask="true" Msg="Guardardo información..." />
                                     <ExtraParams>
-                                        <ext:Parameter Name="VolumetriaForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
-                                        <ext:Parameter Name="Volumetria" Value="Ext.encode(#{sVolumetria}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="Sucursal" Value="App.txtfIDSucursal.getValue()" Mode="Raw" />
-                                        <ext:Parameter Name="VolumetriaD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
-                            </DirectEvents>--%>
+                            </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnInfo"
@@ -198,7 +197,7 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                           <%-- <DirectEvents>
+                            <DirectEvents>
                                 <Click OnEvent="imgbtnBorrar_Click" Success="imgbtnBorrar_Click_Success">
                                     <Confirmation
                                         ConfirmRequest="true"
@@ -211,7 +210,7 @@
                                         Msg="Eliminando registro">
                                     </EventMask>
                                 </Click>
-                             </DirectEvents>--%>
+                             </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnCancelar"
@@ -344,11 +343,12 @@
                                                 </ext:Store>
                                             </Store>
                                             <Items>
-                                                <ext:ListItem Index="0" Text="Mesa de reporte" Value="MESA DE REPORTE" />
-                                                <ext:ListItem Index="1" Text="Orden de Cambio" Value="ORDEN DE CAMBIO" />
+                                                <ext:ListItem Index="0" Text="Mesa de reporte" Value="Mesa de reporte" />
+                                                <ext:ListItem Index="1" Text="Orden de Cambio" Value="Orden de Cambio" />
                                             </Items>
                                             <Listeners>
                                                 <Select Fn="cmbMov_Select" />
+                                                <Change Fn="sMov_Change"></Change>
                                             </Listeners>
                                         </ext:ComboBox>
                                         <ext:TextField
@@ -410,15 +410,8 @@
                                             </Store>
                                             <Listeners>
                                                 <Select Fn="cmbSucursal_Select" />
-                                                <Change Handler="cmbSucursal_Change" />
+                                                <Change Fn="cmbSucursal_Change" />
                                             </Listeners>  
-                                       <%--     <DirectEvents>
-                                                <Select OnEvent="cmbPreciarios_Change"  Success="cmbPreciario_Change_Success" >
-                                                    <ExtraParams>
-                                                        <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
-                                                    </ExtraParams>
-                                                </Select>
-                                            </DirectEvents>--%>
                                         </ext:ComboBox>
                                         <ext:TextField
                                             ID="txtfSucursalNombre"
@@ -536,9 +529,9 @@
                                                         <ext:ModelField Name="Renglon" Type="Int" />
                                                         <ext:ModelField Name="ConceptoID" Type="String" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />
+                                                        <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Precio" Type="Float" />
                                                         <ext:ModelField Name="Importe" Type="Float" />
-                                                        <ext:ModelField Name="Fotos" Type="String" />
                                                         <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
                                                     </Fields>
                                                 </ext:Model>
@@ -569,7 +562,7 @@
                                                 ID="cIDPreciario"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="225"
+                                                Width="205"
                                                 DataIndex="ConceptoID">
                                                 <Editor>
                                                     <ext:TextField ID="prueba" runat="server">
@@ -599,7 +592,7 @@
                                                 Align="Center"
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
-                                                Width="150">
+                                                Width="90">
                                                 <Renderer Fn="cCantidad_Renderer" />
                                                 <Editor>
                                                     <ext:NumberField 
@@ -620,13 +613,41 @@
                                                     </ext:NumberField>
                                                 </Editor>
                                             </ext:NumberColumn>
+                                            <ext:CommandColumn
+                                                ID="ccGenerador"
+                                                runat="server" 
+                                                Width="25">
+                                                <%--<PrepareToolbar Fn="ccDimensiones_PrepareToolbar" />--%>
+                                                <Commands>
+                                                    <ext:GridCommand
+                                                        Icon="ApplicationOsxAdd"
+                                                        CommandName="Agregar">
+                                                        <ToolTip Text="Generador" />
+                                                    </ext:GridCommand>
+                                                </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccGenerador_Command" />
+                                                </Listeners>
+                                            </ext:CommandColumn>
+
+                                             <ext:Column
+                                                ID="cUnidad"
+                                                runat="server"
+                                                Align="Center"
+                                                Text="Unidad"
+                                                DataIndex="Unidad"
+                                                Width="90">
+                                            </ext:Column>
+
+
+
                                             <ext:NumberColumn 
                                                 ID="cPrecio"
                                                 runat="server"
                                                 Align="Center"
                                                 Text="Precio"
                                                 DataIndex="Precio"
-                                                Width="150">
+                                                Width="90">
                                                   <Renderer Fn="cPrecio_Renderer" />
                                                 <Editor>
                                                     <ext:NumberField 
@@ -654,14 +675,14 @@
                                                 Align="Center"
                                                 Text="Importe"
                                                 DataIndex="Importe"
-                                                Width="150">
+                                                Width="120">
                                                <Renderer Fn="cImporte_Renderer" />
                                             </ext:NumberColumn>
                                             <ext:CommandColumn
                                                 ID="ccFotos"
                                                 Text="Fotos"
                                                 runat="server"
-                                                Width="85">
+                                                Width="65">
                                                 <%--<PrepareToolbar Fn="ccFotos_PrepareToolbar" />--%>
                                                 <Commands>
                                                     <ext:GridCommand
@@ -679,6 +700,54 @@
                                                   <%--  <Command Fn="ccFotos_Command" />--%>
                                                 </Listeners>
                                             </ext:CommandColumn>
+
+                                            <ext:CommandColumn
+                                                ID="ccCroquis"
+                                                Text="Croquis"
+                                                runat="server"
+                                                Width="65">
+                                                <%--<PrepareToolbar Fn="ccFotos_PrepareToolbar" />--%>
+                                                <Commands>
+                                                    <ext:GridCommand
+                                                        Icon="MapAdd"
+                                                        CommandName="cnCargarCroquis" >
+                                                        <ToolTip Text="Cargar Croquis" />
+                                                    </ext:GridCommand>
+                                                    <ext:GridCommand
+                                                        Icon="FolderPicture"
+                                                        CommandName="cnVerCroquis">
+                                                        <ToolTip Text="Ver Croquis" />
+                                                    </ext:GridCommand>
+                                                </Commands>
+                                                <Listeners>
+                                                  <%--  <Command Fn="ccFotos_Command" />--%>
+                                                </Listeners>
+                                            </ext:CommandColumn>
+
+
+                                            <ext:CommandColumn
+                                                ID="ccFacturas"
+                                                Text="Facturas"
+                                                runat="server"
+                                                Width="65">
+                                                <%--<PrepareToolbar Fn="ccFotos_PrepareToolbar" />--%>
+                                                <Commands>
+                                                    <ext:GridCommand
+                                                        Icon="PageWhiteAcrobat"
+                                                        CommandName="cnCargarFactura" >
+                                                        <ToolTip Text="Cargar Factura" />
+                                                    </ext:GridCommand>
+                                                    <ext:GridCommand
+                                                        Icon="FolderPicture"
+                                                        CommandName="cnVerFactura">
+                                                        <ToolTip Text="Ver Factura" />
+                                                    </ext:GridCommand>
+                                                </Commands>
+                                                <Listeners>
+                                                  <%--  <Command Fn="ccFotos_Command" />--%>
+                                                </Listeners>
+                                            </ext:CommandColumn>
+
                                         </Columns>
                                     </ColumnModel>
                                   <%--  <Listeners>
@@ -726,6 +795,8 @@
                 Text="SIN AFECTAR" />
             </BottomBar>
         </ext:FormPanel>
+
+        
 
         <ext:Window 
             ID="wEmergente"

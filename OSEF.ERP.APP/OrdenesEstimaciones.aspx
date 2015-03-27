@@ -122,9 +122,9 @@
                                     </Model>
                                 </ext:Store>
                                 </Store>
-                               <%--  <Listeners>
+                                 <Listeners>
                                     <Select Fn="cmbUsuarioFiltro_Select" />
-                                </Listeners>--%>
+                                </Listeners>
                             </ext:ComboBox>
 
                        
@@ -171,15 +171,15 @@
                 </ext:Toolbar>
             </TopBar>
             <Store>
-           <%-- OnReadData="OnReadData_sVolumetrias"--%>
                 <ext:Store
                     ID="sOrdenesEstimaciones"
                     runat="server"
+                     OnReadData="OnReadData_sOrdenesEstimaciones"
                     >
                     <Model>
                         <ext:Model ID="mOrdenesEstimaciones" runat="server">
                             <Fields>
-                                <ext:ModelField Name="ID" Type="Int" />
+                                <ext:ModelField Name="Id" Type="Int" />
                                 <ext:ModelField Name="Mov" Type="String" />
                                 <ext:ModelField Name="MovID" Type="String" />
                                 <ext:ModelField Name="Sucursal" Type="String" />
@@ -207,7 +207,7 @@
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="170"
+                        Width="200"
                         DataIndex="Mov">
                          <HeaderItems>
                             <ext:ComboBox
@@ -217,19 +217,19 @@
                                 Editable="false">
                                 <Items>
                                     <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                    <ext:ListItem Index="1" Text="MESA DE REPORTE" />
-                                    <ext:ListItem Index="2" Text="ORDEN DE CAMBIO" />
-                                    <ext:ListItem Index="3" Text="ESTIMACION" />
+                                    <ext:ListItem Index="1" Text="Mesa de reporte" />
+                                    <ext:ListItem Index="2" Text="Orden de Cambio" />
+                                    <ext:ListItem Index="3" Text="Estimación" />
                                 </Items>
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                                <%--<Listeners>
-                                    <Select Fn="cmbMovimiento_Select" />
-                                </Listeners>--%>
+                                <Listeners>
+                                    <Select Fn="cmbMovimientoFiltro_Select" />
+                                </Listeners>
                             </ext:ComboBox>
                         </HeaderItems>
-                       <%-- <Renderer Fn="cMov_Renderer" />--%>
+                        <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
                      <ext:DateColumn
                         ID="dcFechaEmision"
@@ -299,9 +299,9 @@
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                                <%--<Listeners>
+                                <Listeners>
                                     <Select Fn="cmbEstatusFiltro_Select" />
-                                </Listeners>--%>
+                                </Listeners>
                               
 
                             </ext:ComboBox>
@@ -314,9 +314,9 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Center"
-                        Width="235"
+                        Width="255"
                         DataIndex="Sucursal">
-                      <%--  <Renderer Fn="cPreciario_Renderer" />--%>
+                      <Renderer Fn="cSucursal_Renderer" />
                         <HeaderItems>
                             <ext:ComboBox
                                 ID="cmbSucursalFiltro"
@@ -331,9 +331,9 @@
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                               <%-- <Listeners>
-                                    <Select Fn="cmbPreciarioFiltro_Select" />
-                                </Listeners>--%>
+                                <Listeners>
+                                    <Select Fn="cmbSucursalFiltro_Select" />
+                                </Listeners>
                                 <Store>
                                     <ext:Store
                                         ID="sSucursales"
@@ -353,7 +353,15 @@
                         </HeaderItems>
 
                     </ext:Column>
-                   
+                   <ext:Column
+                        ID="cUsuario"
+                        runat="server"
+                        Text="USUARIO"
+                        Align="Center"
+                        Width="175"
+                        DataIndex="Usuario">
+                    
+                    </ext:Column>
                 </Columns>
             </ColumnModel>
             <Listeners>

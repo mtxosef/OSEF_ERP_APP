@@ -374,3 +374,29 @@
 :r c:\SqlServerScripts\Insertar\PreciariosGeneralesConceptos\web_spI_InsertarPreciarioGeneralConcepto.sql
 -- PreciarioGeneralConcepto (Modificar)
 --:r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptos\web_spU_ActualizarPreciarioGeneralConcepto.sql
+-----------------------------------------------------------------------------------
+-- OrdenesEstimaciones (Borrar)
+:r c:\SqlServerScripts\Borrar\OrdenesEstimaciones\web_spD_BorrarOrdenEstimacion.sql
+-- OrdenesEstimaciones (Consultar)
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimaciones.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
+-- OrdenesEstimaciones (Insertar)
+:r c:\SqlServerScripts\Insertar\OrdenesEstimaciones\web_spI_InsertarOrdenEstimacion.sql
+-- OrdenesEstimaciones (Modificar)
+:r c:\SqlServerScripts\Modificar\OrdenesEstimaciones\web_spU_ActualizarOrdenEstimacion.sql
+-- OrdenesEstimaciones (Acción)
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarVolumetriaPorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AvanzarVolumetriaPorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_CancelarVolumetriaPorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spD_BorrarVolumetriaAfectaPreciario.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_ValidaPreciariosConcluidos.sql
+-----------------------------------------------------------------------------------
+-- OrdenesEstimacionesD (Borrar)
+:r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spD_BorrarOrdenEstimacionD.sql
+:r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spD_BorrarOrdenEstimacionDPorOrdenEstimacion.sql
+-- OrdenesEstimacionesD (Consultar)
+:r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerOrdenEstimacionDPorOrdenEstimacion.sql
+-- OrdenesEstimacionesD (Insertar)
+:r c:\SqlServerScripts\Insertar\OrdenesEstimacionesD\web_spI_InsertarOrdenEstimacionD.sql
+-- OrdenesEstimacionesD (Modificar)
+:r c:\SqlServerScripts\Modificar\OrdenesEstimacionesD\web_spU_ActualizarOrdenEstimacionD.sql

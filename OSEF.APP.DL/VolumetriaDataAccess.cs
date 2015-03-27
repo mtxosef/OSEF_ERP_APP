@@ -11,7 +11,7 @@ using OSEF.LIBRARY.COMMON.Generics;
 namespace OSEF.APP.DL
 {
     /// <summary>
-    /// Clase que administra los datos de la tabla de Revision
+    /// Clase que administra los datos de la tabla de Volumetrias
     /// </summary>
    public  class VolumetriaDataAccess
    {

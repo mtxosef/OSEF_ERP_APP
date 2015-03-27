@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using OSEF.APP.BL;
+using Ext.Net;
 
 namespace OSEF.ERP.APP
 {
@@ -12,11 +13,36 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
-            sUsuarios.DataBind();
 
-            sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
-             sSucursales.DataBind();
+            //1. Si no hay AjaxRequest
+            if (!X.IsAjaxRequest)
+            {
+                //2. Checar ticket de autenticación
+                UsuarioBusiness.checkValidSession(this);
+                //3. Llenar Store de OrdenesEstimaciones, Preciarios y Usuarios
+                sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
+                sUsuarios.DataBind();
+
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                sSucursales.DataBind();
+
+               
+                sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
+                sOrdenesEstimaciones.DataBind();
+
+                rmOrdenesEstimaciones.RegisterIcon(Icon.Delete);
+            }
+        }
+
+        /// <summary>
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sOrdenesEstimaciones(object sender, StoreReadDataEventArgs e)
+        {
+            sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
+            sOrdenesEstimaciones.DataBind();
         }
     }
 }
