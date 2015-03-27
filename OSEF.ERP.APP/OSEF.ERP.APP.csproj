@@ -320,6 +320,7 @@
     <Content Include="FormaAvance.aspx" />
     <Content Include="FormaAvanzarVolumetria.aspx" />
     <Content Include="FormaBuscaPreciarioConcepto.aspx" />
+    <Content Include="FormaBuscaPreciarioGeneralConcepto.aspx" />
     <Content Include="FormaCambiarContrasena.aspx" />
     <Content Include="FormaCargaMultiImagenes.aspx" />
     <Content Include="FormaColonia.aspx" />
@@ -377,6 +378,7 @@
     <Content Include="js\avanzarMovimiento.js" />
     <Content Include="js\avanzarVolumetria.js" />
     <Content Include="js\buscaConceptoPreciario.js" />
+    <Content Include="js\buscaConceptoPreciarioGeneral.js" />
     <Content Include="js\cambiarContrasena.js" />
     <Content Include="js\certificadosInversiones.js" />
     <Content Include="js\clientes.js" />
@@ -646,6 +648,13 @@
     </Compile>
     <Compile Include="FormaBuscaPreciarioConcepto.aspx.designer.cs">
       <DependentUpon>FormaBuscaPreciarioConcepto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaBuscaPreciarioGeneralConcepto.aspx.cs">
+      <DependentUpon>FormaBuscaPreciarioGeneralConcepto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaPreciarioGeneralConcepto.aspx.designer.cs">
+      <DependentUpon>FormaBuscaPreciarioGeneralConcepto.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaCambiarContrasena.aspx.cs">
       <DependentUpon>FormaCambiarContrasena.aspx</DependentUpon>

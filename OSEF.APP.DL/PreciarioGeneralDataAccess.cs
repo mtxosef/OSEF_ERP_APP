@@ -295,6 +295,91 @@ namespace OSEF.APP.DL
         }
 
 
+        /// <summary>
+        /// Obtener un registro de Preciario General TipoObra
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static PreciarioGeneral ObtenerPreciarioGeneralTipoObra()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioGeneralObra";
+
+                //2. Declarar los parametros
+               
+                //3. Agregar los parametros al comando
+           
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                PreciarioGeneral result = LibraryGenerics<PreciarioGeneral>.ConvertDataSetToList(reader).FirstOrDefault();
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static PreciarioGeneral ObtenerPreciarioGeneralTipoObra(): " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Obtener un registro de Preciario General TipoMantenimiento
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static PreciarioGeneral ObtenerPreciarioGeneralTipoMnto()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioGeneralMnto";
+
+                //2. Declarar los parametros
+               
+
+                //3. Agregar los parametros al comando
+             
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                PreciarioGeneral result = LibraryGenerics<PreciarioGeneral>.ConvertDataSetToList(reader).FirstOrDefault();
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static PreciarioGeneral ObtenerPreciarioGeneralTipoMnto(): " + ex.Message);
+            }
+        }
+
         #endregion
     }
 }

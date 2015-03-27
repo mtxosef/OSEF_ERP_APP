@@ -72,6 +72,28 @@ namespace OSEF.APP.BL
            
         }
 
+        /// <summary>
+        /// Obtener un registro de PreciarioGeneralTipoObra
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static PreciarioGeneral ObtenerPreciarioGeneralTipoObra()
+        {
+            return PreciarioGeneralDataAccess.ObtenerPreciarioGeneralTipoObra();
+
+        }
+
+        /// <summary>
+        /// Obtener un registro de PreciarioGeneralTipoMnto
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static PreciarioGeneral ObtenerPreciarioGeneralTipoMnto()
+        {
+            return PreciarioGeneralDataAccess.ObtenerPreciarioGeneralTipoMnto();
+
+        }
+
         #endregion
     }
 }

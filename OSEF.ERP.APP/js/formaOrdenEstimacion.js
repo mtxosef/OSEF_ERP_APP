@@ -52,9 +52,16 @@ var sMov_Add = function (store, registros, index, eOpts) {
 };
 
 //Se lanza por cada elemento agregado al Store de Movimientos
-var sMov_Change= function (store, registros, index, eOpts) {
-  //  PrimerRenglonDetalle();
-  //  HabilitarGuardar();
+var sMov_Change = function (combo) {
+   
+    if (combo.value == 'Mesa de reporte') {
+        Ext.util.Cookies.set('cookieMovimiento', 'Mnto');
+    }
+
+    if (combo.value == 'Orden de Cambio') {
+        Ext.util.Cookies.set('cookieMovimiento', 'Obra');
+    }
+
 };
 
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
@@ -144,7 +151,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + App.sOrdenEstimacion.getAt(0).get('ID'));
-
+        App.cmbMov.setReadOnly(true);
         //6. Deshabilita los comandos de Fotos
 //        App.ccFotos.commands[0].disabled = false;
 //        App.ccFotos.commands[1].disabled = false;
@@ -268,6 +275,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
         App.imgbtnBorrar.setDisabled(false);
 
+        App.cmbMov.setReadOnly(true);
         // HabilitarAfectar();
         // HabilitarAfectarFin();
     }
@@ -442,6 +450,55 @@ var ccGenerador_Command = function (columna, comando, registro, fila, opciones) 
 
 };
 
+//Validaciones de comandos para conceptos
+var ccConcepto_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+    //alert('Si entro');
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo' && App.sOrdenEstimacion.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(false);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de conceptos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(false);
+    }
+};
+
+
+//Acciones del boton d agregar concepto en el detalle
+var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
+    window.parent.App.wAyudaConcepto.load('FormaBuscaPreciarioGeneralConcepto.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(430);
+    window.parent.App.wAyudaConcepto.setWidth(685);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
+    window.parent.App.wAyudaConcepto.show();
+    //Asigno el indicie del renglon
+    Ext.util.Cookies.set('cookieRenglonOrdenEstimacionD', fila);
+};
+
 
 //-----------------------------------------------VALIDACIONES-----------------------------------------------
 //Función que valida si se habilita el primer renlgon en el GridPanel detalle
@@ -481,3 +538,5 @@ function PrimerRenglonDetalle() {
             return true
         }
     };
+
+  

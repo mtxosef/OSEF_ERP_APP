@@ -17,6 +17,8 @@ namespace OSEF.ERP.APP
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
+                //2. Checar ticket de autenticación
+                UsuarioBusiness.checkValidSession(this);
                 sSucursal.DataSource = SucursalBusiness.ObtenerSucursales();
                 sSucursal.DataBind();
             }

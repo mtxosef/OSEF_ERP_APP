@@ -68,6 +68,15 @@ namespace OSEF.APP.BL
             return PreciarioGeneralConceptoDataAccess.ObtenerPreciarioGeneralConceptoPorId(IDConcepto);
         }
 
+        /// <summary>
+        /// Método que obtiene todos los registros de PreciarioGeneralConcepto filtrandolos
+        /// </summary>
+        /// <returns></returns>
+        public static List<PreciarioGeneralConcepto> ObtenerPreciarioConceptoFiltro(string strPreciario, string strCategoria, string strSubCategoria, string strSubsubCategoria)
+        {
+            return PreciarioGeneralConceptoDataAccess.ObtenerPreciarioGeneralConceptoFiltro(strPreciario, strCategoria, strSubCategoria, strSubsubCategoria);
+        }
+
         #endregion
 
     }

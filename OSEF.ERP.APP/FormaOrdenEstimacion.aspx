@@ -564,17 +564,17 @@
                                                 Text="Concepto"
                                                 Width="205"
                                                 DataIndex="ConceptoID">
-                                                <Editor>
+                                               <%-- <Editor>
                                                     <ext:TextField ID="prueba" runat="server">
                                                         
                                                     </ext:TextField>
-                                                </Editor>
+                                                </Editor>--%>
                                             </ext:Column>
                                             <ext:CommandColumn
                                                 ID="ccConcepto"
                                                 runat="server" 
                                                 Width="25">
-                                                <%--<PrepareToolbar Fn="ccConcepto_PrepareToolbar" />--%>
+                                                <PrepareToolbar Fn="ccConcepto_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="Add"
@@ -582,9 +582,9 @@
                                                         <ToolTip Text="Agregar concepto" />
                                                     </ext:GridCommand>
                                                 </Commands>
-                                               <%-- <Listeners>
+                                                <Listeners>
                                                     <Command Fn="ccConcepto_Command" />
-                                                </Listeners>--%>
+                                                </Listeners>
                                             </ext:CommandColumn>
                                             <ext:NumberColumn
                                                 ID="cCantidad"
