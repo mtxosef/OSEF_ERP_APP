@@ -164,6 +164,43 @@ var imgbtnGuardar_Click_Success = function (response, result) {
     }
 };
 
+//Para el botón de eliminar de la forma, Eliminar un registro 
+var imgbtnBorrar_Click_Success = function (response, result) {
+    Ext.Msg.show({
+        id: 'msgOrdenEstimacion',
+        title: 'Advertencia Movimiento',
+        msg: 'Se ha eliminado el movimiento',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.WARNING
+    });
+
+    //Se actualiza el tablero
+    window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+
+    var d = new Date();
+    //Limpiar controles del encabezado
+    App.cmbMov.clearValue();
+    App.txtfMovID.setValue(null);
+
+    App.cmbSucursal.clearValue();   
+    App.txtfSucursalNombre.setValue('');
+
+    App.dfFechaEmision.setValue(d);
+    App.txtfObservaciones.setValue(null);
+    App.sbOrdenEstimacion.setText('SIN AFECTAR');
+
+    App.imgbtnBorrar.setDisabled(true);
+
+    //Borrar el GridPanel del Detalle y Encabezado
+    App.sConceptos.removeAll();
+    App.sOrdenEstimacion.removeAll();
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
+    window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
+};
+
+
 
 //var store;
 //Evento lanzado al cargar el store de avance encabezado

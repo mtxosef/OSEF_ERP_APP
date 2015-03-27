@@ -181,8 +181,8 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("Observaciones", oOrdenEstimacionForma.Observaciones);
 
                 //8. Borrar todo el detalle e insertarlo de nuevo
-                OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(oOrdenEstimacionForma.Id);
-                //GuardarDetalleVolumetria(lOrdenEstimacionD, oOrdenEstimacionForma);
+                OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
+                GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
 
                 //9. Regresar valor
                 return "modificar";
@@ -209,6 +209,24 @@ namespace OSEF.ERP.APP
                     OrdenEstimacionDBusiness.Insertar(sd);
                 }
             }
+        }
+
+
+        /// <summary>
+        /// Método para elimnar un registro
+        /// </summary>
+        /// <param name="strID"></param>
+        protected void imgbtnBorrar_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener registro que se quiere eliminar
+            string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            int strID = Convert.ToInt32(strcookieEditarOrdenEstimacion);
+            //Borra de la base de datos el encabezado, detalle y fotos
+            //borrarImagenesPorMovimiento(strID);
+
+            OrdenEstimacionDBusiness.BorrarPorID(strID);
+            OrdenEstimacionBusiness.Borrar(strID);
+            
         }
 
     }

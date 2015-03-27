@@ -224,9 +224,9 @@
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                                <%--<Listeners>
-                                    <Select Fn="cmbMovimiento_Select" />
-                                </Listeners>--%>
+                                <Listeners>
+                                    <Select Fn="cmbMovimientoFiltro_Select" />
+                                </Listeners>
                             </ext:ComboBox>
                         </HeaderItems>
                         <Renderer Fn="cMov_Renderer" />

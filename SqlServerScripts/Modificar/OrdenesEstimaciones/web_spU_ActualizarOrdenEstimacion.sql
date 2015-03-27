@@ -34,7 +34,9 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@MovID			CHAR(10),
 	@Sucursal		CHAR(10),
 	@Observaciones	VARCHAR(200),
-	@Estatus		VARCHAR(10)
+	@Estatus		VARCHAR(10),
+	@Origen			VARCHAR(30),
+	@OrigenID		VARCHAR(30)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -49,7 +51,9 @@ BEGIN
 		MovID = @MovID,
 		Sucursal = @Sucursal,
 		Observaciones = @Observaciones,
-		Estatus = @Estatus
+		Estatus = @Estatus,
+		Origen = @Origen,
+		OrigenID = @OrigenID
 	WHERE
 		ID = @ID
 END

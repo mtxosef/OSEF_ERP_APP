@@ -197,7 +197,7 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                           <%-- <DirectEvents>
+                            <DirectEvents>
                                 <Click OnEvent="imgbtnBorrar_Click" Success="imgbtnBorrar_Click_Success">
                                     <Confirmation
                                         ConfirmRequest="true"
@@ -210,7 +210,7 @@
                                         Msg="Eliminando registro">
                                     </EventMask>
                                 </Click>
-                             </DirectEvents>--%>
+                             </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnCancelar"

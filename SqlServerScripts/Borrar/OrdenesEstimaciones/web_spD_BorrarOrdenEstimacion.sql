@@ -41,7 +41,7 @@ BEGIN
 	
     -- Insert statements for procedure here
     DELETE FROM
-		OrdenesEstimacionesD
+		OrdenesEstimaciones
 	WHERE
 		ID = @ID
 END
