@@ -49,14 +49,14 @@
                         <ext:ModelField Name="Usuario" Type="String" />
                         <ext:ModelField Name="RSucursal" Type="Object" />
                         <ext:ModelField Name="Origen" Type="String" />
-                        <ext:ModelField Name="OrigenID" Type="String" />
+                        <ext:ModelField Name="OrigenId" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
-         <%--   <Listeners>
-                <Load Fn="sVolumetria_Load" />
-                <Add Fn="sVolumetria_Add" />
-            </Listeners>--%>
+            <Listeners>
+                <Load Fn="sOrdenesMantenimiento_Load" />
+                <Add Fn="sOrdenesMantenimiento_Add" />
+            </Listeners>
         </ext:Store>
 
         <ext:FormPanel
@@ -111,17 +111,16 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                           <%-- <DirectEvents>
+                            <DirectEvents>
                                 <Click OnEvent="imgbtnGuardar_Click" Success="imgbtnGuardar_Click_Success">
                                     <EventMask ShowMask="true" Msg="Guardardo información..." />
                                     <ExtraParams>
-                                        <ext:Parameter Name="VolumetriaForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
-                                        <ext:Parameter Name="Volumetria" Value="Ext.encode(#{sVolumetria}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="Sucursal" Value="App.txtfIDSucursal.getValue()" Mode="Raw" />
-                                        <ext:Parameter Name="VolumetriaD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
-                            </DirectEvents>--%>
+                            </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnInfo"
@@ -344,11 +343,12 @@
                                                 </ext:Store>
                                             </Store>
                                             <Items>
-                                                <ext:ListItem Index="0" Text="Mesa de reporte" Value="MESA DE REPORTE" />
-                                                <ext:ListItem Index="1" Text="Orden de Cambio" Value="ORDEN DE CAMBIO" />
+                                                <ext:ListItem Index="0" Text="Mesa de reporte" Value="Mesa de reporte" />
+                                                <ext:ListItem Index="1" Text="Orden de Cambio" Value="Orden de Cambio" />
                                             </Items>
                                             <Listeners>
                                                 <Select Fn="cmbMov_Select" />
+                                                <Change Fn="sMov_Change"></Change>
                                             </Listeners>
                                         </ext:ComboBox>
                                         <ext:TextField
@@ -410,15 +410,8 @@
                                             </Store>
                                             <Listeners>
                                                 <Select Fn="cmbSucursal_Select" />
-                                                <Change Handler="cmbSucursal_Change" />
+                                                <Change Fn="cmbSucursal_Change" />
                                             </Listeners>  
-                                       <%--     <DirectEvents>
-                                                <Select OnEvent="cmbPreciarios_Change"  Success="cmbPreciario_Change_Success" >
-                                                    <ExtraParams>
-                                                        <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
-                                                    </ExtraParams>
-                                                </Select>
-                                            </DirectEvents>--%>
                                         </ext:ComboBox>
                                         <ext:TextField
                                             ID="txtfSucursalNombre"

@@ -48,6 +48,13 @@ var sMov_Add = function (store, registros, index, eOpts) {
         App.dfFechaEmision.setValue(d);
         App.cmbMov.focus();
     }
+
+};
+
+//Se lanza por cada elemento agregado al Store de Movimientos
+var sMov_Change= function (store, registros, index, eOpts) {
+  //  PrimerRenglonDetalle();
+  //  HabilitarGuardar();
 };
 
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
@@ -63,7 +70,7 @@ var cmbMov_Select = function (combobox, registro) {
         //Validar si se habilita el boton de afectar
         //HabilitarAfectar();
         //Validar si se habilita Guardar
-        // HabilitarGuardar();
+        HabilitarGuardar();
 };
 
 
@@ -75,7 +82,7 @@ var cmbMov_Select = function (combobox, registro) {
     //Validar si se habilita el boton de afectar
     //HabilitarAfectar();
     //Validar si se habilita Guardar
-    //HabilitarGuardar();
+    HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
     //Asiganmos la cookie
@@ -84,8 +91,6 @@ var cmbMov_Select = function (combobox, registro) {
 
      //Evento que se lanza al poner algun caracter en el control de la Sucursal
 var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
-
-    alert("entra");
 
     App.sSucursal.clearFilter();
     if (App.cmbSucursal.getValue() != null) {
@@ -99,17 +104,159 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
         App.txtfSucursalNombre.setValue('');
     }
 
-
+    //Validar si se habilita Guardar
+    HabilitarGuardar();
     //Validar si se habilita el boton de afectar
     //HabilitarAfectar();
-
-    //Validar si se habilita Guardar
-    //HabilitarGuardar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
+   
+    
     //Asiganmos la cookie
     //Ext.util.Cookies.set('cookiePreciarioBusqueda', combobox.getValue());
 };
+
+
+//Evento que ocurre al dar clic en imgbtnGuardar
+var imgbtnGuardar_Click_Success = function (response, result) {
+
+    //1. Validar si se hizo un INSERT o UPDATE
+    if (result.extraParamsResponse.accion == 'insertar') {
+        Ext.Msg.show({
+            id: 'msgOrdenesEstimaciones',
+            title: 'GUARDAR',
+            msg: '<p align="center">Movimiento registrado ID: ' + App.sOrdenEstimacion.getAt(0).get('ID') + '.</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.INFO
+        });
+
+        //2. Activa el boton de borrar movimiento
+        App.imgbtnBorrar.setDisabled(false);
+
+        //3. Actualiza al estatus BORRADOR de la captura
+        App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
+
+        //4. Recargar el tablero
+        window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+
+        //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
+        Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
+        window.parent.App.wEmergente.setTitle('Editar Movimiento ' + App.sOrdenEstimacion.getAt(0).get('ID'));
+
+        //6. Deshabilita los comandos de Fotos
+//        App.ccFotos.commands[0].disabled = false;
+//        App.ccFotos.commands[1].disabled = false;
+ //       App.gpOrdenEstimacion.reconfigure();
+
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgOrdenesEstimaciones',
+            title: 'ACTUALIZAR',
+            msg: '<p align="center">Movimiento actualizado ID: ' + App.sOrdenEstimacion.getAt(0).get('ID') + '.</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.INFO
+        });
+    }
+};
+
+
+//var store;
+//Evento lanzado al cargar el store de avance encabezado
+var sOrdenesMantenimiento_Load = function () {
+    App.direct.sOrdenMantenimiento_Load();
+   // store = window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones;
+};
+
+//Evento lanzado al agregar un registro al store
+var sOrdenesMantenimiento_Add = function (avance, registro) {
+    //Valida el estatus para ver si permite seguir capturando o no
+    //    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
+    //        App.cmbMov.setValue(registro[0].get('Mov'));
+    //        App.txtfMovID.setValue(registro[0].get('MovID'));
+    //        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
+    //        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+    //        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+    //        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+    //        App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+
+    //        //Deshabilita los campos en un movimiento afectado
+    //        App.cmbMov.setReadOnly(true);
+    //        App.cmbPreciario.setDisabled(true);
+    //        App.dfFechaEmision.setDisabled(true);
+    //        App.imgbtnAfectar.setDisabled(true);
+    //        App.imgbtnGuardar.setDisabled(true);
+    //        App.imgbtnCancelar.setDisabled(false);
+    //        App.txtfObservaciones.setDisabled(false);
+    //    }
+
+    //    //Valida el estatus para ver si permite seguir capturando o no
+    //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CANCELADO') {
+    //        App.cmbMov.setValue(registro[0].get('Mov'));
+    //        App.txtfMovID.setValue(registro[0].get('MovID'));
+    //        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
+    //        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+    //        App.cmbPreciario.setValue(registro[0].get('Preciario'));
+    //        App.txtfDescripcionPreciario.setValue(registro[0].get('RPreciario').Descripcion);
+    //        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+    //        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+    //        App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+
+    //        //Deshabilita los campos en un movimiento afectado
+    //        App.cmbMov.setReadOnly(true);
+    //        App.cmbPreciario.setDisabled(true);
+    //        App.dfFechaEmision.setDisabled(true);
+    //        App.imgbtnAfectar.setDisabled(true);
+    //        App.imgbtnGuardar.setDisabled(true);
+    //        App.imgbtnCancelar.setDisabled(true);
+    //        App.txtfObservaciones.setDisabled(false);
+    //    }
+
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+
+
+        //Agregar una fila para seguir capturando
+        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
+        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+        App.imgbtnBorrar.setDisabled(false);
+
+        // HabilitarAfectar();
+        // HabilitarAfectarFin();
+    }
+
+    //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
+    //    && registro[0].get('Mov') == "Fin                                               ") {
+    //        App.cmbMov.setValue(registro[0].get('Mov'));
+    //        App.txtfMovID.setValue(registro[0].get('MovID'));
+    //        App.txtfIDSucursal.setValue(registro[0].get('Sucursal'));
+    //        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+    //        App.cmbPreciario.setValue(registro[0].get('Preciario'));
+    //        App.txtfDescripcionPreciario.setValue(registro[0].get('RPreciario').Descripcion);
+    //        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+    //        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+    //        App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+
+    //        App.cmbMov.setReadOnly(true);
+    //        App.cmbPreciario.setDisabled(true);
+    //        App.dfFechaEmision.setDisabled(true);
+    //        App.imgbtnAfectar.setDisabled(true);
+    //        App.imgbtnGuardar.setDisabled(true);
+    //        App.imgbtnCancelar.setDisabled(false);
+    //        App.gpVolumetriaDetalle.removeAll();
+    //    }
+};
+
 
 
 //-----------------------------------------DETALLE----------------------------------------------------------------
@@ -274,6 +421,16 @@ function PrimerRenglonDetalle() {
         }
     };
 
+    //Función que valida si se habilita el botón de Guardar
+    function HabilitarGuardar() {
+
+        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != null) {
+            App.imgbtnGuardar.setDisabled(false);
+        }
+        else {
+            App.imgbtnGuardar.setDisabled(true);
+        }
+    }
 
     //Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
     var validaConcluidos = function (a, d, f) {

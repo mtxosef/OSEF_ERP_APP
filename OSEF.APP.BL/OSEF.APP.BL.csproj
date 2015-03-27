@@ -56,6 +56,8 @@
     <Compile Include="ImagenVolumetriaDBusiness.cs" />
     <Compile Include="MenuBusiness.cs" />
     <Compile Include="MunicipioBusiness.cs" />
+    <Compile Include="OrdenEstimacionBusiness.cs" />
+    <Compile Include="OrdenEstimacionDBusiness.cs" />
     <Compile Include="PreciarioBusiness.cs" />
     <Compile Include="PreciarioCategoriaBuisness.cs" />
     <Compile Include="PreciarioConceptoBusiness.cs" />

@@ -53,6 +53,8 @@
     <Compile Include="ImagenVolumetriaDDataAccess.cs" />
     <Compile Include="MenuDataAccess.cs" />
     <Compile Include="MunicipioDataAccess.cs" />
+    <Compile Include="OrdenEstimacionDataAccess.cs" />
+    <Compile Include="OrdenEstimacionDDataAccess.cs" />
     <Compile Include="PreciarioCategoriaDataAccess.cs" />
     <Compile Include="PreciarioConceptosDataAccess.cs" />
     <Compile Include="PreciarioDataAccess.cs" />

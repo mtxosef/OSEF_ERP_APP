@@ -13,7 +13,8 @@ var imgbtnNuevo_Click = function () {
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
-    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('ID'));
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'));
+  
     window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
     window.parent.App.wEmergente.setHeight(551.5);
     window.parent.App.wEmergente.setWidth(930);
@@ -52,4 +53,97 @@ var gpOrdenesEstimaciones_ItemClick = function (gridview, registro, gvhtml, inde
     App.imgbtnEditar.setDisabled(false);
     //App.imgbtnBorrar.setDisabled(false);
     indice = index;
+};
+
+//Filtros
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbUsuarioFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sOrdenesEstimaciones.clearFilter();
+    }
+    else {
+        App.sOrdenesEstimaciones.filterBy(function (elemento) {
+
+            if (elemento.get('Usuario') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbEstatusFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sOrdenesEstimaciones.clearFilter();
+    }
+    else {
+        App.sOrdenesEstimaciones.filterBy(function (elemento) {
+            if (elemento.get('Estatus') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbSucursalFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = registro[0].get('ID');
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Sucursal
+    if (valor == 'Todos') {
+        App.sOrdenesEstimaciones.clearFilter();
+    }
+    else {
+        App.sOrdenesEstimaciones.filterBy(function (elemento) {
+
+            if (elemento.get('Sucursal') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
+
+//Asignar la descripción de la sucursal a esta columna
+var cSucursal_Renderer = function (valor, columna, registro) {
+
+    if (valor.length != 0) {
+        return registro.get('RSucursal').CR + '  '+ registro.get('RSucursal').Nombre;
+    }
+};
+
+//Concatenar la columna de Movimiento
+var cMov_Renderer = function (valor, metaData, registro) {
+    var estatus = registro.get('Estatus');
+
+    switch (estatus) {
+        case 'BORRADOR':
+            return '<img class="IconColumnaEstatus" src="images/borrador.png" alt="borrador" />' + registro.get('Mov') + " " + registro.get('MovID');
+        case 'PENDIENTE':
+            return '<img class="IconColumnaEstatus" src="images/pendiente.png" alt="pendiente" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+        case 'CONCLUIDO':
+            return '<img class="IconColumnaEstatus" src="images/concluido.png" alt="concluido" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+        case 'CANCELADO':
+            return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="cancelar" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+    }
 };

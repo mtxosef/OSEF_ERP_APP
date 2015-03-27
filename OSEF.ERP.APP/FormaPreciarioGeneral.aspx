@@ -225,7 +225,7 @@
                                     ID="cmbEstatus"
                                     runat="server"
                                     Width="200"
-                                    Disabled="true">
+                                    Disabled="false">
                                     <SelectedItems >
                                         <ext:ListItem Index="0">
                                         </ext:ListItem>
