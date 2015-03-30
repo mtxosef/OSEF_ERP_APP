@@ -344,6 +344,51 @@ namespace OSEF.APP.DL
             }
         }
 
+        /// <summary>
+        /// Obtener los registros de OrdenEstimacionD por su Movimiento Origen
+        /// </summary>
+        /// <param name="iOrdenEstimacion"></param>
+        /// <returns></returns>
+        public static List<OrdenEstimacionD> ObtenerOrdenEstimacionDPorOrigen(string iOrigenEstimacion)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerEstimacionDPorMesaReporte";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@MOVID";
+                sqlpID.SqlDbType = SqlDbType.VarChar;
+                sqlpID.Value = iOrigenEstimacion;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<OrdenEstimacionD> result = LibraryGenerics<OrdenEstimacionD>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<OrdenEstimacionD> ObtenerOrdenEstimacionDPorOrigen(string " + iOrigenEstimacion + ")): " + ex.Message);
+            }
+        }
 
         #endregion
     }

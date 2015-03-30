@@ -395,6 +395,7 @@
 -- OrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spD_BorrarOrdenEstimacionD.sql
 :r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spD_BorrarOrdenEstimacionDPorOrdenEstimacion.sql
+:r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spS_ObtenerEstimacionDPorMesaReporte.sql
 -- OrdenesEstimacionesD (Consultar)
 :r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerOrdenEstimacionDPorOrdenEstimacion.sql
 -- OrdenesEstimacionesD (Insertar)

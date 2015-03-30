@@ -39,11 +39,20 @@ namespace OSEF.ERP.APP
                 //Cargar el encabezado del movimiento
                 OrdenEstimacion oOrdenEstimacion = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(Convert.ToInt32(strcookieEditarOrdenEstimacion));
 
-                //Cargar el detalle del movimiento
-               
-                sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(oOrdenEstimacion.Id);
-                sConceptos.DataBind();
+                if (oOrdenEstimacion.Mov.Equals("Estimacion"))
+                {
+                    //Cargar el detalle del movimiento enlazando la estimacion
+                    sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrigen(oOrdenEstimacion.OrigenId);
+                    sConceptos.DataBind();
+                }
+                else {
+                    //Cargar el detalle del movimiento normal
+                    sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(oOrdenEstimacion.Id);
+                    sConceptos.DataBind();
 
+                }
+
+                
                 sOrdenEstimacion.Add(new
                 {
                     ID = oOrdenEstimacion.Id,
@@ -124,14 +133,17 @@ namespace OSEF.ERP.APP
             //Validamos que sea un movimiento de reporte para que avance a estimacion
             if (strEstimacion.Equals("Reporte"))
             {
-
-   
                 //Se ejecuta el procedure que avanza e inserta en la tabla el nuevo movimiento
                 int iIDNuevo = OrdenEstimacionBusiness.AvanzarReportePorID(Convert.ToInt32(iID), "Estimacion");
                 //Obtenemos los nuevos valores del nuevo movimiento
                 OrdenEstimacion nuevosValores= OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(Convert.ToInt32(iIDNuevo));
-                //Se ejecuta la funcion que hara la validacion del lado del cliente
 
+                //Cargar el detalle del movimiento
+
+                sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrigen(oOrdenEstimacion.OrigenId);
+                sConceptos.DataBind();
+
+                //Se manda el parametro que hara la validacion del lado del cliente
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Estimacion", ParameterMode.Value));
 
                    //Actualizar store 

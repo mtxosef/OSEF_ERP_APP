@@ -62,9 +62,17 @@
                                 <a class="tile wide imagetext wideimage bg-color-green" id="exploradorPreciarioConcepto" href="#">
                                     <img src="assets/img/Search.png" alt="Explorador" />
                                     <div class="textover-wrapper transparent">
-                                        <div class="text2">Explorador Preciario Concepto</div>
+                                        <div class="text2">Explorador Preciario Concepto Voumetrias</div>
                                     </div>
                                 </a>
+
+                                <a class="tile wide imagetext wideimage bg-color-red" id="OrdenesEstimaciones" href="#">
+                                    <img src="assets/img/Search.png" alt="Explorador Ordenes Estimaciones" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Explorador Ordenes & Estimaciones</div>
+                                    </div>
+                                </a>
+
                                <a class="tile square image bg-color-yellow" id="gantt" href="#">
                                     <img src="assets/img/menu-gantt.png" alt="Gantt" />
                                     <div class="textover-wrapper transparent">
