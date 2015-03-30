@@ -54,7 +54,7 @@ var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
 
 
                 //Se verifica si es el mismo o si esta lleno el campo concepto para no borrar el concepto que ya esta
-                if (window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).get('ConceptoID') =! null) {
+                if (window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).get('ConceptoID') != null) {
 
                 }
                 else {

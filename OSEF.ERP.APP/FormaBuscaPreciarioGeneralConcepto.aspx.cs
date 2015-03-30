@@ -19,22 +19,34 @@ namespace OSEF.ERP.APP
             {
 
                 string mov = Cookies.GetCookie("cookieMovimiento").Value;
-                PreciarioGeneral oPreciarioGeneral = new PreciarioGeneral();
+                string idPReciario;
 
                 if (mov.Equals("Mnto"))
                 {
-                  oPreciarioGeneral=  PreciarioGeneralBusiness.ObtenerPreciarioGeneralTipoMnto();
+                    PreciarioGeneral oPreciarioGeneral = PreciarioGeneralBusiness.ObtenerPreciarioGeneralTipoMnto();
+                    idPReciario = oPreciarioGeneral.ID;
+
+                   // Cookies.Set("preciarioGeneral", idPReciario, DateTime.Now.AddDays(30), "/", null, false);
+                    Session["preciarioG"] = idPReciario;
+                    //2. Cargar Categorias
+                    sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(idPReciario);
+                    sCategoria.DataBind();
+
                 }
                 if (mov.Equals("Obra"))
                 {
-                    oPreciarioGeneral = PreciarioGeneralBusiness.ObtenerPreciarioGeneralTipoObra();
+                    PreciarioGeneral oPreciarioGeneral = PreciarioGeneralBusiness.ObtenerPreciarioGeneralTipoObra();
+                    idPReciario = oPreciarioGeneral.ID;
+
+                   // Cookies.Set("preciarioGeneral", idPReciario, DateTime.Now.AddDays(30), "/", null, false);
+                    Session["preciarioG"] = idPReciario;
+                    //2. Cargar Categorias
+                    sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(idPReciario);
+                    sCategoria.DataBind();
+
+
                 }
 
-                Cookies.Set("preciarioGeneral", oPreciarioGeneral.ID, DateTime.Now.AddDays(30), "/", null, false);
-
-                //2. Cargar Categorias
-                sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(oPreciarioGeneral.ID);
-                sCategoria.DataBind();
             }
 
         }
@@ -77,7 +89,7 @@ namespace OSEF.ERP.APP
             string strCategoria = e.ExtraParams["categoria"].Equals("null") ? string.Empty : e.ExtraParams["categoria"];
             string strSubCategoria = e.ExtraParams["subcategoria"].Equals("null") ? string.Empty : e.ExtraParams["subcategoria"];
             string strSubSubCategoria = e.ExtraParams["subsubcategoria"].Equals("null") ? string.Empty : e.ExtraParams["subsubcategoria"];
-            string preciario = Cookies.GetCookie("preciarioGeneral").Value;
+            string preciario = Session["preciarioG"].ToString();
 
             sConceptosFiltrados.DataSource = PreciarioGeneralConceptoBusiness.ObtenerPreciarioConceptoFiltro(preciario, strCategoria, strSubCategoria, strSubSubCategoria);
             sConceptosFiltrados.DataBind();

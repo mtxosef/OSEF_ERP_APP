@@ -169,11 +169,20 @@ var txtfDescripcion_Change = function (txtDescripcion, Evento) {
 //Evento lanzado al cargar el store de avance encabezado
 var sPreciario_Load_Success = function () {
 //    App.direct.sPreciario_Load();
-    store = window.parent.App.pCentro.getBody().App.sPreciarios;
-   
 
-    var d = new Date();
-    App.dfFechaEmision.setValue(d);
+    if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo') {
+        store = window.parent.App.pCentro.getBody().App.sPreciarios;
+        App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
+        //console.log(App.sCarga);
+        //    App.gpPreciario.getView().focusRow(App.sCarga.getCount()-1);
+        //    App.gpPreciario.editingPlugin.startEdit(App.gpPreciario.store.getAt(App.sCarga.getCount()-1), App.gpPreciario.columns[2]);
+    }
+    else {
+        var d = new Date();
+        App.dfFechaEmision.setValue(d);
+    }
+
+ 
 };
 
 //Evento lanzado al agregar un registro al store
@@ -187,6 +196,7 @@ var sPreciario_Add = function (avance, registro) {
         App.txfArchivoActual.setValue(registro[0].get('Archivo'));
         App.cmbEstatus.setValue(registro[0].get('Estatus'));
         App.dfFechaEmision.setValue(registro[0].get('FechaAlta'));
+
 
         //Deshabilita botones cuando se edita un movimiento al cargar el store
         App.cmbEstatus.setDisabled(false);

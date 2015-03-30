@@ -9,6 +9,7 @@ var imgbtnNuevo_Click = function () {
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
     window.parent.App.wEmergente.show();
+    Ext.util.Cookies.set('cookieEsEstimacion', 'No');
 };
 
 //Evento de click del botón Editar

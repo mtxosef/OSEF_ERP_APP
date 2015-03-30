@@ -89,5 +89,52 @@ namespace OSEF.APP.BL
 
 
         #endregion
+
+
+
+        #region Acciones
+
+        /// <summary>
+        /// Método que Afecta un registro de Orden
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int AfectarOrdenPorID(OrdenEstimacion aOrdenEstimacion)
+        {
+            return OrdenEstimacionDataAccess.AfectarOrdenPorID(aOrdenEstimacion);
+        }
+
+        /// <summary>
+        /// Método que Afecta un registro de Estimacion
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int AfectarEstimacionPorID(OrdenEstimacion aOrdenEstimacion)
+        {
+            return OrdenEstimacionDataAccess.AfectarEstimacionPorID(aOrdenEstimacion);
+        }
+
+        /// <summary>
+        /// Método que avanza un movimiento de OrdenEstimacion
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <param name="strMov"></param>
+        /// <returns></returns>
+        public static int AvanzarReportePorID(int iID, string strMov)
+        {
+            return OrdenEstimacionDataAccess.AvanzarReportePorID(iID, strMov);
+        }
+
+
+        /// <summary>
+        /// Método que cancela un movimiento 
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <param name="strMov"></param>
+        /// <returns></returns>
+        public static int CancelarOrdenEstimacionPorID(int iID)
+        {
+            return OrdenEstimacionDataAccess.CancelarOrdenEstimacionPorID(iID);
+        }
+
+        #endregion
     }
 }

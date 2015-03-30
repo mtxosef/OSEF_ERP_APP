@@ -387,11 +387,10 @@
 -- OrdenesEstimaciones (Modificar)
 :r c:\SqlServerScripts\Modificar\OrdenesEstimaciones\web_spU_ActualizarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Acción)
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarVolumetriaPorID.sql
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AvanzarVolumetriaPorID.sql
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_CancelarVolumetriaPorID.sql
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spD_BorrarVolumetriaAfectaPreciario.sql
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_ValidaPreciariosConcluidos.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarOrdenPorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarEstimacionPorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AvanzarMesaReportePorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_CancelarOrdenEstimacionPorID.sql
 -----------------------------------------------------------------------------------
 -- OrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spD_BorrarOrdenEstimacionD.sql

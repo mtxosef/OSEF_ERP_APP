@@ -337,24 +337,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtDescripcionConcepto;
         
         /// <summary>
-        /// Control cCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cCantidad;
-        
-        /// <summary>
-        /// Control nfCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.NumberField nfCantidad;
-        
-        /// <summary>
         /// Control cUnidad.
         /// </summary>
         /// <remarks>

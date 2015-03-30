@@ -118,6 +118,7 @@
                                         <ext:Parameter Name="OrdenEstimacionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="Sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
@@ -145,17 +146,18 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                            <%--<DirectEvents>
-                                <Click OnEvent="imgbtnAfectar_Click"  Success="imgbtnAfectar_Click_Success">
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnAfectar_Click"  Before="imgbtnAfectar_Click_Before" Success="imgbtnAfectar_Click_Success">
                                     <EventMask ShowMask="true" Msg="Afectando movimiento..." />
-                                    <ExtraParams>
-                                        <ext:Parameter Name="VolumetriaForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
-                                        <ext:Parameter Name="Volumetria" Value="Ext.encode(#{sVolumetria}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="sucursal" Value="App.txtfIDSucursal.getValue()" Mode="Raw" />
-                                        <ext:Parameter Name="VolumetriaD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
+                                     <ExtraParams>
+                                        <ext:Parameter Name="OrdenEstimacionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="Movimiento" Value="App.cmbMov.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="Sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
-                            </DirectEvents>--%>
+                            </DirectEvents>
                         </ext:ImageButton>
                         <ext:ImageButton 
                             ID="imgbtnAutorizar"
@@ -223,7 +225,7 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
-                         <%--    <DirectEvents>
+                             <DirectEvents>
                                 <Click OnEvent="imgbtnCancelar_Click" Success="imgbtnCancelar_Click_Success">
                                     <Confirmation
                                         ConfirmRequest="true"
@@ -236,7 +238,7 @@
                                         Msg="Cancelando registro">
                                     </EventMask>
                                 </Click>
-                             </DirectEvents>--%>
+                             </DirectEvents>
                         </ext:ImageButton>
                         <ext:ToolbarSpacer
                             ID="tbsSegundoEspacio"
@@ -564,11 +566,6 @@
                                                 Text="Concepto"
                                                 Width="205"
                                                 DataIndex="ConceptoID">
-                                               <%-- <Editor>
-                                                    <ext:TextField ID="prueba" runat="server">
-                                                        
-                                                    </ext:TextField>
-                                                </Editor>--%>
                                             </ext:Column>
                                             <ext:CommandColumn
                                                 ID="ccConcepto"
@@ -750,9 +747,9 @@
 
                                         </Columns>
                                     </ColumnModel>
-                                  <%--  <Listeners>
-                                        <ItemClick Fn="gpPreciarioConceptos_ItemClick" />
-                                    </Listeners>--%>
+                                    <Listeners>
+                                        <ItemClick Fn="gpOrdenEstimacion_ItemClick" />
+                                    </Listeners>
                                     <SelectionModel>
                                         <ext:CellSelectionModel
                                             ID="csmOrdenEstimacion" 

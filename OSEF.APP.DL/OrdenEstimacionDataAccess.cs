@@ -361,5 +361,196 @@ namespace OSEF.APP.DL
         }
         #endregion
 
+        #region Acciones
+
+        /// <summary>
+        /// Método que Afecta un registro de OrdenEstimacion
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int AfectarOrdenPorID(OrdenEstimacion aOrdenEstimacion)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_AfectarOrdenPorID";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = aOrdenEstimacion.Id;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int AfectarOrdenPorID(OrdenEstimacion " + aOrdenEstimacion + ")): " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Método que Afecta un registro de OrdenEstimacion
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int AfectarEstimacionPorID(OrdenEstimacion aOrdenEstimacion)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_AfectarEstimacionPorID";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = aOrdenEstimacion.Id;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int AfectarEstimacionPorID(OrdenEstimacion " + aOrdenEstimacion + ")): " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Método que avanza un movimiento de OrdenEstimacion
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <param name="strMov"></param>
+        /// <returns></returns>
+        public static int AvanzarReportePorID(int iID, string strMov)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_AvanzarMesaReportePorID";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = iID;
+
+                SqlParameter sqlpMov = new SqlParameter();
+                sqlpMov.ParameterName = "@Mov";
+                sqlpMov.SqlDbType = SqlDbType.VarChar;
+                sqlpMov.Value = strMov;
+
+                SqlParameter sqlpIDNuevo = new SqlParameter();
+                sqlpIDNuevo.ParameterName = "@IDNuevo";
+                sqlpIDNuevo.SqlDbType = SqlDbType.Int;
+                sqlpIDNuevo.Direction = ParameterDirection.Output;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpMov);
+                sqlcComando.Parameters.Add(sqlpIDNuevo);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SCALAR que regresa un valor
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return Convert.ToInt32(sqlcComando.Parameters["@IDNuevo"].Value);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int AvanzarReportePorID(int " + iID + ", string " + strMov + ")): " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Método que cancela un movimiento de OrdenEstimacion
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <param name="strMov"></param>
+        /// <returns></returns>
+        public static int CancelarOrdenEstimacionPorID(int iID)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_CancelarOrdenEstimacionPorID";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = iID;
+
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SCALAR que regresa un valor
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return Convert.ToInt32(sqlcComando.Parameters["@ID"].Value);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int CancelarOrdenEstimacionPorID(int " + iID + ")): " + ex.Message);
+            }
+        }
+
+        #endregion
+
     }
 }

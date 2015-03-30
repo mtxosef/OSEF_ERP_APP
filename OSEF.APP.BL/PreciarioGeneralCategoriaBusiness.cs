@@ -68,9 +68,10 @@ namespace OSEF.APP.BL
             }
             return lPreciarioCategoria;
 
-
-            return PreciarioGeneralCategoriaDataAccess.ObtenerPreciarioGeneralCategoriaPorPreciario(strPreciario);
         }
+
+
+
 
         #endregion
 

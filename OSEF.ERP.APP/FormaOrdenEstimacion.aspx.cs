@@ -40,7 +40,7 @@ namespace OSEF.ERP.APP
                 OrdenEstimacion oOrdenEstimacion = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(Convert.ToInt32(strcookieEditarOrdenEstimacion));
 
                 //Cargar el detalle del movimiento
-                //Cargar el detalle del movimiento
+               
                 sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(oOrdenEstimacion.Id);
                 sConceptos.DataBind();
 
@@ -73,7 +73,7 @@ namespace OSEF.ERP.APP
             string strOrdenEstimacion = e.ExtraParams["OrdenEstimacion"];
             string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
             string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-
+            string strSucursal = e.ExtraParams["Sucursal"];
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
             OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
@@ -81,7 +81,7 @@ namespace OSEF.ERP.APP
             List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
 
             //3. Guardar o Actuaizar el Movimiento
-            string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD);
+            string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD,strSucursal);
 
             //4. Validar que efecto realizará para Guardar o Afectar
             switch (strAccion)
@@ -95,6 +95,100 @@ namespace OSEF.ERP.APP
             }
         }
 
+
+        /// <summary>
+        /// Evento de clic del botón Afectar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void imgbtnAfectar_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener datos de la Forma y saber si es edición o nuevo
+            string strMovimiento = e.ExtraParams["Movimiento"];
+            string strOrdenEstimacionForma = e.ExtraParams["OrdenEstimacionForma"];
+            string strOrdenEstimacion = e.ExtraParams["OrdenEstimacion"];
+            string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
+            string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strSucursal = e.ExtraParams["Sucursal"];
+
+            //2. Serializar el encabezado y el detalle
+            Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
+            OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
+            OrdenEstimacion oOrdenEstimacion = JSON.Deserialize<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
+            List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
+
+            //Nos traemos el movimiento actual
+            string strEstimacion= Cookies.GetCookie("cookieEsEstimacion").Value;
+            //Nos traemos el ID del movimiento actual
+            string iID = Cookies.GetCookie("cookieIDMov").Value;
+            //Validamos que sea un movimiento de reporte para que avance a estimacion
+            if (strEstimacion.Equals("Reporte"))
+            {
+
+   
+                //Se ejecuta el procedure que avanza e inserta en la tabla el nuevo movimiento
+                int iIDNuevo = OrdenEstimacionBusiness.AvanzarReportePorID(Convert.ToInt32(iID), "Estimacion");
+                //Obtenemos los nuevos valores del nuevo movimiento
+                OrdenEstimacion nuevosValores= OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(Convert.ToInt32(iIDNuevo));
+                //Se ejecuta la funcion que hara la validacion del lado del cliente
+
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Estimacion", ParameterMode.Value));
+
+                   //Actualizar store 
+                    sOrdenEstimacion.GetAt(0).Set("ID", iIDNuevo);
+                    sOrdenEstimacion.GetAt(0).Set("Mov", nuevosValores.Mov);
+                    sOrdenEstimacion.GetAt(0).Set("MovID", nuevosValores.MovID);
+                    sOrdenEstimacion.GetAt(0).Set("Origen", nuevosValores.Origen);
+                    sOrdenEstimacion.GetAt(0).Set("OrigenID", nuevosValores.OrigenId);
+                    sOrdenEstimacion.GetAt(0).Set("Sucursal", nuevosValores.Sucursal);
+                    sOrdenEstimacion.GetAt(0).Set("FechaEmision", nuevosValores.FechaEmision);
+                    sOrdenEstimacion.GetAt(0).Set("Observaciones", nuevosValores.Observaciones);
+                    sOrdenEstimacion.GetAt(0).Set("Estatus", nuevosValores.Estatus);
+                    sOrdenEstimacion.GetAt(0).Set("RSucursal", nuevosValores.RSucursal);
+
+            }
+            //Si no es estimacion sale de la validacion y afecta normal
+            else
+            {
+
+                //3. Guardar o Actuaizar el Movimiento
+                string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD,strSucursal);
+
+                //4. Validar que efecto realizará para Guardar o Afectar
+                switch (strAccion)
+                {
+                    case "insertar":
+                        e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "insertar", ParameterMode.Value));
+                        break;
+                    case "modificar":
+                        e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "modificar", ParameterMode.Value));
+                        break;
+                }
+
+                //4. Lanzar la afectación del Movimiento
+
+                if (strMovimiento.Equals("Orden de Cambio"))
+                {
+                    OrdenEstimacionBusiness.AfectarOrdenPorID(oFormaOrdenEstimacion);
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Orden", ParameterMode.Value));
+                }
+
+                if (strMovimiento.Equals("Mesa de reporte"))
+                {
+                    OrdenEstimacionBusiness.AfectarEstimacionPorID(oFormaOrdenEstimacion);
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Reporte", ParameterMode.Value));
+                }
+
+                oOrdenEstimacion = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(oFormaOrdenEstimacion.Id);
+                //7. Actualizar store de Revision
+                sOrdenEstimacion.GetAt(0).Set("MovID", oOrdenEstimacion.MovID);
+                sOrdenEstimacion.GetAt(0).Set("Estatus", oOrdenEstimacion.Estatus);
+
+            }
+
+            
+
+        }
 
         /// <summary>
         /// Método que transforma los datos Control-Valor a objeto Volumetria
@@ -137,7 +231,7 @@ namespace OSEF.ERP.APP
         /// <param name="oOrdenEstimacionForma"></param>
         /// <param name="oOrdenEstimacion"></param>
         /// <param name="lOrdenEstimacionD"></param>
-        private string GuardarMovimiento(ref OrdenEstimacion oOrdenEstimacionForma, OrdenEstimacion oOrdenEstimacion, List<OrdenEstimacionD> lOrdenEstimacionD)
+        private string GuardarMovimiento(ref OrdenEstimacion oOrdenEstimacionForma, OrdenEstimacion oOrdenEstimacion, List<OrdenEstimacionD> lOrdenEstimacionD, string strSucursal)
         {
             //1. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)
@@ -149,7 +243,7 @@ namespace OSEF.ERP.APP
                 //3. Actualizamos el Estatus e Insertar en la base de datos
                 oOrdenEstimacionForma.Estatus = "BORRADOR";
                 oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
-
+                oOrdenEstimacionForma.Sucursal = strSucursal;
                 //4. Agregar el objeto al Store de Revisión
                 sOrdenEstimacion.Add(new
                 {
@@ -174,11 +268,12 @@ namespace OSEF.ERP.APP
             {
                 //6. Complementar datos y actualizar encabezado
                 oOrdenEstimacionForma.Id = oOrdenEstimacion.Id;
+                oOrdenEstimacionForma.Sucursal = strSucursal;
                 OrdenEstimacionBusiness.ActualizarOrdenEstimacion(oOrdenEstimacionForma);
 
                 //7. Actualizar store de OrdenesEstimaciones
                 sOrdenEstimacion.GetAt(0).Set("Mov", oOrdenEstimacionForma.Mov);
-                sOrdenEstimacion.GetAt(0).Set("Sucursal", oOrdenEstimacionForma.Sucursal);
+                sOrdenEstimacion.GetAt(0).Set("Sucursal", strSucursal);
                 sOrdenEstimacion.GetAt(0).Set("FechaEmision", oOrdenEstimacionForma.FechaEmision);
                 sOrdenEstimacion.GetAt(0).Set("Observaciones", oOrdenEstimacionForma.Observaciones);
 
@@ -229,6 +324,21 @@ namespace OSEF.ERP.APP
             OrdenEstimacionDBusiness.BorrarPorID(strID);
             OrdenEstimacionBusiness.Borrar(strID);
             
+        }
+
+
+
+        /// <summary>
+        /// Método para cancelar un registro
+        /// </summary>
+        /// <param name="strID"></param>
+        protected void imgbtnCancelar_Click(object sender, DirectEventArgs e)
+        {
+            //1. Obtener registro que se quiere cancelar
+            string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            int strID = Convert.ToInt32(strcookieEditarOrdenEstimacion);
+            //Cambia el estatus del movimiento
+            OrdenEstimacionBusiness.CancelarOrdenEstimacionPorID(strID);
         }
 
     }

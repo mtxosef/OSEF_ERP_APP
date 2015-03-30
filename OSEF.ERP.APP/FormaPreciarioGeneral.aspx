@@ -411,30 +411,6 @@
                                                 </Editor>
                                             </ext:Column>
                                             <ext:Column
-                                                ID="cCantidad"
-                                                runat="server"
-                                                Align="Center"
-                                                Text="Cantidad"
-                                                DataIndex="Cantidad"
-                                                Width="105">
-                                                <Renderer Fn="rendererCantidad"></Renderer>
-                                                <Editor>
-                                                    <ext:NumberField 
-                                                        ID="nfCantidad"
-                                                        runat="server"
-                                                        AllowDecimals="true"
-                                                        AllowExponential="false"
-                                                        DecimalPrecision="2"
-                                                        DecimalSeparator="."
-                                                        MaxLength="10"
-                                                        EnforceMaxLength="true"
-                                                        MaxValue="999999999"
-                                                        MinValue="0"
-                                                        Step="1">
-                                                    </ext:NumberField>
-                                                </Editor>
-                                            </ext:Column>
-                                            <ext:Column
                                                 ID="cUnidad"
                                                 runat="server"
                                                 Align="Center"

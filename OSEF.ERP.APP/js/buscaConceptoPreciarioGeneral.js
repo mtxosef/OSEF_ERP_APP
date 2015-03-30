@@ -26,10 +26,10 @@ var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
     //Valida si se cambia otro concepto en un borrador para borrar las imagenes solo si el renglon ya tiene un cocnepto
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).get('ConceptoID') != '') {
         //se guarda el concepto y el Id de la volumetria para mandar llamar al metodo del lado del servidor
-            //Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('ID'));
-            //Ext.util.Cookies.set('cookieConceptoFotosVolumetria', window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).get('ConceptoID'));
+        //Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('ID'));
+        //Ext.util.Cookies.set('cookieConceptoFotosVolumetria', window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).get('ConceptoID'));
         //se manda llamar el metodo de lado del servidor
-            // window.parent.App.wEmergente.getBody().App.direct.obtenerImagenesPorConcepto();
+        // window.parent.App.wEmergente.getBody().App.direct.obtenerImagenesPorConcepto();
 
     }
 
@@ -39,6 +39,7 @@ var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
         window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("ConceptoID", App.sConceptosFiltrados.getAt(index).get('ID'));
         window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Unidad", App.sConceptosFiltrados.getAt(index).get('Unidad'));
         window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Precio", App.sConceptosFiltrados.getAt(index).get('Costo'));
+
         window.parent.App.wAyudaConcepto.hide();
     }
 
@@ -55,7 +56,7 @@ var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
 
 
                 //Se verifica si es el mismo o si esta lleno el campo concepto para no borrar el concepto que ya esta
-                if (window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).get('ConceptoID') = !null) {
+                if (window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).get('ConceptoID') != null) {
 
                 }
                 else {

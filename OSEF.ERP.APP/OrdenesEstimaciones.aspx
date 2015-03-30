@@ -217,9 +217,9 @@
                                 Editable="false">
                                 <Items>
                                     <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                    <ext:ListItem Index="1" Text="Mesa de reporte" />
-                                    <ext:ListItem Index="2" Text="Orden de Cambio" />
-                                    <ext:ListItem Index="3" Text="Estimación" />
+                                    <ext:ListItem Index="1" Text="Mesa de reporte" Value="Mesa de reporte"/>
+                                    <ext:ListItem Index="2" Text="Orden de Cambio" Value="Orden de Cambio"/>
+                                    <ext:ListItem Index="3" Text="Estimación" Value="Estimacion"/>
                                 </Items>
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
