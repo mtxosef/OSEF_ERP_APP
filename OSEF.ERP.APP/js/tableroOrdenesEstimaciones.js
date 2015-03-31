@@ -4,7 +4,7 @@
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
     window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
-    window.parent.App.wEmergente.setHeight(551.5);
+    window.parent.App.wEmergente.setHeight(591.5);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nuevo Movimiento');

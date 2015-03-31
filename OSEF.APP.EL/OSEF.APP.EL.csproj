@@ -47,10 +47,13 @@
     <Compile Include="CertificadoInversion.cs" />
     <Compile Include="Colonia.cs" />
     <Compile Include="Concepto.cs" />
+    <Compile Include="CroquisOrdenEstimacionD.cs" />
     <Compile Include="CuentaContable.cs" />
     <Compile Include="Estado.cs" />
+    <Compile Include="FacturaOrdenEstimacionD.cs" />
     <Compile Include="Finalidad.cs" />
     <Compile Include="GrupoMenu.cs" />
+    <Compile Include="ImagenOrdenEstimacionD.cs" />
     <Compile Include="ImagenVolumetriaD.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Municipio.cs" />

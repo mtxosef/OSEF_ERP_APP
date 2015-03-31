@@ -18,18 +18,19 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarioGeneralConceptoPorId' AND
+			WHERE  name = 'web_spD_BorrarCroquisOrdenEstimacionDPorConcepto' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorId
+	DROP PROCEDURE web_spD_BorrarCroquisOrdenEstimacionDPorConcepto
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener un registro de Articulos por su ID
+-- Create date: Viernes 20 de Febrero de 2014
+-- Description:	Obtener los registros de Imagenes Volumetrias por su Volumetria y PreciarioConcepto
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorId
+CREATE PROCEDURE web_spD_BorrarCroquisOrdenEstimacionDPorConcepto
 	-- Add the parameters for the stored procedure here
-	@ID		CHAR(10)
+	@ID					INT,
+	@Concepto	CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,24 +38,9 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		CLAVE,
-		Preciario,
-		Descripcion,
-		Categoria,
-		SubCategoria,
-		SubSubCategoria,
-		Unidad,
-		Costo,
-		Cantidad,
-		Estatus,
-		FechaAlta,
-		Moneda
-		
-	FROM
-		PreciariosGeneralesConceptos
-	WHERE
-		ID = @ID
+	DELETE
+		CroquisOrdenEstimacionD
+		WHERE
+		MovID = @ID AND Concepto = @Concepto
 END
 GO

@@ -36,6 +36,7 @@
                 runat="server"
                 Width="810"
                 Height="260"
+                BodyPadding="10"
                 AutoScroll="true"
                 EnableColumnHide="false"
                 EnableColumnMove="false">
@@ -51,8 +52,12 @@
                             OverImageUrl="assets/img/controles/GuardarOver.png" 
                             PressedImageUrl="assets/img/controles/GuardarPressed.png" 
                             ToolTip="Guardar" 
+                            Disabled="true"
                             Height="30"
                             Width="30">
+                            <Listeners>
+                                <Click Fn="imgbtnAceptar_Click"></Click>
+                            </Listeners>
                         </ext:ImageButton>
                          <ext:ImageButton 
                             ID="imgbtnCancelar" 
@@ -68,6 +73,16 @@
                                 <Click Handler="window.parent.App.wEmergente.hide();" />
                             </Listeners>
                         </ext:ImageButton>
+
+                        <ext:TextField
+                        ID="txtDescripcionCorta" 
+                        runat="server" 
+                        Width="400"
+                        EmptyText="Descripción Corta">
+                            <Listeners>
+                                <Change Fn="txtDescripcion_Corta_Change"></Change>
+                            </Listeners>
+                        </ext:TextField>
                     </Items>
                 </ext:Toolbar>
             </TopBar>
@@ -82,6 +97,7 @@
                                 runat="server">
                                 <Fields>
                                     <ext:ModelField Name="ID" Type="Int" />
+                                    <ext:ModelField Name="ConceptoID" Type="Int" />
                                     <ext:ModelField Name="No" Type="String" />
                                     <ext:ModelField Name="Localizacion" Type="String" />
                                     <ext:ModelField Name="Largo" Type="Float" />

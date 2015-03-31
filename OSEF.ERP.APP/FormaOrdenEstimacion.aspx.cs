@@ -140,7 +140,7 @@ namespace OSEF.ERP.APP
 
                 //Cargar el detalle del movimiento
 
-                sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrigen(oOrdenEstimacion.OrigenId);
+                sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrigen(nuevosValores.OrigenId);
                 sConceptos.DataBind();
 
                 //Se manda el parametro que hara la validacion del lado del cliente
@@ -281,12 +281,14 @@ namespace OSEF.ERP.APP
                 //6. Complementar datos y actualizar encabezado
                 oOrdenEstimacionForma.Id = oOrdenEstimacion.Id;
                 oOrdenEstimacionForma.Sucursal = strSucursal;
+                oOrdenEstimacionForma.Estatus = oOrdenEstimacion.Estatus;
                 OrdenEstimacionBusiness.ActualizarOrdenEstimacion(oOrdenEstimacionForma);
 
                 //7. Actualizar store de OrdenesEstimaciones
                 sOrdenEstimacion.GetAt(0).Set("Mov", oOrdenEstimacionForma.Mov);
                 sOrdenEstimacion.GetAt(0).Set("Sucursal", strSucursal);
                 sOrdenEstimacion.GetAt(0).Set("FechaEmision", oOrdenEstimacionForma.FechaEmision);
+                sOrdenEstimacion.GetAt(0).Set("Estaus", oOrdenEstimacionForma.Estatus);
                 sOrdenEstimacion.GetAt(0).Set("Observaciones", oOrdenEstimacionForma.Observaciones);
 
                 //8. Borrar todo el detalle e insertarlo de nuevo

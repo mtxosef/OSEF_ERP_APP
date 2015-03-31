@@ -30,7 +30,7 @@ GO
 CREATE PROCEDURE web_spI_InsertarPreciarioGeneralConcepto
 	-- Add the parameters for the stored procedure here
 	@ID				CHAR(10) OUTPUT,
-	@CLAVE			CHAR(7),
+	@CLAVE			CHAR(30),
 	@Preciario		VARCHAR(7),
 	@Descripcion	VARCHAR(2000),
 	@Categoria		CHAR(10),
@@ -41,7 +41,8 @@ CREATE PROCEDURE web_spI_InsertarPreciarioGeneralConcepto
 	@Cantidad		DECIMAL(10,2),
 	@Usuario		VARCHAR(50),
 	@Estatus		VARCHAR(20),
-	@FechaAlta		SMALLDATETIME
+	@FechaAlta		SMALLDATETIME,
+	@Moneda			VARCHAR(30)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -120,7 +121,8 @@ BEGIN
 			Cantidad,
 			Usuario,
 			Estatus,
-			FechaAlta
+			FechaAlta,
+			Moneda
 		)
 	VALUES
 		(
@@ -136,7 +138,8 @@ BEGIN
 			@Cantidad,
 			@Usuario,
 			@Estatus,
-			@FechaAlta
+			@FechaAlta,
+			@Moneda
 		)
 END
 GO

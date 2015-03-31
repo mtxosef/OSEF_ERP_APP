@@ -547,6 +547,33 @@ CREATE TABLE OrdenesEstimacionesD(
 	Importe						DECIMAL(20, 2)	NOT NULL
 )
 
+CREATE TABLE ImagenesOrdenEstimacionD(
+	MovID						INT				NOT NULL FOREIGN KEY REFERENCES OrdenesEstimaciones(ID),
+	Concepto					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesConceptos(ID),
+	Nombre						VARCHAR(50)		NOT NULL,
+	Direccion					VARCHAR(500)	NOT NULL,
+	Usuario						VARCHAR(50)		NOT NULL,
+	FechaAlta					SMALLDATETIME	NOT NULL
+)
+
+CREATE TABLE CroquisOrdenEstimacionD(
+	MovID						INT				NOT NULL FOREIGN KEY REFERENCES OrdenesEstimaciones(ID),
+	Concepto					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesConceptos(ID),
+	Nombre						VARCHAR(50)		NOT NULL,
+	Direccion					VARCHAR(500)	NOT NULL,
+	Usuario						VARCHAR(50)		NOT NULL,
+	FechaAlta					SMALLDATETIME	NOT NULL
+)
+
+CREATE TABLE FacturasOrdenEstimacionD(
+	MovID						INT				NOT NULL FOREIGN KEY REFERENCES OrdenesEstimaciones(ID),
+	Concepto					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesConceptos(ID),
+	Nombre						VARCHAR(50)		NOT NULL,
+	Direccion					VARCHAR(500)	NOT NULL,
+	Usuario						VARCHAR(50)		NOT NULL,
+	FechaAlta					SMALLDATETIME	NOT NULL
+)
+
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
 --DROP TABLE Beneficiarios

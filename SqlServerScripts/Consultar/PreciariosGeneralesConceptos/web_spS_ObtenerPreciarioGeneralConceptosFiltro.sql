@@ -58,7 +58,8 @@ BEGIN
 		Cantidad,
 		Usuario,
 		Estatus,
-		FechaAlta
+		FechaAlta,
+		Moneda
 	FROM
 		PreciariosGeneralesConceptos
 	WHERE

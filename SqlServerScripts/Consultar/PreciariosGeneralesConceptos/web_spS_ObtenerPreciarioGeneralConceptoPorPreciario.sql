@@ -49,7 +49,8 @@ BEGIN
 		Costo,
 		Cantidad,
 		Estatus,
-		FechaAlta
+		FechaAlta,
+		Moneda
 		
 	FROM
 		PreciariosGeneralesConceptos

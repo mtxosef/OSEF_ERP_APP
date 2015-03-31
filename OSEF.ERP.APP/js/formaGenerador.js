@@ -68,7 +68,7 @@ var ceGenerador_Edit = function (cellediting, columna) {
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpFormaGenerador.getView().refreshNode(App.sFormaGenerador.getCount() - 2);
             //Validar si se habilita el boton de afectar
-            // HabilitarAfectar();
+             HabilitarGuardar();
         }
     }
 };
@@ -273,3 +273,41 @@ var obetenerRenglon_Select = function (gridview, registro, index) {
 }
 
 
+var txtDescripcion_Corta_Change = function () {
+    HabilitarGuardar();
+}
+
+//Validar si se habilita el botón d Afectar
+function HabilitarGuardar() {
+    //Obtiene la fecha de emision del store
+    if (App.txtDescripcionCorta.getValue() != null) {
+
+
+        if (App.gpFormaGenerador.getStore().getCount() != 0) 
+            {
+
+                if (App.sFormaGenerador.getAt(0).get('No').length != 0
+                    && App.sFormaGenerador.getAt(0).get('Localizacion').length != 0
+                    && App.sFormaGenerador.getAt(0).get('Total') != 0) {
+
+                    App.imgbtnAceptar.setDisabled(false);
+                }
+            }
+            else 
+            {
+                App.imgbtnAceptar.setDisabled(true);
+            }
+        
+        
+    }
+    else {
+        App.imgbtnAceptar.setDisabled(true);
+    }
+}
+
+
+var imgbtnAceptar_Click = function () {
+   
+    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Cantidad", parseFloat(App.dfTotal.getValue()));
+    window.parent.App.wGenerador.hide();
+}

@@ -18,18 +18,23 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciarioGeneralConceptoPorId' AND
+			WHERE  name = 'web_spI_InsertarFacturaOrdenEstimacionD' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorId
+	DROP PROCEDURE web_spI_InsertarFacturaOrdenEstimacionD
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener un registro de Articulos por su ID
+-- Create date: Jueves 19 de Febrero de 2015
+-- Description:	Insertar un registro de ImagenVolumetriaD
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoPorId
+CREATE PROCEDURE web_spI_InsertarFacturaOrdenEstimacionD
 	-- Add the parameters for the stored procedure here
-	@ID		CHAR(10)
+	@ID					INT,
+	@Concepto			CHAR(10),
+	@Nombre				VARCHAR(50),
+	@Direccion			VARCHAR(500),
+	@Usuario			VARCHAR(50),
+	@FechaAlta			SMALLDATETIME
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,24 +42,24 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		CLAVE,
-		Preciario,
-		Descripcion,
-		Categoria,
-		SubCategoria,
-		SubSubCategoria,
-		Unidad,
-		Costo,
-		Cantidad,
-		Estatus,
-		FechaAlta,
-		Moneda
-		
-	FROM
-		PreciariosGeneralesConceptos
-	WHERE
-		ID = @ID
+    INSERT INTO
+		FacturasOrdenEstimacionD
+		(
+			MovID,
+			Concepto,
+			Nombre,
+			Direccion,
+			Usuario,
+			FechaAlta
+		)
+	VALUES
+		(
+			@ID,
+			@Concepto,
+			@Nombre,
+			@Direccion,
+			@Usuario,
+			@FechaAlta
+		)
 END
 GO

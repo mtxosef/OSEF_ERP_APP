@@ -19,15 +19,15 @@
 -- Categorias (Modificar)
 :r c:\SqlServerScripts\Modificar\Categorias\web_spU_ActualizarCategoria.sql
 -----------------------------------------------------------------------------------
--- CertificadosInversion (Borrar)
-:r c:\SqlServerScripts\Borrar\CertificadosInversion\web_spD_BorrarCertificadoInversion.sql
--- CertificadosInversion (Consultar)
-:r c:\SqlServerScripts\Consultar\CertificadosInversion\web_spS_ObtenerCertificadosInversion.sql
-:r c:\SqlServerScripts\Consultar\CertificadosInversion\web_spS_ObtenerCertificadoInversionPorID.sql
--- CertificadosInversion (Insertar)
-:r c:\SqlServerScripts\Insertar\CertificadosInversion\web_spI_InsertarCertificadoInversion.sql
--- CertificadosInversion (Modificar)
-:r c:\SqlServerScripts\Modificar\CertificadosInversion\web_spU_ActualizarCertificadoInversion.sql
+---- CertificadosInversion (Borrar)
+--:r c:\SqlServerScripts\Borrar\CertificadosInversion\web_spD_BorrarCertificadoInversion.sql
+---- CertificadosInversion (Consultar)
+--:r c:\SqlServerScripts\Consultar\CertificadosInversion\web_spS_ObtenerCertificadosInversion.sql
+--:r c:\SqlServerScripts\Consultar\CertificadosInversion\web_spS_ObtenerCertificadoInversionPorID.sql
+---- CertificadosInversion (Insertar)
+--:r c:\SqlServerScripts\Insertar\CertificadosInversion\web_spI_InsertarCertificadoInversion.sql
+---- CertificadosInversion (Modificar)
+--:r c:\SqlServerScripts\Modificar\CertificadosInversion\web_spU_ActualizarCertificadoInversion.sql
 -----------------------------------------------------------------------------------
 -- Clientes (Borrar)
 :r c:\SqlServerScripts\Borrar\Clientes\web_spD_BorrarCliente.sql
@@ -395,10 +395,34 @@
 -- OrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spD_BorrarOrdenEstimacionD.sql
 :r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spD_BorrarOrdenEstimacionDPorOrdenEstimacion.sql
-:r c:\SqlServerScripts\Borrar\OrdenesEstimacionesD\web_spS_ObtenerEstimacionDPorMesaReporte.sql
 -- OrdenesEstimacionesD (Consultar)
 :r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerOrdenEstimacionDPorOrdenEstimacion.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerEstimacionDPorMesaReporte.sql
 -- OrdenesEstimacionesD (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimacionesD\web_spI_InsertarOrdenEstimacionD.sql
 -- OrdenesEstimacionesD (Modificar)
 :r c:\SqlServerScripts\Modificar\OrdenesEstimacionesD\web_spU_ActualizarOrdenEstimacionD.sql
+-----------------------------------------------------------------------------------
+-- ImagenOrdenesEstimacionesD (Insertar)
+:r c:\SqlServerScripts\Insertar\ImagenOrdenesEstimacionesD\web_spI_InsertarImagenOrdenEstimacionD.sql
+-- ImagenOrdenesEstimacionesD (Consultar)
+:r c:\SqlServerScripts\Consultar\ImagenOrdenesEstimacionesD\web_spS_ObtenerImagenOrdenEstimacionDPorConcepto.sql
+-- ImagenOrdenesEstimacionesD (Borrar)
+:r c:\SqlServerScripts\Borrar\ImagenOrdenesEstimacionesD\web_spD_BorrarImagenOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\ImagenOrdenesEstimacionesD\web_spD_BorrarImagenOrdenEstimacionDPorOrdenEstimacion.sql
+-----------------------------------------------------------------------------------
+-- FacturaOrdenesEstimacionesD (Insertar)
+:r c:\SqlServerScripts\Insertar\FacturaOrdenesEstimacionesD\web_spI_InsertarFacturaOrdenEstimacionD.sql
+-- FacturaOrdenesEstimacionesD (Consultar)
+:r c:\SqlServerScripts\Consultar\FacturaOrdenesEstimacionesD\web_spS_ObtenerFacturaOrdenEstimacionDPorConcepto.sql
+-- FacturaOrdenesEstimacionesD (Borrar)
+:r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorOrdenEstimacion.sql
+-----------------------------------------------------------------------------------
+-- CroquisOrdenesEstimacionesD (Insertar)
+:r c:\SqlServerScripts\Insertar\CroquisOrdenesEstimacionesD\web_spI_InsertarCroquisOrdenEstimacionD.sql
+-- CroquisOrdenesEstimacionesD (Consultar)
+:r c:\SqlServerScripts\Consultar\CroquisOrdenesEstimacionesD\web_spS_ObtenerCroquisOrdenEstimacionDPorConcepto.sql
+-- CroquisOrdenesEstimacionesD (Borrar)
+:r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorOrdenEstimacion.sql

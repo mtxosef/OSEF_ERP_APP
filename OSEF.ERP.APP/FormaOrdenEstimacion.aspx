@@ -63,7 +63,7 @@
             ID="fpOrdenEstimacion"
             runat="server" 
             MonitorResize="true"
-            Height="505"
+            Height="545"
             Width="910"
             BodyStyle="background-color:#fff;">
             <TopBar>
@@ -297,9 +297,17 @@
                 </ext:Toolbar>
             </TopBar>
             <Items>
-                <ext:Panel 
+             <ext:TabPanel
+                    ID="tpContenedor"
+                    runat="server" 
+                    ActiveTabIndex="0" 
+                    Plain="true" 
+                    Cls="custotabpanel xchris">
+                    <Items>
+                         <ext:Panel 
                     ID="pDatosGenerales" 
                     runat="server" 
+                    Title="Datos Generales"
                     BodyPadding="5"
                     Width="900"
                     Height="206" 
@@ -495,8 +503,231 @@
                         </ext:FieldContainer>
                     </Items>
                 </ext:Panel>
-                <%--  DETALLE--%>
-                <ext:Panel
+                <%--Segundo panel para los datos del reporte--%>
+                <ext:Panel 
+                    ID="pDatosReporte" 
+                    runat="server" 
+                    Title="Datos Reporte"
+                    BodyPadding="5"
+                    Hidden="true"
+                    Width="900"
+                    Height="206" 
+                    AutoScroll="false">
+                    
+                    <Items>
+                        <ext:FieldSet 
+                            ID="fsDatosReporte" 
+                            runat="server" 
+                            Title="Datos Reporte" 
+                            DefaultAnchor="100%"
+                            AutoScroll="false">
+                            <Items>
+                                <ext:FieldContainer 
+                                    ID="fc1"
+                                    runat="server"
+                                    FieldLabel="No. Reporte"
+                                    LabelWidth="120"
+                                    AnchorHorizontal="100%"
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:TextField 
+                                            ID="txtNoReporte" 
+                                            runat="server" 
+                                            Width="80" 
+                                            Margins="0 3 0 0"
+                                            Text="">
+                                        </ext:TextField>
+                                        <ext:ComboBox 
+                                            ID="cmbDivision"
+                                            runat="server"
+                                            FieldLabel="División"
+                                            Width="400"
+                                            Margins="0 3 0 0"
+                                            Editable="false"
+                                            AllowBlank="false">
+                                            <Items>
+                                                <ext:ListItem Index="0" Text="NORTE" Value="NORTE" />
+                                                <ext:ListItem Index="1" Text="NORESTE" Value="NORESTE" />
+                                                <ext:ListItem Index="2" Text="OCCIDENTE" Value="OCCIDENTE" />
+                                                <ext:ListItem Index="3" Text="CENTRO" Value="CENTRO" />
+                                                <ext:ListItem Index="4" Text="VALLE DE MÉXICO" Value="VALLE DE MÉXICO" />
+                                                <ext:ListItem Index="5" Text="SURESTE" Value="SURESTE" />
+                                            </Items>
+                                            <%--<Listeners>
+                                                <Select Fn="cmbMov_Select" />
+                                                <Change Fn="sMov_Change"></Change>
+                                            </Listeners>--%>
+                                        </ext:ComboBox>
+                                    </Items>
+                                </ext:FieldContainer>
+                                <ext:FieldContainer 
+                                    ID="fcFechaOrigen"
+                                    runat="server"
+                                    LabelWidth="120"
+                                    FieldLabel="Fecha de Origen"
+                                    AnchorHorizontal="100%"
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:DateField
+                                            ID="dfFechaOrigen"
+                                            runat="server"
+                                            Width="200"
+                                            Margins="0 3 0 0" 
+                                            Vtype="daterange"
+                                            Disabled="false">
+                                            <PickerOptions 
+                                                ID="poFechaOrigen"
+                                                runat="server"
+                                                Cls="my-date-picker">
+                                            </PickerOptions>
+                                             <CustomConfig>
+                                                <ext:ConfigItem 
+                                                Name="endDateField" 
+                                                Value="dfFechaMaxima" 
+                                                Mode="Value" />
+                                             </CustomConfig>
+                                            <Listeners>
+                                                 <Change Handler="sumarDias(this.getValue(),App.dfFechaMaxima.getValue());" />
+                                            </Listeners>
+                                        </ext:DateField>
+                                        <ext:DateField
+                                            ID="dfFechaMaxima"
+                                            runat="server"
+                                            EmptyText="Fecha Máxima Atención"
+                                            Width="200"
+                                            Vtype="daterange"
+                                            Margins="0 3 0 0" 
+                                            Disabled="false">
+                                            <Listeners>
+                                                 <Change Handler="sumarDias(App.dfFechaOrigen.getValue(), this.getValue());" />
+                                            </Listeners>
+                                            <PickerOptions 
+                                                ID="poFechaMaxima"
+                                                runat="server"
+                                                Cls="my-date-picker">
+                                            </PickerOptions>
+                                            <CustomConfig>
+                                            <ext:ConfigItem 
+                                            Name="startDateField" 
+                                            Value="dfFechaOrigen"
+                                            Mode="Value" />
+                                        </CustomConfig>
+                                        </ext:DateField>
+                                        <ext:NumberField 
+                                            ID="nfDiasAtencion"
+                                            runat="server"
+                                            AllowDecimals="true"
+                                            Width="157"
+                                            AllowExponential="false"
+                                            DecimalPrecision="2"
+                                            DecimalSeparator="."
+                                            MaxLength="10"
+                                            Disabled="true"
+                                            EmptyText="Dias Atención"
+                                            EnforceMaxLength="true"
+                                            MaxValue="999999999"
+                                            MinValue="0"
+                                            Step="1">
+                                        </ext:NumberField>
+                                    </Items>
+                                </ext:FieldContainer>
+
+                                <ext:FieldContainer
+                                    ID="fcReporte"
+                                    runat="server"
+                                    LabelWidth="120"
+                                    FieldLabel="Reportó"
+                                    AnchorHorizontal="100%" 
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:TextField 
+                                            ID="txtReporta" 
+                                            runat="server" 
+                                            EmptyText="Nombre de quien reportó el problema"
+                                            Width="563" 
+                                            Margins="0 3 0 0"
+                                            MaxLength="200"
+                                            EnforceMaxLength="true">
+                                        </ext:TextField>
+                                    </Items>
+                                </ext:FieldContainer>
+
+                                <ext:FieldContainer
+                                    ID="fcTrabajoRequerido"
+                                    runat="server"
+                                    LabelWidth="120"
+                                    FieldLabel="Trabajo Requerido"
+                                    AnchorHorizontal="100%" 
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:TextField 
+                                            ID="txtTrabajoRequerido" 
+                                            runat="server" 
+                                            Width="563" 
+                                            EmptyText="Descripción corta del trabajo requerido"
+                                            Margins="0 3 0 0"
+                                            MaxLength="200"
+                                            EnforceMaxLength="true">
+                                        </ext:TextField>
+                                    </Items>
+                                </ext:FieldContainer>
+
+
+                             <ext:FieldContainer
+                                    ID="fcAtiende"
+                                    runat="server"
+                                    LabelWidth="120"
+                                    FieldLabel="Atiende"
+                                    AnchorHorizontal="100%" 
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:TextField 
+                                            ID="txtAtiende" 
+                                            runat="server" 
+                                            Width="563" 
+                                            Margins="0 3 0 0"
+                                            EmptyText="Nombre de quien atiende el reporte"
+                                            MaxLength="200"
+                                            EnforceMaxLength="true">
+                                        </ext:TextField>
+                                    </Items>
+                                </ext:FieldContainer>
+                                
+                            </Items>
+                        </ext:FieldSet>
+                        <ext:FieldContainer
+                            ID="FieldContainer5"
+                            runat="server"
+                            AnchorHorizontal="100%" 
+                            Layout="ColumnLayout">
+                            <Items>
+                                <ext:TextField 
+                                    ID="TextField4" 
+                                    runat="server" 
+                                    Width="80" 
+                                    Disabled="true"
+                                    Text=""
+                                    Cls="xcustomtextAreaSinBorde">
+                                </ext:TextField>
+                                <ext:TextArea
+                                    ID="TextArea1"
+                                    runat="server"
+                                    Disabled="true"
+                                    LabelWidth="70"
+                                    StyleSpec="margin-left: 0px;  margin-top:-5px;"
+                                    Text=""
+                                    Cls="xcustomtextAreaSinBorde"
+                                    Height="66"
+                                    Width="808" >
+                                </ext:TextArea>
+                            </Items>
+                        </ext:FieldContainer>
+                    </Items>
+                </ext:Panel>
+                    </Items>
+                </ext:TabPanel>
+                        <%--  DETALLE--%>
+                         <ext:Panel
                     ID="pDetalle"
                     runat="server"
                     BodyPadding="5"
@@ -538,6 +769,9 @@
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
+                                            <Listeners>
+                                                <Update Fn="sConceptos_DataUpdate" ></Update>
+                                            </Listeners>
                                         </ext:Store>
                                     </Store>
                                     <ColumnModel 
@@ -614,7 +848,7 @@
                                                 ID="ccGenerador"
                                                 runat="server" 
                                                 Width="25">
-                                                <%--<PrepareToolbar Fn="ccDimensiones_PrepareToolbar" />--%>
+                                                <PrepareToolbar Fn="ccDimensiones_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="ApplicationOsxAdd"
@@ -680,7 +914,7 @@
                                                 Text="Fotos"
                                                 runat="server"
                                                 Width="65">
-                                                <%--<PrepareToolbar Fn="ccFotos_PrepareToolbar" />--%>
+                                                <PrepareToolbar Fn="ccFotos_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="ImageAdd"
@@ -694,7 +928,7 @@
                                                     </ext:GridCommand>
                                                 </Commands>
                                                 <Listeners>
-                                                  <%--  <Command Fn="ccFotos_Command" />--%>
+                                                    <Command Fn="ccFotos_Command" />
                                                 </Listeners>
                                             </ext:CommandColumn>
 
@@ -703,7 +937,7 @@
                                                 Text="Croquis"
                                                 runat="server"
                                                 Width="65">
-                                                <%--<PrepareToolbar Fn="ccFotos_PrepareToolbar" />--%>
+                                                <PrepareToolbar Fn="ccCroquis_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="MapAdd"
@@ -717,7 +951,7 @@
                                                     </ext:GridCommand>
                                                 </Commands>
                                                 <Listeners>
-                                                  <%--  <Command Fn="ccFotos_Command" />--%>
+                                                    <Command Fn="ccCroquis_Command" />
                                                 </Listeners>
                                             </ext:CommandColumn>
 
@@ -727,7 +961,7 @@
                                                 Text="Facturas"
                                                 runat="server"
                                                 Width="65">
-                                                <%--<PrepareToolbar Fn="ccFotos_PrepareToolbar" />--%>
+                                                <PrepareToolbar Fn="ccFacturas_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="PageWhiteAcrobat"
@@ -741,7 +975,7 @@
                                                     </ext:GridCommand>
                                                 </Commands>
                                                 <Listeners>
-                                                  <%--  <Command Fn="ccFotos_Command" />--%>
+                                                    <Command Fn="ccFactura_Command" />
                                                 </Listeners>
                                             </ext:CommandColumn>
 
@@ -749,6 +983,7 @@
                                     </ColumnModel>
                                     <Listeners>
                                         <ItemClick Fn="gpOrdenEstimacion_ItemClick" />
+
                                     </Listeners>
                                     <SelectionModel>
                                         <ext:CellSelectionModel
@@ -783,6 +1018,9 @@
                         </ext:FieldSet>
                     </Items>
                 </ext:Panel>
+                    
+             
+            
             </Items>
             <BottomBar>
                 <ext:StatusBar 

@@ -342,6 +342,7 @@
                                     <Store>
                                         <ext:Store
                                             ID="sCarga"
+                                            OnReadData="OnReadData_sCarga"
                                             runat="server">
                                             <Model>
                                                 <ext:Model ID="mCarga" runat="server">
@@ -359,6 +360,7 @@
                                                         <ext:ModelField Name="FechaAlta" Type="Date" />
                                                         <ext:ModelField Name="Estatus" Type="String" />
                                                         <ext:ModelField Name="Tipo" Type="String" />
+                                                        <ext:ModelField Name="Moneda" Type="String" />
                                                         <ext:ModelField Name="RCategoria" Type="Object" />
                                                         <ext:ModelField Name="RSubCategoria" Type="Object" />
                                                         <ext:ModelField Name="RSubSubCategoria" Type="Object" />
@@ -449,7 +451,32 @@
                                                 </Editor>
                                             </ext:Column>
                                             <ext:Column 
-                                                ID="cPrecio"
+                                                ID="cMoneda"
+                                                runat="server"
+                                                Align="Center"
+                                                Text="Moneda"
+                                                DataIndex="Moneda"
+                                                Width="110">
+                                                
+                                                <Editor>
+                                                   <ext:ComboBox
+                                                        ID="cmbMoneda"
+                                                        runat="server"
+                                                        Editable="true"
+                                                        MatchFieldWidth="true"
+                                                        ForceSelection="true"
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
+                                                        <Items>
+                                                            <ext:ListItem Index="0" Text="MNX" Value="MNX" />
+                                                            <ext:ListItem Index="1" Text="USD" Value="USD" />
+                                                            <ext:ListItem Index="2" Text="EU" Value="EU" />
+                                                        </Items>
+                                                    </ext:ComboBox>
+                                                </Editor>
+                                            </ext:Column>
+                                            <ext:Column 
+                                                ID="Column1"
                                                 runat="server"
                                                 Align="Center"
                                                 Text="Precio"
@@ -458,7 +485,7 @@
                                                 <Renderer Fn="rendererCosto"></Renderer>
                                                 <Editor>
                                                     <ext:NumberField 
-                                                        ID="nfCosto"
+                                                        ID="NumberField1"
                                                         runat="server"
                                                         AllowDecimals="true"
                                                         AllowExponential="false"
@@ -586,7 +613,7 @@
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
-                                        <ext:CellSelectionModel
+                                         <ext:CellSelectionModel
                                             ID="csmPreciario" 
                                             runat="server">
                                         </ext:CellSelectionModel>
@@ -611,6 +638,34 @@
                                             <GetRowClass Fn="getRowClass" /> 
                                         </ext:GridView>
                                     </View>
+
+                                     <BottomBar>
+                                     <ext:PagingToolbar ID="PagingToolbar1" runat="server">
+                                        <Items>
+                                            <ext:Label ID="Label1" runat="server" Text="Page size:" />
+                                            <ext:ToolbarSpacer ID="ToolbarSpacer1" runat="server" Width="10" />
+                                            <ext:ComboBox ID="ComboBox1" runat="server" Width="80">
+                                                <Items>
+                                                    <ext:ListItem Text="1" />
+                                                    <ext:ListItem Text="2" />
+                                                    <ext:ListItem Text="10" />
+                                                    <ext:ListItem Text="20" />
+                                                </Items>
+                                                <SelectedItems>
+                                                    <ext:ListItem Value="10" />
+                                                </SelectedItems>
+                                                <Listeners>
+                                                    <Select Handler="#{gpPreciario}.store.pageSize = parseInt(this.getValue(), 10); #{gpPreciario}.store.reload();" />
+                                                </Listeners>
+                                            </ext:ComboBox>
+                                        </Items>
+                                        <Plugins>
+                                            <ext:ProgressBarPager ID="ProgressBarPager1" runat="server" />
+                                        </Plugins>
+                                    </ext:PagingToolbar>
+                                </BottomBar>
+
+
                                 </ext:GridPanel>
                                 <%--Fin Detalle PRECIARIO--%>
                             </Items>

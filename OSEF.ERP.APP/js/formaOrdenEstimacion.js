@@ -56,13 +56,18 @@ var sMov_Add = function (store, registros, index, eOpts) {
 
 //Se lanza por cada elemento agregado al Store de Movimientos
 var sMov_Change = function (combo) {
-   
+
     if (combo.value == 'Mesa de reporte') {
         Ext.util.Cookies.set('cookieMovimiento', 'Mnto');
+     //   App.pDatosReporte.show(); 
+        App.pDatosReporte.tab.show();
+      
     }
 
     if (combo.value == 'Orden de Cambio') {
         Ext.util.Cookies.set('cookieMovimiento', 'Obra');
+        App.pDatosReporte.hide(); App.pDatosReporte.tab.hide();
+        
     }
 
 };
@@ -151,10 +156,14 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + App.sOrdenEstimacion.getAt(0).get('ID'));
         App.cmbMov.setReadOnly(true);
-        //6. Deshabilita los comandos de Fotos
-//        App.ccFotos.commands[0].disabled = false;
-//        App.ccFotos.commands[1].disabled = false;
- //       App.gpOrdenEstimacion.reconfigure();
+        //6. Deshabilita los comandos del grid
+            App.ccFotos.commands[0].disabled = false;
+            App.ccFotos.commands[1].disabled = false;
+            App.ccCroquis.commands[0].disabled = false;
+            App.ccCroquis.commands[1].disabled = false;
+            App.ccFacturas.commands[0].disabled = false;
+            App.ccFacturas.commands[1].disabled = false;
+            App.gpOrdenEstimacion.reconfigure();
 
     }
     else {
@@ -242,9 +251,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     var d = new Date();
 
-
     if (result.extraParamsResponse.mov == 'Estimacion') {
-
 
         //2. Lanzar ventana de movimiento afectado
         Ext.Msg.show({
@@ -268,8 +275,16 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.cmbMov.setValue(App.sOrdenEstimacion.getAt(0).get('Mov'));
         App.txtfObservaciones.setValue('');
         App.dfFechaEmision.setValue(d);
-        //        App.txtfMovID.setValue('');
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
+
+        //6. Deshabilita los comandos del grid
+        App.ccFotos.commands[0].disabled = false;
+        App.ccFotos.commands[1].disabled = false;
+        App.ccCroquis.commands[0].disabled = false;
+        App.ccCroquis.commands[1].disabled = false;
+        App.ccFacturas.commands[0].disabled = false;
+        App.ccFacturas.commands[1].disabled = false;
+        App.gpOrdenEstimacion.reconfigure();
     }
 
 
@@ -310,10 +325,14 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
         App.gpOrdenEstimacion.getSelectionModel().deselectAll();
 
-        //Deshabilita los comandos de Fotos
-        //    App.ccFotos.commands[0].disabled = true;
-        //    App.ccFotos.commands[1].disabled = false;
-        //    App.gpVolumetriaDetalle.reconfigure();
+        //Deshabilita los comandos del Grid
+        App.ccFotos.commands[0].disabled = false;
+        App.ccFotos.commands[1].disabled = false;
+        App.ccCroquis.commands[0].disabled = false;
+        App.ccCroquis.commands[1].disabled = false;
+        App.ccFacturas.commands[0].disabled = false;
+        App.ccFacturas.commands[1].disabled = false;
+        App.gpOrdenEstimacion.reconfigure();
     }
 
     if (result.extraParamsResponse.mov == 'Orden') {
@@ -350,13 +369,17 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         }
 
         //4. Deseleccionar datos del GridPanel y deshabilitar los controles
-        DeshabilitarControlesAfectar();
+        //DeshabilitarControlesAfectar();
         App.gpOrdenEstimacion.getSelectionModel().deselectAll();
 
-        //Deshabilita los comandos de Fotos
-        //    App.ccFotos.commands[0].disabled = true;
-        //    App.ccFotos.commands[1].disabled = false;
-        //    App.gpVolumetriaDetalle.reconfigure();
+        //Deshabilita los comandos del Grid
+        App.ccFotos.commands[0].disabled = false;
+        App.ccFotos.commands[1].disabled = false;
+        App.ccCroquis.commands[0].disabled = false;
+        App.ccCroquis.commands[1].disabled = false;
+        App.ccFacturas.commands[0].disabled = false;
+        App.ccFacturas.commands[1].disabled = false;
+        App.gpOrdenEstimacion.reconfigure();
 
     }
 
@@ -550,9 +573,17 @@ var calcularImporteCantidad_Change = function (component) {
 //Obtner el indice del grid panel del detalle
 var obetenerRenglon_Select = function (a, b, c) {
     indiceDetalle = b.internalId;
-
+   
     App.txtfClave.setValue(b.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(b.get('RPreciarioConceptos').Descripcion);
+}
+
+//Evento que actualuza el importe total cuando se usa el generador
+var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) {
+
+    var Importe = parseFloat(registro.get('Cantidad')) * parseFloat(registro.get('Precio'));
+    registro.set('Importe', Importe);
+
 }
 
 
@@ -587,26 +618,339 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
      
     }
   
-//    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-//    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
-//        //Toma el primer elemento de la columna para poder desabilitarlo
-//        var botonEliminar = toolbar.items.get(0);
-//        botonEliminar.setDisabled(true);
-//        botonEliminar.setTooltip("No se puede borrar un concepto");
-//    }
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonEliminar = toolbar.items.get(0);
+        botonEliminar.setDisabled(true);
+        botonEliminar.setTooltip("No se puede borrar un concepto");
+    }
 
-//    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-//    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
 
-//        //Toma el primer elemento de la columna para poder desabilitarlo
-//        var botonEliminar = toolbar.items.get(0);
-//        botonEliminar.setDisabled(true);
-//        botonEliminar.setTooltip("No se puede borrar un concepto");
-//    }
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonEliminar = toolbar.items.get(0);
+        botonEliminar.setDisabled(true);
+        botonEliminar.setTooltip("No se puede borrar un concepto");
+    }
+};
+
+//Deshablitar comandos detalle
+var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+    var boton;
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        boton = toolbar.items.get(0);
+        boton.setDisabled(true);
+        boton.setTooltip("");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        boton = toolbar.items.get(0);
+        boton.setDisabled(true);
+        boton.setTooltip("");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        boton = toolbar.items.get(0);
+        boton.setDisabled(true);
+    }
 };
 
 
+
+
+//Validaciones de comandos para conceptos
+var ccConcepto_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+    
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo' && App.sOrdenEstimacion.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(false);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de conceptos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(false);
+    }
+};
+
+
+
+
+//Validaciones de comandos para fotos
+var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar fotos a un movimiento concluido");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar fotos a un movimiento cancelado");
+    }
+
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo' && App.sOrdenEstimacion.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(true);
+        botonVerFotos2.setDisabled(true);
+        botonCargar2.setTooltip("Debes de guardar el movimiento antes");
+        botonVerFotos2.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(false);
+        botonVerFotos2.setDisabled(false);
+        botonCargar2.setTooltip("Cargar Fotos");
+        botonVerFotos2.setTooltip("Ver Fotos");
+    }
+};
+
+
+//Lo que hace el comando de fotos
+var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', registro.get('ConceptoID'));
+
+    if (nombre == 'cnCargarFotos') {
+        window.parent.App.wGenerador.load('FormaSubirImagenesPreciario.aspx');
+        window.parent.App.wGenerador.setHeight(350);
+        window.parent.App.wGenerador.setWidth(600);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Subir Factura');
+        window.parent.App.wGenerador.show();
+    }
+    else {
+        window.parent.App.wGenerador.load('FormaImagenesPreciarios.aspx');
+        window.parent.App.wGenerador.setHeight(530);
+        window.parent.App.wGenerador.setWidth(680);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Visualizar Factura');
+        window.parent.App.wGenerador.show();
+    }
+};
+
+
+//Validaciones de comandos para croquis
+var ccCroquis_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar croquis a un movimiento concluido");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar croquis a un movimiento cancelado");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo' && App.sOrdenEstimacion.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(true);
+        botonVerFotos2.setDisabled(true);
+        botonCargar2.setTooltip("Debes de guardar el movimiento antes");
+        botonVerFotos2.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(false);
+        botonVerFotos2.setDisabled(false);
+        botonCargar2.setTooltip("Cargar Croquis");
+        botonVerFotos2.setTooltip("Ver Croquis");
+    }
+};
+
+//Lo que hace el comando de croquis
+var ccCroquis_Command = function (column, nombre, registro, renglon, opciones) {
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', registro.get('ConceptoID'));
+
+    if (nombre == 'cnCargarCroquis') {
+        window.parent.App.wGenerador.load('FormaSubirImagenesPreciario.aspx');
+        window.parent.App.wGenerador.setHeight(350);
+        window.parent.App.wGenerador.setWidth(600);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Subir Factura');
+        window.parent.App.wGenerador.show();
+    }
+    else {
+        window.parent.App.wGenerador.load('FormaImagenesPreciarios.aspx');
+        window.parent.App.wGenerador.setHeight(530);
+        window.parent.App.wGenerador.setWidth(680);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Visualizar Factura');
+        window.parent.App.wGenerador.show();
+    }
+};
+
+
+//Validaciones de comandos para facturas
+var ccFacturas_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar facturas a un movimiento concluido");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar facturas a un movimiento cancelado");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo' && App.sOrdenEstimacion.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(true);
+        botonVerFotos2.setDisabled(true);
+        botonCargar2.setTooltip("Debes de guardar el movimiento antes");
+        botonVerFotos2.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(false);
+        botonVerFotos2.setDisabled(false);
+        botonCargar2.setTooltip("Cargar Facturas");
+        botonVerFotos2.setTooltip("Ver Facturas");
+    }
+};
+
+
+//Lo que hace el comando de croquis
+var ccFactura_Command = function (column, nombre, registro, renglon, opciones) {
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', registro.get('ConceptoID'));
+
+    if (nombre == 'cnCargarFactura') {
+        window.parent.App.wGenerador.load('FormaSubirImagenesPreciario.aspx');
+        window.parent.App.wGenerador.setHeight(350);
+        window.parent.App.wGenerador.setWidth(600);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Subir Factura');
+        window.parent.App.wGenerador.show();
+    }
+    else {
+        window.parent.App.wGenerador.load('FormaImagenesPreciarios.aspx');
+        window.parent.App.wGenerador.setHeight(530);
+        window.parent.App.wGenerador.setWidth(680);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Visualizar Factura');
+        window.parent.App.wGenerador.show();
+    }
+};
 
 //Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
 var cePreciarioConcepto_Edit = function (cellediting, columna) {
@@ -634,7 +978,9 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
             //Validar si se habilita el boton de afectar
             HabilitarAfectar();
         }
-    }
+}
+
+
 };
 
 //Evento que abre el generador
@@ -645,45 +991,12 @@ var ccGenerador_Command = function (columna, comando, registro, fila, opciones) 
     window.parent.App.wGenerador.center();
     window.parent.App.wGenerador.setTitle('Generador');
     window.parent.App.wGenerador.show();
-
+    //Asigno el indicie del renglon
+    Ext.util.Cookies.set('cookieRenglonOrdenEstimacionD', fila);
 
 };
 
-//Validaciones de comandos para conceptos
-var ccConcepto_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-    //alert('Si entro');
-    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
-        //Toma el primer elemento de la columna para poder desabilitarlo
-        var botonCargar = toolbar.items.get(0);
-        botonCargar.setDisabled(true);
-    }
-
-    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
-
-        //Toma el primer elemento de la columna para poder desabilitarlo
-        var botonCargar = toolbar.items.get(0);
-        botonCargar.setDisabled(true);
-    }
-
-    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo' && App.sOrdenEstimacion.getAt(0) == undefined) {
-
-        //Toma el primer elemento de la columna para poder desabilitarlo
-        var botonCargar2 = toolbar.items.get(0);
-        botonCargar2.setDisabled(false);
-    }
-
-    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de conceptos
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR') {
-
-        //Toma el primer elemento de la columna para poder desabilitarlo
-        var botonCargar2 = toolbar.items.get(0);
-        botonCargar2.setDisabled(false);
-    }
-};
 
 
 //Acciones del boton d agregar concepto en el detalle
@@ -747,6 +1060,10 @@ function PrimerRenglonDetalle() {
         if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
             return false;
         }
+        //si es estimacion ya no se pueden editar
+        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
+            return false;
+        }
         else {
             return true
         }
@@ -790,3 +1107,31 @@ function PrimerRenglonDetalle() {
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnBorrar.setDisabled(true);
     }
+
+
+    //Suma dias
+    function sumarDias(d, fecha) {
+
+       
+
+        //Calculo de dias para que el texfield de dias 
+        var f1 = d;
+        var f2 = fecha;
+
+        var fechaFormateada1 = f1.getDate() + '/' + (f1.getMonth() + 1) + '/' + f1.getFullYear();
+        var fechaFormateada2 = f2.getDate() + '/' + (f2.getMonth() + 1) + '/' + f2.getFullYear();
+
+        var aFecha1 = fechaFormateada1.split('/');
+        var aFecha2 = fechaFormateada2.split('/');
+
+        var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+        var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+
+        var dif = fFecha1 - fFecha2;
+        var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+
+        var numeroDias = parseFloat(dias)*(-1)
+        App.nfDiasAtencion.setValue(numeroDias);
+    }
+
+    
