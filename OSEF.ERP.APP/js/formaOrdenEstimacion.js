@@ -1110,7 +1110,7 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
     window.parent.App.wGenerador.load('FormaGenerador.aspx');
     window.parent.App.wGenerador.setHeight(310);
-    window.parent.App.wGenerador.setWidth(830);
+    window.parent.App.wGenerador.setWidth(915);
     window.parent.App.wGenerador.center();
     window.parent.App.wGenerador.setTitle('Generador');
     window.parent.App.wGenerador.show();

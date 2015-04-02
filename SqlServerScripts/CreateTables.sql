@@ -574,6 +574,26 @@ CREATE TABLE FacturasOrdenEstimacionD(
 	FechaAlta					SMALLDATETIME	NOT NULL
 )
 
+
+CREATE TABLE GeneradorOrdenEstimacionD(
+	MovID						INT				NOT NULL FOREIGN KEY REFERENCES OrdenesEstimaciones(ID),
+	ConceptoID					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesConceptos(ID),
+	Numero						VARCHAR(50)		NULL,
+	Descripcion					VARCHAR(500)	NULL,
+	Eje							VARCHAR(50)		NULL,
+	EntreEje1					VARCHAR(50)		NULL,
+	EntreEje2					VARCHAR(50)		NULL,
+	Area						VARCHAR(500)	NULL,
+	Largo						FLOAT			NULL,
+	Ancho						FLOAT			NULL,
+	Alto						FLOAT			NULL,
+	Cantidad					DECIMAL(10,2)	NOT NULL,
+	Total						DECIMAL(10,2)	NOT NULL
+)
+
+
+
+
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
 --DROP TABLE Beneficiarios

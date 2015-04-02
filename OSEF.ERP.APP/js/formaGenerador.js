@@ -4,8 +4,6 @@
 //Evento lanzado al cargar el store de avance encabezado
 var sFormaGenerador_Load = function () {
 
-
-
     App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
 
 };
@@ -60,7 +58,7 @@ var ceGenerador_Edit = function (cellediting, columna) {
       
 
         if (registro.get('No').length != 0
-        && registro.get('Localizacion').length != 0
+        && registro.get('Area').length != 0
         && registro.get('Total') != 0 ) {
 
             //Insertar un nuevo registro
@@ -288,7 +286,7 @@ function HabilitarGuardar() {
             {
 
                 if (App.sFormaGenerador.getAt(0).get('No').length != 0
-                    && App.sFormaGenerador.getAt(0).get('Localizacion').length != 0
+                    && App.sFormaGenerador.getAt(0).get('Area').length != 0
                     && App.sFormaGenerador.getAt(0).get('Total') != 0) {
 
                     App.imgbtnAceptar.setDisabled(false);

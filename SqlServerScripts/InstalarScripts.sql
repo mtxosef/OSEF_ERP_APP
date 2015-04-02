@@ -427,3 +427,11 @@
 -- CroquisOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorConcepto.sql
 :r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorOrdenEstimacion.sql
+-----------------------------------------------------------------------------------
+-- GenradorOrdenesEstimacionesD (Insertar)
+:r c:\SqlServerScripts\Insertar\GenradorOrdenesEstimacionesD\web_spI_InsertarGeneradorOrdenEstimacionD.sql
+-- GenradorOrdenesEstimacionesD (Consultar)
+:r c:\SqlServerScripts\Consultar\GenradorOrdenesEstimacionesD\web_spS_ObtenerGeneradorOrdenEstimacionDPorConcepto.sql
+-- GenradorOrdenesEstimacionesD (Borrar)
+:r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorOrdenEstimacion.sql
