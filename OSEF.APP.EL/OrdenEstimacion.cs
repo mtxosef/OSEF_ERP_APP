@@ -23,6 +23,14 @@ namespace OSEF.APP.EL
         string origenid;
         string usuario;
         Sucursal rsucursal;
+        string reporte;
+        string division;
+        Nullable<DateTime> fechaorigen;
+        Nullable<DateTime> fechamaximaatencion;
+        decimal diasatencion;
+        string reporto;
+        string trabajorequerido;
+        string atiende;
 
         #endregion
 
@@ -91,6 +99,54 @@ namespace OSEF.APP.EL
         {
             get { return rsucursal; }
             set { rsucursal = value; }
+        }
+
+        public string Reporte
+        {
+            get { return reporte; }
+            set { reporte = value; }
+        }
+
+        public string Division
+        {
+            get { return division; }
+            set { division = value; }
+        }
+
+        public Nullable<DateTime> FechaOrigen
+        {
+            get { return fechaorigen; }
+            set { fechaorigen = value; }
+        }
+
+        public Nullable<DateTime> FechaMaximaAtencion
+        {
+            get { return fechamaximaatencion; }
+            set { fechamaximaatencion = value; }
+        }
+
+        public decimal DiasAtencion
+        {
+            get { return diasatencion; }
+            set { diasatencion = value; }
+        }
+
+        public string Reporto
+        {
+            get { return reporto; }
+            set { reporto = value; }
+        }
+
+        public string TrabajoRequerido
+        {
+            get { return trabajorequerido; }
+            set { trabajorequerido = value; }
+        }
+
+        public string Atiende
+        {
+            get { return atiende; }
+            set { atiende = value; }
         }
         #endregion
     }

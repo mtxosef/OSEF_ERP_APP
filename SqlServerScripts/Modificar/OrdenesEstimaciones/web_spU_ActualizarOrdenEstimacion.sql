@@ -36,7 +36,15 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@Observaciones	VARCHAR(200),
 	@Estatus		VARCHAR(10),
 	@Origen			VARCHAR(30),
-	@OrigenID		VARCHAR(30)
+	@OrigenID		VARCHAR(30),
+	@Reporte		VARCHAR(50),
+	@Division		VARCHAR(30),
+	@FechaOrigen	SMALLDATETIME,
+	@FechaMaximaAtencion SMALLDATETIME,
+	@DiasAtencion	DECIMAL(5,0),
+	@Reporto		VARCHAR(100),
+	@TrabajoRequerido VARCHAR(850),
+	@Atiende		VARCHAR(100)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -53,7 +61,16 @@ BEGIN
 		Observaciones = @Observaciones,
 		Estatus = @Estatus,
 		Origen = @Origen,
-		OrigenID = @OrigenID
+		OrigenID = @OrigenID,
+		Reporte = @Reporte,
+		Division = @Division,
+		FechaOrigen =  @FechaOrigen,
+		FechaMaximaAtencion = @FechaMaximaAtencion,
+		DiasAtencion = @DiasAtencion,
+		Reporto = @Reporto,
+		TrabajoRequerido = @TrabajoRequerido,
+		Atiende = @Atiende
+		
 	WHERE
 		ID = @ID
 END

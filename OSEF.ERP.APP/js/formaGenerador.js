@@ -6,7 +6,7 @@ var sFormaGenerador_Load = function () {
 
 
 
-    App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), { No: 'ADC-001' });
+    App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
 
 };
 
@@ -61,14 +61,15 @@ var ceGenerador_Edit = function (cellediting, columna) {
 
         if (registro.get('No').length != 0
         && registro.get('Localizacion').length != 0
-        && registro.get('Total') != 0) {
+        && registro.get('Total') != 0 ) {
 
             //Insertar un nuevo registro
             App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpFormaGenerador.getView().refreshNode(App.sFormaGenerador.getCount() - 2);
             //Validar si se habilita el boton de afectar
-             HabilitarGuardar();
+            HabilitarGuardar();
+
         }
     }
 };
@@ -280,7 +281,7 @@ var txtDescripcion_Corta_Change = function () {
 //Validar si se habilita el botón d Afectar
 function HabilitarGuardar() {
     //Obtiene la fecha de emision del store
-    if (App.txtDescripcionCorta.getValue() != null) {
+    if (App.txtDescripcionCorta.getValue() != '') {
 
 
         if (App.gpFormaGenerador.getStore().getCount() != 0) 

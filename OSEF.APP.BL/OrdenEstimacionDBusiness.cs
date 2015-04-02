@@ -100,6 +100,29 @@ namespace OSEF.APP.BL
 
         }
 
+
+        /// <summary>
+        /// Obtener un los registro de OrdenEstimacionD para el explorador
+        /// </summary>
+        /// <param name="iRevision"></param>
+        /// <returns></returns>
+        public static List<OrdenEstimacionD> ObtenerOrdenEstimacionDExploradorConcluidos()
+        {
+
+            List<OrdenEstimacionD> OrdenEstimacionD = OrdenEstimacionDDataAccess.ObtenerOrdenEstimacionDExploradorConcluidos();
+
+            foreach (OrdenEstimacionD sd in OrdenEstimacionD)
+               
+            {
+                sd.RPreciarioConceptos = PreciarioGeneralConceptoBusiness.ObtenerPreciarioGeneralConceptoPorID(sd.ConceptoID);
+                sd.RMovimiento = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(sd.Id);
+            }
+            return OrdenEstimacionD;
+
+
+
+        }
+
         /// <summary>
         /// Obtener un los registro de VolumetriaD por su Preciario
         /// </summary>

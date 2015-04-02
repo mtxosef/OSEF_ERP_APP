@@ -232,7 +232,7 @@
              <ext:FieldContainer
                 ID="fcConcepto"
                 runat="server"
-                FieldLabel="Descripcion"
+                FieldLabel="Descripción"
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">

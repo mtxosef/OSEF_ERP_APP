@@ -108,7 +108,7 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "BorrarImagenOrdenEstimacionDPorConcepto";
+                sqlcComando.CommandText = "web_spD_BorrarImagenOrdenEstimacionDPorConcepto";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();
@@ -158,7 +158,7 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "BorrarImagenOrdenEstimacionDPorOrdenEstimacion";
+                sqlcComando.CommandText = "web_spD_BorrarImagenOrdenEstimacionDPorOrdenEstimacion";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();

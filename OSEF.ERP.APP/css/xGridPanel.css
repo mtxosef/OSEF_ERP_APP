@@ -39,6 +39,12 @@ font-weight:normal;
     font-size: 14px;
 }
 
+/*Fuente mas pequeña*/
+.xCustomGridPanel .x-grid-row TD {            
+    font-family: "WeblySleek UI Semilight" !important; 
+    font-size: 11px;
+     font-weight: 400;
+        }
 
 .x-toolbar-footer
 {

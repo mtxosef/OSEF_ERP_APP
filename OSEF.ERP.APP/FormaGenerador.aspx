@@ -31,12 +31,20 @@
    
     <ext:ResourceManager ID="rmFormaGenerador" runat="server" HideInDesign="true" />
 
-        <ext:GridPanel
+    <ext:Panel 
+            ID="panelGenerador" 
+            runat="server"
+            Width="825"
+            Height="270"
+            DefaultButton="imgbtnGuardar"
+            BodyPadding="5"
+            DefaultAnchor="100%">
+            <Items>
+            <ext:GridPanel
                 ID="gpFormaGenerador"
                 runat="server"
                 Width="810"
                 Height="260"
-                BodyPadding="10"
                 AutoScroll="true"
                 EnableColumnHide="false"
                 EnableColumnMove="false">
@@ -332,7 +340,8 @@
                         <Select Fn="obetenerRenglon_Select"></Select>
                         </Listeners>
             </ext:GridPanel>
-
+          </Items>
+      </ext:Panel>
     </form>
 </body>
 </html>

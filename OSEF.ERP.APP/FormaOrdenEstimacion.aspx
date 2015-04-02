@@ -50,6 +50,15 @@
                         <ext:ModelField Name="RSucursal" Type="Object" />
                         <ext:ModelField Name="Origen" Type="String" />
                         <ext:ModelField Name="OrigenId" Type="String" />
+
+                        <ext:ModelField Name="Reporte" Type="String" />
+                        <ext:ModelField Name="Division" Type="String" />
+                        <ext:ModelField Name="FechaOrigen" Type="Date" />
+                        <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
+                        <ext:ModelField Name="DiasAtencion" Type="Float" />
+                        <ext:ModelField Name="Reporto" Type="String" />
+                        <ext:ModelField Name="TrabajoRequerido" Type="String" />
+                        <ext:ModelField Name="Atiende" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -63,7 +72,7 @@
             ID="fpOrdenEstimacion"
             runat="server" 
             MonitorResize="true"
-            Height="545"
+            Height="555"
             Width="910"
             BodyStyle="background-color:#fff;">
             <TopBar>
@@ -119,6 +128,7 @@
                                         <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="Sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="diasAtencion" Value="App.nfDiasAtencion.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
@@ -155,6 +165,7 @@
                                         <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="Movimiento" Value="App.cmbMov.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="Sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="diasAtencion" Value="App.nfDiasAtencion.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
@@ -458,7 +469,7 @@
                                     ID="fcObservaciones"
                                     runat="server"
                                     LabelWidth="120"
-                                    FieldLabel="Observaciones"
+                                    FieldLabel="Asunto"
                                     AnchorHorizontal="100%" 
                                     Layout="HBoxLayout">
                                     <Items>
@@ -469,6 +480,9 @@
                                             Margins="0 3 0 0"
                                             MaxLength="200"
                                             EnforceMaxLength="true">
+                                             <Listeners>
+                                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                            </Listeners>
                                         </ext:TextField>
                                     </Items>
                                 </ext:FieldContainer>
@@ -536,6 +550,9 @@
                                             Width="80" 
                                             Margins="0 3 0 0"
                                             Text="">
+                                            <Listeners>
+                                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                            </Listeners>
                                         </ext:TextField>
                                         <ext:ComboBox 
                                             ID="cmbDivision"
@@ -618,6 +635,7 @@
                                             runat="server"
                                             AllowDecimals="true"
                                             Width="157"
+                                            Text="1"
                                             AllowExponential="false"
                                             DecimalPrecision="2"
                                             DecimalSeparator="."
@@ -648,6 +666,9 @@
                                             Margins="0 3 0 0"
                                             MaxLength="200"
                                             EnforceMaxLength="true">
+                                            <Listeners>
+                                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                            </Listeners>
                                         </ext:TextField>
                                     </Items>
                                 </ext:FieldContainer>
@@ -668,6 +689,9 @@
                                             Margins="0 3 0 0"
                                             MaxLength="200"
                                             EnforceMaxLength="true">
+                                            <Listeners>
+                                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                            </Listeners>
                                         </ext:TextField>
                                     </Items>
                                 </ext:FieldContainer>
@@ -689,6 +713,9 @@
                                             EmptyText="Nombre de quien atiende el reporte"
                                             MaxLength="200"
                                             EnforceMaxLength="true">
+                                            <Listeners>
+                                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                            </Listeners>
                                         </ext:TextField>
                                     </Items>
                                 </ext:FieldContainer>
@@ -771,6 +798,7 @@
                                             </Model>
                                             <Listeners>
                                                 <Update Fn="sConceptos_DataUpdate" ></Update>
+                                                <Load Fn="sConceptos_Load"></Load>
                                             </Listeners>
                                         </ext:Store>
                                     </Store>
@@ -1012,6 +1040,7 @@
                                     <Listeners>
                                         <Select Fn="obetenerRenglon_Select"></Select>
                                     </Listeners>
+
                                 </ext:GridPanel>
                                 <%--Fin Detalle--%>
                             </Items>
@@ -1023,11 +1052,27 @@
             
             </Items>
             <BottomBar>
-                <ext:StatusBar 
+             
+                <ext:Toolbar ID="tGenerador" runat="server">
+                    <Items>
+                       <ext:StatusBar 
                 ID="sbOrdenEstimacion" 
                 runat="server" 
                 Cls="x-colorToolbar" 
                 Text="SIN AFECTAR" />
+                        <ext:DisplayField
+                            ID="dfTotal"
+                            runat="server"
+                            FieldLabel="Total"
+                            Cls="total-field"
+                            Margins="0 0px 0 470px"
+                            Width="290"
+                            Text="">
+                        </ext:DisplayField>
+                    </Items>
+                </ext:Toolbar>
+     
+
             </BottomBar>
         </ext:FormPanel>
 

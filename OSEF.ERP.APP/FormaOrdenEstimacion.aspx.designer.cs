@@ -733,6 +733,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.GridView gvOrdenEstimacion;
         
         /// <summary>
+        /// Control tGenerador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar tGenerador;
+        
+        /// <summary>
         /// Control sbOrdenEstimacion.
         /// </summary>
         /// <remarks>
@@ -740,6 +749,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.StatusBar sbOrdenEstimacion;
+        
+        /// <summary>
+        /// Control dfTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField dfTotal;
         
         /// <summary>
         /// Control wEmergente.

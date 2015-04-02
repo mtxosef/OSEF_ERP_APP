@@ -18,6 +18,7 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
+			
 			WHERE  name = 'web_spD_BorrarCroquisOrdenEstimacionDPorConcepto' AND
 			TYPE = 'P')
 	DROP PROCEDURE web_spD_BorrarCroquisOrdenEstimacionDPorConcepto

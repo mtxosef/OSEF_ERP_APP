@@ -286,12 +286,13 @@ $(document).ready(function () {
         });
     });
 
-//    $("#mantenimiento").click(function (event) {
-//        $("#contenedor").fadeOut(timer, function () {
-//            parent.App.imgbtnRegresar.show();
-//            //            parent.App.lblRegresar.show();
-//            parent.App.pCentro.getLoader().load('Mantenimientos.aspx');
-//        });
-//    });
+    $("#exploradorPreciarioConceptosGenerales").click(function (event) {
+
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            //            parent.App.lblRegresar.show();
+            parent.App.pCentro.getLoader().load('ExploradorPreciariosConceptosGenerales.aspx');
+        });
+    });
 
 });

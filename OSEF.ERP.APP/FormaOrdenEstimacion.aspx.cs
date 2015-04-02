@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using Ext.Net;
 using OSEF.APP.EL;
+using System.IO;
 
 namespace OSEF.ERP.APP
 {
@@ -65,7 +66,17 @@ namespace OSEF.ERP.APP
                     Usuario = oOrdenEstimacion.Usuario,
                     RSucursal = oOrdenEstimacion.RSucursal,
                     Origen = oOrdenEstimacion.Origen,
-                    OrigenID = oOrdenEstimacion.OrigenId
+                    OrigenID = oOrdenEstimacion.OrigenId,
+                    Reporte =oOrdenEstimacion.Reporte,
+                    Division=oOrdenEstimacion.Division,
+                    FechaOrigen=oOrdenEstimacion.FechaOrigen,
+                    FechaMaximaAtencion = oOrdenEstimacion.FechaMaximaAtencion,
+                    DiasAtencion=oOrdenEstimacion.DiasAtencion,
+                    Reporto=oOrdenEstimacion.Reporto,
+                    TrabajoRequerido=oOrdenEstimacion.TrabajoRequerido,
+                    Atiende=oOrdenEstimacion.Atiende
+
+
                 });
             }
         }
@@ -83,6 +94,15 @@ namespace OSEF.ERP.APP
             string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
             string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
             string strSucursal = e.ExtraParams["Sucursal"];
+            string strDiasAtencion = e.ExtraParams["diasAtencion"];
+
+
+            if (strDiasAtencion.Equals("1")) {
+                strDiasAtencion = "0";
+            }
+
+            decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
+
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
             OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
@@ -90,7 +110,7 @@ namespace OSEF.ERP.APP
             List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
 
             //3. Guardar o Actuaizar el Movimiento
-            string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD,strSucursal);
+            string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD, strSucursal, diasAtencion);
 
             //4. Validar que efecto realizará para Guardar o Afectar
             switch (strAccion)
@@ -119,7 +139,9 @@ namespace OSEF.ERP.APP
             string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
             string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
             string strSucursal = e.ExtraParams["Sucursal"];
+            string strDiasAtencion = e.ExtraParams["diasAtencion"];
 
+            decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
             OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
@@ -158,13 +180,24 @@ namespace OSEF.ERP.APP
                     sOrdenEstimacion.GetAt(0).Set("Estatus", nuevosValores.Estatus);
                     sOrdenEstimacion.GetAt(0).Set("RSucursal", nuevosValores.RSucursal);
 
+
+                //Campos extras de reporte
+                    sOrdenEstimacion.GetAt(0).Set("Reporte", nuevosValores.Reporte);
+                    sOrdenEstimacion.GetAt(0).Set("Division", nuevosValores.Division);
+                    sOrdenEstimacion.GetAt(0).Set("FechaOrigen", nuevosValores.FechaOrigen);
+                    sOrdenEstimacion.GetAt(0).Set("FechaMaximaAtencion", nuevosValores.FechaMaximaAtencion);
+                    sOrdenEstimacion.GetAt(0).Set("DiasAtencion", nuevosValores.DiasAtencion);
+                    sOrdenEstimacion.GetAt(0).Set("Reporto", nuevosValores.Reporto);
+                    sOrdenEstimacion.GetAt(0).Set("TrabajoRequerido", nuevosValores.TrabajoRequerido);
+                    sOrdenEstimacion.GetAt(0).Set("Atiende", nuevosValores.Atiende);
+
             }
             //Si no es estimacion sale de la validacion y afecta normal
             else
             {
 
                 //3. Guardar o Actuaizar el Movimiento
-                string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD,strSucursal);
+                string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD,strSucursal,diasAtencion);
 
                 //4. Validar que efecto realizará para Guardar o Afectar
                 switch (strAccion)
@@ -230,6 +263,40 @@ namespace OSEF.ERP.APP
                     case "txtfObservaciones":
                         oOrdenEstimacionForma.Observaciones = sd.Value;
                         break;
+                    case "txtNoReporte":
+                        oOrdenEstimacionForma.Reporte = sd.Value;
+                        break;
+                    case "cmbDivision":
+                        oOrdenEstimacionForma.Division = sd.Value;
+                        break;
+
+                    case "dfFechaOrigen":
+                        if (sd.Value == null)
+                            oOrdenEstimacionForma.FechaOrigen = null;
+                        else
+                            oOrdenEstimacionForma.FechaOrigen = Convert.ToDateTime(sd.Value);
+                        break;
+
+
+                    case "dfFechaMaxima":
+                        if (sd.Value == null)
+                            oOrdenEstimacionForma.FechaMaximaAtencion = null;
+                        else
+                            oOrdenEstimacionForma.FechaMaximaAtencion = Convert.ToDateTime(sd.Value);
+                        break;
+
+                    case "nfDiasAtencion":
+                        oOrdenEstimacionForma.DiasAtencion = Convert.ToDecimal(sd.Value);
+                        break;
+                    case "txtReporta":
+                        oOrdenEstimacionForma.Reporto = sd.Value;
+                        break;
+                    case "txtTrabajoRequerido":
+                        oOrdenEstimacionForma.TrabajoRequerido = sd.Value;
+                        break;
+                    case "txtAtiende":
+                        oOrdenEstimacionForma.Atiende = sd.Value;
+                        break;
                 }
             }
             oOrdenEstimacionForma.Estatus = "BORRADOR";
@@ -243,7 +310,7 @@ namespace OSEF.ERP.APP
         /// <param name="oOrdenEstimacionForma"></param>
         /// <param name="oOrdenEstimacion"></param>
         /// <param name="lOrdenEstimacionD"></param>
-        private string GuardarMovimiento(ref OrdenEstimacion oOrdenEstimacionForma, OrdenEstimacion oOrdenEstimacion, List<OrdenEstimacionD> lOrdenEstimacionD, string strSucursal)
+        private string GuardarMovimiento(ref OrdenEstimacion oOrdenEstimacionForma, OrdenEstimacion oOrdenEstimacion, List<OrdenEstimacionD> lOrdenEstimacionD, string strSucursal, decimal diasAtencion)
         {
             //1. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)
@@ -254,8 +321,10 @@ namespace OSEF.ERP.APP
 
                 //3. Actualizamos el Estatus e Insertar en la base de datos
                 oOrdenEstimacionForma.Estatus = "BORRADOR";
-                oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
                 oOrdenEstimacionForma.Sucursal = strSucursal;
+                oOrdenEstimacionForma.DiasAtencion = diasAtencion;
+                oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
+               
                 //4. Agregar el objeto al Store de Revisión
                 sOrdenEstimacion.Add(new
                 {
@@ -269,7 +338,15 @@ namespace OSEF.ERP.APP
                     Estatus = oOrdenEstimacionForma.Estatus,
                     Usuario = oOrdenEstimacionForma.Usuario,
                     Origen=oOrdenEstimacionForma.Origen,
-                    OrigenId = oOrdenEstimacionForma.OrigenId
+                    OrigenId = oOrdenEstimacionForma.OrigenId,
+                    Reporte = oOrdenEstimacionForma.Reporte,
+                    Division = oOrdenEstimacionForma.Division,
+                    FechaOrigen = oOrdenEstimacionForma.FechaOrigen,
+                    FechaMaximaAtencion = oOrdenEstimacionForma.FechaMaximaAtencion,
+                    DiasAtencion = oOrdenEstimacionForma.DiasAtencion,
+                    Reporto = oOrdenEstimacionForma.Reporto,
+                    TrabajoRequerido = oOrdenEstimacionForma.TrabajoRequerido,
+                    Atiende = oOrdenEstimacionForma.Atiende
                 });
 
                 //5. Guardar Detalle y regresar valor
@@ -282,6 +359,17 @@ namespace OSEF.ERP.APP
                 oOrdenEstimacionForma.Id = oOrdenEstimacion.Id;
                 oOrdenEstimacionForma.Sucursal = strSucursal;
                 oOrdenEstimacionForma.Estatus = oOrdenEstimacion.Estatus;
+                oOrdenEstimacionForma.Reporte = oOrdenEstimacion.Reporte;
+
+                oOrdenEstimacionForma.Division = oOrdenEstimacion.Reporte;
+                oOrdenEstimacionForma.FechaOrigen = oOrdenEstimacion.FechaOrigen;
+                oOrdenEstimacionForma.FechaMaximaAtencion = oOrdenEstimacion.FechaMaximaAtencion;
+                oOrdenEstimacionForma.DiasAtencion = diasAtencion;
+                oOrdenEstimacionForma.TrabajoRequerido = oOrdenEstimacion.TrabajoRequerido;
+                oOrdenEstimacionForma.Atiende = oOrdenEstimacion.Atiende;
+                   
+              
+
                 OrdenEstimacionBusiness.ActualizarOrdenEstimacion(oOrdenEstimacionForma);
 
                 //7. Actualizar store de OrdenesEstimaciones
@@ -290,6 +378,17 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("FechaEmision", oOrdenEstimacionForma.FechaEmision);
                 sOrdenEstimacion.GetAt(0).Set("Estaus", oOrdenEstimacionForma.Estatus);
                 sOrdenEstimacion.GetAt(0).Set("Observaciones", oOrdenEstimacionForma.Observaciones);
+
+                //Campos extras de reporte
+                sOrdenEstimacion.GetAt(0).Set("Reporte", oOrdenEstimacionForma.Reporte);
+                sOrdenEstimacion.GetAt(0).Set("Division", oOrdenEstimacionForma.Division);
+                sOrdenEstimacion.GetAt(0).Set("FechaOrigen", oOrdenEstimacionForma.FechaOrigen);
+                sOrdenEstimacion.GetAt(0).Set("FechaMaximaAtencion", oOrdenEstimacionForma.FechaMaximaAtencion);
+                sOrdenEstimacion.GetAt(0).Set("DiasAtencion", oOrdenEstimacionForma.DiasAtencion);
+                sOrdenEstimacion.GetAt(0).Set("Reporto", oOrdenEstimacionForma.Reporto);
+                sOrdenEstimacion.GetAt(0).Set("TrabajoRequerido", oOrdenEstimacionForma.TrabajoRequerido);
+                sOrdenEstimacion.GetAt(0).Set("Atiende", oOrdenEstimacionForma.Atiende);
+
 
                 //8. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
@@ -334,11 +433,131 @@ namespace OSEF.ERP.APP
             int strID = Convert.ToInt32(strcookieEditarOrdenEstimacion);
             //Borra de la base de datos el encabezado, detalle y fotos
             //borrarImagenesPorMovimiento(strID);
-
+            borrarImagenesPorMovimiento(strID);
             OrdenEstimacionDBusiness.BorrarPorID(strID);
             OrdenEstimacionBusiness.Borrar(strID);
             
         }
+
+
+        /// <summary>
+        /// Método para obtener las fotos del renglon y borrarlas cuando se cambie el concepto o se elimine
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public void obtenerImagenesPorConcepto()
+        {
+            //1. Obtener el ID del movimiento y el concepto
+            int iID = Convert.ToInt32(Cookies.GetCookie("cookieIDBorrarFotosOrdenEstimacion").Value);
+            string strConcepto = Cookies.GetCookie("cookieConceptoFotosOrdenEstimacion").Value;
+            string strDireccionImagenes = Server.MapPath(" ") + "\\imagenesOrdenEstimacion\\" + iID + "\\" + strConcepto;
+            string strDireccionCroquis = Server.MapPath(" ") + "\\croquisOrdenEstimacion\\" + iID + "\\" + strConcepto;
+            string strDireccionFacturas = Server.MapPath(" ") + "\\facturasOrdenEstimacion\\" + iID + "\\" + strConcepto;
+            //2. Validar si existe el directorio donde se borrarán las imagenes
+            if (Directory.Exists(strDireccionImagenes))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccionImagenes, true);
+                }
+
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            //3. Validar si existe el directorio donde se borrarán los croquis
+            if (Directory.Exists(strDireccionCroquis))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccionCroquis, true);
+                }
+
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            //4. Validar si existe el directorio donde se borrarán las Facturas
+            if (Directory.Exists(strDireccionFacturas))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccionFacturas, true);
+                }
+
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            //5. Borrar en la base de datos
+            ImagenOrdenEstimacionBusiness.BorrarImagenesOrdenEstimacionDPorConcepto(iID, strConcepto);
+            FacturaOrdenEstimacionBusiness.BorrarFacturaOrdenEstimacionDPorConcepto(iID, strConcepto);
+            CroquisOrdenEstimacionBusiness.BorrarCroquisOrdenEstimacionDPorConcepto(iID, strConcepto);
+        }
+
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public void borrarImagenesPorMovimiento(int strID)
+        {
+            //1. Obtener el ID del movimiento
+            
+            string strDireccionImagenes = Server.MapPath(" ") + "\\imagenesOrdenEstimacion\\" + strID;
+            string strDireccionCroquis = Server.MapPath(" ") + "\\croquisOrdenEstimacion\\" + strID;
+            string strDireccionFacturas = Server.MapPath(" ") + "\\facturasOrdenEstimacion\\" + strID;
+
+              //2. Validar si existe el directorio donde se borrarán las imagenes
+            if (Directory.Exists(strDireccionImagenes))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccionImagenes, true);
+                }
+
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            //3. Validar si existe el directorio donde se borrarán los croquis
+            if (Directory.Exists(strDireccionCroquis))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccionCroquis, true);
+                }
+
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            //4. Validar si existe el directorio donde se borrarán las Facturas
+            if (Directory.Exists(strDireccionFacturas))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(strDireccionFacturas, true);
+                }
+
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            //5. Borrar en la base de datos
+            ImagenOrdenEstimacionBusiness.BorrarImagenesOrdenesEstimacionPorID(strID);
+            FacturaOrdenEstimacionBusiness.BorrarFacturasOrdenesEstimacionPorID(strID);
+            CroquisOrdenEstimacionBusiness.BorrarCroquisOrdenesEstimacionPorID(strID);
+        }
+
 
 
 
