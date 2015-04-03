@@ -18,19 +18,19 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerGeneradorOrdenEstimacionDPorConcepto' AND
+			WHERE  name = 'web_spS_ObtenerGeneradorOrdenVaciosDPorConcepto' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerGeneradorOrdenEstimacionDPorConcepto
+	DROP PROCEDURE web_spS_ObtenerGeneradorOrdenVaciosDPorConcepto
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Viernes 20 de Febrero de 2014
--- Description:	Obtener los registros de Imagenes Volumetrias por su Volumetria y PreciarioConcepto
+-- Author:		Christian Medina
+-- Create date: Miercoles 14 de Enero de 2015
+-- Description:	Obtener los registros de Sucursales por su Revisión
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerGeneradorOrdenEstimacionDPorConcepto
+CREATE PROCEDURE web_spS_ObtenerGeneradorOrdenVaciosDPorConcepto
 	-- Add the parameters for the stored procedure here
-	@ID			INT,
-	@Concepto	CHAR(10)
+	@CONCEPTO	CHAR(10),
+	@ID INT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -38,23 +38,15 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		MovID,
-		ConceptoID,
-		Numero,
-		Descripcion,
-		Eje,
-		EntreEje1,
-		EntreEje2,
-		Area,
-		Largo,
-		Ancho,
-		Alto,
-		Cantidad,
-		Total
-	FROM
-		GeneradorOrdenEstimacionD
-	WHERE
-		MovID = @ID AND ConceptoID = @Concepto
+	IF EXISTS(SELECT A.ConceptoID FROM GeneradorOrdenEstimacionD A INNER JOIN OrdenesEstimacionesD B ON A.ConceptoID = B.ConceptoID 
+	WHERE A.ConceptoID = @CONCEPTO AND MovID=@ID)
+	BEGIN
+		SELECT CAST(1 AS BIT)
+	END
+	ELSE
+	BEGIN
+		SELECT CAST(0 AS BIT)
+	END
 END
 GO
+

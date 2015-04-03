@@ -432,6 +432,7 @@
 :r c:\SqlServerScripts\Insertar\GenradorOrdenesEstimacionesD\web_spI_InsertarGeneradorOrdenEstimacionD.sql
 -- GenradorOrdenesEstimacionesD (Consultar)
 :r c:\SqlServerScripts\Consultar\GenradorOrdenesEstimacionesD\web_spS_ObtenerGeneradorOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Consultar\GenradorOrdenesEstimacionesD\web_spS_ObtenerGeneradorOrdenVaciosDPorConcepto.sql
 -- GenradorOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorConcepto.sql
 :r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorOrdenEstimacion.sql

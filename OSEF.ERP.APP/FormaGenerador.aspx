@@ -64,9 +64,16 @@
                             Disabled="true"
                             Height="30"
                             Width="30">
-                            <Listeners>
-                                <Click Fn="imgbtnAceptar_Click"></Click>
-                            </Listeners>
+                              <DirectEvents>
+                                <Click OnEvent="imgbtnAceptar_Click" Success="imgbtnAceptar_Click">
+                                    <EventMask ShowMask="true" Msg="Guardardo información..." />
+                                    <ExtraParams>
+                                       <ext:Parameter Name="DescripcionCorta" Value="App.txtDescripcionCorta.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="GeneradorD" Value="Ext.encode(#{sFormaGenerador}.getRecordsValues())" Mode="Raw" />
+                                    </ExtraParams>
+                                </Click>
+                            </DirectEvents>
+
                         </ext:ImageButton>
                          <ext:ImageButton 
                             ID="imgbtnCancelar" 
@@ -108,7 +115,7 @@
                                     <ext:ModelField Name="MovID" Type="Int" />
                                     <ext:ModelField Name="ConceptoID" Type="String" />
                                     <ext:ModelField Name="Descripcion" Type="String" />
-                                    <ext:ModelField Name="No" Type="String" />
+                                    <ext:ModelField Name="Numero" Type="String" />
                                     <ext:ModelField Name="Eje" Type="String" />
                                     <ext:ModelField Name="EntreEje1" Type="String" />
                                     <ext:ModelField Name="EntreEje2" Type="String" />
@@ -118,6 +125,7 @@
                                     <ext:ModelField Name="Alto" Type="Float" />
                                     <ext:ModelField Name="Cantidad" Type="Float" />
                                     <ext:ModelField Name="Total" Type="Float" />
+                                    <ext:ModelField Name="RConcepto" Type="Object" />
                                 </Fields>
                             </ext:Model>
                         </Model>
@@ -151,7 +159,7 @@
                             runat="server"
                             Text="No."
                             Width="60"
-                            DataIndex="No">
+                            DataIndex="Numero">
                             <Editor>
                                 <ext:TextField ID="txtfNo" runat="server">
                                       <Listeners>

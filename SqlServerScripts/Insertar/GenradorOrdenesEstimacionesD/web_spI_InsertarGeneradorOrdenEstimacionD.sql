@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spI_InsertarImagenOrdenEstimacionD' AND
+			WHERE  name = 'web_spI_InsertarGeneradorOrdenEstimacionD' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spI_InsertarImagenOrdenEstimacionD
+	DROP PROCEDURE web_spI_InsertarGeneradorOrdenEstimacionD
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Jueves 19 de Febrero de 2015
 -- Description:	Insertar un registro de ImagenVolumetriaD
 -- =============================================
-CREATE PROCEDURE web_spI_InsertarImagenOrdenEstimacionD
+CREATE PROCEDURE web_spI_InsertarGeneradorOrdenEstimacionD
 	-- Add the parameters for the stored procedure here
 	@ID					INT,
 	@Concepto			CHAR(10),
@@ -37,9 +37,9 @@ CREATE PROCEDURE web_spI_InsertarImagenOrdenEstimacionD
 	@EntreEje1			VARCHAR(50),
 	@EntreEje2			VARCHAR(50),
 	@Area				VARCHAR(500),
-	@Largo				FLOAT,
-	@Ancho				FLOAT,
-	@Alto				FLOAT,
+	@Largo				DECIMAL(10,2),
+	@Ancho				DECIMAL(10,2),
+	@Alto				DECIMAL(10,2),
 	@Cantidad			DECIMAL(10,2),
 	@Total				DECIMAL(10,2)
 AS

@@ -6,6 +6,21 @@ var sFormaGenerador_Load = function () {
 
     App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
 
+    console.log(App.sFormaGenerador);
+
+    App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
+
+    //Pinta el tota
+    var sum = 0;
+    App.sFormaGenerador.each(function (record) {
+
+        sum += record.get('Total');
+    });
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
 };
 
 
@@ -55,9 +70,9 @@ var ceGenerador_Edit = function (cellediting, columna) {
         //Verificar si toda la fila contiene datos
         var registro = App.sFormaGenerador.getAt(columna.rowIdx);
 
-      
 
-        if (registro.get('No').length != 0
+
+        if (registro.get('Numero').length != 0
         && registro.get('Area').length != 0
         && registro.get('Total') != 0 ) {
 
@@ -285,7 +300,7 @@ function HabilitarGuardar() {
         if (App.gpFormaGenerador.getStore().getCount() != 0) 
             {
 
-                if (App.sFormaGenerador.getAt(0).get('No').length != 0
+                if (App.sFormaGenerador.getAt(0).get('Numero').length != 0
                     && App.sFormaGenerador.getAt(0).get('Area').length != 0
                     && App.sFormaGenerador.getAt(0).get('Total') != 0) {
 

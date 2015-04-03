@@ -584,9 +584,9 @@ CREATE TABLE GeneradorOrdenEstimacionD(
 	EntreEje1					VARCHAR(50)		NULL,
 	EntreEje2					VARCHAR(50)		NULL,
 	Area						VARCHAR(500)	NULL,
-	Largo						FLOAT			NULL,
-	Ancho						FLOAT			NULL,
-	Alto						FLOAT			NULL,
+	Largo						DECIMAL(10,2)	NULL,
+	Ancho						DECIMAL(10,2)	NULL,
+	Alto						DECIMAL(10,2)	NULL,
 	Cantidad					DECIMAL(10,2)	NOT NULL,
 	Total						DECIMAL(10,2)	NOT NULL
 )

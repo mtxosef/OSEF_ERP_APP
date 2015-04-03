@@ -766,6 +766,25 @@ var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
         boton = toolbar.items.get(0);
         boton.setDisabled(true);
     }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo' && App.sOrdenEstimacion.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var boton = toolbar.items.get(0);
+        boton.setDisabled(true);
+        boton.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var boton = toolbar.items.get(0);
+        boton.setDisabled(false);
+        boton.setTooltip("Selecciona un concepto antes");
+    }
+
 };
 
 
@@ -1108,14 +1127,37 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
 
 //Evento que abre el generador
 var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
-    window.parent.App.wGenerador.load('FormaGenerador.aspx');
-    window.parent.App.wGenerador.setHeight(310);
-    window.parent.App.wGenerador.setWidth(915);
-    window.parent.App.wGenerador.center();
-    window.parent.App.wGenerador.setTitle('Generador');
-    window.parent.App.wGenerador.show();
-    //Asigno el indicie del renglon
-    Ext.util.Cookies.set('cookieRenglonOrdenEstimacionD', fila);
+    //Asigno el concpeto
+
+
+    if (registro.get('ConceptoID') != '') {
+
+        Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
+
+        window.parent.App.wGenerador.load('FormaGenerador.aspx');
+        window.parent.App.wGenerador.setHeight(310);
+        window.parent.App.wGenerador.setWidth(915);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Generador');
+        window.parent.App.wGenerador.show();
+
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgGenerador',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+    }
+
+
+
+
+
 
 };
 
