@@ -33,7 +33,7 @@
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmOlvidoContraseña" runat="server" HideInDesign="true" />
 
-        <img src="images/logo.png" alt="logo" class="imgs logo-image" />
+        <img src="images/Ibuho.png" alt="logo" class="imgs logo-image" />
 
         <ext:Container
             ID="cCorreoEnviado"

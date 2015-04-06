@@ -95,6 +95,82 @@ namespace OSEF.APP.DL
                 else
                     sqlpOrigenID.Value = iOrdenEstimacion.OrigenId;
 
+
+                SqlParameter sqlpReporte = new SqlParameter();
+                sqlpReporte.ParameterName = "@Reporte";
+                sqlpReporte.SqlDbType = SqlDbType.VarChar;
+
+                if (iOrdenEstimacion.Reporte == null)
+                    sqlpReporte.Value = DBNull.Value;
+                else
+                    sqlpReporte.Value = iOrdenEstimacion.Reporte;
+
+
+                SqlParameter sqlpDivision = new SqlParameter();
+                sqlpDivision.ParameterName = "@Division";
+                sqlpDivision.SqlDbType = SqlDbType.VarChar;
+
+                if (iOrdenEstimacion.Division == null)
+                    sqlpDivision.Value = DBNull.Value;
+                else
+                    sqlpDivision.Value = iOrdenEstimacion.Division;
+
+                SqlParameter sqlpFechaOrigen = new SqlParameter();
+                sqlpFechaOrigen.ParameterName = "@FechaOrigen";
+                sqlpFechaOrigen.SqlDbType = SqlDbType.SmallDateTime;
+
+                if (iOrdenEstimacion.FechaOrigen == null)
+                    sqlpFechaOrigen.Value = DBNull.Value;
+                else
+                    sqlpFechaOrigen.Value = iOrdenEstimacion.FechaOrigen;
+
+                SqlParameter sqlpFechaMaxima = new SqlParameter();
+                sqlpFechaMaxima.ParameterName = "@FechaMaximaAtencion";
+                sqlpFechaMaxima.SqlDbType = SqlDbType.SmallDateTime;
+
+                if (iOrdenEstimacion.FechaMaximaAtencion == null)
+                    sqlpFechaMaxima.Value = DBNull.Value;
+                else
+                    sqlpFechaMaxima.Value = iOrdenEstimacion.FechaMaximaAtencion;
+
+                SqlParameter sqlpDiasAtencion = new SqlParameter();
+                sqlpDiasAtencion.ParameterName = "@DiasAtencion";
+                sqlpDiasAtencion.SqlDbType = SqlDbType.Decimal;
+
+                if (iOrdenEstimacion.DiasAtencion == null)
+                    sqlpDiasAtencion.Value = DBNull.Value;
+                else
+                    sqlpDiasAtencion.Value = iOrdenEstimacion.DiasAtencion;
+
+                SqlParameter sqlpReporto = new SqlParameter();
+                sqlpReporto.ParameterName = "@Reporto";
+                sqlpReporto.SqlDbType = SqlDbType.VarChar;
+
+                if (iOrdenEstimacion.Reporto == null)
+                    sqlpReporto.Value = DBNull.Value;
+                else
+                    sqlpReporto.Value = iOrdenEstimacion.Reporto;
+
+
+                SqlParameter sqlpAtiende = new SqlParameter();
+                sqlpAtiende.ParameterName = "@Atiende";
+                sqlpAtiende.SqlDbType = SqlDbType.VarChar;
+
+                if (iOrdenEstimacion.Atiende == null)
+                    sqlpAtiende.Value = DBNull.Value;
+                else
+                    sqlpAtiende.Value = iOrdenEstimacion.Atiende;
+
+
+                SqlParameter sqlpTrabajoRequerido = new SqlParameter();
+                sqlpTrabajoRequerido.ParameterName = "@TrabajoRequerido";
+                sqlpTrabajoRequerido.SqlDbType = SqlDbType.VarChar;
+
+                if (iOrdenEstimacion.TrabajoRequerido == null)
+                    sqlpTrabajoRequerido.Value = DBNull.Value;
+                else
+                    sqlpTrabajoRequerido.Value = iOrdenEstimacion.TrabajoRequerido;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -106,6 +182,14 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpUsuario);
                 sqlcComando.Parameters.Add(sqlpOrigen);
                 sqlcComando.Parameters.Add(sqlpOrigenID);
+                sqlcComando.Parameters.Add(sqlpReporte);
+                sqlcComando.Parameters.Add(sqlpDivision);
+                sqlcComando.Parameters.Add(sqlpFechaOrigen);
+                sqlcComando.Parameters.Add(sqlpFechaMaxima);
+                sqlcComando.Parameters.Add(sqlpDiasAtencion);
+                sqlcComando.Parameters.Add(sqlpReporto);
+                sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
+                sqlcComando.Parameters.Add(sqlpAtiende);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -195,8 +279,82 @@ namespace OSEF.APP.DL
                     sqlpOrigenID.Value = DBNull.Value;
                 else
                     sqlpOrigenID.Value = uOrdenEstimacion.OrigenId;
-              
 
+
+                SqlParameter sqlpReporte = new SqlParameter();
+                sqlpReporte.ParameterName = "@Reporte";
+                sqlpReporte.SqlDbType = SqlDbType.VarChar;
+
+                if (uOrdenEstimacion.Reporte == null)
+                    sqlpReporte.Value = DBNull.Value;
+                else
+                    sqlpReporte.Value = uOrdenEstimacion.Reporte;
+
+
+                SqlParameter sqlpDivision = new SqlParameter();
+                sqlpDivision.ParameterName = "@Division";
+                sqlpDivision.SqlDbType = SqlDbType.VarChar;
+
+                if (uOrdenEstimacion.Division == null)
+                    sqlpDivision.Value = DBNull.Value;
+                else
+                    sqlpDivision.Value = uOrdenEstimacion.Division;
+
+                SqlParameter sqlpFechaOrigen = new SqlParameter();
+                sqlpFechaOrigen.ParameterName = "@FechaOrigen";
+                sqlpFechaOrigen.SqlDbType = SqlDbType.SmallDateTime;
+
+                if (uOrdenEstimacion.FechaOrigen == null)
+                    sqlpFechaOrigen.Value = DBNull.Value;
+                else
+                    sqlpFechaOrigen.Value = uOrdenEstimacion.FechaOrigen;
+
+                SqlParameter sqlpFechaMaxima = new SqlParameter();
+                sqlpFechaMaxima.ParameterName = "@FechaMaximaAtencion";
+                sqlpFechaMaxima.SqlDbType = SqlDbType.SmallDateTime;
+
+                if (uOrdenEstimacion.FechaMaximaAtencion == null)
+                    sqlpFechaMaxima.Value = DBNull.Value;
+                else
+                    sqlpFechaMaxima.Value = uOrdenEstimacion.FechaMaximaAtencion;
+
+                SqlParameter sqlpDiasAtencion = new SqlParameter();
+                sqlpDiasAtencion.ParameterName = "@DiasAtencion";
+                sqlpDiasAtencion.SqlDbType = SqlDbType.Decimal;
+
+                if (uOrdenEstimacion.DiasAtencion == null)
+                    sqlpDiasAtencion.Value = DBNull.Value;
+                else
+                    sqlpDiasAtencion.Value = uOrdenEstimacion.DiasAtencion;
+
+                SqlParameter sqlpReporto = new SqlParameter();
+                sqlpReporto.ParameterName = "@Reporto";
+                sqlpReporto.SqlDbType = SqlDbType.VarChar;
+
+                if (uOrdenEstimacion.Reporto == null)
+                    sqlpReporto.Value = DBNull.Value;
+                else
+                    sqlpReporto.Value = uOrdenEstimacion.Reporto;
+
+
+                SqlParameter sqlpAtiende = new SqlParameter();
+                sqlpAtiende.ParameterName = "@Atiende";
+                sqlpAtiende.SqlDbType = SqlDbType.VarChar;
+
+                if (uOrdenEstimacion.Atiende == null)
+                    sqlpAtiende.Value = DBNull.Value;
+                else
+                    sqlpAtiende.Value = uOrdenEstimacion.Atiende;
+
+
+                SqlParameter sqlpTrabajoRequerido = new SqlParameter();
+                sqlpTrabajoRequerido.ParameterName = "@TrabajoRequerido";
+                sqlpTrabajoRequerido.SqlDbType = SqlDbType.VarChar;
+
+                if (uOrdenEstimacion.TrabajoRequerido == null)
+                    sqlpTrabajoRequerido.Value = DBNull.Value;
+                else
+                    sqlpTrabajoRequerido.Value = uOrdenEstimacion.TrabajoRequerido;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -207,6 +365,14 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpEstatus);
                 sqlcComando.Parameters.Add(sqlpOrigen);
                 sqlcComando.Parameters.Add(sqlpOrigenID);
+                sqlcComando.Parameters.Add(sqlpReporte);
+                sqlcComando.Parameters.Add(sqlpDivision);
+                sqlcComando.Parameters.Add(sqlpFechaOrigen);
+                sqlcComando.Parameters.Add(sqlpFechaMaxima);
+                sqlcComando.Parameters.Add(sqlpDiasAtencion);
+                sqlcComando.Parameters.Add(sqlpReporto);
+                sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
+                sqlcComando.Parameters.Add(sqlpAtiende);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

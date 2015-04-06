@@ -26,6 +26,8 @@ namespace OSEF.APP.EL
         string estatus;
         DateTime fechaalta;
         string tipo;
+        string moneda;
+
         PreciarioGeneralCategoria rcategoria;
         PreciarioGeneralSubCategoria rsubcategoria;
         PreciarioGeneralSubSubCategoria rsubsubcategoria;
@@ -135,6 +137,13 @@ namespace OSEF.APP.EL
         {
             get { return rsubsubcategoria; }
             set { rsubsubcategoria = value; }
+        }
+
+
+        public string Moneda
+        {
+            get { return moneda; }
+            set { moneda = value; }
         }
 
         #endregion

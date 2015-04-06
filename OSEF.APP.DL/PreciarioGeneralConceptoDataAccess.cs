@@ -40,7 +40,7 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpClave = new SqlParameter();
                 sqlpClave.ParameterName = "@Clave";
                 sqlpClave.SqlDbType = SqlDbType.Char;
-                sqlpClave.Size = 7;
+                sqlpClave.Size = 30;
                 sqlpClave.Value = iPreciarioConcepto.Clave;
 
                 SqlParameter sqlpPreciario = new SqlParameter();
@@ -103,6 +103,11 @@ namespace OSEF.APP.DL
                 sqlpFechaAlta.SqlDbType = SqlDbType.SmallDateTime;
                 sqlpFechaAlta.Value = iPreciarioConcepto.FechaAlta;
 
+                SqlParameter sqlpMoneda = new SqlParameter();
+                sqlpMoneda.ParameterName = "@Moneda";
+                sqlpMoneda.SqlDbType = SqlDbType.VarChar;
+                sqlpMoneda.Value = iPreciarioConcepto.Moneda;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpClave);
@@ -117,7 +122,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpUsuario);
                 sqlcComando.Parameters.Add(sqlpEstatus);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
-
+                sqlcComando.Parameters.Add(sqlpMoneda);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

@@ -38,7 +38,16 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 	@Estatus		VARCHAR(20),
 	@Usuario		VARCHAR(50),
 	@Origen			VARCHAR(50),
-	@OrigenID		VARCHAR(50)
+	@OrigenID		VARCHAR(50),
+	@Reporte		VARCHAR(50),
+	@Division		VARCHAR(30),
+	@FechaOrigen	SMALLDATETIME,
+	@FechaMaximaAtencion SMALLDATETIME,
+	@DiasAtencion	DECIMAL(5,0),
+	@Reporto		VARCHAR(100),
+	@TrabajoRequerido VARCHAR(850),
+	@Atiende		VARCHAR(100)
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -57,7 +66,15 @@ BEGIN
 			Estatus,
 			Usuario,
 			Origen,
-			OrigenID
+			OrigenID,
+			Reporte,
+			Division,
+			FechaOrigen,
+			FechaMaximaAtencion,
+			DiasAtencion,
+			Reporto,
+			TrabajoRequerido,
+			Atiende
 		)
 	VALUES (
 			@Mov,
@@ -68,7 +85,15 @@ BEGIN
 			@Estatus,
 			@Usuario,
 			@Origen,
-			@OrigenID
+			@OrigenID,
+			@Reporte,
+			@Division,
+			@FechaOrigen,
+			@FechaMaximaAtencion,
+			@DiasAtencion,
+			@Reporto,
+			@TrabajoRequerido,
+			@Atiende
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

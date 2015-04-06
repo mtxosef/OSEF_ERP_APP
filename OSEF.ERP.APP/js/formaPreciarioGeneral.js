@@ -78,31 +78,7 @@ var rMnto_Change = function (radio) {
     HabilitarGuardar();
 };
 
-/*-------------------------Validacion de guardar-----------------*/
-//Función que valida si se habilita el botón de Guardar
-function HabilitarGuardar() {
-    //Valida que el control de subir archivo contenga algo, si no, se le asigna un caracter, para que entre a la validacion de habilitarGuarda();
-    var FileUploadValue = "s";
-    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo' && App.fufArchivoExcel.getValue() == "") {
-        FileUploadValue = "1";
-    }
-    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') == 'Nuevo') {
 
-        FileUploadValue = App.fufArchivoExcel.getValue();
-    }
-
-    //Valida que todos los controles del encabezado obligatorios estén llenos
-    if (FileUploadValue != "" && App.txtfDescripcion.getValue() != "" && App.sCarga.getCount() != 0) {
-        if (App.rObra.getValue() == true || App.rMnto.getValue() == true) 
-        {
-        App.imgbtnGuardar.setDisabled(false);
-        }
-        
-    }
-    else {
-        App.imgbtnGuardar.setDisabled(true);
-    }
-}
 
 //Evento lanzado al cargar el store de avance encabezado
 var sPreciarioGeneral_Load_Success = function () {
@@ -284,19 +260,58 @@ var ceFormaPreciarioGeneral_ValidateEdit = function (editor, context, opciones) 
     }
 };
 
+
 //Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
 var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
+
     //Verificar si abajo de esta columna existe otra
     if (App.sCarga.getAt(columna.rowIdx + 1) == undefined) {
+
         //Verificar si toda la fila contiene datos
         var registro = App.sCarga.getAt(columna.rowIdx);
-        if (registro.get('Descripcion').length != 0 && registro.get('Cantidad') != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
+
+
+        if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
             //Insertar un nuevo registro
             App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' });
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
             //Validar si se habilita el boton de afectar
-            // HabilitarGuardar();
+           
+            HabilitarGuardar();
         }
     }
+
+
 };
+
+
+/*-------------------------Validacion de guardar-----------------*/
+//Función que valida si se habilita el botón de Guardar
+function HabilitarGuardar() {
+    //Valida que el control de subir archivo contenga algo, si no, se le asigna un caracter, para que entre a la validacion de habilitarGuarda();
+    var FileUploadValue = "s";
+    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo' && App.fufArchivoExcel.getValue() == "") {
+        FileUploadValue = "1";
+    }
+    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') == 'Nuevo') {
+
+        FileUploadValue = App.fufArchivoExcel.getValue();
+    }
+
+    //Valida que todos los controles del encabezado obligatorios estén llenos
+    if (FileUploadValue != "" && App.txtfDescripcion.getValue() != "" && App.sCarga.getCount() != 0) {
+        if (App.rObra.getValue() == true || App.rMnto.getValue() == true) {
+
+
+          
+           App.imgbtnGuardar.setDisabled(false);
+           
+          
+        }
+
+    }
+    else {
+        App.imgbtnGuardar.setDisabled(true);
+    }
+}

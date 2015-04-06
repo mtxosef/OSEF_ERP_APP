@@ -25,6 +25,10 @@ namespace OSEF.ERP.APP
             //1. Validar peticiones AjaxRequest
             if (!X.IsAjaxRequest)
             {
+
+                //Checar ticket de autenticación
+                UsuarioBusiness.checkValidSession(this);
+
                 //2. Asignar Categorias
                 sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(Cookies.GetCookie("cookieEditarPreciarioGeneral").Value);
                 sCategoria.DataBind();
@@ -184,6 +188,7 @@ namespace OSEF.ERP.APP
                         pc.Usuario = oUsuario.ID;
                         pc.Estatus = sd.Estatus;
                         pc.FechaAlta = sd.FechaAlta;
+                        pc.Moneda = sd.Moneda;
                         PreciarioGeneralConceptoBusiness.Insertar(pc);
                     }
                 }
@@ -279,6 +284,20 @@ namespace OSEF.ERP.APP
             }
         }
 
+        /// <summary>
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sCarga(object sender, StoreReadDataEventArgs e)
+        {
+            //4. Cargar el detalle del movimiento
+            string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciarioGeneral").Value;
+
+            sCarga.DataSource = PreciarioGeneralConceptoBusiness.ObtenerPreciarioGeneralConceptoPorPreciario(strcookieEditarPreciario);
+            sCarga.DataBind();
+        }
+
         //Evento que se lanza al dar click en el boton de Cargar
         public void btnImportar_Click(object sender, DirectEventArgs e)
         {
@@ -333,7 +352,7 @@ namespace OSEF.ERP.APP
             permitidos.Add("Cantidad");
             permitidos.Add("Precio");
             permitidos.Add("Tipo");
-
+            permitidos.Add("Moneda");
             //Extraemos e modelo de columnas del excel
             DataTable ExcelValues = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Columns, new object[] { null, null, SheetName, null });
             //Declaramos una lista para meter los nombres de las columnas a comparar
@@ -352,7 +371,7 @@ namespace OSEF.ERP.APP
             {
                 //Se declara el objeto de comando que se encargará de realizar la consulta
                 OleDbCommand seleccion = default(OleDbCommand);
-                seleccion = new OleDbCommand("Select id, Concepto, Unidad, Cantidad, Precio, Tipo From [" + SheetName + "]", connExcel);
+                seleccion = new OleDbCommand("Select id, Concepto, Unidad, Cantidad, Precio, Tipo, Moneda From [" + SheetName + "]", connExcel);
                 //Se ejecuta la consulta
                 OleDbDataAdapter adaptador = new OleDbDataAdapter();
                 adaptador.SelectCommand = seleccion;
@@ -395,7 +414,8 @@ namespace OSEF.ERP.APP
                                 SubSubCategoria = "",
                                 FechaAlta = FechaAlta,
                                 Estatus = strEstatus,
-                                Tipo = row["Tipo"]
+                                Tipo = row["Tipo"],
+                                Moneda = row["Moneda"]
 
                             });
                         }
@@ -415,7 +435,8 @@ namespace OSEF.ERP.APP
                                 SubSubCategoria = "",
                                 FechaAlta = FechaAlta,
                                 Estatus = strEstatus,
-                                Tipo = row["Tipo"]
+                                Tipo = row["Tipo"],
+                                Moneda = row["Moneda"]
                             });
                         }
                         if (row["Tipo"].ToString().Equals("3"))
@@ -433,7 +454,8 @@ namespace OSEF.ERP.APP
                                 SubSubCategoria = "",
                                 FechaAlta = FechaAlta,
                                 Estatus = strEstatus,
-                                Tipo = row["Tipo"]
+                                Tipo = row["Tipo"],
+                                Moneda = row["Moneda"]
                             });
 
                         }
@@ -452,7 +474,8 @@ namespace OSEF.ERP.APP
                                 SubSubCategoria = sscategoria,
                                 FechaAlta = FechaAlta,
                                 Estatus = strEstatus,
-                                Tipo = row["Tipo"]
+                                Tipo = row["Tipo"],
+                                Moneda = row["Moneda"]
                             });
                         }
 
@@ -544,5 +567,8 @@ namespace OSEF.ERP.APP
         {
             return PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorID(strSubSubCategoria);
         }
+
+       
+
     }
 }

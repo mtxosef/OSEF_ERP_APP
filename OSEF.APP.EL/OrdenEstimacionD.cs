@@ -21,6 +21,10 @@ namespace OSEF.APP.EL
         decimal precio;
         decimal importe;
         PreciarioGeneralConcepto rpreciarioconceptos;
+        OrdenEstimacion rmovimiento;
+
+       
+
         #endregion
 
         #region Propiedades
@@ -75,6 +79,13 @@ namespace OSEF.APP.EL
             get { return rpreciarioconceptos; }
             set { rpreciarioconceptos = value; }
         }
+
+        public OrdenEstimacion RMovimiento
+        {
+            get { return rmovimiento; }
+            set { rmovimiento = value; }
+        }
+
         #endregion
     }
 }

@@ -49,3 +49,17 @@ ALTER TABLE CLIENTES ADD  EMPRESACALLE VARCHAR(100)
 ALTER TABLE CLIENTES ALTER COLUMN Profesion CHAR(7) NULL 
 
 ALTER TABLE CodigosPostales ALTER COLUMN ID CHAR(10) NULL 
+
+-- Cambios 30 de Marzo 
+ALTER TABLE PreciariosGeneralesConceptos ALTER COLUMN CLAVE CHAR(30) NULL
+ALTER TABLE PreciariosGeneralesConceptos ADD  MONEDA VARCHAR(30) NULL
+
+--Cambios 31 de Marzo
+ALTER TABLE OrdenesEstimaciones ADD  Reporte VARCHAR(30) NULL
+ALTER TABLE OrdenesEstimaciones ADD  Division VARCHAR(30) NULL
+ALTER TABLE OrdenesEstimaciones ADD  FechaOrigen SMALLDATETIME NULL
+ALTER TABLE OrdenesEstimaciones ADD  FechaMaximaAtencion SMALLDATETIME NULL
+ALTER TABLE OrdenesEstimaciones ADD  DiasAtencion DECIMAL(5,0) NULL 
+ALTER TABLE OrdenesEstimaciones ADD  Reporto VARCHAR(100) NULL
+ALTER TABLE OrdenesEstimaciones ADD  TrabajoRequerido VARCHAR(850) NULL
+ALTER TABLE OrdenesEstimaciones ADD  Atiende VARCHAR(100) NULL

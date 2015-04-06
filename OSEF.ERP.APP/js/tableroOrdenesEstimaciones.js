@@ -4,7 +4,7 @@
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
     window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
-    window.parent.App.wEmergente.setHeight(551.5);
+    window.parent.App.wEmergente.setHeight(600);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
@@ -17,7 +17,7 @@ var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'));
   
     window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
-    window.parent.App.wEmergente.setHeight(551.5);
+    window.parent.App.wEmergente.setHeight(600);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));

@@ -4,10 +4,23 @@
 //Evento lanzado al cargar el store de avance encabezado
 var sFormaGenerador_Load = function () {
 
+    App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
 
+    console.log(App.sFormaGenerador);
 
-    App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), { No: 'ADC-001' });
+    App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
 
+    //Pinta el tota
+    var sum = 0;
+    App.sFormaGenerador.each(function (record) {
+
+        sum += record.get('Total');
+    });
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
 };
 
 
@@ -57,18 +70,19 @@ var ceGenerador_Edit = function (cellediting, columna) {
         //Verificar si toda la fila contiene datos
         var registro = App.sFormaGenerador.getAt(columna.rowIdx);
 
-      
 
-        if (registro.get('No').length != 0
-        && registro.get('Localizacion').length != 0
-        && registro.get('Total') != 0) {
+
+        if (registro.get('Numero').length != 0
+        && registro.get('Area').length != 0
+        && registro.get('Total') != 0 ) {
 
             //Insertar un nuevo registro
             App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpFormaGenerador.getView().refreshNode(App.sFormaGenerador.getCount() - 2);
             //Validar si se habilita el boton de afectar
-            // HabilitarAfectar();
+            HabilitarGuardar();
+
         }
     }
 };
@@ -273,3 +287,41 @@ var obetenerRenglon_Select = function (gridview, registro, index) {
 }
 
 
+var txtDescripcion_Corta_Change = function () {
+    HabilitarGuardar();
+}
+
+//Validar si se habilita el botón d Afectar
+function HabilitarGuardar() {
+    //Obtiene la fecha de emision del store
+    if (App.txtDescripcionCorta.getValue() != '') {
+
+
+        if (App.gpFormaGenerador.getStore().getCount() != 0) 
+            {
+
+                if (App.sFormaGenerador.getAt(0).get('Numero').length != 0
+                    && App.sFormaGenerador.getAt(0).get('Area').length != 0
+                    && App.sFormaGenerador.getAt(0).get('Total') != 0) {
+
+                    App.imgbtnAceptar.setDisabled(false);
+                }
+            }
+            else 
+            {
+                App.imgbtnAceptar.setDisabled(true);
+            }
+        
+        
+    }
+    else {
+        App.imgbtnAceptar.setDisabled(true);
+    }
+}
+
+
+var imgbtnAceptar_Click = function () {
+   
+    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Cantidad", parseFloat(App.dfTotal.getValue()));
+    window.parent.App.wGenerador.hide();
+}

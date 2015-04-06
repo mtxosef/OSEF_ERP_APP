@@ -46,10 +46,14 @@
     <Compile Include="ClienteDataAccess.cs" />
     <Compile Include="ColoniaDataAccess.cs" />
     <Compile Include="ConceptoDataAccess.cs" />
+    <Compile Include="CroquisOrdenEstimacionDDataAccess.cs" />
     <Compile Include="CuentaContableDataAccess.cs" />
     <Compile Include="EstadoDataAccess.cs" />
+    <Compile Include="FacturaOrdenEstimacionDDataAccess.cs" />
     <Compile Include="FinalidadDataAccess.cs" />
+    <Compile Include="GeneradorOrdenEstimacionDDataAccess.cs" />
     <Compile Include="GrupoMenuDataAccess.cs" />
+    <Compile Include="ImagenOrdenEstimacionDDataAccess.cs" />
     <Compile Include="ImagenVolumetriaDDataAccess.cs" />
     <Compile Include="MenuDataAccess.cs" />
     <Compile Include="MunicipioDataAccess.cs" />

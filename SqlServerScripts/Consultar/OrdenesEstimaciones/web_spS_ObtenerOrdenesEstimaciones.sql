@@ -46,7 +46,16 @@ BEGIN
 		Estatus,
 		Usuario,
 		Origen,
-		OrigenID
+		OrigenID,
+		Reporte,
+		Division,
+		FechaOrigen,
+		FechaMaximaAtencion,
+		DiasAtencion,
+		Reporto,
+		TrabajoRequerido,
+		Atiende
+		
 	FROM
 		OrdenesEstimaciones
 END

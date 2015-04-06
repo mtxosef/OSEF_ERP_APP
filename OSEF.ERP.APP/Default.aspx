@@ -66,7 +66,7 @@
             <div id="nav-bar" class="">
                 <div class="pull-left">
                     <div id="header-container">
-                        <a href="Default.aspx"><img src="images/logo.png" class="imgs" alt="logo" /></a>
+                        <a href="Default.aspx"><img src="images/Ibuho.png" class="imgs" alt="logo" /></a>
                     </div>
                 </div>
                 <div class="pull-right">

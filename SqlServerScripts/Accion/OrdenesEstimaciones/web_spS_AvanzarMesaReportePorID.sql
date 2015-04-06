@@ -48,7 +48,15 @@ BEGIN
 		@FechaEmision	SMALLDATETIME,
 		@Observaciones	VARCHAR(200),
 		@Estatus		VARCHAR(20),
-		@Usuario		VARCHAR(50)
+		@Usuario		VARCHAR(50),
+		@Reporte		VARCHAR(50),
+		@Division		VARCHAR(30),
+		@FechaOrigen	SMALLDATETIME,
+		@FechaMaximaAtencion SMALLDATETIME,
+		@DiasAtencion	DECIMAL(5,0),
+		@Reporto		VARCHAR(100),
+		@TrabajoRequerido VARCHAR(850),
+		@Atiende		VARCHAR(100)
 	SELECT
 		@MovA = Mov,
 		@MovID = MovID,
@@ -58,7 +66,15 @@ BEGIN
 		@FechaEmision = FechaEmision,
 		@Observaciones = Observaciones,
 		@Estatus = Estatus,
-		@Usuario = Usuario
+		@Usuario = Usuario,
+		@Reporte = Reporte,
+		@Division = Division,
+		@FechaOrigen =  FechaOrigen,
+		@FechaMaximaAtencion = FechaMaximaAtencion,
+		@DiasAtencion = DiasAtencion,
+		@Reporto = Reporto,
+		@TrabajoRequerido = TrabajoRequerido,
+		@Atiende = Atiende
 	FROM
 		OrdenesEstimaciones
 	WHERE
@@ -75,7 +91,15 @@ BEGIN
 			FechaEmision,
 			Observaciones,
 			Estatus,
-			Usuario
+			Usuario,
+			Reporte,
+			Division,
+			FechaOrigen,
+			FechaMaximaAtencion,
+			DiasAtencion,
+			Reporto,
+			TrabajoRequerido,
+			Atiende
 		)
 	VALUES
 		(
@@ -87,7 +111,15 @@ BEGIN
 			GETDATE(),
 			NULL,
 			'PENDIENTE',
-			@Usuario
+			@Usuario,
+			@Reporte,
+			@Division,
+			@FechaOrigen,
+			@FechaMaximaAtencion,
+			@DiasAtencion,
+			@Reporto,
+			@TrabajoRequerido,
+			@Atiende
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()

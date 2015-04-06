@@ -25,13 +25,14 @@ var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
 
     //Valida si se cambia otro concepto en un borrador para borrar las imagenes solo si el renglon ya tiene un cocnepto
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).get('ConceptoID') != '') {
-        //se guarda el concepto y el Id de la volumetria para mandar llamar al metodo del lado del servidor
-        //Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('ID'));
-        //Ext.util.Cookies.set('cookieConceptoFotosVolumetria', window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).get('ConceptoID'));
+        //se guarda el concepto y el Id del movimeinto para mandar llamar al metodo del lado del servidor
+        Ext.util.Cookies.set('cookieIDBorrarFotosOrdenEstimacion', window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('ID'));
+        Ext.util.Cookies.set('cookieConceptoFotosOrdenEstimacion', window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).get('ConceptoID'));
         //se manda llamar el metodo de lado del servidor
-        // window.parent.App.wEmergente.getBody().App.direct.obtenerImagenesPorConcepto();
+         window.parent.App.wEmergente.getBody().App.direct.obtenerImagenesPorConcepto();
 
     }
+
 
     //valida en el doble click si el concept ya esta en store del detalle de volumetria
     if (window.parent.App.wEmergente.getBody().App.sConceptos.find('ConceptoID', App.sConceptosFiltrados.getAt(index).get('ID')) == -1) {

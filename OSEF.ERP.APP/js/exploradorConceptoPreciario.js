@@ -49,13 +49,6 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 
 
 
-//Asignar la descripción de la sucursal a este combobox
-var cPreciario_Renderer = function (combo, registro) {
-    console.log(registro);
-
-
-};
-
 
 //Evento que hace el filtro al seleccionar algun elemento
 var cmbCantidadFiltro_Select = function (combobox, registro) {

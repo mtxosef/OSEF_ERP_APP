@@ -31,6 +31,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ResourceManager rmFormaGenerador;
         
         /// <summary>
+        /// Control panelGenerador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel panelGenerador;
+        
+        /// <summary>
         /// Control gpFormaGenerador.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ImageButton imgbtnCancelar;
+        
+        /// <summary>
+        /// Control txtDescripcionCorta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtDescripcionCorta;
         
         /// <summary>
         /// Control sFormaGenerador.
@@ -112,22 +130,85 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfNo;
         
         /// <summary>
-        /// Control cLocalizacion.
+        /// Control cArea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cLocalizacion;
+        protected global::Ext.Net.Column cArea;
         
         /// <summary>
-        /// Control txtfLozalizacion.
+        /// Control txtfArea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfLozalizacion;
+        protected global::Ext.Net.TextField txtfArea;
+        
+        /// <summary>
+        /// Control ncEje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberColumn ncEje;
+        
+        /// <summary>
+        /// Control nfEje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfEje;
+        
+        /// <summary>
+        /// Control cColumnaContenedora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cColumnaContenedora;
+        
+        /// <summary>
+        /// Control ncEntreEje1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberColumn ncEntreEje1;
+        
+        /// <summary>
+        /// Control nfEntreEje1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfEntreEje1;
+        
+        /// <summary>
+        /// Control ncEntreEje2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberColumn ncEntreEje2;
+        
+        /// <summary>
+        /// Control nfEntreEje2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfEntreEje2;
         
         /// <summary>
         /// Control cLargo.

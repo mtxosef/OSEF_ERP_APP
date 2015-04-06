@@ -31,10 +31,20 @@
    
     <ext:ResourceManager ID="rmFormaGenerador" runat="server" HideInDesign="true" />
 
-        <ext:GridPanel
+    <ext:Panel 
+            ID="panelGenerador" 
+            runat="server"
+            Width="905"
+            Height="270"
+            DefaultButton="imgbtnGuardar"
+            BodyPadding="5"
+            DefaultAnchor="100%">
+            <Items>
+            <ext:GridPanel
                 ID="gpFormaGenerador"
                 runat="server"
-                Width="810"
+                Width="890"
+                 Cls="xCustomGridPanel"
                 Height="260"
                 AutoScroll="true"
                 EnableColumnHide="false"
@@ -51,8 +61,19 @@
                             OverImageUrl="assets/img/controles/GuardarOver.png" 
                             PressedImageUrl="assets/img/controles/GuardarPressed.png" 
                             ToolTip="Guardar" 
+                            Disabled="true"
                             Height="30"
                             Width="30">
+                              <DirectEvents>
+                                <Click OnEvent="imgbtnAceptar_Click" Success="imgbtnAceptar_Click">
+                                    <EventMask ShowMask="true" Msg="Guardardo información..." />
+                                    <ExtraParams>
+                                       <ext:Parameter Name="DescripcionCorta" Value="App.txtDescripcionCorta.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="GeneradorD" Value="Ext.encode(#{sFormaGenerador}.getRecordsValues())" Mode="Raw" />
+                                    </ExtraParams>
+                                </Click>
+                            </DirectEvents>
+
                         </ext:ImageButton>
                          <ext:ImageButton 
                             ID="imgbtnCancelar" 
@@ -68,6 +89,16 @@
                                 <Click Handler="window.parent.App.wEmergente.hide();" />
                             </Listeners>
                         </ext:ImageButton>
+
+                        <ext:TextField
+                        ID="txtDescripcionCorta" 
+                        runat="server" 
+                        Width="400"
+                        EmptyText="Descripción Corta">
+                            <Listeners>
+                                <Change Fn="txtDescripcion_Corta_Change"></Change>
+                            </Listeners>
+                        </ext:TextField>
                     </Items>
                 </ext:Toolbar>
             </TopBar>
@@ -81,14 +112,20 @@
                                 ID="mFormaGenerador"
                                 runat="server">
                                 <Fields>
-                                    <ext:ModelField Name="ID" Type="Int" />
-                                    <ext:ModelField Name="No" Type="String" />
-                                    <ext:ModelField Name="Localizacion" Type="String" />
+                                    <ext:ModelField Name="MovID" Type="Int" />
+                                    <ext:ModelField Name="ConceptoID" Type="String" />
+                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                    <ext:ModelField Name="Numero" Type="String" />
+                                    <ext:ModelField Name="Eje" Type="String" />
+                                    <ext:ModelField Name="EntreEje1" Type="String" />
+                                    <ext:ModelField Name="EntreEje2" Type="String" />
+                                    <ext:ModelField Name="Area" Type="String" />
                                     <ext:ModelField Name="Largo" Type="Float" />
                                     <ext:ModelField Name="Ancho" Type="Float" />
                                     <ext:ModelField Name="Alto" Type="Float" />
                                     <ext:ModelField Name="Cantidad" Type="Float" />
                                     <ext:ModelField Name="Total" Type="Float" />
+                                    <ext:ModelField Name="RConcepto" Type="Object" />
                                 </Fields>
                             </ext:Model>
                         </Model>
@@ -122,7 +159,7 @@
                             runat="server"
                             Text="No."
                             Width="60"
-                            DataIndex="No">
+                            DataIndex="Numero">
                             <Editor>
                                 <ext:TextField ID="txtfNo" runat="server">
                                       <Listeners>
@@ -132,26 +169,110 @@
                             </Editor>
                         </ext:Column>
                         <ext:Column
-                            ID="cLocalizacion"
+                            ID="cArea"
                             runat="server"
-                            Text="Lozalización"
-                            Width="220"
-                            DataIndex="Localizacion">
+                            Text="AREA"
+                            Width="200"
+                            DataIndex="Area">
                             <Editor>
-                                <ext:TextField ID="txtfLozalizacion" runat="server">
+                                <ext:TextField ID="txtfArea" runat="server">
                                       <Listeners>
                                         <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                                     </Listeners>             
                                 </ext:TextField>
                             </Editor>
                         </ext:Column>
+
+
+                        <ext:NumberColumn
+                            ID="ncEje"
+                            runat="server"
+                            Align="Center"
+                            Text="EJE"
+                            DataIndex="Eje"
+                            Width="70">
+                            <Renderer Fn="nfLargo_Renderer" />
+                            <Editor>
+                                <ext:NumberField 
+                                    ID="nfEje"
+                                    runat="server"
+                                    AllowDecimals="true"
+                                    AllowExponential="false"
+                                    DecimalPrecision="2"
+                                    DecimalSeparator="."
+                                    MaxLength="10"
+                                    EnforceMaxLength="true"
+                                    MaxValue="999999999"
+                                    MinValue="0"
+                                    Step="1">
+                                </ext:NumberField>
+                            </Editor>
+                        </ext:NumberColumn>
+
+
+                        <ext:Column ID="cColumnaContenedora" runat="server" Text="LOCALIZACIÓN">
+                        <Columns>
+                        <ext:NumberColumn
+                            ID="ncEntreEje1"
+                            runat="server"
+                            Align="Center"
+                            Text="EJE 1"
+                            DataIndex="EntreEje1"
+                            Width="70">
+                            <Renderer Fn="nfLargo_Renderer" />
+                            <Editor>
+                                <ext:NumberField 
+                                    ID="nfEntreEje1"
+                                    runat="server"
+                                    AllowDecimals="true"
+                                    AllowExponential="false"
+                                    DecimalPrecision="2"
+                                    DecimalSeparator="."
+                                    MaxLength="10"
+                                    EnforceMaxLength="true"
+                                    MaxValue="999999999"
+                                    MinValue="0"
+                                    Step="1">
+                                </ext:NumberField>
+                            </Editor>
+                        </ext:NumberColumn>
+
+                        <ext:NumberColumn
+                            ID="ncEntreEje2"
+                            runat="server"
+                            Align="Center"
+                            Text="EJE 2"
+                            DataIndex="EntreEje2"
+                            Width="70">
+                            <Renderer Fn="nfLargo_Renderer" />
+                            <Editor>
+                                <ext:NumberField 
+                                    ID="nfEntreEje2"
+                                    runat="server"
+                                    AllowDecimals="true"
+                                    AllowExponential="false"
+                                    DecimalPrecision="2"
+                                    DecimalSeparator="."
+                                    MaxLength="10"
+                                    EnforceMaxLength="true"
+                                    MaxValue="999999999"
+                                    MinValue="0"
+                                    Step="1">
+                                </ext:NumberField>
+                            </Editor>
+                        </ext:NumberColumn>
+                        </Columns>
+                        
+                      </ext:Column>
+
+
                         <ext:NumberColumn
                             ID="cLargo"
                             runat="server"
                             Align="Center"
-                            Text="Largo"
+                            Text="LARGO"
                             DataIndex="Largo"
-                            Width="90">
+                            Width="70">
                             <Renderer Fn="nfLargo_Renderer" />
                             <Editor>
                                 <ext:NumberField 
@@ -177,9 +298,9 @@
                             ID="ncAncho"
                             runat="server"
                             Align="Center"
-                            Text="Ancho"
+                            Text="ANCHO"
                             DataIndex="Ancho"
-                            Width="90">
+                            Width="70">
                             <Renderer Fn="nfAncho_Renderer" />
                             <Editor>
                                 <ext:NumberField 
@@ -205,9 +326,9 @@
                             ID="ncAlto"
                             runat="server"
                             Align="Center"
-                            Text="Alto"
+                            Text="ALTO"
                             DataIndex="Alto"
-                            Width="90">
+                            Width="70">
                             <Renderer Fn="nfAlto_Renderer" />
                             <Editor>
                                 <ext:NumberField 
@@ -232,9 +353,9 @@
                             ID="ncCantidad"
                             runat="server"
                             Align="Center"
-                            Text="Cantidad"
+                            Text="CANTIDAD"
                             DataIndex="Cantidad"
-                            Width="105">
+                            Width="90">
                             <Renderer Fn="nfCantidad_Renderer" />
                             <Editor>
                                 <ext:NumberField 
@@ -260,9 +381,9 @@
                             ID="ncTotal"
                             runat="server"
                             Align="Center"
-                            Text="Total"
+                            Text="TOTAL"
                             DataIndex="Total"
-                            Width="120">
+                            Width="90">
                             <Renderer Fn="ncTotal_Renderer" />
                         </ext:NumberColumn>
 
@@ -304,7 +425,7 @@
                             runat="server"
                             FieldLabel="Total"
                             Cls="total-field"
-                            Margins="0 0px 0 560px"
+                            Margins="0 0px 0 620px"
                             Width="240"
                             Text="">
                         </ext:DisplayField>
@@ -316,7 +437,8 @@
                         <Select Fn="obetenerRenglon_Select"></Select>
                         </Listeners>
             </ext:GridPanel>
-
+          </Items>
+      </ext:Panel>
     </form>
 </body>
 </html>
