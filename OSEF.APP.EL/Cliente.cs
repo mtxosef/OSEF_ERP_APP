@@ -44,7 +44,7 @@ namespace OSEF.APP.EL
         string empresaestado;
         string empresamunicipio;
         string empresatelefono;
-        Nullable<int> empresatelefonoext;
+        Nullable<short> empresatelefonoext;
         string puesto;
         string tiposocio;
         string numerosocio;
@@ -250,7 +250,7 @@ namespace OSEF.APP.EL
             set { empresatelefono = value; }
         }
 
-        public Nullable<int> EmpresaTelefonoExt
+        public Nullable<short> EmpresaTelefonoExt
         {
             get { return empresatelefonoext; }
             set { empresatelefonoext = value; }

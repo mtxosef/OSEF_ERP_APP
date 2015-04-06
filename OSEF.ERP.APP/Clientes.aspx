@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Clientes.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.Socios" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Clientes.aspx.cs" Inherits="OSEF.ERP.APP.Clientes" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,7 +9,6 @@
     <script type="text/javascript">
         window.onload = cargarEstilo;
     </script>
-
 </head>
 <body class="xCustomBody" >
     <form id="form1" runat="server">
@@ -26,9 +25,9 @@
             Header="true"
             TitleAlign="Left"
             StyleSpec="margin:0 auto; margin-top: 20px;">
-           <Listeners>
-            <BeforeRender Fn="gpClientesRender"></BeforeRender>
-           </Listeners>
+            <Listeners>
+                <BeforeRender Fn="gpClientesRender"></BeforeRender>
+            </Listeners>
             <TopBar>
                 <ext:Toolbar ID="tbClientes" runat="server">
                     <Items>
@@ -68,7 +67,6 @@
                             PressedImageUrl="assets/img/controles/delete-pressed.png"
                             Height="50"
                             Width="50">
-                           
                         </ext:ImageButton>
                         <ext:ToolbarSpacer ID="tbsConceptos" runat="server" Width="500">
                         </ext:ToolbarSpacer>
@@ -81,7 +79,6 @@
                             PressedImageUrl="assets/img/controles/update-pressed.png"
                             Height="50"
                             Width="50">
-                        
                         </ext:ImageButton>
                         <ext:TextField 
                             ID="txtBuscar"
@@ -89,7 +86,6 @@
                             AutoFocus="true"
                             EmptyText="Buscar"
                             Width="200">
-                      
                             <RightButtons>
                                 <ext:ImageButton
                                     ID="imgbtnBuscar"

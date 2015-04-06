@@ -92,7 +92,6 @@ function cargarEstilo() {
         fileref22.setAttribute("type", "text/css")
         fileref22.setAttribute("href", 'css/xTabPanel.css')
 
-
         document.getElementsByTagName("head")[0].appendChild(fileref);
         document.getElementsByTagName("head")[0].appendChild(fileref2);
         document.getElementsByTagName("head")[0].appendChild(fileref3);
@@ -128,12 +127,8 @@ function cargarEstilo() {
         fileref2.setAttribute("href", 'css/login2.css')
         document.getElementsByTagName("head")[0].appendChild(fileref);
         document.getElementsByTagName("head")[0].appendChild(fileref2);
-
     }
 }
-
-
-
 
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
@@ -174,7 +169,6 @@ var sClientes_DataChanged = function () {
     else {
         tipoCliente = "SOCIO";
     }
-
 
     if (App.sClientes.getCount() > 1 || App.sClientes.getCount() == 0) {
         App.sbClientes.setText(App.sClientes.getCount() + ' ' + tipoCliente+'S');
@@ -217,8 +211,7 @@ var cmbEstatus_AfterRender = function (combobox, opciones) {
 //Antes de crear el la lista del ComboBox
 var ListConfig_BeforeRender = function (boundlist, opciones) {
     if (Ext.util.Cookies.get('osefTheme') == 'caja') {
-        boundlist.cls = 'cajaComboboxLista';
-   
+        boundlist.cls = 'cajaComboboxLista';   
     }
     else {
         boundlist.cls = 'bancomerComboboxLista';
@@ -312,15 +305,31 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
 //Evento lanzado al cargar el store de la sucursal
 var sCliente_Load = function () {
-    App.direct.sCliente_Load();
+    //1. Validar si es nuevo o se va a Editar
+    if (Ext.util.Cookies.get('cookieEditarCliente') !== 'Nuevo') {
+        App.direct.sCliente_Load({
+            //Si el proceso es correcto
+            success: function (result) {
+                App.cmbEstatus.setDisabled(false);
+                console.log(App.sCliente);
+            },
+
+            //Si existe un error
+            failure: function (errorMsg) {
+                Ext.Msg.alert('Error', errorMsg);
+            }
+        });
+    }
+    else {
+        App.cmbEstatus.setDisabled(true);
+    }
+
+    //2. Obtener el Store de sClientes
     store = window.parent.App.pCentro.getBody().App.sClientes;
 };
 
-
-
 //Evento lanzado al agregar un registro al store
 var sCliente_Add = function (store, registro) {
-
     //Primera parte
     App.txtfID.setValue(registro[0].get('ID'));
     App.txtfNombre.setValue(registro[0].get('Nombre'));
@@ -328,17 +337,19 @@ var sCliente_Add = function (store, registro) {
     App.txtfAMaterno.setValue(registro[0].get('AMaterno'));
     App.txtfRFC.setValue(registro[0].get('RFC'));
     App.txtfCURP.setValue(registro[0].get('CURP'));
-    App.dfFechaNacimiento.setValue(registro[0].get('FechaNacimiento'));
     App.txtfEdad.setValue(registro[0].get('Edad') + ' años');
-    App.cmbSexo.select(registro[0].get('Sexo'));
-    App.cmbEstadoCivil.select(registro[0].get('EstadoCivil'));
-    App.cmbProfesion.select(registro[0].get('Profesion'));
     App.txtfTelefono.setValue(registro[0].get('Telefono'));
     App.txtfTelefonoMovil.setValue(registro[0].get('TelefonoMovil'));
     App.txtfCorreo.setValue(registro[0].get('Correo'));
-    App.cmbEstatus.select(registro[0].get('Estatus'));
-    App.dfFechaAlta.setValue(registro[0].get('FechaAlta'));
     App.txtfUsuario.setValue(registro[0].get('Usuario'));
+
+    App.cmbSexo.select(registro[0].get('Sexo'));
+    App.cmbEstadoCivil.select(registro[0].get('EstadoCivil'));
+    App.cmbProfesion.select(registro[0].get('Profesion'));
+    App.cmbEstatus.select(registro[0].get('Estatus'));
+
+    App.dfFechaAlta.setValue(registro[0].get('FechaAlta'));
+    App.dfFechaNacimiento.setValue(registro[0].get('FechaNacimiento'));
 
     //Segunda parte
     App.txtfCalle.setValue(registro[0].get('Calle'));
@@ -346,7 +357,7 @@ var sCliente_Add = function (store, registro) {
     App.txtfNoExterior.setValue(registro[0].get('NoExterior'));
     App.txtfNoInterior.setValue(registro[0].get('NoInterior'));
     App.txtfCodigoPostal.setValue(registro[0].get('CodigoPostal'));
-    App.cmbColonia.setValue(registro[0].get('Colonia'));
+
     App.cmbEstado.select(registro[0].get('Estado'));
 
     //Tercera parte
@@ -357,17 +368,13 @@ var sCliente_Add = function (store, registro) {
     App.txtfEmpresaNoExterior.setValue(registro[0].get('EmpresaNoExterior'));
     App.txtfEmpresaNoInterior.setValue(registro[0].get('EmpresaNoInterior'));
     App.txtfEmpresaCodigoPostal.setValue(registro[0].get('EmpresaCodigoPostal'));
-    App.txtfEmpresaColonia.setValue(registro[0].get('EmpresaColonia'));
-    App.cmbEmpresaEstado.select(registro[0].get('EmpresaEstado'));
-    //App.cmbEmpresaMunicipio.select(registro[0].get('EmpresaMunicipio'));
     App.txtfEmpresaTelefono.setValue(registro[0].get('EmpresaTelefono'));
     App.nfEmpresaTelefonoExt.setValue(registro[0].get('EmpresaTelefonoExt'));
 
-    //Habiliatar controles
-    App.cmbEstatus.setDisabled(false);
+    App.cmbEmpresaEstado.select(registro[0].get('EmpresaEstado'));
 
     //Asignar los Municipio
-    App.direct.AsignarMunicipio(App.sCliente.getAt(0).get('Estado'), {
+    App.direct.AsignarMunicipio(registro[0].get('Estado'), {
         //Si el proceso es correcto
         success: function (result) {
             App.cmbMunicipio.select(registro[0].get('Municipio'));
@@ -379,8 +386,21 @@ var sCliente_Add = function (store, registro) {
         }
     });
 
-    //Asignar el EmpresaMunicipio
-    App.direct.AsignarEmpresaMunicipio(App.sCliente.getAt(0).get('EmpresaEstado'), {
+    //Asignar las Colonias
+    App.direct.AsignarColonia(registro[0].get('Municipio'), {
+        //Si el proceso es correcto
+        success: function (result) {
+            App.cmbColonia.select(registro[0].get('Colonia'));
+        },
+
+        //Si existe un error
+        failure: function (errorMsg) {
+            Ext.Msg.alert('Error', errorMsg);
+        }
+    });
+
+    //Asignar los EmpresaMunicipios
+    App.direct.AsignarEmpresaMunicipio(registro[0].get('EmpresaEstado'), {
         //Si el proceso es correcto
         success: function (result) {
             App.cmbEmpresaMunicipio.select(registro[0].get('EmpresaMunicipio'));
@@ -391,50 +411,55 @@ var sCliente_Add = function (store, registro) {
             Ext.Msg.alert('Error', errorMsg);
         }
     });
-};
 
+    //Asignar las EmpresaColonias
+    App.direct.AsignarEmpresaColonia(registro[0].get('EmpresaMunicipio'), {
+        //Si el proceso es correcto
+        success: function (result) {
+            App.cmbEmpresaColonia.select(registro[0].get('EmpresaColonia'));
+        },
+
+        //Si existe un error
+        failure: function (errorMsg) {
+            Ext.Msg.alert('Error', errorMsg);
+        }
+    });
+};
 
 //Valida para que empresa es y muestra campos segun la variable de cookie
 var fcEstadoCivilRender = function () {
     if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
-
         App.fcCliente5.hide();
         App.cmbEstadoCivil.allowBlank = true;
         App.cmbProfesion.allowBlank = true;
     }
     else {
-
     }
 }
+
 //Evento que se lanza antes de pintar el contenedor del RFC
 var fcRFCRender = function () {
     if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
         App.fcRFC.hide();
     }
     else {
-
     }
 }
 
 //Evento que se lanza antes de pintar Grid
 var gpClientesRender = function () {
     if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
-
         App.gpClientes.title = "CLIENTES";
-
     }
     else {
         App.gpClientes.title = "SOCIOS";
     }
 }
 
-
 //Evento que se lanza antes de pintar el contenedor del ID
 var fcIDRender = function () {
     if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
-
         App.fcID.fieldLabel = "Cliente";
-
     }
     else {
         App.fcID.fieldLabel = "Socio";
@@ -453,14 +478,10 @@ var fcFechaNac_Render = function () {
     }
 }
 
-
-
 //Evento que se lanza antes de pintar el contenedor del Cliente
 var fcNombre_Render = function () {
     if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
-
         App.fcNombre.fieldLabel = "Contacto";
-
     }
     else {
         App.fcID.fieldLabel = "Nombre(s)";
@@ -469,26 +490,9 @@ var fcNombre_Render = function () {
 
 //Oculta el panel de datos de la empresa
 var pDatosEmpresa_Render = function () {
-
     if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
-
-
-
-               App.tpCliente.remove(App.pDatosEmpresa.id, false);
-    
+               App.tpCliente.remove(App.pDatosEmpresa.id, false);    
     }
     else {
-
     }
-
 }
-
-
-//Evento al cargar el store de municipios
-var sColonias_Load = function () {
-
-
-    if (App.sCliente.getAt(0) != undefined) {
-        App.cmbColonia.setValue(App.sCliente.getAt(0).get('Colonia'));
-    }
-};

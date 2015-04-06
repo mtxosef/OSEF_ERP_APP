@@ -9,9 +9,9 @@ using Ext.Net;
 using System.Configuration;
 using OSEF.APP.EL;
 
-namespace OSEF.AVANCES.SUCURSALES
+namespace OSEF.ERP.APP
 {
-    public partial class FormaSocio : System.Web.UI.Page
+    public partial class FormaCliente : System.Web.UI.Page
     {
         /// <summary>
         /// Evento que se lanza al cargar la página
@@ -20,10 +20,13 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //1. Validar si son peticiones Ajax
             if (!X.IsAjaxRequest)
             {
+                //2. Llenar el ComboBox de Profesiones
                 sProfesiones.DataSource = ProfesionBusiness.ObtenerProfesiones();
                 sProfesiones.DataBind();
+                //3. Llenar el ComboBox de Estados
                 sEstados.DataSource = EstadoBusiness.ObtenerEstados();
                 sEstados.DataBind();
             }
@@ -43,6 +46,42 @@ namespace OSEF.AVANCES.SUCURSALES
         }
 
         /// <summary>
+        /// Evento que se lanza al seleccionar un municipio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strMunicipio = e.ExtraParams["valor"];
+            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColonias.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Municipios
+        /// </summary>
+        [DirectMethod]
+        public void AsignarMunicipio(string strEstado)
+        {
+            //1. Listar los municipio de acuerdo al Estado
+            sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            sMunicipios.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al carar el store de Colonias
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarColonia(string strMunicipio)
+        {
+            //1. Listar las colonias de acuerdo al Municipio
+            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColonias.DataBind();
+        }
+
+        /// <summary>
         /// Evento que se lanza al seleccionar un estado
         /// </summary>
         /// <param name="sender"></param>
@@ -56,6 +95,42 @@ namespace OSEF.AVANCES.SUCURSALES
         }
 
         /// <summary>
+        /// Evento que se lanza al seleccionar un Municipio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbEmpresaMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strMunicipio = e.ExtraParams["valor"];
+            sEmpresaColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sEmpresaColonia.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de EmpresaMunicipios
+        /// </summary>
+        [DirectMethod]
+        public void AsignarEmpresaMunicipio(string strEstado)
+        {
+            //1. Listar los municipios de acuerdo al Municipio
+            sEmpresaMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            sEmpresaMunicipios.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de EmpresaColonias
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarEmpresaColonia(string strMunicipio)
+        {
+            //1. Listar las colonias de acuerdo al Municipio
+            sEmpresaColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sEmpresaColonia.DataBind();
+        }
+
+        /// <summary>
         /// Evento de clic al botón de Guardar
         /// </summary>
         /// <param name="sender"></param>
@@ -65,34 +140,26 @@ namespace OSEF.AVANCES.SUCURSALES
             //1. Obtener datos de la Forma y saber si es edición o nuevo
             string edad = e.ExtraParams["edad"];
             byte bEdad = 0;
-            if (edad.Equals("0"))
-            {
-                bEdad = 0;
-               
-            }
-            else {
-                 bEdad = Convert.ToByte(e.ExtraParams["edad"].Substring(0, e.ExtraParams["edad"].IndexOf(' ')));
-            }
 
+            //2. Transformar la Edad a tomar solo los años
+            bEdad = Convert.ToByte(e.ExtraParams["edad"].Substring(0, e.ExtraParams["edad"].IndexOf(' ')));
 
+            //3. Obtener los parametros de la Forma
             string strRegistro = e.ExtraParams["registro"];
             string strUsuario = e.ExtraParams["usuario"];
             string strcookieEditarCliente = Cookies.GetCookie("cookieEditarCliente").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             Cliente oCliente = new Cliente();
             oCliente.Edad = bEdad;
-
-
-
             oCliente.TipoSocio = "";
             oCliente.NumeroSocio = "";
 
-            //2. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
+            //3. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
             foreach (KeyValuePair<string, string> sd in dRegistro)
             {
                 switch (sd.Key)
                 {
-                    //3. Datos del cliente
+                    //4. Datos del cliente
                     case "txtfNombre":
                         oCliente.Nombre = sd.Value;
                         break;
@@ -168,7 +235,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfEmpresaNoInterior":
                         oCliente.EmpresaNoInterior = sd.Value;
                         break;
-                    case "txtfEmpresaColonia":
+                    case "cmbEmpresaColonia":
                         oCliente.EmpresaColonia = sd.Value;
                         break;
                     case "txtfEmpresaCodigoPostal":
@@ -193,7 +260,7 @@ namespace OSEF.AVANCES.SUCURSALES
                         if (sd.Value == null)
                             oCliente.EmpresaTelefonoExt = null;
                         else
-                            oCliente.EmpresaTelefonoExt = Convert.ToInt32(sd.Value);
+                            oCliente.EmpresaTelefonoExt = Convert.ToInt16(sd.Value);
                         break;
                     case "txtfPuesto":
                         oCliente.Puesto = sd.Value;
@@ -204,12 +271,10 @@ namespace OSEF.AVANCES.SUCURSALES
                 }
             }
 
-            //Complementar datos
+            //5. Complementar datos
             if (strcookieEditarCliente.Equals("Nuevo"))
             {
                 Usuario oUsuario = (Usuario)Session["Usuario"];
-
-
                 oCliente.FechaAlta = DateTime.Now;
                 oCliente.Estatus = "ALTA";
                 oCliente.Usuario = oUsuario.ID;
@@ -221,7 +286,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 ClienteBusiness.Actualizar(oCliente);
             }
 
-            //Mandar parametro (ID del Cliente)
+            //6. Mandar parametro (ID del Cliente)
             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("registro", oCliente.ID, ParameterMode.Value));
         }
 
@@ -231,88 +296,53 @@ namespace OSEF.AVANCES.SUCURSALES
         [DirectMethod]
         public void sCliente_Load()
         {
+            //1. Obtener Cookie del Cliente
             string strcookieEditarCliente = Cookies.GetCookie("cookieEditarCliente").Value;
-            if (!strcookieEditarCliente.Equals("Nuevo"))
+
+            //2. Asignar el objeto del Cliente y llenar el Store sCliente
+            Cliente oCliente = ClienteBusiness.ObtenerClientePorID(strcookieEditarCliente);
+            sCliente.Add(new
             {
-                Cliente oCliente = ClienteBusiness.ObtenerClientePorID(strcookieEditarCliente);
-                sCliente.Add(new
-                {
-                    ID = oCliente.ID,
-                    Nombre = oCliente.Nombre,
-                    APaterno = oCliente.APaterno,
-                    AMaterno = oCliente.AMaterno,
-                    RFC = oCliente.RFC,
-                    CURP = oCliente.CURP,
-                    FechaNacimiento = oCliente.FechaNacimiento,
-                    Edad = oCliente.Edad,
-                    Sexo = oCliente.Sexo,
-                    EstadoCivil = oCliente.EstadoCivil,
-                    Profesion = oCliente.Profesion,
-                    Correo = oCliente.Correo,
-                    Telefono = oCliente.Telefono,
-                    TelefonoMovil = oCliente.TelefonoMovil,
-                    Calle = oCliente.Calle,
-                    NoExterior = oCliente.NoExterior,
-                    NoInterior = oCliente.NoInterior,
-                    Colonia = oCliente.Colonia,
-                    CodigoPostal = oCliente.CodigoPostal,
-                    EntreCalles = oCliente.EntreCalles,
-                    Estado = oCliente.Estado,
-                    Municipio = oCliente.Municipio,
-                    Empresa = oCliente.Empresa,
-                    EmpresaCalle = oCliente.EmpresaCalle,
-                    EmpresaNoExterior = oCliente.EmpresaNoExterior,
-                    EmpresaNoInterior = oCliente.EmpresaNoInterior,
-                    EmpresaColonia = oCliente.EmpresaColonia,
-                    EmpresaCodigoPostal = oCliente.EmpresaCodigoPostal,
-                    EmpresaEntreCalles = oCliente.EmpresaEntreCalles,
-                    EmpresaEstado = oCliente.EmpresaEstado,
-                    EmpresaMunicipio = oCliente.EmpresaMunicipio,
-                    EmpresaTelefono = oCliente.EmpresaTelefono,
-                    EmpresaTelefonoExt = oCliente.EmpresaTelefonoExt,
-                    Puesto = oCliente.Puesto,
-                    TipoSocio = oCliente.TipoSocio,
-                    NumeroSocio = oCliente.NumeroSocio,
-                    Usuario = oCliente.Usuario,
-                    FechaAlta = oCliente.FechaAlta,
-                    Estatus = oCliente.Estatus
-                });
-            }
+                ID = oCliente.ID,
+                Nombre = oCliente.Nombre,
+                APaterno = oCliente.APaterno,
+                AMaterno = oCliente.AMaterno,
+                RFC = oCliente.RFC,
+                CURP = oCliente.CURP,
+                FechaNacimiento = oCliente.FechaNacimiento,
+                Edad = oCliente.Edad,
+                Sexo = oCliente.Sexo,
+                EstadoCivil = oCliente.EstadoCivil,
+                Profesion = oCliente.Profesion,
+                Correo = oCliente.Correo,
+                Telefono = oCliente.Telefono,
+                TelefonoMovil = oCliente.TelefonoMovil,
+                Calle = oCliente.Calle,
+                NoExterior = oCliente.NoExterior,
+                NoInterior = oCliente.NoInterior,
+                Colonia = oCliente.Colonia,
+                CodigoPostal = oCliente.CodigoPostal,
+                EntreCalles = oCliente.EntreCalles,
+                Estado = oCliente.Estado,
+                Municipio = oCliente.Municipio,
+                Empresa = oCliente.Empresa,
+                EmpresaCalle = oCliente.EmpresaCalle,
+                EmpresaNoExterior = oCliente.EmpresaNoExterior,
+                EmpresaNoInterior = oCliente.EmpresaNoInterior,
+                EmpresaColonia = oCliente.EmpresaColonia,
+                EmpresaCodigoPostal = oCliente.EmpresaCodigoPostal,
+                EmpresaEntreCalles = oCliente.EmpresaEntreCalles,
+                EmpresaEstado = oCliente.EmpresaEstado,
+                EmpresaMunicipio = oCliente.EmpresaMunicipio,
+                EmpresaTelefono = oCliente.EmpresaTelefono,
+                EmpresaTelefonoExt = oCliente.EmpresaTelefonoExt,
+                Puesto = oCliente.Puesto,
+                TipoSocio = oCliente.TipoSocio,
+                NumeroSocio = oCliente.NumeroSocio,
+                Usuario = oCliente.Usuario,
+                FechaAlta = oCliente.FechaAlta,
+                Estatus = oCliente.Estatus
+            });
         }
-
-        /// <summary>
-        /// Evento que se lanza al cargar el store de Municipios
-        /// </summary>
-        [DirectMethod]
-        public void AsignarMunicipio(string strEstado)
-        {
-            sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sMunicipios.DataBind();
-        }
-
-        /// <summary>
-        /// Evento que se lanza al cargar el store de EmpresaMunicipios
-        /// </summary>
-        [DirectMethod]
-        public void AsignarEmpresaMunicipio(string strEstado)
-        {
-            sEmpresaMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sEmpresaMunicipios.DataBind();
-        }
-
-
-        /// <summary>
-        /// Evento que se lanza al seleccionar un municipio
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void cmbMunicipio_Select(object sender, DirectEventArgs e)
-        {
-            //1. Obtener el valor seleccionado y obtener los municipios
-            string strMunicipio = e.ExtraParams["valorMunicipio"];
-            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
-            sColonias.DataBind();
-        }
-
     }
 }

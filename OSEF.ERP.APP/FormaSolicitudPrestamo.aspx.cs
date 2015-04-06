@@ -18,13 +18,14 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Validar que no sea una petición Ajax
+            //1. Validar que no sea una petición Ajax
             if (!X.IsAjaxRequest)
             {
-                //Cargar el ComboBox de Clientes
+                //2. Cargar el ComboBox de Clientes
                 sCliente.DataSource = ClienteBusiness.ObtenerClientes();
                 sCliente.DataBind();
-                //Cargar el ComboBox de Estados
+
+                //3. Cargar el ComboBox de Estados
                 sEstados.DataSource = EstadoBusiness.ObtenerEstados();
                 sEstados.DataBind();
             }
@@ -39,8 +40,8 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener el valor seleccionado y obtener los municipios
             string strEstado = e.ExtraParams["valor"];
-            sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sMunicipios.DataBind();
+            //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            //sMunicipios.DataBind();
         }
 
         /// <summary>
@@ -52,8 +53,8 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener el valor seleccionado y obtener los municipios
             string strMunicipio = e.ExtraParams["valor"];
-            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
-            sColonias.DataBind();
+            //sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            //sColonias.DataBind();
         }
 
         /// <summary>
@@ -62,8 +63,19 @@ namespace OSEF.ERP.APP
         [DirectMethod]
         public void AsignarMunicipio(string strEstado)
         {
-            sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sMunicipios.DataBind();
+            //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            //sMunicipios.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Colonias
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarColonia(string strMunicipio)
+        {
+            //sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            //sColonias.DataBind();
         }
 
         /// <summary>
@@ -75,8 +87,21 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener el valor seleccionado y obtener los municipios
             string strEstado = e.ExtraParams["valor"];
-            sMunicipiosAnterior.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sMunicipiosAnterior.DataBind();
+            //sMunicipiosAnterior.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            //sMunicipiosAnterior.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar un Municipio para el Domicilio Anterior
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbMunicipioAnterior_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener todas las Colonias
+            string strMunicipio = e.ExtraParams["valor"];
+            //sColoniasAnterior.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            //sColoniasAnterior.DataBind();
         }
 
         /// <summary>
@@ -88,8 +113,21 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener el valor seleccionado y obtener los municipios
             string strEstado = e.ExtraParams["valor"];
-            sEmpresaMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sEmpresaMunicipios.DataBind();
+            //sEmpresaMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            //sEmpresaMunicipios.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar un Municipio para el domicilio de la Empresa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void cmbEmpresaMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener todas las Colonias
+            string strMunicipio = e.ExtraParams["valor"];
+            //sEmpresaColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            //sEmpresaColonia.DataBind();
         }
 
         /// <summary>
@@ -98,8 +136,45 @@ namespace OSEF.ERP.APP
         [DirectMethod]
         public void AsignarEmpresaMunicipio(string strEstado)
         {
-            sEmpresaMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sEmpresaMunicipios.DataBind();
+            //sEmpresaMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            //sEmpresaMunicipios.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Empresa Colonia
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarEmpresaColonia(string strMunicipio)
+        {
+            //sEmpresaColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            //sEmpresaColonia.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar un Estado para el domicilio del Conyuge
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void cmbConyugeEstado_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener los municipios
+            string strEstado = e.ExtraParams["valor"];
+            //sConyugeMunicipio.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            //sConyugeMunicipio.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al seleccionar un Municipio para el domicilio del Conyuge
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void cmbConyugeMunicipio_Select(object sender, DirectEventArgs e)
+        {
+            //1. Obtener el valor seleccionado y obtener todas las Colonias
+            string strMunicipio = e.ExtraParams["valor"];
+            //sConyugeColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            //sConyugeColonia.DataBind();
         }
     }
 }

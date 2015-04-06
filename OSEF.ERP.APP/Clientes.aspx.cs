@@ -8,9 +8,9 @@ using Ext.Net;
 using OSEF.APP.BL;
 using System.Configuration;
 
-namespace OSEF.AVANCES.SUCURSALES
+namespace OSEF.ERP.APP
 {
-    public partial class Socios : System.Web.UI.Page
+    public partial class Clientes : System.Web.UI.Page
     {
         /// <summary>
         /// Evento que se lanza al cargar la página
@@ -25,7 +25,6 @@ namespace OSEF.AVANCES.SUCURSALES
                 sClientes.DataBind();
                 rmClientes.RegisterIcon(Icon.Delete);
                 Cookies.Set("osefTheme", ConfigurationManager.AppSettings["osefTheme"].ToString(), DateTime.Now.AddDays(30), "/", null, false);
-           
             }
         }
 

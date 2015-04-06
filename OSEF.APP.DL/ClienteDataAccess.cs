@@ -57,8 +57,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpRFC = new SqlParameter();
                 sqlpRFC.ParameterName = "@RFC";
                 sqlpRFC.SqlDbType = SqlDbType.VarChar;
-    
-
                 if (iCliente.RFC == null)
                     sqlpRFC.Value = DBNull.Value;
                 else
@@ -67,7 +65,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpCURP = new SqlParameter();
                 sqlpCURP.ParameterName = "@CURP";
                 sqlpCURP.SqlDbType = SqlDbType.VarChar;
-
                 if (iCliente.CURP == null)
                     sqlpCURP.Value = DBNull.Value;
                 else
@@ -87,7 +84,6 @@ namespace OSEF.APP.DL
                 sqlpSexo.ParameterName = "@Sexo";
                 sqlpSexo.SqlDbType = SqlDbType.VarChar;
                 sqlpSexo.Value = iCliente.Sexo;
-
                 if (iCliente.Sexo == null)
                     sqlpSexo.Value = DBNull.Value;
                 else
@@ -96,23 +92,19 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEstadoCivil = new SqlParameter();
                 sqlpEstadoCivil.ParameterName = "@EstadoCivil";
                 sqlpEstadoCivil.SqlDbType = SqlDbType.VarChar;
-
                 if (iCliente.EstadoCivil == null)
                     sqlpEstadoCivil.Value = DBNull.Value;
                 else
-                    sqlpEstadoCivil.Value = iCliente.EstadoCivil;
-               
+                    sqlpEstadoCivil.Value = iCliente.EstadoCivil;               
 
                 SqlParameter sqlpProfesion = new SqlParameter();
                 sqlpProfesion.ParameterName = "@Profesion";
                 sqlpProfesion.SqlDbType = SqlDbType.Char;
                 sqlpProfesion.Size = 7;
-
                 if (iCliente.Profesion == null)
                     sqlpProfesion.Value = DBNull.Value;
                 else
                     sqlpProfesion.Value = iCliente.Profesion;
-
 
                 SqlParameter sqlpCorreo = new SqlParameter();
                 sqlpCorreo.ParameterName = "@Correo";
@@ -146,8 +138,12 @@ namespace OSEF.APP.DL
 
                 SqlParameter sqlpColonia = new SqlParameter();
                 sqlpColonia.ParameterName = "@Colonia";
-                sqlpColonia.SqlDbType = SqlDbType.VarChar;
-                sqlpColonia.Value = iCliente.Colonia;
+                sqlpColonia.SqlDbType = SqlDbType.Char;
+                sqlpColonia.Size = 10;
+                if (iCliente.Colonia == null || iCliente.Colonia.Equals(string.Empty))
+                    sqlpColonia.Value = DBNull.Value;
+                else
+                    sqlpColonia.Value = iCliente.Colonia;
 
                 SqlParameter sqlpCodigoPostal = new SqlParameter();
                 sqlpCodigoPostal.ParameterName = "@CodigoPostal";
@@ -174,7 +170,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresa = new SqlParameter();
                 sqlpEmpresa.ParameterName = "@Empresa";
                 sqlpEmpresa.SqlDbType = SqlDbType.VarChar;
-
                 if (iCliente.Empresa == null)
                     sqlpEmpresa.Value = DBNull.Value;
                 else
@@ -183,17 +178,14 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaCalle = new SqlParameter();
                 sqlpEmpresaCalle.ParameterName = "@EmpresaCalle";
                 sqlpEmpresaCalle.SqlDbType = SqlDbType.VarChar;
-                
                 if (iCliente.EmpresaCalle == null)
                     sqlpEmpresaCalle.Value = DBNull.Value;
                 else
                     sqlpEmpresaCalle.Value = iCliente.EmpresaCalle;
 
-
                 SqlParameter sqlpEmpresaNoExterior = new SqlParameter();
                 sqlpEmpresaNoExterior.ParameterName = "@EmpresaNoExterior";
                 sqlpEmpresaNoExterior.SqlDbType = SqlDbType.VarChar;
-
                 if (iCliente.EmpresaNoExterior == null)
                     sqlpEmpresaNoExterior.Value = DBNull.Value;
                 else
@@ -202,7 +194,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaNoInterior = new SqlParameter();
                 sqlpEmpresaNoInterior.ParameterName = "@EmpresaNoInterior";
                 sqlpEmpresaNoInterior.SqlDbType = SqlDbType.VarChar;
-
                 if (iCliente.EmpresaNoInterior == null)
                     sqlpEmpresaNoInterior.Value = DBNull.Value;
                 else
@@ -210,9 +201,9 @@ namespace OSEF.APP.DL
 
                 SqlParameter sqlpEmpresaColonia = new SqlParameter();
                 sqlpEmpresaColonia.ParameterName = "@EmpresaColonia";
-                sqlpEmpresaColonia.SqlDbType = SqlDbType.VarChar;
-
-                if (iCliente.EmpresaColonia == null)
+                sqlpEmpresaColonia.SqlDbType = SqlDbType.Char;
+                sqlpEmpresaColonia.Size = 10;
+                if (iCliente.EmpresaColonia == null || iCliente.EmpresaColonia.Equals(string.Empty))
                     sqlpEmpresaColonia.Value = DBNull.Value;
                 else
                     sqlpEmpresaColonia.Value = iCliente.EmpresaColonia;
@@ -228,7 +219,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaEntreCalles = new SqlParameter();
                 sqlpEmpresaEntreCalles.ParameterName = "@EmpresaEntreCalles";
                 sqlpEmpresaEntreCalles.SqlDbType = SqlDbType.VarChar;
-
                 if (iCliente.EmpresaEntreCalles == null)
                     sqlpEmpresaEntreCalles.Value = DBNull.Value;
                 else
@@ -255,7 +245,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaTelefono = new SqlParameter();
                 sqlpEmpresaTelefono.ParameterName = "@EmpresaTelefono";
                 sqlpEmpresaTelefono.SqlDbType = SqlDbType.VarChar;
-
                 if (iCliente.EmpresaTelefono == null)
                     sqlpEmpresaTelefono.Value = DBNull.Value;
                 else
@@ -273,7 +262,6 @@ namespace OSEF.APP.DL
                 sqlpPuesto.ParameterName = "@Puesto";
                 sqlpPuesto.SqlDbType = SqlDbType.VarChar;
                 sqlpPuesto.Value = iCliente.Puesto;
-
                 if (iCliente.Puesto == null)
                     sqlpPuesto.Value = DBNull.Value;
                 else
@@ -428,7 +416,6 @@ namespace OSEF.APP.DL
                 sqlpSexo.ParameterName = "@Sexo";
                 sqlpSexo.SqlDbType = SqlDbType.VarChar;
                 sqlpSexo.Value = uCliente.Sexo;
-
                 if (uCliente.Sexo == null)
                     sqlpSexo.Value = DBNull.Value;
                 else
@@ -437,24 +424,19 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEstadoCivil = new SqlParameter();
                 sqlpEstadoCivil.ParameterName = "@EstadoCivil";
                 sqlpEstadoCivil.SqlDbType = SqlDbType.VarChar;
-
                 if (uCliente.EstadoCivil == null)
                     sqlpEstadoCivil.Value = DBNull.Value;
                 else
                     sqlpEstadoCivil.Value = uCliente.EstadoCivil;
-               
-
 
                 SqlParameter sqlpProfesion = new SqlParameter();
                 sqlpProfesion.ParameterName = "@Profesion";
                 sqlpProfesion.SqlDbType = SqlDbType.Char;
                 sqlpProfesion.Size = 7;
-
                 if (uCliente.Profesion == null)
                     sqlpProfesion.Value = DBNull.Value;
                 else
                     sqlpProfesion.Value = uCliente.Profesion;
-
 
                 SqlParameter sqlpCorreo = new SqlParameter();
                 sqlpCorreo.ParameterName = "@Correo";
@@ -488,8 +470,12 @@ namespace OSEF.APP.DL
 
                 SqlParameter sqlpColonia = new SqlParameter();
                 sqlpColonia.ParameterName = "@Colonia";
-                sqlpColonia.SqlDbType = SqlDbType.VarChar;
-                sqlpColonia.Value = uCliente.Colonia;
+                sqlpColonia.SqlDbType = SqlDbType.Char;
+                sqlpColonia.Size = 10;
+                if (uCliente.Colonia == null || uCliente.Colonia.Equals(string.Empty))
+                    sqlpColonia.Value = DBNull.Value;
+                else
+                    sqlpColonia.Value = uCliente.Colonia;
 
                 SqlParameter sqlpCodigoPostal = new SqlParameter();
                 sqlpCodigoPostal.ParameterName = "@CodigoPostal";
@@ -534,7 +520,6 @@ namespace OSEF.APP.DL
                 sqlpEmpresaNoExterior.ParameterName = "@EmpresaNoExterior";
                 sqlpEmpresaNoExterior.SqlDbType = SqlDbType.VarChar;
                 sqlpEmpresaNoExterior.Value = uCliente.EmpresaNoExterior;
-
                 if (uCliente.EmpresaNoExterior == null)
                     sqlpEmpresaNoExterior.Value = DBNull.Value;
                 else
@@ -544,7 +529,6 @@ namespace OSEF.APP.DL
                 sqlpEmpresaNoInterior.ParameterName = "@EmpresaNoInterior";
                 sqlpEmpresaNoInterior.SqlDbType = SqlDbType.VarChar;
                 sqlpEmpresaNoInterior.Value = uCliente.EmpresaNoInterior;
-
                 if (uCliente.EmpresaNoInterior == null)
                     sqlpEmpresaNoInterior.Value = DBNull.Value;
                 else
@@ -552,9 +536,9 @@ namespace OSEF.APP.DL
 
                 SqlParameter sqlpEmpresaColonia = new SqlParameter();
                 sqlpEmpresaColonia.ParameterName = "@EmpresaColonia";
-                sqlpEmpresaColonia.SqlDbType = SqlDbType.VarChar;
-
-                if (uCliente.EmpresaColonia == null)
+                sqlpEmpresaColonia.SqlDbType = SqlDbType.Char;
+                sqlpEmpresaColonia.Size = 10;
+                if (uCliente.EmpresaColonia == null || uCliente.EmpresaColonia.Equals(string.Empty))
                     sqlpEmpresaColonia.Value = DBNull.Value;
                 else
                     sqlpEmpresaColonia.Value = uCliente.EmpresaColonia;
@@ -570,7 +554,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaEntreCalles = new SqlParameter();
                 sqlpEmpresaEntreCalles.ParameterName = "@EmpresaEntreCalles";
                 sqlpEmpresaEntreCalles.SqlDbType = SqlDbType.VarChar;
-
                 if (uCliente.EmpresaEntreCalles == null)
                     sqlpEmpresaEntreCalles.Value = DBNull.Value;
                 else
@@ -597,7 +580,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEmpresaTelefono = new SqlParameter();
                 sqlpEmpresaTelefono.ParameterName = "@EmpresaTelefono";
                 sqlpEmpresaTelefono.SqlDbType = SqlDbType.VarChar;
-
                 if (uCliente.EmpresaTelefono == null)
                     sqlpEmpresaTelefono.Value = DBNull.Value;
                 else
@@ -614,7 +596,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpPuesto = new SqlParameter();
                 sqlpPuesto.ParameterName = "@Puesto";
                 sqlpPuesto.SqlDbType = SqlDbType.VarChar;
-
                 if (uCliente.Puesto == null)
                     sqlpPuesto.Value = DBNull.Value;
                 else

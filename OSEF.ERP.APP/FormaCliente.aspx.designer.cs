@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES {
+namespace OSEF.ERP.APP {
     
     
-    public partial class FormaSocio {
+    public partial class FormaCliente {
         
         /// <summary>
         /// Control Head1.
@@ -688,13 +688,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.InputMask imEmpresaCodigoPostal;
         
         /// <summary>
-        /// Control txtfEmpresaColonia.
+        /// Control cmbEmpresaEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfEmpresaColonia;
+        protected global::Ext.Net.ComboBox cmbEmpresaEstado;
         
         /// <summary>
         /// Control fcDatosEmpresa5.
@@ -704,15 +704,6 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.FieldContainer fcDatosEmpresa5;
-        
-        /// <summary>
-        /// Control cmbEmpresaEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbEmpresaEstado;
         
         /// <summary>
         /// Control cmbEmpresaMunicipio.
@@ -740,6 +731,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model mEmpresaMunicipios;
+        
+        /// <summary>
+        /// Control cmbEmpresaColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEmpresaColonia;
+        
+        /// <summary>
+        /// Control sEmpresaColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEmpresaColonia;
+        
+        /// <summary>
+        /// Control mEmpresaColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEmpresaColonia;
         
         /// <summary>
         /// Control fcDatosEmpresa6.
