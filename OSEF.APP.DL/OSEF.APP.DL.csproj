@@ -52,6 +52,7 @@
     <Compile Include="FacturaOrdenEstimacionDDataAccess.cs" />
     <Compile Include="FinalidadDataAccess.cs" />
     <Compile Include="GeneradorOrdenEstimacionDDataAccess.cs" />
+    <Compile Include="GeneradorVolumetriaDataAccess.cs" />
     <Compile Include="GrupoMenuDataAccess.cs" />
     <Compile Include="ImagenOrdenEstimacionDDataAccess.cs" />
     <Compile Include="ImagenVolumetriaDDataAccess.cs" />

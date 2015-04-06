@@ -792,6 +792,7 @@
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Precio" Type="Float" />
                                                         <ext:ModelField Name="Importe" Type="Float" />
+                                                        <ext:ModelField Name="IntExt" Type="String" />
                                                         <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
                                                     </Fields>
                                                 </ext:Model>
@@ -826,7 +827,7 @@
                                                 ID="cIDPreciario"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="205"
+                                                Width="125"
                                                 DataIndex="ConceptoID">
                                             </ext:Column>
                                             <ext:CommandColumn
@@ -845,6 +846,29 @@
                                                     <Command Fn="ccConcepto_Command" />
                                                 </Listeners>
                                             </ext:CommandColumn>
+                                             <ext:Column
+                                                ID="cIntExt"
+                                                runat="server"
+                                                Text="Int/Ext"
+                                                Width="75"
+                                                DataIndex="IntExt">
+                                                
+                                                 <Editor>
+                                                    <ext:ComboBox
+                                                        ID="cmbIntExt"
+                                                        runat="server"
+                                                        Editable="true"
+                                                        MatchFieldWidth="true"
+                                                        ForceSelection="true"
+                                                        QueryMode="Local"
+                                                        TypeAhead="true">
+                                                        <Items>
+                                                            <ext:ListItem Index="0" Text="INTERIOR" Value="INTERIOR" />
+                                                            <ext:ListItem Index="1" Text="EXTERIOR" Value="EXTERIOR" />
+                                                        </Items>
+                                                    </ext:ComboBox>
+                                                </Editor>
+                                            </ext:Column>
                                             <ext:NumberColumn
                                                 ID="cCantidad"
                                                 runat="server"
@@ -897,8 +921,6 @@
                                                 DataIndex="Unidad"
                                                 Width="90">
                                             </ext:Column>
-
-
 
                                             <ext:NumberColumn 
                                                 ID="cPrecio"

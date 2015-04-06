@@ -3,27 +3,20 @@
 
 //Evento lanzado al cargar el store de avance encabezado
 var sFormaGenerador_Load = function () {
-
+  
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('Estatus')=='CONCLUIDO' ) {
         App.gpFormaGenerador.disable();
         App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
     }
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
-    else if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
-        App.gpFormaGenerador.disable();
+    else if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
         App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
+        App.gpFormaGenerador.disable();
     }
 
-    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
-    else if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
-
-        App.gpFormaGenerador.disable();
-        App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
-    }
-
-    else {
+    else  {
         App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
         App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
     }
@@ -82,8 +75,6 @@ var ncTotal_Renderer = function (valor) {
 //Evento que se lanza despues de editar una columna
 var ceGenerador_Edit = function (cellediting, columna) {
 
-
-
     //Verificar si abajo de esta columna existe otra
     if (App.sFormaGenerador.getAt(columna.rowIdx + 1) == undefined) {
         //Verificar si toda la fila contiene datos
@@ -93,7 +84,7 @@ var ceGenerador_Edit = function (cellediting, columna) {
 
         if (registro.get('Numero').length != 0
         && registro.get('Area').length != 0
-        && registro.get('Total') != 0 ) {
+        && registro.get('Total') != 0) {
 
             //Insertar un nuevo registro
             App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
@@ -137,10 +128,10 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
     App.sFormaGenerador.removeAt(fila);
 
-   
-   //Setea el valor final 
+
+    //Setea el valor final 
     ImporteFinal = ImporteFinal - parseFloat(registro.get('Total'));
-    
+
 
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
@@ -212,7 +203,7 @@ var calcularTotalAncho_Change = function (component) {
     if (valorCantidad == null || valorCantidad == "") {
         valorCantidad = 1;
     }
-   
+
     var Total = parseFloat(component.getValue() * parseFloat(valorLargo) * parseFloat(valorAlto) * parseFloat(valorCantidad))
     App.sFormaGenerador.getAt(indiceDetalle).set('Total', Total);
 
@@ -316,22 +307,20 @@ function HabilitarGuardar() {
     if (App.txtDescripcionCorta.getValue() != '') {
 
 
-        if (App.gpFormaGenerador.getStore().getCount() != 0) 
-            {
+        if (App.gpFormaGenerador.getStore().getCount() != 0) {
 
-                if (App.sFormaGenerador.getAt(0).get('Numero').length != 0
+            if (App.sFormaGenerador.getAt(0).get('Numero').length != 0
                     && App.sFormaGenerador.getAt(0).get('Area').length != 0
                     && App.sFormaGenerador.getAt(0).get('Total') != 0) {
 
-                    App.imgbtnAceptar.setDisabled(false);
-                }
+                App.imgbtnAceptar.setDisabled(false);
             }
-            else 
-            {
-                App.imgbtnAceptar.setDisabled(true);
-            }
-        
-        
+        }
+        else {
+            App.imgbtnAceptar.setDisabled(true);
+        }
+
+
     }
     else {
         App.imgbtnAceptar.setDisabled(true);
@@ -340,7 +329,7 @@ function HabilitarGuardar() {
 
 
 var imgbtnAceptar_Click = function () {
-   
-    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Cantidad", parseFloat(App.dfTotal.getValue()));
+
+    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).set("Utilizada", parseFloat(App.dfTotal.getValue()));
     window.parent.App.wGenerador.hide();
 }

@@ -44,7 +44,8 @@ BEGIN
 		Cantidad,
 		Unidad,
 		Precio,
-		Importe
+		Importe,
+		IntExt
 	FROM
 		OrdenesEstimacionesD
 	WHERE

@@ -55,6 +55,7 @@
     <Compile Include="FacturaOrdenEstimacionBusiness.cs" />
     <Compile Include="FinalidadBusiness.cs" />
     <Compile Include="GeneradorOrdenEstimacionDBusiness.cs" />
+    <Compile Include="GeneradorVolumetriaDBusiness.cs" />
     <Compile Include="GrupoMenuBusiness.cs" />
     <Compile Include="ImagenOrdenEstimacionBusiness.cs" />
     <Compile Include="ImagenVolumetriaDBusiness.cs" />

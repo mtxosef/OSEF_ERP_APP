@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaGenerador.aspx.cs" Inherits="OSEF.ERP.APP.FormaGenerador" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaGeneradorVolumetriaD.aspx.cs" Inherits="OSEF.ERP.APP.FormaGeneradorVolumetriaD" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -24,12 +24,13 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type='text/javascript' src="js/formaGenerador.js"></script>
+    <script type='text/javascript' src="js/formaGeneradorVolumetriaD.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
-   
-    <ext:ResourceManager ID="rmFormaGenerador" runat="server" HideInDesign="true" />
+    
+
+     <ext:ResourceManager ID="rmFormaGenerador" runat="server" HideInDesign="true" />
 
     <ext:Panel 
             ID="panelGenerador" 
@@ -73,7 +74,6 @@
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
-
                         </ext:ImageButton>
                          <ext:ImageButton 
                             ID="imgbtnCancelar" 
@@ -203,7 +203,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="0"
+                                    MinValue="-999999999"
                                     Step="1">
                                 </ext:NumberField>
                             </Editor>
@@ -231,7 +231,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="0"
+                                    MinValue="-999999999"
                                     Step="1">
                                 </ext:NumberField>
                             </Editor>
@@ -256,7 +256,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="0"
+                                    MinValue="-999999999"
                                     Step="1">
                                 </ext:NumberField>
                             </Editor>
@@ -285,7 +285,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="-999999999"
+                                    MinValue="0"
                                     Step="1">
                                     <Listeners>
                                         <Change Fn="calcularTotalLargo_Change"></Change>
@@ -313,7 +313,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                     MinValue="-999999999"
+                                    MinValue="0"
                                     Step="1">
                                     <Listeners>
                                         <Change Fn="calcularTotalAncho_Change"></Change>
@@ -341,7 +341,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="-999999999"
+                                    MinValue="0"
                                     Step="1">
                                      <Listeners>
                                         <Change Fn="calcularTotalAlto_Change"></Change>
@@ -367,7 +367,8 @@
                                     DecimalSeparator="."
                                     MaxLength="10"
                                     EnforceMaxLength="true"
-                                    MinValue="-999999999"
+                                    MaxValue="999999999"
+                                    MinValue="0"
                                     Step="1">
                                     <Listeners>
                                         <Change Fn="calcularTotalCantidad_Change"></Change>
@@ -438,6 +439,8 @@
             </ext:GridPanel>
           </Items>
       </ext:Panel>
+
+
     </form>
 </body>
 </html>

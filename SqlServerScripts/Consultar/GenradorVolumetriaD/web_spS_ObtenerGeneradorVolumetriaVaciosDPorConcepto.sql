@@ -18,48 +18,35 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerEstimacionDPorMesaReporte' AND
+			WHERE  name = 'web_spS_ObtenerGeneradorVolumetriaVaciosDPorConcepto' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerEstimacionDPorMesaReporte
+	DROP PROCEDURE web_spS_ObtenerGeneradorVolumetriaVaciosDPorConcepto
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Viernes 05 de Diciembre de 2014
--- Description:	Obtener todos los registros de RevisionesD por la relación con Revision
+-- Author:		Christian Medina
+-- Create date: Miercoles 14 de Enero de 2015
+-- Description:	Obtener los registros de Sucursales por su Revisión
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerEstimacionDPorMesaReporte
+CREATE PROCEDURE web_spS_ObtenerGeneradorVolumetriaVaciosDPorConcepto
 	-- Add the parameters for the stored procedure here
-	@MOVID	VARCHAR(10)
+	@CONCEPTO	CHAR(10),
+	@ID INT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Nos traemos el detalle del movimiento Mesa de reporte para no tener que volverlo a insertar en estimacion
-    
-		SELECT 
-			D.ID,
-			D.Renglon,
-			D.ConceptoID,
-			D.Cantidad,
-			D.Unidad,
-			D.Precio,
-			D.Importe,
-			D.IntExt
-		FROM 
-				OrdenesEstimaciones
-		INNER JOIN 
-				OrdenesEstimaciones C 
-		ON 
-				OrdenesEstimaciones.Origen = C.Mov 
-		AND 
-				OrdenesEstimaciones.OrigenID = C.MovID
-		LEFT JOIN 
-				OrdenesEstimacionesD D 
-		ON 
-				C.ID = D.ID 
-		WHERE C.Mov IN ('Mesa de Reporte')
-		AND C.MovID = @MOVID
+    -- Insert statements for procedure here
+	IF EXISTS(SELECT A.ConceptoID FROM GeneradorVolumetriaD A INNER JOIN VolumetriasD B ON A.ConceptoID = B.ConceptoID 
+	WHERE A.ConceptoID = @CONCEPTO AND MovID=@ID)
+	BEGIN
+		SELECT CAST(1 AS BIT)
+	END
+	ELSE
+	BEGIN
+		SELECT CAST(0 AS BIT)
+	END
 END
 GO
+

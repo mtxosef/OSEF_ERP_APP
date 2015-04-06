@@ -594,7 +594,7 @@
                                                 ID="cIDPreciario"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="225"
+                                                Width="205"
                                                 DataIndex="ConceptoID">
                                             </ext:Column>
                                             <ext:CommandColumn
@@ -622,6 +622,9 @@
                                                 Width="150">
                                                 <Renderer Fn="cCantidad_Renderer" />
                                             </ext:NumberColumn>
+
+                                           
+
                                             <ext:NumberColumn 
                                                 ID="cUtilizada"
                                                 runat="server"
@@ -646,11 +649,33 @@
                                                     </ext:NumberField>
                                                 </Editor>
                                             </ext:NumberColumn>
+
+                                             <ext:CommandColumn
+                                                ID="ccGenerador"
+                                                runat="server"
+                                                Text="Generador" 
+                                                Width="100">
+                                                <PrepareToolbar Fn="ccDimensiones_PrepareToolbar" />
+                                                <Commands>
+                                               
+                                                    <ext:GridCommand
+                                                        Icon="ApplicationOsxAdd"
+                                                        CommandName="Agregar">
+                                                        <ToolTip Text="Generador" />
+                                                    </ext:GridCommand>
+                                                      <ext:CommandSpacer Width="60"></ext:CommandSpacer>
+                                                </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccGenerador_Command" />
+                                                </Listeners>
+                                            </ext:CommandColumn>
+
                                             <ext:CommandColumn
                                                 ID="ccFotos"
                                                 Text="Fotos"
+                                                Align="Center"
                                                 runat="server"
-                                                Width="85">
+                                                Width="105">
                                                 <PrepareToolbar Fn="ccFotos_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand

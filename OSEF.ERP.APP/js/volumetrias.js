@@ -418,6 +418,86 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 };
 
 //-----------------------------------------DETALLE----------------------------------------------------------------
+//Deshablitar comandos detalle
+var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+    var boton;
+
+//    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+//    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+//        //Toma el primer elemento de la columna para poder desabilitarlo
+//        boton = toolbar.items.get(0);
+//        boton.setDisabled(true);
+//        boton.setTooltip("");
+//    }
+
+//    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+//    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+//        //Toma el primer elemento de la columna para poder desabilitarlo
+//        boton = toolbar.items.get(0);
+//        boton.setDisabled(true);
+//        boton.setTooltip("");
+//    }
+
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') == 'Nuevo' && App.sVolumetria.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        boton = toolbar.items.get(0);
+        boton.setDisabled(true);
+        boton.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        boton = toolbar.items.get(0);
+        boton.setDisabled(false);
+        boton.setTooltip("Selecciona un concepto antes");
+    }
+
+};
+
+
+//Evento que abre el generador
+var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
+    //Asigno el concpeto
+
+    Ext.util.Cookies.set('cookieRenglonVolumetriaD', fila);
+
+    if (registro.get('ConceptoID') != '') {
+
+        Ext.util.Cookies.set('cookieConceptoVolumetriaD', registro.get('ConceptoID'));
+
+        window.parent.App.wGenerador.load('FormaGeneradorVolumetriaD.aspx');
+        window.parent.App.wGenerador.setHeight(310);
+        window.parent.App.wGenerador.setWidth(915);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Generador');
+        window.parent.App.wGenerador.show();
+
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgGenerador',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+    }
+
+};
+
+
+
+
 //Evento de la columna de acciones
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro

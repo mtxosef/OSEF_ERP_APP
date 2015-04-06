@@ -23,8 +23,9 @@ namespace OSEF.APP.EL
         PreciarioGeneralConcepto rpreciarioconceptos;
         OrdenEstimacion rmovimiento;
 
-       
+        string intext;
 
+     
         #endregion
 
         #region Propiedades
@@ -85,6 +86,13 @@ namespace OSEF.APP.EL
             get { return rmovimiento; }
             set { rmovimiento = value; }
         }
+
+        public string IntExt
+        {
+            get { return intext; }
+            set { intext = value; }
+        }
+
 
         #endregion
     }

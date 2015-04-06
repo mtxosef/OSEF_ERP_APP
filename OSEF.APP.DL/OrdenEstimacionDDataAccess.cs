@@ -80,6 +80,16 @@ namespace OSEF.APP.DL
                 sqlpImporte.Scale = 2;
                 sqlpImporte.Value = iOrdenEstimacionD.Importe;
 
+
+                SqlParameter sqlpIntExt = new SqlParameter();
+                sqlpIntExt.ParameterName = "@IntExt";
+                sqlpIntExt.SqlDbType = SqlDbType.VarChar;
+
+                if (iOrdenEstimacionD.IntExt == null)
+                    sqlpIntExt.Value = DBNull.Value;
+                else
+                    sqlpIntExt.Value = iOrdenEstimacionD.IntExt;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpVolumetria);
                 sqlcComando.Parameters.Add(sqlpRenglon);
@@ -88,6 +98,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpUnidad);
                 sqlcComando.Parameters.Add(sqlpPrecio);
                 sqlcComando.Parameters.Add(sqlpImporte);
+                sqlcComando.Parameters.Add(sqlpIntExt);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

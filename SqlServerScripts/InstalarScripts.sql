@@ -436,3 +436,12 @@
 -- GenradorOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorConcepto.sql
 :r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorOrdenEstimacion.sql
+-----------------------------------------------------------------------------------
+-- GenradorVolumetriaD (Insertar)
+:r c:\SqlServerScripts\Insertar\GenradorVolumetriaD\web_spI_InsertarGeneradorVolumetriaD.sql
+-- GenradorVolumetriaD (Consultar)
+:r c:\SqlServerScripts\Consultar\GenradorVolumetriaD\web_spS_ObtenerGeneradorVolumetriaDPorConcepto.sql
+:r c:\SqlServerScripts\Consultar\GenradorVolumetriaD\web_spS_ObtenerGeneradorVolumetriaVaciosDPorConcepto.sql
+-- GenradorVolumetriaD (Borrar)
+:r c:\SqlServerScripts\Borrar\GenradorVolumetriaD\web_spD_BorrarGeneradorVolumetriaDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\GenradorVolumetriaD\web_spD_BorrarGeneradorVolumetriaDPorMov.sql

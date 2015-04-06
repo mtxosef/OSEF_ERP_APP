@@ -210,15 +210,16 @@ namespace OSEF.ERP.APP
                         break;
                 }
 
+             
                 //4. Lanzar la afectación del Movimiento
 
-                if (strMovimiento.Equals("Orden de Cambio"))
+                if (strMovimiento.Trim().Equals("Orden de Cambio"))
                 {
                     OrdenEstimacionBusiness.AfectarOrdenPorID(oFormaOrdenEstimacion);
                     e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Orden", ParameterMode.Value));
                 }
 
-                if (strMovimiento.Equals("Mesa de reporte"))
+                if (strMovimiento.Trim().Equals("Mesa de reporte"))
                 {
                     OrdenEstimacionBusiness.AfectarEstimacionPorID(oFormaOrdenEstimacion);
                     e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Reporte", ParameterMode.Value));

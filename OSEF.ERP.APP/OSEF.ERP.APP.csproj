@@ -333,6 +333,7 @@
     <Content Include="FormaFacturasOrdenEstimacion.aspx" />
     <Content Include="FormaGaleria.aspx" />
     <Content Include="FormaGenerador.aspx" />
+    <Content Include="FormaGeneradorVolumetriaD.aspx" />
     <Content Include="FormaImagenesOrdenEstimacion.aspx" />
     <Content Include="FormaImagenesPreciarios.aspx" />
     <Content Include="FormaInfoGraficas.aspx" />
@@ -395,6 +396,7 @@
     <Content Include="js\conceptos2.js" />
     <Content Include="js\consultarPreciario.js" />
     <Content Include="js\exploradorConceptoPreciarioGeneral.js" />
+    <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
     <Content Include="js\cuentasContables.js" />
@@ -752,6 +754,13 @@
     </Compile>
     <Compile Include="FormaGenerador.aspx.designer.cs">
       <DependentUpon>FormaGenerador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaGeneradorVolumetriaD.aspx.cs">
+      <DependentUpon>FormaGeneradorVolumetriaD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaGeneradorVolumetriaD.aspx.designer.cs">
+      <DependentUpon>FormaGeneradorVolumetriaD.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaImagenesOrdenEstimacion.aspx.cs">
       <DependentUpon>FormaImagenesOrdenEstimacion.aspx</DependentUpon>

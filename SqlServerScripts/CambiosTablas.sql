@@ -63,3 +63,6 @@ ALTER TABLE OrdenesEstimaciones ADD  DiasAtencion DECIMAL(5,0) NULL
 ALTER TABLE OrdenesEstimaciones ADD  Reporto VARCHAR(100) NULL
 ALTER TABLE OrdenesEstimaciones ADD  TrabajoRequerido VARCHAR(850) NULL
 ALTER TABLE OrdenesEstimaciones ADD  Atiende VARCHAR(100) NULL
+
+--Cambios 6 de abril
+ALTER TABLE OrdenesEstimacionesD ADD IntExt VARCHAR(30) NULL
