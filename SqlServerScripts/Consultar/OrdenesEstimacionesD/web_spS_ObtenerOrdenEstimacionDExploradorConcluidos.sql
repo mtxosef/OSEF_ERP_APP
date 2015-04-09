@@ -53,7 +53,7 @@ BEGIN
 		ON 
 			OE.ID=OrdenesEstimacionesD.ID
 		WHERE 
-			OE.Mov IN('Mesa de reporte','Orden de Cambio') 
+			OE.Mov IN('Orden de Cambio') 
 		AND 
 			OE.Estatus= 'CONCLUIDO'
 		ORDER BY OE.FechaEmision DESC

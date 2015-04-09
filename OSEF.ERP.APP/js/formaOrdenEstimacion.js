@@ -34,6 +34,21 @@ var imgbtnFormaNuevo_Click = function () {
     App.sOrdenEstimacion.removeAll();
 };
 
+var imgbtnImprimir_Click = function () {
+    //Traemos los parametros
+
+
+//    alert(Ext.util.Cookies.get('cookieConceptoMovReporte'));
+//alert(Ext.util.Cookies.get('cookieConceptoClaveMovReporte'));
+
+
+    window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');
+    window.parent.App.wGenerador.setHeight(250);
+    window.parent.App.wGenerador.setWidth(590);
+    window.parent.App.wGenerador.center();
+    window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion') + ' Concepto: ' + Ext.util.Cookies.get('cookieConceptoClaveMovReporte'));
+    window.parent.App.wGenerador.show();
+}
 
 
 //Vuelve al tablero ocultando la ventana emergente
@@ -58,24 +73,18 @@ var sMov_Add = function (store, registros, index, eOpts) {
 //Se lanza por cada elemento agregado al Store de Movimientos
 var sMov_Change = function (combo) {
 
-
- 
-
-    if (combo.value == 'Mesa de reporte') {
-        Ext.util.Cookies.set('cookieMovimiento', 'Mnto');
+    if (combo.value.trim() == 'Mesa de reporte') {
+        Ext.util.Cookies.set('cookieMovimientoIdentificador', 'Mnto');
         //   App.pDatosReporte.show(); 
         App.pDatosReporte.tab.show();
         App.cIntExt.hidden = false;
     }
 
-    if (combo.value == 'Orden de Cambio') {
-        Ext.util.Cookies.set('cookieMovimiento', 'Obra');
+    if (combo.value.trim() == 'Orden de Cambio') {
+        Ext.util.Cookies.set('cookieMovimientoIdentificador', 'Obra');
         App.pDatosReporte.hide(); App.pDatosReporte.tab.hide();
         App.cIntExt.hidden = true;
     }
-
-
-
 
 };
 
@@ -646,7 +655,7 @@ var cCantidad_Renderer = function (valor) {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    return F.number(valor, "$000,000,000.00");
+    return F.number(valor, "000,000,000.00");
 };
 
 var cPrecio_Renderer = function (valor) {
@@ -689,13 +698,7 @@ var calcularImporteCantidad_Change = function (component) {
     var Importe = parseFloat(component.getValue() * parseFloat(valorPrecio))
     App.sConceptos.getAt(indiceDetalle).set('Importe', Importe);
 }
-//Obtner el indice del grid panel del detalle
-var obetenerRenglon_Select = function (a, b, c) {
-    indiceDetalle = b.internalId;
-   
-    App.txtfClave.setValue(b.get('RPreciarioConceptos').Clave);
-    App.taDescripcion.setValue(b.get('RPreciarioConceptos').Descripcion);
-}
+
 
 //Evento que actualuza el importe total cuando se usa el generador
 var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) {
@@ -703,7 +706,107 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
     var Importe = parseFloat(registro.get('Cantidad')) * parseFloat(registro.get('Precio'));
     registro.set('Importe', Importe);
 
+  
+    //Verificar si abajo de esta columna existe otra
+    if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
+        //Verificar si toda la fila contiene datos
+
+        if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
+            //Obtener el Renglon anterior
+            var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+            //Insertar un nuevo registro
+            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+            //Actualiza el renglon anterior pintando el botón de borrar
+            App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+            //Validar si se habilita el boton de afectar
+            HabilitarAfectar();
+        }
+    }
+
 }
+
+
+//Trae la descripcion al displayfield
+var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
+
+    indiceDetalle = index;
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
+        && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
+
+        App.imgbtnImprimir.setDisabled(false);
+    }
+    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
+    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+
+    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
+    App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
+};
+
+
+//Obtner el indice del grid panel del detalle y desplegar informacion
+var obetenerRenglon_Select = function (a, registro, c) {
+    indiceDetalle = registro.internalId;
+
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
+            && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
+
+        App.imgbtnImprimir.setDisabled(false);
+
+    }
+
+    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
+    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+
+    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
+    App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
+}
+
+
+
+//Evento que se lanza despues de editar una columna en PreciarioConceptoOrdenEstimacion
+var cePreciarioConcepto_Edit = function (cellediting, columna) {
+
+    //Verificar si abajo de esta columna existe otra
+    if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
+        //Verificar si toda la fila contiene datos
+        var registro = App.sConceptos.getAt(columna.rowIdx);
+        if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
+            //Obtener el Renglon anterior
+            var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
+            //Insertar un nuevo registro
+            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+            //Actualiza el renglon anterior pintando el botón de borrar
+            App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+            //Validar si se habilita el boton de afectar
+            HabilitarAfectar();
+        }
+    }
+
+
+
+    //Valida que el movimiento sea diferente de nuevo y que la columna en la que se obtenga el valor original seal la unica que se mande al metodo del lado del servidor
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo') {
+        if (columna.field == 'ConceptoID') {
+            Ext.util.Cookies.set('cookieIDBorrarFotosOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
+            Ext.util.Cookies.set('cookieConceptoFotosOrdenEstimacion', columna.originalValue);
+            App.direct.obtenerImagenesPorConcepto();
+        }
+    }
+
+    var sum = 0;
+    App.sConceptos.each(function (record) {
+
+        sum += record.get('Importe');
+    });
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
+    ImporteFinal = sum;
+
+
+};
 
 
 //Evento de la columna de acciones
@@ -785,10 +888,7 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 //Deshablitar comandos detalle
 var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-
     var boton;
-
- 
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
@@ -1103,63 +1203,11 @@ var ccFacturas_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 
 
-
-//Evento que se lanza despues de editar una columna en PreciarioConceptoOrdenEstimacion
-var cePreciarioConcepto_Edit = function (cellediting, columna) {
-
-
-  
-
-    //Valida que el movimiento sea diferente de nuevo y que la columna en la que se obtenga el valor original seal la unica que se mande al metodo del lado del servidor
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo') {
-        if (columna.field == 'ConceptoID') {
-            Ext.util.Cookies.set('cookieIDBorrarFotosOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
-            Ext.util.Cookies.set('cookieConceptoFotosOrdenEstimacion', columna.originalValue);
-            App.direct.obtenerImagenesPorConcepto();
-        }
-    }
-
-
-
-
-    //Verificar si abajo de esta columna existe otra
-    if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
-        //Verificar si toda la fila contiene datos
-        var registro = App.sConceptos.getAt(columna.rowIdx);
-        if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
-            //Obtener el Renglon anterior
-            var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
-            //Insertar un nuevo registro
-            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
-            //Actualiza el renglon anterior pintando el botón de borrar
-            App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
-            //Validar si se habilita el boton de afectar
-            HabilitarAfectar();
-        }
-    }
-
-
-
-    var sum = 0;
-    App.sConceptos.each(function (record) {
-
-        sum += record.get('Importe');
-    });
-
-    var F = Ext.util.Format;
-    F.thousandSeparator = ',';
-    F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
-    ImporteFinal = sum;
-
-
-
-};
-
 //Evento que abre el generador
 var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
     //Asigno el concpeto
-
+    indiceDetalle = fila;
+  
     Ext.util.Cookies.set('cookieRenglonOrdenEstimacionD', fila);
     if (registro.get('ConceptoID') != '') {
 
@@ -1203,19 +1251,6 @@ var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
 };
 
 
-//Trae la descripcion al displayfield
-var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
-    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
-    App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
-};
-
-//Trae la descripcion al displayfield
-var gpOrdenEstimacion_Select = function (gridview, registro, gvhtml, index) {
-  
-
-    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
-    App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
-};
 
 //-----------------------------------------------VALIDACIONES-----------------------------------------------
 //Función que valida si se habilita el primer renlgon en el GridPanel detalle

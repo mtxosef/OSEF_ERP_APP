@@ -353,6 +353,7 @@ namespace OSEF.ERP.APP
             }    
                 //3. Borrar en la base de datos
                 ImagenVolumetriaDBusiness.BorrarImagenesVolumetria(iID, strConcepto);
+                GeneradorVolumetriaDBusiness.BorrarGeneradorVolumetriaDPorConcepto(iID, strConcepto);
         }
 
         /// <summary>
@@ -381,6 +382,8 @@ namespace OSEF.ERP.APP
 
             //3. Borrar en la base de datos
             ImagenVolumetriaDBusiness.BorrarImagenesVolumetriaPorID(strID);
+            GeneradorVolumetriaDBusiness.BorrarGeneradorVolumetriaDPorID(strID);
+            
         }
 
         //CargaConceptosAyuda

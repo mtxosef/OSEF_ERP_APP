@@ -316,7 +316,7 @@
 :r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorConceptoVolumetria.sql
 :r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorVolumetria.sql
 ----------------------------------------------------------------------------------------
---Reportes
+--ReportesPreciario
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciario.sql
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciarios.sql
 
@@ -445,3 +445,17 @@
 -- GenradorVolumetriaD (Borrar)
 :r c:\SqlServerScripts\Borrar\GenradorVolumetriaD\web_spD_BorrarGeneradorVolumetriaDPorConcepto.sql
 :r c:\SqlServerScripts\Borrar\GenradorVolumetriaD\web_spD_BorrarGeneradorVolumetriaDPorMov.sql
+--ReportesOrdenesEstimacion
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerCroquisPorIDMovimientoYPorIDConcepto.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerFacturasPorMovimientoYPorConcepto.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerGeneradorPorMovimientoYPorConcepto.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerImagenesPorMovimientoYPorConcepto.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRCroquis.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGenerador.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRFacturas.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenes.sql
+
+
+
+
+

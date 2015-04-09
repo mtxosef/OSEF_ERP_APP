@@ -568,6 +568,10 @@
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
+                                            <Listeners>
+                                                <Update Fn="sConceptos_DataUpdate" ></Update>
+                                                
+                                            </Listeners>
                                         </ext:Store>
                                     </Store>
                                     <ColumnModel 
@@ -623,7 +627,24 @@
                                                 <Renderer Fn="cCantidad_Renderer" />
                                             </ext:NumberColumn>
 
-                                           
+                                            <ext:CommandColumn
+                                                ID="ccGenerador"
+                                                runat="server"
+                                                Width="25">
+                                                <PrepareToolbar Fn="ccDimensiones_PrepareToolbar" />
+                                                <Commands>
+                                               
+                                                    <ext:GridCommand
+                                                        Icon="ApplicationOsxAdd"
+                                                        CommandName="Agregar">
+                                                        <ToolTip Text="Generador" />
+                                                    </ext:GridCommand>
+                                                      <ext:CommandSpacer Width="60"></ext:CommandSpacer>
+                                                </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccGenerador_Command" />
+                                                </Listeners>
+                                            </ext:CommandColumn>
 
                                             <ext:NumberColumn 
                                                 ID="cUtilizada"
@@ -650,25 +671,7 @@
                                                 </Editor>
                                             </ext:NumberColumn>
 
-                                             <ext:CommandColumn
-                                                ID="ccGenerador"
-                                                runat="server"
-                                                Text="Generador" 
-                                                Width="100">
-                                                <PrepareToolbar Fn="ccDimensiones_PrepareToolbar" />
-                                                <Commands>
-                                               
-                                                    <ext:GridCommand
-                                                        Icon="ApplicationOsxAdd"
-                                                        CommandName="Agregar">
-                                                        <ToolTip Text="Generador" />
-                                                    </ext:GridCommand>
-                                                      <ext:CommandSpacer Width="60"></ext:CommandSpacer>
-                                                </Commands>
-                                                <Listeners>
-                                                    <Command Fn="ccGenerador_Command" />
-                                                </Listeners>
-                                            </ext:CommandColumn>
+                                            
 
                                             <ext:CommandColumn
                                                 ID="ccFotos"

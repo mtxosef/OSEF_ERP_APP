@@ -42,7 +42,7 @@ namespace OSEF.APP.BL
         /// Método que borra registros de la tabla GeneradorOrdenEstimacionD
         /// </summary>
         /// <param name="IdMov"></param>
-        public static int BorrarGeneradorOrdenesEstimacionPorID(int IdMov)
+        public static int BorrarGeneradorVolumetriaDPorID(int IdMov)
         {
             return GeneradorVolumetriaDataAccess.BorrarGeneradorVolumetriaDPorID(IdMov);
         }

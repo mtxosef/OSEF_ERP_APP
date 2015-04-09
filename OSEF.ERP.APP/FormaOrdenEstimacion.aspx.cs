@@ -498,6 +498,7 @@ namespace OSEF.ERP.APP
             ImagenOrdenEstimacionBusiness.BorrarImagenesOrdenEstimacionDPorConcepto(iID, strConcepto);
             FacturaOrdenEstimacionBusiness.BorrarFacturaOrdenEstimacionDPorConcepto(iID, strConcepto);
             CroquisOrdenEstimacionBusiness.BorrarCroquisOrdenEstimacionDPorConcepto(iID, strConcepto);
+            GeneradorOrdenEstimacionDBusiness.BorrarGeneradorOrdenEstimacionDPorConcepto(iID,strConcepto);
         }
 
         /// <summary>
@@ -557,6 +558,7 @@ namespace OSEF.ERP.APP
             ImagenOrdenEstimacionBusiness.BorrarImagenesOrdenesEstimacionPorID(strID);
             FacturaOrdenEstimacionBusiness.BorrarFacturasOrdenesEstimacionPorID(strID);
             CroquisOrdenEstimacionBusiness.BorrarCroquisOrdenesEstimacionPorID(strID);
+            GeneradorOrdenEstimacionDBusiness.BorrarGeneradorOrdenesEstimacionPorID(strID);
         }
 
 
@@ -575,5 +577,7 @@ namespace OSEF.ERP.APP
             OrdenEstimacionBusiness.CancelarOrdenEstimacionPorID(strID);
         }
 
+
+  
     }
 }

@@ -463,10 +463,33 @@ var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 };
 
 
+//Evento que actualuza el importe total cuando se usa el generador
+var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) {
+
+
+    //Verificar si abajo de esta columna existe otra
+    if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
+        //Verificar si toda la fila contiene datos
+        if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
+            //Obtener el Renglon anterior
+            var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+            //Insertar un nuevo registro
+            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+            //Actualiza el renglon anterior pintando el botón de borrar
+            App.gpVolumetriaDetalle.getView().refreshNode(App.sConceptos.getCount() - 2);
+            //Validar si se habilita el boton de afectar
+            HabilitarAfectar();
+        }
+    }
+
+}
+
+
+var indiceDetalle;
 //Evento que abre el generador
 var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
     //Asigno el concpeto
-
+    indiceDetalle = fila;
     Ext.util.Cookies.set('cookieRenglonVolumetriaD', fila);
 
     if (registro.get('ConceptoID') != '') {

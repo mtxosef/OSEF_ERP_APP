@@ -69,7 +69,7 @@
                                 <a class="tile wide imagetext wideimage bg-color-red" id="exploradorPreciarioConceptosGenerales" href="#">
                                     <img src="assets/img/Search.png" alt="Explorador Ordenes Estimaciones" />
                                     <div class="textover-wrapper transparent">
-                                        <div class="text2">Explorador Ordenes & Estimaciones</div>
+                                        <div class="text2">Explorador Ordenes de Cambio</div>
                                     </div>
                                 </a>
 

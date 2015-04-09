@@ -139,6 +139,7 @@
     <Content Include="assets\img\controles\CleanHover.png" />
     <Content Include="assets\img\controles\cleanNormal.png" />
     <Content Include="assets\img\controles\cleanPressed.png" />
+    <Content Include="assets\img\controles\croquis.png" />
     <Content Include="assets\img\controles\delete-disable.png" />
     <Content Include="assets\img\controles\delete-normal.png" />
     <Content Include="assets\img\controles\delete-over.png" />
@@ -157,14 +158,17 @@
     <Content Include="assets\img\controles\ExcelNormal.png" />
     <Content Include="assets\img\controles\ExcelOver.png" />
     <Content Include="assets\img\controles\ExcelPressed.png" />
+    <Content Include="assets\img\controles\facturas.png" />
     <Content Include="assets\img\controles\GaleriaDisabled.png" />
     <Content Include="assets\img\controles\GaleriaNormal.png" />
     <Content Include="assets\img\controles\GaleriaOver.png" />
     <Content Include="assets\img\controles\GaleriaPressed.png" />
+    <Content Include="assets\img\controles\generador.png" />
     <Content Include="assets\img\controles\Guardar.png" />
     <Content Include="assets\img\controles\GuardarDisabled.png" />
     <Content Include="assets\img\controles\GuardarOver.png" />
     <Content Include="assets\img\controles\GuardarPressed.png" />
+    <Content Include="assets\img\controles\imagenes.png" />
     <Content Include="assets\img\controles\ImprimirDisabled.png" />
     <Content Include="assets\img\controles\ImprimirNormal.png" />
     <Content Include="assets\img\controles\ImprimirOver.png" />
@@ -351,6 +355,7 @@
     <Content Include="FormaPreciarioExplorador.aspx" />
     <Content Include="FormaPreciarioGeneral.aspx" />
     <Content Include="FormaPreciarioGeneralExplorador.aspx" />
+    <Content Include="FormaReporteOrdenCambioD.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirCroquisOrdenEstimacion.aspx" />
     <Content Include="FormaSubirFacturasOrdenEstimacion.aspx" />
@@ -397,6 +402,7 @@
     <Content Include="js\consultarPreciario.js" />
     <Content Include="js\exploradorConceptoPreciarioGeneral.js" />
     <Content Include="js\formaGeneradorVolumetriaD.js" />
+    <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
     <Content Include="js\cuentasContables.js" />
@@ -466,6 +472,7 @@
     <Content Include="Preciarios.aspx" />
     <Content Include="PreciariosGenerales.aspx" />
     <Content Include="Previa.aspx" />
+    <Content Include="PreviaOrdenEstimacion.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
@@ -881,6 +888,13 @@
     <Compile Include="FormaPreciarioGeneralExplorador.aspx.designer.cs">
       <DependentUpon>FormaPreciarioGeneralExplorador.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaReporteOrdenCambioD.aspx.cs">
+      <DependentUpon>FormaReporteOrdenCambioD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaReporteOrdenCambioD.aspx.designer.cs">
+      <DependentUpon>FormaReporteOrdenCambioD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1088,6 +1102,13 @@
     <Compile Include="Previa.aspx.designer.cs">
       <DependentUpon>Previa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PreviaOrdenEstimacion.aspx.cs">
+      <DependentUpon>PreviaOrdenEstimacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreviaOrdenEstimacion.aspx.designer.cs">
+      <DependentUpon>PreviaOrdenEstimacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profesiones.aspx.cs">
       <DependentUpon>Profesiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1155,10 +1176,34 @@
       <DependentUpon>Presupuesto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reports\rCroquis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rCroquis.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reports\ResumenPartidas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResumenPartidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rFotos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rFotos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rNotaDeBitacora.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rNotaDeBitacora.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rNumerosGeneradores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rNumerosGeneradores.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SolicitudesPrestamos.aspx.cs">
@@ -1277,9 +1322,25 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Presupuesto.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="reports\rCroquis.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rCroquis.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\ResumenPartidas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ResumenPartidas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rFotos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rFotos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rNotaDeBitacora.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rNotaDeBitacora.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rNumerosGeneradores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rNumerosGeneradores.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

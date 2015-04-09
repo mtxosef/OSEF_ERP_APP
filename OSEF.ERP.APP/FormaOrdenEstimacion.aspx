@@ -193,6 +193,9 @@
                             Height="30"
                             Width="30"
                             Disabled="true">
+                            <Listeners>
+                                <Click Fn="imgbtnImprimir_Click"></Click>
+                            </Listeners>
                         </ext:ImageButton>
                         <ext:ToolbarSpacer
                             ID="tbsPrimerEspacio"

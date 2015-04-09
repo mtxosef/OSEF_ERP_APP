@@ -38,8 +38,8 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	IF EXISTS(SELECT A.ConceptoID FROM GeneradorVolumetriaD A INNER JOIN VolumetriasD B ON A.ConceptoID = B.ConceptoID 
-	WHERE A.ConceptoID = @CONCEPTO AND MovID=@ID)
+	IF EXISTS(SELECT A.ConceptoID FROM GeneradorVolumetriaD A
+	WHERE A.ConceptoID = @CONCEPTO AND A.MovID=@ID)
 	BEGIN
 		SELECT CAST(1 AS BIT)
 	END
@@ -49,4 +49,5 @@ BEGIN
 	END
 END
 GO
+
 

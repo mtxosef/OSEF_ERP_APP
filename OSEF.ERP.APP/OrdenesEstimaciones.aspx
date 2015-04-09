@@ -358,7 +358,7 @@
                         runat="server"
                         Text="USUARIO"
                         Align="Center"
-                        Width="175"
+                        Width="165"
                         DataIndex="Usuario">
                     
                     </ext:Column>

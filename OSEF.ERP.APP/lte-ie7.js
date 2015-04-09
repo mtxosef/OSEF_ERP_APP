@@ -4,7 +4,8 @@ window.onload = function() {
 	function addIcon(el, entity) {
 		var html = el.innerHTML;
 		el.innerHTML = '<span style="font-family: \'icomoon\'">' + entity + '</span>' + html;
-	}
+}
+
 	var icons = {
 			'icon-bars' : '&#xe000;',
 			'icon-users' : '&#xe001;',
@@ -15,6 +16,8 @@ window.onload = function() {
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;
+
+
 	for (i = 0; i < els.length; i += 1) {
 		el = els[i];
 		attr = el.getAttribute('data-icon');
