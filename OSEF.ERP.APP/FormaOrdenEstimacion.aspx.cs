@@ -74,8 +74,19 @@ namespace OSEF.ERP.APP
                     DiasAtencion=oOrdenEstimacion.DiasAtencion,
                     Reporto=oOrdenEstimacion.Reporto,
                     TrabajoRequerido=oOrdenEstimacion.TrabajoRequerido,
-                    Atiende=oOrdenEstimacion.Atiende
+                    Atiende=oOrdenEstimacion.Atiende,
 
+
+                    TrabajoRealizado=oOrdenEstimacion.TrabajoRealizado,
+                    CodigoFalla=oOrdenEstimacion.CodigoFalla,
+                    TieneFotos=oOrdenEstimacion.TieneFotos,
+                    TieneReporte=oOrdenEstimacion.TieneReporte,
+                    FechaLlegada=oOrdenEstimacion.FechaLlegada,
+                    HoraLlegada=oOrdenEstimacion.HoraLlegada,
+                    FechaFinActividad=oOrdenEstimacion.FechaFinActividad,
+                    HoraFinActividad=oOrdenEstimacion.HoraFinActividad,
+                    Zona=oOrdenEstimacion.Zona,
+                    Cuadrilla=oOrdenEstimacion.Cuadrilla
 
                 });
             }
@@ -182,6 +193,7 @@ namespace OSEF.ERP.APP
 
 
                 //Campos extras de reporte
+
                     sOrdenEstimacion.GetAt(0).Set("Reporte", nuevosValores.Reporte);
                     sOrdenEstimacion.GetAt(0).Set("Division", nuevosValores.Division);
                     sOrdenEstimacion.GetAt(0).Set("FechaOrigen", nuevosValores.FechaOrigen);
@@ -190,6 +202,21 @@ namespace OSEF.ERP.APP
                     sOrdenEstimacion.GetAt(0).Set("Reporto", nuevosValores.Reporto);
                     sOrdenEstimacion.GetAt(0).Set("TrabajoRequerido", nuevosValores.TrabajoRequerido);
                     sOrdenEstimacion.GetAt(0).Set("Atiende", nuevosValores.Atiende);
+
+                //Campos extras 2
+ 
+                sOrdenEstimacion.GetAt(0).Set("TrabajoRealizado", nuevosValores.TrabajoRealizado);
+                  sOrdenEstimacion.GetAt(0).Set("CodigoFalla", nuevosValores.CodigoFalla);
+                    sOrdenEstimacion.GetAt(0).Set("TieneFotos", nuevosValores.TieneFotos);
+                    sOrdenEstimacion.GetAt(0).Set("TieneReporte", nuevosValores.TieneReporte);
+                    sOrdenEstimacion.GetAt(0).Set("FechaLlegada", nuevosValores.FechaLlegada);
+                    sOrdenEstimacion.GetAt(0).Set("HoraLlegada", nuevosValores.HoraLlegada);
+                    sOrdenEstimacion.GetAt(0).Set("FechaFinActividad", nuevosValores.FechaFinActividad);
+                    sOrdenEstimacion.GetAt(0).Set("HoraFinActividad", nuevosValores.HoraFinActividad);
+                    sOrdenEstimacion.GetAt(0).Set("Zona", nuevosValores.Zona);
+                sOrdenEstimacion.GetAt(0).Set("Cuadrilla", nuevosValores.Cuadrilla);
+
+               
 
             }
             //Si no es estimacion sale de la validacion y afecta normal
@@ -298,6 +325,54 @@ namespace OSEF.ERP.APP
                     case "txtAtiende":
                         oOrdenEstimacionForma.Atiende = sd.Value;
                         break;
+                        //----------
+                    case "txtTrabajoRealizado":
+                        oOrdenEstimacionForma.TrabajoRealizado = sd.Value;
+                        break;
+                    case "txtCodigoFalla":
+                        oOrdenEstimacionForma.CodigoFalla= sd.Value;
+                        break;
+                    case "cmbTieneFotos":
+                        oOrdenEstimacionForma.TieneFotos = sd.Value;
+                        break;
+                    case "cmbTieneReporte":
+                        oOrdenEstimacionForma.TieneReporte = sd.Value;
+                        break;
+
+                    case "dfFechallegada":
+                        if (sd.Value == null)
+                            oOrdenEstimacionForma.FechaLlegada = null;
+                        else
+                            oOrdenEstimacionForma.FechaLlegada = Convert.ToDateTime(sd.Value);
+                        break;
+                    case "tfHoraLlegada":
+                         if (sd.Value == null)
+                            oOrdenEstimacionForma.HoraLlegada = null;
+                        else
+                             oOrdenEstimacionForma.HoraLlegada = Convert.ToDateTime(sd.Value);
+                        break;
+
+                    case "dfFFechaFinActividad":
+                        if (sd.Value == null)
+                            oOrdenEstimacionForma.FechaFinActividad = null;
+                        else
+                            oOrdenEstimacionForma.FechaFinActividad = Convert.ToDateTime(sd.Value);
+                        break;
+                    case "tfHoraFinActividad":
+                         if (sd.Value == null)
+                            oOrdenEstimacionForma.HoraFinActividad = null;
+                        else
+                             oOrdenEstimacionForma.HoraFinActividad = Convert.ToDateTime(sd.Value);
+                        break;
+
+                    case "txtZona":
+                        oOrdenEstimacionForma.Zona = sd.Value;
+                        break;
+                    case "txtCuadrilla":
+                        oOrdenEstimacionForma.Cuadrilla = sd.Value;
+                        break;
+                   
+
                 }
             }
             oOrdenEstimacionForma.Estatus = "BORRADOR";
@@ -341,13 +416,25 @@ namespace OSEF.ERP.APP
                     Origen=oOrdenEstimacionForma.Origen,
                     OrigenId = oOrdenEstimacionForma.OrigenId,
                     Reporte = oOrdenEstimacionForma.Reporte,
+
                     Division = oOrdenEstimacionForma.Division,
                     FechaOrigen = oOrdenEstimacionForma.FechaOrigen,
                     FechaMaximaAtencion = oOrdenEstimacionForma.FechaMaximaAtencion,
                     DiasAtencion = oOrdenEstimacionForma.DiasAtencion,
                     Reporto = oOrdenEstimacionForma.Reporto,
                     TrabajoRequerido = oOrdenEstimacionForma.TrabajoRequerido,
-                    Atiende = oOrdenEstimacionForma.Atiende
+                    Atiende = oOrdenEstimacionForma.Atiende,
+
+                    TrabajoRealizado = oOrdenEstimacionForma.TrabajoRealizado,
+                    CodigoFalla = oOrdenEstimacionForma.CodigoFalla,
+                    TieneFotos = oOrdenEstimacionForma.TieneFotos,
+                    TieneReporte = oOrdenEstimacionForma.TieneReporte,
+                    FechaLlegada = oOrdenEstimacionForma.FechaLlegada,
+                    HoraLlegada = oOrdenEstimacionForma.HoraLlegada,
+                    FechaFinActividad = oOrdenEstimacionForma.FechaFinActividad,
+                    HoraFinActividad = oOrdenEstimacionForma.HoraFinActividad,
+                    Zona = oOrdenEstimacionForma.Zona,
+                    Cuadrilla = oOrdenEstimacionForma.Cuadrilla
                 });
 
                 //5. Guardar Detalle y regresar valor
@@ -358,18 +445,9 @@ namespace OSEF.ERP.APP
             {
                 //6. Complementar datos y actualizar encabezado
                 oOrdenEstimacionForma.Id = oOrdenEstimacion.Id;
-                oOrdenEstimacionForma.Sucursal = strSucursal;
-                oOrdenEstimacionForma.Estatus = oOrdenEstimacion.Estatus;
-                oOrdenEstimacionForma.Reporte = oOrdenEstimacion.Reporte;
-
-                oOrdenEstimacionForma.Division = oOrdenEstimacion.Reporte;
-                oOrdenEstimacionForma.FechaOrigen = oOrdenEstimacion.FechaOrigen;
-                oOrdenEstimacionForma.FechaMaximaAtencion = oOrdenEstimacion.FechaMaximaAtencion;
                 oOrdenEstimacionForma.DiasAtencion = diasAtencion;
-                oOrdenEstimacionForma.TrabajoRequerido = oOrdenEstimacion.TrabajoRequerido;
-                oOrdenEstimacionForma.Atiende = oOrdenEstimacion.Atiende;
-                   
-              
+                
+
 
                 OrdenEstimacionBusiness.ActualizarOrdenEstimacion(oOrdenEstimacionForma);
 
@@ -390,6 +468,19 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("TrabajoRequerido", oOrdenEstimacionForma.TrabajoRequerido);
                 sOrdenEstimacion.GetAt(0).Set("Atiende", oOrdenEstimacionForma.Atiende);
 
+                //Campos extras 2
+                sOrdenEstimacion.GetAt(0).Set("TrabajoRealizado", oOrdenEstimacionForma.TrabajoRealizado);
+                sOrdenEstimacion.GetAt(0).Set("CodigoFalla", oOrdenEstimacionForma.CodigoFalla);
+                sOrdenEstimacion.GetAt(0).Set("TieneFotos", oOrdenEstimacionForma.TieneFotos);
+                sOrdenEstimacion.GetAt(0).Set("TieneReporte", oOrdenEstimacionForma.TieneReporte);
+                sOrdenEstimacion.GetAt(0).Set("FechaLlegada", oOrdenEstimacionForma.FechaLlegada);
+                sOrdenEstimacion.GetAt(0).Set("HoraLlegada", oOrdenEstimacionForma.HoraLlegada);
+                sOrdenEstimacion.GetAt(0).Set("FechaFinActividad", oOrdenEstimacionForma.FechaFinActividad);
+                sOrdenEstimacion.GetAt(0).Set("HoraFinActividad", oOrdenEstimacionForma.HoraFinActividad);
+                sOrdenEstimacion.GetAt(0).Set("Zona", oOrdenEstimacionForma.Zona);
+                sOrdenEstimacion.GetAt(0).Set("Cuadrilla", oOrdenEstimacionForma.Cuadrilla);
+
+  
 
                 //8. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);

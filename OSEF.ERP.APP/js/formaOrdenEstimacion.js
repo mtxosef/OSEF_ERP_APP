@@ -23,6 +23,17 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtfClave.setValue('');
     App.taDescripcion.setValue('');
 
+
+    App.txtCodigoFalla.setValue('');
+    App.cmbTieneFotos.setValue('');
+    App.cmbTieneReporte.setValue('');
+    App.dfFechallegada.setValue('');
+    App.tfHoraLlegada.setValue('');
+    App.dfFFechaFinActividad.setValue('');
+    App.tfHoraFinActividad.setValue('');
+    App.txtZona.setValue('');
+    App.txtCuadrilla.setValue('');
+
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
@@ -77,12 +88,16 @@ var sMov_Change = function (combo) {
         Ext.util.Cookies.set('cookieMovimientoIdentificador', 'Mnto');
         //   App.pDatosReporte.show(); 
         App.pDatosReporte.tab.show();
+        App.pDatosReporteDos.tab.show();
         App.cIntExt.hidden = false;
     }
 
     if (combo.value.trim() == 'Orden de Cambio') {
         Ext.util.Cookies.set('cookieMovimientoIdentificador', 'Obra');
-        App.pDatosReporte.hide(); App.pDatosReporte.tab.hide();
+        App.pDatosReporte.hide(); 
+        App.pDatosReporte.tab.hide();
+        App.pDatosReporteDos.tab.hide();
+        App.pDatosReporte.hide();
         App.cIntExt.hidden = true;
     }
 
@@ -509,7 +524,21 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
         App.txtAtiende.setValue(registro[0].get('Atiende'));
 
+        App.txtTrabajoRealizado.setValue(registro[0].get('TrabajoRealizado'));
+        App.txtCodigoFalla.setValue(registro[0].get('CodigoFalla'));
+        App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
+        App.cmbTieneReporte.setValue(registro[0].get('TieneReporte'));
+        App.dfFechallegada.setValue(registro[0].get('FechaLlegada'));
+        App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
+        App.dfFFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
+        App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
+        App.txtZona.setValue(registro[0].get('Zona'));
+        App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
+
+
         App.pDatosReporte.tab.show();
+        App.pDatosReporteDos.tab.show();
+        
         App.cIntExt.hidden = false;
 
         App.cmbMov.setReadOnly(true);
@@ -543,15 +572,24 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
         App.txtAtiende.setValue(registro[0].get('Atiende'));
 
+        App.txtTrabajoRealizado.setValue(registro[0].get('TrabajoRealizado'));
+        App.txtCodigoFalla.setValue(registro[0].get('CodigoFalla'));
+        App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
+        App.cmbTieneReporte.setValue(registro[0].get('TieneReporte'));
+        App.dfFechallegada.setValue(registro[0].get('FechaLlegada'));
+        App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
+        App.dfFFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
+        App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
+        App.txtZona.setValue(registro[0].get('Zona'));
+        App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
+
 
         App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
+        App.pDatosReporteDos.tab.show();
         App.cmbMov.setReadOnly(true);
-        App.cmbSucursal.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
-        App.imgbtnAfectar.setDisabled(false);
         App.imgbtnGuardar.setDisabled(false);
-        App.imgbtnCancelar.setDisabled(false);
     }
 
 
@@ -569,9 +607,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
-        App.cmbSucursal.setDisabled(true);
+        App.cmbSucursal.setDisabled(false);
         App.dfFechaEmision.setDisabled(true);
-        App.imgbtnAfectar.setDisabled(false);
         App.imgbtnGuardar.setDisabled(false);
         App.imgbtnCancelar.setDisabled(false);
     }
@@ -587,7 +624,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
 
-
+        App.txtTrabajoRealizado.setValue(registro[0].get('TrabajoRealizado'));
         App.txtNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
         App.dfFechaOrigen.setValue(registro[0].get('FechaOrigen'));
@@ -597,8 +634,20 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
         App.txtAtiende.setValue(registro[0].get('Atiende'));
 
+        App.txtCodigoFalla.setValue(registro[0].get('CodigoFalla'));
+        App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
+        App.cmbTieneReporte.setValue(registro[0].get('TieneReporte'));
+        App.dfFechallegada.setValue(registro[0].get('FechaLlegada'));
+        App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
+        App.dfFFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
+        App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
+        App.txtZona.setValue(registro[0].get('Zona'));
+        App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
+
+
         App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
+        App.pDatosReporteDos.tab.show();
         App.cmbMov.setReadOnly(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(false);

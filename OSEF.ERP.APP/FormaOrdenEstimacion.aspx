@@ -59,6 +59,17 @@
                         <ext:ModelField Name="Reporto" Type="String" />
                         <ext:ModelField Name="TrabajoRequerido" Type="String" />
                         <ext:ModelField Name="Atiende" Type="String" />
+
+                         <ext:ModelField Name="TrabajoRealizado" Type="String" />
+                        <ext:ModelField Name="CodigoFalla" Type="String" />
+                        <ext:ModelField Name="TieneFotos" Type="String" />
+                        <ext:ModelField Name="TieneReporte" Type="String" />
+                        <ext:ModelField Name="FechaLlegada" Type="Date" />
+                        <ext:ModelField Name="HoraLlegada" Type="Date" />
+                        <ext:ModelField Name="FechaFinActividad" Type="Date" />
+                        <ext:ModelField Name="HoraFinActividad" Type="Date" />
+                        <ext:ModelField Name="Zona" Type="String" />
+                        <ext:ModelField Name="Cuadrilla" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -520,8 +531,8 @@
                         </ext:FieldContainer>
                     </Items>
                 </ext:Panel>
-                <%--Segundo panel para los datos del reporte--%>
-                <ext:Panel 
+                        <%--Segundo panel para los datos del reporte--%>
+                         <ext:Panel 
                     ID="pDatosReporte" 
                     runat="server" 
                     Title="Datos Reporte"
@@ -592,6 +603,7 @@
                                             ID="dfFechaOrigen"
                                             runat="server"
                                             Width="200"
+                                            Editable="false"
                                             Margins="0 3 0 0" 
                                             Vtype="daterange"
                                             Disabled="false">
@@ -615,6 +627,7 @@
                                             runat="server"
                                             EmptyText="Fecha Máxima Atención"
                                             Width="200"
+                                            Editable="false"
                                             Vtype="daterange"
                                             Margins="0 3 0 0" 
                                             Disabled="false">
@@ -722,38 +735,242 @@
                                         </ext:TextField>
                                     </Items>
                                 </ext:FieldContainer>
-                                
+
+                                 <ext:FieldContainer
+                                    ID="fcTrabajoRealizado"
+                                    runat="server"
+                                    LabelWidth="120"
+                                    FieldLabel="Trabajo Realizado"
+                                    AnchorHorizontal="100%" 
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:TextField 
+                                            ID="txtTrabajoRealizado" 
+                                            runat="server" 
+                                            Width="563" 
+                                            EmptyText="Descripción del trabajo realizado"
+                                            Margins="0 3 0 0"
+                                            MaxLength="200"
+                                            EnforceMaxLength="true">
+                                            <Listeners>
+                                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                            </Listeners>
+                                        </ext:TextField>
+                                    </Items>
+                                </ext:FieldContainer>
                             </Items>
                         </ext:FieldSet>
-                        <ext:FieldContainer
-                            ID="FieldContainer5"
-                            runat="server"
-                            AnchorHorizontal="100%" 
-                            Layout="ColumnLayout">
-                            <Items>
-                                <ext:TextField 
-                                    ID="TextField4" 
-                                    runat="server" 
-                                    Width="80" 
-                                    Disabled="true"
-                                    Text=""
-                                    Cls="xcustomtextAreaSinBorde">
-                                </ext:TextField>
-                                <ext:TextArea
-                                    ID="TextArea1"
-                                    runat="server"
-                                    Disabled="true"
-                                    LabelWidth="70"
-                                    StyleSpec="margin-left: 0px;  margin-top:-5px;"
-                                    Text=""
-                                    Cls="xcustomtextAreaSinBorde"
-                                    Height="66"
-                                    Width="808" >
-                                </ext:TextArea>
-                            </Items>
-                        </ext:FieldContainer>
                     </Items>
                 </ext:Panel>
+
+                         <%--Tercer panel de para los datos del reporte--%>
+                         <ext:Panel 
+                    ID="pDatosReporteDos" 
+                    runat="server" 
+                    Title="Datos Reporte 2"
+                    BodyPadding="5"
+                    Hidden="true"
+                    Width="900"
+                    Height="206" 
+                    AutoScroll="false">
+                    
+                    <Items>
+                        <ext:FieldSet 
+                            ID="FieldSet1" 
+                            runat="server" 
+                            Title="Datos Reporte 2" 
+                            DefaultAnchor="100%"
+                            AutoScroll="false">
+                            <Items>
+                                <ext:FieldContainer 
+                                    ID="FieldContainer1"
+                                    runat="server"
+                                    FieldLabel="Código de Falla"
+                                    LabelWidth="120"
+                                    AnchorHorizontal="100%"
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:TextField 
+                                            ID="txtCodigoFalla" 
+                                            runat="server" 
+                                            Width="200" 
+                                            Margins="0 3 0 0"
+                                            Text="">
+                                            <Listeners>
+                                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                            </Listeners>
+                                        </ext:TextField>
+                                    </Items>
+                                </ext:FieldContainer>
+
+                                 <ext:FieldContainer 
+                                    ID="fcRegistros"
+                                    runat="server"
+                                     FieldLabel="¿Tiene Fotos?"
+                                    LabelWidth="120"
+                                    AnchorHorizontal="100%"
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:ComboBox 
+                                            ID="cmbTieneFotos"
+                                            runat="server"
+                                            Width="200"
+                                            Margins="0 3 0 0"
+                                            Editable="false"
+                                            AllowBlank="false">
+                                            <Items>
+                                                <ext:ListItem Index="0" Text="SI" Value="SI" />
+                                                <ext:ListItem Index="1" Text="NO" Value="NO" />
+                                            </Items>
+                                        </ext:ComboBox>
+
+                                          <ext:ComboBox 
+                                            ID="cmbTieneReporte"
+                                            runat="server"
+                                            FieldLabel="¿Tiene Reporte?"
+                                            LabelWidth="120" 
+                                            Width="300"
+                                            Margins="0 3 0 0"
+                                            Editable="false"
+                                            AllowBlank="false">
+                                            <Items>
+                                                <ext:ListItem Index="0" Text="SI" Value="SI" />
+                                                <ext:ListItem Index="1" Text="NO" Value="NO" />
+                                            </Items>
+                                        </ext:ComboBox>
+
+                                    </Items>
+                                </ext:FieldContainer>
+
+                                <ext:FieldContainer 
+                                    ID="FieldContainer2"
+                                    runat="server"
+                                    LabelWidth="120"
+                                    FieldLabel="Fecha de llegada"
+                                    AnchorHorizontal="100%"
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:DateField
+                                            ID="dfFechallegada"
+                                            runat="server"
+                                            Width="200"
+                                            Editable="false"
+                                            Margins="0 3 0 0" 
+                                            Vtype="daterange"
+                                            Disabled="false">
+                                            <PickerOptions 
+                                                ID="PickerOptions1"
+                                                runat="server"
+                                                Cls="my-date-picker">
+                                            </PickerOptions>
+                                             <CustomConfig>
+                                                <ext:ConfigItem 
+                                                Name="endDateField2" 
+                                                Value="dfFFechaFinActividad" 
+                                                Mode="Value" />
+                                             </CustomConfig>
+                                        </ext:DateField>
+
+                                         <ext:TimeField 
+                                            ID="tfHoraLlegada" 
+                                            runat="server"  
+                                            Increment="1"
+                                            FieldLabel="Hora de llegada"
+                                            LabelWidth="120" 
+                                            Width="300"
+                                            Format="hh:mm tt" 
+                                            />
+                                    </Items>
+                                </ext:FieldContainer>
+
+                                <ext:FieldContainer 
+                                    ID="FieldContainer3"
+                                    runat="server"
+                                    LabelWidth="120"
+                                    FieldLabel="Fecha Fin Actividad"
+                                    AnchorHorizontal="100%"
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:DateField
+                                            ID="dfFFechaFinActividad"
+                                            runat="server"
+                                            Width="200"
+                                            Vtype="daterange"
+                                            Editable="false"
+                                            Margins="0 3 0 0" 
+                                            Disabled="false">
+                                            <PickerOptions 
+                                                ID="PickerOptions4"
+                                                runat="server"
+                                                Cls="my-date-picker">
+                                            </PickerOptions>
+                                            <CustomConfig>
+                                            <ext:ConfigItem 
+                                            Name="startDateField2" 
+                                            Value="dfFechallegada"
+                                            Mode="Value" />
+                                        </CustomConfig>
+                                        </ext:DateField>
+
+                                         <ext:TimeField 
+                                            ID="tfHoraFinActividad" 
+                                            runat="server"  
+                                            Increment="1" 
+                                            FieldLabel="Hora Fin Actividad"
+                                            LabelWidth="120" 
+                                            Width="300"
+                                            Format="hh:mm tt"> 
+                                            </ext:TimeField> 
+                                    </Items>
+                                </ext:FieldContainer>
+
+                                 <ext:FieldContainer 
+                                    ID="FieldContainer4"
+                                    runat="server"
+                                     FieldLabel="Zona"
+                                    LabelWidth="120"
+                                    AnchorHorizontal="100%"
+                                    Layout="HBoxLayout">
+                                    <Items>
+                                        <ext:TextField 
+                                            ID="txtZona"
+                                            runat="server"
+                                            Width="200"
+                                            Margins="0 3 0 0"
+                                            Editable="true"
+                                            AllowBlank="false">
+                                        </ext:TextField>
+                                    </Items>
+                                </ext:FieldContainer>
+                           
+                            <ext:FieldContainer
+                                            ID="fcCuadrilla"
+                                            runat="server"
+                                            LabelWidth="120"
+                                            FieldLabel="Cuadrilla"
+                                            AnchorHorizontal="100%" 
+                                            Layout="HBoxLayout">
+                                            <Items>
+                                                <ext:TextField 
+                                                    ID="txtCuadrilla" 
+                                                    runat="server" 
+                                                    Width="503" 
+                                                    EmptyText="Nobre de la cuadrilla quien realizará el trabajo"
+                                                    Margins="0 3 0 0"
+                                                    MaxLength="200"
+                                                    EnforceMaxLength="true">
+                                                    <Listeners>
+                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                                    </Listeners>
+                                                </ext:TextField>
+                                            </Items>
+                                        </ext:FieldContainer>
+                                   
+                            </Items>
+                        </ext:FieldSet>
+                    </Items>
+                </ext:Panel>
+
                     </Items>
                 </ext:TabPanel>
                         <%--  DETALLE--%>

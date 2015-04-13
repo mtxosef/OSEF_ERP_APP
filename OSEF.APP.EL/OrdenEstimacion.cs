@@ -31,6 +31,17 @@ namespace OSEF.APP.EL
         string reporto;
         string trabajorequerido;
         string atiende;
+        string trabajorealizado;
+        string codigofalla;
+        string tienefotos;
+        string tieneReporte;
+        Nullable<DateTime> fechallegada;
+        Nullable<DateTime> horallegada;
+
+        Nullable<DateTime> fechafinActividad;
+        Nullable<DateTime> horafinactividad;
+        string zona;
+        string cuadrilla;
 
         #endregion
 
@@ -147,6 +158,66 @@ namespace OSEF.APP.EL
         {
             get { return atiende; }
             set { atiende = value; }
+        }
+
+        public string TrabajoRealizado
+        {
+            get { return trabajorealizado; }
+            set { trabajorealizado = value; }
+        }
+
+        public string CodigoFalla
+        {
+            get { return codigofalla; }
+            set { codigofalla = value; }
+        }
+
+        public string TieneFotos
+        {
+            get { return tienefotos; }
+            set { tienefotos = value; }
+        }
+
+        public string TieneReporte
+        {
+            get { return tieneReporte; }
+            set { tieneReporte = value; }
+        }
+
+        public Nullable<DateTime> FechaLlegada
+        {
+            get { return fechallegada; }
+            set { fechallegada = value; }
+        }
+        public Nullable<DateTime> HoraLlegada
+        {
+            get { return horallegada; }
+            set { horallegada = value; }
+        }
+
+        public Nullable<DateTime> FechaFinActividad
+        {
+            get { return fechafinActividad; }
+            set { fechafinActividad = value; }
+        }
+
+
+        public Nullable<DateTime> HoraFinActividad
+        {
+            get { return horafinactividad; }
+            set { horafinactividad = value; }
+        }
+
+        public string Zona
+        {
+            get { return zona; }
+            set { zona = value; }
+        }
+
+        public string Cuadrilla
+        {
+            get { return cuadrilla; }
+            set { cuadrilla = value; }
         }
         #endregion
     }
