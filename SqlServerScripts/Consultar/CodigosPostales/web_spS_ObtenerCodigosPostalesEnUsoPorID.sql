@@ -14,22 +14,22 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
+-- Author:		<Giovanni Flores>
+-- Create date: <2015-03-29>
+-- Description:	<Obtiene un codigo postal en base a su ID>
+-- =============================================
+-- =============================================
 -- Create procedure basic template
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerColoniasPorMunicipio' AND
+			WHERE  name = 'web_spS_ObtenerCodigosPostalesEnUsoPorID' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerColoniasPorMunicipio
+	DROP PROCEDURE web_spS_ObtenerCodigosPostalesEnUsoPorID
 GO
--- =============================================
--- Author:		Orlando Esparza
--- Create date: Sabado 22 de Noviembre de 2014
--- Description:	Obtener todos los Municipios por Estado
--- =============================================
-CREATE PROCEDURE web_spS_ObtenerColoniasPorMunicipio
+CREATE PROCEDURE web_spS_ObtenerCodigosPostalesEnUsoPorID
 	-- Add the parameters for the stored procedure here
-	@Municipio	CHAR(4)
+	@ID CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,14 +37,13 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		Descripcion,
-		Estado,
-		Municipio
-	FROM
-		Colonias
-	WHERE
-		Municipio = @Municipio ORDER BY Descripcion ASC;
-END
-GO
+	IF EXISTS(SELECT A.ID FROM Colonias A INNER JOIN Sucursales B ON A.Descripcion = B.Colonia WHERE A.ID = @ID)
+	BEGIN
+		SELECT CAST(1 AS BIT)
+	END
+	ELSE
+	BEGIN
+		SELECT CAST(0 AS BIT)
+	END 
+
+	END 

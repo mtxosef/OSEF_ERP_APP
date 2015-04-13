@@ -26,8 +26,6 @@ namespace OSEF.AVANCES.SUCURSALES
             if (!X.IsAjaxRequest)
             {
                 //2. Cargar sucursales
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
-                sSucursales.DataBind();
             }
         }
 
@@ -60,6 +58,7 @@ namespace OSEF.AVANCES.SUCURSALES
             string strEstatus = e.ExtraParams["estatus"];
             string strArchivo = e.ExtraParams["archivo"];
             string strSucursal = e.ExtraParams["sucursal"];
+            
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciario").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             string strPreciarioDetalle = e.ExtraParams["DetallePreciario"];
@@ -80,9 +79,6 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfDescripcion":
                         oPreciario.Descripcion = sd.Value;
                         break;
-                    case "cmbSucursal":
-                        oPreciario.Sucursal = sd.Value;
-                        break;
                     case "cmbEstatus":
                         oPreciario.Estatus = sd.Value;
                         break;
@@ -100,6 +96,7 @@ namespace OSEF.AVANCES.SUCURSALES
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 oPreciario.Usuario = oUsuario.ID;
                 oPreciario.Estatus = strEstatus;
+                oPreciario.Sucursal = strSucursal;
 
                 //8. Insertar en la base de datos
                 oPreciario.ID = PreciarioBusiness.Insertar(oPreciario);

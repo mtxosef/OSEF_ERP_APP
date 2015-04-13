@@ -66,6 +66,7 @@ ALTER TABLE OrdenesEstimaciones ADD  Atiende VARCHAR(100) NULL
 --Cambios 6 de abril
 ALTER TABLE OrdenesEstimacionesD ADD IntExt VARCHAR(30) NULL
 
+<<<<<<< HEAD
 
 --Cambios 10 de Abril
 ALTER TABLE OrdenesEstimaciones ADD  TrabajoRealizado VARCHAR(500) NULL
@@ -78,3 +79,15 @@ ALTER TABLE OrdenesEstimaciones ADD  FechaFinActividad SMALLDATETIME NULL
 ALTER TABLE OrdenesEstimaciones ADD  HoraFinActividad datetime NULL
 ALTER TABLE OrdenesEstimaciones ADD  Zona VARCHAR(80) NULL
 ALTER TABLE OrdenesEstimaciones ADD  Cuadrilla VARCHAR(200) NULL
+=======
+ 
+--Cambios Giovanni 12 de abril
+
+alter table sucursales drop column codigoPostal
+
+ALTER TABLE Sucursales 
+ADD CodigoPostal char(10) NULL 
+FOREIGN KEY REFERENCES CodigosPostales(ID)
+
+
+>>>>>>> origin/master

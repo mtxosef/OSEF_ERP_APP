@@ -255,7 +255,14 @@ namespace OSEF.APP.DL
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
                 sqlpID.Size = 10;
-                sqlpID.Value = strID;
+           
+
+                if (strID == null)
+                    sqlpID.Value = DBNull.Value;
+                else
+                    sqlpID.Value = strID;
+
+                
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);

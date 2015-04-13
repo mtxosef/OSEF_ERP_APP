@@ -265,103 +265,76 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfCodigoPostal;
         
         /// <summary>
-        /// Control imCP.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.InputMask imCP;
+        protected global::Ext.Net.Button Button1;
         
         /// <summary>
-        /// Control cmbEstado.
+        /// Control txtEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbEstado;
+        protected global::Ext.Net.TextField txtEstado;
         
         /// <summary>
-        /// Control sEstados.
+        /// Control InputMask1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sEstados;
+        protected global::Ext.Net.InputMask InputMask1;
         
         /// <summary>
-        /// Control mEstados.
+        /// Control FieldContainer1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mEstados;
+        protected global::Ext.Net.FieldContainer FieldContainer1;
         
         /// <summary>
-        /// Control ContenedorEstMun.
+        /// Control txtMunicipio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer ContenedorEstMun;
+        protected global::Ext.Net.TextField txtMunicipio;
         
         /// <summary>
-        /// Control cmbMunicipio.
+        /// Control InputMask2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbMunicipio;
+        protected global::Ext.Net.InputMask InputMask2;
         
         /// <summary>
-        /// Control sMunicipios.
+        /// Control txtColonia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sMunicipios;
+        protected global::Ext.Net.TextField txtColonia;
         
         /// <summary>
-        /// Control mMunicipios.
+        /// Control InputMask3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mMunicipios;
-        
-        /// <summary>
-        /// Control cmbColonia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbColonia;
-        
-        /// <summary>
-        /// Control sColonias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sColonias;
-        
-        /// <summary>
-        /// Control mColonias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mColonias;
+        protected global::Ext.Net.InputMask InputMask3;
         
         /// <summary>
         /// Control ContenedorFechas.

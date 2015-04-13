@@ -132,7 +132,8 @@ namespace OSEF.APP.DL
 
                 SqlParameter sqlpCodigoPostal = new SqlParameter();
                 sqlpCodigoPostal.ParameterName = "@CodigoPostal";
-                sqlpCodigoPostal.SqlDbType = SqlDbType.Int;
+                sqlpCodigoPostal.SqlDbType = SqlDbType.Char;
+                sqlpCodigoPostal.Size = 10;
                 sqlpCodigoPostal.Value = iSucursal.CodigoPostal;
 
                 SqlParameter sqlpColonia = new SqlParameter();
@@ -356,7 +357,8 @@ namespace OSEF.APP.DL
 
                 SqlParameter sqlpCodigoPostal = new SqlParameter();
                 sqlpCodigoPostal.ParameterName = "@CodigoPostal";
-                sqlpCodigoPostal.SqlDbType = SqlDbType.Int;
+                sqlpCodigoPostal.SqlDbType = SqlDbType.Char;
+                sqlpCodigoPostal.Size = 10;
                 sqlpCodigoPostal.Value = uSucursal.CodigoPostal;
 
                 SqlParameter sqlpColonia = new SqlParameter();
