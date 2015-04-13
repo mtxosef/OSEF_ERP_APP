@@ -1,5 +1,4 @@
-USE [OSEF_ERP]
-GO
+
 
 /****** Object:  StoredProcedure [dbo].[web_spS_ObtenerCodigoPostalPorId]    Script Date: 26/03/2015 18:37:43 ******/
 SET ANSI_NULLS ON

@@ -289,25 +289,16 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSucursal;
+        protected global::Ext.Net.TextField cmbSucursal;
         
         /// <summary>
-        /// Control sSucursal.
+        /// Control btnBuscaSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sSucursal;
-        
-        /// <summary>
-        /// Control mSucursal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mSucursal;
+        protected global::Ext.Net.Button btnBuscaSucursal;
         
         /// <summary>
         /// Control txtfSucursalNombre.
@@ -317,6 +308,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfSucursalNombre;
+        
+        /// <summary>
+        /// Control txtIDSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIDSucursal;
         
         /// <summary>
         /// Control fcFechaEmision.

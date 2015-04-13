@@ -1,5 +1,4 @@
-USE [OSEF_ERP]
-GO
+
 
 /****** Object:  StoredProcedure [dbo].[web_spS_ObtenerCodigosPorColonia]    Script Date: 26/03/2015 18:38:03 ******/
 SET ANSI_NULLS ON

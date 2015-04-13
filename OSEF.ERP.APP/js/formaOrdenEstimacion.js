@@ -123,33 +123,22 @@ var cmbMov_Select = function (combobox, registro) {
 };
 
 
-     //Evento que se lanza al seleccionar algun valor de la sucursal
-    var cmbSucursal_Select = function (combobox, registro) {
-  
-    App.txtfSucursalNombre.setValue(registro[0].data.Nombre);
 
-    //Validar si se habilita el boton de afectar
-    HabilitarAfectar();
-    //Validar si se habilita Guardar
-    HabilitarGuardar();
-    //Validar si se asigna el primer renglon del detalle
-    PrimerRenglonDetalle();
-};
+    //Evento de clic del botón BuscarSucursal
+    var btnBuscarSucursal_Click = function () {
+        window.parent.App.wAyudaConcepto.load('FormaBuscaSucursal.aspx');
 
-     //Evento que se lanza al poner algun caracter en el control de la Sucursal
-var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
+        window.parent.App.wAyudaConcepto.setHeight(370);
+        window.parent.App.wAyudaConcepto.setWidth(720);
+        window.parent.App.wAyudaConcepto.center();
+        window.parent.App.wAyudaConcepto.setTitle('Seleccionar Sucursal');
+        window.parent.App.wAyudaConcepto.show();
+    };
 
-    App.sSucursal.clearFilter();
-    if (App.cmbSucursal.getValue() != null) {
-        App.sSucursal.filter([{ filterFn: function (item) {
-            if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Nombre').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
-            else { return false; }
-        }
-        }]);
-    }
-    else {
-        App.txtfSucursalNombre.setValue('');
-    }
+
+//Evento que se lanza al poner algun caracter en el control de la Sucursal
+var cmbSucursal_Change = function () {
+
 
     //Validar si se habilita Guardar
     HabilitarGuardar();
@@ -157,8 +146,8 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
     HabilitarAfectar();
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
-   
-  
+
+
 };
 
 
@@ -487,15 +476,16 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
-
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
         //Deshabilita los campos en un movimiento afectado
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
+        App.cmbSucursal.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
@@ -509,11 +499,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
 
         App.txtNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
@@ -554,14 +545,15 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
     //Si es Reporte Y NO ESTA AFECTADO
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR'
          && registro[0].get('Mov').trim() == "Mesa de reporte") {
-       
+
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
 
         App.txtNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
@@ -590,6 +582,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.cmbMov.setReadOnly(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnGuardar.setDisabled(false);
+        App.imgbtnBorrar.setDisabled(false);
     }
 
 
@@ -599,18 +592,19 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
 
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
         App.cmbSucursal.setDisabled(false);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnGuardar.setDisabled(false);
-        App.imgbtnCancelar.setDisabled(false);
+        App.imgbtnBorrar.setDisabled(false);
     }
 
     //Si es Estimacion
@@ -618,11 +612,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
          && registro[0].get('Mov').trim() == "Estimacion") {
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
 
         App.txtTrabajoRealizado.setValue(registro[0].get('TrabajoRealizado'));
         App.txtNoReporte.setValue(registro[0].get('Reporte'));
@@ -659,11 +654,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CANCELADO') {
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
 
         //Deshabilita los campos en un movimiento afectado
         App.cmbMov.setReadOnly(true);
@@ -678,11 +674,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
 
 
         //Agregar una fila para seguir capturando
@@ -1305,7 +1302,9 @@ var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
 //Función que valida si se habilita el primer renlgon en el GridPanel detalle
 function PrimerRenglonDetalle() {
     //Validar si se asigna el primer renglon del concepto
-        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != null) {
+
+
+        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != '') {
 
             var store = App.gpOrdenEstimacion.getStore();
                 if (store.getCount() == 0) {
@@ -1319,7 +1318,7 @@ function PrimerRenglonDetalle() {
     //Función que valida si se habilita el botón de Guardar
     function HabilitarGuardar() {
 
-        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != null) {
+        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != '') {
             App.imgbtnGuardar.setDisabled(false);
         }
         else {
@@ -1349,7 +1348,7 @@ function PrimerRenglonDetalle() {
     function HabilitarAfectar() {
    
         //Obtiene la fecha de emision del store
-        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != null) {
+        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != '') {
 
             if (App.cmbMov.isValid() && App.cmbSucursal.isValid()) {
 

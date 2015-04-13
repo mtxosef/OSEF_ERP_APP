@@ -20,8 +20,8 @@ namespace OSEF.ERP.APP
             {
                 //2. Checar ticket de autenticación
                 UsuarioBusiness.checkValidSession(this);
-                sSucursal.DataSource = SucursalBusiness.ObtenerSucursales();
-                sSucursal.DataBind();
+                //sSucursal.DataSource = SucursalBusiness.ObtenerSucursales();
+                //sSucursal.DataBind();
             }
         }
 
@@ -282,7 +282,7 @@ namespace OSEF.ERP.APP
                     case "cmbMov":
                         oOrdenEstimacionForma.Mov = sd.Value;
                         break;
-                    case "cmbSucursal":
+                    case "txtIDSucursal":
                         oOrdenEstimacionForma.Sucursal = sd.Value;
                         break;
                     case "dfFechaEmision":

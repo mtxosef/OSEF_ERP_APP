@@ -5,10 +5,7 @@ var Gerente_Convert = function (value, record) {
 
 //Asignar la descripción de la subsubcategoria a esta columna
 var cDireccion_Renderer = function (valor, columna, registro) {
-    console.log(registro.get('Calle'));
-    console.log(valor, 'valor');
 
-    // + ' ' + registro.get('NoExterior') + ' ' + registro.get('Colonia')
     return registro.get('Calle') + ' N°.' + registro.get('NoExterior') + ' COL.' + registro.get('RColonia').Descripcion;
 
 };
