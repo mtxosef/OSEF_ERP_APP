@@ -170,6 +170,7 @@
                     <Listeners>
                         <DataChanged Fn="sSucursales_DataChanged" />
                     </Listeners>
+
                 </ext:Store>
             </Store>
             <ColumnModel>

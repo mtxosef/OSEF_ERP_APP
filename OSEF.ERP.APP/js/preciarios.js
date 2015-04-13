@@ -191,12 +191,12 @@ var sPreciario_Add = function (avance, registro) {
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo') {
         App.txtfID.setValue(registro[0].get('ID'));
         App.txtfDescripcion.setValue(registro[0].get('Descripcion'));
-        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.txfArchivoActual.setValue(registro[0].get('Archivo'));
         App.cmbEstatus.setValue(registro[0].get('Estatus'));
         App.dfFechaEmision.setValue(registro[0].get('FechaAlta'));
-
+        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
 
         //Deshabilita botones cuando se edita un movimiento al cargar el store
         App.cmbEstatus.setDisabled(false);
@@ -420,5 +420,18 @@ var sCarga_Load = function (avance, registro, index) {
     F.decimalSeparator = '.';
     App.dfTotalInicial.setValue('$' + F.number(sum, "000,000,000.00"));
     App.dfTotalFinal.setValue('$' + F.number(sum2, "000,000,000.00"));
-   
+
 }
+
+
+
+//Evento de clic del botón BuscarSucursal
+var btnBuscarSucursal_Click = function () { 
+    window.parent.App.wAyudaConcepto.load('FormaBuscaSucursal.aspx');
+
+    window.parent.App.wAyudaConcepto.setHeight(370);
+    window.parent.App.wAyudaConcepto.setWidth(720); 
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('Seleccionar Sucursal'); 
+    window.parent.App.wAyudaConcepto.show(); 
+};

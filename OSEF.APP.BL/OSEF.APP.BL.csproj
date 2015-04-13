@@ -47,6 +47,7 @@
     <Compile Include="ArticuloBusiness.cs" />
     <Compile Include="CategoriaBusiness.cs" />
     <Compile Include="ClienteBusiness.cs" />
+    <Compile Include="CodigoPostalBusiness.cs" />
     <Compile Include="ColoniaBusiness.cs" />
     <Compile Include="ConceptoBusiness.cs" />
     <Compile Include="CroquisOrdenEstimacionBusiness.cs" />

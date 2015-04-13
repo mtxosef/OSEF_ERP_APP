@@ -121,13 +121,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfDescripcion;
         
         /// <summary>
-        /// Control fcSucursal.
+        /// Control FieldContainerCPCol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcSucursal;
+        protected global::Ext.Net.FieldContainer FieldContainerCPCol;
         
         /// <summary>
         /// Control cmbSucursal.
@@ -136,25 +136,16 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSucursal;
+        protected global::Ext.Net.TextField cmbSucursal;
         
         /// <summary>
-        /// Control sSucursales.
+        /// Control btnBuscaSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sSucursales;
-        
-        /// <summary>
-        /// Control mSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mSucursales;
+        protected global::Ext.Net.Button btnBuscaSucursal;
         
         /// <summary>
         /// Control txtfSucursalNombre.
@@ -164,6 +155,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfSucursalNombre;
+        
+        /// <summary>
+        /// Control txtIDSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIDSucursal;
         
         /// <summary>
         /// Control fcFechaEmision.

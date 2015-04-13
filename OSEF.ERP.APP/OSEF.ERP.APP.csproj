@@ -324,10 +324,13 @@
     <Content Include="FormaAnexosSocio.aspx" />
     <Content Include="FormaAvance.aspx" />
     <Content Include="FormaAvanzarVolumetria.aspx" />
+    <Content Include="FormaBuscaCodigosPostales.aspx" />
     <Content Include="FormaBuscaPreciarioConcepto.aspx" />
     <Content Include="FormaBuscaPreciarioGeneralConcepto.aspx" />
+    <Content Include="FormaBuscaSucursal.aspx" />
     <Content Include="FormaCambiarContrasena.aspx" />
     <Content Include="FormaCargaMultiImagenes.aspx" />
+    <Content Include="FormaCodigoPostales.aspx" />
     <Content Include="FormaColonia.aspx" />
     <Content Include="FormaConcepto.aspx" />
     <Content Include="FormaConcepto2.aspx" />
@@ -392,8 +395,10 @@
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
     <Content Include="js\avanzarVolumetria.js" />
+    <Content Include="js\buscacodigosPostales.js" />
     <Content Include="js\buscaConceptoPreciario.js" />
     <Content Include="js\buscaConceptoPreciarioGeneral.js" />
+    <Content Include="js\buscasucursales.js" />
     <Content Include="js\cambiarContrasena.js" />
     <Content Include="js\certificadosInversiones.js" />
     <Content Include="js\clientes.js" />
@@ -671,6 +676,13 @@
     <Compile Include="FormaAvanzarVolumetria.aspx.designer.cs">
       <DependentUpon>FormaAvanzarVolumetria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaBuscaCodigosPostales.aspx.cs">
+      <DependentUpon>FormaBuscaCodigosPostales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaCodigosPostales.aspx.designer.cs">
+      <DependentUpon>FormaBuscaCodigosPostales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaBuscaPreciarioConcepto.aspx.cs">
       <DependentUpon>FormaBuscaPreciarioConcepto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -685,6 +697,13 @@
     <Compile Include="FormaBuscaPreciarioGeneralConcepto.aspx.designer.cs">
       <DependentUpon>FormaBuscaPreciarioGeneralConcepto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaBuscaSucursal.aspx.cs">
+      <DependentUpon>FormaBuscaSucursal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaSucursal.aspx.designer.cs">
+      <DependentUpon>FormaBuscaSucursal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaCambiarContrasena.aspx.cs">
       <DependentUpon>FormaCambiarContrasena.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -698,6 +717,13 @@
     </Compile>
     <Compile Include="FormaCargaMultiImagenes.aspx.designer.cs">
       <DependentUpon>FormaCargaMultiImagenes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaCodigoPostales.aspx.cs">
+      <DependentUpon>FormaCodigoPostales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaCodigoPostales.aspx.designer.cs">
+      <DependentUpon>FormaCodigoPostales.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaColonia.aspx.cs">
       <DependentUpon>FormaColonia.aspx</DependentUpon>

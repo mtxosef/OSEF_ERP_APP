@@ -60,8 +60,18 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static List<Sucursal> ObtenerSucursales()
         {
-            return SucursalDataAccess.ObtenerSucursales();
+            //return SucursalDataAccess.ObtenerSucursales();
+            List<Sucursal> lSucursal = SucursalDataAccess.ObtenerSucursales();
+
+            foreach(Sucursal c in lSucursal){
+                c.RColonia = ColoniaBusiness.ObtenerColoniaPorID(c.Colonia);
+                
+            }
+
+
+                return lSucursal;
         }
+        
 
 
         /// <summary>
@@ -80,9 +90,16 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static Sucursal ObtenerSucursalPorID(string strID)
         {
+
             Sucursal oSucursal = SucursalDataAccess.ObtenerSucursalPorID(strID);
             oSucursal.RProvedor = ProveedorBusiness.ObtenerProveedorPorID(oSucursal.Contratista);
-            return oSucursal ;
+            oSucursal.RCodigopostal = CodigoPostalBusiness.ObtenerCodigoPostalPorID(oSucursal.CodigoPostal);
+            oSucursal.RColonia = ColoniaBusiness.ObtenerColoniaPorID(oSucursal.Colonia);
+            oSucursal.REstado = EstadoBusiness.ObtenerEstadoPorID(oSucursal.Estado);
+            oSucursal.RMunicipio = MunicipioBusiness.ObtenerMunicipioPorID(oSucursal.Municipio);
+
+            return oSucursal;
+
         }
 
         /// <summary>

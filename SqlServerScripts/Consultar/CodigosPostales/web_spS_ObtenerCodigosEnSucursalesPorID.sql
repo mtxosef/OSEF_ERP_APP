@@ -14,22 +14,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Create procedure basic template
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
 -- =============================================
-IF EXISTS (	SELECT name 
-			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerColoniasPorMunicipio' AND
-			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerColoniasPorMunicipio
-GO
--- =============================================
--- Author:		Orlando Esparza
--- Create date: Sabado 22 de Noviembre de 2014
--- Description:	Obtener todos los Municipios por Estado
--- =============================================
-CREATE PROCEDURE web_spS_ObtenerColoniasPorMunicipio
+CREATE PROCEDURE web_spS_ObtenerCodigosEnSucursalesPorID
 	-- Add the parameters for the stored procedure here
-	@Municipio	CHAR(4)
+	<@Param1, sysname, @p1> <Datatype_For_Param1, , int> = <Default_Value_For_Param1, , 0>, 
+	<@Param2, sysname, @p2> <Datatype_For_Param2, , int> = <Default_Value_For_Param2, , 0>
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,14 +29,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		Descripcion,
-		Estado,
-		Municipio
-	FROM
-		Colonias
-	WHERE
-		Municipio = @Municipio ORDER BY Descripcion ASC;
+	SELECT <@Param1, sysname, @p1>, <@Param2, sysname, @p2>
 END
 GO

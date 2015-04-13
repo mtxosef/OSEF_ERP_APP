@@ -44,6 +44,7 @@
     <Compile Include="ArticuloDataAccess.cs" />
     <Compile Include="CategoriaDataAccess.cs" />
     <Compile Include="ClienteDataAccess.cs" />
+    <Compile Include="CodigoPostalDataAccess.cs" />
     <Compile Include="ColoniaDataAccess.cs" />
     <Compile Include="ConceptoDataAccess.cs" />
     <Compile Include="CroquisOrdenEstimacionDDataAccess.cs" />

@@ -31,7 +31,7 @@ namespace OSEF.APP.EL
         string entrecalles;
         string noexterior;
         string nointerior;
-        int codigopostal;
+        string codigopostal;
         string colonia;
         string estado;
         string municipio;
@@ -43,7 +43,11 @@ namespace OSEF.APP.EL
         string estatus;
         Proveedor rprovedor;
 
-
+        Estado restado;
+        Municipio rmunicipio;
+        Colonia rcolonia;
+        CodigoPostal rcodigopostal;
+         
         #endregion
 
         #region Propiedades
@@ -156,7 +160,7 @@ namespace OSEF.APP.EL
             set { nointerior = value; }
         }
 
-        public int CodigoPostal
+        public string CodigoPostal
         {
             get { return codigopostal; }
             set { codigopostal = value; }
@@ -223,14 +227,36 @@ namespace OSEF.APP.EL
             get { return direccionzona; }
             set { direccionzona = value; }
         }
-
-
+         
         public Proveedor RProvedor
         {
             get { return rprovedor; }
             set { rprovedor = value; }
         }
 
+        public Estado REstado
+        {
+            get { return restado; }
+            set { restado = value; }
+        }
+
+        public Municipio RMunicipio
+        {
+            get { return rmunicipio; }
+            set { rmunicipio = value; }
+        }
+
+        public Colonia RColonia
+        {
+            get { return rcolonia; }
+            set { rcolonia = value; }
+        }
+        
+        public CodigoPostal RCodigopostal
+        {
+            get { return rcodigopostal; }
+            set { rcodigopostal = value; }
+        }
         #endregion
     }
 }

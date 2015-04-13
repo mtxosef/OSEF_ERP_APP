@@ -45,6 +45,7 @@
     <Compile Include="BienInmueble.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CertificadoInversion.cs" />
+    <Compile Include="CodigoPostal.cs" />
     <Compile Include="Colonia.cs" />
     <Compile Include="Concepto.cs" />
     <Compile Include="CroquisOrdenEstimacionD.cs" />
