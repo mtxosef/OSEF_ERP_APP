@@ -23,8 +23,7 @@ namespace OSEF.ERP.APP
         {
           
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string strConceptoID = Cookies.GetCookie("cookieConceptoMovReporte").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
             //Firmas documento(Parametros)
             string strElaboro = e.ExtraParams["elaboro"];
