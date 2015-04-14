@@ -456,14 +456,14 @@
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenes.sql
 -----------------------------------------------------------------------------------------------------------------------------------------
 --CodigosPostales(Insertar)
-:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spI_InsertarCodigoPostal.sql
+:r c:\SqlServerScripts\Insertar\CodigosPostales\web_spI_InsertarCodigoPostal.sql
 --CodigosPostales(Consultar)
 :r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigoPostalPorId.sql
 :r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigosPostalesEnUsoPorID.sql
 :r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigosPorColonia.sql
-:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigosEnSucursalesPorID.sql
+:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigoPostalPorNumero.sql
 --CodigosPostales(Borrar)
-:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spD_BorrarCodigoPostal.sql
+:r c:\SqlServerScripts\Borrar\CodigosPostales\web_spD_BorrarCodigoPostal.sql
 
 
 

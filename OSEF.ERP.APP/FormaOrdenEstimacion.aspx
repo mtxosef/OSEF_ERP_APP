@@ -138,7 +138,7 @@
                                         <ext:Parameter Name="OrdenEstimacionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="Sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="Sucursal" Value="App.txtIDSucursal.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="diasAtencion" Value="App.nfDiasAtencion.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
@@ -402,7 +402,7 @@
                                     LabelWidth="120"
                                     Layout="HBoxLayout">
                                     <Items>
-                                        <ext:ComboBox
+                                       <%-- <ext:ComboBox
                                             ID="cmbSucursal"
                                             runat="server"
                                             DisplayField="CR"
@@ -447,14 +447,49 @@
                                                 <Select Fn="cmbSucursal_Select" />
                                                 <Change Fn="cmbSucursal_Change" />
                                             </Listeners>  
-                                        </ext:ComboBox>
-                                        <ext:TextField
+                                        </ext:ComboBox>--%>
+                                         <ext:TextField 
+                                         ID="cmbSucursal" 
+                                         runat="server" 
+                                         Width="200" 
+                                         StyleSpec="margin-right: 6px;"
+                                         MaxLength="50" 
+                                         EnforceMaxLength="true" 
+                                         AllowBlank="true" 
+                                         ReadOnly="true">
+                                                <RightButtons>
+                                                    <ext:Button 
+                                                    ID="btnBuscaSucursal" 
+                                                    runat="server" 
+                                                    Icon="Find" 
+                                                    StandOut="true">
+                                                        <Listeners>
+                                                            <Click Fn="btnBuscarSucursal_Click" />
+                                                        </Listeners>
+                                                    </ext:Button>
+                                                </RightButtons>
+                                                 <Listeners>
+                                                <Change Fn="cmbSucursal_Change" />
+                                            </Listeners>  
+                                            </ext:TextField>
+                                            <ext:TextField 
+                                            ID="txtfSucursalNombre" 
+                                            runat="server" 
+                                            Width="360" 
+                                            Margins="0 3 0 0"
+                                            Disabled="true"> 
+                                            </ext:TextField>
+
+                                             <ext:TextField ID="txtIDSucursal" runat="server"  
+                                                 Hidden="true"> 
+                                            </ext:TextField>
+                                        <%--<ext:TextField
                                             ID="txtfSucursalNombre"
                                             runat="server"
                                             Width="360"
                                             Margins="0 3 0 0"
                                             Disabled="true">
-                                        </ext:TextField>
+                                        </ext:TextField>--%>
                                     </Items>
                                 </ext:FieldContainer>
                                 <ext:FieldContainer 

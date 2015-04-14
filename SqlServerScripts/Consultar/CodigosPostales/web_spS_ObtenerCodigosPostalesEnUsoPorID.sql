@@ -37,7 +37,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	IF EXISTS(SELECT A.ID FROM Colonias A INNER JOIN Sucursales B ON A.Descripcion = B.Colonia WHERE A.ID = @ID)
+	IF EXISTS(SELECT A.ID FROM CodigosPostales A INNER JOIN Sucursales B ON A.ID = B.CodigoPostal WHERE A.ID = @ID)
 	BEGIN
 		SELECT CAST(1 AS BIT)
 	END

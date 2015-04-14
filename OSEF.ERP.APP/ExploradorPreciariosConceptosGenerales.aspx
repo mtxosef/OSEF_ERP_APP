@@ -39,7 +39,7 @@
             runat="server"
             Height="420"
             Width="1000"
-            Cls="xCustomGridPanel"
+           
             Title="EXPLORADOR CONCEPTOS PRECIARIOS GENERALES"
             EnableColumnHide="false"
             EnableColumnMove="false"
