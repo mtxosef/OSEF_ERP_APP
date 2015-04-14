@@ -43,14 +43,14 @@ BEGIN
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto
 		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
-		--CONCEPTO INFO IMAGENES
-		IOD.Direccion RutaImagen, IOD.Nombre NombreImg
+		--CONCEPTO INFO GENERADOR
+		IOD.Direccion
 		--Encabezado del movimiento(No del reporte)
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
 		LEFT JOIN OrdenesEstimacionesD OED
 		ON OE.ID = OED.ID
-		--Imagenes que pertenecen al concepto
+		--Generador que pertenece al concepto
 		LEFT JOIN ImagenesOrdenEstimacionD IOD 
 		ON IOD.MovID =  OE.ID
 		AND IOD.Concepto = OED.ConceptoID
@@ -68,6 +68,6 @@ BEGIN
 		LEFT JOIN Estados E
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
-		ON C.ID = S.Colonia;
+		ON C.ID = S.Colonia
 END
 GO

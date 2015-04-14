@@ -36,8 +36,7 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
-		SELECT 
+    SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
 		OE.ID,
 		OED.ConceptoID,
@@ -71,6 +70,6 @@ BEGIN
 		LEFT JOIN Estados E
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
-		ON C.ID = S.Colonia;
+		ON C.ID = S.Colonia
 END
 GO

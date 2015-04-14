@@ -47,13 +47,13 @@ namespace OSEF.ERP.APP
                 if (chkCroquis.Checked)
                 {
 
-                    using (var comando = new SqlCommand("web_spS_ObtenerCroquisPorIDMovimientoYPorIDConcepto", conn))
+                    using (var comando = new SqlCommand("web_spS_ObtenerCroquisPorIDMovimiento", conn))
                     {
                         using (var adaptador = new SqlDataAdapter(comando))
                         {
                             DataTable dt = new DataTable();
                             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
+                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
                             adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
                             adaptador.Fill(dt);
 
@@ -80,13 +80,13 @@ namespace OSEF.ERP.APP
                 if (chkFotos.Checked)
                 {
 
-                    using (var comando = new SqlCommand("web_spS_ObtenerImagenesPorMovimientoYPorConcepto", conn))
+                    using (var comando = new SqlCommand("web_spS_ObtenerImagenesPorMovimiento", conn))
                     {
                         using (var adaptador = new SqlDataAdapter(comando))
                         {
                             DataTable dt = new DataTable();
                             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
+                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
                             adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
                             adaptador.Fill(dt);
 
@@ -113,13 +113,13 @@ namespace OSEF.ERP.APP
                 if (chkFacturas.Checked)
                 {
 
-                    using (var comando = new SqlCommand("web_spS_ObtenerFacturasPorMovimientoYPorConcepto", conn))
+                    using (var comando = new SqlCommand("web_spS_ObtenerFacturasPorMovimiento", conn))
                     {
                         using (var adaptador = new SqlDataAdapter(comando))
                         {
                             DataTable dt = new DataTable();
                             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
+                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
                             adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
                             adaptador.Fill(dt);
 
@@ -144,13 +144,13 @@ namespace OSEF.ERP.APP
                 if (chkGenerador.Checked)
                 {
 
-                    using (var comando = new SqlCommand("web_spS_ObtenerGeneradorPorMovimientoYPorConcepto", conn))
+                    using (var comando = new SqlCommand("web_spS_ObtenerGeneradorPorMovimiento", conn))
                     {
                         using (var adaptador = new SqlDataAdapter(comando))
                         {
                             DataTable dt = new DataTable();
                             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
+                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
                             adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
                             adaptador.Fill(dt);
 

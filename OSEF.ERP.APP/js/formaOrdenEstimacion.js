@@ -24,6 +24,15 @@ var imgbtnFormaNuevo_Click = function () {
     App.taDescripcion.setValue('');
 
 
+    App.txtNoReporte.setValue('');
+    App.cmbDivision.setValue('');
+    App.dfFechaOrigen.setValue('');
+    App.dfFechaMaxima.setValue('');
+    App.nfDiasAtencion.setValue('');
+    App.txtReporta.setValue('');
+    App.txtTrabajoRequerido.setValue('');
+    App.txtAtiende.setValue('');
+
     App.txtCodigoFalla.setValue('');
     App.cmbTieneFotos.setValue('');
     App.cmbTieneReporte.setValue('');
@@ -57,7 +66,7 @@ var imgbtnImprimir_Click = function () {
     window.parent.App.wGenerador.setHeight(250);
     window.parent.App.wGenerador.setWidth(590);
     window.parent.App.wGenerador.center();
-    window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion') + ' Concepto: ' + Ext.util.Cookies.get('cookieConceptoClaveMovReporte'));
+    window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
     window.parent.App.wGenerador.show();
 }
 
@@ -296,7 +305,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
         App.cmbMov.setValue(App.sOrdenEstimacion.getAt(0).get('Mov'));
-        App.txtfObservaciones.setValue('');
+       
+
         App.dfFechaEmision.setValue(d);
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
 
@@ -327,6 +337,30 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         App.cmbMov.setReadOnly(true);
         App.cmbSucursal.setDisabled(true);
+
+        App.txtfObservaciones.setReadOnly(true);
+
+        App.txtNoReporte.setReadOnly(true);
+        App.cmbDivision.setReadOnly(true);
+        App.dfFechaOrigen.setReadOnly(true);
+        App.dfFechaMaxima.setReadOnly(true);
+        App.nfDiasAtencion.setReadOnly(true);
+        App.txtReporta.setReadOnly(true);
+        App.txtTrabajoRequerido.setReadOnly(true);
+        App.txtAtiende.setReadOnly(true);
+        App.txtTrabajoRealizado.setReadOnly(true);
+        App.txtCodigoFalla.setReadOnly(true);
+        App.cmbTieneFotos.setReadOnly(true);
+        App.cmbTieneReporte.setReadOnly(true);
+        App.dfFechallegada.setReadOnly(true);
+        App.tfHoraLlegada.setReadOnly(true);
+        App.dfFFechaFinActividad.setReadOnly(true);
+        App.tfHoraFinActividad.setReadOnly(true);
+        App.txtZona.setReadOnly(true);
+        App.txtCuadrilla.setReadOnly(true);
+
+
+
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
@@ -337,7 +371,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.imgbtnAfectar.setDisabled(false);
         App.imgbtnCancelar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(true);
-
+        App.imgbtnGuardar.setDisabled(true);
         //3. Remover la útima fila
         var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
         if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Precio') == 0) {
@@ -374,6 +408,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         App.cmbMov.setReadOnly(true);
         App.cmbSucursal.setDisabled(true);
+        App.txtfObservaciones.setDisabled(true);
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
@@ -382,6 +417,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
         //Deshabilita boton de afectar porque aqui concluye el flujo
         App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(true);
 
@@ -429,6 +465,26 @@ var imgbtnCancelar_Click_Success = function (response, result) {
 
     //Limpiar controles del encabezado
     App.cmbMov.setReadOnly(true);
+    App.txtfObservaciones.setReadOnly(true);
+
+    App.txtNoReporte.setReadOnly(true);
+    App.cmbDivision.setReadOnly(true);
+    App.dfFechaOrigen.setReadOnly(true);
+    App.dfFechaMaxima.setReadOnly(true);
+    App.nfDiasAtencion.setReadOnly(true);
+    App.txtReporta.setReadOnly(true);
+    App.txtTrabajoRequerido.setReadOnly(true);
+    App.txtAtiende.setReadOnly(true);
+    App.txtTrabajoRealizado.setReadOnly(true);
+    App.txtCodigoFalla.setReadOnly(true);
+    App.cmbTieneFotos.setReadOnly(true);
+    App.cmbTieneReporte.setReadOnly(true);
+    App.dfFechallegada.setReadOnly(true);
+    App.tfHoraLlegada.setReadOnly(true);
+    App.dfFFechaFinActividad.setReadOnly(true);
+    App.tfHoraFinActividad.setReadOnly(true);
+    App.txtZona.setReadOnly(true);
+    App.txtCuadrilla.setReadOnly(true);
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     window.parent.App.wEmergente.setTitle('Movimiento Cancelado');
@@ -450,24 +506,24 @@ var sOrdenesMantenimiento_Load = function () {
 var sOrdenesMantenimiento_Add = function (avance, registro) {
 
     //Valida el estatus para ver si permite seguir capturando o no
-//    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
-//        App.cmbMov.setValue(registro[0].get('Mov'));
-//        App.txtfMovID.setValue(registro[0].get('MovID'));
-//        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
-//        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
-//        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
-//        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
-//        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+    //    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
+    //        App.cmbMov.setValue(registro[0].get('Mov'));
+    //        App.txtfMovID.setValue(registro[0].get('MovID'));
+    //        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
+    //        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+    //        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+    //        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+    //        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
 
-//        //Deshabilita los campos en un movimiento afectado
-//       
-//        App.cmbMov.setReadOnly(true);
-//        App.dfFechaEmision.setDisabled(true);
-//        App.imgbtnAfectar.setDisabled(true);
-//        App.imgbtnGuardar.setDisabled(true);
-//        App.imgbtnCancelar.setDisabled(false);
-//        App.txtfObservaciones.setDisabled(false);
-//    }
+    //        //Deshabilita los campos en un movimiento afectado
+    //       
+    //        App.cmbMov.setReadOnly(true);
+    //        App.dfFechaEmision.setDisabled(true);
+    //        App.imgbtnAfectar.setDisabled(true);
+    //        App.imgbtnGuardar.setDisabled(true);
+    //        App.imgbtnCancelar.setDisabled(false);
+    //        App.txtfObservaciones.setDisabled(false);
+    //    }
 
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
@@ -490,7 +546,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
-        App.txtfObservaciones.setDisabled(false);
+        App.txtfObservaciones.setDisabled(true);
+        App.imgbtnImprimir.setDisabled(false);
     }
 
     //Si es Reporte
@@ -529,12 +586,39 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
-        
+
         App.cIntExt.hidden = false;
 
         App.cmbMov.setReadOnly(true);
         App.cmbSucursal.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
+
+        //Deshabilita controles
+        App.txtfObservaciones.setDisabled(true);
+
+        App.txtNoReporte.setReadOnly(true);
+        App.cmbDivision.setReadOnly(true);
+        App.dfFechaOrigen.setReadOnly(true);
+        App.dfFechaMaxima.setReadOnly(true);
+        App.nfDiasAtencion.setReadOnly(true);
+        App.txtReporta.setReadOnly(true);
+        App.txtTrabajoRequerido.setReadOnly(true);
+        App.txtAtiende.setReadOnly(true);
+        App.txtTrabajoRealizado.setReadOnly(true);
+
+        App.txtCodigoFalla.setReadOnly(true);
+        App.cmbTieneFotos.setReadOnly(true);
+        App.cmbTieneReporte.setReadOnly(true);
+        App.dfFechallegada.setReadOnly(true);
+        App.tfHoraLlegada.setReadOnly(true);
+        App.dfFFechaFinActividad.setReadOnly(true);
+        App.tfHoraFinActividad.setReadOnly(true);
+        App.txtZona.setReadOnly(true);
+        App.txtCuadrilla.setReadOnly(true);
+
+
+
+
         App.imgbtnAfectar.setDisabled(false);
         App.imgbtnGuardar.setDisabled(false);
         App.imgbtnCancelar.setDisabled(false);
@@ -575,7 +659,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtZona.setValue(registro[0].get('Zona'));
         App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
-
+     
         App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
@@ -639,11 +723,33 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtZona.setValue(registro[0].get('Zona'));
         App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
+        //Deshabilita controles
+        App.txtfObservaciones.setReadOnly(true);
+
+        App.txtNoReporte.setReadOnly(true);
+        App.cmbDivision.setReadOnly(true);
+        App.dfFechaOrigen.setReadOnly(true);
+        App.dfFechaMaxima.setReadOnly(true);
+        App.nfDiasAtencion.setReadOnly(true);
+        App.txtReporta.setReadOnly(true);
+        App.txtTrabajoRequerido.setReadOnly(true);
+        App.txtAtiende.setReadOnly(true);
+        App.txtTrabajoRealizado.setReadOnly(true);
+        App.txtCodigoFalla.setReadOnly(true);
+        App.cmbTieneFotos.setReadOnly(true);
+        App.cmbTieneReporte.setReadOnly(true);
+        App.dfFechallegada.setReadOnly(true);
+        App.tfHoraLlegada.setReadOnly(true);
+        App.dfFFechaFinActividad.setReadOnly(true);
+        App.tfHoraFinActividad.setReadOnly(true);
+        App.txtZona.setReadOnly(true);
+        App.txtCuadrilla.setReadOnly(true);
 
         App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
         App.cmbMov.setReadOnly(true);
+        App.cmbSucursal.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(false);
         App.imgbtnGuardar.setDisabled(false);
@@ -668,7 +774,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(true);
-        App.txtfObservaciones.setDisabled(false);
+        App.txtfObservaciones.setDisabled(true);
     }
 
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
@@ -776,13 +882,14 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
 var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
 
     indiceDetalle = index;
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
-        && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
 
-        App.imgbtnImprimir.setDisabled(false);
-    }
-    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
-    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+//    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
+//        && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
+
+//        App.imgbtnImprimir.setDisabled(false);
+//    }
+//    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
+//    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
     App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
@@ -793,15 +900,15 @@ var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
 var obetenerRenglon_Select = function (a, registro, c) {
     indiceDetalle = registro.internalId;
 
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
-            && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
+//    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
+//            && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
 
-        App.imgbtnImprimir.setDisabled(false);
+//        App.imgbtnImprimir.setDisabled(false);
 
-    }
+//    }
 
-    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
-    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+//    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
+//    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
     App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);

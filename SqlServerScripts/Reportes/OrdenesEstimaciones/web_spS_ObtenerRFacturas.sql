@@ -37,22 +37,22 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-				SELECT 
+		SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
 		OE.ID,
 		OED.ConceptoID,
 		--Datos de la sucursal
-		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia ,M.Descripcion Municipio,E.Descripcion Estado,
+		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto
-		PGC.CLAVE,PGC.Descripcion DescripcionPreGen,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
-		--CONCEPTO INFO FACTURAS
-		FOD.Direccion RutaFOD, FOD.Nombre NombreFacOrdEst
+		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
+		--CONCEPTO INFO GENERADOR
+		FOD.Direccion
 		--Encabezado del movimiento(No del reporte)
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
 		LEFT JOIN OrdenesEstimacionesD OED
 		ON OE.ID = OED.ID
-		--Facturas que pertenecen al concepto
+		--Generador que pertenece al concepto
 		LEFT JOIN FacturasOrdenEstimacionD FOD 
 		ON FOD.MovID =  OE.ID
 		AND FOD.Concepto = OED.ConceptoID
@@ -70,6 +70,6 @@ BEGIN
 		LEFT JOIN Estados E
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
-		ON C.ID = S.Colonia;
+		ON C.ID = S.Colonia
 END
 GO

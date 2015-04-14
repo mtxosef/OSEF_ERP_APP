@@ -16,21 +16,21 @@ GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: 2015-03-29
--- Description:	Obtiene los datos generales
+-- Description:	Obtiene los datos generales para el reporte de croquis por numero de movimiento y por id concepto
 -- =============================================
 -- =============================================
 -- Create procedure basic template
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerGeneradorPorMovimientoYPorConcepto' AND
+			WHERE  name = 'web_spS_ObtenerCroquisPorIDMovimiento' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerGeneradorPorMovimientoYPorConcepto
+	DROP PROCEDURE web_spS_ObtenerCroquisPorIDMovimiento
 GO
 
-CREATE PROCEDURE web_spS_ObtenerGeneradorPorMovimientoYPorConcepto
+CREATE PROCEDURE web_spS_ObtenerCroquisPorIDMovimiento
 	-- Add the parameters for the stored procedure here
-	@IDMovimiento int, @IDConcepto char(10)
+	@IDMovimiento int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -47,17 +47,16 @@ BEGIN
 		--Datos del concepto
 		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
 		--CONCEPTO INFO GENERADOR
-		GOD.Eje,GOD.EntreEje1,GOD.EntreEje2,GOD.Area,GOD.Ancho,GOD.Largo,GOD.Alto,GOD.Total
-
+		COD.Direccion
 		--Encabezado del movimiento(No del reporte)
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
 		LEFT JOIN OrdenesEstimacionesD OED
 		ON OE.ID = OED.ID
 		--Generador que pertenece al concepto
-		LEFT JOIN GeneradorOrdenEstimacionD GOD 
-		ON GOD.MovID =  OE.ID
-		AND GOD.ConceptoID = OED.ConceptoID
+		LEFT JOIN CroquisOrdenEstimacionD COD 
+		ON COD.MovID =  OE.ID
+		AND COD.Concepto = OED.ConceptoID
 		-- Nos trameos los datos complementarios del concepto
 		LEFT JOIN PreciariosGeneralesConceptos PGC 
 		ON OED.ConceptoID = PGC.ID
@@ -73,7 +72,6 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia
-		WHERE OED.ConceptoID = @IDConcepto
-		AND OE.ID = @IDMovimiento;
+		WHERE OE.ID = @IDMovimiento;
 END
 GO

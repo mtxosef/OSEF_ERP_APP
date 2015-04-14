@@ -37,7 +37,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-					SELECT 
+	SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
 		OE.ID,
 		OED.ConceptoID,
@@ -45,15 +45,14 @@ BEGIN
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto
 		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
-		--CONCEPTO INFO CROQUIS
-		COD.Direccion RutaCroquis, COD.Nombre CroquisOrdenEstDet,
+		--CONCEPTO INFO GENERADOR
+		COD.Direccion
 		--Encabezado del movimiento(No del reporte)
-		OED.Cantidad
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
 		LEFT JOIN OrdenesEstimacionesD OED
 		ON OE.ID = OED.ID
-		--Croquis que pertenecen al concepto
+		--Generador que pertenece al concepto
 		LEFT JOIN CroquisOrdenEstimacionD COD 
 		ON COD.MovID =  OE.ID
 		AND COD.Concepto = OED.ConceptoID
@@ -71,6 +70,6 @@ BEGIN
 		LEFT JOIN Estados E
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
-		ON C.ID = S.Colonia;
+		ON C.ID = S.Colonia
 END
 GO

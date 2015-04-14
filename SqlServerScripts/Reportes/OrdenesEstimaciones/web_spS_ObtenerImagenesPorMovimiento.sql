@@ -16,21 +16,19 @@ GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: 2015-03-29
--- Description:	Obtiene los datos generales para el reporte de croquis por numero de movimiento y por id concepto
--- =============================================
--- =============================================
+-- Description:	Obtiene los datos generales
+-- =============================================-- =============================================
 -- Create procedure basic template
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerCroquisPorIDMovimientoYPorIDConcepto' AND
+			WHERE  name = 'web_spS_ObtenerImagenesPorMovimiento' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerCroquisPorIDMovimientoYPorIDConcepto
+	DROP PROCEDURE web_spS_ObtenerImagenesPorMovimiento
 GO
-
-CREATE PROCEDURE web_spS_ObtenerCroquisPorIDMovimientoYPorIDConcepto
+CREATE PROCEDURE web_spS_ObtenerImagenesPorMovimiento
 	-- Add the parameters for the stored procedure here
-	@IDMovimiento int, @IDConcepto char(10)
+	@IDMovimiento int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -38,7 +36,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-					SELECT 
+		SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
 		OE.ID,
 		OED.ConceptoID,
@@ -46,17 +44,17 @@ BEGIN
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto
 		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
-		--CONCEPTO INFO CROQUIS
-		COD.Direccion RutaCroquis, COD.Nombre CroquisOrdenEstDet
+		--CONCEPTO INFO GENERADOR
+		IOD.Direccion
 		--Encabezado del movimiento(No del reporte)
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
 		LEFT JOIN OrdenesEstimacionesD OED
 		ON OE.ID = OED.ID
-		--Croquis que pertenecen al concepto
-		LEFT JOIN CroquisOrdenEstimacionD COD 
-		ON COD.MovID =  OE.ID
-		AND COD.Concepto = OED.ConceptoID
+		--Generador que pertenece al concepto
+		LEFT JOIN ImagenesOrdenEstimacionD IOD 
+		ON IOD.MovID =  OE.ID
+		AND IOD.Concepto = OED.ConceptoID
 		-- Nos trameos los datos complementarios del concepto
 		LEFT JOIN PreciariosGeneralesConceptos PGC 
 		ON OED.ConceptoID = PGC.ID
@@ -72,7 +70,6 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia
-		WHERE OED.ConceptoID = @IDConcepto
-		AND OE.ID = @IDMovimiento;
+		WHERE OE.ID = @IDMovimiento;
 END
 GO

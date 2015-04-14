@@ -17,18 +17,20 @@ GO
 -- Author:		Giovanni Flores
 -- Create date: 2015-03-29
 -- Description:	Obtiene los datos generales
--- =============================================-- =============================================
+-- =============================================
+-- =============================================
 -- Create procedure basic template
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerImagenesPorMovimientoYPorConcepto' AND
+			WHERE  name = 'web_spS_ObtenerFacturasPorMovimiento' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerImagenesPorMovimientoYPorConcepto
+	DROP PROCEDURE web_spS_ObtenerFacturasPorMovimiento
 GO
-CREATE PROCEDURE web_spS_ObtenerImagenesPorMovimientoYPorConcepto
+
+CREATE PROCEDURE web_spS_ObtenerFacturasPorMovimiento
 	-- Add the parameters for the stored procedure here
-	@IDMovimiento int, @IDConcepto char(10)
+		@IDMovimiento int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -44,17 +46,17 @@ BEGIN
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto
 		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
-		--CONCEPTO INFO IMAGENES
-		IOD.Direccion RutaImagen, IOD.Nombre NombreImg
+		--CONCEPTO INFO GENERADOR
+		FOD.Direccion
 		--Encabezado del movimiento(No del reporte)
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
 		LEFT JOIN OrdenesEstimacionesD OED
 		ON OE.ID = OED.ID
-		--Imagenes que pertenecen al concepto
-		LEFT JOIN ImagenesOrdenEstimacionD IOD 
-		ON IOD.MovID =  OE.ID
-		AND IOD.Concepto = OED.ConceptoID
+		--Generador que pertenece al concepto
+		LEFT JOIN FacturasOrdenEstimacionD FOD 
+		ON FOD.MovID =  OE.ID
+		AND FOD.Concepto = OED.ConceptoID
 		-- Nos trameos los datos complementarios del concepto
 		LEFT JOIN PreciariosGeneralesConceptos PGC 
 		ON OED.ConceptoID = PGC.ID
@@ -70,7 +72,6 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia
-		WHERE OED.ConceptoID = @IDConcepto
-		AND OE.ID = @IDMovimiento;
+		WHERE OE.ID = @IDMovimiento;
 END
 GO
