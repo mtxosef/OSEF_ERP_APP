@@ -76,13 +76,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ImageButton imgbtnBorrar;
         
         /// <summary>
-        /// Control tbsCodigosPostales.
+        /// Control tbsCuadrillas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ToolbarSpacer tbsCodigosPostales;
+        protected global::Ext.Net.ToolbarSpacer tbsCuadrillas;
         
         /// <summary>
         /// Control imgbtnActualizar.
@@ -110,6 +110,33 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model mCuadrillas;
+        
+        /// <summary>
+        /// Control cID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cID;
+        
+        /// <summary>
+        /// Control cNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cNombre;
+        
+        /// <summary>
+        /// Control cDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cDescripcion;
         
         /// <summary>
         /// Control rsmCuadrillas.

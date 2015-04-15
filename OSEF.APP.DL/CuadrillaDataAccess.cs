@@ -54,7 +54,7 @@ namespace OSEF.APP.DL
         /// </summary>
         /// <param name="strID"></param>
         /// <returns></returns>
-        public static List<Cuadrilla> ObtenerCuadrillasPorID(string strID)
+        public static Cuadrilla ObtenerCuadrillaPorID(string strID)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spS_ObtenerCuadrillasPorID";
+                sqlcComando.CommandText = "web_spS_ObtenerCuadrillaPorID";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();
@@ -80,8 +80,8 @@ namespace OSEF.APP.DL
                 //5. Ejecutar la instrucción SELECT que regresa filas
                 SqlDataReader reader = sqlcComando.ExecuteReader();
 
-                //6. Asignar la lista de Clientes
-                List<Cuadrilla> result = LibraryGenerics<Cuadrilla>.ConvertDataSetToList(reader);
+                //6. Asignar la Cuadrilla
+                Cuadrilla result = LibraryGenerics<Cuadrilla>.ConvertDataSetToList(reader).FirstOrDefault();
 
                 //7. Cerrar la conexión
                 sqlcComando.Connection.Close();
@@ -91,7 +91,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static List<Cuadrilla> ObtenerCuadrillasPorID(string " + strID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static Cuadrilla ObtenerCuadrillaPorID(string " + strID + ")): " + ex.Message);
             }
         }
 
@@ -146,7 +146,66 @@ namespace OSEF.APP.DL
         #endregion
 
 
+        #region Modificar
 
+        /// <summary>
+        /// Método que modifica un registro a la tabla de xxxxx
+        /// </summary>
+        /// <param name="iCuadrilla"></param>
+        public static string Modificar(Cuadrilla iCuadrilla)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spU_ActualizarCuadrilla";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Value = iCuadrilla.ID;
+                sqlpID.Size = 10;
+                sqlpID.Direction = ParameterDirection.Output;
+
+                SqlParameter sqlpNombre = new SqlParameter();
+                sqlpNombre.ParameterName = "@Nombre";
+                sqlpNombre.SqlDbType = SqlDbType.Char;
+                sqlpNombre.Value = iCuadrilla.Nombre;
+
+                SqlParameter sqlpDescripcion = new SqlParameter();
+                sqlpDescripcion.ParameterName = "@Descripcion";
+                sqlpDescripcion.SqlDbType = SqlDbType.Char;
+                sqlpDescripcion.Value = iCuadrilla.Descripcion;
+
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpNombre);
+                sqlcComando.Parameters.Add(sqlpDescripcion);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción INSERT que regresa un dato que es el ID
+                int result = Convert.ToInt32(sqlcComando.ExecuteScalar());
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return sqlcComando.Parameters["@ID"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int Modificar(Cuadrilla " + iCuadrilla.ID + ")): " + ex.Message);
+            }
+        }
+
+        #endregion
 
         #region Insertar
 
@@ -173,15 +232,21 @@ namespace OSEF.APP.DL
                 sqlpID.Size = 10;
                 sqlpID.Direction = ParameterDirection.Output;
 
-                SqlParameter sqlpEstado = new SqlParameter();
-                sqlpEstado.ParameterName = "@Estado";
-                sqlpEstado.SqlDbType = SqlDbType.Char;
-                sqlpEstado.Value = iCuadrilla.Nombre;
+                SqlParameter sqlpNombre = new SqlParameter();
+                sqlpNombre.ParameterName = "@Nombre";
+                sqlpNombre.SqlDbType = SqlDbType.Char;
+                sqlpNombre.Value = iCuadrilla.Nombre;
+
+                SqlParameter sqlpDescripcion = new SqlParameter();
+                sqlpDescripcion.ParameterName = "@Descripcion";
+                sqlpDescripcion.SqlDbType = SqlDbType.Char;
+                sqlpDescripcion.Value = iCuadrilla.Descripcion;
 
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
-                sqlcComando.Parameters.Add(sqlpEstado);
+                sqlcComando.Parameters.Add(sqlpNombre);
+                sqlcComando.Parameters.Add(sqlpDescripcion);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -219,7 +284,7 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spD_BorrarCuadrilla";
+                sqlcComando.CommandText = "web_spD_BorrarCuadrillas";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();

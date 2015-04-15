@@ -8,12 +8,13 @@ namespace OSEF.APP.EL
     public class Cuadrilla
     {
         #region Campos
-        int Id;
+        string Id;
         string nombre;
+        string descripcion;
         #endregion
 
-
-        public int ID
+        #region Propiedades
+        public string ID
         {
             get { return Id; }
             set { Id = value; }
@@ -24,5 +25,12 @@ namespace OSEF.APP.EL
             get { return nombre; }
             set { nombre = value; }
         }
+
+        public string Descripcion
+        {
+            get { return descripcion; }
+            set { descripcion = value; }
+        }
+        #endregion
     }
 }

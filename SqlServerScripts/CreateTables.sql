@@ -612,6 +612,11 @@ CREATE TABLE GeneradorVolumetriaD(
 	Total						DECIMAL(10,2)	NOT NULL
 )
 
+CREATE TABLE Cuadrillas(
+ID CHAR(10) NOT NULL,
+Nombre VARCHAR(100) NOT NULL,
+Descripcion VARCHAR(1000) NULL
+)
 
 
 

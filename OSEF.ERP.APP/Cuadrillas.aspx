@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/xButton.css" /> 
     <script type="text/javascript" src="js/cuadrillas.js"></script>
 </head>
-<body>
+<body class="xCustomBody">
 
     <form id="form1" runat="server">
     <ext:ResourceManager ID="rmCuadrillas" runat="server" HideInDesign="true" />
@@ -68,44 +68,61 @@
                             <Click OnEvent="imgbtnBorrar_Click" Success="imgbtnBorrar_Click_Success">
                                 <Confirmation ConfirmRequest="true" Title="Eliminar" Message="¿Deseas eliminar el registro?">
                                 </Confirmation>
-                                <EventMask ShowMask="true" CustomTarget="App.gpCodigosPostales.body" Target="CustomTarget"
+                                <EventMask ShowMask="true" CustomTarget="App.gpCuadrillas.body" Target="CustomTarget"
                                     Msg="Eliminando registro">
                                 </EventMask>
                                 <ExtraParams>
-                                    <ext:Parameter Name="ID" Value="App.gpCodigosPostales.getSelectionModel().getSelection()[0].get('Id')"
+                                    <ext:Parameter Name="ID" Value="App.gpCuadrillas.getSelectionModel().getSelection()[0].get('ID')"
                                         Mode="Raw">
                                     </ext:Parameter>
                                 </ExtraParams>
                             </Click>
                         </DirectEvents>
                     </ext:ImageButton>
-                    <ext:ToolbarSpacer ID="tbsCodigosPostales" runat="server" Width="500">
+                    <ext:ToolbarSpacer ID="tbsCuadrillas" runat="server" Width="500">
                     </ext:ToolbarSpacer>
                     <ext:ImageButton ID="imgbtnActualizar" runat="server" ImageUrl="assets/img/controles/update-normal.png"
                         DisabledImageUrl="assets/img/controles/update-disable.png" OverImageUrl="assets/img/controles/update-hover.png"
-                        PressedImageUrl="assets/img/controles/update-pressed.png" ToolTip="Actualizar códigos postales"
+                        PressedImageUrl="assets/img/controles/update-pressed.png" ToolTip="Actualizar Cuadrillas"
                         Height="50" Width="50">
                         <Listeners>
-                            <Click Handler="App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
+                            <Click Handler="getData(); App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
                         </Listeners>
-                    </ext:ImageButton>
-                  
+                    </ext:ImageButton> 
                 </Items>
             </ext:Toolbar>
         </TopBar>
         <Store>
-            <ext:Store ID="sCuadrillas" runat="server">
+            <ext:Store ID="sCuadrillas" runat="server" OnReadData="OnReadData_sCuadrillas">
                 <Model>
                     <ext:Model ID="mCuadrillas" runat="server" IDProperty="ID">
                         <Fields>
                             <ext:ModelField Name="ID" Type="String" />
-                            <ext:ModelField Name="Sucursal" Type="String" />
+                            <ext:ModelField Name="Nombre" Type="String" />
+                            <ext:ModelField Name="Descripcion" Type="String" />
                         </Fields>
                     </ext:Model>
                 </Model>
             </ext:Store>
         </Store>
+        <ColumnModel>
+            <Columns> 
+                <ext:Column ID="cID" runat="server" Text="ID" Align="Center" Width="175"
+                    DataIndex="ID"> 
+                </ext:Column> 
+                <ext:Column ID="cNombre" runat="server" Text="Nombre" Align="Center" Width="275"
+                    DataIndex="Nombre"> 
+                </ext:Column> 
+                <ext:Column ID="cDescripcion" runat="server" Text="Descripcion" Align="Center" Width="500"
+                    DataIndex="Descripcion"> 
+                </ext:Column> 
+            </Columns>
+        </ColumnModel>
         
+        <Listeners>
+            <ItemClick Fn="gpCuadrillas_Select" />
+        </Listeners>
+
         <SelectionModel>
             <ext:RowSelectionModel ID="rsmCuadrillas" runat="server">
             </ext:RowSelectionModel>

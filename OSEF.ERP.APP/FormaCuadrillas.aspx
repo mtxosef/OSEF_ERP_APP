@@ -24,27 +24,72 @@
     <link rel="stylesheet" href="css/xFieldSet.css" />
     <link rel="stylesheet" href="css/xPanel.css" />
     <link rel="stylesheet" href="css/xButton.css" />
-    <script type="text/javascript" src="js/formacuadrillas.js"></script>
+    <script type="text/javascript" src="js/formacuadrilla.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <ext:ResourceManager ID="rmCuadrilla" runat="server" HideInDesign="true" />
-    <ext:FormPanel ID="fpCodigosPostales" runat="server" Height="170" DefaultButton="imgbtnGuardar"
+    <ext:FormPanel ID="fpCuadrillas" runat="server" Height="250" DefaultButton="imgbtnGuardar"
         BodyStyle="padding:5px 5px 0;" Layout="HBoxLayout" MonitorResize="true">
         <Items>
             <ext:Panel ID="Panel1" runat="server">
-                <Items>
-                    <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
+                <Items> 
+                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
+                            <ext:TextField ID="txtID" runat="server" Width="530" Margins="0 3 0 0" Disabled="true"
+                                EmptyText="" MaxLength="99">  
+                            </ext:TextField>
                         </Items>
                     </ext:FieldContainer>
-                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="Nombre" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="Nombre" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
+                            <ext:TextField ID="txtNombre" runat="server" Width="530" Margins="0 3 0 0" Disabled="false"
+                                EmptyText="Escriba nombre para la cuadrilla" MaxLength="99">  
+                                <Listeners>
+                                    <Blur Fn="imgbtnGuardar_change" />
+                                </Listeners>
+                            </ext:TextField>
+                        </Items>
+                    </ext:FieldContainer>
+                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="Integrantes"
+                        AnchorHorizontal="100%" Layout="HBoxLayout">
+                        <Items>
+                            <ext:TextArea ID="txtDescripcion" runat="server" Height="100" Width="530" Margins="0 3 0 0" Disabled="false"
+                                EmptyText="Escriba los nombres de los intregantes separados por coma. Ej: Pedro, Pedrito, etc. " MaxLength="499"> 
+                                <Listeners>
+                                    <Blur Fn="imgbtnGuardar_change" />
+                                </Listeners>
+                            </ext:TextArea>
                         </Items>
                     </ext:FieldContainer>
                 </Items>
+                
+        <Buttons>
+            <ext:ImageButton ID="imgbtnGuardar" runat="server" ImageUrl="assets/img/controles/Guardar.png"
+                DisabledImageUrl="assets/img/controles/GuardarDisabled.png" OverImageUrl="assets/img/controles/GuardarOver.png"
+                PressedImageUrl="assets/img/controles/GuardarPressed.png" ToolTip="Guardar" Height="50"
+                Width="50" Disabled="true">  
+                            <DirectEvents>
+                                <Click OnEvent="imgbtnGuardar_Click" Success="imgbtnGuardar_Click_Success">
+                                    <EventMask ShowMask="true" Msg="Registrando información..." />
+                                    <ExtraParams>
+                                        <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))"
+                                            Mode="Raw" />
+                                    </ExtraParams>
+                                </Click>
+                            </DirectEvents>
+            </ext:ImageButton>
+            <ext:ImageButton ID="imgbtnCancelar" runat="server" ImageUrl="assets/img/controles/Cancelar.png"
+                DisabledImageUrl="assets/img/controles/CancelarDisabled.png" OverImageUrl="assets/img/controles/CancelarOver.png"
+                PressedImageUrl="assets/img/controles/CancelarPressed.png" ToolTip="Cancelar"
+                Height="50" Width="50">
+                <Listeners>
+                    <Click Handler="window.parent.App.wEmergente.hide();" />
+                </Listeners>
+            </ext:ImageButton>
+        </Buttons>
             </ext:Panel>
         </Items>
     </ext:FormPanel>

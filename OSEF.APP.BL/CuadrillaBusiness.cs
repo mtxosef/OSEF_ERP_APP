@@ -17,16 +17,16 @@ namespace OSEF.APP.BL
         public static List<Cuadrilla> ObtenerCuadrillas()
         {
             return CuadrillaDataAccess.ObtenerCuadrillas();
-        }
+        } 
 
         /// <summary>
         /// Obtener registros de cuadrillas por su ID
         /// </summary>
         /// <param name="strID"></param>
         /// <returns>List<Cuadrilla></returns>
-        public static List<Cuadrilla> ObtenerCuadrillasPorID(string strID)
+        public static Cuadrilla ObtenerCuadrillaPorID(string strID)
         {
-            return CuadrillaDataAccess.ObtenerCuadrillasPorID(strID);
+            return CuadrillaDataAccess.ObtenerCuadrillaPorID(strID);
         }
 
 
@@ -41,6 +41,19 @@ namespace OSEF.APP.BL
         }
         #endregion
 
+
+        #region Insertar
+
+        /// <summary>
+        /// Método que borrar una Cuadrilla por su ID
+        /// </summary>
+        /// <param name="dID"></param>
+        public static string Insertar(Cuadrilla dID)
+        {
+            return CuadrillaDataAccess.Insertar(dID);
+        }
+
+        #endregion
 
         #region Eliminar
 

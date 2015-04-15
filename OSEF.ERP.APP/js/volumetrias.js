@@ -518,9 +518,6 @@ var ccGenerador_Command = function (columna, comando, registro, fila, opciones) 
 
 };
 
-
-
-
 //Evento de la columna de acciones
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro

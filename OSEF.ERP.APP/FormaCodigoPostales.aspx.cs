@@ -80,10 +80,6 @@ namespace OSEF.ERP.APP
             //3. Insertar en la base de datos
             cp.Id = CodigoPostalBusiness.Insertar(cp);
             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cp.Id, ParameterMode.Value));
-            //4. Mandar mensaje con el código del proveedor
-            //var success = new JFunction { Fn = "imgbtnGuardar_Click_Success" };
-            //X.Msg.Alert("Registro completo", "<p align='center'>Código Postal registrado con ID: <br/>" + cp.Id + ".</p>", success).Show();
-           
         }
 
 

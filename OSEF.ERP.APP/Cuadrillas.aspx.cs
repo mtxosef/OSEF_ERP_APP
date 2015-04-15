@@ -14,9 +14,16 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!X.IsAjaxRequest)
+            {
+                onLoad();
+            }
         }
-
+        public void onLoad()
+        {
+            sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
+            sCuadrillas.DataBind();
+        }
          
         /// Método para elimnar un registro
         /// </summary>
@@ -37,6 +44,16 @@ namespace OSEF.ERP.APP
                 CuadrillaBusiness.Borrar(strID);
 
             }
+        }
+
+        /// <summary>
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sCuadrillas(object sender, StoreReadDataEventArgs e)
+        {
+            onLoad();
         }
 
     }

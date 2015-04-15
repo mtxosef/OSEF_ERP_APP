@@ -31,13 +31,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ResourceManager rmCuadrilla;
         
         /// <summary>
-        /// Control fpCodigosPostales.
+        /// Control fpCuadrillas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel fpCodigosPostales;
+        protected global::Ext.Net.FormPanel fpCuadrillas;
         
         /// <summary>
         /// Control Panel1.
@@ -49,6 +49,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
+        /// Control FieldContainer2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer FieldContainer2;
+        
+        /// <summary>
+        /// Control txtID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtID;
+        
+        /// <summary>
         /// Control FieldContainer3.
         /// </summary>
         /// <remarks>
@@ -58,12 +76,48 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer FieldContainer3;
         
         /// <summary>
-        /// Control FieldContainer2.
+        /// Control txtNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer2;
+        protected global::Ext.Net.TextField txtNombre;
+        
+        /// <summary>
+        /// Control FieldContainer1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer FieldContainer1;
+        
+        /// <summary>
+        /// Control txtDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextArea txtDescripcion;
+        
+        /// <summary>
+        /// Control imgbtnGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnGuardar;
+        
+        /// <summary>
+        /// Control imgbtnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnCancelar;
     }
 }

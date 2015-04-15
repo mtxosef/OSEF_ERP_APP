@@ -8,9 +8,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
+-- Author:		Giovanni Flores
+-- Create date: 04-04-2015
+-- Description:	Obtiene codigos postales por su ID
 -- =============================================
 -- =============================================
 -- Create procedure basic template
