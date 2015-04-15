@@ -204,7 +204,7 @@
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="150"
+                        Width="130"
                         DataIndex="Mov">
                         <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
@@ -213,7 +213,7 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Center"
-                        Width="330"
+                        Width="230"
                         DataIndex="Sucursal">
                         <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
@@ -300,7 +300,7 @@
                         runat="server"
                         Text="PRECIARIO"
                         Align="Center"
-                        Width="195"
+                        Width="155"
                         DataIndex="Preciario">
                         <Renderer Fn="cPreciario_Renderer" />
                         <HeaderItems>

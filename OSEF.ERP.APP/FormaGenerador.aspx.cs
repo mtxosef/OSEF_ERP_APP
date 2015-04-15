@@ -14,7 +14,7 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int iID = Convert.ToInt32(Cookies.GetCookie("cookieIDMovConceptoOrdenEstimacion").Value);
+            int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
             string strConcepto = Cookies.GetCookie("cookieConceptoOrdenEstimacion").Value;
 
            if (!X.IsAjaxRequest)

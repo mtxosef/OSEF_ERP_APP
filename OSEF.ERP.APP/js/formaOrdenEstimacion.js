@@ -211,7 +211,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
     }
 };
 
-//Para el botón de eliminar de la forma, Eliminar un registro 
+//Para el botón de eliminar de la forma, Eliminar un registro
 var imgbtnBorrar_Click_Success = function (response, result) {
     Ext.Msg.show({
         id: 'msgOrdenEstimacion',
@@ -225,26 +225,27 @@ var imgbtnBorrar_Click_Success = function (response, result) {
 
     //Se actualiza el tablero
     window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+    window.parent.App.wEmergente.hide();
+    //    var d = new Date();
+    //    //Limpiar controles del encabezado
+    //    App.cmbMov.clearValue();
+    //    App.txtfMovID.setValue(null);
+    //    App.cmbMov.setValue('');
+    //    App.cmbMov.setReadOnly(false);
+    //    App.cmbSucursal.clearValue();   
+    //    App.txtfSucursalNombre.setValue('');
 
-    var d = new Date();
-    //Limpiar controles del encabezado
-    App.cmbMov.clearValue();
-    App.txtfMovID.setValue(null);
-    App.cmbMov.setReadOnly(false);
-    App.cmbSucursal.clearValue();   
-    App.txtfSucursalNombre.setValue('');
+    //    App.dfFechaEmision.setValue(d);
+    //    App.txtfObservaciones.setValue(null);
+    //    App.sbOrdenEstimacion.setText('SIN AFECTAR');
 
-    App.dfFechaEmision.setValue(d);
-    App.txtfObservaciones.setValue(null);
-    App.sbOrdenEstimacion.setText('SIN AFECTAR');
+    //    App.imgbtnBorrar.setDisabled(true);
 
-    App.imgbtnBorrar.setDisabled(true);
-
-    //Borrar el GridPanel del Detalle y Encabezado
-    App.sConceptos.removeAll();
-    App.sOrdenEstimacion.removeAll();
-    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
-    window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
+    //    //Borrar el GridPanel del Detalle y Encabezado
+    //    App.sConceptos.removeAll();
+    //    App.sOrdenEstimacion.removeAll();
+    //    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
+    //    window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
 };
 
 
@@ -1433,7 +1434,7 @@ var ccGenerador_Command = function (columna, comando, registro, fila, opciones) 
 
 
         Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
-        Ext.util.Cookies.set('cookieIDMovConceptoOrdenEstimacion', registro.get('Id'));
+       
         window.parent.App.wGenerador.load('FormaGenerador.aspx');
         window.parent.App.wGenerador.setHeight(310);
         window.parent.App.wGenerador.setWidth(915);

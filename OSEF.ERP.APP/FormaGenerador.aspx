@@ -93,10 +93,11 @@
                         <ext:TextField
                         ID="txtDescripcionCorta" 
                         runat="server" 
+                        AutoFocus="true"
                         Width="400"
                         EmptyText="Descripción Corta">
                             <Listeners>
-                                <Change Fn="txtDescripcion_Corta_Change"></Change>
+                                <Blur Fn="txtDescripcion_Corta_Change"></Blur>
                             </Listeners>
                         </ext:TextField>
                     </Items>
@@ -334,7 +335,7 @@
                             Align="Center"
                             Text="CANTIDAD"
                             DataIndex="Cantidad"
-                            Width="90">
+                            Width="70">
                             <Renderer Fn="nfCantidad_Renderer" />
                             <Editor>
                                 <ext:NumberField 

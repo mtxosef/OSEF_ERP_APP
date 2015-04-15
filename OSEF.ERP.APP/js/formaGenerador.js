@@ -20,7 +20,6 @@ var validaConcluidos = function (a, d, f) {
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
     else if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
         return false;
-
     }
 
     else {
@@ -54,8 +53,7 @@ var sFormaGenerador_Load = function () {
         App.txtDescripcionCorta.setDisabled(true);
 
     }
-
-    else {
+    else if (App.sFormaGenerador.getCount() < 19) {
         App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
 
     }
@@ -114,9 +112,6 @@ var ncTotal_Renderer = function (valor) {
 
 //Evento que se lanza despues de editar una columna
 var ceGenerador_Edit = function (cellediting, columna) {
-
-
-
     //Verificar si abajo de esta columna existe otra
     if (App.sFormaGenerador.getAt(columna.rowIdx + 1) == undefined) {
         //Verificar si toda la fila contiene datos
@@ -126,7 +121,7 @@ var ceGenerador_Edit = function (cellediting, columna) {
 
         if (registro.get('Numero').length != 0
         && registro.get('Area').length != 0
-        && registro.get('Total') != 0 ) {
+        && registro.get('Total') != 0 && App.sFormaGenerador.getCount() < 19) {
 
             //Insertar un nuevo registro
             App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
@@ -145,23 +140,6 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
         toolbar.items.get(0).hide();
     }
 
-    //    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-    //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
-
-    //        //Toma el primer elemento de la columna para poder desabilitarlo
-    //        var botonEliminar = toolbar.items.get(0);
-    //        botonEliminar.setDisabled(true);
-    //        botonEliminar.setTooltip("No se puede borrar un concepto");
-    //    }
-
-    //    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-    //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
-
-    //        //Toma el primer elemento de la columna para poder desabilitarlo
-    //        var botonEliminar = toolbar.items.get(0);
-    //        botonEliminar.setDisabled(true);
-    //        botonEliminar.setTooltip("No se puede borrar un concepto");
-    //    }
 };
 
 
@@ -180,15 +158,6 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     F.decimalSeparator = '.';
     App.dfTotal.setValue('' + F.number(ImporteFinal, "000,000,000.00"));
 
-    //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
-    //        Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
-    //        Ext.util.Cookies.set('cookieConceptoFotosVolumetria', registro.get('ConceptoID'));
-
-    //        App.direct.obtenerImagenesPorConcepto();
-    //    }
-
-    //Validar si se habilita el boton de afectar
-    //HabilitarAfectar();
 };
 
 

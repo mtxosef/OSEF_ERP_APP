@@ -35,7 +35,7 @@ var sFormaGenerador_Load = function () {
         App.txtDescripcionCorta.setDisabled(true);
     }
 
-    else  {
+    else if (App.sFormaGenerador.getCount() < 19) {  {
         App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
        
     }
@@ -103,7 +103,7 @@ var ceGenerador_Edit = function (cellediting, columna) {
 
         if (registro.get('Numero').length != 0
         && registro.get('Area').length != 0
-        && registro.get('Total') != 0) {
+        && registro.get('Total') != 0 && App.sFormaGenerador.getCount() < 19 ) {
 
             //Insertar un nuevo registro
             App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});

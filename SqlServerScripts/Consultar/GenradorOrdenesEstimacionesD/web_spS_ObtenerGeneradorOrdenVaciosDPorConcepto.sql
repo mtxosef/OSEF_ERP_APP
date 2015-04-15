@@ -38,7 +38,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	IF EXISTS(SELECT A.ConceptoID FROM GeneradorOrdenEstimacionD A INNER JOIN OrdenesEstimacionesD B ON A.ConceptoID = B.ConceptoID 
+	IF EXISTS(SELECT A.ConceptoID FROM GeneradorOrdenEstimacionD A 
 	WHERE A.ConceptoID = @CONCEPTO AND A.MovID=@ID)
 	BEGIN
 		SELECT CAST(1 AS BIT)

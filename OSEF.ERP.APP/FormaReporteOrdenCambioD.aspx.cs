@@ -57,13 +57,27 @@ namespace OSEF.ERP.APP
                             adaptador.Fill(dt);
 
 
+                            SqlCommand comando2 = new SqlCommand("web_spS_ObtenerGeneradorPorMovimiento", conn);
+                            SqlDataAdapter adaptador2 = new SqlDataAdapter(comando2);
+
+                            DataTable dt2 = new DataTable();
+                            adaptador2.SelectCommand.CommandType = CommandType.StoredProcedure;
+                            adaptador2.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
+                            adaptador2.Fill(dt2);
+
+                            
+
                             var reporteCroquis = new ReportDocument();
                             reporteCroquis.Load(Server.MapPath("reports/rCroquis.rpt"));
                             reporteCroquis.SetDataSource(dt);
+                            reporteCroquis.Subreports[0].SetDataSource(dt2);
                             reporteCroquis.SetParameterValue("elaboro", strElaboro);
                             reporteCroquis.SetParameterValue("reviso", strReviso);
                             reporteCroquis.SetParameterValue("autorizo", strAutorizo);
                             reporteCroquis.SetParameterValue("path", path);
+
+
+                          
 
                             Session["eCroquis"] = "1";
                             Session["nCroquis"] = nombreCroquis;

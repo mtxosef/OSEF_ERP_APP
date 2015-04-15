@@ -221,6 +221,8 @@ CREATE TABLE Clientes(
 	Usuario						VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
 )
 
+
+
 CREATE TABLE SolicitudesPrestamos(
 	ID							CHAR(8)			NOT NULL PRIMARY KEY,--P0000001
 	Cliente						CHAR(8)			NOT NULL FOREIGN KEY REFERENCES Clientes(ID),
