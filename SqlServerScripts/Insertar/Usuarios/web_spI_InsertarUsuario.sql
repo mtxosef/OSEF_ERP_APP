@@ -41,7 +41,8 @@ CREATE PROCEDURE web_spI_InsertarUsuario
 	@FechaAlta			SMALLDATETIME,
 	@FechaBloqueo		SMALLDATETIME,
 	@UltimoAcceso		SMALLDATETIME,
-	@CambioContrasena	SMALLDATETIME
+	@CambioContrasena	SMALLDATETIME,
+	@Empresa			VARCHAR(200)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -64,7 +65,8 @@ BEGIN
 			FechaAlta,
 			FechaBloqueo,
 			UltimoAcceso,
-			CambioContrasena
+			CambioContrasena,
+			Empresa
 		)
 	VALUES 
 		(
@@ -80,7 +82,8 @@ BEGIN
 			@FechaAlta,
 			@FechaBloqueo,
 			@UltimoAcceso,
-			@CambioContrasena
+			@CambioContrasena,
+			@Empresa
 		)
 END
 GO

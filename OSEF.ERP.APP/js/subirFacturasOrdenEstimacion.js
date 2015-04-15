@@ -111,7 +111,7 @@ var uploadError = function (item, file, errorCode, message) {
 
 var fileSelectionError = function (item, file, errorCode, message) {
     if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
-        alert("You have attempted to queue too many files.\n" + (message === 0 ? "You have reached the upload limit." : "You may select " + (message > 1 ? "up to " + message + " files." : "one file.")));
+        alert("Haz seleccionado demasiadas imagenes.\n" + (message === 0 ? "Haz excedido el límite de imágenes." : "Puedes seleccionar " + (message > 1 ? "hasta" + message + " archivos." : "sólo un archivo.")));
         return;
     }
 

@@ -42,6 +42,9 @@ namespace OSEF.AVANCES.SUCURSALES
 
                 mask.Messages = messages;
                 maskC.Messages = messages;
+
+                sProveedores.DataSource = ProveedorBusiness.ObtenerProveedores();
+                sProveedores.DataBind();
             }
         }
 
@@ -114,6 +117,9 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfContrasena":
                         oUsuario.Contrasena = sd.Value;
                         break;
+                    case "cmbEmpresa":
+                        oUsuario.Empresa = sd.Value;
+                        break;
                 }
             }
 
@@ -165,7 +171,8 @@ namespace OSEF.AVANCES.SUCURSALES
                     FechaAlta = oUsuario.FechaAlta,
                     FechaBloqueo = oUsuario.FechaBloqueo,
                     UltimoAcceso = oUsuario.UltimoAcceso,
-                    CambioContrasena = oUsuario.CambioContrasena
+                    CambioContrasena = oUsuario.CambioContrasena,
+                    Empresa =  oUsuario.Empresa
                 });
             }
         }

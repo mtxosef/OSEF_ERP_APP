@@ -753,24 +753,44 @@ var gpPreciarioConceptos_ItemClick = function (gridview, registro, gvhtml, index
 //}
 
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
-    Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
- 
-    if (nombre == 'cnCargarFotos') {
-        App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
-        App.wEmergente.setHeight(350);
-        App.wEmergente.setWidth(600);
-        App.wEmergente.center();
-        App.wEmergente.setTitle('Cargar Fotografías');
-        App.wEmergente.show();
+  
+  //Valida que se escoja un concepto antes
+    if (registro.get('ConceptoID') != '') {
+
+        Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
+
+        if (nombre == 'cnCargarFotos') {
+            App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
+            App.wEmergente.setHeight(350);
+            App.wEmergente.setWidth(600);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Cargar Fotografías');
+            App.wEmergente.show();
+        }
+        else {
+            App.wEmergente.load('FormaImagenesPreciarios.aspx');
+            App.wEmergente.setHeight(530);
+            App.wEmergente.setWidth(680);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Visualizar Fotografías');
+            App.wEmergente.show();
+        }
+
+
     }
     else {
-        App.wEmergente.load('FormaImagenesPreciarios.aspx');
-        App.wEmergente.setHeight(530);
-        App.wEmergente.setWidth(680);
-        App.wEmergente.center();
-        App.wEmergente.setTitle('Visualizar Fotografías');
-        App.wEmergente.show();
+        Ext.Msg.show({
+            id: 'msgGenerador',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
     }
+
+
 };
 
 //-----------------------------------------------VALIDACIONES-----------------------------------------------

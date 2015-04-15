@@ -383,9 +383,6 @@
                                                                     </Fields>
                                                                 </ext:Model>
                                                             </Model>
-                                                            <Listeners  >
-                                                            <Load Handler="console.log(App.sProveedores);"></Load>
-                                                            </Listeners>
                                                         </ext:Store>
                                                     </Store>
                                                 </ext:ComboBox>

@@ -88,3 +88,6 @@ ALTER TABLE Sucursales
 ADD CodigoPostal char(10) NULL 
 FOREIGN KEY REFERENCES CodigosPostales(ID)
 
+--Cambios Christian 14 de abril
+ALTER TABLE Usuarios ADD  Empresa VARCHAR(200) NULL
+

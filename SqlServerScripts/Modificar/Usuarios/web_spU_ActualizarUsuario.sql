@@ -34,7 +34,8 @@ CREATE PROCEDURE web_spU_ActualizarUsuario
 	@Nombre				VARCHAR(50),
 	@APaterno			VARCHAR(50),
 	@AMaterno			VARCHAR(50),
-	@Estatus			VARCHAR(50)
+	@Estatus			VARCHAR(50),
+	@Empresa			VARCHAR(200)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -49,7 +50,8 @@ BEGIN
 		Nombre = @Nombre,
 		APaterno = @APaterno,
 		AMaterno = @AMaterno,
-		Estatus = @Estatus
+		Estatus = @Estatus,
+		Empresa = @Empresa
 	WHERE
 		ID = @ID
 END

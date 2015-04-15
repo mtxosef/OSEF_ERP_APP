@@ -154,7 +154,7 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberColumn ncEje;
+        protected global::Ext.Net.Column ncEje;
         
         /// <summary>
         /// Control nfEje.
@@ -163,7 +163,7 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberField nfEje;
+        protected global::Ext.Net.TextField nfEje;
         
         /// <summary>
         /// Control cColumnaContenedora.
@@ -181,7 +181,7 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberColumn ncEntreEje1;
+        protected global::Ext.Net.Column ncEntreEje1;
         
         /// <summary>
         /// Control nfEntreEje1.
@@ -190,7 +190,7 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberField nfEntreEje1;
+        protected global::Ext.Net.TextField nfEntreEje1;
         
         /// <summary>
         /// Control ncEntreEje2.
@@ -199,7 +199,7 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberColumn ncEntreEje2;
+        protected global::Ext.Net.Column ncEntreEje2;
         
         /// <summary>
         /// Control nfEntreEje2.
@@ -208,7 +208,7 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberField nfEntreEje2;
+        protected global::Ext.Net.TextField nfEntreEje2;
         
         /// <summary>
         /// Control cLargo.

@@ -49,7 +49,8 @@ BEGIN
 		FechaAlta,
 		FechaBloqueo,
 		UltimoAcceso,
-		CambioContrasena
+		CambioContrasena,
+		Empresa
 	FROM
 		Usuarios
 	WHERE

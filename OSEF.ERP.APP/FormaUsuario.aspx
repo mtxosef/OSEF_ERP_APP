@@ -49,6 +49,7 @@
                         <ext:ModelField Name="FechaBloqueo" Type="Date" />
                         <ext:ModelField Name="UltimoAcceso" Type="Date" />
                         <ext:ModelField Name="CambioContrasena" Type="Date" />
+                        <ext:ModelField Name="Empresa" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -184,12 +185,33 @@
                                         </ext:CapsLockDetector>
                                     </Plugins>
                                 </ext:TextField>
-                                <ext:Checkbox
-                                    ID="chkBloqueado"
+
+                                <ext:ComboBox
+                                    ID="cmbEmpresa"
                                     runat="server"
-                                    BoxLabel="Bloqueado"
-                                    Disabled="true">
-                                </ext:Checkbox>
+                                    FieldLabel="Empresa"
+                                    LabelWidth="130"
+                                    Anchor="100%"
+                                    Editable="false"
+                                    AllowBlank="false"
+                                    DisplayField="Nombre" 
+                                    ValueField="ID"
+                                    Width="350"
+                                    StyleSpec="margin-right: 6px;">
+                                                    <Store>
+                                                        <ext:Store ID="sProveedores" runat="server">
+                                                            <Model>
+                                                                <ext:Model ID="mProveedores" runat="server">
+                                                                    <Fields>
+                                                                        <ext:ModelField Name="ID" Type="String" />
+                                                                        <ext:ModelField Name="Nombre" Type="String" />
+                                                                    </Fields>
+                                                                </ext:Model>
+                                                            </Model>
+                                                        </ext:Store>
+                                                    </Store>
+                                </ext:ComboBox>
+
                             </Items>
                         </ext:Container>
                         <ext:Container
@@ -223,7 +245,15 @@
                                 <ext:Checkbox
                                     ID="chkEnLinea"
                                     runat="server"
+                                    StyleSpec="margin-right: 6px;"
                                     BoxLabel="En línea"
+                                    Disabled="true">
+                                </ext:Checkbox>
+                                
+                                <ext:Checkbox
+                                    ID="chkBloqueado"
+                                    runat="server"
+                                    BoxLabel="Bloqueado"
                                     Disabled="true">
                                 </ext:Checkbox>
                             </Items>

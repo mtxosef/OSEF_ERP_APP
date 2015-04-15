@@ -305,7 +305,6 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
         App.cmbMov.setValue(App.sOrdenEstimacion.getAt(0).get('Mov'));
-       
 
         App.dfFechaEmision.setValue(d);
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
@@ -420,6 +419,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(true);
+        App.imgbtnImprimir.setDisabled(false);
 
         //3. Remover la útima fila
         var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
@@ -1074,7 +1074,6 @@ var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
         //Toma el primer elemento de la columna para poder desabilitarlo
         var boton = toolbar.items.get(0);
         boton.setDisabled(false);
-        boton.setTooltip("Selecciona un concepto antes");
     }
 
 };
@@ -1187,69 +1186,129 @@ var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 //Lo que hace el comando de fotos
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
-    Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
+    
 
-    if (nombre == 'cnCargarFotos') {
-        window.parent.App.wGenerador.load('FormaSubirImagenesOrdenEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(350);
-        window.parent.App.wGenerador.setWidth(600);
-        window.parent.App.wGenerador.center();
-        window.parent.App.wGenerador.setTitle('Subir Fotos');
-        window.parent.App.wGenerador.show();
+
+    //Valida que se escocja un concepto antes
+    if (registro.get('ConceptoID') != '') {
+
+        Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
+
+        if (nombre == 'cnCargarFotos') {
+            window.parent.App.wGenerador.load('FormaSubirImagenesOrdenEstimacion.aspx');
+            window.parent.App.wGenerador.setHeight(350);
+            window.parent.App.wGenerador.setWidth(600);
+            window.parent.App.wGenerador.center();
+            window.parent.App.wGenerador.setTitle('Subir Fotos');
+            window.parent.App.wGenerador.show();
+        }
+        else {
+            window.parent.App.wGenerador.load('FormaImagenesOrdenEstimacion.aspx');
+            window.parent.App.wGenerador.setHeight(520);
+            window.parent.App.wGenerador.setWidth(670);
+            window.parent.App.wGenerador.center();
+            window.parent.App.wGenerador.setTitle('Visualizar Fotos');
+            window.parent.App.wGenerador.show();
+        }
+
     }
     else {
-        window.parent.App.wGenerador.load('FormaImagenesOrdenEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(520);
-        window.parent.App.wGenerador.setWidth(670);
-        window.parent.App.wGenerador.center();
-        window.parent.App.wGenerador.setTitle('Visualizar Fotos');
-        window.parent.App.wGenerador.show();
+        Ext.Msg.show({
+            id: 'msgFotos',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
     }
+
 };
 
 
 //Lo que hace el comando de croquis
 var ccCroquis_Command = function (column, nombre, registro, renglon, opciones) {
-    Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
 
-    if (nombre == 'cnCargarCroquis') {
-        window.parent.App.wGenerador.load('FormaSubirCroquisOrdenEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(350);
-        window.parent.App.wGenerador.setWidth(600);
-        window.parent.App.wGenerador.center();
-        window.parent.App.wGenerador.setTitle('Subir Croquis');
-        window.parent.App.wGenerador.show();
+    //Valida que se escocja un concepto antes
+    if (registro.get('ConceptoID') != '') {
+
+        Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
+
+        if (nombre == 'cnCargarCroquis') {
+            window.parent.App.wGenerador.load('FormaSubirCroquisOrdenEstimacion.aspx');
+            window.parent.App.wGenerador.setHeight(350);
+            window.parent.App.wGenerador.setWidth(600);
+            window.parent.App.wGenerador.center();
+            window.parent.App.wGenerador.setTitle('Subir Croquis');
+            window.parent.App.wGenerador.show();
+        }
+        else {
+            window.parent.App.wGenerador.load('FormaCroquisOrdenEstimacion.aspx');
+            window.parent.App.wGenerador.setHeight(520);
+            window.parent.App.wGenerador.setWidth(670);
+            window.parent.App.wGenerador.center();
+            window.parent.App.wGenerador.setTitle('Visualizar Croquis');
+            window.parent.App.wGenerador.show();
+        }
+
     }
     else {
-        window.parent.App.wGenerador.load('FormaCroquisOrdenEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(520);
-        window.parent.App.wGenerador.setWidth(670);
-        window.parent.App.wGenerador.center();
-        window.parent.App.wGenerador.setTitle('Visualizar Croquis');
-        window.parent.App.wGenerador.show();
+        Ext.Msg.show({
+            id: 'msgFotos',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
     }
+
+
 };
 
 //Lo que hace el comando de croquis
 var ccFactura_Command = function (column, nombre, registro, renglon, opciones) {
-    Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
 
-    if (nombre == 'cnCargarFactura') {
-        window.parent.App.wGenerador.load('FormaSubirFacturasOrdenEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(350);
-        window.parent.App.wGenerador.setWidth(600);
-        window.parent.App.wGenerador.center();
-        window.parent.App.wGenerador.setTitle('Subir Factura');
-        window.parent.App.wGenerador.show();
+
+    //Valida que se escocja un concepto antes
+    if (registro.get('ConceptoID') != '') {
+
+
+        Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
+
+        if (nombre == 'cnCargarFactura') {
+            window.parent.App.wGenerador.load('FormaSubirFacturasOrdenEstimacion.aspx');
+            window.parent.App.wGenerador.setHeight(350);
+            window.parent.App.wGenerador.setWidth(600);
+            window.parent.App.wGenerador.center();
+            window.parent.App.wGenerador.setTitle('Subir Factura');
+            window.parent.App.wGenerador.show();
+        }
+        else {
+            window.parent.App.wGenerador.load('FormaFacturasOrdenEstimacion.aspx');
+            window.parent.App.wGenerador.setHeight(520);
+            window.parent.App.wGenerador.setWidth(670);
+            window.parent.App.wGenerador.center();
+            window.parent.App.wGenerador.setTitle('Visualizar Factura');
+            window.parent.App.wGenerador.show();
+        }
+
     }
     else {
-        window.parent.App.wGenerador.load('FormaFacturasOrdenEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(520);
-        window.parent.App.wGenerador.setWidth(670);
-        window.parent.App.wGenerador.center();
-        window.parent.App.wGenerador.setTitle('Visualizar Factura');
-        window.parent.App.wGenerador.show();
+        Ext.Msg.show({
+            id: 'msgFotos',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
     }
+
+
 };
 
 

@@ -163,6 +163,7 @@ var sUsuario_Add = function (usuario, registro) {
     App.dfFechaBloqueo.setValue(registro[0].get('FechaBloqueo'));
     App.dfUltimoAcceso.setValue(registro[0].get('UltimoAcceso'));
     App.dfCambioContrasena.setValue(registro[0].get('CambioContrasena'));
+    App.cmbEmpresa.setValue(registro[0].get('Empresa'));
 };
 
 //Para el botón de eliminar, Eliminar un registro
