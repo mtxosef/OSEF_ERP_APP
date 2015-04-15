@@ -166,13 +166,31 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.CapsLockDetector cldContrasena;
         
         /// <summary>
-        /// Control chkBloqueado.
+        /// Control cmbEmpresa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkBloqueado;
+        protected global::Ext.Net.ComboBox cmbEmpresa;
+        
+        /// <summary>
+        /// Control sProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sProveedores;
+        
+        /// <summary>
+        /// Control mProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mProveedores;
         
         /// <summary>
         /// Control cUsuario4.
@@ -218,6 +236,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Checkbox chkEnLinea;
+        
+        /// <summary>
+        /// Control chkBloqueado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkBloqueado;
         
         /// <summary>
         /// Control fsEstado.

@@ -58,22 +58,22 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Toolbar Toolbar1;
         
         /// <summary>
-        /// Control TreePanel1.
+        /// Control tpCodigosPostales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TreePanel TreePanel1;
+        protected global::Ext.Net.TreePanel tpCodigosPostales;
         
         /// <summary>
-        /// Control StatusBar1.
+        /// Control tsmCodigosPostales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar StatusBar1;
+        protected global::Ext.Net.TreeSelectionModel tsmCodigosPostales;
         
         /// <summary>
         /// Control tbCodigosPostales.
@@ -130,22 +130,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ImageButton imgbtnActualizar;
         
         /// <summary>
-        /// Control txtBuscar.
+        /// Control nfBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtBuscar;
-        
-        /// <summary>
-        /// Control imgbtnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBuscar;
+        protected global::Ext.Net.NumberField nfBuscar;
         
         /// <summary>
         /// Control sCodigosPostales.
@@ -166,13 +157,49 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Model mCodigosPostales;
         
         /// <summary>
-        /// Control cEstado.
+        /// Control ncCodigoPostal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cEstado;
+        protected global::Ext.Net.NumberColumn ncCodigoPostal;
+        
+        /// <summary>
+        /// Control txtNumero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtNumero;
+        
+        /// <summary>
+        /// Control cmbEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEstado;
+        
+        /// <summary>
+        /// Control sEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEstados;
+        
+        /// <summary>
+        /// Control mEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEstados;
         
         /// <summary>
         /// Control cMunicipio.
@@ -184,6 +211,33 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Column cMunicipio;
         
         /// <summary>
+        /// Control cmbMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbMunicipio;
+        
+        /// <summary>
+        /// Control sMunicipios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sMunicipios;
+        
+        /// <summary>
+        /// Control mMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mMunicipio;
+        
+        /// <summary>
         /// Control cColonia.
         /// </summary>
         /// <remarks>
@@ -193,13 +247,40 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.Column cColonia;
         
         /// <summary>
-        /// Control ncCodigoPostal.
+        /// Control cmbColonia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberColumn ncCodigoPostal;
+        protected global::Ext.Net.ComboBox cmbColonia;
+        
+        /// <summary>
+        /// Control sColonias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sColonias;
+        
+        /// <summary>
+        /// Control mColonia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mColonia;
+        
+        /// <summary>
+        /// Control CellEditing1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CellEditing CellEditing1;
         
         /// <summary>
         /// Control rsmCodigosPostales.

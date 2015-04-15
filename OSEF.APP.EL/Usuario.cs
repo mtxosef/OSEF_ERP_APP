@@ -25,6 +25,8 @@ namespace OSEF.APP.EL
         Nullable<DateTime> fechabloqueo;
         Nullable<DateTime> ultimoacceso;
         Nullable<DateTime> cambiocontrasena;
+        string empresa;
+
 
         #endregion
 
@@ -109,6 +111,12 @@ namespace OSEF.APP.EL
             set { cambiocontrasena = value; }
         }
 
+
+        public string Empresa
+        {
+            get { return empresa; }
+            set { empresa = value; }
+        }
         #endregion
     }
 }

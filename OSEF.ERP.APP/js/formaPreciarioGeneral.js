@@ -80,6 +80,20 @@ var rMnto_Change = function (radio) {
 
 
 
+
+//Hacer la busqueda de información
+var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
+    App.sCarga.clearFilter();
+    App.sCarga.filter([{ filterFn: function (item) {
+        if (item.get('Clave').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('Descripcion').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
+        else { return false; }
+    }
+    }]);
+    //App.sCarga.getSelectionModel().deselectAll();
+  
+};
+
+
 //Evento lanzado al cargar el store de avance encabezado
 var sPreciarioGeneral_Load_Success = function () {
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
@@ -315,3 +329,17 @@ function HabilitarGuardar() {
         App.imgbtnGuardar.setDisabled(true);
     }
 }
+
+
+//Acciones del boton d agregar concepto en el detalle
+var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
+    window.parent.App.wAyudaConcepto.load('FormaAyudaBusquedaConceptoPreciario.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(430);
+    window.parent.App.wAyudaConcepto.setWidth(685);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
+    window.parent.App.wAyudaConcepto.show();
+
+
+    
+};

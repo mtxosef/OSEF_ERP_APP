@@ -44,7 +44,17 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@DiasAtencion	DECIMAL(5,0),
 	@Reporto		VARCHAR(100),
 	@TrabajoRequerido VARCHAR(850),
-	@Atiende		VARCHAR(100)
+	@Atiende		VARCHAR(100),
+	@TrabajoRealizado VARCHAR(500),
+		@CodigoFalla	VARCHAR(30),
+		@TieneFotos		VARCHAR(10),
+		@TieneReporte	VARCHAR(10),
+		@FechaLlegada	SMALLDATETIME,
+	@HoraLlegada	DATETIME,
+		@FechaFinActividad SMALLDATETIME,
+		@HoraFinActividad DATETIME,
+		@Zona			VARCHAR(80),
+		@Cuadrilla		VARCHAR(200) 
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -69,7 +79,17 @@ BEGIN
 		DiasAtencion = @DiasAtencion,
 		Reporto = @Reporto,
 		TrabajoRequerido = @TrabajoRequerido,
-		Atiende = @Atiende
+		Atiende = @Atiende,
+		TrabajoRealizado = @TrabajoRealizado,
+		CodigoFalla = @CodigoFalla,
+		TieneFotos	= @TieneFotos,
+		TieneReporte = @TieneReporte,
+		FechaLlegada = @FechaLlegada,
+		HoraLlegada = @HoraLlegada,
+		FechaFinActividad = @FechaFinActividad,
+		HoraFinActividad = @HoraFinActividad,
+		Zona = @Zona,
+		Cuadrilla = @Cuadrilla
 		
 	WHERE
 		ID = @ID

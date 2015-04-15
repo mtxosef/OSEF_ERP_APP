@@ -176,8 +176,7 @@ $(document).ready(function () {
 
     $("#colonias").click(function (event) {
         $("#contenedor").fadeOut(timer, function () {
-            parent.App.imgbtnRegresar.show();
-//            parent.App.lblRegresar.show();
+            parent.App.imgbtnRegresar.show(); 
             parent.App.pCentro.getLoader().load('colonias.aspx');
         });
     });
@@ -295,4 +294,10 @@ $(document).ready(function () {
         });
     });
 
+    $("#cuadrillas").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            parent.App.pCentro.getLoader().load('Cuadrillas.aspx');
+        });
+    });
 });

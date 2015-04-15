@@ -44,14 +44,17 @@
     <Compile Include="ArticuloDataAccess.cs" />
     <Compile Include="CategoriaDataAccess.cs" />
     <Compile Include="ClienteDataAccess.cs" />
+    <Compile Include="CodigoPostalDataAccess.cs" />
     <Compile Include="ColoniaDataAccess.cs" />
     <Compile Include="ConceptoDataAccess.cs" />
     <Compile Include="CroquisOrdenEstimacionDDataAccess.cs" />
+    <Compile Include="CuadrillaDataAccess.cs" />
     <Compile Include="CuentaContableDataAccess.cs" />
     <Compile Include="EstadoDataAccess.cs" />
     <Compile Include="FacturaOrdenEstimacionDDataAccess.cs" />
     <Compile Include="FinalidadDataAccess.cs" />
     <Compile Include="GeneradorOrdenEstimacionDDataAccess.cs" />
+    <Compile Include="GeneradorVolumetriaDataAccess.cs" />
     <Compile Include="GrupoMenuDataAccess.cs" />
     <Compile Include="ImagenOrdenEstimacionDDataAccess.cs" />
     <Compile Include="ImagenVolumetriaDDataAccess.cs" />

@@ -39,7 +39,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	IF EXISTS(SELECT A.ConceptoID FROM GeneradorOrdenEstimacionD A INNER JOIN OrdenesEstimacionesD B ON A.ConceptoID = B.ConceptoID 
-	WHERE A.ConceptoID = @CONCEPTO AND MovID=@ID)
+	WHERE A.ConceptoID = @CONCEPTO AND A.MovID=@ID)
 	BEGIN
 		SELECT CAST(1 AS BIT)
 	END

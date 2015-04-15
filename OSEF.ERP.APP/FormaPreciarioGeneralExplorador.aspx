@@ -41,7 +41,7 @@
                     ID="mPreciarioConceptoForma"
                     runat="server">
                     <Fields>
-                        <ext:ModelField Name="ID" Type="String" />
+                    <ext:ModelField Name="ID" Type="String" />
                     <ext:ModelField Name="Clave" Type="String" />
                     <ext:ModelField Name="Descripcion" Type="String" />
                     <ext:ModelField Name="Unidad" Type="String" />
@@ -63,12 +63,12 @@
         </ext:Store>
 
 
-                <ext:FormPanel 
+        <ext:FormPanel 
         ID="fpEspecificarParametros" 
         runat="server"
         Width="580"
         DefaultButton="imgbtnGuardar"
-        Height="410"
+        Height="440"
         BodyPadding="10"
         DefaultAnchor="100%">
         <Items>
@@ -84,7 +84,7 @@
                         ID="txtPreciario"
                         runat="server"
                         Width="140"
-                          Cls="xDeshabilitados"
+                        Cls="xDeshabilitados"
                         Margins="0 3 0 0"
                         Disabled="true">
                     </ext:TextField>
@@ -94,13 +94,12 @@
                         FieldLabel="Clave Concepto"
                         LabelWidth="138"
                         Width="285"
-                          Cls="xDeshabilitados"
+                        Cls="xDeshabilitados"
                         Margins="0 3 0 0"
                         Disabled="true">
                     </ext:TextField>
                 </Items>
             </ext:FieldContainer>
-
             <ext:FieldContainer
                 ID="fcDatos"
                 runat="server"
@@ -120,7 +119,6 @@
                     
                 </Items>
             </ext:FieldContainer>
-
              <ext:FieldContainer
                 ID="fcContenedorCantidades"
                 runat="server"
@@ -222,10 +220,56 @@
                     </ext:TextArea>
                 </Items>
             </ext:FieldContainer>     
+
+             <ext:FieldContainer
+                ID="fcReportes"
+                runat="server"
+                FieldLabel="Reportes"
+                AnchorHorizontal="100%"
+                LabelWidth="120"
+                Layout="HBoxLayout">
+                <Items>
+                     
+                    <ext:FieldSet ID="fsReportes" 
+                        runat="server"  
+                        Width="425"
+                        Layout="HBoxLayout"> 
+                        <Items>
+                         <ext:CheckboxGroup 
+                            ID="chkgpReportes" 
+                            runat="server" 
+                            AllowBlank="false"
+                            Width="415">
+                            <Items>
+                                <ext:Checkbox ID="chkGenerador" runat="server" BoxLabel="Generador" />
+                                <ext:Checkbox ID="chkFotos" runat="server" BoxLabel="Fotos" />
+                                <ext:Checkbox ID="chkCroquis" runat="server" BoxLabel="Croquis" />
+                                <ext:Checkbox ID="chkFacturas" runat="server" BoxLabel="Factura/Notas"/>
+                            </Items>
+                         </ext:CheckboxGroup>
+                         </Items>
+                     </ext:FieldSet>
+                </Items>
+            </ext:FieldContainer>  
+             <ext:FieldContainer
+                ID="FieldContainer1"
+                runat="server"
+                AnchorHorizontal="100%"
+                Layout="HBoxLayout">
+                <Items>
+                   <ext:Checkbox ID="chkSeleccionarTodo" runat="server" BoxLabel="Seleccionar/Deseleccionar Todo">
+                   <DirectEvents>
+                   
+                        <Change OnEvent="chkSeleccionarTodo_Click"></Change>
+                   </DirectEvents>
+                   </ext:Checkbox>
+
+                </Items>
+            </ext:FieldContainer>
         </Items>
             <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
-                                                text : valid ? 'La información esta completa/correcta' : 'Especifica el personal que firmará el documento', 
+                                                text : valid ? 'La información esta completa/correcta' : 'Especifica el personal que firmará el documento/Selecciona un reporte', 
                                                 iconCls: valid ? 'icon-accept' : 'icon-exclamation'
                                             });
                                             #{imgbtnGuardar}.setDisabled(!valid);" />
@@ -248,19 +292,17 @@
                     Height="50" 
                     Width="50"
                     Disabled="true">
-                   <%-- <DirectEvents>
-                        <Click OnEvent="imgbtnExportar_Click" Success="window.open('Previa.aspx', '_blank');">
+                    <DirectEvents>
+                        <Click OnEvent="imgbtnExportar_Click" Success="window.open('PreviaOrdenEstimacion.aspx', '_blank');">
                             <EventMask ShowMask="true" Msg="Cargando Reporte..." />
                              <ExtraParams>
-                                <ext:Parameter Name="preciario" Value="App.txtPreciario.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="conceptoID" Value="App.txtConceptoID.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="elaboro" Value="App.txtElaboro.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="reviso" Value="App.txtReviso.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="autorizo" Value="App.txtAutorizo.getValue()" Mode="Raw" />
                             </ExtraParams>
-
                         </Click>
-                    </DirectEvents>--%>
+                    </DirectEvents>
                 </ext:ImageButton>
                 <ext:ImageButton 
                     ID="imgbtnCancelar" 

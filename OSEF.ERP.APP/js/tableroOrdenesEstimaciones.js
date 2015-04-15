@@ -136,7 +136,7 @@ var cmbMovimientoFiltro_Select = function (combobox, registro) {
     else {
         App.sOrdenesEstimaciones.filterBy(function (elemento) {
 
-            if (elemento.get('Mov') == valor) {
+            if (elemento.get('Mov').trim() == valor) {
                 return true
             }
             else {

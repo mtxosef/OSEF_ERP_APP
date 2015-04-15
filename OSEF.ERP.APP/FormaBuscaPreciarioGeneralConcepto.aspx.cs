@@ -18,7 +18,7 @@ namespace OSEF.ERP.APP
             if (!X.IsAjaxRequest)
             {
 
-                string mov = Cookies.GetCookie("cookieMovimiento").Value;
+                string mov = Cookies.GetCookie("cookieMovimientoIdentificador").Value;
                 string idPReciario;
 
                 if (mov.Equals("Mnto"))

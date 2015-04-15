@@ -127,7 +127,6 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpFechaMaxima = new SqlParameter();
                 sqlpFechaMaxima.ParameterName = "@FechaMaximaAtencion";
                 sqlpFechaMaxima.SqlDbType = SqlDbType.SmallDateTime;
-
                 if (iOrdenEstimacion.FechaMaximaAtencion == null)
                     sqlpFechaMaxima.Value = DBNull.Value;
                 else
@@ -137,9 +136,7 @@ namespace OSEF.APP.DL
                 sqlpDiasAtencion.ParameterName = "@DiasAtencion";
                 sqlpDiasAtencion.SqlDbType = SqlDbType.Decimal;
 
-                if (iOrdenEstimacion.DiasAtencion == null)
-                    sqlpDiasAtencion.Value = DBNull.Value;
-                else
+              
                     sqlpDiasAtencion.Value = iOrdenEstimacion.DiasAtencion;
 
                 SqlParameter sqlpReporto = new SqlParameter();
@@ -151,6 +148,13 @@ namespace OSEF.APP.DL
                 else
                     sqlpReporto.Value = iOrdenEstimacion.Reporto;
 
+                SqlParameter sqlpTrabajoRequerido = new SqlParameter();
+                sqlpTrabajoRequerido.ParameterName = "@TrabajoRequerido";
+                sqlpTrabajoRequerido.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.TrabajoRequerido == null)
+                    sqlpTrabajoRequerido.Value = DBNull.Value;
+                else
+                    sqlpTrabajoRequerido.Value = iOrdenEstimacion.TrabajoRequerido;
 
                 SqlParameter sqlpAtiende = new SqlParameter();
                 sqlpAtiende.ParameterName = "@Atiende";
@@ -162,14 +166,87 @@ namespace OSEF.APP.DL
                     sqlpAtiende.Value = iOrdenEstimacion.Atiende;
 
 
-                SqlParameter sqlpTrabajoRequerido = new SqlParameter();
-                sqlpTrabajoRequerido.ParameterName = "@TrabajoRequerido";
-                sqlpTrabajoRequerido.SqlDbType = SqlDbType.VarChar;
+              
 
-                if (iOrdenEstimacion.TrabajoRequerido == null)
-                    sqlpTrabajoRequerido.Value = DBNull.Value;
+                SqlParameter sqlpTrabajoRealizado = new SqlParameter();
+                sqlpTrabajoRealizado.ParameterName = "@TrabajoRealizado";
+                sqlpTrabajoRealizado.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.TrabajoRealizado == null)
+                    sqlpTrabajoRealizado.Value = DBNull.Value;
                 else
-                    sqlpTrabajoRequerido.Value = iOrdenEstimacion.TrabajoRequerido;
+                    sqlpTrabajoRealizado.Value = iOrdenEstimacion.TrabajoRealizado;
+
+                SqlParameter sqlpCodigoFalla = new SqlParameter();
+                sqlpCodigoFalla.ParameterName = "@CodigoFalla";
+                sqlpCodigoFalla.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.CodigoFalla == null)
+                    sqlpCodigoFalla.Value = DBNull.Value;
+                else
+                    sqlpCodigoFalla.Value = iOrdenEstimacion.CodigoFalla;
+
+                SqlParameter sqlpTieneFotos = new SqlParameter();
+                sqlpTieneFotos.ParameterName = "@TieneFotos";
+                sqlpTieneFotos.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.TieneFotos == null)
+                    sqlpTieneFotos.Value = DBNull.Value;
+                else
+                    sqlpTieneFotos.Value = iOrdenEstimacion.TieneFotos;
+
+                SqlParameter sqlpTieneReporte = new SqlParameter();
+                sqlpTieneReporte.ParameterName = "@TieneReporte";
+                sqlpTieneReporte.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.TieneReporte == null)
+                    sqlpTieneReporte.Value = DBNull.Value;
+                else
+                    sqlpTieneReporte.Value = iOrdenEstimacion.TieneReporte;
+
+                SqlParameter sqlpFechaLlegada = new SqlParameter();
+                sqlpFechaLlegada.ParameterName = "@FechaLlegada";
+                sqlpFechaLlegada.SqlDbType = SqlDbType.SmallDateTime;
+                if (iOrdenEstimacion.FechaLlegada == null)
+                    sqlpFechaLlegada.Value = DBNull.Value;
+                else
+                    sqlpFechaLlegada.Value = iOrdenEstimacion.FechaLlegada;
+
+                SqlParameter sqlpHoraLlegada = new SqlParameter();
+                sqlpHoraLlegada.ParameterName = "@HoraLlegada";
+                sqlpHoraLlegada.SqlDbType = SqlDbType.DateTime;
+                if (iOrdenEstimacion.HoraLlegada == null)
+                    sqlpHoraLlegada.Value = DBNull.Value;
+                else
+                    sqlpHoraLlegada.Value = iOrdenEstimacion.HoraLlegada;
+
+                SqlParameter sqlpFechaFinActividad = new SqlParameter();
+                sqlpFechaFinActividad.ParameterName = "@FechaFinActividad";
+                sqlpFechaFinActividad.SqlDbType = SqlDbType.SmallDateTime;
+                if (iOrdenEstimacion.FechaFinActividad == null)
+                    sqlpFechaFinActividad.Value = DBNull.Value;
+                else
+                    sqlpFechaFinActividad.Value = iOrdenEstimacion.FechaFinActividad;
+
+                SqlParameter sqlpHoraFinActividad = new SqlParameter();
+                sqlpHoraFinActividad.ParameterName = "@HoraFinActividad";
+                sqlpHoraLlegada.SqlDbType = SqlDbType.DateTime;
+                if (iOrdenEstimacion.HoraFinActividad == null)
+                    sqlpHoraFinActividad.Value = DBNull.Value;
+                else
+                    sqlpHoraFinActividad.Value = iOrdenEstimacion.HoraFinActividad;
+
+                SqlParameter sqlpZona = new SqlParameter();
+                sqlpZona.ParameterName = "@Zona";
+                sqlpZona.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.Zona == null)
+                    sqlpZona.Value = DBNull.Value;
+                else
+                    sqlpZona.Value = iOrdenEstimacion.Zona;
+
+                SqlParameter sqlpCuadrilla = new SqlParameter();
+                sqlpCuadrilla.ParameterName = "@Cuadrilla";
+                sqlpCuadrilla.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.Cuadrilla == null)
+                    sqlpCuadrilla.Value = DBNull.Value;
+                else
+                    sqlpCuadrilla.Value = iOrdenEstimacion.Cuadrilla;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -190,6 +267,16 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpReporto);
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
                 sqlcComando.Parameters.Add(sqlpAtiende);
+                sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
+                sqlcComando.Parameters.Add(sqlpCodigoFalla);
+                sqlcComando.Parameters.Add(sqlpTieneFotos);
+                sqlcComando.Parameters.Add(sqlpTieneReporte);
+                sqlcComando.Parameters.Add(sqlpFechaLlegada);
+                sqlcComando.Parameters.Add(sqlpHoraLlegada);
+                sqlcComando.Parameters.Add(sqlpFechaFinActividad);
+                sqlcComando.Parameters.Add(sqlpHoraFinActividad);
+                sqlcComando.Parameters.Add(sqlpZona);
+                sqlcComando.Parameters.Add(sqlpCuadrilla);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -322,9 +409,9 @@ namespace OSEF.APP.DL
                 sqlpDiasAtencion.ParameterName = "@DiasAtencion";
                 sqlpDiasAtencion.SqlDbType = SqlDbType.Decimal;
 
-                if (uOrdenEstimacion.DiasAtencion == null)
-                    sqlpDiasAtencion.Value = DBNull.Value;
-                else
+                //if (uOrdenEstimacion.DiasAtencion == null)
+                //    sqlpDiasAtencion.Value = DBNull.Value;
+                //else
                     sqlpDiasAtencion.Value = uOrdenEstimacion.DiasAtencion;
 
                 SqlParameter sqlpReporto = new SqlParameter();
@@ -356,6 +443,89 @@ namespace OSEF.APP.DL
                 else
                     sqlpTrabajoRequerido.Value = uOrdenEstimacion.TrabajoRequerido;
 
+
+                SqlParameter sqlpTrabajoRealizado = new SqlParameter();
+                sqlpTrabajoRealizado.ParameterName = "@TrabajoRealizado";
+                sqlpTrabajoRealizado.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.TrabajoRealizado == null)
+                    sqlpTrabajoRealizado.Value = DBNull.Value;
+                else
+                    sqlpTrabajoRealizado.Value = uOrdenEstimacion.TrabajoRealizado;
+
+                SqlParameter sqlpCodigoFalla = new SqlParameter();
+                sqlpCodigoFalla.ParameterName = "@CodigoFalla";
+                sqlpCodigoFalla.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.CodigoFalla == null)
+                    sqlpCodigoFalla.Value = DBNull.Value;
+                else
+                    sqlpCodigoFalla.Value = uOrdenEstimacion.CodigoFalla;
+
+                SqlParameter sqlpTieneFotos = new SqlParameter();
+                sqlpTieneFotos.ParameterName = "@TieneFotos";
+                sqlpTieneFotos.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.TieneFotos == null)
+                    sqlpTieneFotos.Value = DBNull.Value;
+                else
+                    sqlpTieneFotos.Value = uOrdenEstimacion.TieneFotos;
+
+                SqlParameter sqlpTieneReporte = new SqlParameter();
+                sqlpTieneReporte.ParameterName = "@TieneReporte";
+                sqlpTieneReporte.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.TieneReporte == null)
+                    sqlpTieneReporte.Value = DBNull.Value;
+                else
+                    sqlpTieneReporte.Value = uOrdenEstimacion.TieneReporte;
+
+                SqlParameter sqlpFechaLlegada = new SqlParameter();
+                sqlpFechaLlegada.ParameterName = "@FechaLlegada";
+                sqlpFechaLlegada.SqlDbType = SqlDbType.SmallDateTime;
+                if (uOrdenEstimacion.FechaLlegada == null)
+                    sqlpFechaLlegada.Value = DBNull.Value;
+                else
+                    sqlpFechaLlegada.Value = uOrdenEstimacion.FechaLlegada;
+
+                SqlParameter sqlpHoraLlegada = new SqlParameter();
+                sqlpHoraLlegada.ParameterName = "@HoraLlegada";
+                sqlpHoraLlegada.SqlDbType = SqlDbType.DateTime;
+                if (uOrdenEstimacion.HoraLlegada == null)
+                    sqlpHoraLlegada.Value = DBNull.Value;
+                else
+                    sqlpHoraLlegada.Value = uOrdenEstimacion.HoraLlegada;
+
+                SqlParameter sqlpFechaFinActividad = new SqlParameter();
+                sqlpFechaFinActividad.ParameterName = "@FechaFinActividad";
+                sqlpFechaFinActividad.SqlDbType = SqlDbType.SmallDateTime;
+                if (uOrdenEstimacion.FechaFinActividad == null)
+                    sqlpFechaFinActividad.Value = DBNull.Value;
+                else
+                    sqlpFechaFinActividad.Value = uOrdenEstimacion.FechaFinActividad;
+
+                SqlParameter sqlpHoraFinActividad = new SqlParameter();
+                sqlpHoraFinActividad.ParameterName = "@HoraFinActividad";
+                sqlpHoraFinActividad.SqlDbType = SqlDbType.DateTime;
+                if (uOrdenEstimacion.HoraFinActividad == null)
+                    sqlpHoraFinActividad.Value = DBNull.Value;
+                else
+                    sqlpHoraFinActividad.Value = uOrdenEstimacion.HoraFinActividad;
+
+                SqlParameter sqlpZona = new SqlParameter();
+                sqlpZona.ParameterName = "@Zona";
+                sqlpZona.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.Zona == null)
+                    sqlpZona.Value = DBNull.Value;
+                else
+                    sqlpZona.Value = uOrdenEstimacion.Zona;
+
+                SqlParameter sqlpCuadrilla = new SqlParameter();
+                sqlpCuadrilla.ParameterName = "@Cuadrilla";
+                sqlpCuadrilla.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.Cuadrilla == null)
+                    sqlpCuadrilla.Value = DBNull.Value;
+                else
+                    sqlpCuadrilla.Value = uOrdenEstimacion.Cuadrilla;
+
+
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -373,6 +543,16 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpReporto);
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
                 sqlcComando.Parameters.Add(sqlpAtiende);
+                sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
+                sqlcComando.Parameters.Add(sqlpCodigoFalla);
+                sqlcComando.Parameters.Add(sqlpTieneFotos);
+                sqlcComando.Parameters.Add(sqlpTieneReporte);
+                sqlcComando.Parameters.Add(sqlpFechaLlegada);
+                sqlcComando.Parameters.Add(sqlpHoraLlegada);
+                sqlcComando.Parameters.Add(sqlpFechaFinActividad);
+                sqlcComando.Parameters.Add(sqlpHoraFinActividad);
+                sqlcComando.Parameters.Add(sqlpZona);
+                sqlcComando.Parameters.Add(sqlpCuadrilla);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

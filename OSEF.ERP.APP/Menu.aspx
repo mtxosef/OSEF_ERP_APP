@@ -69,7 +69,7 @@
                                 <a class="tile wide imagetext wideimage bg-color-red" id="exploradorPreciarioConceptosGenerales" href="#">
                                     <img src="assets/img/Search.png" alt="Explorador Ordenes Estimaciones" />
                                     <div class="textover-wrapper transparent">
-                                        <div class="text2">Explorador Ordenes & Estimaciones</div>
+                                        <div class="text2">Explorador Ordenes de Cambio</div>
                                     </div>
                                 </a>
 
@@ -159,6 +159,13 @@
                                     <img src="assets/img/menu-colonias.png" alt="" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Colonias</div>
+                                    </div>
+                                </a> 
+
+                                <a class="tile square image bg-color-blueDark" id="cuadrillas" href="#">
+                                    <img src="assets/img/menu-cuadrillas.png" alt="" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Cuadrillas</div>
                                     </div>
                                 </a>
 

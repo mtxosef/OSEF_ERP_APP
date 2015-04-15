@@ -26,6 +26,8 @@ var imgbtnEditar_Click = function () {
     window.parent.App.wEmergente.show();
 };
 
+
+
 //Para el botón de eliminar, Eliminar un registro
 var imgbtnBorrar_Click_Success = function (response, result) {
     if (result.extraParamsResponse.existe) {
@@ -41,6 +43,8 @@ var imgbtnBorrar_Click_Success = function (response, result) {
     }
     else {
         var identificador = App.gpSucursales.getSelectionModel().getSelection()[0].get('ID');
+
+
         var indice = App.gpSucursales.getStore().find('ID', identificador);
         var nombre = App.sSucursales.getAt(indice).get('Nombre');
         App.gpSucursales.getStore().removeAt(indice);
@@ -64,6 +68,8 @@ var gpSucursales_ItemClick = function () {
     App.imgbtnBorrar.setDisabled(false);
 };
 
+
+
 //Hacer la busqueda de información
 var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     App.sSucursales.clearFilter();
@@ -73,6 +79,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     }
     }]);
 };
+
 
 //Concatenar la columna de contacto
 var Gerente_Convert = function (value, record) {
@@ -97,6 +104,7 @@ var sSucursales_DataChanged = function () {
     }
 };
 
+
 //Evento lanzado al cargar el store de la sucursal
 var sSucursal_Load = function () {
     App.direct.sSucursal_Load();
@@ -120,8 +128,8 @@ var sSucursal_Add = function (sucursal, registro) {
     var dif = fFecha1 - fFecha2;
     var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
 
- 
 
+    console.log(registro);
     App.txtfID.setValue(registro[0].get('ID'));
     App.nfCR.setValue(registro[0].get('CR'));
     App.txtfNombre.setValue(registro[0].get('Nombre'));
@@ -143,10 +151,12 @@ var sSucursal_Add = function (sucursal, registro) {
     App.txtfEntreCalles.setValue(registro[0].get('EntreCalles'));
     App.txtfNoExterior.setValue(registro[0].get('NoExterior'));
     App.txtfNoInterior.setValue(registro[0].get('NoInterior'));
-    App.txtfCodigoPostal.setValue(registro[0].get('CodigoPostal'));
-    App.cmbColonia.setValue(registro[0].get('Colonia'));
-    App.cmbEstado.setValue(registro[0].get('Estado'));
-    App.cmbMunicipio.setValue(registro[0].get('Municipio'));
+
+    App.txtfCodigoPostal.setValue(registro[0].get('RCodigopostal').Numero);
+    App.txtColonia.setValue(registro[0].get('RColonia').Descripcion);
+    App.txtEstado.setValue(registro[0].get('REstado').Descripcion);
+    App.txtMunicipio.setValue(registro[0].get('RMunicipio').Descripcion);
+
     App.cmbProveedor.setValue(registro[0].get('RProvedor').ID);
     App.dfInicioObra.setValue(registro[0].get('InicioObra'));
     App.dfFinObra.setValue(registro[0].get('FinObra'));
@@ -162,7 +172,6 @@ var sSucursal_Add = function (sucursal, registro) {
 //Evento al cargar el store de municipios
 var sMunicipios_Load = function () {
     if (App.sSucursal.getAt(0) != undefined) {
-
 
         App.cmbMunicipio.setValue(App.sSucursal.getAt(0).get('Municipio'));
        
@@ -205,10 +214,6 @@ function sumarDias(d, fecha) {
     App.dfFinObra.setValue(fechaFinal);
 }
 
-
-
-
-
 function validarFechaInicio(valor, evento, registro ) {
 
     if (valor.rawValue != '') {
@@ -217,3 +222,14 @@ function validarFechaInicio(valor, evento, registro ) {
       
     }
 }
+
+
+//Evento de click del botón Buscar
+var imgbtnBuscar_Click = function () {
+    window.parent.App.wAyudaConcepto.load('FormaBuscaCodigosPostales.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(350);
+    window.parent.App.wAyudaConcepto.setWidth(980);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('BUSCAR CODIGO POSTAL');
+    window.parent.App.wAyudaConcepto.show();
+};

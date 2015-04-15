@@ -46,7 +46,17 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 	@DiasAtencion	DECIMAL(5,0),
 	@Reporto		VARCHAR(100),
 	@TrabajoRequerido VARCHAR(850),
-	@Atiende		VARCHAR(100)
+	@Atiende		VARCHAR(100),
+		@TrabajoRealizado VARCHAR(500),
+		@CodigoFalla	VARCHAR(30),
+		@TieneFotos		VARCHAR(10),
+		@TieneReporte	VARCHAR(10),
+		@FechaLlegada	SMALLDATETIME,
+		@HoraLlegada	DATETIME,
+		@FechaFinActividad SMALLDATETIME,
+		@HoraFinActividad DATETIME,
+		@Zona			VARCHAR(80),
+		@Cuadrilla		VARCHAR(200) 
 	
 AS
 BEGIN
@@ -74,7 +84,17 @@ BEGIN
 			DiasAtencion,
 			Reporto,
 			TrabajoRequerido,
-			Atiende
+			Atiende,
+			TrabajoRealizado,
+			CodigoFalla ,
+			TieneFotos	,
+			TieneReporte,
+			FechaLlegada ,
+			HoraLlegada ,
+			FechaFinActividad ,
+			HoraFinActividad ,
+			Zona ,
+			Cuadrilla
 		)
 	VALUES (
 			@Mov,
@@ -93,7 +113,17 @@ BEGIN
 			@DiasAtencion,
 			@Reporto,
 			@TrabajoRequerido,
-			@Atiende
+			@Atiende,
+			@TrabajoRealizado,
+			@CodigoFalla ,
+			@TieneFotos	,
+			@TieneReporte ,
+			@FechaLlegada ,
+			@HoraLlegada ,
+			@FechaFinActividad ,
+			@HoraFinActividad ,
+			@Zona ,
+			@Cuadrilla
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

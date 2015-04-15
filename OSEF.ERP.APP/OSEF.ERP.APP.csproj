@@ -139,6 +139,7 @@
     <Content Include="assets\img\controles\CleanHover.png" />
     <Content Include="assets\img\controles\cleanNormal.png" />
     <Content Include="assets\img\controles\cleanPressed.png" />
+    <Content Include="assets\img\controles\croquis.png" />
     <Content Include="assets\img\controles\delete-disable.png" />
     <Content Include="assets\img\controles\delete-normal.png" />
     <Content Include="assets\img\controles\delete-over.png" />
@@ -157,14 +158,17 @@
     <Content Include="assets\img\controles\ExcelNormal.png" />
     <Content Include="assets\img\controles\ExcelOver.png" />
     <Content Include="assets\img\controles\ExcelPressed.png" />
+    <Content Include="assets\img\controles\facturas.png" />
     <Content Include="assets\img\controles\GaleriaDisabled.png" />
     <Content Include="assets\img\controles\GaleriaNormal.png" />
     <Content Include="assets\img\controles\GaleriaOver.png" />
     <Content Include="assets\img\controles\GaleriaPressed.png" />
+    <Content Include="assets\img\controles\generador.png" />
     <Content Include="assets\img\controles\Guardar.png" />
     <Content Include="assets\img\controles\GuardarDisabled.png" />
     <Content Include="assets\img\controles\GuardarOver.png" />
     <Content Include="assets\img\controles\GuardarPressed.png" />
+    <Content Include="assets\img\controles\imagenes.png" />
     <Content Include="assets\img\controles\ImprimirDisabled.png" />
     <Content Include="assets\img\controles\ImprimirNormal.png" />
     <Content Include="assets\img\controles\ImprimirOver.png" />
@@ -294,6 +298,7 @@
     <Content Include="css\xToolbar.css" />
     <Content Include="css\xTreePanel.css" />
     <Content Include="css\xWindowPopup.css" />
+    <Content Include="Cuadrillas.aspx" />
     <Content Include="CuentasContables.aspx" />
     <Content Include="data.js" />
     <Content Include="Default.aspx" />
@@ -320,19 +325,26 @@
     <Content Include="FormaAnexosSocio.aspx" />
     <Content Include="FormaAvance.aspx" />
     <Content Include="FormaAvanzarVolumetria.aspx" />
+    <Content Include="FormaAyudaBusquedaConceptoPreciario.aspx" />
+    <Content Include="FormaBuscaCodigosPostales.aspx" />
     <Content Include="FormaBuscaPreciarioConcepto.aspx" />
     <Content Include="FormaBuscaPreciarioGeneralConcepto.aspx" />
+    <Content Include="FormaBuscaPreciariosActivos.aspx" />
+    <Content Include="FormaBuscaSucursal.aspx" />
     <Content Include="FormaCambiarContrasena.aspx" />
     <Content Include="FormaCargaMultiImagenes.aspx" />
+    <Content Include="FormaCodigoPostales.aspx" />
     <Content Include="FormaColonia.aspx" />
     <Content Include="FormaConcepto.aspx" />
     <Content Include="FormaConcepto2.aspx" />
     <Content Include="FormaAvanzarMovimiento.aspx" />
     <Content Include="FormaCroquisOrdenEstimacion.aspx" />
+    <Content Include="FormaCuadrillas.aspx" />
     <Content Include="FormaEspecificarFechas.aspx" />
     <Content Include="FormaFacturasOrdenEstimacion.aspx" />
     <Content Include="FormaGaleria.aspx" />
     <Content Include="FormaGenerador.aspx" />
+    <Content Include="FormaGeneradorVolumetriaD.aspx" />
     <Content Include="FormaImagenesOrdenEstimacion.aspx" />
     <Content Include="FormaImagenesPreciarios.aspx" />
     <Content Include="FormaInfoGraficas.aspx" />
@@ -350,6 +362,7 @@
     <Content Include="FormaPreciarioExplorador.aspx" />
     <Content Include="FormaPreciarioGeneral.aspx" />
     <Content Include="FormaPreciarioGeneralExplorador.aspx" />
+    <Content Include="FormaReporteOrdenCambioD.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirCroquisOrdenEstimacion.aspx" />
     <Content Include="FormaSubirFacturasOrdenEstimacion.aspx" />
@@ -386,15 +399,21 @@
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
     <Content Include="js\avanzarVolumetria.js" />
+    <Content Include="js\buscacodigosPostales.js" />
     <Content Include="js\buscaConceptoPreciario.js" />
     <Content Include="js\buscaConceptoPreciarioGeneral.js" />
+    <Content Include="js\buscasucursales.js" />
     <Content Include="js\cambiarContrasena.js" />
     <Content Include="js\certificadosInversiones.js" />
     <Content Include="js\clientes.js" />
     <Content Include="js\colonias.js" />
     <Content Include="js\conceptos2.js" />
     <Content Include="js\consultarPreciario.js" />
+    <Content Include="js\cuadrillas.js" />
     <Content Include="js\exploradorConceptoPreciarioGeneral.js" />
+    <Content Include="js\formaAyudaBusquedaConceptoPreciario.js" />
+    <Content Include="js\formaGeneradorVolumetriaD.js" />
+    <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
     <Content Include="js\cuentasContables.js" />
@@ -463,6 +482,7 @@
     <Content Include="Preciarios.aspx" />
     <Content Include="PreciariosGenerales.aspx" />
     <Content Include="Previa.aspx" />
+    <Content Include="PreviaOrdenEstimacion.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
@@ -570,6 +590,13 @@
     <Compile Include="ConsultarPreciario.aspx.designer.cs">
       <DependentUpon>ConsultarPreciario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cuadrillas.aspx.cs">
+      <DependentUpon>Cuadrillas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cuadrillas.aspx.designer.cs">
+      <DependentUpon>Cuadrillas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CuentasContables.aspx.cs">
       <DependentUpon>CuentasContables.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -661,6 +688,20 @@
     <Compile Include="FormaAvanzarVolumetria.aspx.designer.cs">
       <DependentUpon>FormaAvanzarVolumetria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaAyudaBusquedaConceptoPreciario.aspx.cs">
+      <DependentUpon>FormaAyudaBusquedaConceptoPreciario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaAyudaBusquedaConceptoPreciario.aspx.designer.cs">
+      <DependentUpon>FormaAyudaBusquedaConceptoPreciario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaBuscaCodigosPostales.aspx.cs">
+      <DependentUpon>FormaBuscaCodigosPostales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaCodigosPostales.aspx.designer.cs">
+      <DependentUpon>FormaBuscaCodigosPostales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaBuscaPreciarioConcepto.aspx.cs">
       <DependentUpon>FormaBuscaPreciarioConcepto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -675,6 +716,20 @@
     <Compile Include="FormaBuscaPreciarioGeneralConcepto.aspx.designer.cs">
       <DependentUpon>FormaBuscaPreciarioGeneralConcepto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaBuscaPreciariosActivos.aspx.cs">
+      <DependentUpon>FormaBuscaPreciariosActivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaPreciariosActivos.aspx.designer.cs">
+      <DependentUpon>FormaBuscaPreciariosActivos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaBuscaSucursal.aspx.cs">
+      <DependentUpon>FormaBuscaSucursal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaSucursal.aspx.designer.cs">
+      <DependentUpon>FormaBuscaSucursal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaCambiarContrasena.aspx.cs">
       <DependentUpon>FormaCambiarContrasena.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -688,6 +743,13 @@
     </Compile>
     <Compile Include="FormaCargaMultiImagenes.aspx.designer.cs">
       <DependentUpon>FormaCargaMultiImagenes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaCodigoPostales.aspx.cs">
+      <DependentUpon>FormaCodigoPostales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaCodigoPostales.aspx.designer.cs">
+      <DependentUpon>FormaCodigoPostales.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaColonia.aspx.cs">
       <DependentUpon>FormaColonia.aspx</DependentUpon>
@@ -724,6 +786,13 @@
     <Compile Include="FormaCroquisOrdenEstimacion.aspx.designer.cs">
       <DependentUpon>FormaCroquisOrdenEstimacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaCuadrillas.aspx.cs">
+      <DependentUpon>FormaCuadrillas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaCuadrillas.aspx.designer.cs">
+      <DependentUpon>FormaCuadrillas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaEspecificarFechas.aspx.cs">
       <DependentUpon>FormaEspecificarFechas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -751,6 +820,13 @@
     </Compile>
     <Compile Include="FormaGenerador.aspx.designer.cs">
       <DependentUpon>FormaGenerador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaGeneradorVolumetriaD.aspx.cs">
+      <DependentUpon>FormaGeneradorVolumetriaD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaGeneradorVolumetriaD.aspx.designer.cs">
+      <DependentUpon>FormaGeneradorVolumetriaD.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaImagenesOrdenEstimacion.aspx.cs">
       <DependentUpon>FormaImagenesOrdenEstimacion.aspx</DependentUpon>
@@ -870,6 +946,13 @@
     </Compile>
     <Compile Include="FormaPreciarioGeneralExplorador.aspx.designer.cs">
       <DependentUpon>FormaPreciarioGeneralExplorador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaReporteOrdenCambioD.aspx.cs">
+      <DependentUpon>FormaReporteOrdenCambioD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaReporteOrdenCambioD.aspx.designer.cs">
+      <DependentUpon>FormaReporteOrdenCambioD.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>
@@ -1078,6 +1161,13 @@
     <Compile Include="Previa.aspx.designer.cs">
       <DependentUpon>Previa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PreviaOrdenEstimacion.aspx.cs">
+      <DependentUpon>PreviaOrdenEstimacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreviaOrdenEstimacion.aspx.designer.cs">
+      <DependentUpon>PreviaOrdenEstimacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profesiones.aspx.cs">
       <DependentUpon>Profesiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1145,10 +1235,34 @@
       <DependentUpon>Presupuesto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reports\rCroquis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rCroquis.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reports\ResumenPartidas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResumenPartidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rFotos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rFotos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rNotaDeBitacora.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rNotaDeBitacora.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rNumerosGeneradores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rNumerosGeneradores.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SolicitudesPrestamos.aspx.cs">
@@ -1267,9 +1381,25 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Presupuesto.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="reports\rCroquis.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rCroquis.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\ResumenPartidas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ResumenPartidas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rFotos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rFotos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rNotaDeBitacora.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rNotaDeBitacora.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rNumerosGeneradores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rNumerosGeneradores.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

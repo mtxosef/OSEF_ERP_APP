@@ -48,7 +48,7 @@ CREATE PROCEDURE web_spU_ActualizarSucursal
 	@EntreCalles			VARCHAR(100),
 	@NoExterior				VARCHAR(10),
 	@NoInterior				VARCHAR(10),
-	@CodigoPostal			INT,
+	@CodigoPostal				CHAR(10),
 	@Colonia				VARCHAR(50),
 	@Estado					CHAR(2),
 	@Municipio				CHAR(4),

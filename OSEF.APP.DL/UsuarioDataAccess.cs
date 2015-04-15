@@ -98,6 +98,11 @@ namespace OSEF.APP.DL
                 sqlpCambioContrasena.SqlDbType = SqlDbType.SmallDateTime;
                 sqlpCambioContrasena.Value = DBNull.Value;
 
+                SqlParameter sqlpEmpresa = new SqlParameter();
+                sqlpEmpresa.ParameterName = "@Empresa";
+                sqlpEmpresa.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresa.Value = iUsuario.Empresa;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpCorreo);
@@ -112,7 +117,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpFechaBloqueo);
                 sqlcComando.Parameters.Add(sqlpUltimoAcceso);
                 sqlcComando.Parameters.Add(sqlpCambioContrasena);
-
+                sqlcComando.Parameters.Add(sqlpEmpresa);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -181,6 +186,13 @@ namespace OSEF.APP.DL
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
                 sqlpEstatus.Value = uUsuario.Estatus;
 
+
+                SqlParameter sqlpEmpresa = new SqlParameter();
+                sqlpEmpresa.ParameterName = "@Empresa";
+                sqlpEmpresa.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresa.Value = uUsuario.Empresa;
+
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpCorreo);
@@ -188,7 +200,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpAPaterno);
                 sqlcComando.Parameters.Add(sqlpAMaterno);
                 sqlcComando.Parameters.Add(sqlpEstatus);
-
+                sqlcComando.Parameters.Add(sqlpEmpresa);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

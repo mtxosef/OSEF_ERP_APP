@@ -1,16 +1,68 @@
 ﻿var indiceDetalle;
 
 
+
+//Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
+var validaConcluidos = function (a, d, f) {
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+        return false;
+  
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
+    else if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+        return false;
+
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
+    else if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
+        return false;
+
+    }
+
+    else {
+        return true
+    }
+};
+
 //Evento lanzado al cargar el store de avance encabezado
 var sFormaGenerador_Load = function () {
 
-    App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
-    console.log(App.sFormaGenerador);
+        App.imgbtnAceptar.setDisabled(true);
+        App.txtDescripcionCorta.setDisabled(true);
+
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
+    else if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+
+        App.imgbtnAceptar.setDisabled(true);
+        App.txtDescripcionCorta.setDisabled(true);
+
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
+    else if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
+
+        App.imgbtnAceptar.setDisabled(true);
+        App.txtDescripcionCorta.setDisabled(true);
+
+    }
+
+    else {
+        App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
+
+    }
 
     App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
 
-    //Pinta el tota
+    //Pinta el total
     var sum = 0;
     App.sFormaGenerador.each(function (record) {
 
@@ -294,7 +346,7 @@ var txtDescripcion_Corta_Change = function () {
 //Validar si se habilita el botón d Afectar
 function HabilitarGuardar() {
     //Obtiene la fecha de emision del store
-    if (App.txtDescripcionCorta.getValue() != '') {
+    if (App.txtDescripcionCorta.getValue() != '' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() != 'Estimacion') {
 
 
         if (App.gpFormaGenerador.getStore().getCount() != 0) 
@@ -325,3 +377,4 @@ var imgbtnAceptar_Click = function () {
     window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Cantidad", parseFloat(App.dfTotal.getValue()));
     window.parent.App.wGenerador.hide();
 }
+

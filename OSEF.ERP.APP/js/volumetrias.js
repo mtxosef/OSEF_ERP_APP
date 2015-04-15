@@ -418,6 +418,109 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 };
 
 //-----------------------------------------DETALLE----------------------------------------------------------------
+//Deshablitar comandos detalle
+var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+    var boton;
+
+//    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+//    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
+
+//        //Toma el primer elemento de la columna para poder desabilitarlo
+//        boton = toolbar.items.get(0);
+//        boton.setDisabled(true);
+//        boton.setTooltip("");
+//    }
+
+//    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
+//    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'CANCELADO') {
+
+//        //Toma el primer elemento de la columna para poder desabilitarlo
+//        boton = toolbar.items.get(0);
+//        boton.setDisabled(true);
+//        boton.setTooltip("");
+//    }
+
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') == 'Nuevo' && App.sVolumetria.getAt(0) == undefined) {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        boton = toolbar.items.get(0);
+        boton.setDisabled(true);
+        boton.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && App.sVolumetria.getAt(0).get('Estatus') == 'BORRADOR') {
+
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        boton = toolbar.items.get(0);
+        boton.setDisabled(false);
+        boton.setTooltip("Selecciona un concepto antes");
+    }
+
+};
+
+
+//Evento que actualuza el importe total cuando se usa el generador
+var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) {
+
+
+    //Verificar si abajo de esta columna existe otra
+    if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
+        //Verificar si toda la fila contiene datos
+        if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
+            //Obtener el Renglon anterior
+            var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+            //Insertar un nuevo registro
+            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+            //Actualiza el renglon anterior pintando el botón de borrar
+            App.gpVolumetriaDetalle.getView().refreshNode(App.sConceptos.getCount() - 2);
+            //Validar si se habilita el boton de afectar
+            HabilitarAfectar();
+        }
+    }
+
+}
+
+
+var indiceDetalle;
+//Evento que abre el generador
+var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
+    //Asigno el concpeto
+    indiceDetalle = fila;
+    Ext.util.Cookies.set('cookieRenglonVolumetriaD', fila);
+
+    if (registro.get('ConceptoID') != '') {
+
+        Ext.util.Cookies.set('cookieConceptoVolumetriaD', registro.get('ConceptoID'));
+
+        window.parent.App.wGenerador.load('FormaGeneradorVolumetriaD.aspx');
+        window.parent.App.wGenerador.setHeight(310);
+        window.parent.App.wGenerador.setWidth(915);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Generador');
+        window.parent.App.wGenerador.show();
+
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgGenerador',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+    }
+
+};
+
+
+
+
 //Evento de la columna de acciones
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
@@ -650,24 +753,44 @@ var gpPreciarioConceptos_ItemClick = function (gridview, registro, gvhtml, index
 //}
 
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
-    Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
- 
-    if (nombre == 'cnCargarFotos') {
-        App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
-        App.wEmergente.setHeight(350);
-        App.wEmergente.setWidth(600);
-        App.wEmergente.center();
-        App.wEmergente.setTitle('Cargar Fotografías');
-        App.wEmergente.show();
+  
+  //Valida que se escoja un concepto antes
+    if (registro.get('ConceptoID') != '') {
+
+        Ext.util.Cookies.set('cookieConceptoVolumetria', registro.get('ConceptoID'));
+
+        if (nombre == 'cnCargarFotos') {
+            App.wEmergente.load('FormaSubirImagenesPreciario.aspx');
+            App.wEmergente.setHeight(350);
+            App.wEmergente.setWidth(600);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Cargar Fotografías');
+            App.wEmergente.show();
+        }
+        else {
+            App.wEmergente.load('FormaImagenesPreciarios.aspx');
+            App.wEmergente.setHeight(530);
+            App.wEmergente.setWidth(680);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Visualizar Fotografías');
+            App.wEmergente.show();
+        }
+
+
     }
     else {
-        App.wEmergente.load('FormaImagenesPreciarios.aspx');
-        App.wEmergente.setHeight(530);
-        App.wEmergente.setWidth(680);
-        App.wEmergente.center();
-        App.wEmergente.setTitle('Visualizar Fotografías');
-        App.wEmergente.show();
+        Ext.Msg.show({
+            id: 'msgGenerador',
+            title: 'Advertencia',
+            msg: 'Debes Seleccionar un concepto antes',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
     }
+
+
 };
 
 //-----------------------------------------------VALIDACIONES-----------------------------------------------
@@ -774,3 +897,13 @@ var imgBtnPreciarioPrueba_Click_Success = function (response, result) {
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
     window.parent.App.wAyudaConcepto.show();
 }
+
+//Evento de click del botón Buscar
+var imgbtnBuscar_Click = function () {
+    window.parent.App.wAyudaConcepto.load('FormaBuscaPreciariosActivos.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(350);
+    window.parent.App.wAyudaConcepto.setWidth(980);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('BUSCAR PRECIARIOS ACTIVOS');
+    window.parent.App.wAyudaConcepto.show();
+};

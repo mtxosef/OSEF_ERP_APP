@@ -369,7 +369,7 @@
                                     LabelWidth="120"
                                     Layout="HBoxLayout">
                                     <Items>
-                                        <ext:ComboBox
+                                        <%--<ext:ComboBox
                                             ID="cmbPreciario"
                                             runat="server"
                                             DisplayField="ID"
@@ -421,7 +421,22 @@
                                                     </ExtraParams>
                                                 </Select>
                                             </DirectEvents>
-                                        </ext:ComboBox>
+                                        </ext:ComboBox>--%>
+
+                                        
+
+                                        <ext:TextField ID="cmbPreciario" runat="server" Width="200" StyleSpec="margin-right: 6px;"
+                                                    MaxLength="50" EnforceMaxLength="true" AllowBlank="false" ReadOnly="true">
+
+                                                    <RightButtons>
+                                                        <ext:Button ID="Button1" runat="server" Icon="Find" StandOut="true">
+                                                            <Listeners>
+                                                                <Click Fn="imgbtnBuscar_Click" />
+                                                            </Listeners>
+                                                        </ext:Button>
+                                                    </RightButtons>  
+                                                    </ext:TextField>
+
                                         <ext:TextField
                                             ID="txtfDescripcionPreciario"
                                             runat="server"
@@ -568,6 +583,10 @@
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
+                                            <Listeners>
+                                                <Update Fn="sConceptos_DataUpdate" ></Update>
+                                                
+                                            </Listeners>
                                         </ext:Store>
                                     </Store>
                                     <ColumnModel 
@@ -594,7 +613,7 @@
                                                 ID="cIDPreciario"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="225"
+                                                Width="205"
                                                 DataIndex="ConceptoID">
                                             </ext:Column>
                                             <ext:CommandColumn
@@ -622,6 +641,26 @@
                                                 Width="150">
                                                 <Renderer Fn="cCantidad_Renderer" />
                                             </ext:NumberColumn>
+
+                                            <ext:CommandColumn
+                                                ID="ccGenerador"
+                                                runat="server"
+                                                Width="25">
+                                                <PrepareToolbar Fn="ccDimensiones_PrepareToolbar" />
+                                                <Commands>
+                                               
+                                                    <ext:GridCommand
+                                                        Icon="ApplicationOsxAdd"
+                                                        CommandName="Agregar">
+                                                        <ToolTip Text="Generador" />
+                                                    </ext:GridCommand>
+                                                      <ext:CommandSpacer Width="60"></ext:CommandSpacer>
+                                                </Commands>
+                                                <Listeners>
+                                                    <Command Fn="ccGenerador_Command" />
+                                                </Listeners>
+                                            </ext:CommandColumn>
+
                                             <ext:NumberColumn 
                                                 ID="cUtilizada"
                                                 runat="server"
@@ -646,11 +685,15 @@
                                                     </ext:NumberField>
                                                 </Editor>
                                             </ext:NumberColumn>
+
+                                            
+
                                             <ext:CommandColumn
                                                 ID="ccFotos"
                                                 Text="Fotos"
+                                                Align="Center"
                                                 runat="server"
-                                                Width="85">
+                                                Width="105">
                                                 <PrepareToolbar Fn="ccFotos_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand

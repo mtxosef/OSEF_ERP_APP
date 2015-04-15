@@ -104,8 +104,8 @@
                             FileSizeLimit="15 MB"
                             FileTypes="*.png;*.jpg;*.jpeg;*.gif"
                             FileTypesDescription="Archivos de imagen"
-                            FileUploadLimit="100"
-                            FileQueueLimit="0">
+                            FileUploadLimit="0"
+                            FileQueueLimit="1">
                             <Button>
                                 <ext:Button ID="btnSubirImagenesOrdenEstimacion" runat="server" Text="Subir..." />
                             </Button>

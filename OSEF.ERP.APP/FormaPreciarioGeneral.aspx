@@ -313,8 +313,36 @@
                                     ID="txfArchivoActual"
                                     runat="server"
                                     Width="406"
+                                    StyleSpec="margin-right: 40px;"
                                     Disabled="true">
                                 </ext:TextField>
+
+                                 <ext:TextField 
+                                    ID="txtfBuscar"
+                                    runat="server"
+                                    Height="24"
+                                    StyleSpec="margin-top: 3px;"
+                                    EmptyText="Buscar Clave/Concepto"
+                                    Width="307">
+                                    <Listeners>
+                                        <Change Fn="txtBuscar_Change" />
+                                    </Listeners>
+                                    <RightButtons>
+                                        <ext:ImageButton
+                                            ID="imgbtnBuscar"
+                                            runat="server"
+                                            ImageUrl="assets/img/controles/search.png"
+                                            OverImageUrl=""
+                                            PressedImageUrl=""
+                                            Height="22px"
+                                            Width="22px"> 
+                                            <Listeners>
+                                            <Click Fn="imgbtnBuscar_Click"></Click>
+                                            </Listeners>
+                                        </ext:ImageButton>
+                                    </RightButtons>
+                                </ext:TextField>
+
                             </Items>
                         </ext:FieldContainer> 
                     </Items>

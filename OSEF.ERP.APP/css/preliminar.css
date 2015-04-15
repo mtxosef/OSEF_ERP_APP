@@ -84,7 +84,13 @@ margin-top: 4px;
 .BotonPDF 
 {
     color: White;
-    margin-left: 900px; margin-right: auto; margin-top:20px;
+    margin-left: 400px; margin-right: auto; margin-top:20px;
+    }
+    
+    .BotonesReportes 
+{
+    color: White;
+    margin-left: 530px; margin-right: auto; margin-top:20px;
     }
     
 .imgs

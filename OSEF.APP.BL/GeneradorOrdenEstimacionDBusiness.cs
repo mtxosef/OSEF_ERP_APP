@@ -14,7 +14,7 @@ namespace OSEF.APP.BL
         #region Insertar
 
         /// <summary>
-        /// Método que inserta un nuevo registro a la tabla de CroquisOrdenEstimacionD
+        /// Método que inserta un nuevo registro a la tabla de GeneradorOrdenEstimacion
         /// </summary>
         /// <param name="iCroquisOrdenEstimacionD"></param>
         public static int Insertar(GeneradorOrdenEstimacionD iGeneradorOrdenEstimacionD)

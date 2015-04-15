@@ -47,14 +47,17 @@
     <Compile Include="ArticuloBusiness.cs" />
     <Compile Include="CategoriaBusiness.cs" />
     <Compile Include="ClienteBusiness.cs" />
+    <Compile Include="CodigoPostalBusiness.cs" />
     <Compile Include="ColoniaBusiness.cs" />
     <Compile Include="ConceptoBusiness.cs" />
     <Compile Include="CroquisOrdenEstimacionBusiness.cs" />
+    <Compile Include="CuadrillaBusiness.cs" />
     <Compile Include="CuentaContableBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="FacturaOrdenEstimacionBusiness.cs" />
     <Compile Include="FinalidadBusiness.cs" />
     <Compile Include="GeneradorOrdenEstimacionDBusiness.cs" />
+    <Compile Include="GeneradorVolumetriaDBusiness.cs" />
     <Compile Include="GrupoMenuBusiness.cs" />
     <Compile Include="ImagenOrdenEstimacionBusiness.cs" />
     <Compile Include="ImagenVolumetriaDBusiness.cs" />

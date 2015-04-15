@@ -19,20 +19,20 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Llenar los combos de Estados y Municipios
+            ////Llenar los combos de Estados y Municipios
             if (!X.IsAjaxRequest)
             {
-                sEstados.DataSource = EstadoBusiness.ObtenerEstados();
-                sEstados.DataBind();
+            //    sEstados.DataSource = EstadoBusiness.ObtenerEstados();
+            //    sEstados.DataBind();
 
-                //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
-                //sMunicipios.DataBind();
+            //    //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipios();
+            //    //sMunicipios.DataBind();
 
-                //sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
-                //sColonias.DataBind();
+            //    //sColonias.DataSource = ColoniaBusiness.ObtenerColonias();
+            //    //sColonias.DataBind();
 
-                sProveedores.DataSource = ProveedorBusiness.ObtenerProveedores();
-                sProveedores.DataBind();
+            sProveedores.DataSource = ProveedorBusiness.ObtenerProveedores();
+            sProveedores.DataBind();
             }
         }
 
@@ -67,10 +67,17 @@ namespace OSEF.AVANCES.SUCURSALES
                     EntreCalles = oSucursal.EntreCalles,
                     NoExterior = oSucursal.NoExterior,
                     NoInterior = oSucursal.NoInterior,
+
                     CodigoPostal = oSucursal.CodigoPostal,
                     Colonia = oSucursal.Colonia,
                     Estado = oSucursal.Estado,
                     Municipio = oSucursal.Municipio,
+
+                    RCodigopostal = oSucursal.RCodigopostal,
+                    RColonia = oSucursal.RColonia,
+                    REstado =oSucursal.REstado,
+                    RMunicipio = oSucursal.RMunicipio,
+
                     Contratista = oSucursal.Contratista,
                     InicioObra = oSucursal.InicioObra,
                     FinObra = oSucursal.FinObra,
@@ -78,7 +85,8 @@ namespace OSEF.AVANCES.SUCURSALES
                     FechaAlta = oSucursal.FechaAlta,
                     Estatus = oSucursal.Estatus,
                     RProvedor= oSucursal.RProvedor
-                });
+
+                }); 
             }
         }
 
@@ -91,8 +99,8 @@ namespace OSEF.AVANCES.SUCURSALES
         {
             //1. Obtener el valor seleccionado y obtener los municipios
             string strEstado = e.ExtraParams["valor"];
-            sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
-            sMunicipios.DataBind();
+            //sMunicipios.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            //sMunicipios.DataBind();
         }
 
         /// <summary>
@@ -108,6 +116,12 @@ namespace OSEF.AVANCES.SUCURSALES
             string strFinObra = e.ExtraParams["FInObra"];
             string strSemanasObra = e.ExtraParams["semanasObra"];
             string strcookieEditarSucursal = Cookies.GetCookie("cookieEditarSucursal").Value;
+
+            string strcookieCP = Cookies.GetCookie("cookieCP").Value;
+            string strcookieMunicipio = Cookies.GetCookie("cookieMunicipio").Value;
+            string strcookieEstado = Cookies.GetCookie("cookieEstado").Value;
+            string strcookieColonia = Cookies.GetCookie("cookieColonia").Value;
+
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             Sucursal oSucursal = new Sucursal();
             oSucursal.FechaAlta = DateTime.Now;
@@ -172,18 +186,18 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfNoInterior":
                         oSucursal.NoInterior = sd.Value;
                         break;
-                    case "txtfCodigoPostal":
-                        oSucursal.CodigoPostal = Convert.ToInt32(sd.Value);
-                        break;
-                    case "cmbColonia":
-                        oSucursal.Colonia = sd.Value;
-                        break;
-                    case "cmbEstado":
-                        oSucursal.Estado = sd.Value;
-                        break;
-                    case "cmbMunicipio":
-                        oSucursal.Municipio = sd.Value;
-                        break;
+                    //case "txtfCodigoPostal":
+                    //    oSucursal.CodigoPostal = Convert.ToInt32(sd.Value);
+                    //    break;
+                    //case "cmbColonia":
+                    //    oSucursal.Colonia = sd.Value;
+                    //    break;
+                    //case "cmbEstado":
+                    //    oSucursal.Estado = sd.Value;
+                    //    break;
+                    //case "cmbMunicipio":
+                    //    oSucursal.Municipio = sd.Value;
+                    //    break;
                     case "cmbProveedor":
                         oSucursal.Contratista = sd.Value;
                         break;
@@ -198,6 +212,11 @@ namespace OSEF.AVANCES.SUCURSALES
                         break;
                 }
             }
+
+            oSucursal.CodigoPostal = strcookieCP;
+            oSucursal.Colonia = strcookieColonia;
+            oSucursal.Estado = strcookieEstado;
+            oSucursal.Municipio = strcookieMunicipio;
 
             oSucursal.FinObra = Convert.ToDateTime(strFinObra);
             oSucursal.SemanasObra = Convert.ToInt16(strSemanasObra);
@@ -235,8 +254,8 @@ namespace OSEF.AVANCES.SUCURSALES
         {
             //1. Obtener el valor seleccionado y obtener los municipios
             string strMunicipio = e.ExtraParams["valorMunicipio"];
-            sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
-            sColonias.DataBind();
+            //sColonias.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            //sColonias.DataBind();
         }
 
 

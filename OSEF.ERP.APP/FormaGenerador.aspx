@@ -86,7 +86,7 @@
                             Height="30" 
                             Width="30">
                             <Listeners>
-                                <Click Handler="window.parent.App.wEmergente.hide();" />
+                                <Click Handler="window.parent.App.wGenerador.hide();" />
                             </Listeners>
                         </ext:ImageButton>
 
@@ -184,83 +184,62 @@
                         </ext:Column>
 
 
-                        <ext:NumberColumn
+                        <ext:Column
                             ID="ncEje"
                             runat="server"
                             Align="Center"
                             Text="EJE"
                             DataIndex="Eje"
                             Width="70">
-                            <Renderer Fn="nfLargo_Renderer" />
                             <Editor>
-                                <ext:NumberField 
+                                <ext:TextField 
                                     ID="nfEje"
-                                    runat="server"
-                                    AllowDecimals="true"
-                                    AllowExponential="false"
-                                    DecimalPrecision="2"
-                                    DecimalSeparator="."
-                                    MaxLength="10"
-                                    EnforceMaxLength="true"
-                                    MaxValue="999999999"
-                                    MinValue="0"
-                                    Step="1">
-                                </ext:NumberField>
+                                    runat="server">
+                                    <Listeners>
+                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                    </Listeners>   
+                                </ext:TextField>
                             </Editor>
-                        </ext:NumberColumn>
+                        </ext:Column>
 
 
                         <ext:Column ID="cColumnaContenedora" runat="server" Text="LOCALIZACIÓN">
                         <Columns>
-                        <ext:NumberColumn
+                        <ext:Column
                             ID="ncEntreEje1"
                             runat="server"
                             Align="Center"
                             Text="EJE 1"
                             DataIndex="EntreEje1"
                             Width="70">
-                            <Renderer Fn="nfLargo_Renderer" />
                             <Editor>
-                                <ext:NumberField 
+                                <ext:TextField 
                                     ID="nfEntreEje1"
-                                    runat="server"
-                                    AllowDecimals="true"
-                                    AllowExponential="false"
-                                    DecimalPrecision="2"
-                                    DecimalSeparator="."
-                                    MaxLength="10"
-                                    EnforceMaxLength="true"
-                                    MaxValue="999999999"
-                                    MinValue="0"
-                                    Step="1">
-                                </ext:NumberField>
+                                    runat="server">
+                                    <Listeners>
+                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                    </Listeners> 
+                                </ext:TextField>
                             </Editor>
-                        </ext:NumberColumn>
+                        </ext:Column>
 
-                        <ext:NumberColumn
+                        <ext:Column
                             ID="ncEntreEje2"
                             runat="server"
                             Align="Center"
                             Text="EJE 2"
                             DataIndex="EntreEje2"
                             Width="70">
-                            <Renderer Fn="nfLargo_Renderer" />
                             <Editor>
-                                <ext:NumberField 
+                                <ext:TextField 
                                     ID="nfEntreEje2"
-                                    runat="server"
-                                    AllowDecimals="true"
-                                    AllowExponential="false"
-                                    DecimalPrecision="2"
-                                    DecimalSeparator="."
-                                    MaxLength="10"
-                                    EnforceMaxLength="true"
-                                    MaxValue="999999999"
-                                    MinValue="0"
-                                    Step="1">
-                                </ext:NumberField>
+                                    runat="server">
+                                    <Listeners>
+                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                    </Listeners> 
+                                </ext:TextField>
                             </Editor>
-                        </ext:NumberColumn>
+                        </ext:Column>
                         </Columns>
                         
                       </ext:Column>
@@ -285,7 +264,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="0"
+                                    MinValue="-999999999"
                                     Step="1">
                                     <Listeners>
                                         <Change Fn="calcularTotalLargo_Change"></Change>
@@ -313,7 +292,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="0"
+                                     MinValue="-999999999"
                                     Step="1">
                                     <Listeners>
                                         <Change Fn="calcularTotalAncho_Change"></Change>
@@ -341,7 +320,7 @@
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MaxValue="999999999"
-                                    MinValue="0"
+                                    MinValue="-999999999"
                                     Step="1">
                                      <Listeners>
                                         <Change Fn="calcularTotalAlto_Change"></Change>
@@ -367,8 +346,7 @@
                                     DecimalSeparator="."
                                     MaxLength="10"
                                     EnforceMaxLength="true"
-                                    MaxValue="999999999"
-                                    MinValue="0"
+                                    MinValue="-999999999"
                                     Step="1">
                                     <Listeners>
                                         <Change Fn="calcularTotalCantidad_Change"></Change>
@@ -407,6 +385,7 @@
                         ClicksToEdit="1">
                         <Listeners>
                           <Edit Fn="ceGenerador_Edit" />
+                          <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
                         </Listeners>
                     </ext:CellEditing>
                 </Plugins>

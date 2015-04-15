@@ -55,7 +55,17 @@ BEGIN
 		DiasAtencion,
 		Reporto,
 		TrabajoRequerido,
-		Atiende
+		Atiende,
+		TrabajoRealizado,
+		CodigoFalla,
+		TieneFotos,
+		TieneReporte,
+		FechaLlegada,
+		HoraLlegada,
+		FechaFinActividad,
+		HoraFinActividad,
+		Zona,
+		Cuadrilla
 	FROM
 		OrdenesEstimaciones
 	WHERE

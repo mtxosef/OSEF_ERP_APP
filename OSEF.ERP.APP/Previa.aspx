@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
     <div id="wrapper">
         <div id="header">
-            <img src="images/logo.png" alt="logo" class="imgs logo-image" />
+            <img src="images/Ibuho.png" alt="logo" class="imgs logo-image" />
         </div>
 
 
@@ -25,7 +25,6 @@
             <asp:ImageButton 
             ID="imgbtnPdf" 
             runat="server" 
-            Text="PDF" 
             OnClick="toPDF" 
              Height="50"
              Width="50"
@@ -35,7 +34,6 @@
             <asp:ImageButton 
             ID="imgbtnXls" 
             runat="server" 
-            Text="Excel"
             class="imgs" 
             OnClick="toXls" 
              Height="50"

@@ -48,7 +48,6 @@ ALTER TABLE CLIENTES ADD  EMPRESACALLE VARCHAR(100)
 
 ALTER TABLE CLIENTES ALTER COLUMN Profesion CHAR(7) NULL 
 
-ALTER TABLE CodigosPostales ALTER COLUMN ID CHAR(10) NULL 
 
 -- Cambios 30 de Marzo 
 ALTER TABLE PreciariosGeneralesConceptos ALTER COLUMN CLAVE CHAR(30) NULL
@@ -63,3 +62,32 @@ ALTER TABLE OrdenesEstimaciones ADD  DiasAtencion DECIMAL(5,0) NULL
 ALTER TABLE OrdenesEstimaciones ADD  Reporto VARCHAR(100) NULL
 ALTER TABLE OrdenesEstimaciones ADD  TrabajoRequerido VARCHAR(850) NULL
 ALTER TABLE OrdenesEstimaciones ADD  Atiende VARCHAR(100) NULL
+
+--Cambios 6 de abril
+ALTER TABLE OrdenesEstimacionesD ADD IntExt VARCHAR(30) NULL
+
+
+
+--Cambios 10 de Abril
+ALTER TABLE OrdenesEstimaciones ADD  TrabajoRealizado VARCHAR(500) NULL
+ALTER TABLE OrdenesEstimaciones ADD  CodigoFalla VARCHAR(30) NULL
+ALTER TABLE OrdenesEstimaciones ADD  TieneFotos VARCHAR(10) NULL
+ALTER TABLE OrdenesEstimaciones ADD  TieneReporte VARCHAR(10) NULL
+ALTER TABLE OrdenesEstimaciones ADD  FechaLlegada SMALLDATETIME NULL
+ALTER TABLE OrdenesEstimaciones ADD  HoraLlegada datetime NULL
+ALTER TABLE OrdenesEstimaciones ADD  FechaFinActividad SMALLDATETIME NULL
+ALTER TABLE OrdenesEstimaciones ADD  HoraFinActividad datetime NULL
+ALTER TABLE OrdenesEstimaciones ADD  Zona VARCHAR(80) NULL
+ALTER TABLE OrdenesEstimaciones ADD  Cuadrilla VARCHAR(200) NULL
+
+--Cambios Giovanni 12 de abril
+
+alter table sucursales drop column codigoPostal
+
+ALTER TABLE Sucursales 
+ADD CodigoPostal char(10) NULL 
+FOREIGN KEY REFERENCES CodigosPostales(ID)
+
+--Cambios Christian 14 de abril
+ALTER TABLE Usuarios ADD  Empresa VARCHAR(200) NULL
+

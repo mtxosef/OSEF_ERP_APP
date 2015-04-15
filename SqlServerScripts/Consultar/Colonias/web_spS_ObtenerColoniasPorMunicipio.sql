@@ -45,6 +45,6 @@ BEGIN
 	FROM
 		Colonias
 	WHERE
-		Municipio = @Municipio
+		Municipio = @Municipio ORDER BY Descripcion ASC;
 END
 GO

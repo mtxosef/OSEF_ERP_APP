@@ -36,7 +36,8 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Nos traemos el detalle del movimiento Mesa de reporte
+    -- Nos traemos el detalle del movimiento Mesa de reporte para no tener que volverlo a insertar en estimacion
+    
 		SELECT 
 			D.ID,
 			D.Renglon,
@@ -44,7 +45,8 @@ BEGIN
 			D.Cantidad,
 			D.Unidad,
 			D.Precio,
-			D.Importe
+			D.Importe,
+			D.IntExt
 		FROM 
 				OrdenesEstimaciones
 		INNER JOIN 

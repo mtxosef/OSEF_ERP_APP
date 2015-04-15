@@ -316,7 +316,7 @@
 :r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorConceptoVolumetria.sql
 :r c:\SqlServerScripts\Borrar\ImagenVolumetriaD\web_spD_BorrarImagenPorVolumetria.sql
 ----------------------------------------------------------------------------------------
---Reportes
+--ReportesPreciario
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciario.sql
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciarios.sql
 
@@ -436,3 +436,36 @@
 -- GenradorOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorConcepto.sql
 :r c:\SqlServerScripts\Borrar\GenradorOrdenesEstimacionesD\web_spD_BorrarGeneradorOrdenEstimacionDPorOrdenEstimacion.sql
+-----------------------------------------------------------------------------------
+-- GenradorVolumetriaD (Insertar)
+:r c:\SqlServerScripts\Insertar\GenradorVolumetriaD\web_spI_InsertarGeneradorVolumetriaD.sql
+-- GenradorVolumetriaD (Consultar)
+:r c:\SqlServerScripts\Consultar\GenradorVolumetriaD\web_spS_ObtenerGeneradorVolumetriaDPorConcepto.sql
+:r c:\SqlServerScripts\Consultar\GenradorVolumetriaD\web_spS_ObtenerGeneradorVolumetriaVaciosDPorConcepto.sql
+-- GenradorVolumetriaD (Borrar)
+:r c:\SqlServerScripts\Borrar\GenradorVolumetriaD\web_spD_BorrarGeneradorVolumetriaDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\GenradorVolumetriaD\web_spD_BorrarGeneradorVolumetriaDPorMov.sql
+--ReportesOrdenesEstimacion
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerCroquisPorIDMovimiento.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerFacturasPorMovimiento.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerGeneradorPorMovimiento.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerImagenesPorMovimiento.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRCroquis.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGenerador.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRFacturas.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenes.sql
+-----------------------------------------------------------------------------------------------------------------------------------------
+--CodigosPostales(Insertar)
+:r c:\SqlServerScripts\Insertar\CodigosPostales\web_spI_InsertarCodigoPostal.sql
+--CodigosPostales(Consultar)
+:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigoPostalPorId.sql
+:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigosPostalesEnUsoPorID.sql
+:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigosPorColonia.sql
+:r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigoPostalPorNumero.sql
+--CodigosPostales(Borrar)
+:r c:\SqlServerScripts\Borrar\CodigosPostales\web_spD_BorrarCodigoPostal.sql
+
+
+
+
+

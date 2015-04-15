@@ -39,7 +39,7 @@
             runat="server"
             Height="420"
             Width="1000"
-            Cls="xCustomGridPanel"
+           
             Title="EXPLORADOR CONCEPTOS PRECIARIOS GENERALES"
             EnableColumnHide="false"
             EnableColumnMove="false"
@@ -279,7 +279,19 @@
                         Width="150"
                         DataIndex="ConceptoID">
                         <Renderer Fn="cMov_renderer" />
-                        <HeaderItems>
+
+                          <HeaderItems>
+                             <ext:TextField
+                                    ID="txtFiltroMovimiento"
+                                    runat="server"
+                                    EmptyText="MOVIMIENTO">
+                                            <Listeners>
+                                                <Change Fn="txtMov_Change" />
+                                            </Listeners>
+                                </ext:TextField>
+                        </HeaderItems>
+
+                       <%-- <HeaderItems>
                              <ext:ComboBox
                         ID="cmbPreciario"
                         runat="server"
@@ -303,7 +315,7 @@
                                 </Listeners>
                                                                    
                     </ext:ComboBox>
-                        </HeaderItems>
+                        </HeaderItems>--%>
                     </ext:Column>
                     <ext:DateColumn
                         ID="cFechaEmision"
