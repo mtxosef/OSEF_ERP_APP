@@ -1,9 +1,9 @@
 ﻿//Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
-    Ext.util.Cookies.set('cookieEditarPrestamo', 'Nuevo');
+    Ext.util.Cookies.set('cookieEditarSolicitudPrestamo', 'Nuevo');
     window.parent.App.wEmergente.load('FormaSolicitudPrestamo.aspx');
     window.parent.App.wEmergente.setHeight(576);
-    window.parent.App.wEmergente.setWidth(850);
+    window.parent.App.wEmergente.setWidth(825);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nuevo prestamo');
     window.parent.App.wEmergente.show();
@@ -17,6 +17,7 @@ var NombreCompleto_Convert = function (value, record) {
 //Evento que se lanza al seleccionar un elemento del ComboBox de Clientes
 var cmbCliente_Select = function (combobox, registro) {
     AsignarDatosSocio(registro[0]);
+    App.txtfNacionalidad.focus(false, true);
 };
 
 //Evento que se lanza al cambiar un valor en ComboBox de Clientes
@@ -26,6 +27,27 @@ var cmbCliente_Change = function (combobox, valorNuevo, valorAnterior) {
     }
     else {
         AsignarDatosSocio(App.sCliente.getAt(0));
+    }
+};
+
+//Evento que se lanza al cambiar un valor en el ComboBox de EstadoCivil
+var cmbEstadoCivil_Change = function (combobox, valorNuevo, valorAnterior, opciones) {
+    if (valorNuevo !== 'CASADO') {
+        App.tbSolicitudPrestamo.closeTab(App.pDatosConyugue);
+    }
+    else {
+        App.tbSolicitudPrestamo.addTab(App.pDatosConyugue, 3);
+        App.tbSolicitudPrestamo.setActiveTab(0);
+    }
+};
+
+//Evento que se lanza al quita el foco del campo de Años en el domicilio actual
+var nAniosDomicilio_Change = function (numberfield, valorNuevo, valorAnterior, opciones) {
+    if (valorNuevo >= 3) {
+        App.fsDomicilioAnterior.hide();
+    }
+    else {
+        App.fsDomicilioAnterior.show();
     }
 };
 

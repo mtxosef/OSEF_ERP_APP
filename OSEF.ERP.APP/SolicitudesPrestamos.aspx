@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script type='text/javascript' src="js/prestamos.js"></script>
+    <script type='text/javascript' src="js/solicitudesPrestamos.js"></script>
     <script type="text/javascript">
         window.onload = cargarEstilo;
 

@@ -74,6 +74,7 @@
     <Compile Include="ProveedorDataAccess.cs" />
     <Compile Include="RevisionDataAccess.cs" />
     <Compile Include="RevisionDDataAccess.cs" />
+    <Compile Include="SolicitudPrestamoDataAccess.cs" />
     <Compile Include="SubcategoriaDataAccess.cs" />
     <Compile Include="SucursalDataAccess.cs" />
     <Compile Include="UsuarioDataAccess.cs" />

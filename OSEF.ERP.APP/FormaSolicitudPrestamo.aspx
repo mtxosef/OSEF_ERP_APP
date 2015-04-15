@@ -168,6 +168,7 @@
                     runat="server"
                     IDProperty="ID">
                     <Fields>
+                        <%--Primer TabPanel--%>
                         <ext:ModelField Name="ID" Type="String" />
                         <ext:ModelField Name="Cliente" Type="String" />
                         <ext:ModelField Name="Nacionalidad" Type="String" />
@@ -176,6 +177,7 @@
                         <ext:ModelField Name="Edades" Type="String" />
                         <ext:ModelField Name="TipoCasa" Type="String" />
                         <ext:ModelField Name="AniosDomicilio" Type="Int" />
+                        <%--Segundo TabPanel--%>
                         <ext:ModelField Name="CalleAnterior" Type="String" />
                         <ext:ModelField Name="NoExteriorAnterior" Type="String" />
                         <ext:ModelField Name="NoInteriorAnterior" Type="String" />
@@ -268,7 +270,7 @@
         </ext:Store>
 
         <div>
-            <ext:Panel 
+            <ext:Panel
                 ID="pSolicitudPrestamo" 
                 runat="server" 
                 Width="805"
@@ -340,6 +342,7 @@
                                                                                 runat="server"
                                                                                 IDProperty="ID">
                                                                                 <Fields>
+                                                                                    <%--Primer TabPanel--%>
                                                                                     <ext:ModelField Name="ID" Type="String" />
                                                                                     <ext:ModelField Name="Nombre" Type="String" />
                                                                                     <ext:ModelField Name="APaterno" Type="String" />
@@ -352,6 +355,7 @@
                                                                                     <ext:ModelField Name="Correo" Type="String" />
                                                                                     <ext:ModelField Name="Telefono" Type="String" />
                                                                                     <ext:ModelField Name="TelefonoMovil" Type="String" />
+                                                                                    <%--Segundo TabPanel--%>
                                                                                     <ext:ModelField Name="Calle" Type="String" />
                                                                                     <ext:ModelField Name="NoExterior" Type="String" />
                                                                                     <ext:ModelField Name="NoInterior" Type="String" />
@@ -432,9 +436,12 @@
                                                                 <Items>
                                                                     <ext:ListItem Index="0" Text="" Value="SOLTERO" />
                                                                     <ext:ListItem Index="1" Text="" Value="CASADO" />
-                                                                    <ext:ListItem Index="2" Text="" Value="DIVORCIADO" />
-                                                                    <ext:ListItem Index="3" Text="" Value="VIUDO" />
+                                                                    <ext:ListItem Index="2" Text="" Value="UNIÓN LIBRE" />
+                                                                    <ext:ListItem Index="3" Text="" Value="OTRO" />
                                                                 </Items>
+                                                                <Listeners>
+                                                                    <Change Fn="cmbEstadoCivil_Change" />
+                                                                </Listeners>
                                                             </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
@@ -531,7 +538,7 @@
                                                         </Defaults>
                                                         <Items>
                                                             <ext:NumberField
-                                                                ID="nfDependientes"
+                                                                ID="nfNumeroDependientes"
                                                                 runat="server"
                                                                 MaxLength="2"
                                                                 MinValue="0"
@@ -576,7 +583,6 @@
                                                     <ext:Container 
                                                         ID="cDatosSocioC7"
                                                         runat="server"
-                                                        AnchorHorizontal="100%"
                                                         Layout="ColumnLayout">
                                                         <Items>
                                                             <ext:RadioGroup
@@ -609,7 +615,7 @@
                                                         </Defaults>
                                                         <Items>
                                                             <ext:NumberField
-                                                                ID="nAnosDomicilioActual"
+                                                                ID="nAniosDomicilio"
                                                                 runat="server"
                                                                 MaxLength="2"
                                                                 MinValue="0"
@@ -619,6 +625,9 @@
                                                                 Step="1"
                                                                 FieldLabel="Antigüedad"
                                                                 EmptyText="Domicilio">
+                                                                <Listeners>
+                                                                    <Change Fn="nAniosDomicilio_Change" />
+                                                                </Listeners>
                                                             </ext:NumberField>
                                                             <ext:ComboBox
                                                                 ID="cmbEstatus"
@@ -725,7 +734,7 @@
                                         </Items>
                                     </ext:Panel>
                                     <%-- Terminado --%>
-                                    <%--<ext:Panel
+                                    <ext:Panel
                                         ID="pDomicilioSocio"
                                         runat="server"
                                         Title="Domicilio Socio"
@@ -756,7 +765,8 @@
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="100"
                                                                 EnforceMaxLength="true"
-                                                                Disabled="false">
+                                                                Disabled="false"
+                                                                AutoFocus="true">
                                                                 <Listeners>
                                                                     <Blur Handler="App.txtfCalle.setValue(App.txtfCalle.getValue().toUpperCase());" />
                                                                 </Listeners>
@@ -799,8 +809,8 @@
                                                             </ext:TextField>
                                                             <ext:TextField 
                                                                 ID="txtfNoInterior"
-                                                                FieldLabel="N° Interior"
                                                                 runat="server"
+                                                                FieldLabel="N° Interior"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="10"
                                                                 EnforceMaxLength="true"
@@ -1165,9 +1175,9 @@
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                      <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    <ext:Panel 
                                         ID="pOcupacionActual" 
                                         runat="server" 
                                         Title="Ocupación actual" 
@@ -1596,14 +1606,15 @@
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                      <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    <ext:Panel 
                                         ID="pDatosConyugue" 
                                         runat="server" 
                                         Title="Datos Conyugue" 
                                         BodyPadding="10" 
-                                        AutoScroll="true">
+                                        AutoScroll="true"
+                                        CloseAction="Hide">
                                         <Items>
                                             <ext:FieldSet 
                                                 ID="fsConyugeDatosGenerales" 
@@ -1794,7 +1805,7 @@
                                                             </ext:TextField>
                                                         </Items>
                                                 </ext:Container>
-                                                <ext:Container 
+                                                    <ext:Container 
                                                     ID="cConyugeDomicilioC2"
                                                     runat="server"
                                                     Layout="ColumnLayout">
@@ -1826,7 +1837,7 @@
                                                         </ext:TextField>
                                                     </Items>
                                                 </ext:Container>
-                                                <ext:Container 
+                                                    <ext:Container 
                                                     ID="cConyugeDomicilioC3" 
                                                     runat="server"
                                                     Layout="ColumnLayout">
@@ -1895,7 +1906,7 @@
                                                         </ext:ComboBox>
                                                     </Items>
                                                 </ext:Container>
-                                                <ext:Container 
+                                                    <ext:Container 
                                                     ID="cConyugeDomicilioC4" 
                                                     runat="server"
                                                     Layout="ColumnLayout">
@@ -1957,8 +1968,8 @@
                                                         </ext:TextField>
                                                     </Items>
                                                 </ext:Container>
-                                            </Items>
-                                        </ext:FieldSet>
+                                                </Items>
+                                            </ext:FieldSet>
                                             <ext:FieldSet 
                                                 ID="fsConyugeEmpresa" 
                                                 runat="server" 
@@ -2027,6 +2038,9 @@
                                                                 FieldLabel="Otros ingresos"
                                                                 EmptyText="Concepto"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaConceptoOtrosIngresos.setValue(App.txtfConyugeEmpresaConceptoOtrosIngresos.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2048,12 +2062,18 @@
                                                                 LabelWidth="120"
                                                                 FieldLabel="Empresa" 
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresa.setValue(App.txtfConyugeEmpresa.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                             <ext:TextField 
                                                                 ID="txtfConyugePuesto" 
                                                                 runat="server"
                                                                 EmptyText="Puesto"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugePuesto.setValue(App.txtfConyugePuesto.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2074,18 +2094,27 @@
                                                                 FieldLabel="Jefe Inmediato"
                                                                 LabelWidth="120"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaJefeNombre.setValue(App.txtfConyugeEmpresaJefeNombre.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                              <ext:TextField
                                                                 ID="txtfConyugeEmpresaJefeAPAterno"
                                                                 runat="server"
                                                                 EmptyText="Apellido paterno"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaJefeAPAterno.setValue(App.txtfConyugeEmpresaJefeAPAterno.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                              <ext:TextField
                                                                 ID="txtfConyugeEmpresaJefeAMAterno"
                                                                 runat="server"
                                                                 EmptyText="Apellido materno"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaJefeAMAterno.setValue(App.txtfConyugeEmpresaJefeAMAterno.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2106,12 +2135,18 @@
                                                                 runat="server"
                                                                 FieldLabel="Calle"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaCalle.setValue(App.txtfConyugeEmpresaCalle.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                             <ext:TextField 
                                                                 ID="txtfConyugeEmpresaEntreCalles"
                                                                 runat="server"
                                                                 FieldLabel="Entre Calles"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaEntreCalles.setValue(App.txtfConyugeEmpresaEntreCalles.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2132,12 +2167,18 @@
                                                                 runat="server"
                                                                 FieldLabel="N° Exterior"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaNoExterior.setValue(App.txtfConyugeEmpresaNoExterior.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                             <ext:TextField 
                                                                 ID="txtfConyugeEmpresaNoInterior"
                                                                 runat="server"
                                                                 FieldLabel="N° Interior"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfConyugeEmpresaNoInterior.setValue(App.txtfConyugeEmpresaNoInterior.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2157,16 +2198,49 @@
                                                                 FieldLabel="Código Postal"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="5"
-                                                                EnforceMaxLength="true"
-                                                                AllowBlank="true">
+                                                                EnforceMaxLength="true">
+                                                                <Plugins>
+                                                                    <ext:InputMask ID="imConyugeEmpresaCodigoPostal" runat="server" Mask="ttttt">
+                                                                        <MaskSymbols>
+                                                                            <ext:MaskSymbol Name="t" Regex="[0-9]" />
+                                                                        </MaskSymbols>
+                                                                    </ext:InputMask>
+                                                                </Plugins>
                                                             </ext:TextField>
                                                             <ext:ComboBox
                                                                 ID="cmbConyugeEmpresaColonia"
                                                                 runat="server"
                                                                 FieldLabel="Colonia"
-                                                                ForceSelection="true"
-                                                                Editable="false"
+                                                                DisplayField="Descripcion"
+                                                                ValueField="ID"
+                                                                AllowBlank="true"
+                                                                Editable="true"
+                                                                MatchFieldWidth="true"
+                                                                ForceSelection="false"
+                                                                QueryMode="Local"
+                                                                TypeAhead="true"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Store>
+                                                                    <ext:Store
+                                                                        ID="sConyugeEmpresaColonia"
+                                                                        runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mConyugeEmpresaColonia" runat="server">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="String" />
+                                                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                                                    <ext:ModelField Name="Estado" Type="String" />
+                                                                                    <ext:ModelField Name="Municipio" Type="String" />
+                                                                                    <ext:ModelField Name="REstado" Type="String" />
+                                                                                    <ext:ModelField Name="RMunicipio" Type="String" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                         <Sorters>
+                                                                            <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                        </Sorters>
+                                                                    </ext:Store>
+                                                                </Store>
                                                             </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
@@ -2184,9 +2258,22 @@
                                                                 ID="cmbConyugeEmpresaEstado"
                                                                 runat="server"
                                                                 FieldLabel="Estado"
-                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Editable="true"
+                                                                DisplayField="Descripcion"
+                                                                ValueField="ID"
+                                                                MatchFieldWidth="true"
                                                                 ForceSelection="true"
-                                                                Editable="false">
+                                                                QueryMode="Local"
+                                                                TypeAhead="true"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                StoreID="sEstados">
+                                                                <DirectEvents>
+                                                                    <Select OnEvent="cmbConyugeEmpresaEstado_Select">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="valor" Value="App.cmbConyugeEmpresaEstado.getValue()" Mode="Raw" />
+                                                                        </ExtraParams>
+                                                                    </Select>
+                                                                </DirectEvents>
                                                             </ext:ComboBox>
                                                             <ext:ComboBox
                                                                 ID="cmbConyugeEmpresaMunicipio"
@@ -2194,16 +2281,44 @@
                                                                 FieldLabel="Municipio"
                                                                 ForceSelection="true"
                                                                 Editable="false"
-                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                AllowBlank="false"
+                                                                DisplayField="Descripcion"
+                                                                ValueField="ID"
+                                                                MatchFieldWidth="true"
+                                                                QueryMode="Local"
+                                                                TypeAhead="true">
+                                                                <Store>
+                                                                    <ext:Store
+                                                                        ID="sConyugeEmpresaMunicipio"
+                                                                        runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mConyugeEmpresaMunicipio" runat="server" IDProperty="ID">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="String" />
+                                                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                                                    <ext:ModelField Name="Estado" Type="String" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                    </ext:Store>
+                                                                </Store>
+                                                                <DirectEvents>
+                                                                    <Change OnEvent="cmbConyugeEmpresaMunicipio_Select">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="valor" Value="App.cmbConyugeEmpresaMunicipio.getValue()" Mode="Raw" />
+                                                                        </ExtraParams>
+                                                                    </Change>
+                                                                </DirectEvents>
                                                             </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                      <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    <ext:Panel 
                                         ID="pReferencias" 
                                         runat="server" 
                                         Title="Referencias" 
@@ -2259,9 +2374,9 @@
                                                 </Items>
                                             </ext:Container>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                      <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    <ext:Panel 
                                         ID="pBienes" 
                                         runat="server" 
                                         Title="Bienes" 
@@ -2329,9 +2444,9 @@
                                                 </Items>
                                             </ext:Container>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                      <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    <ext:Panel 
                                         ID="pDatosGeneralesAval" 
                                         runat="server" 
                                         Title="Datos Aval" 
@@ -2339,130 +2454,159 @@
                                         AutoScroll="true">
                                         <Items>
                                             <ext:FieldSet 
-                                                ID="FieldSet1" 
+                                                ID="fsAvalDatosGenerales" 
                                                 runat="server" 
                                                 Title="Datos Generales" 
                                                 DefaultAnchor="100%">
                                                 <Items>
                                                     <ext:Container
-                                                        ID="fcDatosAval1"
+                                                        ID="fcAvalDatosGenerales1"
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="200" Mode="Raw" />
+                                                            <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="MaxLength" Value="50" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:TextField
-                                                                ID="txtNombreAval"
+                                                                ID="txtfAvalNombre"
                                                                 runat="server"
                                                                 LabelWidth="120"
                                                                 EmptyText="Nombres"
                                                                 FieldLabel="Nombre"
-                                                                Width="200"
-                                                                StyleSpec="margin-right: 6px;"
-                                                                AllowBlank="false">
+                                                                AutoFocus="true"
+                                                                Width="325"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalNombre.setValue(App.txtfAvalNombre.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                              <ext:TextField
-                                                                ID="txtApAval"
+                                                                ID="txtfAvalApellidoPaterno"
                                                                 runat="server"
-                                                                Width="200"
                                                                 EmptyText="Apellido paterno"
-                                                                StyleSpec="margin-right: 6px;"
-                                                                AllowBlank="false">
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalApellidoPaterno.setValue(App.txtfAvalApellidoPaterno.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                              <ext:TextField
-                                                                ID="txtApMaternoAval"
+                                                                ID="txtfAvalApellidoMaterno"
                                                                 runat="server"
                                                                 EmptyText="Apellido materno"
-                                                                Width="200"
-                                                                StyleSpec="margin-right: 6px;"
-                                                                AllowBlank="false">
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalApellidoMaterno.setValue(App.txtfAvalApellidoMaterno.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
                                                     <ext:Container 
-                                                        ID="fcDatosAval2"
+                                                        ID="fcAvalDatosGenerales2"
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:RadioGroup
                                                                 ID="rgSocioCooperativa"
                                                                 runat="server"
-                                                                LabelWidth="120"
-                                                                Width="380"
-                                                                StyleSpec="margin-right: 6px;"
+                                                                LabelWidth="126"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                ColumnsNumber="2"
+                                                                ColumnWidth="1"
                                                                 FieldLabel="Es socio">
                                                                 <Items>
                                                                     <ext:Radio ID="rSocioSi" runat="server" BoxLabel="Si" Checked="true" />
                                                                     <ext:Radio ID="rSocioNo" runat="server" BoxLabel="No"  />
                                                                 </Items>
                                                             </ext:RadioGroup>
-                                                        </Items>
-                                                    </ext:Container>
-                                                    <ext:Container 
-                                                        ID="fcDatosAval3" 
-                                                        runat="server"
-                                                        Layout="ColumnLayout">
-                                                        <Items>
-                                                            <ext:RadioGroup
-                                                                ID="rgEstadoCivil"
+                                                            <ext:ComboBox
+                                                                ID="cmbAvalEstadoCivil"
                                                                 runat="server"
-                                                                Width="380"
-                                                                LabelWidth="120" 
-                                                                StyleSpec="margin-right: 6px;"
-                                                                FieldLabel="Estado Civil">
+                                                                Editable="false"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Disabled="false"
+                                                                FieldLabel="Estado civil">
                                                                 <Items>
-                                                                    <ext:Radio ID="rEdoCivilCasado" runat="server" BoxLabel="Casado" Checked="true" />
-                                                                    <ext:Radio ID="rEdoCivilSoltero" runat="server" BoxLabel="Soltero"  />
+                                                                    <ext:ListItem Index="0" Text="" Value="SOLTERO" />
+                                                                    <ext:ListItem Index="1" Text="" Value="CASADO" />
+                                                                    <ext:ListItem Index="2" Text="" Value="DIVORCIADO" />
+                                                                    <ext:ListItem Index="3" Text="" Value="VIUDO" />
                                                                 </Items>
-                                                            </ext:RadioGroup>
-                                                            <ext:TextField
-                                                                ID="txtOtro"
-                                                                runat="server"
-                                                                FieldLabel="Otro"
-                                                                Width="350"
-                                                                StyleSpec="margin-right: 6px;">
-                                                            </ext:TextField>
+                                                            </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
                                                     <ext:Container 
-                                                        ID="fcDatosAval4" 
+                                                        ID="fcAvalDatosGenerales3" 
                                                         runat="server"
                                                         Layout="ColumnLayout">
                                                         <Items>
                                                             <ext:RadioGroup
-                                                                ID="rgRegistroMatAval"
+                                                                ID="rgAvalRegistroMatrimonial"
                                                                 runat="server"
-                                                                Width="480"
-                                                                LabelWidth="120"
-                                                                StyleSpec="margin-right: 6px;"
-                                                                FieldLabel="Registro Matrimonial">
+                                                                Width="680"
+                                                                LabelWidth="126"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                FieldLabel="Registro matrimonial"
+                                                                ColumnsNumber="2"
+                                                                ColumnWidth=".91">
                                                                 <Items>
-                                                                    <ext:Radio ID="rSeparadoAval" runat="server" BoxLabel="Bienes Separados" Checked="true" />
-                                                                    <ext:Radio ID="rMancomunadoAval" runat="server" BoxLabel="Bienes Mancomunados"  />
+                                                                    <ext:Radio ID="rAvalBienesSeparados" runat="server" BoxLabel="Bienes separados" Checked="true" />
+                                                                    <ext:Radio ID="rAvalBienesMancomunados" runat="server" BoxLabel="Bienes mancomunados"  />
                                                                 </Items>
                                                             </ext:RadioGroup>
                                                         </Items>
                                                     </ext:Container>
                                                     <ext:Container 
-                                                        ID="fcDatosAval9" 
+                                                        ID="fcAvalDatosGenerales5" 
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                            <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:TextField 
-                                                                ID="txtTelefonoAval"
+                                                                ID="txtfAvalTelefono"
                                                                 runat="server"
-                                                                Width="200"
-                                                                LabelWidth="120"
-                                                                FieldLabel="Telefono"
-                                                                StyleSpec="margin-right: 6px;"
-                                                                MaxLength="10"
-                                                                EnforceMaxLength="true">
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Editable="true"
+                                                                MaxLength="15"
+                                                                Note="Ejemplo: (449) 999-00-00"
+                                                                Disabled="false"
+                                                                FieldLabel="Teléfono">
+                                                                <Plugins>
+                                                                    <ext:InputMask
+                                                                        ID="imAvalTelefono"
+                                                                        runat="server"
+                                                                        Mask="(999) 999-99-99"
+                                                                        AllowInvalid="true" />
+                                                                </Plugins>
                                                             </ext:TextField>
                                                             <ext:TextField 
-                                                                ID="txtCelularAval"
-                                                                FieldLabel="Celular"
+                                                                ID="txtfAvalTelefonoMovil"
                                                                 runat="server"
-                                                                Width="300"
-                                                                MaxLength="10"
-                                                                EnforceMaxLength="true">
+                                                                FieldLabel="Teléfono móvil"
+                                                                Editable="true"
+                                                                Note="Ejemplo: (044-449) 999-00-00"
+                                                                MaxLength="19"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Disabled="false">
+                                                                <Plugins>
+                                                                    <ext:InputMask
+                                                                        ID="imAvalTelefonoMovil"
+                                                                        runat="server"
+                                                                        Mask="(999-999) 999-99-99"
+                                                                        AllowInvalid="true" />
+                                                                </Plugins>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2475,110 +2619,220 @@
                                                 DefaultAnchor="100%">
                                                 <Items>
                                                     <ext:Container 
-                                                        ID="fcDatosAval5" 
+                                                        ID="fcAvalDomicilio1" 
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:TextField 
-                                                                ID="txtCalleAval" 
-                                                                runat="server" 
-                                                                Width="200"
-                                                                LabelWidth="120"
+                                                                ID="txtfAvalCalle" 
+                                                                runat="server"
                                                                 FieldLabel="Calle"
-                                                                StyleSpec="margin-right: 6px;"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="100"
-                                                                EnforceMaxLength="true">
+                                                                EnforceMaxLength="true"
+                                                                Disabled="false">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalCalle.setValue(App.txtfAvalCalle.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                             <ext:TextField 
-                                                                ID="txtEntreCallesAval" 
-                                                                FieldLabel="Entre Calles" 
-                                                                runat="server" 
-                                                                Width="300"
+                                                                ID="txtfAvalEntreCalles"
+                                                                runat="server"
+                                                                FieldLabel="Entre Calles"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="100"
                                                                 EnforceMaxLength="true">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalEntreCalles.setValue(App.txtfAvalEntreCalles.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
                                                     <ext:Container 
-                                                        ID="fcDatosAval6"
+                                                        ID="fcAvalDomicilio2"
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:TextField 
-                                                                ID="txtNExteriorAval"
+                                                                ID="txtfAvalNoExterior"
                                                                 runat="server"
-                                                                Width="200"
-                                                                LabelWidth="120"
                                                                 FieldLabel="N° Exterior"
-                                                                StyleSpec="margin-right: 6px;"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="10"
-                                                                EnforceMaxLength="true">
+                                                                EnforceMaxLength="true"
+                                                                Disabled="false">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalNoExterior.setValue(App.txtfAvalNoExterior.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                             <ext:TextField 
-                                                                ID="txtNIntAval"
-                                                                FieldLabel="N° Interior"
+                                                                ID="txtfAvalNoInterior"
                                                                 runat="server"
-                                                                Width="300"
+                                                                FieldLabel="N° Interior"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="10"
-                                                                EnforceMaxLength="true">
+                                                                EnforceMaxLength="true"
+                                                                Disabled="false">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalNoInterior.setValue(App.txtfAvalNoInterior.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
                                                     <ext:Container 
-                                                        ID="fcDatosAval7"
+                                                        ID="fcAvalDomicilio3"
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:TextField 
-                                                                ID="txtCpAval" 
+                                                                ID="txtfAvalCodigoPostal" 
                                                                 runat="server" 
-                                                                Width="200"
-                                                                LabelWidth="120"
                                                                 FieldLabel="Código Postal"
-                                                                StyleSpec="margin-right: 6px;"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="5"
                                                                 EnforceMaxLength="true"
-                                                                AllowBlank="true">
+                                                                Disabled="false">
+                                                                <Plugins>
+                                                                    <ext:InputMask ID="imAvalCodigoPostal" runat="server" Mask="ttttt" AllowInvalid="true">
+                                                                        <MaskSymbols>
+                                                                            <ext:MaskSymbol Name="t" Regex="[0-9]" />
+                                                                        </MaskSymbols>
+                                                                    </ext:InputMask>
+                                                                </Plugins>
                                                             </ext:TextField>
                                                             <ext:ComboBox
-                                                                ID="cmbColoniaAval"
-                                                                FieldLabel="Colonia"
+                                                                ID="cmbAvalColonia"
                                                                 runat="server"
-                                                                Width="300"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                FieldLabel="Colonia"
+                                                                Editable="true"
+                                                                MatchFieldWidth="true"
                                                                 ForceSelection="true"
-                                                                Editable="false">
+                                                                QueryMode="Local"
+                                                                TypeAhead="true"
+                                                                Disabled="false"
+                                                                ValueField="ID"
+                                                                DisplayField="Descripcion">
+                                                                <Store>
+                                                                    <ext:Store
+                                                                        ID="sAvalColonia"
+                                                                        runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mAvalColonia" runat="server">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="String" />
+                                                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                                                    <ext:ModelField Name="Estado" Type="String" />
+                                                                                    <ext:ModelField Name="Municipio" Type="String" />
+                                                                                    <ext:ModelField Name="REstado" Type="String" />
+                                                                                    <ext:ModelField Name="RMunicipio" Type="String" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                        <Sorters>
+                                                                            <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                        </Sorters>
+                                                                    </ext:Store>
+                                                                </Store>
                                                             </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
                                                     <ext:Container 
-                                                        ID="fcDatosAval8" 
+                                                        ID="fcAvalDomicilio4" 
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:ComboBox 
-                                                                ID="cmbEstadoAval"
+                                                                ID="cmbAvalEstado"
                                                                 runat="server"
-                                                                Width="200"
                                                                 FieldLabel="Estado"
-                                                                LabelWidth="120"
-                                                                StyleSpec="margin-right: 6px;"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Editable="true"
+                                                                MatchFieldWidth="true"
                                                                 ForceSelection="true"
-                                                                Editable="false">
+                                                                ValueField="ID"
+                                                                DisplayField="Descripcion"
+                                                                QueryMode="Local"
+                                                                TypeAhead="true"
+                                                                Disabled="false"
+                                                                StoreID="sEstados">
+                                                                <ListConfig Width="200" MaxHeight="195">
+                                                                </ListConfig>
+                                                                <DirectEvents>
+                                                                    <Select OnEvent="cmbAvalEstado_Select">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="valor" Value="App.cmbAvalEstado.getValue()" Mode="Raw" />
+                                                                        </ExtraParams>
+                                                                    </Select>
+                                                                </DirectEvents>
                                                             </ext:ComboBox>
                                                             <ext:ComboBox
-                                                                ID="cmbMunicipioAval"
+                                                                ID="cmbAvalMunicipio"
                                                                 runat="server"
                                                                 FieldLabel="Municipio"
-                                                                Width="300"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                Editable="true"
+                                                                MatchFieldWidth="true"
                                                                 ForceSelection="true"
-                                                                Editable="false">
+                                                                ValueField="ID"
+                                                                DisplayField="Descripcion"
+                                                                QueryMode="Local"
+                                                                TypeAhead="true"
+                                                                Disabled="false">
+                                                                <ListConfig Width="200" MaxHeight="195">
+                                                                </ListConfig>
+                                                                <Store>
+                                                                    <ext:Store
+                                                                        ID="sAvalMunicipio"
+                                                                        runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mAvalMunicipio" runat="server" IDProperty="ID">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="String" />
+                                                                                    <ext:ModelField Name="Descripcion" Type="String" />
+                                                                                    <ext:ModelField Name="Estado" Type="String" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                        <Sorters>
+                                                                            <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                                                        </Sorters>
+                                                                    </ext:Store>
+                                                                </Store>
+                                                                <DirectEvents>
+                                                                    <Select OnEvent="cmbAvalMunicipio_Select">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="valor" Value="App.cmbAvalMunicipio.getValue()" Mode="Raw" />
+                                                                        </ExtraParams>
+                                                                    </Select>
+                                                                </DirectEvents>
                                                             </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
                                                 </Items>
                                             </ext:FieldSet>
                                             <ext:FieldSet
-                                                ID="fsOtrosDatos"
+                                                ID="fsAvalOtrosDatos"
                                                 runat="server"
                                                 Title="Otros Datos">
                                                 <Items>
@@ -2588,17 +2842,19 @@
                                                         Layout="ColumnLayout">
                                                         <Items>
                                                             <ext:RadioGroup
-                                                                ID="rgTipoCasaAval"
+                                                                ID="rgAvalTipoCasa"
                                                                 runat="server"
-                                                                Width="500"
-                                                                LabelWidth="140"
+                                                                Width="680"
+                                                                LabelWidth="126"  
                                                                 FieldLabel="Tipo de casa"
-                                                                StyleSpec="margin-right: 6px;">
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                ColumnsNumber="4"
+                                                                ColumnWidth=".91">
                                                                 <Items>
-                                                                    <ext:Radio ID="rPropiaAval" runat="server" BoxLabel="Propia" Checked="true" />
-                                                                    <ext:Radio ID="rRentadaAval" runat="server" BoxLabel="Rentada"  />
-                                                                    <ext:Radio ID="rFamiliaAval" runat="server" BoxLabel="Familia"  />
-                                                                    <ext:Radio ID="rHipotecaAval" runat="server" BoxLabel="Hipoteca"  />
+                                                                    <ext:Radio ID="rAvalPropia" runat="server" BoxLabel="Propia" Checked="true" />
+                                                                    <ext:Radio ID="rAvalRentada" runat="server" BoxLabel="Rentada"  />
+                                                                    <ext:Radio ID="rAvalFamilia" runat="server" BoxLabel="Familia"  />
+                                                                    <ext:Radio ID="rAvalHipoteca" runat="server" BoxLabel="Hipoteca"  />
                                                                 </Items>
                                                             </ext:RadioGroup>
                                                         </Items>
@@ -2607,29 +2863,33 @@
                                                         ID="fcDatosAval11" 
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                            <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
                                                             <ext:NumberField
                                                                 ID="nfAntiguedadDocmicilioAval"
                                                                 runat="server"
-                                                                Width="200"
-                                                                LabelWidth="120"
-                                                                FieldLabel="Antigüedad en domicilio actual"
                                                                 MaxLength="2"
-                                                                EnforceMaxLength="true"
                                                                 MinValue="0"
                                                                 MaxValue="99"
-                                                                StyleSpec="margin-right: 6px;"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 AllowDecimals="false"
-                                                                Step="1">
+                                                                Step="1"
+                                                                FieldLabel="Antigüedad"
+                                                                EmptyText="Domicilio">
                                                             </ext:NumberField>
                                                         </Items>
                                                     </ext:Container>
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                      <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    <ext:Panel 
                                         ID="pOcupacionAval" 
                                         runat="server" 
                                         Title="Ocupación Aval" 
@@ -2654,16 +2914,22 @@
                                                         </Defaults>
                                                         <Items>
                                                             <ext:TextField 
-                                                                ID="txtfEmpresaAval" 
+                                                                ID="txtfAvalEmpresa" 
                                                                 runat="server"
                                                                 FieldLabel="Empresa"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalEmpresa.setValue(App.txtfAvalEmpresa.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                             <ext:TextField 
-                                                                ID="txtfPuestoAval" 
+                                                                ID="txtfAvalEmpresaPuesto" 
                                                                 runat="server"
                                                                 FieldLabel="Puesto"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalEmpresaPuesto.setValue(App.txtfAvalEmpresaPuesto.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2686,18 +2952,27 @@
                                                                 FieldLabel="Jefe Inmediato"
                                                                 Width="325"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalEmpresaJefeNombre.setValue(App.txtfAvalEmpresaJefeNombre.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                              <ext:TextField
-                                                                ID="txtfAvalEmpresaJefeAPAterno"
+                                                                ID="txtfAvalEmpresaJefeAPaterno"
                                                                 runat="server"
                                                                 EmptyText="Apellido paterno"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalEmpresaJefeAPaterno.setValue(App.txtfAvalEmpresaJefeAPaterno.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                              <ext:TextField
-                                                                ID="txtfAvalEmpresaJefeAMAterno"
+                                                                ID="txtfAvalEmpresaJefeAMaterno"
                                                                 runat="server"
                                                                 EmptyText="Apellido materno"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalEmpresaJefeAMaterno.setValue(App.txtfAvalEmpresaJefeAMaterno.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -2712,7 +2987,7 @@
                                                         </Defaults>
                                                         <Items>
                                                             <ext:NumberField
-                                                                ID="nfAnitguedadAval"
+                                                                ID="nfAvalEmpresaAntiguedad"
                                                                 runat="server"
                                                                 AllowDecimals="false"
                                                                 FieldLabel="Antigüedad"
@@ -2724,7 +2999,7 @@
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
                                                             </ext:NumberField>
                                                             <ext:NumberField
-                                                                ID="nfIngresosAval"
+                                                                ID="nfAvalEmpresaIngresos"
                                                                 runat="server"
                                                                 AllowDecimals="true"
                                                                 EmptyText="Ingresos"
@@ -2734,7 +3009,7 @@
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
                                                             </ext:NumberField>
                                                             <ext:NumberField
-                                                                ID="nfOtrosIngresosAval"
+                                                                ID="nfAvalEmpresaOtrosIngresos"
                                                                 runat="server"
                                                                 AllowDecimals="true"
                                                                 EmptyText="Otros ingresos"
@@ -2758,11 +3033,14 @@
                                                         </Defaults>
                                                         <Items>
                                                             <ext:TextField 
-                                                                ID="txtConceptoIngresosAval" 
+                                                                ID="txtfAvalEmpresaConcepto"
                                                                 runat="server"
                                                                 FieldLabel="Otros ingresos"
                                                                 EmptyText="Concepto"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtfAvalEmpresaConcepto.setValue(App.txtfAvalEmpresaConcepto.getValue().toUpperCase());" />
+                                                                </Listeners>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>                                         
@@ -2772,7 +3050,7 @@
                                                         Layout="ColumnLayout">
                                                         <Items>
                                                             <ext:RadioGroup
-                                                                ID="rgPropietario"
+                                                                ID="rgAvalEmpresaPropietario"
                                                                 runat="server"
                                                                 Width="737"
                                                                 LabelWidth="120" 
@@ -2781,8 +3059,8 @@
                                                                 ColumnsNumber="2"
                                                                 ColumnWidth=".91">
                                                                 <Items>
-                                                                    <ext:Radio ID="rSi" runat="server" BoxLabel="Si" Checked="true" />
-                                                                    <ext:Radio ID="rNo" runat="server" BoxLabel="No"  />
+                                                                    <ext:Radio ID="rAvalEmpresaPropietarioSi" runat="server" BoxLabel="Si" Checked="true" />
+                                                                    <ext:Radio ID="rAvalEmpresaPropietarioNo" runat="server" BoxLabel="No"  />
                                                                 </Items>
                                                             </ext:RadioGroup>
                                                         </Items>
@@ -2793,7 +3071,7 @@
                                                         Layout="ColumnLayout">
                                                         <Items>
                                                             <ext:RadioGroup
-                                                                ID="rgTipo"
+                                                                ID="rgAvalEmpresaTipo"
                                                                 runat="server"
                                                                 Width="737"
                                                                 LabelWidth="120" 
@@ -2802,8 +3080,8 @@
                                                                 ColumnsNumber="2"
                                                                 ColumnWidth=".91">
                                                                 <Items>
-                                                                    <ext:Radio ID="rEmpleado" runat="server" BoxLabel="Empleado" Checked="true" />
-                                                                    <ext:Radio ID="rGiroComercial" runat="server" BoxLabel="Giro Comercial"  />
+                                                                    <ext:Radio ID="rAvalEmpresaTipoEmpleado" runat="server" BoxLabel="Empleado" Checked="true" />
+                                                                    <ext:Radio ID="rAvalEmpresaTipoGiroComercial" runat="server" BoxLabel="Giro comercial"  />
                                                                 </Items>
                                                             </ext:RadioGroup>
                                                         </Items>
@@ -2813,11 +3091,10 @@
                                                         runat="server"
                                                         Layout="ColumnLayout">
                                                         <Defaults>
-                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
                                                             <ext:Parameter Name="Width" Value="365" Mode="Raw" />
                                                             <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
                                                             <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
-                                                            <ext:Parameter Name="MaxLength" Value="100" Mode="Raw" />
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
                                                         </Defaults>
                                                         <Items>
                                                              <ext:TextField 
@@ -2828,12 +3105,39 @@
                                                                 Note="Ejemplo: (449) 999-00-00">
                                                                 <Plugins>
                                                                     <ext:InputMask
-                                                                        ID="InputMask5"
+                                                                        ID="imAvalEmpresaTelefono"
                                                                         runat="server"
                                                                         Mask="(999) 999-99-99"
                                                                         AllowInvalid="true" />
                                                                 </Plugins>
                                                             </ext:TextField>
+                                                            <ext:NumberField
+                                                                ID="nfAvalEmpresaTelefonoExt"
+                                                                runat="server"
+                                                                FieldLabel="Extensión"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                                MaxLength="5"
+                                                                MinValue="0"
+                                                                MaxValue="99999"
+                                                                AllowDecimals="false"
+                                                                AllowExponential="false"
+                                                                Step="1"
+                                                                Note="Ejemplo: 44889">
+                                                            </ext:NumberField>
+                                                        </Items>
+                                                    </ext:Container>
+                                                    <ext:Container
+                                                        ID="fcOcupacionAval7" 
+                                                        runat="server"
+                                                        Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="Width" Value="737" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                            <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="MaxLength" Value="50" Mode="Raw" />
+                                                        </Defaults>
+                                                        <Items>
                                                             <ext:TextField 
                                                                 ID="txtfAvalEmpresaAnterior" 
                                                                 runat="server"
@@ -2845,9 +3149,9 @@
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                      <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    <ext:Panel 
                                         ID="pBienesAval" 
                                         runat="server" 
                                         Title="Bienes del Aval" 
@@ -2920,9 +3224,84 @@
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
-                                    </ext:Panel>--%>
-                                     <%--Terminado--%>
-                                    <%--<ext:Panel 
+                                    </ext:Panel>
+                                    <%--Terminado--%>
+                                    <ext:Panel
+                                        ID="pCapacidadPago"
+                                        runat="server"
+                                        Title="Capacidad Pago" 
+                                        BodyPadding="10" 
+                                        AutoScroll="true">
+                                        <Items>
+                                            <ext:FieldSet
+                                                ID="fsCapacidadPago"
+                                                runat="server"
+                                                Title="Conceptos">
+                                                <Items>
+                                                    <ext:GridPanel
+                                                        ID="gpCapacidadPago"
+                                                        runat="server"
+                                                        Height="420"
+                                                        Width="960"
+                                                        Title="DETERMINACIÓN DE CAPACIDAD DE PAGO"
+                                                        EnableColumnHide="false"
+                                                        EnableColumnMove="false"
+                                                        Header="true"
+                                                        TitleAlign="Left"
+                                                        StyleSpec="margin:0 auto; margin-top: 20px;">
+                                                        <Store>
+                                                            <ext:Store
+                                                                ID="sCapacidadPago"
+                                                                runat="server">
+                                                                <Model>
+                                                                    <ext:Model ID="mCapacidadPago" runat="server">
+                                                                        <Fields>
+                                                                            <ext:ModelField Name="ID" Type="String" />
+                                                                            <ext:ModelField Name="Egreso" Type="String" />
+                                                                            <ext:ModelField Name="Importe" Type="Float" />
+                                                                        </Fields>
+                                                                    </ext:Model>
+                                                                </Model>
+                                                                <Sorters>
+                                                                    <ext:DataSorter Property="ID" Direction="ASC" />
+                                                                </Sorters>
+                                                            </ext:Store>
+                                                        </Store>
+                                                        <ColumnModel>
+                                                            <Columns>
+                                                                <ext:Column 
+                                                                    ID="cEgreso"
+                                                                    runat="server"
+                                                                    Text="EGRESO"
+                                                                    Align="Center"
+                                                                    Width="300"
+                                                                    DataIndex="Egreso">
+                                                                </ext:Column>
+                                                                <ext:NumberColumn
+                                                                    ID="cImporte"
+                                                                    runat="server"
+                                                                    Text="IMPORTE"
+                                                                    Align="Left"
+                                                                    Width="658"
+                                                                    DataIndex="IMPORTE">
+                                                                    <Editor>
+                                                                        <ext:TextField
+                                                                            ID="txtfDescripcion"
+                                                                            runat="server"
+                                                                            MaxLength="50"
+                                                                            EnforceMaxLength="true">
+                                                                        </ext:TextField>
+                                                                    </Editor>
+                                                                </ext:NumberColumn>
+                                                            </Columns>
+                                                        </ColumnModel>
+                                                    </ext:GridPanel>
+                                                </Items>
+                                            </ext:FieldSet>
+                                        </Items>
+                                    </ext:Panel>
+                                    <%--Terminado--%>
+                                    <ext:Panel 
                                         ID="pDatosOperacion" 
                                         runat="server" 
                                         Title="Datos de Operación" 
@@ -2982,6 +3361,11 @@
                                                                 runat="server"
                                                                 FieldLabel="Forma de pago"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Items>
+                                                                    <ext:ListItem Index="0" Text="SEMANAL" Value="SEMANAL" />
+                                                                    <ext:ListItem Index="0" Text="QUINCENAL" Value="QUINCENAL" />
+                                                                    <ext:ListItem Index="0" Text="MENSUAL" Value="MENSUAL" />
+                                                                </Items>
                                                             </ext:ComboBox>
                                                             <ext:ComboBox 
                                                                 ID="cmbDestinoPrestamo" 
@@ -2991,10 +3375,34 @@
                                                             </ext:ComboBox>
                                                         </Items>
                                                     </ext:Container>
+                                                    <ext:Container 
+                                                        ID="cDatosOperacion3" 
+                                                        runat="server"
+                                                        Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="Width" Value="365" Mode="Raw" />
+                                                            <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                            <ext:Parameter Name="MaxLength" Value="100" Mode="Raw" />
+                                                        </Defaults>
+                                                        <Items>
+                                                            <ext:ComboBox 
+                                                                ID="cmbTipo" 
+                                                                runat="server"
+                                                                FieldLabel="Tipo prestamo"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Items>
+                                                                    <ext:ListItem Index="0" Text="CONSUMO" Value="CONSUMO" />
+                                                                    <ext:ListItem Index="0" Text="COMERCIO Y/O PRODUCCIÓN" Value="COMERCIO Y/O PRODUCCIÓN" />
+                                                                </Items>
+                                                            </ext:ComboBox>
+                                                        </Items>
+                                                    </ext:Container>
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
-                                    </ext:Panel>--%>
+                                    </ext:Panel>
                                 </Items>
                             </ext:TabPanel>
                         </Items>
@@ -3020,6 +3428,15 @@
                                 Height="50"
                                 Width="50"
                                 Disabled="true">
+                                <DirectEvents>
+                                    <Click OnEvent="imgbtnGuardar_Click">
+                                        <EventMask ShowMask="true" Msg="Registrando información..." />
+                                        <ExtraParams>
+                                            <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
+                                            <ext:Parameter Name="usuario" Value="Ext.encode(window.parent.App.sUsuario.getRecordsValues())" Mode="Raw" />
+                                        </ExtraParams>
+                                    </Click>
+                                </DirectEvents>
                             </ext:ImageButton>
                             <ext:ImageButton
                                 ID="imgbtnCancelar"

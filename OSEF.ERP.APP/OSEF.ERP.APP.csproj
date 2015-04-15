@@ -409,7 +409,6 @@
     <Content Include="js\parametrosP1.js" />
     <Content Include="js\preciarios.js" />
     <Content Include="js\preciariosGenerales.js" />
-    <Content Include="js\prestamos.js" />
     <Content Include="js\profesiones.js" />
     <Content Include="js\reportes.js" />
     <Content Include="js\solicitudesPrestamos.js" />

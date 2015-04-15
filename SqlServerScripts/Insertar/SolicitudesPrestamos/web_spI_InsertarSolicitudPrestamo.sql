@@ -18,21 +18,116 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spI_InsertarSubCategoria' AND
+			WHERE  name = 'web_spI_InsertarSolicitudPrestamo' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spI_InsertarSubCategoria
+	DROP PROCEDURE web_spI_InsertarSolicitudPrestamo
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Lunes 24 de Noviembre de 2014
--- Description:	Insertar un registro de SubCategoria
+-- Create date: Lunes 06 de Abril de 2015
+-- Description:	Insertar un registro de Solicitud de Prestamo
 -- =============================================
-CREATE PROCEDURE web_spI_InsertarSubCategoria
+CREATE PROCEDURE web_spI_InsertarSolicitudPrestamo
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(6) OUTPUT,
-	@Orden			TINYINT,
-	@Descripcion	VARCHAR(50),
-	@Categoria		CHAR(5)
+	@ID							CHAR(8) OUTPUT,
+	@Cliente					CHAR(8),
+	@Nacionalidad				VARCHAR(20),
+	@NumeroDependientes			TINYINT,
+	@Edades						VARCHAR(10),
+	@RegistroMatrimonial		VARCHAR(50),
+	@TipoCasa					VARCHAR(50),
+	@AniosDomicilio				TINYINT,
+	@CalleAnterior				VARCHAR(100),
+	@NoExteriorAnterior			VARCHAR(10),
+	@NoInteriorAnterior			VARCHAR(10),
+	@ColoniaAnterior			CHAR(10),
+	@CodigoPostalAnterior		INT,
+	@EntreCallesAnterior		VARCHAR(100),
+	@EstadoAnterior				CHAR(2),
+	@MunicipioAnterior			CHAR(4),
+	@Antiguedad					TINYINT,
+	@Ingresos					SMALLINT,
+	@OtrosIngresos				SMALLINT,
+	@Concepto					VARCHAR(100),
+	@JefeNombre					VARCHAR(50),
+	@JefeAPAterno				VARCHAR(50),
+	@JefeAMaterno				VARCHAR(50),
+	@EmpresaAnterior			VARCHAR(50),
+	@ConyugeNombre				VARCHAR(50),
+	@ConyugeAPaterno			VARCHAR(50),
+	@ConyugeAMaterno			VARCHAR(50),
+	@ConyugeFechaNacimiento		DATE,
+	@ConyugeRFC					VARCHAR(15),
+	@ConyugeTelefono			VARCHAR(15),
+	@ConyugeTelefonoMovil		VARCHAR(15),
+	@ConyugeCalle				VARCHAR(100),
+	@ConyugeEntreCalles			VARCHAR(100),
+	@ConyugeNoExterior			VARCHAR(10),
+	@ConyugeNoInterior			VARCHAR(10),
+	@ConyugeColonia				CHAR(10),
+	@ConyugeCodigoPostal		INT,
+	@ConyugeEstado				CHAR(2),
+	@ConyugeMunicipio			CHAR(4),
+	@ConyugeAntiguedad			TINYINT,
+	@ConyugeIngresos			SMALLINT,
+	@ConyugeOtrosIngresos		SMALLINT,
+	@ConyugeConcepto			VARCHAR(100),
+	@ConyugeEmpresa				VARCHAR(50),
+	@ConyugePuesto				VARCHAR(50),
+	@ConyugeEmpresaCalle		VARCHAR(100),
+	@ConyugeEmpresaNoExterior	VARCHAR(10),
+	@ConyugeEmpresaNoInterior	VARCHAR(10),
+	@ConyugeEmpresaColonia		CHAR(10),
+	@ConyugeEmpresaCodigoPostal	INT,
+	@ConyugeEmpresaEntreCalles	VARCHAR(100),
+	@ConyugeEmpresaEstado		CHAR(2),
+	@ConyugeEmpresaMunicipio	CHAR(4),
+	@ConyugeEmpresaJefeNombre	VARCHAR(50),
+	@ConyugeEmpresaJefeAPaterno	VARCHAR(50),
+	@ConyugeEmpresaJefeAMaterno	VARCHAR(50),
+	@AvalNombre					VARCHAR(50),
+	@AvalAPaterno				VARCHAR(50),
+	@AvalAMaterno				VARCHAR(50),
+	@AvalSocio					BIT,
+	@AvalEstadoCivil			VARCHAR(10),
+	@AvalRegistroMatrimonial	VARCHAR(50),
+	@AvalTelefono				VARCHAR(15),
+	@AvalTelefonoMovil			VARCHAR(15),
+	@AvalCalle					VARCHAR(100),
+	@AvalEntreCalles			VARCHAR(100),
+	@AvalNoExterior				VARCHAR(10),
+	@AvalNoInterior				VARCHAR(10),
+	@AvalColonia				CHAR(10),
+	@AvalCodigoPostal			INT,
+	@AvalEstado					CHAR(2),
+	@AvalMunicipio				CHAR(4),
+	@AvalTipoCasa				VARCHAR(20),
+	@AvalAntiguedad				TINYINT,
+	@AvalEmpresa				VARCHAR(50),
+	@AvalEmpresaPuesto			VARCHAR(50),
+	@AvalEmpresaJefeNombre		VARCHAR(50),
+	@AvalEmpresaJefeAPaterno	VARCHAR(50),
+	@AvalEmpresaJefeAMaterno	VARCHAR(50),
+	@AvalEmpresaAntiguedad		TINYINT,
+	@AvalEmpresaIngresos		INT,
+	@AvalEmpresaOtrosIngresos	INT,
+	@AvalEmpresaConcepto		VARCHAR(50),
+	@AvalEmpresaPropietario		BIT,
+	@AvalEmpresaTipo			VARCHAR(20),
+	@AvalEmpresaTelefono		VARCHAR(15),
+	@AvalEmpresaTelefonoExt		SMALLINT,
+	@AvalEmpresaAnterior		VARCHAR(50),
+	@Cantidad					INT,
+	@Plazo						SMALLINT,
+	@FormaPago					VARCHAR(20),
+	@DestinoPrestamo			VARCHAR(50),
+	@Tipo						VARCHAR(20),
+	@TablaAmortizacion			VARCHAR(200),
+	@Estatus					VARCHAR(20),
+	@UsuarioAlta				VARCHAR(50),
+	@FechaAlta					SMALLDATETIME,
+	@UsuarioModificacion		VARCHAR(50),
+	@FechaModificacion			SMALLDATETIME
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -42,9 +137,9 @@ BEGIN
 	--Formar el ID
 	DECLARE
 		@ID_TEMP INT,
-		@VALOR CHAR(6)
+		@VALOR CHAR(8)
 		
-		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT)) FROM SubCategorias WHERE ID LIKE 'SUB%'
+		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 3, LEN(ID)) AS INT)) FROM SolicitudesPrestamos WHERE ID LIKE 'SP%'
 		IF (@ID_TEMP IS NOT NULL)
 		BEGIN
 			SET @ID_TEMP = @ID_TEMP + 1
@@ -57,32 +152,236 @@ BEGIN
 		--DECIMAL
 		IF ((@ID_TEMP / 10) < 1)
 		BEGIN
-			SET @VALOR = 'SUB00' + CAST(@ID_TEMP AS CHAR(1))
+			SET @VALOR = 'SP00000' + CAST(@ID_TEMP AS CHAR(1))
 		END
 		ELSE IF ((@ID_TEMP / 100) < 1)
 		BEGIN
-			SET @VALOR = 'SUB0' + CAST(@ID_TEMP AS CHAR(2))
+			SET @VALOR = 'SP0000' + CAST(@ID_TEMP AS CHAR(2))
+		END
+		ELSE IF ((@ID_TEMP / 1000) < 1)
+		BEGIN
+			SET @VALOR = 'SP000' + CAST(@ID_TEMP AS CHAR(3))
+		END
+		ELSE IF ((@ID_TEMP / 10000) < 1)
+		BEGIN
+			SET @VALOR = 'SP00' + CAST(@ID_TEMP AS CHAR(4))
+		END
+		ELSE IF ((@ID_TEMP / 100000) < 1)
+		BEGIN
+			SET @VALOR = 'SP0' + CAST(@ID_TEMP AS CHAR(5))
 		END
 		ELSE
 		BEGIN
-			SET @VALOR = 'SUB' + CAST(@ID_TEMP AS CHAR(3))
+			SET @VALOR = 'SP' + CAST(@ID_TEMP AS CHAR(6))
 		END
 		
 		SELECT @ID = @VALOR
 
 		-- Insert statements for procedure here
 		INSERT INTO
-			SubCategorias
+			SolicitudesPrestamos
 			(
 				ID,
-				Orden,
-				Descripcion,
-				Categoria)
-		VALUES (
+				Cliente,
+				Nacionalidad,
+				NumeroDependientes,
+				Edades,
+				RegistroMatrimonial,
+				TipoCasa,
+				AniosDomicilio,
+				CalleAnterior,
+				NoExteriorAnterior,
+				NoInteriorAnterior,
+				ColoniaAnterior,
+				CodigoPostalAnterior,
+				EntreCallesAnterior,
+				EstadoAnterior,
+				MunicipioAnterior,
+				Antiguedad,
+				Ingresos,
+				OtrosIngresos,
+				Concepto,
+				JefeNombre,
+				JefeAPAterno,
+				JefeAMaterno,
+				EmpresaAnterior,
+				ConyugeNombre,
+				ConyugeAPaterno,
+				ConyugeAMaterno,
+				ConyugeFechaNacimiento,
+				ConyugeRFC,
+				ConyugeTelefono,
+				ConyugeTelefonoMovil,
+				ConyugeCalle,
+				ConyugeEntreCalles,
+				ConyugeNoExterior,
+				ConyugeNoInterior,
+				ConyugeColonia,
+				ConyugeCodigoPostal,
+				ConyugeEstado,
+				ConyugeMunicipio,
+				ConyugeAntiguedad,
+				ConyugeIngresos,
+				ConyugeOtrosIngresos,
+				ConyugeConcepto,
+				ConyugeEmpresa,
+				ConyugePuesto,
+				ConyugeEmpresaCalle,
+				ConyugeEmpresaNoExterior,
+				ConyugeEmpresaNoInterior,
+				ConyugeEmpresaColonia,
+				ConyugeEmpresaCodigoPostal,
+				ConyugeEmpresaEntreCalles,
+				ConyugeEmpresaEstado,
+				ConyugeEmpresaMunicipio,
+				ConyugeEmpresaJefeNombre,
+				ConyugeEmpresaJefeAPaterno,
+				ConyugeEmpresaJefeAMaterno,
+				AvalNombre,
+				AvalAPaterno,
+				AvalAMaterno,
+				AvalSocio,
+				AvalEstadoCivil,
+				AvalRegistroMatrimonial,
+				AvalTelefono,
+				AvalTelefonoMovil,
+				AvalCalle,
+				AvalEntreCalles,
+				AvalNoExterior,
+				AvalNoInterior,
+				AvalColonia,
+				AvalCodigoPostal,
+				AvalEstado,
+				AvalMunicipio,
+				AvalTipoCasa,
+				AvalAntiguedad,
+				AvalEmpresa,
+				AvalEmpresaPuesto,
+				AvalEmpresaJefeNombre,
+				AvalEmpresaJefeAPaterno,
+				AvalEmpresaJefeAMaterno,
+				AvalEmpresaAntiguedad,
+				AvalEmpresaIngresos,
+				AvalEmpresaOtrosIngresos,
+				AvalEmpresaConcepto,
+				AvalEmpresaPropietario,
+				AvalEmpresaTipo,
+				AvalEmpresaTelefono,
+				AvalEmpresaTelefonoExt,
+				AvalEmpresaAnterior,
+				Cantidad,
+				Plazo,
+				FormaPago,
+				DestinoPrestamo,
+				Tipo,
+				TablaAmortizacion,
+				Estatus,
+				UsuarioAlta,
+				FechaAlta,
+				UsuarioModificacion,
+				FechaModificacion
+			)
+		VALUES 
+			(
 				@ID,
-				@Orden,
-				@Descripcion,
-				@Categoria
-				)
+				@Cliente,
+				@Nacionalidad,
+				@NumeroDependientes,
+				@Edades,
+				@RegistroMatrimonial,
+				@TipoCasa,
+				@AniosDomicilio,
+				@CalleAnterior,
+				@NoExteriorAnterior,
+				@NoInteriorAnterior,
+				@ColoniaAnterior,
+				@CodigoPostalAnterior,
+				@EntreCallesAnterior,
+				@EstadoAnterior,
+				@MunicipioAnterior,
+				@Antiguedad,
+				@Ingresos,
+				@OtrosIngresos,
+				@Concepto,
+				@JefeNombre,
+				@JefeAPAterno,
+				@JefeAMaterno,
+				@EmpresaAnterior,
+				@ConyugeNombre,
+				@ConyugeAPaterno,
+				@ConyugeAMaterno,
+				@ConyugeFechaNacimiento,
+				@ConyugeRFC,
+				@ConyugeTelefono,
+				@ConyugeTelefonoMovil,
+				@ConyugeCalle,
+				@ConyugeEntreCalles,
+				@ConyugeNoExterior,
+				@ConyugeNoInterior,
+				@ConyugeColonia,
+				@ConyugeCodigoPostal,
+				@ConyugeEstado,
+				@ConyugeMunicipio,
+				@ConyugeAntiguedad,
+				@ConyugeIngresos,
+				@ConyugeOtrosIngresos,
+				@ConyugeConcepto,
+				@ConyugeEmpresa,
+				@ConyugePuesto,
+				@ConyugeEmpresaCalle,
+				@ConyugeEmpresaNoExterior,
+				@ConyugeEmpresaNoInterior,
+				@ConyugeEmpresaColonia,
+				@ConyugeEmpresaCodigoPostal,
+				@ConyugeEmpresaEntreCalles,
+				@ConyugeEmpresaEstado,
+				@ConyugeEmpresaMunicipio,
+				@ConyugeEmpresaJefeNombre,
+				@ConyugeEmpresaJefeAPaterno,
+				@ConyugeEmpresaJefeAMaterno,
+				@AvalNombre,
+				@AvalAPaterno,
+				@AvalAMaterno,
+				@AvalSocio,
+				@AvalEstadoCivil,
+				@AvalRegistroMatrimonial,
+				@AvalTelefono,
+				@AvalTelefonoMovil,
+				@AvalCalle,
+				@AvalEntreCalles,
+				@AvalNoExterior,
+				@AvalNoInterior,
+				@AvalColonia,
+				@AvalCodigoPostal,
+				@AvalEstado,
+				@AvalMunicipio,
+				@AvalTipoCasa,
+				@AvalAntiguedad,
+				@AvalEmpresa,
+				@AvalEmpresaPuesto,
+				@AvalEmpresaJefeNombre,
+				@AvalEmpresaJefeAPaterno,
+				@AvalEmpresaJefeAMaterno,
+				@AvalEmpresaAntiguedad,
+				@AvalEmpresaIngresos,
+				@AvalEmpresaOtrosIngresos,
+				@AvalEmpresaConcepto,
+				@AvalEmpresaPropietario,
+				@AvalEmpresaTipo,
+				@AvalEmpresaTelefono,
+				@AvalEmpresaTelefonoExt,
+				@AvalEmpresaAnterior,
+				@Cantidad,
+				@Plazo,
+				@FormaPago,
+				@DestinoPrestamo,
+				@Tipo,
+				@TablaAmortizacion,
+				@Estatus,
+				@UsuarioAlta,
+				@FechaAlta,
+				@UsuarioModificacion,
+				@FechaModificacion
+			)
 END
 GO
