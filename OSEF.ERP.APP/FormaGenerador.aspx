@@ -406,6 +406,7 @@
                         ClicksToEdit="1">
                         <Listeners>
                           <Edit Fn="ceGenerador_Edit" />
+                          <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
                         </Listeners>
                     </ext:CellEditing>
                 </Plugins>

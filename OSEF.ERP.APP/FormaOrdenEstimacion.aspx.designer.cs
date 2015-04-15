@@ -274,6 +274,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfMovID;
         
         /// <summary>
+        /// Control txtOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtOrigen;
+        
+        /// <summary>
+        /// Control txtOrigenID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtOrigenID;
+        
+        /// <summary>
         /// Control fcSucursal.
         /// </summary>
         /// <remarks>

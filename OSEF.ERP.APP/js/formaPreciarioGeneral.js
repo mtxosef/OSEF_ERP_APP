@@ -89,7 +89,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
         else { return false; }
     }
     }]);
-    App.sCarga.getSelectionModel().deselectAll();
+    //App.sCarga.getSelectionModel().deselectAll();
   
 };
 
@@ -329,3 +329,17 @@ function HabilitarGuardar() {
         App.imgbtnGuardar.setDisabled(true);
     }
 }
+
+
+//Acciones del boton d agregar concepto en el detalle
+var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
+    window.parent.App.wAyudaConcepto.load('FormaAyudaBusquedaConceptoPreciario.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(430);
+    window.parent.App.wAyudaConcepto.setWidth(685);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
+    window.parent.App.wAyudaConcepto.show();
+
+
+    
+};

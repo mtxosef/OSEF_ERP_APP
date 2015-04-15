@@ -66,7 +66,7 @@ namespace OSEF.ERP.APP
                     Usuario = oOrdenEstimacion.Usuario,
                     RSucursal = oOrdenEstimacion.RSucursal,
                     Origen = oOrdenEstimacion.Origen,
-                    OrigenID = oOrdenEstimacion.OrigenId,
+                    OrigenId = oOrdenEstimacion.OrigenId,
                     Reporte =oOrdenEstimacion.Reporte,
                     Division=oOrdenEstimacion.Division,
                     FechaOrigen=oOrdenEstimacion.FechaOrigen,

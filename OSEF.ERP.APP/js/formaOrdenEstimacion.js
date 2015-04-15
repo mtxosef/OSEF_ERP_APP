@@ -694,8 +694,16 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
     //Si es Estimacion
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'PENDIENTE'
          && registro[0].get('Mov').trim() == "Estimacion") {
+
+        App.txtOrigen.setVisible(true);
+        App.txtOrigenID.setVisible(true);
+
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
+
+        App.txtOrigen.setValue(registro[0].get('Origen'));
+        App.txtOrigenID.setValue(registro[0].get('OrigenId'));
+
         App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
@@ -1044,11 +1052,11 @@ var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
     var boton;
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov') == 'Estimacion') {
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
 
         //Toma el primer elemento de la columna para poder desabilitarlo
         boton = toolbar.items.get(0);
-        boton.setDisabled(true);
+        boton.setDisabled(false);
     }
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
@@ -1360,12 +1368,13 @@ var ccFacturas_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 var ccGenerador_Command = function (columna, comando, registro, fila, opciones) {
     //Asigno el concpeto
     indiceDetalle = fila;
-  
+
     Ext.util.Cookies.set('cookieRenglonOrdenEstimacionD', fila);
     if (registro.get('ConceptoID') != '') {
 
-        Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
 
+        Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
+        Ext.util.Cookies.set('cookieIDMovConceptoOrdenEstimacion', registro.get('Id'));
         window.parent.App.wGenerador.load('FormaGenerador.aspx');
         window.parent.App.wGenerador.setHeight(310);
         window.parent.App.wGenerador.setWidth(915);

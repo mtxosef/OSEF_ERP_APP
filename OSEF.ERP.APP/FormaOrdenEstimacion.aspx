@@ -390,8 +390,27 @@
                                             ID="txtfMovID"
                                             runat="server"
                                             Width="110"
-                                            Margins="0 3 0 0"
+                                            Margins="0 50 0 0"
                                             Disabled="true" />
+                                               <ext:TextField 
+                                            ID="txtOrigen" 
+                                            runat="server" 
+                                            Hidden="true"
+                                            LabelWidth="50"
+                                            Margins="0 3 0 0"
+                                            FieldLabel="Origen"
+                                            Width="200" 
+                                            Disabled="true"> 
+                                            </ext:TextField>
+                                               <ext:TextField 
+                                            ID="txtOrigenID" 
+                                            FieldLabel="Origen ID"
+                                            LabelWidth="70"
+                                            Hidden="true"
+                                            runat="server" 
+                                            Width="180" 
+                                            Disabled="true"> 
+                                            </ext:TextField>
                                     </Items>
                                 </ext:FieldContainer>
                                 <ext:FieldContainer
@@ -400,6 +419,7 @@
                                     FieldLabel="Sucursal"
                                     AnchorHorizontal="100%"
                                     LabelWidth="120"
+                                    Height="25"
                                     Layout="HBoxLayout">
                                     <Items>
                                        <%-- <ext:ComboBox
@@ -452,7 +472,7 @@
                                          ID="cmbSucursal" 
                                          runat="server" 
                                          Width="200" 
-                                         StyleSpec="margin-right: 6px;"
+                                         Margins="0 3 0 0"
                                          MaxLength="50" 
                                          EnforceMaxLength="true" 
                                          AllowBlank="true" 
@@ -476,11 +496,12 @@
                                             ID="txtfSucursalNombre" 
                                             runat="server" 
                                             Width="360" 
-                                            Margins="0 3 0 0"
                                             Disabled="true"> 
                                             </ext:TextField>
 
-                                             <ext:TextField ID="txtIDSucursal" runat="server"  
+                                             <ext:TextField 
+                                             ID="txtIDSucursal" 
+                                             runat="server"  
                                                  Hidden="true"> 
                                             </ext:TextField>
                                         <%--<ext:TextField
@@ -1040,7 +1061,7 @@
                                                     runat="server" 
                                                     IDProperty="Renglon">
                                                     <Fields>
-                                                        <ext:ModelField Name="ID" Type="Int" />
+                                                        <ext:ModelField Name="Id" Type="Int" />
                                                         <ext:ModelField Name="Renglon" Type="Int" />
                                                         <ext:ModelField Name="ConceptoID" Type="String" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />

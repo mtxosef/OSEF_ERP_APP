@@ -336,6 +336,9 @@
                                             PressedImageUrl=""
                                             Height="22px"
                                             Width="22px"> 
+                                            <Listeners>
+                                            <Click Fn="imgbtnBuscar_Click"></Click>
+                                            </Listeners>
                                         </ext:ImageButton>
                                     </RightButtons>
                                 </ext:TextField>

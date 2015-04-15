@@ -406,6 +406,7 @@
                         runat="server"
                         ClicksToEdit="1">
                         <Listeners>
+                        <BeforeEdit Fn="validaConcluidos" ></BeforeEdit>
                           <Edit Fn="ceGenerador_Edit" />
                         </Listeners>
                     </ext:CellEditing>

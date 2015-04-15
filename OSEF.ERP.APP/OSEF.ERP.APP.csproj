@@ -324,6 +324,7 @@
     <Content Include="FormaAnexosSocio.aspx" />
     <Content Include="FormaAvance.aspx" />
     <Content Include="FormaAvanzarVolumetria.aspx" />
+    <Content Include="FormaAyudaBusquedaConceptoPreciario.aspx" />
     <Content Include="FormaBuscaCodigosPostales.aspx" />
     <Content Include="FormaBuscaPreciarioConcepto.aspx" />
     <Content Include="FormaBuscaPreciarioGeneralConcepto.aspx" />
@@ -406,6 +407,7 @@
     <Content Include="js\conceptos2.js" />
     <Content Include="js\consultarPreciario.js" />
     <Content Include="js\exploradorConceptoPreciarioGeneral.js" />
+    <Content Include="js\formaAyudaBusquedaConceptoPreciario.js" />
     <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
@@ -675,6 +677,13 @@
     </Compile>
     <Compile Include="FormaAvanzarVolumetria.aspx.designer.cs">
       <DependentUpon>FormaAvanzarVolumetria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaAyudaBusquedaConceptoPreciario.aspx.cs">
+      <DependentUpon>FormaAyudaBusquedaConceptoPreciario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaAyudaBusquedaConceptoPreciario.aspx.designer.cs">
+      <DependentUpon>FormaAyudaBusquedaConceptoPreciario.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaBuscaCodigosPostales.aspx.cs">
       <DependentUpon>FormaBuscaCodigosPostales.aspx</DependentUpon>

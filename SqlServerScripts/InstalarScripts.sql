@@ -449,7 +449,7 @@
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerCroquisPorIDMovimiento.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerFacturasPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerGeneradorPorMovimiento.sql
-:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerImagenesPorMovimientoYPorConcepto.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerImagenesPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRCroquis.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGenerador.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRFacturas.sql
