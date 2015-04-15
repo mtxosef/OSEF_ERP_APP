@@ -1007,7 +1007,7 @@
                                             AnchorHorizontal="100%" 
                                             Layout="HBoxLayout">
                                             <Items>
-                                                <ext:TextField 
+                                                <%--<ext:TextField 
                                                     ID="txtCuadrilla" 
                                                     runat="server" 
                                                     Width="503" 
@@ -1018,7 +1018,28 @@
                                                     <Listeners>
                                                         <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                                                     </Listeners>
-                                                </ext:TextField>
+                                                </ext:TextField>--%>
+
+                                                <ext:ComboBox ID="txtCuadrilla" runat="server" AllowBlank="false" Width="210" Editable="true"
+                            ValueField="ID" DisplayField="Descripcion" MatchFieldWidth="true" ForceSelection="true"
+                            EmptyText="Estado" QueryMode="Local" TypeAhead="true">
+                            <Store>
+                                <ext:Store ID="sCuadrillas" runat="server">
+                                    <Model>
+                                        <ext:Model ID="mCuadrillas" runat="server" IDProperty="ID">
+                                            <Fields>
+                                                <ext:ModelField Name="ID" Type="String" />
+                                                <ext:ModelField Name="Descripcion" Type="String" />
+                                            </Fields>
+                                        </ext:Model>
+                                    </Model>
+                                    <Sorters>
+                                        <ext:DataSorter Property="Descripcion" Direction="ASC" />
+                                    </Sorters>
+                                </ext:Store>
+                            </Store> 
+                        </ext:ComboBox>
+
                                             </Items>
                                         </ext:FieldContainer>
                                    

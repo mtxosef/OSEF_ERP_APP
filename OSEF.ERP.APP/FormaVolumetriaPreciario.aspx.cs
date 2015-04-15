@@ -24,8 +24,8 @@ namespace OSEF.ERP.APP
             if (!X.IsAjaxRequest)
             {
                 //2. Cargar sucursales
-                sPreciario.DataSource = PreciarioBusiness.ObtenerPreciarios();
-                sPreciario.DataBind();
+                //sPreciario.DataSource = PreciarioBusiness.ObtenerPreciarios();
+                //sPreciario.DataBind();
             }
         }
 

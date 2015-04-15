@@ -298,6 +298,7 @@
     <Content Include="css\xToolbar.css" />
     <Content Include="css\xTreePanel.css" />
     <Content Include="css\xWindowPopup.css" />
+    <Content Include="Cuadrillas.aspx" />
     <Content Include="CuentasContables.aspx" />
     <Content Include="data.js" />
     <Content Include="Default.aspx" />
@@ -328,6 +329,7 @@
     <Content Include="FormaBuscaCodigosPostales.aspx" />
     <Content Include="FormaBuscaPreciarioConcepto.aspx" />
     <Content Include="FormaBuscaPreciarioGeneralConcepto.aspx" />
+    <Content Include="FormaBuscaPreciariosActivos.aspx" />
     <Content Include="FormaBuscaSucursal.aspx" />
     <Content Include="FormaCambiarContrasena.aspx" />
     <Content Include="FormaCargaMultiImagenes.aspx" />
@@ -337,6 +339,7 @@
     <Content Include="FormaConcepto2.aspx" />
     <Content Include="FormaAvanzarMovimiento.aspx" />
     <Content Include="FormaCroquisOrdenEstimacion.aspx" />
+    <Content Include="FormaCuadrillas.aspx" />
     <Content Include="FormaEspecificarFechas.aspx" />
     <Content Include="FormaFacturasOrdenEstimacion.aspx" />
     <Content Include="FormaGaleria.aspx" />
@@ -406,6 +409,7 @@
     <Content Include="js\colonias.js" />
     <Content Include="js\conceptos2.js" />
     <Content Include="js\consultarPreciario.js" />
+    <Content Include="js\cuadrillas.js" />
     <Content Include="js\exploradorConceptoPreciarioGeneral.js" />
     <Content Include="js\formaAyudaBusquedaConceptoPreciario.js" />
     <Content Include="js\formaGeneradorVolumetriaD.js" />
@@ -587,6 +591,13 @@
     <Compile Include="ConsultarPreciario.aspx.designer.cs">
       <DependentUpon>ConsultarPreciario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cuadrillas.aspx.cs">
+      <DependentUpon>Cuadrillas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cuadrillas.aspx.designer.cs">
+      <DependentUpon>Cuadrillas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CuentasContables.aspx.cs">
       <DependentUpon>CuentasContables.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -706,6 +717,13 @@
     <Compile Include="FormaBuscaPreciarioGeneralConcepto.aspx.designer.cs">
       <DependentUpon>FormaBuscaPreciarioGeneralConcepto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaBuscaPreciariosActivos.aspx.cs">
+      <DependentUpon>FormaBuscaPreciariosActivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaBuscaPreciariosActivos.aspx.designer.cs">
+      <DependentUpon>FormaBuscaPreciariosActivos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaBuscaSucursal.aspx.cs">
       <DependentUpon>FormaBuscaSucursal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -768,6 +786,13 @@
     </Compile>
     <Compile Include="FormaCroquisOrdenEstimacion.aspx.designer.cs">
       <DependentUpon>FormaCroquisOrdenEstimacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaCuadrillas.aspx.cs">
+      <DependentUpon>FormaCuadrillas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaCuadrillas.aspx.designer.cs">
+      <DependentUpon>FormaCuadrillas.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaEspecificarFechas.aspx.cs">
       <DependentUpon>FormaEspecificarFechas.aspx</DependentUpon>

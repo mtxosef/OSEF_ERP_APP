@@ -199,6 +199,7 @@
                                 <ext:ModelField Name="ID" Type="String" />
                                 <ext:ModelField Name="Descripcion" Type="String" />
                                 <ext:ModelField Name="Sucursal" Type="String" />
+                                <ext:ModelField Name="RSucursal" Type="Object" />
                                 <ext:ModelField Name="Estatus" Type="String" />
                                 <ext:ModelField Name="Usuario" Type="String" />
                             </Fields>
@@ -221,7 +222,7 @@
                         Align="Center"
                         Width="120"
                         DataIndex="ID">
-                    </ext:Column>
+                    </ext:Column> 
                     <ext:Column
                         ID="cNombre"
                         runat="server"
@@ -235,8 +236,8 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Left"
-                        Width="280"
-                        DataIndex="Sucursal">
+                        Width="280" 
+                        DataIndex="RSucursal">
                          <HeaderItems>
                             <ext:ComboBox
                                 ID="cmbSucursalFiltro"
@@ -271,7 +272,7 @@
 
                             </ext:ComboBox>
                         </HeaderItems>
-
+                        <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
                     <ext:Column
                         ID="cEstatus"
@@ -299,8 +300,6 @@
                                 <Listeners>
                                     <Select Fn="cmbEstatusFiltro_Select" />
                                 </Listeners>
-                              
-
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:Column>

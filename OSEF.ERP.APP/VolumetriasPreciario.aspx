@@ -340,8 +340,15 @@
                             </ext:ComboBox>
                         </HeaderItems>
 
+                    </ext:Column> 
+                    <ext:Column 
+                        ID="cUsuario"
+                        runat="server"
+                        Text="USUARIO"
+                        Align="Center"
+                        Width="150"
+                        DataIndex="Usuario"> 
                     </ext:Column>
-                   
                 </Columns>
             </ColumnModel>
             <Listeners>

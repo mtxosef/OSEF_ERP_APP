@@ -897,3 +897,13 @@ var imgBtnPreciarioPrueba_Click_Success = function (response, result) {
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
     window.parent.App.wAyudaConcepto.show();
 }
+
+//Evento de click del botón Buscar
+var imgbtnBuscar_Click = function () {
+    window.parent.App.wAyudaConcepto.load('FormaBuscaPreciariosActivos.aspx');
+    window.parent.App.wAyudaConcepto.setHeight(350);
+    window.parent.App.wAyudaConcepto.setWidth(980);
+    window.parent.App.wAyudaConcepto.center();
+    window.parent.App.wAyudaConcepto.setTitle('BUSCAR PRECIARIOS ACTIVOS');
+    window.parent.App.wAyudaConcepto.show();
+};

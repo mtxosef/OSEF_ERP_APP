@@ -703,7 +703,25 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtCuadrilla;
+        protected global::Ext.Net.ComboBox txtCuadrilla;
+        
+        /// <summary>
+        /// Control sCuadrillas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sCuadrillas;
+        
+        /// <summary>
+        /// Control mCuadrillas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mCuadrillas;
         
         /// <summary>
         /// Control pDetalle.

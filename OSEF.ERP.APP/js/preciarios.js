@@ -433,5 +433,19 @@ var btnBuscarSucursal_Click = function () {
     window.parent.App.wAyudaConcepto.setWidth(720); 
     window.parent.App.wAyudaConcepto.center();
     window.parent.App.wAyudaConcepto.setTitle('Seleccionar Sucursal'); 
-    window.parent.App.wAyudaConcepto.show(); 
+    window.parent.App.wAyudaConcepto.show();
+};
+
+
+
+//Asignar el nombre de la sucursal en base al ID
+var cSucursal_Renderer = function (valor, columna, registro) {
+    if (valor.length != 0) {
+        if (registro.get('Sucursal') != registro.get('RSucursal').ID) {
+            var sts = App.sPreciarios.findRecord('Sucursal', valor);
+            return sts.get('Nombre');
+        } else {
+            return registro.get('RSucursal').Nombre;
+        }
+    }
 };

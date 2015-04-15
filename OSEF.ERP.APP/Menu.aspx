@@ -160,6 +160,13 @@
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Colonias</div>
                                     </div>
+                                </a> 
+
+                                <a class="tile square image bg-color-blueDark" id="cuadrillas" href="#">
+                                    <img src="assets/img/menu-cuadrillas.png" alt="" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Cuadrillas</div>
+                                    </div>
                                 </a>
 
                             </div>

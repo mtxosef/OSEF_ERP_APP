@@ -280,25 +280,16 @@ namespace OSEF.ERP.APP {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbPreciario;
+        protected global::Ext.Net.TextField cmbPreciario;
         
         /// <summary>
-        /// Control sPreciario.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sPreciario;
-        
-        /// <summary>
-        /// Control mPreciario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mPreciario;
+        protected global::Ext.Net.Button Button1;
         
         /// <summary>
         /// Control txtfDescripcionPreciario.

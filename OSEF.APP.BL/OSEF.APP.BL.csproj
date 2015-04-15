@@ -51,6 +51,7 @@
     <Compile Include="ColoniaBusiness.cs" />
     <Compile Include="ConceptoBusiness.cs" />
     <Compile Include="CroquisOrdenEstimacionBusiness.cs" />
+    <Compile Include="CuadrillaBusiness.cs" />
     <Compile Include="CuentaContableBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="FacturaOrdenEstimacionBusiness.cs" />
