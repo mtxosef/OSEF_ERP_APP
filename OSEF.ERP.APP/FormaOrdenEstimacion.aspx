@@ -1020,9 +1020,19 @@
                                                     </Listeners>
                                                 </ext:TextField>--%>
 
-                                                <ext:ComboBox ID="txtCuadrilla" runat="server" AllowBlank="false" Width="200" Editable="true"
-                            ValueField="ID" DisplayField="Descripcion" MatchFieldWidth="true" ForceSelection="true"
-                            EmptyText="Estado" QueryMode="Local" TypeAhead="true">
+                            <ext:ComboBox 
+                            ID="txtCuadrilla" 
+                            runat="server" 
+                            AllowBlank="false" 
+                            Width="200" 
+                            Editable="true"
+                            ValueField="ID" 
+                            DisplayField="Descripcion" 
+                            MatchFieldWidth="true" 
+                            ForceSelection="true"
+                            EmptyText="Cuadrilla" 
+                            QueryMode="Local" 
+                            TypeAhead="true">
                             <Store>
                                 <ext:Store ID="sCuadrillas" runat="server">
                                     <Model>
@@ -1038,11 +1048,9 @@
                                     </Sorters>
                                 </ext:Store>
                             </Store> 
-                        </ext:ComboBox>
-
-                                            </Items>
-                                        </ext:FieldContainer>
-                                   
+                        </ext:ComboBox> 
+                                           </Items>
+                                        </ext:FieldContainer> 
                             </Items>
                         </ext:FieldSet>
                     </Items>

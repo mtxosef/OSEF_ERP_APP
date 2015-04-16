@@ -421,13 +421,9 @@
                                                     </ExtraParams>
                                                 </Select>
                                             </DirectEvents>
-                                        </ext:ComboBox>--%>
-
-                                        
-
+                                        </ext:ComboBox>--%> 
                                         <ext:TextField ID="cmbPreciario" runat="server" Width="200" StyleSpec="margin-right: 6px;"
-                                                    MaxLength="50" EnforceMaxLength="true" AllowBlank="false" ReadOnly="true">
-
+                                                    MaxLength="50" EnforceMaxLength="true" AllowBlank="false" ReadOnly="true"> 
                                                     <RightButtons>
                                                         <ext:Button ID="Button1" runat="server" Icon="Find" StandOut="true">
                                                             <Listeners>
@@ -435,8 +431,7 @@
                                                             </Listeners>
                                                         </ext:Button>
                                                     </RightButtons>  
-                                                    </ext:TextField>
-
+                                                    </ext:TextField> 
                                         <ext:TextField
                                             ID="txtfDescripcionPreciario"
                                             runat="server"

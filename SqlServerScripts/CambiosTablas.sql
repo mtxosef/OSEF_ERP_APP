@@ -91,3 +91,12 @@ FOREIGN KEY REFERENCES CodigosPostales(ID)
 --Cambios Christian 14 de abril
 ALTER TABLE Usuarios ADD  Empresa VARCHAR(200) NULL
 
+--Cambios Giovanni 15 de abril
+ALTER TABLE OrdenesEstimaciones DROP COLUMN Cuadrilla
+
+ALTER TABLE OrdenesEstimaciones ADD Cuadrilla CHAR(10) NULL FOREIGN KEY REFERENCES Cuadrillas(ID)
+
+ALTER TABLE dbo.OrdenesEstimaciones
+ADD CONSTRAINT fk_OrdenesEstimacionesID
+FOREIGN KEY (Cuadrilla) 
+REFERENCES dbo.Cuadrillas(ID)

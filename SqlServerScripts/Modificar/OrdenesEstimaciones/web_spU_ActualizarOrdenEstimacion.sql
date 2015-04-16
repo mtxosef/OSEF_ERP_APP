@@ -54,7 +54,7 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 		@FechaFinActividad SMALLDATETIME,
 		@HoraFinActividad DATETIME,
 		@Zona			VARCHAR(80),
-		@Cuadrilla		VARCHAR(200) 
+		@Cuadrilla		CHAR(10) 
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

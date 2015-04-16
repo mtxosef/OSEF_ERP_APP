@@ -145,15 +145,4 @@ var cSucursal_Renderer = function (valor, metaData, registro) {
 //Regresar el nombre del preciario
 var cPreciario_Renderer = function (valor, metaData, registro) {
     return registro.get('RPreciario').Descripcion;
-};
-
-
-//Evento de click del botón Buscar
-var imgbtnBuscar_Click = function () {
-    window.parent.App.wAyudaConcepto.load('FormaBuscaPreciariosActivos.aspx');
-    window.parent.App.wAyudaConcepto.setHeight(350);
-    window.parent.App.wAyudaConcepto.setWidth(980);
-    window.parent.App.wAyudaConcepto.center();
-    window.parent.App.wAyudaConcepto.setTitle('BUSCAR PRECIARIOS ACTIVOS');
-    window.parent.App.wAyudaConcepto.show();
-};
+}; 

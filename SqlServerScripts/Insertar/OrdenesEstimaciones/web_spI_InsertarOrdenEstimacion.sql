@@ -56,7 +56,7 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 		@FechaFinActividad SMALLDATETIME,
 		@HoraFinActividad DATETIME,
 		@Zona			VARCHAR(80),
-		@Cuadrilla		VARCHAR(200) 
+		@Cuadrilla		CHAR(10) 
 	
 AS
 BEGIN
