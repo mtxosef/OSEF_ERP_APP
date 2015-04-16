@@ -40,7 +40,7 @@
             Height="420"
             Width="1000"
            
-            Title="EXPLORADOR CONCEPTOS PRECIARIOS GENERALES"
+            Title="EXPLORADOR ORDENES DE CAMBIO"
             EnableColumnHide="false"
             EnableColumnMove="false"
             Header="true"
@@ -49,10 +49,6 @@
             <TopBar>
                 <ext:Toolbar ID="tbPreciarios" runat="server">
                     <Items>
-
-                   
-                            
-                            
                             <ext:ComboBox
                                 ID="cmbUsuario"
                                 runat="server"
@@ -159,7 +155,7 @@
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="tsExploradorGeneralOrdenesEstimaciones" 
-                        Width="150">
+                        Width="80">
                         
                         </ext:ToolbarSpacer>
 
@@ -167,8 +163,8 @@
                             ID="txtfBuscar"
                             runat="server"
                             AutoFocus="true"
-                            EmptyText="BUSCAR CLAVE/CONCEPTO"
-                            Width="200">
+                            EmptyText="BUSCAR POR ASUNTO"
+                            Width="290">
                             <Listeners>
                                 <Change Fn="txtBuscar_Change" />
                             </Listeners>
@@ -187,31 +183,34 @@
                     </Items>
                 </ext:Toolbar>
             </TopBar>
-   
-            <Store>
-                <ext:Store ID="sPreciarioConcepto" runat="server">
+    
+             <Store>
+                <ext:Store
+                    ID="sOrdenesEstimaciones"
+                    runat="server"
+                   OnReadData="OnReadData_sOrdenesEstimaciones"
+                    >
                     <Model>
-                        <ext:Model ID="mPreciarioConcepto" runat="server">
+                        <ext:Model ID="mOrdenesEstimaciones" runat="server">
                             <Fields>
-
-                                <ext:ModelField Name="ID" Type="Int" />
-                                <ext:ModelField Name="Renglon" Type="Int" />
-                                <ext:ModelField Name="ConceptoID" Type="String" />
-                                <ext:ModelField Name="Cantidad" Type="Float" />
-                                <ext:ModelField Name="Unidad" Type="String"/>
-                                <ext:ModelField Name="Precio" Type="Float"/>
-                                <ext:ModelField Name="Importe" Type="Float" />
-                                <ext:ModelField Name="RMovimiento" Type="Object" />
-                                <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
-
+                                <ext:ModelField Name="Id" Type="Int" />
+                                <ext:ModelField Name="Mov" Type="String" />
+                                <ext:ModelField Name="MovID" Type="String" />
+                                <ext:ModelField Name="Sucursal" Type="String" />
+                                 <ext:ModelField Name="RSucursal" Type="Object" />
+                                <ext:ModelField Name="FechaEmision" Type="Date" />
+                                <ext:ModelField Name="Observaciones" Type="String" />
+                                <ext:ModelField Name="Estatus" Type="String" />
+                                <ext:ModelField Name="Usuario" Type="String" />
+                               
                             </Fields>
                         </ext:Model>
                     </Model>
-                   <%-- <Sorters>
-                        <ext:DataSorter Property="ID" Direction="ASC" />
-                    </Sorters>--%>
+                      <Sorters>
+                        <ext:DataSorter Property="FechaEmision" Direction="DESC" />
+                    </Sorters>
                     <Listeners>
-                        <DataChanged Fn="sExploradorPConcepto_DataChanged" />
+                        <DataChanged Fn="sOrdenesEstimaciones_DataChanged" />
                     </Listeners>
                 </ext:Store>
             </Store>
@@ -219,114 +218,34 @@
             <ColumnModel>
                 <Columns>
                     <ext:Column 
-                        ID="cClave"
-                        runat="server"
-                        Text="CLAVE"
-                        Align="Center"
-                        Width="80"
-                        DataIndex="ConceptoID">
-                         <Renderer Fn="cClave_Renderer" />
-                    </ext:Column>
-                    <ext:Column 
-                        ID="ccConcepto"
-                        runat="server"
-                        Text="CONCEPTO"
-                        Align="Center"
-                        Width="260"
-                        DataIndex="ConceptoID">
-                         <Renderer Fn="cConcepto_Renderer" />
-                    </ext:Column>
-                    <ext:Column
-                        ID="cCantidad"
-                        runat="server"
-                        Text="CANTIDAD"
-                        Align="Center"
-                        Width="90"
-                        DataIndex="Cantidad">
-                         <Renderer Fn="cCantidad_Renderer" />
-                    </ext:Column>
-                   <ext:Column
-                        ID="cUnidad"
-                        runat="server"
-                        Text="UNIDAD"
-                        Align="Center"
-                        Width="90"
-                        DataIndex="Unidad">
-                    </ext:Column>
-                     <ext:Column
-                        ID="ccPrecio"
-                        runat="server"
-                        Text="PRECIO"
-                        Align="Center"
-                        Width="100"
-                        DataIndex="Precio">
-                        <Renderer Fn="txtCosto_renderer" />
-                    </ext:Column>
-                     <ext:Column
-                        ID="cImporte"
-                        runat="server"
-                        Text="IMPORTE"
-                        Align="Center"
-                        Width="100"
-                        DataIndex="Importe">
-                        <Renderer Fn="cImporte_renderer" />
-                    </ext:Column>
-                    <ext:Column
-                        ID="cMov"
+                        ID="cMovimiento"
                         runat="server"
                         Text="MOVIMIENTO"
-                        Align="Left"
-                        Width="150"
-                        DataIndex="ConceptoID">
-                        <Renderer Fn="cMov_renderer" />
-
-                          <HeaderItems>
-                             <ext:TextField
-                                    ID="txtFiltroMovimiento"
-                                    runat="server"
-                                    EmptyText="MOVIMIENTO">
-                                            <Listeners>
-                                                <Change Fn="txtMov_Change" />
-                                            </Listeners>
-                                </ext:TextField>
-                        </HeaderItems>
-
-                       <%-- <HeaderItems>
-                             <ext:ComboBox
-                        ID="cmbPreciario"
-                        runat="server"
-                        EmptyText="MOVIMIENTO"
-                        Margins="0 3 0 0"
-                        Cls="spanCustomCombo xEspacioCmbxCustom"
-                        AllowBlank="false"
-                        ForceSelection="true"
-                        QueryMode="Local"
-                        TypeAhead="true">
-                            <Items>
-                                <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                <ext:ListItem Index="1" Text="Mesa de reporte" Value="Mesa de reporte" />
-                                <ext:ListItem Index="2" Text="Orden de Cambio" Value="Orden de Cambio" />
-                            </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Listeners>
-                                    <Select Fn="cmbMovimientoFiltro_Select" />
+                        Align="Center"
+                        Width="170"
+                        DataIndex="Mov">
+                         <HeaderItems>
+                            <ext:TextField
+                                ID="txtMovID"
+                                runat="server"
+                                EmptyText="Fitrar por MovID"
+                                Editable="false">
+                              <Listeners>
+                                    <Change Fn="txtMovID_Change" />
                                 </Listeners>
-                                                                   
-                    </ext:ComboBox>
-                        </HeaderItems>--%>
+                            </ext:TextField>
+                        </HeaderItems>
+                        <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
-                    <ext:DateColumn
-                        ID="cFechaEmision"
+                     <ext:DateColumn
+                        ID="dcFechaEmision"
                         runat="server"
                         Text="FECHA EMISIÓN"
-                        Align="Left"
-                       Format="dd/MM/yyyy"
+                        Align="Center"
                         Width="120"
-                        DataIndex="ConceptoID">
-                        <Renderer Fn="cFecha_renderer" />
-                         <HeaderItems>
+                        DataIndex="FechaEmision"
+                        Format="dd/MM/yyyy">
+                        <HeaderItems>
                             <ext:ComboBox
                                 ID="cmbFechaRevision"
                                 runat="server">
@@ -363,6 +282,34 @@
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:DateColumn>
+                     <ext:Column
+                        ID="cSucursal"
+                        runat="server"
+                        Text="SUCURSAL"
+                        Align="Center"
+                        Width="220"
+                        DataIndex="Sucursal">
+                      <Renderer Fn="cSucursal_Renderer" />
+                    </ext:Column>
+                    
+                    <ext:Column
+                        ID="cAsunto"
+                        runat="server"
+                        Text="ASUNTO"
+                        Align="Center"
+                        Width="350"
+                        DataIndex="Observaciones">
+                    </ext:Column>
+
+                   <ext:Column
+                        ID="cUsuario"
+                        runat="server"
+                        Text="USUARIO"
+                        Align="Center"
+                        Width="125"
+                        DataIndex="Usuario">
+                    
+                    </ext:Column>
                 </Columns>
             </ColumnModel>
             <Listeners>
@@ -383,7 +330,7 @@
             </SelectionModel>
             <FooterBar>
                 <ext:StatusBar
-                    ID="sbExploradorPreciarioConcepto"
+                    ID="sbOrdenesEstimacion"
                     runat="server"
                     Text=""
                     StatusAlign="Left">

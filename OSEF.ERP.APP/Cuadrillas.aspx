@@ -126,7 +126,7 @@
                     </ext:Model>
                 </Model>
                     <Sorters>
-                        <ext:DataSorter Property="ID" Direction="DESC" />
+                        <ext:DataSorter Property="ID" Direction="ASC" />
                     </Sorters>
                     <Listeners>
                         <DataChanged Fn="sCuadrillas_DataChanged" />

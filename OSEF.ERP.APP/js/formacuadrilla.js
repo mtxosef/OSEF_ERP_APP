@@ -5,20 +5,27 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
 
 var imgbtnGuardar_change = function () {
-    var regex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{10,99}$/
-    var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{10,499}$/
-    if (regex.test(App.txtNombre.getValue()) && desregex.test(App.txtDescripcion.getValue())) { 
+    var regex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,99}$/
+    var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,499}$/
+    if (regex.test(App.txtNombre.getValue()) && desregex.test(App.txtDescripcion.getValue())) {
         App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase());
         App.txtDescripcion.setValue(App.txtDescripcion.getValue().toUpperCase());
         App.imgbtnGuardar.setDisabled(false);
-    } else {
+    }
+
+    else if (App.txtDescripcion.getValue() =='') {
+    
+    
+    }
+    else {
         App.imgbtnGuardar.setDisabled(true);
+        App.sbProveedor.setText('No se permiten caracteres especiales');
     }
 }
 
 //Evento que ocurre al dar clic en imgbtnGuardar
 var imgbtnGuardar_Click_Success = function (response, result) {
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo') {
+    if (Ext.util.Cookies.get('cookieEditarCuadrilla') != 'Nuevo') {
 
         Ext.Msg.show({
             id: 'msgCP',

@@ -90,7 +90,7 @@ namespace OSEF.ERP.APP
             ReportDocument reporte = (ReportDocument)Session["rSeleccion"];
             string namereport = Session["ReportNameOE"].ToString();
             reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
-            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Vista Preliminar");
+            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, namereport);
 
         }
         //Metodo que exporta a un documento de excel
@@ -100,7 +100,7 @@ namespace OSEF.ERP.APP
             ReportDocument reporte = (ReportDocument)Session["rSeleccion"];
             string namereport = Session["ReportNameOE"].ToString();
             reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
-            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Vista Preliminar");
+            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, namereport);
 
         }
     }

@@ -1022,7 +1022,7 @@
                                             <ext:ComboBox
                                             ID="txtCuadrilla"
                                             runat="server"
-                                            DisplayField="ID"
+                                            DisplayField="Nombre"
                                             ValueField="ID"
                                             Width="200"
                                             MatchFieldWidth="false"
@@ -1060,17 +1060,9 @@
                                                 </ext:Store>
                                             </Store>
                                             <Listeners>
-                                                <Select Fn="cmbCuadrilla_Select" />
                                                 <Change Fn="cmbCuadrilla_Change" />
                                             </Listeners>
                                         </ext:ComboBox>
-                                        <ext:TextField
-                                            ID="txtfCuadrillaNombre"
-                                            runat="server"
-                                            Width="360"
-                                            Margins="0 3 0 0"
-                                            Disabled="true">
-                                        </ext:TextField>
                                     </Items>
                                 </ext:FieldContainer> 
                             </Items>

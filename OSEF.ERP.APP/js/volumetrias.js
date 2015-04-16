@@ -14,7 +14,7 @@ var imgbtnFormaNuevo_Click = function () {
     App.imgbtnCancelar.setDisabled(true);
 
     //Limpiar campos
-    App.cmbPreciario.clearValue();
+    App.cmbPreciario.setValue('');
     App.txtfMovID.setValue('');
     App.txtfDescripcionPreciario.setValue('');
     App.txtfIDSucursal.setValue('');
@@ -73,7 +73,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         App.gpVolumetriaDetalle.reconfigure();
 
 
-        console.log(App.ccFotos.commands[0]);
+       // console.log(App.ccFotos.commands[0]);
         //console.log(App.ccFotos.cache.length);
         //console.log(App.ccFotos.cache);
         //console.log(App.ccFotos.getMenuItems());
@@ -91,7 +91,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
     }
 };
 
-//Para el botón de eliminar de la forma, Eliminar un registro 
+//Para el botón de eliminar de la forma, Eliminar un registro
 var imgbtnBorrar_Click_Success = function (response, result) {
     Ext.Msg.show({
         id: 'msgVolumetrias',
@@ -111,7 +111,7 @@ var imgbtnBorrar_Click_Success = function (response, result) {
     App.cmbMov.setReadOnly(false);
     App.txtfMovID.setValue(null);
 
-    App.cmbPreciario.clearValue();
+    App.cmbPreciario.setValue('');
     App.cmbPreciario.setDisabled(false);
     App.txtfDescripcionPreciario.setValue(null);
 
@@ -126,7 +126,11 @@ var imgbtnBorrar_Click_Success = function (response, result) {
 
     //Borrar el GridPanel del Detalle y Encabezado
     App.sConceptos.removeAll();
-    App.sPreciarioConcepto.removeAll();
+
+    if (App.sPreciarioConcepto != undefined) {
+        App.sPreciarioConcepto.removeAll();
+    }
+
     App.sVolumetria.removeAll();
     Ext.util.Cookies.set('cookieEditarVolumetria', 'Nuevo');
     window.parent.App.wEmergente.setTitle('Nueva Volumetría');
@@ -155,53 +159,54 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     window.parent.App.wEmergente.setTitle('Volumetría Cancelada');
 };
 
-//Evento que se lanza al seleccionar algun valor de la sucursal
-var cmbPreciario_Select = function (combobox, registro) {
-    App.txtfDescripcionPreciario.setValue(registro[0].data.Descripcion);
+////Evento que se lanza al seleccionar algun valor de la sucursal
+//var cmbPreciario_Select = function (combobox, registro) {
+//    App.txtfDescripcionPreciario.setValue(registro[0].data.Descripcion);
 
-    if (App.sPreciario.getAt(0) != undefined) {
-        App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
-        App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
-    }
+//    if (App.sPreciario.getAt(0) != undefined) {
+//        App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
+//        App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
+//    }
 
-    //Valida qué movimiento es 
-    if (App.cmbMov.getValue() == 'Fin') {
-        //Valida si se habilita el boton de afectar cuando el movimiento es Fin       
-    }
+//    //Valida qué movimiento es 
+//    if (App.cmbMov.getValue() == 'Fin') {
+//        //Valida si se habilita el boton de afectar cuando el movimiento es Fin       
+//    }
 
-    if (App.cmbMov.getValue() == 'Captura') {
-        //Validar si se habilita el boton de afectar
-        HabilitarAfectar();
-    }
+//    if (App.cmbMov.getValue() == 'Captura') {
+//        //Validar si se habilita el boton de afectar
+//        HabilitarAfectar();
+//    }
 
-    //Validar si se habilita Guardar
-    HabilitarGuardar();
-    //Validar si se asigna el primer renglon del detalle
-    PrimerRenglonDetalle();
-    //Asiganmos la cookie
-    Ext.util.Cookies.set('cookiePreciarioBusqueda', combobox.getValue());
-};
+//    //Validar si se habilita Guardar
+//    HabilitarGuardar();
+//    //Validar si se asigna el primer renglon del detalle
+//    PrimerRenglonDetalle();
+//    //Asiganmos la cookie
+//    Ext.util.Cookies.set('cookiePreciarioBusqueda', combobox.getValue());
+//};
 
 //Evento que se lanza al poner algun caracter en el control de la Sucursal
 var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
-    App.sPreciario.clearFilter();
 
-    if (App.cmbPreciario.getValue() != null) {
-        App.sPreciario.filter([{ filterFn: function (item) {
-            if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Descripcion').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
-            else { return false; }
-        }
-        }]);
-    }
-    else {
-        App.txtfDescripcionPreciario.setValue('');
-    }
+    //    App.sPreciario.clearFilter();
 
-   
-    if (App.sPreciario.getAt(0) != undefined) {
-        App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
-        App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
-    }
+    //    if (App.cmbPreciario.getValue() != null) {
+    //        App.sPreciario.filter([{ filterFn: function (item) {
+    //            if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Descripcion').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
+    //            else { return false; }
+    //        }
+    //        }]);
+    //    }
+    //    else {
+    //        App.txtfDescripcionPreciario.setValue('');
+    //    }
+
+
+    //    if (App.sPreciario.getAt(0) != undefined) {
+    //        App.txtfSucursalNombre.setValue(App.sPreciario.getAt(0).get('RSucursal').Nombre);
+    //        App.txtfIDSucursal.setValue(App.sPreciario.getAt(0).get('RSucursal').ID);
+    //    }
     //Valida qué movimiento es 
     if (App.cmbMov.getValue() == 'Fin') {
         //Valida si se habilita el boton de afectar cuando el movimiento es Fin
@@ -218,7 +223,8 @@ var cmbPreciario_Change = function (combobox, valorNuevo, viejoValor) {
     //Validar si se asigna el primer renglon del detalle
     PrimerRenglonDetalle();
     //Asiganmos la cookie
-    Ext.util.Cookies.set('cookiePreciarioBusqueda', combobox.getValue());
+
+    Ext.util.Cookies.set('cookiePreciarioBusqueda', valorNuevo);
 };
 
 //Se lanza por cada elemento agregado al Store de Movimientos
@@ -258,25 +264,25 @@ var cmbMov_Select = function (combobox, registro) {
     HabilitarGuardar();
 };
 
-//Para el botón de eliminar, Eliminar un registro
-var cmbPreciario_Change_Success = function (response, result) {
-    if (result.extraParamsResponse.existe) {
-        Ext.Msg.show({
-            id: 'msgVolumetrias',
-            title: 'Advertencia Volumetria',
-            msg: 'El preciario que seleccionaste ya está concluido ',
-            buttons: Ext.MessageBox.OK,
-            onEsc: Ext.emptyFn,
-            closable: false,
-            icon: Ext.MessageBox.WARNING
-        });
+////Para el botón de eliminar, Eliminar un registro
+//var cmbPreciario_Change_Success = function (response, result) {
+//    if (result.extraParamsResponse.existe) {
+//        Ext.Msg.show({
+//            id: 'msgVolumetrias',
+//            title: 'Advertencia Volumetria',
+//            msg: 'El preciario que seleccionaste ya está concluido ',
+//            buttons: Ext.MessageBox.OK,
+//            onEsc: Ext.emptyFn,
+//            closable: false,
+//            icon: Ext.MessageBox.WARNING
+//        });
 
-        App.cmbPreciario.clearValue();
-        App.txtfDescripcionPreciario.setValue("");
-    }
-    else {
-    }
-};
+//        App.cmbPreciario.clearValue();
+//        App.txtfDescripcionPreciario.setValue("");
+//    }
+//    else {
+//    }
+//};
 
 //Evento lanzado al cargar el store de avance encabezado
 var sVolumetria_Load = function () {
@@ -551,9 +557,13 @@ var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
     window.parent.App.wAyudaConcepto.show();
     //Asigno el indicie del renglon
     Ext.util.Cookies.set('cookieRenglonVolumetriaD', fila);
-
+    console.log(App.sVolumetria.getCount());
     //Asignamos el id del preciario
-    Ext.util.Cookies.set('cookiePreciarioBusqueda', App.sVolumetria.getAt(0).get('Preciario'));
+
+    if (App.sVolumetria.getCount() != 0) {
+       Ext.util.Cookies.set('cookiePreciarioBusqueda', App.sVolumetria.getAt(0).get('Preciario'));
+    }
+ 
 };
 
 //Darle formato a la columna de Cantidad
@@ -898,9 +908,9 @@ var imgBtnPreciarioPrueba_Click_Success = function (response, result) {
 //Evento de click del botón Buscar
 var imgbtnBuscar_Click = function () {
     window.parent.App.wAyudaConcepto.load('FormaBuscaPreciariosActivos.aspx');
-    window.parent.App.wAyudaConcepto.setHeight(320);
-    window.parent.App.wAyudaConcepto.setWidth(980);
+    window.parent.App.wAyudaConcepto.setHeight(340);
+    window.parent.App.wAyudaConcepto.setWidth(660);
     window.parent.App.wAyudaConcepto.center();
-    window.parent.App.wAyudaConcepto.setTitle('BUSCAR PRECIARIOS ACTIVOS');
+    window.parent.App.wAyudaConcepto.setTitle('Seleccionar preciarios');
     window.parent.App.wAyudaConcepto.show();
 };

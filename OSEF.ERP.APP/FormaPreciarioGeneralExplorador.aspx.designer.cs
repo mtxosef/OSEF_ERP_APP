@@ -31,24 +31,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ResourceManager rmFormaPreciarioExplorador;
         
         /// <summary>
-        /// Control sPreciarioConceptoForma.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sPreciarioConceptoForma;
-        
-        /// <summary>
-        /// Control mPreciarioConceptoForma.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mPreciarioConceptoForma;
-        
-        /// <summary>
         /// Control fpEspecificarParametros.
         /// </summary>
         /// <remarks>
@@ -56,87 +38,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.FormPanel fpEspecificarParametros;
-        
-        /// <summary>
-        /// Control fcPreciario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcPreciario;
-        
-        /// <summary>
-        /// Control txtPreciario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtPreciario;
-        
-        /// <summary>
-        /// Control txtClave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtClave;
-        
-        /// <summary>
-        /// Control fcDatos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcDatos;
-        
-        /// <summary>
-        /// Control txtCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCantidad;
-        
-        /// <summary>
-        /// Control fcContenedorCantidades.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcContenedorCantidades;
-        
-        /// <summary>
-        /// Control txtPrecioInicial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtPrecioInicial;
-        
-        /// <summary>
-        /// Control txtImporte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtImporte;
-        
-        /// <summary>
-        /// Control txtConceptoID.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtConceptoID;
         
         /// <summary>
         /// Control fcFirmas.
@@ -173,24 +74,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtAutorizo;
-        
-        /// <summary>
-        /// Control fcConcepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcConcepto;
-        
-        /// <summary>
-        /// Control txtADescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextArea txtADescripcion;
         
         /// <summary>
         /// Control fcReportes.

@@ -18,7 +18,7 @@ namespace OSEF.ERP.APP
         }
         protected void getPreciarios()
         {
-            List<Preciario> lPreciarios = PreciarioBusiness.ObtenerPreciarios();
+            List<Preciario> lPreciarios = PreciarioBusiness.ObtenerPreciariosActivos();
             sPreciarios.DataSource = lPreciarios;
             sPreciarios.DataBind();
         }

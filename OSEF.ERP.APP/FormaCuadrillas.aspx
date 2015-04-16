@@ -46,7 +46,7 @@
                     <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="Nombre" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
-                            <ext:TextField ID="txtNombre" runat="server" Width="530" Margins="0 3 0 0" Disabled="false"
+                            <ext:TextField ID="txtNombre" runat="server" Width="530" Margins="0 3 0 0" Disabled="false" AllowBlank="false"
                                 EmptyText="Escriba nombre para la cuadrilla" MaxLength="99">  
                                 <Listeners>
                                     <Blur Fn="imgbtnGuardar_change" />
@@ -58,7 +58,7 @@
                     <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="Integrantes"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items>
-                            <ext:TextArea ID="txtDescripcion" runat="server" Height="100" Width="530" Margins="0 3 0 0" Disabled="false"
+                            <ext:TextArea ID="txtDescripcion" runat="server" Height="100" Width="530" Margins="0 3 0 0" Disabled="false" AllowBlank="false"
                                 EmptyText="Escriba los nombres de los intregantes separados por coma. Ej: Pedro, Pedrito, etc. " MaxLength="499"> 
                                 <Listeners>
                                     <Blur Fn="imgbtnGuardar_change" />
@@ -76,7 +76,6 @@
                                 <Click OnEvent="imgbtnGuardar_Click" Success="imgbtnGuardar_Click_Success">
                                     <EventMask ShowMask="true" Msg="Registrando información..." />
                                     <ExtraParams>
-                                        <ext:Parameter Name="edad" Value="App.txtID.getValue()" Mode="Raw" />
                                             <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))"
                                             Mode="Raw" />
                                     </ExtraParams>

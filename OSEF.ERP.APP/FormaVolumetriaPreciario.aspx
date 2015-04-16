@@ -422,15 +422,34 @@
                                                 </Select>
                                             </DirectEvents>
                                         </ext:ComboBox>--%> 
-                                        <ext:TextField ID="cmbPreciario" runat="server" Width="200" StyleSpec="margin-right: 6px;"
-                                                    MaxLength="50" EnforceMaxLength="true" AllowBlank="false" ReadOnly="true"> 
+                                        <ext:TextField 
+                                        ID="cmbPreciario" 
+                                        runat="server" 
+                                        Width="200" 
+                                        StyleSpec="margin-right: 6px;"
+                                        AllowBlank="false" 
+                                        ReadOnly="true"> 
                                                     <RightButtons>
-                                                        <ext:Button ID="Button1" runat="server" Icon="Find" StandOut="true">
+                                                        <ext:Button 
+                                                        ID="Button1" 
+                                                        runat="server" 
+                                                        Icon="Find" 
+                                                        StandOut="true">
                                                             <Listeners>
                                                                 <Click Fn="imgbtnBuscar_Click" />
                                                             </Listeners>
                                                         </ext:Button>
                                                     </RightButtons>  
+                                                    <Listeners>  
+                                                     <Change Fn="cmbPreciario_Change" />
+                                                     </Listeners>  
+                                                     <DirectEvents>
+                                                        <Change OnEvent="cmbPreciarios_Change"  >
+                                                            <ExtraParams>
+                                                            <ext:Parameter Name="valor" Value="App.cmbPreciario.getValue()" Mode="Raw" />
+                                                            </ExtraParams>
+                                                        </Change>
+                                                     </DirectEvents>
                                                     </ext:TextField> 
                                         <ext:TextField
                                             ID="txtfDescripcionPreciario"

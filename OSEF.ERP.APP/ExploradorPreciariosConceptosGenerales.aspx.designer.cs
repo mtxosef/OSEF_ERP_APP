@@ -139,103 +139,49 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ImageButton imgbtnBuscar;
         
         /// <summary>
-        /// Control sPreciarioConcepto.
+        /// Control sOrdenesEstimaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sPreciarioConcepto;
+        protected global::Ext.Net.Store sOrdenesEstimaciones;
         
         /// <summary>
-        /// Control mPreciarioConcepto.
+        /// Control mOrdenesEstimaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mPreciarioConcepto;
+        protected global::Ext.Net.Model mOrdenesEstimaciones;
         
         /// <summary>
-        /// Control cClave.
+        /// Control cMovimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cClave;
+        protected global::Ext.Net.Column cMovimiento;
         
         /// <summary>
-        /// Control ccConcepto.
+        /// Control txtMovID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column ccConcepto;
+        protected global::Ext.Net.TextField txtMovID;
         
         /// <summary>
-        /// Control cCantidad.
+        /// Control dcFechaEmision.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cCantidad;
-        
-        /// <summary>
-        /// Control cUnidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cUnidad;
-        
-        /// <summary>
-        /// Control ccPrecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column ccPrecio;
-        
-        /// <summary>
-        /// Control cImporte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cImporte;
-        
-        /// <summary>
-        /// Control cMov.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cMov;
-        
-        /// <summary>
-        /// Control txtFiltroMovimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtFiltroMovimiento;
-        
-        /// <summary>
-        /// Control cFechaEmision.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.DateColumn cFechaEmision;
+        protected global::Ext.Net.DateColumn dcFechaEmision;
         
         /// <summary>
         /// Control cmbFechaRevision.
@@ -245,6 +191,33 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbFechaRevision;
+        
+        /// <summary>
+        /// Control cSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cSucursal;
+        
+        /// <summary>
+        /// Control cAsunto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cAsunto;
+        
+        /// <summary>
+        /// Control cUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cUsuario;
         
         /// <summary>
         /// Control gvExploradorPreciarioConcepto.
@@ -265,12 +238,12 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.RowSelectionModel rsmExploradorPreciarioConcepto;
         
         /// <summary>
-        /// Control sbExploradorPreciarioConcepto.
+        /// Control sbOrdenesEstimacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar sbExploradorPreciarioConcepto;
+        protected global::Ext.Net.StatusBar sbOrdenesEstimacion;
     }
 }

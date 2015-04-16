@@ -35,7 +35,7 @@ var sFormaGenerador_Load = function () {
         App.txtDescripcionCorta.setDisabled(true);
     }
 
-    else if (App.sFormaGenerador.getCount() < 19) {  {
+    else if (App.sFormaGenerador.getCount() < 19) {  
         App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
        
     }

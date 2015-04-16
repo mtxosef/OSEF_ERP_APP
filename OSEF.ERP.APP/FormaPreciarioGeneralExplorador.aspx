@@ -33,130 +33,18 @@
     <form id="form1" runat="server">
      <ext:ResourceManager ID="rmFormaPreciarioExplorador" runat="server" />
 
-       <ext:Store
-            ID="sPreciarioConceptoForma"
-            runat="server">
-            <Model>
-                <ext:Model
-                    ID="mPreciarioConceptoForma"
-                    runat="server">
-                    <Fields>
-                    <ext:ModelField Name="ID" Type="String" />
-                    <ext:ModelField Name="Clave" Type="String" />
-                    <ext:ModelField Name="Descripcion" Type="String" />
-                    <ext:ModelField Name="Unidad" Type="String" />
-                    <ext:ModelField Name="Preciario" Type="String" />
-                    <ext:ModelField Name="Cantidad" Type="Float" />
-                    <ext:ModelField Name="Costo" Type="Float" />
-                    <ext:ModelField Name="Importe" Type="Float" />
-                    <ext:ModelField Name="Categoria" Type="String" />
-                    <ext:ModelField Name="SubCategoria" Type="String" />
-                    <ext:ModelField Name="SubSubCategoria" Type="String" />
-                    <ext:ModelField Name="FechaAlta" Type="Date" />
-                    <ext:ModelField Name="Estatus" Type="String" />
-                    </Fields>
-                </ext:Model>                            
-            </Model>
-        <Listeners>
-                <Load Fn="sParametrosExporador_Load" />
-            </Listeners>
-        </ext:Store>
-
+       
 
         <ext:FormPanel 
         ID="fpEspecificarParametros" 
         runat="server"
         Width="580"
         DefaultButton="imgbtnGuardar"
-        Height="440"
+        Height="200"
         BodyPadding="10"
         DefaultAnchor="100%">
         <Items>
-             <ext:FieldContainer
-                ID="fcPreciario"
-                runat="server"
-                FieldLabel="Movimiento"
-                AnchorHorizontal="100%"
-                LabelWidth="120"
-                Layout="HBoxLayout">
-                <Items>
-                      <ext:TextField
-                        ID="txtPreciario"
-                        runat="server"
-                        Width="140"
-                        Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                    </ext:TextField>
-                   <ext:TextField
-                        ID="txtClave"
-                        runat="server"
-                        FieldLabel="Clave Concepto"
-                        LabelWidth="138"
-                        Width="285"
-                        Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                    </ext:TextField>
-                </Items>
-            </ext:FieldContainer>
-            <ext:FieldContainer
-                ID="fcDatos"
-                runat="server"
-                FieldLabel="Cantidad"
-                AnchorHorizontal="100%"
-                LabelWidth="120"
-                Layout="HBoxLayout">
-                <Items>
-                      <ext:TextField
-                        ID="txtCantidad"
-                        runat="server"
-                        Width="140"
-                          Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                    </ext:TextField>
-                    
-                </Items>
-            </ext:FieldContainer>
-             <ext:FieldContainer
-                ID="fcContenedorCantidades"
-                runat="server"
-                FieldLabel="Precio"
-                AnchorHorizontal="100%"
-                LabelWidth="120"
-                Layout="HBoxLayout">
-                <Items>
-                      <ext:TextField
-                        ID="txtPrecioInicial"
-                        runat="server"
-                        Width="140"
-                        Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                    </ext:TextField>
-                    <ext:TextField
-                        ID="txtImporte"
-                        runat="server"
-                        FieldLabel="Importe"
-                        LabelWidth="138"
-                        Width="285"
-                        Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                    </ext:TextField>
-
-
-                    <ext:TextField
-                        ID="txtConceptoID"
-                        runat="server"
-                        Hidden="true"
-                        Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                    </ext:TextField>
-                </Items>
-            </ext:FieldContainer>
+             
              <ext:FieldContainer
                 ID="fcFirmas"
                 runat="server"
@@ -200,26 +88,7 @@
                             </Listeners>
                     </ext:TextField>
                 </Items>
-            </ext:FieldContainer>
-             <ext:FieldContainer
-                ID="fcConcepto"
-                runat="server"
-                FieldLabel="Descripción"
-                AnchorHorizontal="100%"
-                LabelWidth="120"
-                Layout="HBoxLayout">
-                <Items>
-                      <ext:TextArea
-                        ID="txtADescripcion"
-                        runat="server"
-                        Width="426"
-                        Height="140"
-                        Cls="xDeshabilitados"
-                        Margins="0 3 0 0"
-                        Disabled="true">
-                    </ext:TextArea>
-                </Items>
-            </ext:FieldContainer>     
+            </ext:FieldContainer>    
 
              <ext:FieldContainer
                 ID="fcReportes"
@@ -269,7 +138,7 @@
         </Items>
             <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
-                                                text : valid ? 'La información esta completa/correcta' : 'Especifica el personal que firmará el documento/Selecciona un reporte', 
+                                                text : valid ? 'La información esta completa/correcta' : 'Completa todos los campos para imprimir reporte', 
                                                 iconCls: valid ? 'icon-accept' : 'icon-exclamation'
                                             });
                                             #{imgbtnGuardar}.setDisabled(!valid);" />
@@ -278,7 +147,7 @@
                 <ext:StatusBar ID="sbParametros1" 
                 runat="server"
                 Cls="x-colorToolbar" 
-                Text="" />
+                Text="Completa todos los campos para imprimir reporte" />
             </BottomBar>
         <Buttons>
                 <ext:ImageButton
@@ -296,7 +165,6 @@
                         <Click OnEvent="imgbtnExportar_Click" Success="window.open('PreviaOrdenEstimacion.aspx', '_blank');">
                             <EventMask ShowMask="true" Msg="Cargando Reporte..." />
                              <ExtraParams>
-                                <ext:Parameter Name="conceptoID" Value="App.txtConceptoID.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="elaboro" Value="App.txtElaboro.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="reviso" Value="App.txtReviso.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="autorizo" Value="App.txtAutorizo.getValue()" Mode="Raw" />

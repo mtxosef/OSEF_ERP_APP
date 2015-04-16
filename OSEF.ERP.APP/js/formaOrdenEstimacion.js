@@ -1597,11 +1597,7 @@ function PrimerRenglonDetalle() {
 
 
 
-    //Evento que se lanza al seleccionar algun valor de la Cuadrilla
-    var cmbCuadrilla_Select = function (combobox, registro) {
-        console.log(registro);
-        App.txtfCuadrillaNombre.setValue(registro[0].data.Nombre);
-    };
+   
 
     //Evento que se lanza al poner algun caracter en el control de la Cuadrilla
     var cmbCuadrilla_Change = function (combobox, valorNuevo, viejoValor) {
@@ -1613,7 +1609,5 @@ function PrimerRenglonDetalle() {
             }
             }]);
         }
-        else {
-            App.txtfCuadrillaNombre.setValue('');
-        } 
+       
     };

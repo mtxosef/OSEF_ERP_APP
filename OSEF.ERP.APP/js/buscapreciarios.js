@@ -1,34 +1,6 @@
 ﻿var indice = 0;
 var store;
 
-//Evento de clic del botón Nuevo
-var imgbtnNuevo_Click = function () {
-    window.parent.App.wEmergente.load('FormaPreciario.aspx');
-    Ext.util.Cookies.set('cookieEditarPreciario', 'Nuevo');
-    window.parent.App.wEmergente.setHeight(580);
-    window.parent.App.wEmergente.setWidth(930);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Nuevo Preciario');
-    window.parent.App.wEmergente.show();
-};
-
-//Evento de click del botón Editar
-var imgbtnEditar_Click = function () {
-    window.parent.App.wEmergente.load('FormaPreciario.aspx');
-    Ext.util.Cookies.set('cookieEditarPreciario', App.gpPreciarios.getSelectionModel().getSelection()[0].get('ID'));
-    window.parent.App.wEmergente.setHeight(580);
-    window.parent.App.wEmergente.setWidth(930);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Editar Preciario ' + Ext.util.Cookies.get('cookieEditarPreciario'));
-    window.parent.App.wEmergente.show();
-};
-
-//Evento que ocurre al dar clic en imgbtnGuardar
-var imgbtnGuardar_Click_Success = function () {
-    window.parent.App.wEmergente.hide();
-    window.parent.App.pCentro.getBody().App.sPreciarios.reload();
-    App.sbFormaPreciario.setText('ACTIVO');
-};
 
 //Cambio en los datos del tablero
 var sPreciarios_DataChanged = function () {
@@ -67,13 +39,13 @@ var cSucursal_Renderer = function (valor, columna, registro) {
 
 //Acciones al hacer clic en un registro
 var gpPreciarios_ItemClick = function (gridview, registro, gvhtml, index) {
-    alert(index);
+
     indice = index;
 };
 
 //Hacer doble clic sobre algun concepto del GridPanel
 var gpPreciarioActivo_ItemDblClick = function (gridview, registro, gvhtml, index) {
-    console.log(registro);
+
     var prt = window.parent.App.wEmergente.getBody();
     prt.App.cmbPreciario.setValue(App.sPreciarios.getAt(index).get('ID'));
     prt.App.txtfDescripcionPreciario.setValue(App.sPreciarios.getAt(index).get('Descripcion'));

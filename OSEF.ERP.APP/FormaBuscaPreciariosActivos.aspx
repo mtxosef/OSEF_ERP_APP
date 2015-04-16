@@ -32,8 +32,8 @@
         <ext:GridPanel
             ID="gpPreciarios"
             runat="server"
-            Height="285"
-            Width="955"
+            Height="290"
+            Width="640"
             Title="PRECIARIOS"
             EnableColumnHide="false"
             EnableColumnMove="false"
@@ -43,7 +43,7 @@
             <TopBar>
                 <ext:Toolbar ID="tbPreciarios" runat="server">
                     <Items>  
-                        <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="645">
+                        <ext:ToolbarSpacer ID="tbsPreciarios" runat="server" Width="350">
                         </ext:ToolbarSpacer>  
                         <ext:ImageButton
                             ID="imgbtnActualizar"
@@ -114,7 +114,7 @@
                         runat="server"
                         Text="ID"
                         Align="Center"
-                        Width="120"
+                        Width="90"
                         DataIndex="ID">
                     </ext:Column> 
                     <ext:Column
@@ -122,7 +122,7 @@
                         runat="server"
                         Text="NOMBRE"
                         Align="Center"
-                        Width="260"
+                        Width="265"
                         DataIndex="Descripcion">
                     </ext:Column>
                     <ext:Column
@@ -130,19 +130,12 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Left"
-                        Width="280" 
+                        Width="265" 
                         DataIndex="RSucursal">
                          
                         <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
-                    <ext:Column
-                        ID="cEstatus"
-                        runat="server"
-                        Text="ESTATUS"
-                        Align="Left"
-                        Width="280"
-                        DataIndex="Estatus"> 
-                    </ext:Column>
+                  
                 </Columns>
             </ColumnModel>
              <Listeners>

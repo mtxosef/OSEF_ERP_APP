@@ -82,7 +82,7 @@ var gpCuadrillas_Select = function (gridview, registro, index, gvhtml) {
             App.sbCuadrillas.setText(App.sCuadrillas.getCount() + ' CUADRILLAS');
         }
         else {
-            App.sbCuadrillas.setText(App.sCuadrillas.getCount() + ' CUADRILLAS');
+            App.sbCuadrillas.setText(App.sCuadrillas.getCount() + ' CUADRILLA');
         }
     }; 
     //Hacer la busqueda de información

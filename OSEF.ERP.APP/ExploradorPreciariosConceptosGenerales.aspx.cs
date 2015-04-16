@@ -23,8 +23,8 @@ namespace OSEF.ERP.APP
        
                 rmExploradorConceptosPreciario.RegisterIcon(Icon.Delete);
 
-                sPreciarioConcepto.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDExploradorConcluidos();
-                sPreciarioConcepto.DataBind();
+                sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimacionesConcluidos();
+                sOrdenesEstimaciones.DataBind();
 
                 sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
                 sSucursales.DataBind();
@@ -35,6 +35,17 @@ namespace OSEF.ERP.APP
             }
 
          
+        }
+
+        /// <summary>
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sOrdenesEstimaciones(object sender, StoreReadDataEventArgs e)
+        {
+            sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimacionesConcluidos();
+            sOrdenesEstimaciones.DataBind();
         }
 
 

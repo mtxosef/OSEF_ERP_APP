@@ -382,6 +382,7 @@
 -- OrdenesEstimaciones (Consultar)
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimaciones.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimacionesConcluidos.sql
 -- OrdenesEstimaciones (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimaciones\web_spI_InsertarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Modificar)

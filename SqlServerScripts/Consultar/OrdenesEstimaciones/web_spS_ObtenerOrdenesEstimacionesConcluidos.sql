@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerPreciariosActivos' AND
+			WHERE  name = 'web_spS_ObtenerOrdenesEstimacionesConcluidos' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerPreciariosActivos
+	DROP PROCEDURE web_spS_ObtenerOrdenesEstimacionesConcluidos
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Martes 16 de Diciembre de 2014
--- Description:	Obtener todos los registros de Articulos
+-- Create date: Viernes 05 de Diciembre de 2014
+-- Description:	Obtener todos los registros de Revisiones
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerPreciariosActivos
+CREATE PROCEDURE web_spS_ObtenerOrdenesEstimacionesConcluidos
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -38,15 +38,37 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT
 		ID,
-		Descripcion,
-		Sucursal, ()
-		FechaAlta,
-		Archivo,
+		Mov,
+		MovID,
+		Sucursal,
+		FechaEmision,
+		Observaciones,
+		Estatus,
 		Usuario,
-		Estatus
+		Origen,
+		OrigenID,
+		Reporte,
+		Division,
+		FechaOrigen,
+		FechaMaximaAtencion,
+		DiasAtencion,
+		Reporto,
+		TrabajoRequerido,
+		Atiende,
+		TrabajoRealizado,
+		CodigoFalla,
+		TieneFotos,
+		TieneReporte,
+		FechaLlegada,
+		HoraLlegada,
+		FechaFinActividad,
+		HoraFinActividad,
+		Zona,
+		Cuadrilla
+		
 	FROM
-		Preciarios
+		OrdenesEstimaciones
 	WHERE 
-		Estatus='ACTIVO'
+		Estatus = 'CONCLUIDO'
 END
 GO

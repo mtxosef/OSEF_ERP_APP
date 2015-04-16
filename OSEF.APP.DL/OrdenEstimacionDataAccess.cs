@@ -660,6 +660,46 @@ namespace OSEF.APP.DL
             }
         }
 
+
+        /// <summary>
+        /// Obtener todos los registros de OrdenesEstimaciones
+        /// </summary>
+        /// <returns></returns>
+        public static List<OrdenEstimacion> ObtenerOrdenesEstimacionesConcluidos()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerOrdenesEstimacionesConcluidos";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<OrdenEstimacion> result = LibraryGenerics<OrdenEstimacion>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<OrdenEstimacion> ObtenerOrdenesEstimacionesConcluidos()): " + ex.Message);
+            }
+        }
         /// <summary>
         /// Obtener un registro de OrdenEstimacion por su ID
         /// </summary>
@@ -705,6 +745,9 @@ namespace OSEF.APP.DL
                 throw new Exception("Error capa de datos (public static OrdenEstimacion ObtenerOrdenEstimacionaPorID(int " + iID + ")): " + ex.Message);
             }
         }
+
+
+      
         #endregion
 
         #region Acciones
