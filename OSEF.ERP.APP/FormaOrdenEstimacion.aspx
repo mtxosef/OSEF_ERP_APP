@@ -1019,38 +1019,60 @@
                                                         <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                                                     </Listeners>
                                                 </ext:TextField>--%>
-
-                            <ext:ComboBox 
-                            ID="txtCuadrilla" 
-                            runat="server" 
-                            AllowBlank="false" 
-                            Width="200" 
-                            Editable="true"
-                            ValueField="ID" 
-                            DisplayField="Descripcion" 
-                            MatchFieldWidth="true" 
-                            ForceSelection="true"
-                            EmptyText="Cuadrilla" 
-                            QueryMode="Local" 
-                            TypeAhead="true">
-                            <Store>
-                                <ext:Store ID="sCuadrillas" runat="server">
-                                    <Model>
-                                        <ext:Model ID="mCuadrillas" runat="server" IDProperty="ID">
-                                            <Fields>
-                                                <ext:ModelField Name="ID" Type="String" />
-                                                <ext:ModelField Name="Descripcion" Type="String" />
-                                            </Fields>
-                                        </ext:Model>
-                                    </Model>
-                                    <Sorters>
-                                        <ext:DataSorter Property="Descripcion" Direction="ASC" />
-                                    </Sorters>
-                                </ext:Store>
-                            </Store> 
-                        </ext:ComboBox> 
-                                           </Items>
-                                        </ext:FieldContainer> 
+                                            <ext:ComboBox
+                                            ID="txtCuadrilla"
+                                            runat="server"
+                                            DisplayField="ID"
+                                            ValueField="ID"
+                                            Width="200"
+                                            MatchFieldWidth="false"
+                                            Margins="0 3 0 0"
+                                            Cls="spanCustomCombo xEspacioCmbxCustom"
+                                            PageSize="10"
+                                            AllowBlank="false"
+                                            ForceSelection="true"
+                                            QueryMode="Local"
+                                            TypeAhead="true">
+                                            <ListConfig ID="lcCuadrilla" runat="server" Width="350" Cls="xEspacioCmbxCustom">
+                                                <ItemTpl ID="itCuadrilla" runat="server">
+                                                    <Html>
+                                                        <div class="search-item">
+							                                <h3>{ID}</h3>
+                                                            <span>{Nombre}</span>
+						                                </div>
+                                                    </Html>
+                                                </ItemTpl>
+                                            </ListConfig>
+                                            <Store>
+                                                <ext:Store
+                                                    ID="sCuadrillas"
+                                                    runat="server">
+                                                    <Model>
+                                                        <ext:Model
+                                                            ID="mCuadrillas"
+                                                            runat="server">
+                                                            <Fields>
+                                                                <ext:ModelField Name="ID" />
+                                                                <ext:ModelField Name="Nombre" />
+                                                            </Fields>
+                                                        </ext:Model>                            
+                                                    </Model>
+                                                </ext:Store>
+                                            </Store>
+                                            <Listeners>
+                                                <Select Fn="cmbCuadrilla_Select" />
+                                                <Change Fn="cmbCuadrilla_Change" />
+                                            </Listeners>
+                                        </ext:ComboBox>
+                                        <ext:TextField
+                                            ID="txtfCuadrillaNombre"
+                                            runat="server"
+                                            Width="360"
+                                            Margins="0 3 0 0"
+                                            Disabled="true">
+                                        </ext:TextField>
+                                    </Items>
+                                </ext:FieldContainer> 
                             </Items>
                         </ext:FieldSet>
                     </Items>

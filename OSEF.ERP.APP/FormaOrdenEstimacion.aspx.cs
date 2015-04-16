@@ -20,8 +20,8 @@ namespace OSEF.ERP.APP
             {
                 //2. Checar ticket de autenticación
                 UsuarioBusiness.checkValidSession(this);
-                //sSucursal.DataSource = SucursalBusiness.ObtenerSucursales();
-                //sSucursal.DataBind();
+                sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
+                sCuadrillas.DataBind();
             }
         }
 

@@ -1595,4 +1595,25 @@ function PrimerRenglonDetalle() {
         App.nfDiasAtencion.setValue(numeroDias);
     }
 
-    
+
+
+    //Evento que se lanza al seleccionar algun valor de la Cuadrilla
+    var cmbCuadrilla_Select = function (combobox, registro) {
+        console.log(registro);
+        App.txtfCuadrillaNombre.setValue(registro[0].data.Nombre);
+    };
+
+    //Evento que se lanza al poner algun caracter en el control de la Cuadrilla
+    var cmbCuadrilla_Change = function (combobox, valorNuevo, viejoValor) {
+        App.sCuadrillas.clearFilter();
+        if (App.txtCuadrilla.getValue() != null) {
+            App.sCuadrillas.filter([{ filterFn: function (item) {
+                if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Nombre').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
+                else { return false; }
+            }
+            }]);
+        }
+        else {
+            App.txtfCuadrillaNombre.setValue('');
+        } 
+    };

@@ -412,7 +412,7 @@
     <Content Include="js\cuadrillas.js" />
     <Content Include="js\exploradorConceptoPreciarioGeneral.js" />
     <Content Include="js\formaAyudaBusquedaConceptoPreciario.js" />
-    <Content Include="js\formabuscapreciarios.js" />
+    <Content Include="js\buscapreciarios.js" />
     <Content Include="js\formacuadrilla.js" />
     <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />

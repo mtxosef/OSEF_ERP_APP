@@ -6,7 +6,7 @@ var imgbtnNuevo_Click = function () {
     App.nfSemana.setValue(null);
     App.cmbSucursal.clearValue();
     App.txtfSucursalNombre.setValue(null);
-    App.dfFechaEmision.setValue(null);
+    App.dfFechaEmision.setValue(null); cmbCuadrilla_Select
     App.dfFechaRevision.setValue(null);
     App.txtfObservaciones.setValue(null);
     App.txtfComentarios.setValue(null);
