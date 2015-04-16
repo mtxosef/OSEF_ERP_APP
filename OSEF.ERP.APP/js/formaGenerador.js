@@ -309,6 +309,8 @@ var obetenerRenglon_Select = function (gridview, registro, index) {
 
 
 var txtDescripcion_Corta_Change = function () {
+
+    App.txtDescripcionCorta.setValue(App.txtDescripcionCorta.getValue().toUpperCase());
     HabilitarGuardar();
 }
 

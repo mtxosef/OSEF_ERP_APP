@@ -47,7 +47,7 @@ BEGIN
 		--Datos del concepto
 		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,
 		--CONCEPTO INFO GENERADOR
-		GOD.Eje,GOD.EntreEje1,GOD.EntreEje2,GOD.Area,GOD.Ancho,GOD.Largo,GOD.Alto,GOD.Total,GOD.Cantidad CANT_GEN
+		GOD.Eje,GOD.EntreEje1,GOD.EntreEje2,GOD.Area,GOD.Ancho,GOD.Largo,GOD.Alto,GOD.Total,GOD.Cantidad CANT_GEN, GOD.Descripcion
 		--Encabezado del movimiento(No del reporte)
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
