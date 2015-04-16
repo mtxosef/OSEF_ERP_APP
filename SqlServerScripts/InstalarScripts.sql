@@ -472,7 +472,9 @@
 :r c:\SqlServerScripts\Consultar\Cuadrillas\web_spS_ObtenerCuadrillaPorID.sql
 :r c:\SqlServerScripts\Consultar\Cuadrillas\web_spS_ObtenerCuadrillas.sql
 :r c:\SqlServerScripts\Consultar\Cuadrillas\web_spS_ObtenerCuadrillasEnUsoPorID.sql 
+--Cuadrillas(Modificar)
+:r c:\SqlServerScripts\Modificar\Cuadrillas\web_spU_ActualizarCuadrilla.sql
 --Cuadrillas(Borrar)
-:r c:\SqlServerScripts\Borrar\CodigosPostales\web_spD_BorrarCodigoPostal.sql
+:r c:\SqlServerScripts\Borrar\Cuadrillas\web_spD_BorrarCuadrillas.sql
 
 
