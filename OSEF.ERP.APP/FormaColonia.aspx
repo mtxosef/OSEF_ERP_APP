@@ -97,8 +97,7 @@
                             </Listeners>
                         </ext:TextField>
                     </Items>
-                </ext:FieldContainer> 
-                
+                </ext:FieldContainer>                
                 <ext:FieldContainer 
                     ID="fcEstado" 
                     runat="server" 
@@ -147,8 +146,7 @@
                             </DirectEvents>
                         </ext:ComboBox>
                     </Items>
-                </ext:FieldContainer>   
-                
+                </ext:FieldContainer>                
                 <ext:FieldContainer 
                     ID="fcMunicipios" 
                     runat="server" 
@@ -195,6 +193,7 @@
                     </Items>
                 </ext:FieldContainer>       
             </Items>
+
             <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
                                                 text : valid ? 'La información esta completa/correcta' : 'Existe información incompleta/incorrecta', 
@@ -202,9 +201,11 @@
                                             });
                                             #{imgbtnGuardar}.setDisabled(!valid);" />
             </Listeners>
+
             <BottomBar>
                 <ext:StatusBar ID="sbProveedor" runat="server" Cls="x-colorToolbar" Text="Sin validar información" />
             </BottomBar>
+
             <Buttons>
                 <ext:ImageButton
                     ID="imgbtnGuardar" 

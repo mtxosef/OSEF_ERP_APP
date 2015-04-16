@@ -465,7 +465,14 @@
 --CodigosPostales(Borrar)
 :r c:\SqlServerScripts\Borrar\CodigosPostales\web_spD_BorrarCodigoPostal.sql
 
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+--Cuadrillas(Insertar)
+:r c:\SqlServerScripts\Insertar\Cuadrillas\web_spI_InsertarCuadrilla.sql
+--Cuadrillas(Consultar)
+:r c:\SqlServerScripts\Consultar\Cuadrillas\web_spS_ObtenerCuadrillaPorID.sql
+:r c:\SqlServerScripts\Consultar\Cuadrillas\web_spS_ObtenerCuadrillas.sql
+:r c:\SqlServerScripts\Consultar\Cuadrillas\web_spS_ObtenerCuadrillasEnUsoPorID.sql 
+--Cuadrillas(Borrar)
+:r c:\SqlServerScripts\Borrar\CodigosPostales\web_spD_BorrarCodigoPostal.sql
 
 

@@ -29,7 +29,7 @@
 <body>
     <form id="form1" runat="server">
     <ext:ResourceManager ID="rmCuadrilla" runat="server" HideInDesign="true" />
-    <ext:FormPanel ID="fpCuadrillas" runat="server" Height="250" DefaultButton="imgbtnGuardar"
+    <ext:FormPanel ID="fpCuadrillas" runat="server" Height="260" DefaultButton="imgbtnGuardar"
         BodyStyle="padding:5px 5px 0;" Layout="HBoxLayout" MonitorResize="true">
         <Items>
             <ext:Panel ID="Panel1" runat="server">
@@ -37,11 +37,12 @@
                     <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
-                            <ext:TextField ID="txtID" runat="server" Width="530" Margins="0 3 0 0" Disabled="true"
+                            <ext:TextField ID="txtID" runat="server" Width="530" Margins="0 3 0 0" Disabled="false" ReadOnly="true"
                                 EmptyText="" MaxLength="99">  
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer>
+
                     <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="Nombre" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
@@ -53,6 +54,7 @@
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer>
+                    
                     <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="Integrantes"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items>
@@ -65,7 +67,6 @@
                         </Items>
                     </ext:FieldContainer>
                 </Items>
-                
         <Buttons>
             <ext:ImageButton ID="imgbtnGuardar" runat="server" ImageUrl="assets/img/controles/Guardar.png"
                 DisabledImageUrl="assets/img/controles/GuardarDisabled.png" OverImageUrl="assets/img/controles/GuardarOver.png"
@@ -75,7 +76,8 @@
                                 <Click OnEvent="imgbtnGuardar_Click" Success="imgbtnGuardar_Click_Success">
                                     <EventMask ShowMask="true" Msg="Registrando información..." />
                                     <ExtraParams>
-                                        <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))"
+                                        <ext:Parameter Name="edad" Value="App.txtID.getValue()" Mode="Raw" />
+                                            <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))"
                                             Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
@@ -91,7 +93,17 @@
             </ext:ImageButton>
         </Buttons>
             </ext:Panel>
-        </Items>
+        </Items> 
+            <Listeners>
+                <ValidityChange Handler="this.dockedItems.get(0).setStatus({
+                                                text : valid ? 'La información esta completa/correcta' : 'Existe información incompleta/incorrecta', 
+                                                iconCls: valid ? 'icon-accept' : 'icon-exclamation'
+                                            });
+                                            #{imgbtnGuardar}.setDisabled(!valid);" />
+            </Listeners>
+            <BottomBar>
+                <ext:StatusBar ID="sbProveedor" runat="server" Cls="x-colorToolbar" Text="Sin validar información" />
+            </BottomBar>
     </ext:FormPanel>
     </form>
 </body>

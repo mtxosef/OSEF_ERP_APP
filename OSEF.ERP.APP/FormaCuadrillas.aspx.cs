@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using OSEF.APP.EL;
-using OSEF.APP.BL; 
+using OSEF.APP.BL;
 
 namespace OSEF.ERP.APP
 {
@@ -14,16 +14,15 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             string strcookieEditarCuadrilla = Cookies.GetCookie("cookieEditarCuadrilla").Value;
-            if(!strcookieEditarCuadrilla.Equals("Nuevo"))
+            if (!strcookieEditarCuadrilla.Equals("Nuevo"))
             {
                 Cuadrilla cu = new Cuadrilla();
                 cu = CuadrillaBusiness.ObtenerCuadrillaPorID(strcookieEditarCuadrilla);
                 txtID.SetValue(cu.ID);
                 txtNombre.SetValue(cu.Nombre);
                 txtDescripcion.SetValue(cu.Descripcion);
-            }
+            } 
         }
 
 
@@ -44,6 +43,9 @@ namespace OSEF.ERP.APP
             {
                 switch (sd.Key)
                 {
+                    case "txtID":
+                        cu.ID = sd.Value;
+                        break;
                     case "txtNombre":
                         cu.Nombre = sd.Value;
                         break;
@@ -52,12 +54,17 @@ namespace OSEF.ERP.APP
                         break; 
                 }
             }
-
+            string strcookieEditarCuadrilla = Cookies.GetCookie("cookieEditarCuadrilla").Value;
+            if(strcookieEditarCuadrilla.Equals("Nuevo")){
             //3. Insertar en la base de datos
             cu.ID = CuadrillaBusiness.Insertar(cu);
-            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cu.ID, ParameterMode.Value));
             //4. Mandar mensaje con el código de la cuadrilla
-             
+            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cu.ID, ParameterMode.Value));
+            }else{
+                CuadrillaBusiness.Modificar(cu);
+                cu.ID = strcookieEditarCuadrilla;
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cu.ID, ParameterMode.Value));
+            }
         }
 
     }

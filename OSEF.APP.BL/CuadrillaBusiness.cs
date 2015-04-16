@@ -53,6 +53,19 @@ namespace OSEF.APP.BL
             return CuadrillaDataAccess.Insertar(dID);
         }
 
+
+        #endregion
+        #region Modificar
+
+        /// <summary>
+        /// Método que Modifica una Cuadrilla por su ID
+        /// </summary>
+        /// <param name="dID"></param>
+        public static int Modificar(Cuadrilla dID)
+        {
+            return CuadrillaDataAccess.Modificar(dID);
+        }
+
         #endregion
 
         #region Eliminar

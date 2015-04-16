@@ -7,7 +7,7 @@ var indice = 0;
 var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieEditarCuadrilla', 'Nuevo');
     window.parent.App.wEmergente.load('FormaCuadrillas.aspx');
-    window.parent.App.wEmergente.setHeight(280);
+    window.parent.App.wEmergente.setHeight(310);
     window.parent.App.wEmergente.setWidth(670);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('NUEVA CUADRILLA');
@@ -22,7 +22,7 @@ var imgbtnEditar_Click = function (imagebutton, evento, opciones) {
     App.imgbtnBorrar.setDisabled(true);
     Ext.util.Cookies.set('cookieEditarCuadrilla', App.gpCuadrillas.getSelectionModel().getSelection()[0].get('ID'));
     window.parent.App.wEmergente.load('FormaCuadrillas.aspx');
-    window.parent.App.wEmergente.setHeight(280);
+    window.parent.App.wEmergente.setHeight(310);
     window.parent.App.wEmergente.setWidth(670);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('EDITAR CUADRILLA ' + Ext.util.Cookies.get('cookieEditarCuadrilla'));
@@ -74,4 +74,28 @@ var gpCuadrillas_Select = function (gridview, registro, index, gvhtml) {
         App.imgbtnEditar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(false);
         indice = App.gpCuadrillas.getSelectionModel().getSelection()[0].index; 
-}; 
+};
+ 
+    //Cambio en los datos del tablero
+    var sCuadrillas_DataChanged = function () {
+        if (App.sCuadrillas.getCount() > 1 || App.sCuadrillas.getCount() == 0) {
+            App.sbCuadrillas.setText(App.sCuadrillas.getCount() + ' CUADRILLAS');
+        }
+        else {
+            App.sbCuadrillas.setText(App.sCuadrillas.getCount() + ' CUADRILLAS');
+        }
+    }; 
+    //Hacer la busqueda de información
+    var txtBuscarCuadrilla_Change = function (textfield, newValue, oldValue, e) {
+        App.sCuadrillas.clearFilter();
+        App.sCuadrillas.filter([{ filterFn: function (item) {
+            if (item.get('ID').toUpperCase().indexOf(newValue.toUpperCase()) > -1
+            || item.get('Nombre').toUpperCase().indexOf(newValue.toUpperCase()) > -1
+            || item.get('Descripcion').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
+            else { return false; }
+        }
+        }]);
+        App.gpCuadrillas.getSelectionModel().deselectAll();
+        App.imgbtnEditar.setDisabled(true);
+        App.imgbtnBorrar.setDisabled(true);
+    };

@@ -89,6 +89,28 @@
                             <Click Handler="getData(); App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
                         </Listeners>
                     </ext:ImageButton> 
+                    
+                        <ext:TextField 
+                            ID="txtBuscar"
+                            runat="server"
+                            AutoFocus="true"
+                            EmptyText="Buscar"
+                            Width="200">
+                            <Listeners>
+                                <Change Fn="txtBuscarCuadrilla_Change" />
+                            </Listeners>
+                            <RightButtons>
+                                <ext:ImageButton
+                                    ID="imgbtnBuscar"
+                                    runat="server"
+                                    ImageUrl="assets/img/controles/search.png"
+                                    OverImageUrl=""
+                                    PressedImageUrl=""
+                                    Height="22px"
+                                    Width="22px">                                              
+                                </ext:ImageButton>
+                            </RightButtons>
+                        </ext:TextField>
                 </Items>
             </ext:Toolbar>
         </TopBar>
@@ -103,6 +125,12 @@
                         </Fields>
                     </ext:Model>
                 </Model>
+                    <Sorters>
+                        <ext:DataSorter Property="ID" Direction="DESC" />
+                    </Sorters>
+                    <Listeners>
+                        <DataChanged Fn="sCuadrillas_DataChanged" />
+                    </Listeners>
             </ext:Store>
         </Store>
         <ColumnModel>

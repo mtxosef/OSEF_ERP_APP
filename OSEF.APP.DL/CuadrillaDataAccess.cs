@@ -152,7 +152,7 @@ namespace OSEF.APP.DL
         /// Método que modifica un registro a la tabla de xxxxx
         /// </summary>
         /// <param name="iCuadrilla"></param>
-        public static string Modificar(Cuadrilla iCuadrilla)
+        public static int Modificar(Cuadrilla iCuadrilla)
         {
             try
             {
@@ -168,8 +168,6 @@ namespace OSEF.APP.DL
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
                 sqlpID.Value = iCuadrilla.ID;
-                sqlpID.Size = 10;
-                sqlpID.Direction = ParameterDirection.Output;
 
                 SqlParameter sqlpNombre = new SqlParameter();
                 sqlpNombre.ParameterName = "@Nombre";
@@ -187,17 +185,18 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpNombre);
                 sqlcComando.Parameters.Add(sqlpDescripcion);
 
+
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
-                //5. Ejecutar la instrucción INSERT que regresa un dato que es el ID
-                int result = Convert.ToInt32(sqlcComando.ExecuteScalar());
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
 
                 //6. Cerrar la conexión
                 sqlcComando.Connection.Close();
 
                 //7. Regresar el resultado
-                return sqlcComando.Parameters["@ID"].Value.ToString();
+                return result;
             }
             catch (Exception ex)
             {

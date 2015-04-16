@@ -29,7 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spU_ActualizarCuadrilla
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(7),
+	@ID				CHAR(10),
 	@Nombre			VARCHAR(99),
 	@Descripcion			VARCHAR(499)
 AS
@@ -42,6 +42,6 @@ BEGIN
 	UPDATE [dbo].[Cuadrillas]
 	SET [Nombre] = @Nombre
     ,[Descripcion] = @Descripcion
-	WHERE ID = @ID; 
+	WHERE [dbo].[Cuadrillas].[ID] = @ID; 
 END
 GO

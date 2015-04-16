@@ -148,8 +148,7 @@
                             </DirectEvents>
                             </ext:ComboBox>
 
-                       
-
+                    
                           <ext:ComboBox
                                 ID="cmbMunicipio"
                                 runat="server"
@@ -302,7 +301,6 @@
                 </ext:StatusBar>
             </FooterBar>
         </ext:GridPanel>
-
     </div>
     </form>
 </body>
