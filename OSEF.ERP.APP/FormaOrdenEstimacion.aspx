@@ -1020,7 +1020,7 @@
                                                     </Listeners>
                                                 </ext:TextField>--%>
 
-                                                <ext:ComboBox ID="txtCuadrilla" runat="server" AllowBlank="false" Width="210" Editable="true"
+                                                <ext:ComboBox ID="txtCuadrilla" runat="server" AllowBlank="false" Width="200" Editable="true"
                             ValueField="ID" DisplayField="Descripcion" MatchFieldWidth="true" ForceSelection="true"
                             EmptyText="Estado" QueryMode="Local" TypeAhead="true">
                             <Store>
