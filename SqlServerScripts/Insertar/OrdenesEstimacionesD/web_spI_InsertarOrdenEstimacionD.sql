@@ -36,7 +36,8 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacionD
 	@Unidad		VARCHAR(30),
 	@Precio		DECIMAL(20, 2),
 	@Importe	DECIMAL(20, 2),
-	@IntExt		VARCHAR(30)
+	@IntExt		VARCHAR(30),
+	@Moneda		VARCHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -54,7 +55,8 @@ BEGIN
 				Unidad,
 				Precio,
 				Importe,
-				IntExt
+				IntExt,
+				Moneda
 			)
 		VALUES
 			(
@@ -65,7 +67,8 @@ BEGIN
 				@Unidad,
 				@Precio,
 				@Importe,
-				@IntExt
+				@IntExt,
+				@Moneda
 			)
 END
 GO

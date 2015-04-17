@@ -90,6 +90,16 @@ namespace OSEF.APP.DL
                 else
                     sqlpIntExt.Value = iOrdenEstimacionD.IntExt;
 
+                 SqlParameter sqlpMoneda = new SqlParameter();
+                 sqlpMoneda.ParameterName = "@Moneda";
+                 sqlpMoneda.SqlDbType = SqlDbType.VarChar;
+
+                if (iOrdenEstimacionD.Moneda == null)
+                    sqlpMoneda.Value = DBNull.Value;
+                else
+                    sqlpMoneda.Value = iOrdenEstimacionD.Moneda;
+
+                
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpVolumetria);
                 sqlcComando.Parameters.Add(sqlpRenglon);
@@ -99,6 +109,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpPrecio);
                 sqlcComando.Parameters.Add(sqlpImporte);
                 sqlcComando.Parameters.Add(sqlpIntExt);
+                sqlcComando.Parameters.Add(sqlpMoneda);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -179,6 +190,16 @@ namespace OSEF.APP.DL
                 sqlpImporte.Precision = 20;
                 sqlpImporte.Scale = 2;
                 sqlpImporte.Value = uOrdenEstimacionD.Importe;
+
+
+                SqlParameter sqlpMoneda = new SqlParameter();
+                sqlpMoneda.ParameterName = "@Moneda";
+                sqlpMoneda.SqlDbType = SqlDbType.VarChar;
+
+                if (uOrdenEstimacionD.Moneda == null)
+                    sqlpMoneda.Value = DBNull.Value;
+                else
+                    sqlpMoneda.Value = uOrdenEstimacionD.Moneda;
               
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpVolumetria);
@@ -188,7 +209,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpUnidad);
                 sqlcComando.Parameters.Add(sqlpPrecio);
                 sqlcComando.Parameters.Add(sqlpImporte);
-
+                sqlcComando.Parameters.Add(sqlpMoneda);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

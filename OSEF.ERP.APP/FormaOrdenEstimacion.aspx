@@ -70,6 +70,7 @@
                         <ext:ModelField Name="HoraFinActividad" Type="Date" />
                         <ext:ModelField Name="Zona" Type="String" />
                         <ext:ModelField Name="Cuadrilla" Type="String" />
+                        <ext:ModelField Name="ImporteFinal" Type="Float" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -1113,6 +1114,7 @@
                                                         <ext:ModelField Name="Importe" Type="Float" />
                                                         <ext:ModelField Name="IntExt" Type="String" />
                                                         <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
+                                                        <ext:ModelField Name="Moneda" Type="String" />
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
@@ -1146,7 +1148,7 @@
                                                 ID="cIDPreciario"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="125"
+                                                Width="105"
                                                 DataIndex="ConceptoID">
                                             </ext:Column>
                                             <ext:CommandColumn
@@ -1194,7 +1196,7 @@
                                                 Align="Center"
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
-                                                Width="90">
+                                                Width="80">
                                                 <Renderer Fn="cCantidad_Renderer" />
                                                 <Editor>
                                                     <ext:NumberField 
@@ -1238,7 +1240,7 @@
                                                 Align="Center"
                                                 Text="Unidad"
                                                 DataIndex="Unidad"
-                                                Width="90">
+                                                Width="80">
                                             </ext:Column>
 
                                             <ext:NumberColumn 
@@ -1247,7 +1249,7 @@
                                                 Align="Center"
                                                 Text="Precio"
                                                 DataIndex="Precio"
-                                                Width="90">
+                                                Width="80">
                                                   <Renderer Fn="cPrecio_Renderer" />
                                                 <Editor>
                                                     <ext:NumberField 
@@ -1269,13 +1271,23 @@
                                                    
                                                 </Editor>
                                             </ext:NumberColumn>
+
+                                             <ext:Column
+                                                ID="cMoneda"
+                                                runat="server"
+                                                Align="Center"
+                                                Width="50"
+                                               DataIndex="Moneda"
+                                                >
+                                            </ext:Column>
+                                          
                                             <ext:NumberColumn
                                                 ID="ncImporte"
                                                 runat="server"
                                                 Align="Center"
                                                 Text="Importe"
                                                 DataIndex="Importe"
-                                                Width="120">
+                                                Width="110">
                                                <Renderer Fn="cImporte_Renderer" />
                                             </ext:NumberColumn>
                                             <ext:CommandColumn
@@ -1401,6 +1413,11 @@
                 runat="server" 
                 Cls="x-colorToolbar" 
                 Text="SIN AFECTAR" />
+                  <ext:DisplayField
+                            ID="dfTotalSinRender"
+                            runat="server"
+                            Hidden="true">
+                        </ext:DisplayField>
                         <ext:DisplayField
                             ID="dfTotal"
                             runat="server"
@@ -1410,6 +1427,7 @@
                             Width="290"
                             Text="">
                         </ext:DisplayField>
+                      
                     </Items>
                 </ext:Toolbar>
      

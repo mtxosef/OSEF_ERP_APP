@@ -868,6 +868,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.NumberField nfPrecio;
         
         /// <summary>
+        /// Control cMoneda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cMoneda;
+        
+        /// <summary>
         /// Control ncImporte.
         /// </summary>
         /// <remarks>
@@ -947,6 +956,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.StatusBar sbOrdenEstimacion;
+        
+        /// <summary>
+        /// Control dfTotalSinRender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField dfTotalSinRender;
         
         /// <summary>
         /// Control dfTotal.

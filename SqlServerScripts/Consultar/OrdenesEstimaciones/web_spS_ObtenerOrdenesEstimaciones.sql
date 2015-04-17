@@ -64,7 +64,8 @@ BEGIN
 		FechaFinActividad,
 		HoraFinActividad,
 		Zona,
-		Cuadrilla
+		Cuadrilla,
+		ImporteTotal
 		
 	FROM
 		OrdenesEstimaciones

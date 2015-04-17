@@ -201,6 +201,7 @@
                                 <ext:ModelField Name="FechaEmision" Type="Date" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
                                 <ext:ModelField Name="Estatus" Type="String" />
+                                <ext:ModelField Name="ImporteTotal" Type="Float" />
                                 <ext:ModelField Name="Usuario" Type="String" />
                                
                             </Fields>
@@ -287,7 +288,7 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Center"
-                        Width="220"
+                        Width="180"
                         DataIndex="Sucursal">
                       <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
@@ -297,10 +298,19 @@
                         runat="server"
                         Text="ASUNTO"
                         Align="Center"
-                        Width="350"
+                        Width="300"
                         DataIndex="Observaciones">
                     </ext:Column>
-
+                    
+                    <ext:Column
+                        ID="cTotal"
+                        runat="server"
+                        Text="Importe"
+                        Align="Center"
+                        Width="100"
+                        DataIndex="ImporteTotal">
+                        <Renderer Fn="cImporte_renderer"></Renderer>
+                    </ext:Column>
                    <ext:Column
                         ID="cUsuario"
                         runat="server"

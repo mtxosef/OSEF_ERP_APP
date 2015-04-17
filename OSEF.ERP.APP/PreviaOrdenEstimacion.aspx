@@ -28,8 +28,8 @@
             ID="imgbtnGenerador" 
             runat="server" 
             OnClick="imgbtnGenerador_click"
-            Height="50"
-            Width="50"
+            Height="30"
+            Width="30"
             class="imgs" 
             ImageUrl="assets/img/controles/generador.png"/>
 
@@ -38,16 +38,16 @@
             runat="server" 
             class="imgs" 
             OnClick="imgbtnCroquis_click"
-             Height="50"
-             Width="50"
+             Height="30"
+             Width="30"
             ImageUrl="assets/img/controles/croquis.png"/>
 
               <asp:ImageButton 
             ID="imgbtnFacturas" 
             runat="server"
             OnClick="imgbtnFactura_click"
-             Height="50"
-             Width="50"
+             Height="30"
+             Width="30"
             class="imgs" 
             ImageUrl="assets/img/controles/facturas.png"/>
 
@@ -56,8 +56,8 @@
             runat="server" 
             class="imgs" 
             OnClick="imgbtnFotos_click"
-             Height="50"
-             Width="50"
+             Height="30"
+             Width="30"
             ImageUrl="assets/img/controles/imagenes.png"/>
 
         EXPORTAR A:
@@ -65,8 +65,8 @@
             ID="imgbtnPdf" 
             runat="server" 
            OnClick="toPDF"
-             Height="50"
-             Width="50"
+             Height="30"
+             Width="30"
             class="imgs" 
             ImageUrl="assets/img/controles/pdfNormal.png"/>
 
@@ -75,8 +75,8 @@
             runat="server" 
             class="imgs" 
          OnClick="toXls"
-             Height="50"
-             Width="50"
+             Height="30"
+             Width="30"
             ImageUrl="assets/img/controles/ExcelNormal.png"/>
         </div>
 

@@ -867,7 +867,22 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
     var Importe = parseFloat(registro.get('Cantidad')) * parseFloat(registro.get('Precio'));
     registro.set('Importe', Importe);
 
-  
+
+
+    var sum = 0;
+    App.sConceptos.each(function (record) {
+
+        sum += record.get('Importe');
+    });
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
+    App.dfTotalSinRender.setValue(sum);
+    ImporteFinal = sum;
+    
+
     //Verificar si abajo de esta columna existe otra
     if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
         //Verificar si toda la fila contiene datos
@@ -965,6 +980,7 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
     App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
+    App.dfTotalSinRender.setValue(sum);
     ImporteFinal = sum;
 
 
@@ -985,7 +1001,7 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
     App.dfTotal.setValue('' + F.number(ImporteFinal, "$000,000,000.00"));
-
+    App.dfTotalSinRender.setValue(ImporteFinal);
 
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo') {
         Ext.util.Cookies.set('cookieIDBorrarFotosOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
@@ -1018,6 +1034,7 @@ var sConceptos_Load = function (avance, registro, index) {
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
     App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
+    App.dfTotalSinRender.setValue(sum);
 }
 
 
