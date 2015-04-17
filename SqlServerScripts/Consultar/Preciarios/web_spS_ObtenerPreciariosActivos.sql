@@ -39,7 +39,7 @@ BEGIN
 	SELECT
 		ID,
 		Descripcion,
-		Sucursal, ()
+		Sucursal, 
 		FechaAlta,
 		Archivo,
 		Usuario,
