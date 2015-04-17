@@ -207,8 +207,7 @@ var ceFormaPreciarioGeneral_BeforeEdit = function (editor, context, opciones) {
         App.direct.CargarSubCategoriasPorCategoria(context.record.get('Categoria'), {
             success: function (result) {
                 App.cmbSubCategoria.select(context.record.get('SubCategoria'));
-            },
-
+            }, 
             failure: function (errorMessage) { }
         });
     }
@@ -217,7 +216,6 @@ var ceFormaPreciarioGeneral_BeforeEdit = function (editor, context, opciones) {
             success: function (result) {
                 App.cmbSubSubCategoria.select(context.record.get('SubSubCategoria'));
             },
-
             failure: function (errorMessage) { }
         });
     }
@@ -268,7 +266,6 @@ var ceFormaPreciarioGeneral_ValidateEdit = function (editor, context, opciones) 
                 context.record.set('RSubSubCategoria', result);
                 return true;
             },
-
             failure: function (errorMessage) { }
         });
     }
@@ -283,7 +280,6 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
 
         //Verificar si toda la fila contiene datos
         var registro = App.sCarga.getAt(columna.rowIdx);
-
 
         if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
             //Insertar un nuevo registro
@@ -316,14 +312,8 @@ function HabilitarGuardar() {
     //Valida que todos los controles del encabezado obligatorios estén llenos
     if (FileUploadValue != "" && App.txtfDescripcion.getValue() != "" && App.sCarga.getCount() != 0) {
         if (App.rObra.getValue() == true || App.rMnto.getValue() == true) {
-
-
-          
            App.imgbtnGuardar.setDisabled(false);
-           
-          
         }
-
     }
     else {
         App.imgbtnGuardar.setDisabled(true);
@@ -339,7 +329,4 @@ var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
     window.parent.App.wAyudaConcepto.center();
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
     window.parent.App.wAyudaConcepto.show();
-
-
-    
 };
