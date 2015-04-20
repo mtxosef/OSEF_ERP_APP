@@ -97,6 +97,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 //Evento lanzado al cargar el store de avance encabezado
 var sPreciarioGeneral_Load_Success = function () {
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
+
         App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
         //console.log(App.sCarga);
         //    App.gpPreciario.getView().focusRow(App.sCarga.getCount()-1);
@@ -268,7 +269,7 @@ var ceFormaPreciarioGeneral_ValidateEdit = function (editor, context, opciones) 
             },
             failure: function (errorMessage) { }
         });
-    }
+    } 
 };
 
 
@@ -284,6 +285,9 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
         if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
             //Insertar un nuevo registro
             App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' });
+
+            getRecordsActions();
+
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
             //Validar si se habilita el boton de afectar
@@ -329,4 +333,44 @@ var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
     window.parent.App.wAyudaConcepto.center();
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
     window.parent.App.wAyudaConcepto.show();
+};
+
+
+
+//Obtiene las filas agregadas, editadas y eliminadas del store
+var getRecordsActions = function () {
+
+    var store = App.sCarga;
+    var newRecords = store.getNewRecords();
+    var editedRecords = store.getUpdatedRecords();
+    var deleteRecords = store.getRemovedRecords();
+
+    var xndata = [], xudata = [], xrdata = [];
+
+    var encodednewrecords, encodedupdaterecords, encodedremovedrecords;
+
+    if (newRecords.length > 0) {
+        for (i = 0; i < newRecords.length; i++) {
+            xndata.push(newRecords[i].data);
+        }
+        encodednewrecords = Ext.encode(xndata);
+        console.log(encodednewrecords);
+    }
+
+    if (editedRecords.length > 0 || editedRecords != null) {
+        for (i = 0; i < editedRecords.length; i++) {
+            xudata.push(editedRecords[i].data);
+        }
+        encodedupdaterecords = Ext.encode(xudata);
+        console.log(encodedupdaterecords);
+    }
+
+
+    if (deleteRecords.length > 0 || deleteRecords != null) {
+        for (i = 0; i < deleteRecords.length; i++) {
+            xrdata.push(deleteRecords[i].data);
+        }
+        encodedremovedrecords = Ext.encode(xrdata);
+        console.log(encodedremovedrecords);
+    }
 };
