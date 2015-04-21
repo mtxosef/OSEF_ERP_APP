@@ -230,6 +230,7 @@
     <Content Include="assets\img\menu-conceptos.png" />
     <Content Include="assets\img\menu-conta.png" />
     <Content Include="assets\img\menu-corte.png" />
+    <Content Include="assets\img\menu-cuadrillas.png" />
     <Content Include="assets\img\menu-cuentas.png" />
     <Content Include="assets\img\menu-gantt.png" />
     <Content Include="assets\img\menu-inversiones.png" />

@@ -110,7 +110,8 @@ namespace OSEF.ERP.APP
             string strDiasAtencion = e.ExtraParams["diasAtencion"];
 
 
-            if (strDiasAtencion.Equals("1")) {
+            if (strDiasAtencion.Equals("1") || strDiasAtencion.Equals("null"))
+            {
                 strDiasAtencion = "0";
             }
 
@@ -350,7 +351,7 @@ namespace OSEF.ERP.APP
                             oOrdenEstimacionForma.FechaLlegada = Convert.ToDateTime(sd.Value);
                         break;
                     case "tfHoraLlegada":
-                         if (sd.Value == null)
+                         if (sd.Value == null || sd.Value.Equals(""))
                             oOrdenEstimacionForma.HoraLlegada = null;
                         else
                              oOrdenEstimacionForma.HoraLlegada = Convert.ToDateTime(sd.Value);
@@ -363,7 +364,7 @@ namespace OSEF.ERP.APP
                             oOrdenEstimacionForma.FechaFinActividad = Convert.ToDateTime(sd.Value);
                         break;
                     case "tfHoraFinActividad":
-                         if (sd.Value == null)
+                         if (sd.Value == null || sd.Value.Equals(""))
                             oOrdenEstimacionForma.HoraFinActividad = null;
                         else
                              oOrdenEstimacionForma.HoraFinActividad = Convert.ToDateTime(sd.Value);

@@ -28,6 +28,8 @@ var imgbtnFormaNuevo_Click = function () {
     App.cmbDivision.setValue('');
     App.dfFechaOrigen.setValue('');
     App.dfFechaMaxima.setValue('');
+    App.dfFechaOrigen.setReadOnly(false);
+    App.dfFechaMaxima.setReadOnly(false);
     App.nfDiasAtencion.setValue('');
     App.txtReporta.setValue('');
     App.txtTrabajoRequerido.setValue('');
@@ -37,9 +39,13 @@ var imgbtnFormaNuevo_Click = function () {
     App.cmbTieneFotos.setValue('');
     App.cmbTieneReporte.setValue('');
     App.dfFechallegada.setValue('');
+    App.dfFechallegada.setReadOnly(false);
     App.tfHoraLlegada.setValue('');
+    App.tfHoraLlegada.setReadOnly(false);
     App.dfFFechaFinActividad.setValue('');
+    App.dfFFechaFinActividad.setReadOnly(false);
     App.tfHoraFinActividad.setValue('');
+    App.tfHoraFinActividad.setReadOnly(false);
     App.txtZona.setValue('');
     App.txtCuadrilla.setValue('');
 
