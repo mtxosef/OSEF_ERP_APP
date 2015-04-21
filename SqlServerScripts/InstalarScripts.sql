@@ -38,6 +38,7 @@
 :r c:\SqlServerScripts\Insertar\Clientes\web_spI_InsertarCliente.sql
 -- Clientes (Modificar)
 :r c:\SqlServerScripts\Modificar\Clientes\web_spU_ActualizarCliente.sql
+:r c:\SqlServerScripts\Modificar\Clientes\web_spU_ActualizarClienteSolicitudPrestamo.sql
 -----------------------------------------------------------------------------------
 -- Conceptos (Borrar)
 :r c:\SqlServerScripts\Borrar\Conceptos\web_spD_BorrarConcepto.sql
@@ -319,7 +320,6 @@
 --ReportesPreciario
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciario.sql
 :r c:\SqlServerScripts\Reportes\web_spS_ObtenerCambiosPreciarios.sql
-
 ------------------------------------------------------------------------------------- PreciariosGenerales (Borrar)
 :r c:\SqlServerScripts\Borrar\PreciariosGenerales\web_spD_BorrarPreciarioGeneral.sql
 -- PreciariosGenerales (Consultar)
@@ -456,7 +456,6 @@
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGeneradorPorConceptoID.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRFacturas.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenes.sql
-
 -----------------------------------------------------------------------------------------------------------------------------------------
 --CodigosPostales(Insertar)
 :r c:\SqlServerScripts\Insertar\CodigosPostales\web_spI_InsertarCodigoPostal.sql
@@ -467,7 +466,6 @@
 :r c:\SqlServerScripts\Consultar\CodigosPostales\web_spS_ObtenerCodigoPostalPorNumero.sql
 --CodigosPostales(Borrar)
 :r c:\SqlServerScripts\Borrar\CodigosPostales\web_spD_BorrarCodigoPostal.sql
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 --Cuadrillas(Insertar)
 :r c:\SqlServerScripts\Insertar\Cuadrillas\web_spI_InsertarCuadrilla.sql
@@ -486,5 +484,3 @@
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave.sql
 --PreciariosGeneralesConceptosAdicionales(Modificar)
 :r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptosAdicionales\web_spU_ActualizarPreciarioGeneralConceptoAdicional.sql
-
-

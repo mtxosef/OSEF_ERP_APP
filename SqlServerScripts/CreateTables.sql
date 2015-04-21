@@ -72,6 +72,7 @@ CREATE TABLE Usuarios(
 	APaterno					VARCHAR(50)		NULL,
 	AMaterno					VARCHAR(50)		NULL,
 	Contrasena					VARCHAR(200)	NULL,
+	Empresa						VARCHAR(200)	NULL,
 	Estatus						VARCHAR(50)		NOT NULL,
 	Bloqueado					BIT				NOT NULL,
 	EnLinea						BIT				NOT NULL,
@@ -119,10 +120,10 @@ CREATE TABLE Sucursales(
 	EntreCalles					VARCHAR(100)	NULL,
 	NoExterior					VARCHAR(10)		NULL,
 	NoInterior					VARCHAR(10)		NULL,
-	CodigoPostal				INT				NULL,
-	Colonia						CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Colonias(ID),
-	Estado						CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Estados(ID),
-	Municipio					CHAR(4)			NOT NULL FOREIGN KEY REFERENCES Municipios(ID),
+	CodigoPostal				CHAR(10)		NULL		FOREIGN KEY REFERENCES CodigosPostales(ID),
+	Colonia						CHAR(10)		NOT NULL	FOREIGN KEY REFERENCES Colonias(ID),
+	Estado						CHAR(2)			NOT NULL	FOREIGN KEY REFERENCES Estados(ID),
+	Municipio					CHAR(4)			NOT NULL	FOREIGN KEY REFERENCES Municipios(ID),
 	Contratista					VARCHAR(100)	NULL,
 	InicioObra					DATE			NULL,
 	FinObra						DATE			NULL,
@@ -516,12 +517,13 @@ CREATE TABLE PreciariosGeneralesSubSubCategorias(
 
 CREATE TABLE PreciariosGeneralesConceptos(
 	ID							CHAR(10)		NOT NULL PRIMARY KEY,
-	CLAVE						CHAR(7)			NULL,
+	CLAVE						CHAR(30)		NULL,
 	Preciario					CHAR(7)			NOT NULL FOREIGN KEY REFERENCES PreciariosGenerales(ID),
 	Descripcion					VARCHAR(2000)	NOT NULL,
 	Categoria					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesCategorias(ID),
 	SubCategoria				CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubCategorias(ID),
 	SubSubCategoria				CHAR(10)		NOT NULL FOREIGN KEY REFERENCES PreciariosGeneralesSubSubCategorias(ID),
+	MONEDA						VARCHAR(30)		NULL,
 	Unidad						VARCHAR(30)		NULL,
 	Costo						DECIMAL(20,2),
 	Cantidad					DECIMAL(10,2)	NULL,
@@ -530,17 +532,44 @@ CREATE TABLE PreciariosGeneralesConceptos(
 	FechaAlta					SMALLDATETIME	NOT NULL
 )
 
+CREATE TABLE Cuadrillas(
+ID CHAR(10) NOT NULL PRIMARY KEY,
+Nombre VARCHAR(100) NOT NULL,
+Descripcion VARCHAR(1000) NULL
+)
+
 CREATE TABLE OrdenesEstimaciones(
 	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	Mov							VARCHAR(50)		NOT NULL,
 	MovID						VARCHAR(10)		NULL,
-	Sucursal					CHAR(10)		NOT NULL FOREIGN KEY REFERENCES Sucursales(ID),
+	Sucursal					CHAR(10)		NOT NULL	FOREIGN KEY REFERENCES Sucursales(ID),
 	FechaEmision				SMALLDATETIME	NULL,
 	Observaciones				VARCHAR(200)	NULL,
 	Estatus						VARCHAR(20)		NOT NULL,
 	Origen						VARCHAR(50)		NULL,
 	OrigenID					VARCHAR(50)		NULL,
-	Usuario						VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
+	Reporte						VARCHAR(30)		NULL,
+	Division					VARCHAR(30)		NULL,
+	FechaOrigen					SMALLDATETIME	NULL,
+	FechaMaximaAtencion			SMALLDATETIME	NULL,
+	DiasAtencion				DECIMAL(5,0)	NULL,
+	Reporto						VARCHAR(100)	NULL,
+	TrabajoRequerido			VARCHAR(850)	NULL,
+	Atiende						VARCHAR(100)	NULL,
+	IntExt						VARCHAR(30)		NULL,
+	TrabajoRealizado			VARCHAR(500)	NULL,
+	CodigoFalla					VARCHAR(30)		NULL,
+	TieneFotos					VARCHAR(10)		NULL,
+	TieneReporte				VARCHAR(10)		NULL,
+	FechaLlegada				SMALLDATETIME	NULL,
+	HoraLlegada					datetime		NULL,
+	FechaFinActividad			SMALLDATETIME	NULL,
+	HoraFinActividad			datetime		NULL,
+	Zona						VARCHAR(80)		NULL,
+	Cuadrilla					CHAR(10)		NULL		FOREIGN KEY REFERENCES Cuadrillas(ID),
+	ImporteTotal				DECIMAL (20,2),
+	Moneda						VARCHAR(10),
+	Usuario						VARCHAR(50)		NOT NULL	FOREIGN KEY REFERENCES Usuarios(ID)
 )
 
 CREATE TABLE OrdenesEstimacionesD(
@@ -612,14 +641,6 @@ CREATE TABLE GeneradorVolumetriaD(
 	Cantidad					DECIMAL(10,2)	NOT NULL,
 	Total						DECIMAL(10,2)	NOT NULL
 )
-
-CREATE TABLE Cuadrillas(
-ID CHAR(10) NOT NULL PRIMARY KEY,
-Nombre VARCHAR(100) NOT NULL,
-Descripcion VARCHAR(1000) NULL
-)
-
-
 
 --DROP TABLE Menus
 --DROP TABLE GruposMenu

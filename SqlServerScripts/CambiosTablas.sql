@@ -3,7 +3,6 @@
 ALTER TABLE Revisiones ADD Origen VARCHAR(50) NULL
 ALTER TABLE Revisiones ADD OrigenID VARCHAR(50) NULL
 
-
 --Cambio 8 de Febrero 2015
 ALTER TABLE Clientes ADD TipoSocio VARCHAR(20) NOT NULL
 ALTER TABLE Clientes ADD NumeroSocio VARCHAR(11) NULL
@@ -44,10 +43,7 @@ ALTER TABLE SUCURSALES DROP COLUMN TerminoContrato
 
 ALTER TABLE CLIENTES DROP COLUMN EMPRESACALLES
 ALTER TABLE CLIENTES ADD  EMPRESACALLE VARCHAR(100)
-
-
 ALTER TABLE CLIENTES ALTER COLUMN Profesion CHAR(7) NULL 
-
 
 -- Cambios 30 de Marzo 
 ALTER TABLE PreciariosGeneralesConceptos ALTER COLUMN CLAVE CHAR(30) NULL
@@ -66,8 +62,6 @@ ALTER TABLE OrdenesEstimaciones ADD  Atiende VARCHAR(100) NULL
 --Cambios 6 de abril
 ALTER TABLE OrdenesEstimacionesD ADD IntExt VARCHAR(30) NULL
 
-
-
 --Cambios 10 de Abril
 ALTER TABLE OrdenesEstimaciones ADD  TrabajoRealizado VARCHAR(500) NULL
 ALTER TABLE OrdenesEstimaciones ADD  CodigoFalla VARCHAR(30) NULL
@@ -81,7 +75,6 @@ ALTER TABLE OrdenesEstimaciones ADD  Zona VARCHAR(80) NULL
 ALTER TABLE OrdenesEstimaciones ADD  Cuadrilla VARCHAR(200) NULL
 
 --Cambios Giovanni 12 de abril
-
 alter table sucursales drop column codigoPostal
 
 ALTER TABLE Sucursales 
@@ -93,7 +86,6 @@ ALTER TABLE Usuarios ADD  Empresa VARCHAR(200) NULL
 
 --Cambios Giovanni 15 de abril
 ALTER TABLE OrdenesEstimaciones DROP COLUMN Cuadrilla
-
 ALTER TABLE OrdenesEstimaciones ADD Cuadrilla CHAR(10) NULL FOREIGN KEY REFERENCES Cuadrillas(ID)
 
 ALTER TABLE dbo.OrdenesEstimaciones
@@ -102,7 +94,5 @@ FOREIGN KEY (Cuadrilla)
 REFERENCES dbo.Cuadrillas(ID)
 
 --Cambios Christian 17 de abril
-
 ALTER TABLE OrdenesEstimaciones ADD ImporteTotal DECIMAL (20,2)
-
 ALTER TABLE OrdenesEstimacionesD ADD Moneda VARCHAR(10)
