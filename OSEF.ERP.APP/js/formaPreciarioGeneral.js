@@ -369,7 +369,6 @@ var getRemovedRecords = function () {
         for (i = 0; i < deleteRecords.length; i++) {
             xrdata.push(deleteRecords[i].data);
         }
-        xrdata.pop();
         if (xrdata.length > 0) {
             encodedremovedrecords = Ext.encode(xrdata);
             return encodedremovedrecords;
@@ -390,7 +389,6 @@ var getUpdatedRecords = function () {
         for (i = 0; i < editedRecords.length; i++) {
             xudata.push(editedRecords[i].data);
         }
-        xudata.pop();
         if (xudata.length > 0) {
             encodedupdaterecords = Ext.encode(xudata);
             return encodedupdaterecords;

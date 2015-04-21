@@ -87,6 +87,10 @@ namespace OSEF.ERP.APP
             string strRegistrosActualizados = e.ExtraParams["registrosactualizados"];
             string strRegistrosEliminados = e.ExtraParams["registroseliminados"];
 
+            bool rnew = false;
+            bool rupdate = false;
+            bool rdeleted = false;
+
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciarioGeneral").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             string strPreciarioDetalle = e.ExtraParams["DetallePreciario"];
@@ -94,9 +98,31 @@ namespace OSEF.ERP.APP
             //2. Se guarda en una lista el Store que contiene todos los campos para deserealizarlos y usarlos para el insert
             List<PreciarioGeneralConcepto> lDetallePreciario = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strPreciarioDetalle);
 
-            List<PreciarioGeneralConcepto> lDetallePreciarioNuevos = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosNuevos);
-            List<PreciarioGeneralConcepto> lDetallePreciarioActualizados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosActualizados);
-            List<PreciarioGeneralConcepto> lDetallePreciarioEliminados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosEliminados);
+            if (!strRegistrosNuevos.Equals("0"))
+            {
+                rnew = true;
+            }
+            if (!strRegistrosActualizados.Equals("0"))
+            {
+                rupdate = true;
+            }
+            if (!strRegistrosEliminados.Equals("0"))
+            {
+                rupdate = true;
+            } 
+            if (rnew)
+            {
+                List<PreciarioGeneralConcepto> lDetallePreciarioNuevos = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosNuevos);
+            }
+            if (!strRegistrosActualizados.Equals("0"))
+            {
+                List<PreciarioGeneralConcepto> lDetallePreciarioActualizados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosActualizados);
+            }
+            if (!strRegistrosEliminados.Equals("0"))
+            {
+                List<PreciarioGeneralConcepto> lDetallePreciarioEliminados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosEliminados);
+            }
+
 
             PreciarioGeneral oPreciario = new PreciarioGeneral();
 
