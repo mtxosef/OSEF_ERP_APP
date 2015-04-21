@@ -45,7 +45,8 @@ BEGIN
 			Unidad,
 			Precio,
 			Importe,
-			IntExt
+			IntExt,
+			Moneda
 		FROM 
 			OrdenesEstimacionesD 
 		INNER JOIN 

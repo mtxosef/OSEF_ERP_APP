@@ -82,13 +82,22 @@ namespace OSEF.ERP.APP
             string strArchivo = e.ExtraParams["archivo"];
             string rTipoObra = e.ExtraParams["tipoObra"];
             string rTipoMtno = e.ExtraParams["tipoMnto"];
-            string strRegistrosUpdates = e.ExtraParams["registrosUpdates"];
+
+            string strRegistrosNuevos = e.ExtraParams["registrosnuevos"];
+            string strRegistrosActualizados = e.ExtraParams["registrosactualizados"];
+            string strRegistrosEliminados = e.ExtraParams["registroseliminados"];
+
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciarioGeneral").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             string strPreciarioDetalle = e.ExtraParams["DetallePreciario"];
 
             //2. Se guarda en una lista el Store que contiene todos los campos para deserealizarlos y usarlos para el insert
             List<PreciarioGeneralConcepto> lDetallePreciario = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strPreciarioDetalle);
+
+            List<PreciarioGeneralConcepto> lDetallePreciarioNuevos = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosNuevos);
+            List<PreciarioGeneralConcepto> lDetallePreciarioActualizados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosActualizados);
+            List<PreciarioGeneralConcepto> lDetallePreciarioEliminados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosEliminados);
+
             PreciarioGeneral oPreciario = new PreciarioGeneral();
 
             //3. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
@@ -169,7 +178,7 @@ namespace OSEF.ERP.APP
                         ssc.SubCategoria = subcategoria;
                         ssc.Usuario = oUsuario.ID;
                         ssc.Estatus = sd.Estatus;
-                        ssc.FechaAlta = sd.FechaAlta;
+                        //ssc.FechaAlta = sd.FechaAlta;
                         subsubcategoria = PreciarioGeneralSubSubCategoriaBusiness.Insertar(ssc);
                     }
                     //12. Insertar Concepto

@@ -18,57 +18,33 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spI_InsertarOrdenEstimacionD' AND
+			WHERE  name = 'web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spI_InsertarOrdenEstimacionD
+	DROP PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Viernes 05 de Diciembre de 2014
--- Description:	Insertar un registro de RevisionesD
+-- Author:		Giovanni Flores
+-- Create date: Lunes 20 de Abril de 2015
+-- Description:	Obtener un registro de Concepto Adicional por su clave
 -- =============================================
-CREATE PROCEDURE web_spI_InsertarOrdenEstimacionD
+CREATE PROCEDURE web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave
 	-- Add the parameters for the stored procedure here
-	@ID			INT,
-	@Renglon	SMALLINT,
-	@ConceptoID	CHAR(10),
-	@Cantidad	DECIMAL(10, 2),
-	@Unidad		VARCHAR(30),
-	@Precio		DECIMAL(20, 2),
-	@Importe	DECIMAL(20, 2),
-	@IntExt		VARCHAR(30),
-	@Moneda		VARCHAR(10)
+	@CLAVE		CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-		-- Insert statements for procedure here
-		INSERT INTO
-			OrdenesEstimacionesD
-			(
-				ID,
-				Renglon,
-				ConceptoID,
-				Cantidad,
-				Unidad,
-				Precio,
-				Importe,
-				IntExt,
-				Moneda
-			)
-		VALUES
-			(
-				@ID,
-				@Renglon,
-				@ConceptoID,
-				@Cantidad,
-				@Unidad,
-				@Precio,
-				@Importe,
-				@IntExt,
-				@Moneda
-			)
+    -- Insert statements for procedure here
+
+	IF EXISTS(SELECT A.ID FROM PreciariosGeneralesConceptos A WHERE A.CLAVE = @CLAVE)
+	BEGIN
+		SELECT CAST(1 AS BIT)
+	END
+	ELSE
+	BEGIN
+		SELECT CAST(0 AS BIT)
+	END  
 END
 GO

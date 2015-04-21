@@ -479,5 +479,12 @@
 :r c:\SqlServerScripts\Modificar\Cuadrillas\web_spU_ActualizarCuadrilla.sql
 --Cuadrillas(Borrar)
 :r c:\SqlServerScripts\Borrar\Cuadrillas\web_spD_BorrarCuadrillas.sql
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+--PreciariosGeneralesConceptosAdicionales(Insertar)
+:r c:\SqlServerScripts\Insertar\PreciariosGeneralesConceptosAdicionales\web_spI_InsertarPreciarioGeneralConceptoAdicional.sql
+--PreciariosGeneralesConceptosAdicionales(Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave.sql
+--PreciariosGeneralesConceptosAdicionales(Modificar)
+:r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptosAdicionales\web_spU_ActualizarPreciarioGeneralConceptoAdicional.sql
 
 

@@ -131,7 +131,14 @@ var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, inde
 
 
 
+//Darle formato a la columna de Programado
+var cImporte_renderer = function (valor) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
 
+    return F.number(valor, "$ 000,000,000.00");
+};
 
 
 

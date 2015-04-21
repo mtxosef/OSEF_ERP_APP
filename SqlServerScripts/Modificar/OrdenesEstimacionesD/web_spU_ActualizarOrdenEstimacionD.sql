@@ -35,7 +35,8 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacionD
 	@Cantidad	DECIMAL(10,2),
 	@Unidad		VARCHAR(30),
 	@Precio		DECIMAL(20, 2),
-	@Importe	DECIMAL(20, 2)
+	@Importe	DECIMAL(20, 2),
+	@Moneda		VARCHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -50,7 +51,8 @@ BEGIN
 		Cantidad = @Cantidad,
 		Unidad = @Unidad,
 		Precio = @Precio,
-		Importe= @Importe
+		Importe= @Importe,
+		Moneda = @Moneda
 	WHERE
 		ID = @ID AND
 		Renglon = @Renglon

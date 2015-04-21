@@ -230,6 +230,7 @@
     <Content Include="assets\img\menu-conceptos.png" />
     <Content Include="assets\img\menu-conta.png" />
     <Content Include="assets\img\menu-corte.png" />
+    <Content Include="assets\img\menu-cuadrillas.png" />
     <Content Include="assets\img\menu-cuentas.png" />
     <Content Include="assets\img\menu-gantt.png" />
     <Content Include="assets\img\menu-inversiones.png" />
@@ -1237,6 +1238,12 @@
       <DependentUpon>Presupuesto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reports\rCaratulaDeEstimacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rCaratulaDeEstimacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reports\rCroquis.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1265,6 +1272,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rNumerosGeneradores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rResumenPartidas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rResumenPartidas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SolicitudesPrestamos.aspx.cs">
@@ -1383,6 +1396,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Presupuesto.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="reports\rCaratulaDeEstimacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rCaratulaDeEstimacion.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\rCroquis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rCroquis.cs</LastGenOutput>
@@ -1402,6 +1419,10 @@
     <EmbeddedResource Include="reports\rNumerosGeneradores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rNumerosGeneradores.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rResumenPartidas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rResumenPartidas.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

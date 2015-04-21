@@ -20,6 +20,9 @@ namespace OSEF.APP.EL
         string unidad;
         decimal precio;
         decimal importe;
+        string moneda;
+
+
         PreciarioGeneralConcepto rpreciarioconceptos;
         OrdenEstimacion rmovimiento;
 
@@ -93,7 +96,11 @@ namespace OSEF.APP.EL
             set { intext = value; }
         }
 
-
+        public string Moneda
+        {
+            get { return moneda; }
+            set { moneda = value; }
+        }
         #endregion
     }
 }

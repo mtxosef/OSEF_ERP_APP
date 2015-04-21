@@ -66,7 +66,8 @@ BEGIN
 		@FechaFinActividad SMALLDATETIME,
 		@HoraFinActividad DATETIME,
 		@Zona			VARCHAR(80),
-		@Cuadrilla		VARCHAR(200) 
+		@Cuadrilla		VARCHAR(200),
+		@ImporteTotal	DECIMAL(20,2) 
 		
 	SELECT
 		@MovA = Mov,
@@ -95,7 +96,8 @@ BEGIN
 		@FechaFinActividad = FechaFinActividad,
 		@HoraFinActividad = HoraFinActividad,
 		@Zona = Zona,
-		@Cuadrilla = Cuadrilla
+		@Cuadrilla = Cuadrilla,
+		@ImporteTotal = ImporteTotal
 	FROM
 		OrdenesEstimaciones
 	WHERE
@@ -130,7 +132,8 @@ BEGIN
 			FechaFinActividad ,
 			HoraFinActividad ,
 			Zona ,
-			Cuadrilla
+			Cuadrilla,
+			ImporteTotal
 		)
 	VALUES
 		(
@@ -160,7 +163,8 @@ BEGIN
 			@FechaFinActividad ,
 			@HoraFinActividad ,
 			@Zona ,
-			@Cuadrilla
+			@Cuadrilla,
+			@ImporteTotal
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()

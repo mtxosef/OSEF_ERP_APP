@@ -292,6 +292,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cCosto;
         
         /// <summary>
+        /// Control cMoneda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cMoneda;
+        
+        /// <summary>
         /// Control rsmConceptos.
         /// </summary>
         /// <remarks>

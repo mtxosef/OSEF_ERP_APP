@@ -22,9 +22,9 @@ var validaConcluidos = function (a, d, f) {
 
 //Evento lanzado al cargar el store de avance encabezado
 var sFormaGenerador_Load = function () {
-  
+
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
-    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('Estatus')=='CONCLUIDO' ) {
+    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sVolumetria.getAt(0).get('Estatus') == 'CONCLUIDO') {
         App.imgbtnAceptar.setDisabled(true);
         App.txtDescripcionCorta.setDisabled(true);
     }
@@ -35,9 +35,9 @@ var sFormaGenerador_Load = function () {
         App.txtDescripcionCorta.setDisabled(true);
     }
 
-    else if (App.sFormaGenerador.getCount() < 19) {  
+    else if (App.sFormaGenerador.getCount() < 19) {
         App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
-       
+
     }
     App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
 
@@ -51,7 +51,8 @@ var sFormaGenerador_Load = function () {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
+    App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
+    ImporteFinal = sum;
 };
 
 
@@ -155,8 +156,8 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(ImporteFinal, "000,000,000.00"));
-
+    App.dfTotal.setValue(F.number(ImporteFinal, "000,000,000.00"));
+    ImporteFinal = ImporteFinal;
     //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
     //        Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
     //        Ext.util.Cookies.set('cookieConceptoFotosVolumetria', registro.get('ConceptoID'));
@@ -201,7 +202,7 @@ var calcularTotalLargo_Change = function (component) {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
+    App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
     ImporteFinal = sum;
 }
 
@@ -235,7 +236,7 @@ var calcularTotalAncho_Change = function (component) {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
+    App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
     ImporteFinal = sum;
 }
 
@@ -350,6 +351,6 @@ function HabilitarGuardar() {
 
 var imgbtnAceptar_Click = function () {
 
-    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).set("Utilizada", parseFloat(App.dfTotal.getValue()));
+    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonVolumetriaD')).set("Utilizada", parseFloat(ImporteFinal));
     window.parent.App.wGenerador.hide();
 }

@@ -42,6 +42,10 @@ namespace OSEF.APP.EL
         Nullable<DateTime> horafinactividad;
         string zona;
         string cuadrilla;
+        decimal importetotal;
+
+       
+
 
         #endregion
 
@@ -218,6 +222,12 @@ namespace OSEF.APP.EL
         {
             get { return cuadrilla; }
             set { cuadrilla = value; }
+        }
+
+        public decimal ImporteTotal
+        {
+            get { return importetotal; }
+            set { importetotal = value; }
         }
         #endregion
     }

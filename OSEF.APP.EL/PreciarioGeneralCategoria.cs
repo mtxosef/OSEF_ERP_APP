@@ -19,7 +19,7 @@ namespace OSEF.APP.EL
         string descripcion;
         string usuario;
         string estatus;
-        DateTime fechaalta;
+        Nullable<DateTime> fechaalta;
         string tipo;
 
         PreciarioGeneralCategoria rcategoria;
@@ -66,7 +66,7 @@ namespace OSEF.APP.EL
             set { estatus = value; }
         }
 
-        public DateTime FechaAlta
+        public Nullable<DateTime> FechaAlta
         {
             get { return fechaalta; }
             set { fechaalta = value; }

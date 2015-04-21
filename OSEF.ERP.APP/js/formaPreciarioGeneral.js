@@ -97,6 +97,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 //Evento lanzado al cargar el store de avance encabezado
 var sPreciarioGeneral_Load_Success = function () {
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
+
         App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
         //console.log(App.sCarga);
         //    App.gpPreciario.getView().focusRow(App.sCarga.getCount()-1);
@@ -207,8 +208,7 @@ var ceFormaPreciarioGeneral_BeforeEdit = function (editor, context, opciones) {
         App.direct.CargarSubCategoriasPorCategoria(context.record.get('Categoria'), {
             success: function (result) {
                 App.cmbSubCategoria.select(context.record.get('SubCategoria'));
-            },
-
+            }, 
             failure: function (errorMessage) { }
         });
     }
@@ -217,7 +217,6 @@ var ceFormaPreciarioGeneral_BeforeEdit = function (editor, context, opciones) {
             success: function (result) {
                 App.cmbSubSubCategoria.select(context.record.get('SubSubCategoria'));
             },
-
             failure: function (errorMessage) { }
         });
     }
@@ -268,10 +267,9 @@ var ceFormaPreciarioGeneral_ValidateEdit = function (editor, context, opciones) 
                 context.record.set('RSubSubCategoria', result);
                 return true;
             },
-
             failure: function (errorMessage) { }
         });
-    }
+    } 
 };
 
 
@@ -284,10 +282,10 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
         //Verificar si toda la fila contiene datos
         var registro = App.sCarga.getAt(columna.rowIdx);
 
-
         if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
             //Insertar un nuevo registro
-            App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' });
+            App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' }); 
+
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
             //Validar si se habilita el boton de afectar
@@ -316,14 +314,8 @@ function HabilitarGuardar() {
     //Valida que todos los controles del encabezado obligatorios estén llenos
     if (FileUploadValue != "" && App.txtfDescripcion.getValue() != "" && App.sCarga.getCount() != 0) {
         if (App.rObra.getValue() == true || App.rMnto.getValue() == true) {
-
-
-          
            App.imgbtnGuardar.setDisabled(false);
-           
-          
         }
-
     }
     else {
         App.imgbtnGuardar.setDisabled(true);
@@ -339,7 +331,71 @@ var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
     window.parent.App.wAyudaConcepto.center();
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
     window.parent.App.wAyudaConcepto.show();
-
-
-    
 };
+
+
+
+//Obtiene las filas agregadas, editadas y eliminadas del store
+var getNewEncodedRecords = function () {
+
+    var store = App.sCarga;
+    var newRecords = store.getNewRecords();
+    var encodednewrecords;
+    var xndata = [];
+    if (newRecords.length > 0 || newRecords != null) {
+
+        for (i = 0; i < newRecords.length; i++) {
+            xndata.push(newRecords[i].data);
+        }
+    
+        xndata.pop();
+        if (xndata.length > 0) {
+            encodednewrecords = Ext.encode(xndata);
+            alert(xndata.length);
+            return encodednewrecords;
+        } else {
+            return 0;
+        }
+    }
+}
+
+var getRemovedRecords = function () {
+    var store = App.sCarga;
+    var deleteRecords = store.getRemovedRecords();
+    var encodedremovedrecords;
+    var xrdata = [];
+
+    if (deleteRecords.length > 0 || deleteRecords != null) {
+        for (i = 0; i < deleteRecords.length; i++) {
+            xrdata.push(deleteRecords[i].data);
+        }
+        xrdata.pop();
+        if (xrdata.length > 0) {
+            encodedremovedrecords = Ext.encode(xrdata);
+            return encodedremovedrecords;
+        } else {
+            return 0;
+        }
+    }
+}
+
+var getUpdatedRecords = function () {
+
+    var store = App.sCarga;
+    var editedRecords = store.getUpdatedRecords();
+    var encodedupdaterecords;
+    var xudata = [];
+
+    if (editedRecords.length > 0 || editedRecords != null) {
+        for (i = 0; i < editedRecords.length; i++) {
+            xudata.push(editedRecords[i].data);
+        }
+        xudata.pop();
+        if (xudata.length > 0) {
+            encodedupdaterecords = Ext.encode(xudata);
+            return encodedupdaterecords;
+        } else {
+            return 0;
+        }
+    }
+}

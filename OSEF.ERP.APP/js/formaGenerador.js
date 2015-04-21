@@ -70,7 +70,8 @@ var sFormaGenerador_Load = function () {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
+    App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
+    ImporteFinal = sum;
 };
 
 
@@ -157,6 +158,7 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
     App.dfTotal.setValue('' + F.number(ImporteFinal, "000,000,000.00"));
+    ImporteFinal = ImporteFinal;
 
 };
 
@@ -227,7 +229,7 @@ var calcularTotalAncho_Change = function (component) {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
+    App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
     ImporteFinal = sum;
 }
 
@@ -262,7 +264,7 @@ var calcularTotalAlto_Change = function (component) {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
+    App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
     ImporteFinal = sum;
 
 }
@@ -296,7 +298,7 @@ var calcularTotalCantidad_Change = function (component) {
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "000,000,000.00"));
+    App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
     ImporteFinal = sum;
 }
 
@@ -344,8 +346,9 @@ function HabilitarGuardar() {
 
 
 var imgbtnAceptar_Click = function () {
-   
-    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Cantidad", parseFloat(App.dfTotal.getValue()));
+
+
+    window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Cantidad", parseFloat(ImporteFinal));
     window.parent.App.wGenerador.hide();
 }
 

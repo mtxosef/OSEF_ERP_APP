@@ -86,7 +86,8 @@ namespace OSEF.ERP.APP
                     FechaFinActividad=oOrdenEstimacion.FechaFinActividad,
                     HoraFinActividad=oOrdenEstimacion.HoraFinActividad,
                     Zona=oOrdenEstimacion.Zona,
-                    Cuadrilla=oOrdenEstimacion.Cuadrilla
+                    Cuadrilla=oOrdenEstimacion.Cuadrilla,
+                    ImporteTotal = oOrdenEstimacion.ImporteTotal
 
                 });
             }
@@ -97,6 +98,7 @@ namespace OSEF.ERP.APP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        [DirectMethod]
         protected void imgbtnGuardar_Click(object sender, DirectEventArgs e)
         {
             //1. Obtener datos de la Forma y saber si es edición o nuevo
@@ -108,7 +110,8 @@ namespace OSEF.ERP.APP
             string strDiasAtencion = e.ExtraParams["diasAtencion"];
 
 
-            if (strDiasAtencion.Equals("1")) {
+            if (strDiasAtencion.Equals("1") || strDiasAtencion.Equals("null"))
+            {
                 strDiasAtencion = "0";
             }
 
@@ -215,6 +218,8 @@ namespace OSEF.ERP.APP
                     sOrdenEstimacion.GetAt(0).Set("HoraFinActividad", nuevosValores.HoraFinActividad);
                     sOrdenEstimacion.GetAt(0).Set("Zona", nuevosValores.Zona);
                 sOrdenEstimacion.GetAt(0).Set("Cuadrilla", nuevosValores.Cuadrilla);
+
+                sOrdenEstimacion.GetAt(0).Set("ImporteFinal", nuevosValores.ImporteTotal);
 
                
 
@@ -346,7 +351,7 @@ namespace OSEF.ERP.APP
                             oOrdenEstimacionForma.FechaLlegada = Convert.ToDateTime(sd.Value);
                         break;
                     case "tfHoraLlegada":
-                         if (sd.Value == null)
+                         if (sd.Value == null || sd.Value.Equals(""))
                             oOrdenEstimacionForma.HoraLlegada = null;
                         else
                              oOrdenEstimacionForma.HoraLlegada = Convert.ToDateTime(sd.Value);
@@ -359,7 +364,7 @@ namespace OSEF.ERP.APP
                             oOrdenEstimacionForma.FechaFinActividad = Convert.ToDateTime(sd.Value);
                         break;
                     case "tfHoraFinActividad":
-                         if (sd.Value == null)
+                         if (sd.Value == null || sd.Value.Equals(""))
                             oOrdenEstimacionForma.HoraFinActividad = null;
                         else
                              oOrdenEstimacionForma.HoraFinActividad = Convert.ToDateTime(sd.Value);
@@ -370,6 +375,9 @@ namespace OSEF.ERP.APP
                         break;
                     case "txtCuadrilla":
                         oOrdenEstimacionForma.Cuadrilla = sd.Value;
+                        break;
+                    case "dfTotalSinRender":
+                        oOrdenEstimacionForma.ImporteTotal = Convert.ToDecimal(sd.Value);
                         break;
                    
 
@@ -434,7 +442,8 @@ namespace OSEF.ERP.APP
                     FechaFinActividad = oOrdenEstimacionForma.FechaFinActividad,
                     HoraFinActividad = oOrdenEstimacionForma.HoraFinActividad,
                     Zona = oOrdenEstimacionForma.Zona,
-                    Cuadrilla = oOrdenEstimacionForma.Cuadrilla
+                    Cuadrilla = oOrdenEstimacionForma.Cuadrilla,
+                    ImporteFinal = oOrdenEstimacionForma.ImporteTotal
                 });
 
                 //5. Guardar Detalle y regresar valor
@@ -480,7 +489,7 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("Zona", oOrdenEstimacionForma.Zona);
                 sOrdenEstimacion.GetAt(0).Set("Cuadrilla", oOrdenEstimacionForma.Cuadrilla);
 
-  
+                sOrdenEstimacion.GetAt(0).Set("ImporteFinal", oOrdenEstimacionForma.ImporteTotal);
 
                 //8. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
@@ -667,8 +676,5 @@ namespace OSEF.ERP.APP
             //Cambia el estatus del movimiento
             OrdenEstimacionBusiness.CancelarOrdenEstimacionPorID(strID);
         }
-
-
-  
     }
 }

@@ -24,7 +24,7 @@ namespace OSEF.APP.EL
         decimal cantidad;
         string usuario;
         string estatus;
-        DateTime fechaalta;
+        Nullable<DateTime>  fechaalta;
         string tipo;
         string moneda;
 
@@ -115,7 +115,7 @@ namespace OSEF.APP.EL
             set { estatus = value; }
         }
 
-        public DateTime FechaAlta
+        public Nullable<DateTime> FechaAlta
         {
             get { return fechaalta; }
             set { fechaalta = value; }

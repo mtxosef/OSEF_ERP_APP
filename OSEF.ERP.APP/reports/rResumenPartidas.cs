@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP.reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rCroquis : ReportClass {
+    public class rResumenPartidas : ReportClass {
         
-        public rCroquis() {
+        public rResumenPartidas() {
         }
         
         public override string ResourceName {
             get {
-                return "rCroquis.rpt";
+                return "rResumenPartidas.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP.reports {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.reports.rCroquis.rpt";
+                return "OSEF.ERP.APP.reports.rResumenPartidas.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,23 +90,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_path {
+        public CrystalDecisions.Shared.IParameterField Parameter_pFirmaConformidad1 {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -114,41 +98,17 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_elaboro {
+        public CrystalDecisions.Shared.IParameterField Parameter_pFirmaConformidad2 {
             get {
                 return this.DataDefinition.ParameterFields[1];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_reviso {
-            get {
-                return this.DataDefinition.ParameterFields[2];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_autorizo {
-            get {
-                return this.DataDefinition.ParameterFields[3];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_XGenerador_ConceptoID {
-            get {
-                return this.DataDefinition.ParameterFields[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrCroquis : Component, ICachedReport {
+    public class CachedrResumenPartidas : Component, ICachedReport {
         
-        public CachedrCroquis() {
+        public CachedrResumenPartidas() {
         }
         
         [Browsable(false)]
@@ -185,7 +145,7 @@ namespace OSEF.ERP.APP.reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rCroquis rpt = new rCroquis();
+            rResumenPartidas rpt = new rResumenPartidas();
             rpt.Site = this.Site;
             return rpt;
         }

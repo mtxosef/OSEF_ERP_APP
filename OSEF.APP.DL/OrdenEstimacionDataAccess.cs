@@ -248,6 +248,13 @@ namespace OSEF.APP.DL
                 else
                     sqlpCuadrilla.Value = iOrdenEstimacion.Cuadrilla;
 
+                SqlParameter sqlpImporteTotal = new SqlParameter();
+                sqlpImporteTotal.ParameterName = "@ImporteTotal";
+                sqlpImporteTotal.SqlDbType = SqlDbType.Decimal;
+                sqlpImporteTotal.Precision = 20;
+                sqlpImporteTotal.Scale = 2;
+                sqlpImporteTotal.Value = iOrdenEstimacion.ImporteTotal;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -277,7 +284,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraFinActividad);
                 sqlcComando.Parameters.Add(sqlpZona);
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
-
+                sqlcComando.Parameters.Add(sqlpImporteTotal);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -525,6 +532,13 @@ namespace OSEF.APP.DL
                     sqlpCuadrilla.Value = uOrdenEstimacion.Cuadrilla;
 
 
+                SqlParameter sqlpImporteTotal = new SqlParameter();
+                sqlpImporteTotal.ParameterName = "@ImporteTotal";
+                sqlpImporteTotal.SqlDbType = SqlDbType.Decimal;
+                sqlpImporteTotal.Precision = 20;
+                sqlpImporteTotal.Scale = 2;
+               
+                    sqlpImporteTotal.Value = uOrdenEstimacion.ImporteTotal;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -553,6 +567,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraFinActividad);
                 sqlcComando.Parameters.Add(sqlpZona);
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
+                sqlcComando.Parameters.Add(sqlpImporteTotal);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

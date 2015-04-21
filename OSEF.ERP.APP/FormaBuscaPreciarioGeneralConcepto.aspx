@@ -263,7 +263,7 @@
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Costo" Type="Float" />
                                                         <ext:ModelField Name="Cantidad" Type="Float" />
-                                                        <ext:ModelField Name="Utilizada" Type="Float" />
+                                                        <ext:ModelField Name="Moneda" Type="String" />
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
@@ -284,7 +284,7 @@
                                                 ID="cConcepto"
                                                 runat="server"
                                                 Text="Concepto"
-                                                Width="340"
+                                                Width="290"
                                                 DataIndex="Descripcion">
                                             </ext:Column>
                                             <ext:Column
@@ -293,14 +293,21 @@
                                                 Align="Center"
                                                 Text="Unidad"
                                                 DataIndex="Unidad"
-                                                Width="100">
+                                                Width="75">
                                             </ext:Column>
                                                 <ext:Column
                                                 ID="cCosto"
                                                 runat="server"
                                                 Text="Costo"
-                                                Width="90"
+                                                Width="85"
                                                 DataIndex="Costo">
+                                            </ext:Column>
+                                              <ext:Column
+                                                ID="cMoneda"
+                                                runat="server"
+                                                Text="Moneda"
+                                                Width="75"
+                                                DataIndex="Moneda">
                                             </ext:Column>
                                         </Columns>
                                     </ColumnModel>
