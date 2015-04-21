@@ -1278,6 +1278,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rResumenPartidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SolicitudesPrestamos.aspx.cs">
       <DependentUpon>SolicitudesPrestamos.aspx</DependentUpon>
