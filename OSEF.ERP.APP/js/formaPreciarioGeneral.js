@@ -335,21 +335,28 @@ var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
 
 
 
-//Obtiene las filas agregadas, editadas y eliminadas del store 
+//Obtiene las filas agregadas, editadas y eliminadas del store
 var getNewEncodedRecords = function () {
 
     var store = App.sCarga;
     var newRecords = store.getNewRecords();
     var encodednewrecords;
     var xndata = [];
+    if (newRecords.length > 0 || newRecords != null) {
 
-    if (newRecords.length > 0) {
         for (i = 0; i < newRecords.length; i++) {
             xndata.push(newRecords[i].data);
         }
-        encodednewrecords = Ext.encode(xndata);
+    
+        xndata.pop();
+        if (xndata.length > 0) {
+            encodednewrecords = Ext.encode(xndata);
+            alert(xndata.length);
+            return encodednewrecords;
+        } else {
+            return 0;
+        }
     }
-    return encodednewrecords;
 }
 
 var getRemovedRecords = function () {
@@ -362,8 +369,13 @@ var getRemovedRecords = function () {
         for (i = 0; i < deleteRecords.length; i++) {
             xrdata.push(deleteRecords[i].data);
         }
-        encodedremovedrecords = Ext.encode(xrdata);
-        return encodedremovedrecords;
+        xrdata.pop();
+        if (xrdata.length > 0) {
+            encodedremovedrecords = Ext.encode(xrdata);
+            return encodedremovedrecords;
+        } else {
+            return 0;
+        }
     }
 }
 
@@ -378,7 +390,12 @@ var getUpdatedRecords = function () {
         for (i = 0; i < editedRecords.length; i++) {
             xudata.push(editedRecords[i].data);
         }
-        encodedupdaterecords = Ext.encode(xudata);
-        return encodedupdaterecords;
+        xudata.pop();
+        if (xudata.length > 0) {
+            encodedupdaterecords = Ext.encode(xudata);
+            return encodedupdaterecords;
+        } else {
+            return 0;
+        }
     }
 }

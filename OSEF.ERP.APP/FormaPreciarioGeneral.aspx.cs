@@ -178,7 +178,7 @@ namespace OSEF.ERP.APP
                         ssc.SubCategoria = subcategoria;
                         ssc.Usuario = oUsuario.ID;
                         ssc.Estatus = sd.Estatus;
-                        ssc.FechaAlta = sd.FechaAlta;
+                        //ssc.FechaAlta = sd.FechaAlta;
                         subsubcategoria = PreciarioGeneralSubSubCategoriaBusiness.Insertar(ssc);
                     }
                     //12. Insertar Concepto
