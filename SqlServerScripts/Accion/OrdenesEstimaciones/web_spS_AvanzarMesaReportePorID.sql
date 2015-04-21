@@ -65,7 +65,6 @@ BEGIN
 		@HoraLlegada	DATETIME,
 		@FechaFinActividad SMALLDATETIME,
 		@HoraFinActividad DATETIME,
-		@Zona			VARCHAR(80),
 		@Cuadrilla		VARCHAR(200),
 		@ImporteTotal	DECIMAL(20,2) 
 		
@@ -95,7 +94,6 @@ BEGIN
 		@HoraLlegada = HoraLlegada,
 		@FechaFinActividad = FechaFinActividad,
 		@HoraFinActividad = HoraFinActividad,
-		@Zona = Zona,
 		@Cuadrilla = Cuadrilla,
 		@ImporteTotal = ImporteTotal
 	FROM
@@ -131,7 +129,6 @@ BEGIN
 			HoraLlegada ,
 			FechaFinActividad ,
 			HoraFinActividad ,
-			Zona ,
 			Cuadrilla,
 			ImporteTotal
 		)
@@ -162,7 +159,6 @@ BEGIN
 			@HoraLlegada ,
 			@FechaFinActividad ,
 			@HoraFinActividad ,
-			@Zona ,
 			@Cuadrilla,
 			@ImporteTotal
 		)

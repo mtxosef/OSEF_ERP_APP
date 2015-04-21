@@ -46,7 +46,6 @@ var imgbtnFormaNuevo_Click = function () {
     App.dfFFechaFinActividad.setReadOnly(false);
     App.tfHoraFinActividad.setValue('');
     App.tfHoraFinActividad.setReadOnly(false);
-    App.txtZona.setValue('');
     App.txtCuadrilla.setValue('');
 
     //Cambiar Estatus, Cookie y Titulo Window
@@ -362,7 +361,6 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.tfHoraLlegada.setReadOnly(true);
         App.dfFFechaFinActividad.setReadOnly(true);
         App.tfHoraFinActividad.setReadOnly(true);
-        App.txtZona.setReadOnly(true);
         App.txtCuadrilla.setReadOnly(true);
 
 
@@ -490,7 +488,6 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.tfHoraLlegada.setReadOnly(true);
     App.dfFFechaFinActividad.setReadOnly(true);
     App.tfHoraFinActividad.setReadOnly(true);
-    App.txtZona.setReadOnly(true);
     App.txtCuadrilla.setReadOnly(true);
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
@@ -587,7 +584,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
         App.dfFFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
-        App.txtZona.setValue(registro[0].get('Zona'));
         App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
 
@@ -620,7 +616,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraLlegada.setReadOnly(true);
         App.dfFFechaFinActividad.setReadOnly(true);
         App.tfHoraFinActividad.setReadOnly(true);
-        App.txtZona.setReadOnly(true);
         App.txtCuadrilla.setReadOnly(true);
 
 
@@ -663,7 +658,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
         App.dfFFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
-        App.txtZona.setValue(registro[0].get('Zona'));
         App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
      
@@ -735,7 +729,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
         App.dfFFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
-        App.txtZona.setValue(registro[0].get('Zona'));
         App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
         //Deshabilita controles
@@ -757,7 +750,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraLlegada.setReadOnly(true);
         App.dfFFechaFinActividad.setReadOnly(true);
         App.tfHoraFinActividad.setReadOnly(true);
-        App.txtZona.setReadOnly(true);
         App.txtCuadrilla.setReadOnly(true);
 
         App.cIntExt.hidden = false;

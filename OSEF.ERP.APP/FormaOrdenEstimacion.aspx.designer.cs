@@ -670,24 +670,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TimeField tfHoraFinActividad;
         
         /// <summary>
-        /// Control FieldContainer4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer4;
-        
-        /// <summary>
-        /// Control txtZona.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtZona;
-        
-        /// <summary>
         /// Control fcCuadrilla.
         /// </summary>
         /// <remarks>

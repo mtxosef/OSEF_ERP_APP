@@ -625,6 +625,7 @@
                                                 <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                                             </Listeners>
                                         </ext:TextField>
+                                        
                                         <ext:ComboBox 
                                             ID="cmbDivision"
                                             runat="server"
@@ -641,6 +642,10 @@
                                                 <ext:ListItem Index="4" Text="VALLE DE MÉXICO" Value="VALLE DE MÉXICO" />
                                                 <ext:ListItem Index="5" Text="SURESTE" Value="SURESTE" />
                                             </Items>
+                                            
+                                            <SelectedItems>
+                                    <ext:ListItem Index="2" />
+                                </SelectedItems>
                                             <%--<Listeners>
                                                 <Select Fn="cmbMov_Select" />
                                                 <Change Fn="sMov_Change"></Change>
@@ -981,25 +986,6 @@
                                     </Items>
                                 </ext:FieldContainer>
 
-                                 <ext:FieldContainer 
-                                    ID="FieldContainer4"
-                                    runat="server"
-                                     FieldLabel="Zona"
-                                    LabelWidth="120"
-                                    AnchorHorizontal="100%"
-                                    Layout="HBoxLayout">
-                                    <Items>
-                                        <ext:TextField 
-                                            ID="txtZona"
-                                            runat="server"
-                                            Width="200"
-                                            Margins="0 3 0 0"
-                                            Editable="true"
-                                            AllowBlank="false">
-                                        </ext:TextField>
-                                    </Items>
-                                </ext:FieldContainer>
-                           
                             <ext:FieldContainer
                                             ID="fcCuadrilla"
                                             runat="server"

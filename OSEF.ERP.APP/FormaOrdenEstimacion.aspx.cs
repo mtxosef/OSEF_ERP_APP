@@ -85,7 +85,6 @@ namespace OSEF.ERP.APP
                     HoraLlegada=oOrdenEstimacion.HoraLlegada,
                     FechaFinActividad=oOrdenEstimacion.FechaFinActividad,
                     HoraFinActividad=oOrdenEstimacion.HoraFinActividad,
-                    Zona=oOrdenEstimacion.Zona,
                     Cuadrilla=oOrdenEstimacion.Cuadrilla,
                     ImporteTotal = oOrdenEstimacion.ImporteTotal
 
@@ -216,7 +215,6 @@ namespace OSEF.ERP.APP
                     sOrdenEstimacion.GetAt(0).Set("HoraLlegada", nuevosValores.HoraLlegada);
                     sOrdenEstimacion.GetAt(0).Set("FechaFinActividad", nuevosValores.FechaFinActividad);
                     sOrdenEstimacion.GetAt(0).Set("HoraFinActividad", nuevosValores.HoraFinActividad);
-                    sOrdenEstimacion.GetAt(0).Set("Zona", nuevosValores.Zona);
                 sOrdenEstimacion.GetAt(0).Set("Cuadrilla", nuevosValores.Cuadrilla);
 
                 sOrdenEstimacion.GetAt(0).Set("ImporteFinal", nuevosValores.ImporteTotal);
@@ -370,9 +368,6 @@ namespace OSEF.ERP.APP
                              oOrdenEstimacionForma.HoraFinActividad = Convert.ToDateTime(sd.Value);
                         break;
 
-                    case "txtZona":
-                        oOrdenEstimacionForma.Zona = sd.Value;
-                        break;
                     case "txtCuadrilla":
                         oOrdenEstimacionForma.Cuadrilla = sd.Value;
                         break;
@@ -441,7 +436,6 @@ namespace OSEF.ERP.APP
                     HoraLlegada = oOrdenEstimacionForma.HoraLlegada,
                     FechaFinActividad = oOrdenEstimacionForma.FechaFinActividad,
                     HoraFinActividad = oOrdenEstimacionForma.HoraFinActividad,
-                    Zona = oOrdenEstimacionForma.Zona,
                     Cuadrilla = oOrdenEstimacionForma.Cuadrilla,
                     ImporteFinal = oOrdenEstimacionForma.ImporteTotal
                 });
@@ -486,7 +480,6 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("HoraLlegada", oOrdenEstimacionForma.HoraLlegada);
                 sOrdenEstimacion.GetAt(0).Set("FechaFinActividad", oOrdenEstimacionForma.FechaFinActividad);
                 sOrdenEstimacion.GetAt(0).Set("HoraFinActividad", oOrdenEstimacionForma.HoraFinActividad);
-                sOrdenEstimacion.GetAt(0).Set("Zona", oOrdenEstimacionForma.Zona);
                 sOrdenEstimacion.GetAt(0).Set("Cuadrilla", oOrdenEstimacionForma.Cuadrilla);
 
                 sOrdenEstimacion.GetAt(0).Set("ImporteFinal", oOrdenEstimacionForma.ImporteTotal);
