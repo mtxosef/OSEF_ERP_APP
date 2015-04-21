@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerSubCategorias' AND
+			WHERE  name = 'web_spS_ObtenerSolicitudesPrestamos' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerSubCategorias
+	DROP PROCEDURE web_spS_ObtenerSolicitudesPrestamos
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Lunes 24 de Noviembre de 2014
--- Description:	Obtener todos los registros de SubCategorias
+-- Create date: Domingo 19 de Abril de 2015
+-- Description:	Obtener todos los registros de las solicitudes de prestamos
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerSubCategorias
+CREATE PROCEDURE web_spS_ObtenerSolicitudesPrestamos
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -37,11 +37,19 @@ BEGIN
 
     -- Insert statements for procedure here
 	SELECT
-		ID,
-		Orden,
-		Descripcion,
-		Categoria
+		A.ID,
+		B.Nombre,
+		B.APaterno,
+		B.AMaterno,
+		A.Cantidad,
+		A.Plazo,
+		A.FechaAlta AS Inicio,
+		DATEADD(DAY,A.Plazo,A.FechaAlta) AS Fin
 	FROM
-		SubCategorias
+		SolicitudesPrestamos A
+	INNER JOIN
+		Clientes B
+	ON
+		A.Cliente = B.ID
 END
 GO

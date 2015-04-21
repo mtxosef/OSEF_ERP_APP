@@ -18,18 +18,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spD_BorrarSubCategoria' AND
+			WHERE  name = 'web_spD_BorrarSolicitudPrestamo' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spD_BorrarSubCategoria
+	DROP PROCEDURE web_spD_BorrarSolicitudPrestamo
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Lunes 24 de Noviembre de 2014
--- Description:	Borrar un registro de SubCategorias por su ID
+-- Create date: Lunes 20 de Abril de 2015
+-- Description:	Borrar un registro de SolicitudPrestamo por su ID
 -- =============================================
-CREATE PROCEDURE web_spD_BorrarSubCategoria
+CREATE PROCEDURE web_spD_BorrarSolicitudPrestamo
 	-- Add the parameters for the stored procedure here
-	@ID	CHAR(6)
+	@ID	CHAR(8)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -38,7 +38,7 @@ BEGIN
 
     -- Insert statements for procedure here
     DELETE FROM
-		SubCategorias
+		SolicitudesPrestamos
 	WHERE
 		ID = @ID
 END

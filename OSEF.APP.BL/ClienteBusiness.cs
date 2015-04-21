@@ -38,6 +38,16 @@ namespace OSEF.APP.BL
             return ClienteDataAccess.Actualizar(uCliente);
         }
 
+        /// <summary>
+        /// Método que actualiza un nuevo registro a un Cliente para las Solicitudes de préstamo
+        /// </summary>
+        /// <param name="uCliente"></param>
+        /// <returns></returns>
+        public static int ActualizarSolicitud(Cliente uCliente)
+        {
+            return ClienteDataAccess.ActualizarSolicitud(uCliente);
+        }
+
         #endregion
 
         #region Consultar

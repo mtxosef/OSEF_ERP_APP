@@ -16,10 +16,10 @@ namespace OSEF.APP.EL
         string cliente;
         string nacionalidad;
         string registromatrimonial;
-        byte numerodependientes;
+        Nullable<byte> numerodependientes;
         string edades;
         string tipocasa;
-        byte aniosdomicilio;
+        Nullable<byte> aniosdomicilio;
         string calleanterior;
         string entrecallesanterior;
         string noexterioranterior;
@@ -27,10 +27,10 @@ namespace OSEF.APP.EL
         string estadoanterior;
         string municipioanterior;
         string coloniaanterior;
-        int codigopostalanterior;
+        Nullable<int> codigopostalanterior;
         byte antiguedad;
         short ingresos;
-        short otrosingresos;
+        Nullable<short> otrosingresos;
         string concepto;
         string jefenombre;
         string jefeapaterno;
@@ -39,7 +39,8 @@ namespace OSEF.APP.EL
         string conyugenombre;
         string conyugeapaterno;
         string conyugeamaterno;
-        DateTime conyugefechanacimiento;
+        Nullable<DateTime> conyugefechanacimiento;
+        Nullable<byte> conyugeedad;
         string conyugerfc;
         string conyugetelefono;
         string conyugetelefonomovil;
@@ -50,10 +51,10 @@ namespace OSEF.APP.EL
         string conyugeestado;
         string conyugemunicipio;
         string conyugecolonia;
-        int conyugecodigopostal;
-        byte conyugeantiguedad;
-        short conyugeingresos;
-        short conyugeotrosingresos;
+        Nullable<int> conyugecodigopostal;
+        Nullable<byte> conyugeantiguedad;
+        Nullable<short> conyugeingresos;
+        Nullable<short> conyugeotrosingresos;
         string conyugeconcepto;
         string conyugeempresa;
         string conyugepuesto;
@@ -62,7 +63,7 @@ namespace OSEF.APP.EL
         string conyugeempresanoexterior;
         string conyugeempresanointerior;
         string conyugeempresacolonia;
-        int conyugeempresacodigopostal;
+        Nullable<int> conyugeempresacodigopostal;
         string conyugeempresaestado;
         string conyugeempresamunicipio;
         string conyugeempresajefenombre;
@@ -79,19 +80,19 @@ namespace OSEF.APP.EL
         string avalnoexterior;
         string avalnointerior;
         string avalcolonia;
-        int avalcodigopostal;
+        Nullable<int> avalcodigopostal;
         string avalestado;
         string avalmunicipio;
         string avaltelefono;
         string avaltelefonomovil;
-        byte avalantiguedad;
+        Nullable<byte> avalantiguedad;
         bool avalcasapropia;
         string avaltipocasa;
         string avalcalleanterior;
         string avalnoexterioranterior;
         string avalnointerioranterior;
         string avalcoloniaanterior;
-        int avalcodigopostalanterior;
+        Nullable<int> avalcodigopostalanterior;
         string avalentrecallesanterior;
         string avalempresa;
         string avalempresajefenombre;
@@ -100,17 +101,17 @@ namespace OSEF.APP.EL
         string avalempresapuesto;
         byte avalempresaantiguedad;
         int avalempresaingresos;
-        int avalempresaotrosingresos;
+        Nullable<int> avalempresaotrosingresos;
         string avalempresaconcepto;
         string avalempresatelefono;
-        short avalempresatelefonoext;
+        Nullable<short> avalempresatelefonoext;
         bool avalempresapropietario;
         string avalempresatipo;
         string avalempresaanterior;
         int cantidad;
         short plazo;
         string formapago;
-        string detinoprestamo;
+        string destinoprestamo;
         string tipo;
         string tablaamortizacion;
         string estatus;
@@ -118,6 +119,12 @@ namespace OSEF.APP.EL
         string usuarioalta;
         DateTime fechamodificacion;
         string usuariomodificacion;
+
+        string nombre;
+        string amaterno;
+        string apaterno;
+        DateTime inicio;
+        DateTime fin;
 
         #endregion
 
@@ -147,7 +154,7 @@ namespace OSEF.APP.EL
             set { registromatrimonial = value; }
         }
 
-        public byte NumeroDependientes
+        public Nullable<byte> NumeroDependientes
         {
             get { return numerodependientes; }
             set { numerodependientes = value; }
@@ -165,7 +172,7 @@ namespace OSEF.APP.EL
             set { tipocasa = value; }
         }
 
-        public byte AniosDomicilio
+        public Nullable<byte> AniosDomicilio
         {
             get { return aniosdomicilio; }
             set { aniosdomicilio = value; }
@@ -207,7 +214,7 @@ namespace OSEF.APP.EL
             set { coloniaanterior = value; }
         }
 
-        public int CodigoPostalAnterior
+        public Nullable<int> CodigoPostalAnterior
         {
             get { return codigopostalanterior; }
             set { codigopostalanterior = value; }
@@ -231,7 +238,7 @@ namespace OSEF.APP.EL
             set { ingresos = value; }
         }
 
-        public short OtrosIngresos
+        public Nullable<short> OtrosIngresos
         {
             get { return otrosingresos; }
             set { otrosingresos = value; }
@@ -285,10 +292,16 @@ namespace OSEF.APP.EL
             set { conyugeamaterno = value; }
         }
 
-        public DateTime ConyugeFechaNacimiento
+        public Nullable<DateTime> ConyugeFechaNacimiento
         {
             get { return conyugefechanacimiento; }
             set { conyugefechanacimiento = value; }
+        }
+
+        public Nullable<byte> ConyugeEdad
+        {
+            get { return conyugeedad; }
+            set { conyugeedad = value; }
         }
 
         public string ConyugeRFC
@@ -351,25 +364,25 @@ namespace OSEF.APP.EL
             set { conyugecolonia = value; }
         }
 
-        public int ConyugeCodigoPostal
+        public Nullable<int> ConyugeCodigoPostal
         {
             get { return conyugecodigopostal; }
             set { conyugecodigopostal = value; }
         }
 
-        public byte ConyugeAntiguedad
+        public Nullable<byte> ConyugeAntiguedad
         {
             get { return conyugeantiguedad; }
             set { conyugeantiguedad = value; }
         }
 
-        public short ConyugeIngresos
+        public Nullable<short> ConyugeIngresos
         {
             get { return conyugeingresos; }
             set { conyugeingresos = value; }
         }
 
-        public short ConyugeOtrosIngresos
+        public Nullable<short> ConyugeOtrosIngresos
         {
             get { return conyugeotrosingresos; }
             set { conyugeotrosingresos = value; }
@@ -423,7 +436,7 @@ namespace OSEF.APP.EL
             set { conyugeempresacolonia = value; }
         }
 
-        public int ConyugeEmpresaCodigoPostal
+        public Nullable<int> ConyugeEmpresaCodigoPostal
         {
             get { return conyugeempresacodigopostal; }
             set { conyugeempresacodigopostal = value; }
@@ -525,7 +538,7 @@ namespace OSEF.APP.EL
             set { avalcolonia = value; }
         }
 
-        public int AvalCodigoPostal
+        public Nullable<int> AvalCodigoPostal
         {
             get { return avalcodigopostal; }
             set { avalcodigopostal = value; }
@@ -555,7 +568,7 @@ namespace OSEF.APP.EL
             set { avaltelefonomovil = value; }
         }
 
-        public byte AvalAntiguedad
+        public Nullable<byte> AvalAntiguedad
         {
             get { return avalantiguedad; }
             set { avalantiguedad = value; }
@@ -597,7 +610,7 @@ namespace OSEF.APP.EL
             set { avalcoloniaanterior = value; }
         }
 
-        public int AvalCodigoPostalAnterior
+        public Nullable<int> AvalCodigoPostalAnterior
         {
             get { return avalcodigopostalanterior; }
             set { avalcodigopostalanterior = value; }
@@ -651,7 +664,7 @@ namespace OSEF.APP.EL
             set { avalempresaingresos = value; }
         }
 
-        public int AvalEmpresaOtrosIngresos
+        public Nullable<int> AvalEmpresaOtrosIngresos
         {
             get { return avalempresaotrosingresos; }
             set { avalempresaotrosingresos = value; }
@@ -669,7 +682,7 @@ namespace OSEF.APP.EL
             set { avalempresatelefono = value; }
         }
 
-        public short AvalEmpresaTelefonoExt
+        public Nullable<short> AvalEmpresaTelefonoExt
         {
             get { return avalempresatelefonoext; }
             set { avalempresatelefonoext = value; }
@@ -711,10 +724,10 @@ namespace OSEF.APP.EL
             set { formapago = value; }
         }
 
-        public string DetinoPrestamo
+        public string DestinoPrestamo
         {
-            get { return detinoprestamo; }
-            set { detinoprestamo = value; }
+            get { return destinoprestamo; }
+            set { destinoprestamo = value; }
         }
 
         public string Tipo
@@ -757,6 +770,36 @@ namespace OSEF.APP.EL
         {
             get { return usuariomodificacion; }
             set { usuariomodificacion = value; }
+        }
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public string AMaterno
+        {
+            get { return amaterno; }
+            set { amaterno = value; }
+        }
+
+        public string APaterno
+        {
+            get { return apaterno; }
+            set { apaterno = value; }
+        }
+
+        public DateTime Inicio
+        {
+            get { return inicio; }
+            set { inicio = value; }
+        }
+
+        public DateTime Fin
+        {
+            get { return fin; }
+            set { fin = value; }
         }
 
         #endregion

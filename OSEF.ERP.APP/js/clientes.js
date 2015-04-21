@@ -1,8 +1,8 @@
 ﻿//Funcion que valida que tema va a ser utilizadp
 function cargarEstilo() {
-//Validamos la cookie
+    //Validamos la cookie
     if (Ext.util.Cookies.get('osefTheme') == 'bancomer') {
-    //Asiganmos los elementos en el header
+        //Asiganmos los elementos en el header
         var fileref = document.createElement("link")
         fileref.setAttribute("rel", "stylesheet")
         fileref.setAttribute("type", "text/css")
@@ -311,7 +311,6 @@ var sCliente_Load = function () {
             //Si el proceso es correcto
             success: function (result) {
                 App.cmbEstatus.setDisabled(false);
-                console.log(App.sCliente);
             },
 
             //Si existe un error

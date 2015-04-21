@@ -221,8 +221,6 @@ CREATE TABLE Clientes(
 	Usuario						VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
 )
 
-
-
 CREATE TABLE SolicitudesPrestamos(
 	ID							CHAR(8)			NOT NULL PRIMARY KEY,--P0000001
 	Cliente						CHAR(8)			NOT NULL FOREIGN KEY REFERENCES Clientes(ID),
@@ -254,9 +252,10 @@ CREATE TABLE SolicitudesPrestamos(
 	ConyugeAPaterno				VARCHAR(50)		NULL,
 	ConyugeAMaterno				VARCHAR(50)		NULL,
 	ConyugeFechaNacimiento		DATE			NULL,
+	ConyugeEdad					TINYINT			NULL,
 	ConyugeRFC					VARCHAR(15)		NULL,
 	ConyugeTelefono				VARCHAR(15)		NULL,
-	ConyugeTelefonoMovil		VARCHAR(15)		NULL,
+	ConyugeTelefonoMovil		VARCHAR(19)		NULL,
 	ConyugeCalle				VARCHAR(100)	NULL,
 	ConyugeEntreCalles			VARCHAR(100)	NULL,
 	ConyugeNoExterior			VARCHAR(10)		NULL,
@@ -290,7 +289,7 @@ CREATE TABLE SolicitudesPrestamos(
 	AvalEstadoCivil				VARCHAR(10)		NULL,
 	AvalRegistroMatrimonial		VARCHAR(50)		NULL,
 	AvalTelefono				VARCHAR(15)		NULL,
-	AvalTelefonoMovil			VARCHAR(15)		NULL,
+	AvalTelefonoMovil			VARCHAR(19)		NULL,
 	AvalCalle					VARCHAR(100)	NULL,
 	AvalEntreCalles				VARCHAR(100)	NULL,
 	AvalNoExterior				VARCHAR(10)		NULL,
@@ -320,8 +319,8 @@ CREATE TABLE SolicitudesPrestamos(
 	Cantidad					INT				NULL,
 	Plazo						SMALLINT		NULL,
 	FormaPago					VARCHAR(20)		NULL,
-	DestinoPrestamo				VARCHAR(50)		NULL,
-	Tipo						VARCHAR(20)		NULL,
+	DestinoPrestamo				VARCHAR(50)		NOT NULL,
+	Tipo						VARCHAR(30)		NULL,
 	TablaAmortizacion			VARCHAR(200)	NULL,
 	Estatus						VARCHAR(20)		NOT NULL,
 	UsuarioAlta					VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),

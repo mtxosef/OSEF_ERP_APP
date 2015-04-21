@@ -27,8 +27,21 @@ namespace OSEF.ERP.APP
                 sCliente.DataBind();
 
                 //3. Cargar el ComboBox de Estados
-                sEstados.DataSource = EstadoBusiness.ObtenerEstados();
+                List<Estado> lEstado = EstadoBusiness.ObtenerEstados();
+                sEstados.DataSource = lEstado;
                 sEstados.DataBind();
+
+                sEstadosAnterior.DataSource = lEstado;
+                sEstadosAnterior.DataBind();
+
+                sConyugeEstado.DataSource = lEstado;
+                sConyugeEstado.DataBind();
+
+                sConyugeEmpresaEstado.DataSource = lEstado;
+                sConyugeEmpresaEstado.DataBind();
+
+                sAvalEstado.DataSource = lEstado;
+                sAvalEstado.DataBind();
             }
         }
 
@@ -101,6 +114,29 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener el valor seleccionado y obtener todas las Colonias
             string strMunicipio = e.ExtraParams["valor"];
+            sColoniasAnterior.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sColoniasAnterior.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Municipios Anterior
+        /// </summary>
+        [DirectMethod]
+        public void AsignarMunicipioAnterior(string strEstado)
+        {
+            //1. Listar los municipio de acuerdo al Estado
+            sMunicipiosAnterior.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            sMunicipiosAnterior.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al carar el store de Colonias
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarColoniaAnterior(string strMunicipio)
+        {
+            //1. Listar las colonias de acuerdo al Municipio
             sColoniasAnterior.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
             sColoniasAnterior.DataBind();
         }
@@ -179,6 +215,27 @@ namespace OSEF.ERP.APP
         }
 
         /// <summary>
+        /// Evento que se lanza al cargar el store de Conyuge Municipios
+        /// </summary>
+        [DirectMethod]
+        public void AsignarConyugeMunicipio(string strEstado)
+        {
+            sConyugeMunicipio.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            sConyugeMunicipio.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Conyuge Colonia
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarConyugeColonia(string strMunicipio)
+        {
+            sConyugeColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sConyugeColonia.DataBind();
+        }
+
+        /// <summary>
         /// Evento que se lanza al seleccionar un Estado para el domicilio de la Empresa del Conyuge
         /// </summary>
         /// <param name="sender"></param>
@@ -205,6 +262,27 @@ namespace OSEF.ERP.APP
         }
 
         /// <summary>
+        /// Evento que se lanza al cargar el store de Conyuge Empresa Municipios
+        /// </summary>
+        [DirectMethod]
+        public void AsignarConyugeEmpresaMunicipio(string strEstado)
+        {
+            sConyugeEmpresaMunicipio.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            sConyugeEmpresaMunicipio.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Conyuge Empresa Colonia
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarConyugeEmpresaColonia(string strMunicipio)
+        {
+            sConyugeEmpresaColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sConyugeEmpresaColonia.DataBind();
+        }
+
+        /// <summary>
         /// Evento que se lanza al seleccionar un Estado para el domicilio del Aval
         /// </summary>
         /// <param name="sender"></param>
@@ -226,6 +304,27 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener el valor seleccionado y obtener todas las Colonias
             string strMunicipio = e.ExtraParams["valor"];
+            sAvalColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
+            sAvalColonia.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Aval Municipios
+        /// </summary>
+        [DirectMethod]
+        public void AsignarAvalMunicipio(string strEstado)
+        {
+            sAvalMunicipio.DataSource = MunicipioBusiness.ObtenerMunicipiosPorEstado(strEstado);
+            sAvalMunicipio.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store de Aval Colonia
+        /// </summary>
+        /// <param name="strMunicipio"></param>
+        [DirectMethod]
+        public void AsignarAvalColonia(string strMunicipio)
+        {
             sAvalColonia.DataSource = ColoniaBusiness.ObtenerColoniasPorMunicipio(strMunicipio);
             sAvalColonia.DataBind();
         }
@@ -279,7 +378,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.Nacionalidad = sd.Value;
                         break;
                     case "nfNumeroDependientes":
-                        oSolicitudPrestamo.NumeroDependientes = Convert.ToByte(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.NumeroDependientes = null;
+                        else
+                            oSolicitudPrestamo.NumeroDependientes = Convert.ToByte(sd.Value);
                         break;
                     case "txtfEdades":
                         oSolicitudPrestamo.Edades = sd.Value;
@@ -313,7 +415,10 @@ namespace OSEF.ERP.APP
                         }
                         break;
                     case "nAniosDomicilio":
-                        oSolicitudPrestamo.AniosDomicilio = Convert.ToByte(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.AniosDomicilio = null;
+                        else
+                            oSolicitudPrestamo.AniosDomicilio = Convert.ToByte(sd.Value);
                         break;
                     case "cmbEstatus":
                         oSolicitudPrestamo.Estatus = sd.Value;
@@ -355,7 +460,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.NoInteriorAnterior = sd.Value;
                         break;
                     case "txtfCodigoPostalAnterior":
-                        oSolicitudPrestamo.CodigoPostalAnterior = Convert.ToInt32(sd.Value);
+                        if (sd.Value == null || sd.Value == string.Empty)
+                            oSolicitudPrestamo.CodigoPostalAnterior = null;
+                        else
+                            oSolicitudPrestamo.CodigoPostalAnterior = Convert.ToInt32(sd.Value);
                         break;
                     case "cmbEstadoAnterior":
                         oSolicitudPrestamo.EstadoAnterior = sd.Value;
@@ -406,7 +514,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.Ingresos = Convert.ToInt16(sd.Value);
                         break;
                     case "nfOtrosIngresos":
-                        oSolicitudPrestamo.OtrosIngresos = Convert.ToInt16(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.OtrosIngresos = null;
+                        else
+                            oSolicitudPrestamo.OtrosIngresos = Convert.ToInt16(sd.Value);
                         break;
                     case "txtfOtrosIngresos":
                         oSolicitudPrestamo.Concepto = sd.Value;
@@ -436,7 +547,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.ConyugeAMaterno = sd.Value;
                         break;
                     case "dfConyugeFechaNacimiento":
-                        oSolicitudPrestamo.ConyugeFechaNacimiento = Convert.ToDateTime(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.ConyugeFechaNacimiento = null;
+                        else
+                            oSolicitudPrestamo.ConyugeFechaNacimiento = Convert.ToDateTime(sd.Value);
                         break;
                     case "txtfConyugeRFC":
                         oSolicitudPrestamo.ConyugeRFC = sd.Value;
@@ -469,16 +583,28 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.ConyugeColonia = sd.Value;
                         break;
                     case "txtfConyugeCodigoPostal":
-                        oSolicitudPrestamo.ConyugeCodigoPostal = Convert.ToInt32(sd.Value);
+                        if (sd.Value == null || sd.Value == string.Empty)
+                            oSolicitudPrestamo.ConyugeCodigoPostal = null;
+                        else
+                            oSolicitudPrestamo.ConyugeCodigoPostal = Convert.ToInt32(sd.Value);
                         break;
                     case "nfConyugeAntiguedad":
-                        oSolicitudPrestamo.ConyugeAntiguedad = Convert.ToByte(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.ConyugeAntiguedad = null;
+                        else
+                            oSolicitudPrestamo.ConyugeAntiguedad = Convert.ToByte(sd.Value);
                         break;
                     case "nfConyugeIngresos":
-                        oSolicitudPrestamo.ConyugeIngresos = Convert.ToInt16(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.ConyugeIngresos = null;
+                        else
+                            oSolicitudPrestamo.ConyugeIngresos = Convert.ToInt16(sd.Value);
                         break;
                     case "nfConyugeOtrosIngresos":
-                        oSolicitudPrestamo.ConyugeOtrosIngresos = Convert.ToInt16(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.ConyugeOtrosIngresos = null;
+                        else
+                            oSolicitudPrestamo.ConyugeOtrosIngresos = Convert.ToInt16(sd.Value);
                         break;
                     case "txtfConyugeEmpresaConceptoOtrosIngresos":
                         oSolicitudPrestamo.ConyugeConcepto = sd.Value;
@@ -511,7 +637,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.ConyugeEmpresaNoInterior = sd.Value;
                         break;
                     case "txtfConyugeEmpresaCodigoPostal":
-                        oSolicitudPrestamo.ConyugeEmpresaCodigoPostal = Convert.ToInt32(sd.Value);
+                        if (sd.Value == null || sd.Value == string.Empty)
+                            oSolicitudPrestamo.ConyugeEmpresaCodigoPostal = null;
+                        else
+                            oSolicitudPrestamo.ConyugeEmpresaCodigoPostal = Convert.ToInt32(sd.Value);
                         break;
                     case "cmbConyugeEmpresaColonia":
                         oSolicitudPrestamo.ConyugeEmpresaColonia = sd.Value;
@@ -576,7 +705,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.AvalNoInterior = sd.Value;
                         break;
                     case "txtfAvalCodigoPostal":
-                        oSolicitudPrestamo.AvalCodigoPostal = Convert.ToInt32(sd.Value);
+                        if (sd.Value == null || sd.Value == string.Empty)
+                            oSolicitudPrestamo.AvalCodigoPostal = null;
+                        else
+                            oSolicitudPrestamo.AvalCodigoPostal = Convert.ToInt32(sd.Value);
                         break;
                     case "cmbAvalColonia":
                         oSolicitudPrestamo.AvalColonia = sd.Value;
@@ -605,7 +737,10 @@ namespace OSEF.ERP.APP
                         }
                         break;
                     case "nfAntiguedadDocmicilioAval":
-                        oSolicitudPrestamo.AvalAntiguedad = Convert.ToByte(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.AvalAntiguedad = null;
+                        else
+                            oSolicitudPrestamo.AvalAntiguedad = Convert.ToByte(sd.Value);
                         break;
                     //*****Ocupación de Aval*****//
                     case "txtfAvalEmpresa":
@@ -630,7 +765,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.AvalEmpresaIngresos = Convert.ToInt32(sd.Value);
                         break;
                     case "nfAvalEmpresaOtrosIngresos":
-                        oSolicitudPrestamo.AvalEmpresaOtrosIngresos = Convert.ToInt32(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.AvalEmpresaOtrosIngresos = null;
+                        else
+                            oSolicitudPrestamo.AvalEmpresaOtrosIngresos = Convert.ToInt32(sd.Value);
                         break;
                     case "txtfAvalEmpresaConcepto":
                         oSolicitudPrestamo.AvalEmpresaConcepto = sd.Value;
@@ -661,7 +799,10 @@ namespace OSEF.ERP.APP
                         oSolicitudPrestamo.AvalEmpresaTelefono = sd.Value;
                         break;
                     case "nfAvalEmpresaTelefonoExt":
-                        oSolicitudPrestamo.AvalEmpresaTelefonoExt = Convert.ToInt16(sd.Value);
+                        if (sd.Value == null)
+                            oSolicitudPrestamo.AvalEmpresaTelefonoExt = null;
+                        else
+                            oSolicitudPrestamo.AvalEmpresaTelefonoExt = Convert.ToInt16(sd.Value);
                         break;
                     case "txtfAvalEmpresaAnterior":
                         oSolicitudPrestamo.AvalEmpresaAnterior = sd.Value;
@@ -675,8 +816,8 @@ namespace OSEF.ERP.APP
                     case "cmbFormaPago":
                         oSolicitudPrestamo.FormaPago = sd.Value;
                         break;
-                    case "cmbDestinoPrestamo":
-                        oSolicitudPrestamo.DetinoPrestamo = sd.Value;
+                    case "txtfDestinoPrestamo":
+                        oSolicitudPrestamo.DestinoPrestamo = sd.Value;
                         break;
                     case "cmbTipo":
                         oSolicitudPrestamo.Tipo = sd.Value;
@@ -685,6 +826,12 @@ namespace OSEF.ERP.APP
             }
 
             //6. Complementar datos
+            if (e.ExtraParams["edad"].Equals(""))
+                oSolicitudPrestamo.ConyugeEdad = null;
+            else
+                oSolicitudPrestamo.ConyugeEdad = Convert.ToByte(e.ExtraParams["edad"].Substring(0, e.ExtraParams["edad"].IndexOf(' ')));
+
+            //7. Validaro si es Nuevo o se Edita
             if (strcookieEditarSolicitudPrestamo.Equals("Nuevo"))
             {
                 oSolicitudPrestamo.Estatus = "ALTA";
@@ -694,6 +841,132 @@ namespace OSEF.ERP.APP
                 oSolicitudPrestamo.UsuarioModificacion = oUsuario.ID;
                 oSolicitudPrestamo.ID = SolicitudPrestamoBusiness.Insertar(oSolicitudPrestamo);
             }
+            else
+            {
+                oSolicitudPrestamo.ID = strcookieEditarSolicitudPrestamo;
+                oSolicitudPrestamo.FechaModificacion = DateTime.Now;
+                oSolicitudPrestamo.UsuarioModificacion = oUsuario.ID;
+                SolicitudPrestamoBusiness.Actualizar(oSolicitudPrestamo);
+            }
+
+            ClienteBusiness.ActualizarSolicitud(oCliente);
+            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("registro", oSolicitudPrestamo.ID, ParameterMode.Value));
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store
+        /// </summary>
+        [DirectMethod]
+        public void sSolicitudPrestamo_Load()
+        {
+            //1. Obtener la Cookie
+            string strCookieEditarSolicitudPrestamo = Cookies.GetCookie("cookieEditarSolicitudPrestamo").Value;
+
+            //2. Asignar el objeto de la Solicitud de préstamo y llenar el Store sSolicitudPrestamo
+            SolicitudPrestamo oSolicitudPrestamo = SolicitudPrestamoBusiness.ObtenerSolicitudPrestamoPorID(strCookieEditarSolicitudPrestamo);
+            sSolicitudPrestamo.Add(new
+            {
+                ID = oSolicitudPrestamo.ID,
+                Cliente = oSolicitudPrestamo.Cliente,
+                Nacionalidad = oSolicitudPrestamo.Nacionalidad,
+                NumeroDependientes = oSolicitudPrestamo.NumeroDependientes,
+                Edades = oSolicitudPrestamo.Edades,
+                RegistroMatrimonial = oSolicitudPrestamo.RegistroMatrimonial,
+                TipoCasa = oSolicitudPrestamo.TipoCasa,
+                AniosDomicilio = oSolicitudPrestamo.AniosDomicilio,
+                CalleAnterior = oSolicitudPrestamo.CalleAnterior,
+                NoExteriorAnterior = oSolicitudPrestamo.NoExteriorAnterior,
+                NoInteriorAnterior = oSolicitudPrestamo.NoInteriorAnterior,
+                ColoniaAnterior = oSolicitudPrestamo.ColoniaAnterior,
+                CodigoPostalAnterior = oSolicitudPrestamo.CodigoPostalAnterior,
+                EntreCallesAnterior = oSolicitudPrestamo.EntreCallesAnterior,
+                EstadoAnterior = oSolicitudPrestamo.EstadoAnterior,
+                MunicipioAnterior = oSolicitudPrestamo.MunicipioAnterior,
+                Antiguedad = oSolicitudPrestamo.Antiguedad,
+                Ingresos = oSolicitudPrestamo.Ingresos,
+                OtrosIngresos = oSolicitudPrestamo.OtrosIngresos,
+                Concepto = oSolicitudPrestamo.Concepto,
+                JefeNombre = oSolicitudPrestamo.JefeNombre,
+                JefeAPAterno = oSolicitudPrestamo.JefeAPaterno,
+                JefeAMaterno = oSolicitudPrestamo.JefeAMaterno,
+                EmpresaAnterior = oSolicitudPrestamo.EmpresaAnterior,
+                ConyugeNombre = oSolicitudPrestamo.ConyugeNombre,
+                ConyugeAPaterno = oSolicitudPrestamo.ConyugeAPaterno,
+                ConyugeAMaterno = oSolicitudPrestamo.ConyugeAMaterno,
+                ConyugeFechaNacimiento = oSolicitudPrestamo.ConyugeFechaNacimiento,
+                ConyugeEdad = oSolicitudPrestamo.ConyugeEdad,
+                ConyugeRFC = oSolicitudPrestamo.ConyugeRFC,
+                ConyugeTelefono = oSolicitudPrestamo.ConyugeTelefono,
+                ConyugeTelefonoMovil = oSolicitudPrestamo.ConyugeTelefonoMovil,
+                ConyugeCalle = oSolicitudPrestamo.ConyugeCalle,
+                ConyugeEntreCalles = oSolicitudPrestamo.ConyugeEntreCalles,
+                ConyugeNoExterior = oSolicitudPrestamo.ConyugeNoExterior,
+                ConyugeNoInterior = oSolicitudPrestamo.ConyugeNoInterior,
+                ConyugeColonia = oSolicitudPrestamo.ConyugeColonia,
+                ConyugeCodigoPostal = oSolicitudPrestamo.ConyugeCodigoPostal,
+                ConyugeEstado = oSolicitudPrestamo.ConyugeEstado,
+                ConyugeMunicipio = oSolicitudPrestamo.ConyugeMunicipio,
+                ConyugeAntiguedad = oSolicitudPrestamo.ConyugeAntiguedad,
+                ConyugeIngresos = oSolicitudPrestamo.ConyugeIngresos,
+                ConyugeOtrosIngresos = oSolicitudPrestamo.ConyugeOtrosIngresos,
+                ConyugeConcepto = oSolicitudPrestamo.ConyugeConcepto,
+                ConyugeEmpresa = oSolicitudPrestamo.ConyugeEmpresa,
+                ConyugePuesto = oSolicitudPrestamo.ConyugePuesto,
+                ConyugeEmpresaCalle = oSolicitudPrestamo.ConyugeEmpresaCalle,
+                ConyugeEmpresaNoExterior = oSolicitudPrestamo.ConyugeEmpresaNoExterior,
+                ConyugeEmpresaNoInterior = oSolicitudPrestamo.ConyugeEmpresaNoInterior,
+                ConyugeEmpresaColonia = oSolicitudPrestamo.ConyugeEmpresaColonia,
+                ConyugeEmpresaCodigoPostal = oSolicitudPrestamo.ConyugeEmpresaCodigoPostal,
+                ConyugeEmpresaEntreCalles = oSolicitudPrestamo.ConyugeEmpresaEntreCalles,
+                ConyugeEmpresaEstado = oSolicitudPrestamo.ConyugeEmpresaEstado,
+                ConyugeEmpresaMunicipio = oSolicitudPrestamo.ConyugeEmpresaMunicipio,
+                ConyugeEmpresaJefeNombre = oSolicitudPrestamo.ConyugeEmpresaJefeNombre,
+                ConyugeEmpresaJefeAPaterno = oSolicitudPrestamo.ConyugeEmpresaJefeAPaterno,
+                ConyugeEmpresaJefeAMaterno = oSolicitudPrestamo.ConyugeEmpresaJefeAMaterno,
+                AvalNombre = oSolicitudPrestamo.AvalNombre,
+                AvalAPaterno = oSolicitudPrestamo.AvalAPaterno,
+                AvalAMaterno = oSolicitudPrestamo.AvalAMaterno,
+                AvalSocio = oSolicitudPrestamo.AvalSocio,
+                AvalEstadoCivil = oSolicitudPrestamo.AvalEstadoCivil,
+                AvalRegistroMatrimonial = oSolicitudPrestamo.AvalRegistroMatrimonial,
+                AvalTelefono = oSolicitudPrestamo.AvalTelefono,
+                AvalTelefonoMovil = oSolicitudPrestamo.AvalTelefonoMovil,
+                AvalCalle = oSolicitudPrestamo.AvalCalle,
+                AvalEntreCalles = oSolicitudPrestamo.AvalEntreCalles,
+                AvalNoExterior = oSolicitudPrestamo.AvalNoExterior,
+                AvalNoInterior = oSolicitudPrestamo.AvalNoInterior,
+                AvalColonia = oSolicitudPrestamo.AvalColonia,
+                AvalCodigoPostal = oSolicitudPrestamo.AvalCodigoPostal,
+                AvalEstado = oSolicitudPrestamo.AvalEstado,
+                AvalMunicipio = oSolicitudPrestamo.AvalMunicipio,
+                AvalTipoCasa = oSolicitudPrestamo.AvalTipoCasa,
+                AvalAntiguedad = oSolicitudPrestamo.AvalAntiguedad,
+                AvalEmpresa = oSolicitudPrestamo.AvalEmpresa,
+                AvalEmpresaPuesto = oSolicitudPrestamo.AvalEmpresaPuesto,
+                AvalEmpresaJefeNombre = oSolicitudPrestamo.AvalEmpresaJefeNombre,
+                AvalEmpresaJefeAPaterno = oSolicitudPrestamo.AvalEmpresaJefeAPaterno,
+                AvalEmpresaJefeAMaterno = oSolicitudPrestamo.AvalEmpresaJefeAMaterno,
+                AvalEmpresaAntiguedad = oSolicitudPrestamo.AvalEmpresaAntiguedad,
+                AvalEmpresaIngresos = oSolicitudPrestamo.AvalEmpresaIngresos,
+                AvalEmpresaOtrosIngresos = oSolicitudPrestamo.AvalEmpresaOtrosIngresos,
+                AvalEmpresaConcepto = oSolicitudPrestamo.AvalEmpresaConcepto,
+                AvalEmpresaPropietario = oSolicitudPrestamo.AvalEmpresaPropietario,
+                AvalEmpresaTipo = oSolicitudPrestamo.AvalEmpresaTipo,
+                AvalEmpresaTelefono = oSolicitudPrestamo.AvalEmpresaTelefono,
+                AvalEmpresaTelefonoExt = oSolicitudPrestamo.AvalEmpresaTelefonoExt,
+                AvalEmpresaAnterior = oSolicitudPrestamo.AvalEmpresaAnterior,
+                Cantidad = oSolicitudPrestamo.Cantidad,
+                Plazo = oSolicitudPrestamo.Plazo,
+                FormaPago = oSolicitudPrestamo.FormaPago,
+                DestinoPrestamo = oSolicitudPrestamo.DestinoPrestamo,
+                Tipo = oSolicitudPrestamo.Tipo,
+                TablaAmortizacion = oSolicitudPrestamo.TablaAmortizacion,
+                Estatus = oSolicitudPrestamo.Estatus,
+                UsuarioAlta = oSolicitudPrestamo.UsuarioAlta,
+                FechaAlta = oSolicitudPrestamo.FechaAlta,
+                UsuarioModificacion = oSolicitudPrestamo.UsuarioModificacion,
+                FechaModificacion = oSolicitudPrestamo.FechaModificacion
+            });
         }
     }
 }

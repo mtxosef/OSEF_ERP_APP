@@ -18,18 +18,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerSubCategoriaPorID' AND
+			WHERE  name = 'web_spS_ObtenerSolicitudPrestamoPorID' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerSubCategoriaPorID
+	DROP PROCEDURE web_spS_ObtenerSolicitudPrestamoPorID
 GO
 -- =============================================
 -- Author:		Orlando Esparza
--- Create date: Jueves 12 de Noviembre de 2014
--- Description:	Obtener un registro de SubCategorias por su ID
+-- Create date: Domingo 19 de Abril de 2015
+-- Description:	Obtener un registro de Solicitud de préstamo por su ID
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerSubCategoriaPorID
+CREATE PROCEDURE web_spS_ObtenerSolicitudPrestamoPorID
 	-- Add the parameters for the stored procedure here
-	@ID	CHAR(5)
+	@ID	CHAR(8)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -39,11 +39,107 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT
 		ID,
-		Orden,
-		Descripcion,
-		Categoria
+		Cliente,
+		Nacionalidad,
+		NumeroDependientes,
+		Edades,
+		RegistroMatrimonial,
+		TipoCasa,
+		AniosDomicilio,
+		CalleAnterior,
+		NoExteriorAnterior,
+		NoInteriorAnterior,
+		ColoniaAnterior,
+		CodigoPostalAnterior,
+		EntreCallesAnterior,
+		EstadoAnterior,
+		MunicipioAnterior,
+		Antiguedad,
+		Ingresos,
+		OtrosIngresos,
+		Concepto,
+		JefeNombre,
+		JefeAPAterno,
+		JefeAMaterno,
+		EmpresaAnterior,
+		ConyugeNombre,
+		ConyugeAPaterno,
+		ConyugeAMaterno,
+		ConyugeFechaNacimiento,
+		ConyugeEdad,
+		ConyugeRFC,
+		ConyugeTelefono,
+		ConyugeTelefonoMovil,
+		ConyugeCalle,
+		ConyugeEntreCalles,
+		ConyugeNoExterior,
+		ConyugeNoInterior,
+		ConyugeColonia,
+		ConyugeCodigoPostal,
+		ConyugeEstado,
+		ConyugeMunicipio,
+		ConyugeAntiguedad,
+		ConyugeIngresos,
+		ConyugeOtrosIngresos,
+		ConyugeConcepto,
+		ConyugeEmpresa,
+		ConyugePuesto,
+		ConyugeEmpresaCalle,
+		ConyugeEmpresaNoExterior,
+		ConyugeEmpresaNoInterior,
+		ConyugeEmpresaColonia,
+		ConyugeEmpresaCodigoPostal,
+		ConyugeEmpresaEntreCalles,
+		ConyugeEmpresaEstado,
+		ConyugeEmpresaMunicipio,
+		ConyugeEmpresaJefeNombre,
+		ConyugeEmpresaJefeAPaterno,
+		ConyugeEmpresaJefeAMaterno,
+		AvalNombre,
+		AvalAPaterno,
+		AvalAMaterno,
+		AvalSocio,
+		AvalEstadoCivil,
+		AvalRegistroMatrimonial,
+		AvalTelefono,
+		AvalTelefonoMovil,
+		AvalCalle,
+		AvalEntreCalles,
+		AvalNoExterior,
+		AvalNoInterior,
+		AvalColonia,
+		AvalCodigoPostal,
+		AvalEstado,
+		AvalMunicipio,
+		AvalTipoCasa,
+		AvalAntiguedad,
+		AvalEmpresa,
+		AvalEmpresaPuesto,
+		AvalEmpresaJefeNombre,
+		AvalEmpresaJefeAPaterno,
+		AvalEmpresaJefeAMaterno,
+		AvalEmpresaAntiguedad,
+		AvalEmpresaIngresos,
+		AvalEmpresaOtrosIngresos,
+		AvalEmpresaConcepto,
+		AvalEmpresaPropietario,
+		AvalEmpresaTipo,
+		AvalEmpresaTelefono,
+		AvalEmpresaTelefonoExt,
+		AvalEmpresaAnterior,
+		Cantidad,
+		Plazo,
+		FormaPago,
+		DestinoPrestamo,
+		Tipo,
+		TablaAmortizacion,
+		Estatus,
+		UsuarioAlta,
+		FechaAlta,
+		UsuarioModificacion,
+		FechaModificacion
 	FROM
-		SubCategorias
+		SolicitudesPrestamos
 	WHERE
 		ID = @ID
 END

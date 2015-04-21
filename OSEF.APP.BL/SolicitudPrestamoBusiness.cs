@@ -24,5 +24,54 @@ namespace OSEF.APP.BL
         }
 
         #endregion
+
+        #region Modificar
+
+        /// <summary>
+        /// Método que actualiza un nuevo registro a la tabla de Solicitudes Prestamos
+        /// </summary>
+        /// <param name="uSolicitudPrestamo"></param>
+        public static int Actualizar(SolicitudPrestamo uSolicitudPrestamo)
+        {
+            return SolicitudPrestamoDataAccess.Actualizar(uSolicitudPrestamo);
+        }
+
+        #endregion
+
+        #region Eliminar
+
+        /// <summary>
+        /// Método que borrar alguna Solicitud de Préstamo por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        public static int Borrar(string strID)
+        {
+            return SolicitudPrestamoDataAccess.Borrar(strID);
+        }
+
+        #endregion
+
+        #region Consultar
+
+        /// <summary>
+        /// Método que obtiene todos los registros de Solicitudes de Préstamo
+        /// </summary>
+        /// <returns></returns>
+        public static List<SolicitudPrestamo> ObtenerSolicitudesPrestamos()
+        {
+            return SolicitudPrestamoDataAccess.ObtenerSolicitudesPrestamos();
+        }
+
+        /// <summary>
+        /// Obtener un registro de Solicitudes de Préstamo por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static SolicitudPrestamo ObtenerSolicitudPrestamoPorID(string strID)
+        {
+            return SolicitudPrestamoDataAccess.ObtenerSolicitudPrestamoPorID(strID);
+        }
+
+        #endregion
     }
 }

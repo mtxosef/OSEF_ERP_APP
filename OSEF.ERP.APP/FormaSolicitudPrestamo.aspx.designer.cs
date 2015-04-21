@@ -121,6 +121,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldSet fsDivisorDatos;
         
         /// <summary>
+        /// Control cDatosSocio11.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cDatosSocio11;
+        
+        /// <summary>
+        /// Control txtfID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfID;
+        
+        /// <summary>
         /// Control cDatosSocioC1.
         /// </summary>
         /// <remarks>
@@ -760,6 +778,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbEstadoAnterior;
         
         /// <summary>
+        /// Control sEstadosAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sEstadosAnterior;
+        
+        /// <summary>
+        /// Control mEstadosAnterior.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mEstadosAnterior;
+        
+        /// <summary>
         /// Control cDomicilioAnteriorC4.
         /// </summary>
         /// <remarks>
@@ -1390,6 +1426,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbConyugeEstado;
         
         /// <summary>
+        /// Control sConyugeEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sConyugeEstado;
+        
+        /// <summary>
+        /// Control mConyugeEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mConyugeEstado;
+        
+        /// <summary>
         /// Control cmbConyugeMunicipio.
         /// </summary>
         /// <remarks>
@@ -1651,6 +1705,69 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfConyugeEmpresaNoInterior;
         
         /// <summary>
+        /// Control FieldContainer15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container FieldContainer15;
+        
+        /// <summary>
+        /// Control cmbConyugeEmpresaEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbConyugeEmpresaEstado;
+        
+        /// <summary>
+        /// Control sConyugeEmpresaEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sConyugeEmpresaEstado;
+        
+        /// <summary>
+        /// Control mConyugeEmpresaEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mConyugeEmpresaEstado;
+        
+        /// <summary>
+        /// Control cmbConyugeEmpresaMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbConyugeEmpresaMunicipio;
+        
+        /// <summary>
+        /// Control sConyugeEmpresaMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sConyugeEmpresaMunicipio;
+        
+        /// <summary>
+        /// Control mConyugeEmpresaMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mConyugeEmpresaMunicipio;
+        
+        /// <summary>
         /// Control FieldContainer14.
         /// </summary>
         /// <remarks>
@@ -1658,24 +1775,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Container FieldContainer14;
-        
-        /// <summary>
-        /// Control txtfConyugeEmpresaCodigoPostal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfConyugeEmpresaCodigoPostal;
-        
-        /// <summary>
-        /// Control imConyugeEmpresaCodigoPostal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.InputMask imConyugeEmpresaCodigoPostal;
         
         /// <summary>
         /// Control cmbConyugeEmpresaColonia.
@@ -1705,49 +1804,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mConyugeEmpresaColonia;
         
         /// <summary>
-        /// Control FieldContainer15.
+        /// Control txtfConyugeEmpresaCodigoPostal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container FieldContainer15;
+        protected global::Ext.Net.TextField txtfConyugeEmpresaCodigoPostal;
         
         /// <summary>
-        /// Control cmbConyugeEmpresaEstado.
+        /// Control imConyugeEmpresaCodigoPostal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbConyugeEmpresaEstado;
-        
-        /// <summary>
-        /// Control cmbConyugeEmpresaMunicipio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbConyugeEmpresaMunicipio;
-        
-        /// <summary>
-        /// Control sConyugeEmpresaMunicipio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sConyugeEmpresaMunicipio;
-        
-        /// <summary>
-        /// Control mConyugeEmpresaMunicipio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mConyugeEmpresaMunicipio;
+        protected global::Ext.Net.InputMask imConyugeEmpresaCodigoPostal;
         
         /// <summary>
         /// Control pReferencias.
@@ -2110,6 +2182,69 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfAvalNoInterior;
         
         /// <summary>
+        /// Control fcAvalDomicilio4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container fcAvalDomicilio4;
+        
+        /// <summary>
+        /// Control cmbAvalEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbAvalEstado;
+        
+        /// <summary>
+        /// Control sAvalEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sAvalEstado;
+        
+        /// <summary>
+        /// Control mAvalEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mAvalEstado;
+        
+        /// <summary>
+        /// Control cmbAvalMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbAvalMunicipio;
+        
+        /// <summary>
+        /// Control sAvalMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sAvalMunicipio;
+        
+        /// <summary>
+        /// Control mAvalMunicipio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mAvalMunicipio;
+        
+        /// <summary>
         /// Control fcAvalDomicilio3.
         /// </summary>
         /// <remarks>
@@ -2117,24 +2252,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Container fcAvalDomicilio3;
-        
-        /// <summary>
-        /// Control txtfAvalCodigoPostal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfAvalCodigoPostal;
-        
-        /// <summary>
-        /// Control imAvalCodigoPostal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.InputMask imAvalCodigoPostal;
         
         /// <summary>
         /// Control cmbAvalColonia.
@@ -2164,49 +2281,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mAvalColonia;
         
         /// <summary>
-        /// Control fcAvalDomicilio4.
+        /// Control txtfAvalCodigoPostal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcAvalDomicilio4;
+        protected global::Ext.Net.TextField txtfAvalCodigoPostal;
         
         /// <summary>
-        /// Control cmbAvalEstado.
+        /// Control imAvalCodigoPostal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbAvalEstado;
-        
-        /// <summary>
-        /// Control cmbAvalMunicipio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbAvalMunicipio;
-        
-        /// <summary>
-        /// Control sAvalMunicipio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sAvalMunicipio;
-        
-        /// <summary>
-        /// Control mAvalMunicipio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mAvalMunicipio;
+        protected global::Ext.Net.InputMask imAvalCodigoPostal;
         
         /// <summary>
         /// Control fsAvalOtrosDatos.
@@ -2713,13 +2803,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldSet fsDatosOperacion;
         
         /// <summary>
-        /// Control fcDatosOp.
+        /// Control cDatosOperacion1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcDatosOp;
+        protected global::Ext.Net.Container cDatosOperacion1;
         
         /// <summary>
         /// Control nfCantidad.
@@ -2740,13 +2830,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.NumberField nfPlazo;
         
         /// <summary>
-        /// Control fcDatosOp2.
+        /// Control cDatosOperacion2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcDatosOp2;
+        protected global::Ext.Net.Container cDatosOperacion2;
         
         /// <summary>
         /// Control cmbFormaPago.
@@ -2758,13 +2848,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbFormaPago;
         
         /// <summary>
-        /// Control cmbDestinoPrestamo.
+        /// Control txtfDestinoPrestamo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbDestinoPrestamo;
+        protected global::Ext.Net.TextField txtfDestinoPrestamo;
         
         /// <summary>
         /// Control cDatosOperacion3.

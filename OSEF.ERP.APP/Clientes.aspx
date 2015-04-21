@@ -10,7 +10,7 @@
         window.onload = cargarEstilo;
     </script>
 </head>
-<body class="xCustomBody" >
+<body class="xCustomBody">
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmClientes" runat="server" HideInDesign="true" />
 
