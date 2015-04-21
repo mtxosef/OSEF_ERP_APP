@@ -95,7 +95,7 @@
                             Width="30"
                             Disabled="true">
                             <DirectEvents>
-                                <Click OnEvent="imgbtnGuardar_Click" Before="console.log(App.sCarga.getUpdatedRecords());">
+                                <Click OnEvent="imgbtnGuardar_Click">
                                     <EventMask ShowMask="true" Msg="Registrando información..." />
                                     <ExtraParams>
                                         <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
@@ -104,6 +104,11 @@
                                         <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="tipoObra" Value="App.rObra.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="tipoMnto" Value="App.rMnto.getValue()" Mode="Raw" />
+
+                                        <ext:Parameter Name="registrosnuevos" Value="getNewEncodedRecords()" Mode="Raw" />
+                                        <ext:Parameter Name="registrosactualizados" Value="getUpdatedRecords()" Mode="Raw" />
+                                        <ext:Parameter Name="registroseliminados" Value="getRemovedRecords()" Mode="Raw" />
+
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>

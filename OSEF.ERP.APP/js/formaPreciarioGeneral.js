@@ -284,9 +284,7 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
 
         if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
             //Insertar un nuevo registro
-            App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' });
-
-            getRecordsActions();
+            App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' }); 
 
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
@@ -337,40 +335,50 @@ var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
 
 
 
-//Obtiene las filas agregadas, editadas y eliminadas del store
-var getRecordsActions = function () {
+//Obtiene las filas agregadas, editadas y eliminadas del store 
+var getNewEncodedRecords = function () {
 
     var store = App.sCarga;
     var newRecords = store.getNewRecords();
-    var editedRecords = store.getUpdatedRecords();
-    var deleteRecords = store.getRemovedRecords();
-
-    var xndata = [], xudata = [], xrdata = [];
-
-    var encodednewrecords, encodedupdaterecords, encodedremovedrecords;
+    var encodednewrecords;
+    var xndata = [];
 
     if (newRecords.length > 0) {
         for (i = 0; i < newRecords.length; i++) {
             xndata.push(newRecords[i].data);
         }
         encodednewrecords = Ext.encode(xndata);
-        console.log(encodednewrecords);
     }
+    return encodednewrecords;
+}
 
-    if (editedRecords.length > 0 || editedRecords != null) {
-        for (i = 0; i < editedRecords.length; i++) {
-            xudata.push(editedRecords[i].data);
-        }
-        encodedupdaterecords = Ext.encode(xudata);
-        console.log(encodedupdaterecords);
-    }
-
+var getRemovedRecords = function () {
+    var store = App.sCarga;
+    var deleteRecords = store.getRemovedRecords();
+    var encodedremovedrecords;
+    var xrdata = [];
 
     if (deleteRecords.length > 0 || deleteRecords != null) {
         for (i = 0; i < deleteRecords.length; i++) {
             xrdata.push(deleteRecords[i].data);
         }
         encodedremovedrecords = Ext.encode(xrdata);
-        console.log(encodedremovedrecords);
+        return encodedremovedrecords;
     }
-};
+}
+
+var getUpdatedRecords = function () {
+
+    var store = App.sCarga;
+    var editedRecords = store.getUpdatedRecords();
+    var encodedupdaterecords;
+    var xudata = [];
+
+    if (editedRecords.length > 0 || editedRecords != null) {
+        for (i = 0; i < editedRecords.length; i++) {
+            xudata.push(editedRecords[i].data);
+        }
+        encodedupdaterecords = Ext.encode(xudata);
+        return encodedupdaterecords;
+    }
+}

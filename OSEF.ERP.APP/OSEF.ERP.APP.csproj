@@ -1241,6 +1241,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rCaratulaDeEstimacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reports\rCroquis.cs">
       <AutoGen>True</AutoGen>
@@ -1276,6 +1277,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rResumenPartidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SolicitudesPrestamos.aspx.cs">
       <DependentUpon>SolicitudesPrestamos.aspx</DependentUpon>
