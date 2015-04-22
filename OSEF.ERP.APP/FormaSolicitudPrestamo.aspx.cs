@@ -340,10 +340,14 @@ namespace OSEF.ERP.APP
             string strRegistro = e.ExtraParams["registro"];
             string strUsuario = e.ExtraParams["usuario"];
             string strcookieEditarSolicitudPrestamo = Cookies.GetCookie("cookieEditarSolicitudPrestamo").Value;
+            string strIngresos = e.ExtraParams["ingresos"];
+            string strEgresos = e.ExtraParams["egresos"];
 
             //2. Deserealizar datos
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             Usuario oUsuario = JSON.Deserialize<List<Usuario>>(strUsuario).FirstOrDefault();
+            List<CapacidadPago> lIngresos = JSON.Deserialize<List<CapacidadPago>>(strIngresos);
+            List<CapacidadPago> lEgresos = JSON.Deserialize<List<CapacidadPago>>(strEgresos);
 
             //3. Declarar objetos a utilizar
             SolicitudPrestamo oSolicitudPrestamo = new SolicitudPrestamo();
@@ -849,6 +853,28 @@ namespace OSEF.ERP.APP
                 SolicitudPrestamoBusiness.Actualizar(oSolicitudPrestamo);
             }
 
+            //8. Insertar o Actualizar Ingresos y Egresos
+            foreach (CapacidadPago sd in lIngresos)
+            {
+                if (sd.Tipo != string.Empty)
+                {
+                    sd.SolicitudPrestamo = oSolicitudPrestamo.ID;
+                    if (strcookieEditarSolicitudPrestamo.Equals("Nuevo"))
+                        sd.ID = CapacidadPagoBusiness.Insertar(sd);
+                    else
+                        CapacidadPagoBusiness.Actualizar(sd);
+                }
+            }
+
+            foreach (CapacidadPago sd in lEgresos)
+            {
+                sd.SolicitudPrestamo = oSolicitudPrestamo.ID;
+                if (strcookieEditarSolicitudPrestamo.Equals("Nuevo"))
+                    sd.ID = CapacidadPagoBusiness.Insertar(sd);
+                else
+                    CapacidadPagoBusiness.Actualizar(sd);
+            }
+
             ClienteBusiness.ActualizarSolicitud(oCliente);
             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("registro", oSolicitudPrestamo.ID, ParameterMode.Value));
         }
@@ -967,6 +993,21 @@ namespace OSEF.ERP.APP
                 UsuarioModificacion = oSolicitudPrestamo.UsuarioModificacion,
                 FechaModificacion = oSolicitudPrestamo.FechaModificacion
             });
+
+            //3. Obtener los registros de Capacidad de Pago
+            List<CapacidadPago> lCapacidadPago = CapacidadPagoBusiness.ObtenerCapacidadPagoPorSolicitudPrestamo(oSolicitudPrestamo.ID);
+            sCapacidadPagoEgresos.DataSource = lCapacidadPago.Where(oCapacidadPago => oCapacidadPago.Tipo.Equals("Egreso"));
+            sCapacidadPagoEgresos.DataBind();
+
+            sCapacidadPagoIngresos.DataSource = lCapacidadPago.Where(oCapacidadPago => oCapacidadPago.Tipo.Equals("Ingreso"));
+            sCapacidadPagoIngresos.DataBind();
+
+            //Capacidad de pago
+            sCapacidadPagoIngresos.Insert(3, new {});
+            sCapacidadPagoIngresos.Insert(4, new {});
+            sCapacidadPagoIngresos.Insert(5, new {});
+            sCapacidadPagoIngresos.Insert(6, new {});
+            sCapacidadPagoIngresos.Insert(7, new {});
         }
     }
 }

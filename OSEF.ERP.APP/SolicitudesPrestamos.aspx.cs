@@ -58,6 +58,7 @@ namespace OSEF.ERP.APP
             //else
             //{
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
+                CapacidadPagoBusiness.BorrarPorSolicitudPrestamo(strID);
                 SolicitudPrestamoBusiness.Borrar(strID);
             //}
         }

@@ -234,6 +234,55 @@ var gpSolicitudesPrestamos_ItemClick = function (gridview, registro, gvhtml, ind
     indice = index;
 };
 
+//Evento que se lanza antes de cargar el Store
+var sCapacidadPagoIngresos_Load = function (store, registros, successful, opciones) {
+    //1. Validar si es nuevo o se va a Editar
+    if (Ext.util.Cookies.get('cookieEditarSolicitudPrestamo') == 'Nuevo') {
+        store.insert(0, { ID: 0, SolicitudPrestamo: '', Renglon: 0, Tipo: 'Ingreso', Concepto: 'Sueldo del solicitante:', Importe: 0 });
+        store.insert(1, { ID: 1, SolicitudPrestamo: '', Renglon: 1, Tipo: 'Ingreso', Concepto: 'Sueldo del cónyuge:', Importe: 0 });
+        store.insert(2, { ID: 2, SolicitudPrestamo: '', Renglon: 2, Tipo: 'Ingreso', Concepto: 'Otros ingresos:', Importe: 0 });
+        store.insert(3, {});
+        store.insert(4, {});
+        store.insert(5, {});
+        store.insert(6, {});
+        store.insert(7, {});
+    }
+};
+
+//Evento que se lanza antes de cargar el Store
+var sCapacidadPagoEgresos_Load = function (store, registros, successful, opciones) {
+    if (Ext.util.Cookies.get('cookieEditarSolicitudPrestamo') == 'Nuevo') {
+        store.insert(0, { ID: 0, SolicitudPrestamo: '', Renglon: 0, Tipo: 'Egreso', Concepto: 'Alimentación:', Importe: 0 });
+        store.insert(1, { ID: 1, SolicitudPrestamo: '', Renglon: 1, Tipo: 'Egreso', Concepto: 'Renta:', Importe: 0 });
+        store.insert(2, { ID: 2, SolicitudPrestamo: '', Renglon: 2, Tipo: 'Egreso', Concepto: 'Vestido:', Importe: 0 });
+        store.insert(3, { ID: 3, SolicitudPrestamo: '', Renglon: 3, Tipo: 'Egreso', Concepto: 'Servicios:', Importe: 0 });
+        store.insert(4, { ID: 4, SolicitudPrestamo: '', Renglon: 4, Tipo: 'Egreso', Concepto: 'Colegiatura:', Importe: 0 });
+        store.insert(5, { ID: 5, SolicitudPrestamo: '', Renglon: 5, Tipo: 'Egreso', Concepto: 'Diversiones:', Importe: 0 });
+        store.insert(6, { ID: 6, SolicitudPrestamo: '', Renglon: 6, Tipo: 'Egreso', Concepto: 'Servidumbre:', Importe: 0 });
+        store.insert(7, { ID: 7, SolicitudPrestamo: '', Renglon: 7, Tipo: 'Egreso', Concepto: 'Otros:', Importe: 0 });
+    }
+};
+
+//Evento que se lanza despues de perder el focus
+var nfIngresos_Blur = function (numberfield, evento, opciones) {
+    App.sCapacidadPagoIngresos.getAt(0).set('Importe', numberfield.getValue());
+};
+
+//Evento que se lanza despues de perder el focus
+var nfOtrosIngresos_Blur = function (numberfield, evento, opciones) {
+    App.sCapacidadPagoIngresos.getAt(2).set('Importe', numberfield.getValue() + App.nfConyugeOtrosIngresos.getValue());
+};
+
+//Evento que se lanza despues de perder el focus
+var nfConyugeIngresos_Blur = function (numberfield, evento, opciones) {
+    App.sCapacidadPagoIngresos.getAt(1).set('Importe', numberfield.getValue());
+};
+
+//Evento que se lanza despues de perder el focus
+var nfConyugeOtrosIngresos_Blur = function (numberfield, evento, opciones) {
+    App.sCapacidadPagoIngresos.getAt(2).set('Importe', numberfield.getValue() + App.nfOtrosIngresos.getValue());
+};
+
 //Evento lanzado al cargar el store
 var sSolicitudPrestamo_Load = function () {
     //1. Validar si es nuevo o se va a Editar
@@ -558,6 +607,14 @@ var nAniosDomicilio_Change = function (numberfield, valorNuevo, valorAnterior, o
     else {
         App.fsDomicilioAnterior.show();
     }
+};
+
+//Dar formato monetario México columna Importe
+var ncImporte_Renderer = function (valor) {
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    return F.number(valor, "$000,000,000.00");
 };
 
 //Asignar los datos del Socio

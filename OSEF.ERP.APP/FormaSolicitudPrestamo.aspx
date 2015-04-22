@@ -1404,6 +1404,9 @@
                                                                 MinValue="0"
                                                                 MaxValue="999999"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Fn="nfIngresos_Blur" />
+                                                                </Listeners>
                                                             </ext:NumberField>
                                                             <ext:NumberField
                                                                 ID="nfOtrosIngresos"
@@ -1414,6 +1417,9 @@
                                                                 MinValue="0"
                                                                 MaxValue="999999"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Fn="nfOtrosIngresos_Blur" />
+                                                                </Listeners>
                                                             </ext:NumberField>
                                                         </Items>
                                                     </ext:Container>
@@ -1718,7 +1724,7 @@
                                                                 </Listeners>
                                                             </ext:TextField>
                                                         </Items>
-                                                </ext:Container>
+                                                    </ext:Container>
                                                     <ext:Container 
                                                         ID="cConyugeDomicilioC2"
                                                         runat="server"
@@ -1932,6 +1938,9 @@
                                                                 MinValue="0"
                                                                 MaxValue="999999"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Fn="nfConyugeIngresos_Blur" />
+                                                                </Listeners>
                                                             </ext:NumberField>
                                                             <ext:NumberField
                                                                 ID="nfConyugeOtrosIngresos"
@@ -1942,6 +1951,9 @@
                                                                 MinValue="0"
                                                                 MaxValue="999999"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Fn="nfConyugeOtrosIngresos_Blur" />
+                                                                </Listeners>
                                                             </ext:NumberField>
                                                         </Items>
                                                     </ext:Container>
@@ -3194,64 +3206,171 @@
                                                 runat="server"
                                                 Title="Conceptos">
                                                 <Items>
-                                                    <ext:GridPanel
-                                                        ID="gpCapacidadPago"
+                                                    <ext:Container
+                                                        ID="cCapacidadPago1"
                                                         runat="server"
-                                                        Height="420"
-                                                        Width="960"
-                                                        Title="DETERMINACIÓN DE CAPACIDAD DE PAGO"
-                                                        EnableColumnHide="false"
-                                                        EnableColumnMove="false"
-                                                        Header="true"
-                                                        TitleAlign="Left"
-                                                        StyleSpec="margin:0 auto; margin-top: 20px;">
-                                                        <Store>
-                                                            <ext:Store
-                                                                ID="sCapacidadPago"
-                                                                runat="server">
-                                                                <Model>
-                                                                    <ext:Model ID="mCapacidadPago" runat="server">
-                                                                        <Fields>
-                                                                            <ext:ModelField Name="ID" Type="String" />
-                                                                            <ext:ModelField Name="Egreso" Type="String" />
-                                                                            <ext:ModelField Name="Importe" Type="Float" />
-                                                                        </Fields>
-                                                                    </ext:Model>
-                                                                </Model>
-                                                                <Sorters>
-                                                                    <ext:DataSorter Property="ID" Direction="ASC" />
-                                                                </Sorters>
-                                                            </ext:Store>
-                                                        </Store>
-                                                        <ColumnModel>
-                                                            <Columns>
-                                                                <ext:Column 
-                                                                    ID="cEgreso"
-                                                                    runat="server"
-                                                                    Text="EGRESO"
-                                                                    Align="Center"
-                                                                    Width="300"
-                                                                    DataIndex="Egreso">
-                                                                </ext:Column>
-                                                                <ext:NumberColumn
-                                                                    ID="cImporte"
-                                                                    runat="server"
-                                                                    Text="IMPORTE"
-                                                                    Align="Left"
-                                                                    Width="658"
-                                                                    DataIndex="IMPORTE">
-                                                                    <Editor>
-                                                                        <ext:TextField
-                                                                            ID="txtfDescripcion"
+                                                        Layout="ColumnLayout">
+                                                        <Items>
+                                                            <ext:GridPanel
+                                                                ID="gpCapacidadPagoIngresos"
+                                                                runat="server"
+                                                                Height="300"
+                                                                Width="360"
+                                                                EnableColumnHide="false"
+                                                                EnableColumnMove="false"
+                                                                Header="false"
+                                                                Border="true"
+                                                                Margin="5"
+                                                                Reorderable="false"
+                                                                Resizable="false"
+                                                                SortableColumns="false">
+                                                                <Store>
+                                                                    <ext:Store
+                                                                        ID="sCapacidadPagoIngresos"
+                                                                        runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mCapacidadPagoIngresos" runat="server">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="Int" />
+                                                                                    <ext:ModelField Name="SolicitudPrestamo" Type="String" />
+                                                                                    <ext:ModelField Name="Renglon" Type="Int" />
+                                                                                    <ext:ModelField Name="Tipo" Type="String" />
+                                                                                    <ext:ModelField Name="Concepto" Type="String" />
+                                                                                    <ext:ModelField Name="Importe" Type="Float" UseNull="true" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                        <Sorters>
+                                                                            <ext:DataSorter Property="ID" Direction="ASC" />
+                                                                        </Sorters>
+                                                                        <Listeners>
+                                                                            <Load Fn="sCapacidadPagoIngresos_Load" />
+                                                                        </Listeners>
+                                                                    </ext:Store>
+                                                                </Store>
+                                                                <ColumnModel>
+                                                                    <Columns>
+                                                                        <ext:Column 
+                                                                            ID="cConceptoIngresos"
                                                                             runat="server"
-                                                                            MaxLength="50"
-                                                                            EnforceMaxLength="true">
-                                                                        </ext:TextField>
-                                                                    </Editor>
-                                                                </ext:NumberColumn>
-                                                            </Columns>
-                                                        </ColumnModel>
-                                                    </ext:GridPanel>
+                                                                            Text="INGRESO"
+                                                                            Align="Left"
+                                                                            Width="200"
+                                                                            DataIndex="Concepto"
+                                                                            SummaryType="Count">
+                                                                            <SummaryRenderer Handler="return 'TOTAL';" />
+                                                                        </ext:Column>
+                                                                        <ext:NumberColumn
+                                                                            ID="ncImporteIngresos"
+                                                                            runat="server"
+                                                                            Text="IMPORTE"
+                                                                            Align="Center"
+                                                                            Width="157"
+                                                                            DataIndex="Importe"
+                                                                            SummaryType="Sum">
+                                                                            <Renderer Fn="ncImporte_Renderer" />
+                                                                        </ext:NumberColumn>
+                                                                    </Columns>
+                                                                </ColumnModel>
+                                                                <Features>
+                                                                    <ext:Summary ID="summaryCapacidadPagoIngresos" runat="server" />
+                                                                </Features>
+                                                            </ext:GridPanel>
+                                                            <ext:GridPanel
+                                                                ID="gpCapacidadPagoEgresos"
+                                                                runat="server"
+                                                                Height="300"
+                                                                Width="360"
+                                                                EnableColumnHide="false"
+                                                                EnableColumnMove="false"
+                                                                Header="false"
+                                                                Border="true"
+                                                                Margin="5"
+                                                                Reorderable="false"
+                                                                Resizable="false"
+                                                                SortableColumns="false"
+                                                                RowLines="true">
+                                                                <Store>
+                                                                    <ext:Store
+                                                                        ID="sCapacidadPagoEgresos"
+                                                                        runat="server">
+                                                                        <Model>
+                                                                            <ext:Model ID="mCapacidadPagoEgresos" runat="server">
+                                                                                <Fields>
+                                                                                    <ext:ModelField Name="ID" Type="Int" />
+                                                                                    <ext:ModelField Name="SolicitudPrestamo" Type="String" />
+                                                                                    <ext:ModelField Name="Renglon" Type="Int" />
+                                                                                    <ext:ModelField Name="Tipo" Type="String" />
+                                                                                    <ext:ModelField Name="Concepto" Type="String" />
+                                                                                    <ext:ModelField Name="Importe" Type="Float" />
+                                                                                </Fields>
+                                                                            </ext:Model>
+                                                                        </Model>
+                                                                        <Sorters>
+                                                                            <ext:DataSorter Property="ID" Direction="ASC" />
+                                                                        </Sorters>
+                                                                        <Listeners>
+                                                                            <Load Fn="sCapacidadPagoEgresos_Load" />
+                                                                        </Listeners>
+                                                                    </ext:Store>
+                                                                </Store>
+                                                                <ColumnModel>
+                                                                    <Columns>
+                                                                        <ext:Column 
+                                                                            ID="cConceptoEgresos"
+                                                                            runat="server"
+                                                                            Text="EGRESO"
+                                                                            Align="Left"
+                                                                            Width="200"
+                                                                            DataIndex="Concepto">
+                                                                            <SummaryRenderer Handler="return 'TOTAL';" />
+                                                                        </ext:Column>
+                                                                        <ext:NumberColumn
+                                                                            ID="ncImporteEgresos"
+                                                                            runat="server"
+                                                                            Text="IMPORTE"
+                                                                            Align="Center"
+                                                                            Width="157"
+                                                                            DataIndex="Importe"
+                                                                            SummaryType="Sum">
+                                                                            <Renderer Fn="ncImporte_Renderer" />
+                                                                            <Editor>
+                                                                                <ext:NumberField 
+                                                                                    ID="nfImporteEgresos"
+                                                                                    runat="server"
+                                                                                    AllowDecimals="true"
+                                                                                    AllowExponential="false"
+                                                                                    DecimalPrecision="2"
+                                                                                    DecimalSeparator="."
+                                                                                    MaxLength="10"
+                                                                                    EnforceMaxLength="true"
+                                                                                    MaxValue="9999999999"
+                                                                                    MinValue="0"
+                                                                                    Step="1">
+                                                                                </ext:NumberField>
+                                                                            </Editor>
+                                                                        </ext:NumberColumn>
+                                                                    </Columns>
+                                                                </ColumnModel>
+                                                                <SelectionModel>
+                                                                    <ext:CellSelectionModel
+                                                                        ID="csmCapacidadPagoEgresos" 
+                                                                        runat="server">
+                                                                    </ext:CellSelectionModel>
+                                                                </SelectionModel>
+                                                                <Plugins>
+                                                                    <ext:CellEditing 
+                                                                        ID="ceCapacidadPagoEgresos" 
+                                                                        runat="server"
+                                                                        ClicksToEdit="1">
+                                                                    </ext:CellEditing>
+                                                                </Plugins>
+                                                                <Features>
+                                                                    <ext:Summary ID="summaryCapacidadPagoEgresos" runat="server" />
+                                                                </Features>
+                                                            </ext:GridPanel>
+                                                        </Items>
+                                                    </ext:Container>
                                                 </Items>
                                             </ext:FieldSet>
                                         </Items>
@@ -3395,6 +3514,8 @@
                                             <ext:Parameter Name="registro" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                             <ext:Parameter Name="usuario" Value="Ext.encode(window.parent.App.sUsuario.getRecordsValues())" Mode="Raw" />
                                             <ext:Parameter Name="edad" Value="App.txtfConyugeEdad.getValue()" Mode="Raw" />
+                                            <ext:Parameter Name="ingresos" Value="Ext.encode(App.sCapacidadPagoIngresos.getRecordsValues())" Mode="Raw" />
+                                            <ext:Parameter Name="egresos" Value="Ext.encode(App.sCapacidadPagoEgresos.getRecordsValues())" Mode="Raw" />
                                         </ExtraParams>
                                     </Click>
                                 </DirectEvents>

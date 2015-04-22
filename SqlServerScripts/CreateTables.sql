@@ -330,6 +330,15 @@ CREATE TABLE SolicitudesPrestamos(
 	FechaModificacion			SMALLDATETIME	NOT NULL
 )
 
+CREATE TABLE CapacidadesPagos(
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
+	Renglon						INT				NOT NULL,
+	Tipo						VARCHAR(20)		NOT NULL,
+	Concepto					VARCHAR(30)		NOT NULL,
+	Importe						SMALLMONEY		NOT NULL
+)
+
 CREATE TABLE ReferenciasBancarias(
 	ID							CHAR(7)			NOT NULL PRIMARY KEY,
 	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
@@ -608,7 +617,6 @@ CREATE TABLE FacturasOrdenEstimacionD(
 	Usuario						VARCHAR(50)		NOT NULL,
 	FechaAlta					SMALLDATETIME	NOT NULL
 )
-
 
 CREATE TABLE GeneradorOrdenEstimacionD(
 	MovID						INT				NOT NULL FOREIGN KEY REFERENCES OrdenesEstimaciones(ID),

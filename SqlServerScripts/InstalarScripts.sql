@@ -8,6 +8,15 @@
 -- Articulos (Modificar)
 :r c:\SqlServerScripts\Modificar\Articulos\web_spU_ActualizarArticulo.sql
 -----------------------------------------------------------------------------------
+-- CapacidadesPagos (Borrar)
+:r c:\SqlServerScripts\Borrar\CapacidadesPagos\web_spD_BorrarCapacidadPagoPorSolicitudPrestamo.sql
+-- CapacidadesPagos (Consultar)
+:r c:\SqlServerScripts\Consultar\CapacidadesPagos\web_spS_ObtenerCapacidadPagoPorSolicitudPrestamo.sql
+-- CapacidadesPagos (Insertar)
+:r c:\SqlServerScripts\Insertar\CapacidadesPagos\web_spI_InsertarCapacidadPago.sql
+-- CapacidadesPagos (Modificar)
+:r c:\SqlServerScripts\Modificar\CapacidadesPagos\web_spU_ActualizarCapacidadPago.sql
+-----------------------------------------------------------------------------------
 -- Categorias (Borrar)
 :r c:\SqlServerScripts\Borrar\Categorias\web_spD_BorrarCategoria.sql
 -- Categorias (Consultar)

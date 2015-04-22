@@ -2731,58 +2731,148 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldSet fsCapacidadPago;
         
         /// <summary>
-        /// Control gpCapacidadPago.
+        /// Control cCapacidadPago1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gpCapacidadPago;
+        protected global::Ext.Net.Container cCapacidadPago1;
         
         /// <summary>
-        /// Control sCapacidadPago.
+        /// Control gpCapacidadPagoIngresos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sCapacidadPago;
+        protected global::Ext.Net.GridPanel gpCapacidadPagoIngresos;
         
         /// <summary>
-        /// Control mCapacidadPago.
+        /// Control sCapacidadPagoIngresos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mCapacidadPago;
+        protected global::Ext.Net.Store sCapacidadPagoIngresos;
         
         /// <summary>
-        /// Control cEgreso.
+        /// Control mCapacidadPagoIngresos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cEgreso;
+        protected global::Ext.Net.Model mCapacidadPagoIngresos;
         
         /// <summary>
-        /// Control cImporte.
+        /// Control cConceptoIngresos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.NumberColumn cImporte;
+        protected global::Ext.Net.Column cConceptoIngresos;
         
         /// <summary>
-        /// Control txtfDescripcion.
+        /// Control ncImporteIngresos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfDescripcion;
+        protected global::Ext.Net.NumberColumn ncImporteIngresos;
+        
+        /// <summary>
+        /// Control summaryCapacidadPagoIngresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Summary summaryCapacidadPagoIngresos;
+        
+        /// <summary>
+        /// Control gpCapacidadPagoEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.GridPanel gpCapacidadPagoEgresos;
+        
+        /// <summary>
+        /// Control sCapacidadPagoEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sCapacidadPagoEgresos;
+        
+        /// <summary>
+        /// Control mCapacidadPagoEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mCapacidadPagoEgresos;
+        
+        /// <summary>
+        /// Control cConceptoEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cConceptoEgresos;
+        
+        /// <summary>
+        /// Control ncImporteEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberColumn ncImporteEgresos;
+        
+        /// <summary>
+        /// Control nfImporteEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField nfImporteEgresos;
+        
+        /// <summary>
+        /// Control csmCapacidadPagoEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CellSelectionModel csmCapacidadPagoEgresos;
+        
+        /// <summary>
+        /// Control ceCapacidadPagoEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CellEditing ceCapacidadPagoEgresos;
+        
+        /// <summary>
+        /// Control summaryCapacidadPagoEgresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Summary summaryCapacidadPagoEgresos;
         
         /// <summary>
         /// Control pDatosOperacion.

@@ -43,6 +43,7 @@
     <Compile Include="Articulo.cs" />
     <Compile Include="Beneficiario.cs" />
     <Compile Include="BienInmueble.cs" />
+    <Compile Include="CapacidadPago.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CertificadoInversion.cs" />
     <Compile Include="CodigoPostal.cs" />
