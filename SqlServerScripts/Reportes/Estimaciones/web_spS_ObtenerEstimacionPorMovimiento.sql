@@ -40,7 +40,7 @@ BEGIN
     -- Insert statements for procedure here
 		SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
-		OE.ID,
+		OE.ID,OE.ImporteTotal TOTALFINAL,
 		OED.ConceptoID,OED.Cantidad, OED.Precio,OED.Importe,OED.IntExt,
 		--Datos de la sucursal
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,

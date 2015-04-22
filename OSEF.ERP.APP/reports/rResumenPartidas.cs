@@ -90,7 +90,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pFirmaConformidad1 {
+        public CrystalDecisions.Shared.IParameterField Parameter_elaboro {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pFirmaConformidad2 {
+        public CrystalDecisions.Shared.IParameterField Parameter_autorizo {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }

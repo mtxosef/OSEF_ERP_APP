@@ -60,19 +60,23 @@ var imgbtnFormaNuevo_Click = function () {
 };
 
 var imgbtnImprimir_Click = function () {
-    //Traemos los parametros
 
-
-//    alert(Ext.util.Cookies.get('cookieConceptoMovReporte'));
-//alert(Ext.util.Cookies.get('cookieConceptoClaveMovReporte'));
-
-
-    window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');
-    window.parent.App.wGenerador.setHeight(250);
-    window.parent.App.wGenerador.setWidth(590);
-    window.parent.App.wGenerador.center();
-    window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
-    window.parent.App.wGenerador.show();
+    if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte') {
+        window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
+        window.parent.App.wGenerador.setHeight(320);
+        window.parent.App.wGenerador.setWidth(590);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+        window.parent.App.wGenerador.show();
+    }
+    else {
+        window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');
+        window.parent.App.wGenerador.setHeight(250);
+        window.parent.App.wGenerador.setWidth(590);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+        window.parent.App.wGenerador.show();
+    }
 }
 
 
@@ -586,7 +590,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
-
+        App.imgbtnImprimir.setDisabled(false);
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
 
