@@ -1,5 +1,6 @@
 ﻿//Hacer la busqueda de información
-var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
+var txtBuscar_Change = function (textfield, newValue, oldValue, e) { 
+    App.txtBuscar.getValue().toUpperCase();
     App.sConceptosFiltrados.clearFilter();
     App.sConceptosFiltrados.filter([{ filterFn: function (item) {
         if (item.get('Clave').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('Descripcion').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }

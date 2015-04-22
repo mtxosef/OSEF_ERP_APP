@@ -53,7 +53,6 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@HoraLlegada	DATETIME,
 		@FechaFinActividad SMALLDATETIME,
 		@HoraFinActividad DATETIME,
-		@Zona			VARCHAR(80),
 		@Cuadrilla		CHAR(10) ,
 		@ImporteTotal	DECIMAL(20,2)
 AS
@@ -89,7 +88,6 @@ BEGIN
 		HoraLlegada = @HoraLlegada,
 		FechaFinActividad = @FechaFinActividad,
 		HoraFinActividad = @HoraFinActividad,
-		Zona = @Zona,
 		Cuadrilla = @Cuadrilla,
 		ImporteTotal = @ImporteTotal
 		

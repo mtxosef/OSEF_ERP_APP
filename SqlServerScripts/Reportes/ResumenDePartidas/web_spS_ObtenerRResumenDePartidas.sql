@@ -16,36 +16,34 @@ GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: 2015-03-29
--- Description:	Obtiene los datos generales
+-- Description:	Obtiene los datos generales para Resumen de Partidas
 -- =============================================
 -- =============================================
 -- Create procedure basic template
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerEstimacionPorMovimiento' AND
+			WHERE  name = 'web_spS_ObtenerRResumenDePartidas' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerEstimacionPorMovimiento
+	DROP PROCEDURE web_spS_ObtenerRResumenDePartidas
 GO
 
-CREATE PROCEDURE web_spS_ObtenerEstimacionPorMovimiento
-	-- Add the parameters for the stored procedure here
-	@IDMovimiento int
+CREATE PROCEDURE web_spS_ObtenerRResumenDePartidas
+	-- Add the parameters for the stored procedure here 
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
-		SELECT 
+   SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
-		OE.ID,OE.ImporteTotal TOTALFINAL,
+		OE.ID,
 		OED.ConceptoID,OED.Cantidad, OED.Precio,OED.Importe,OED.IntExt,
 		--Datos de la sucursal
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto
-		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat
+		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat,PGCAT.ID IDCAT
 		--Encabezado del movimiento(No del reporte)
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
@@ -66,6 +64,6 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia
-		WHERE OE.ID = @IDMovimiento;
 END
 GO
+

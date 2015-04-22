@@ -96,3 +96,6 @@ REFERENCES dbo.Cuadrillas(ID)
 --Cambios Christian 17 de abril
 ALTER TABLE OrdenesEstimaciones ADD ImporteTotal DECIMAL (20,2)
 ALTER TABLE OrdenesEstimacionesD ADD Moneda VARCHAR(10)
+
+--Cambios Christian 21 de Abril
+ALTER TABLE OrdenesEstimaciones DROP COLUMN Zona 

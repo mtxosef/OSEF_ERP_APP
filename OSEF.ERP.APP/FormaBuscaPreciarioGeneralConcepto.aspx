@@ -210,6 +210,7 @@
                                     runat="server"
                                     EmptyText="Buscar por Clave/Descripcion"
                                     Width="335"
+                                    AutoFocus="true"
                                     Disabled="false">
                                     <Listeners>
                                         <Change Fn="txtBuscar_Change" />
@@ -224,7 +225,19 @@
                                             Height="22px"
                                             Width="22px">                                             
                                         </ext:ImageButton>
-                                    </RightButtons>
+                                    </RightButtons> 
+                                    <DirectEvents>
+                                        <SpecialKey
+                                            OnEvent="btnBuscar_Click"
+                                            Before="return e.getKey() == Ext.EventObject.ENTER">
+                                            <EventMask ShowMask="true" MinDelay="1000" Msg="Buscando..." /> 
+                                            <ExtraParams>
+                                                <ext:Parameter Name="categoria" Value="App.cmbCategoria.getValue()" Mode="Raw" />
+                                                <ext:Parameter Name="subcategoria" Value="App.cmbSubCategoria.getValue()" Mode="Raw" />
+                                                <ext:Parameter Name="subsubcategoria" Value="App.cmbSubSubCategoria.getValue()" Mode="Raw" />
+                                            </ExtraParams>
+                                        </SpecialKey> 
+                                    </DirectEvents>
                                 </ext:TextField>
                             </Items>
                         </ext:FieldContainer>

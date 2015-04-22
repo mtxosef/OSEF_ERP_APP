@@ -55,7 +55,6 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 		@HoraLlegada	DATETIME,
 		@FechaFinActividad SMALLDATETIME,
 		@HoraFinActividad DATETIME,
-		@Zona			VARCHAR(80),
 		@Cuadrilla		CHAR(10),
 		@ImporteTotal	DECIMAL(20,2) 
 	
@@ -94,7 +93,6 @@ BEGIN
 			HoraLlegada ,
 			FechaFinActividad ,
 			HoraFinActividad ,
-			Zona ,
 			Cuadrilla,
 			ImporteTotal
 		)
@@ -124,7 +122,6 @@ BEGIN
 			@HoraLlegada ,
 			@FechaFinActividad ,
 			@HoraFinActividad ,
-			@Zona ,
 			@Cuadrilla,
 			@ImporteTotal
 			)

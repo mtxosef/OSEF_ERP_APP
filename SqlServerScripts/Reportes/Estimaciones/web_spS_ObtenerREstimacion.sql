@@ -30,6 +30,7 @@ GO
 
 CREATE PROCEDURE web_spS_ObtenerREstimacion
 	-- Add the parameters for the stored procedure here 
+	@IDMovimiento int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -38,7 +39,7 @@ BEGIN
 
    SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
-		OE.ID,
+		OE.ID, OE.ImporteTotal TOTALFINAL,
 		OED.ConceptoID,OED.Cantidad, OED.Precio,OED.Importe,OED.IntExt,
 		--Datos de la sucursal
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
@@ -64,5 +65,6 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia
+		WHERE OE.ID = @IDMovimiento;
 END
 GO

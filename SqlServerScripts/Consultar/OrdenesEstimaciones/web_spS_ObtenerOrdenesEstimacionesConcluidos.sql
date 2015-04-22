@@ -63,7 +63,6 @@ BEGIN
 		HoraLlegada,
 		FechaFinActividad,
 		HoraFinActividad,
-		Zona,
 		Cuadrilla,
 		ImporteTotal
 		

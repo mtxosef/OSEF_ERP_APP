@@ -16,19 +16,19 @@ GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: 2015-03-29
--- Description:	Obtiene los datos generales
+-- Description:	Obtiene los datos generales para Resumen de Partidas por Movimiento
 -- =============================================
 -- =============================================
 -- Create procedure basic template
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerEstimacionPorMovimiento' AND
+			WHERE  name = 'web_spS_ObtenerResumenDePartidasPorMovimiento' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerEstimacionPorMovimiento
+	DROP PROCEDURE web_spS_ObtenerResumenDePartidasPorMovimiento
 GO
 
-CREATE PROCEDURE web_spS_ObtenerEstimacionPorMovimiento
+CREATE PROCEDURE web_spS_ObtenerResumenDePartidasPorMovimiento
 	-- Add the parameters for the stored procedure here
 	@IDMovimiento int
 AS
@@ -40,7 +40,7 @@ BEGIN
     -- Insert statements for procedure here
 		SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
-		OE.ID,OE.ImporteTotal TOTALFINAL,
+		OE.ID,
 		OED.ConceptoID,OED.Cantidad, OED.Precio,OED.Importe,OED.IntExt,
 		--Datos de la sucursal
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,

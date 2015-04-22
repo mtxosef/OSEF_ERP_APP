@@ -232,14 +232,6 @@ namespace OSEF.APP.DL
                 else
                     sqlpHoraFinActividad.Value = iOrdenEstimacion.HoraFinActividad;
 
-                SqlParameter sqlpZona = new SqlParameter();
-                sqlpZona.ParameterName = "@Zona";
-                sqlpZona.SqlDbType = SqlDbType.VarChar;
-                if (iOrdenEstimacion.Zona == null)
-                    sqlpZona.Value = DBNull.Value;
-                else
-                    sqlpZona.Value = iOrdenEstimacion.Zona;
-
                 SqlParameter sqlpCuadrilla = new SqlParameter();
                 sqlpCuadrilla.ParameterName = "@Cuadrilla";
                 sqlpCuadrilla.SqlDbType = SqlDbType.VarChar;
@@ -282,7 +274,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraLlegada);
                 sqlcComando.Parameters.Add(sqlpFechaFinActividad);
                 sqlcComando.Parameters.Add(sqlpHoraFinActividad);
-                sqlcComando.Parameters.Add(sqlpZona);
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 //4. Abrir la conexión
@@ -515,13 +506,7 @@ namespace OSEF.APP.DL
                 else
                     sqlpHoraFinActividad.Value = uOrdenEstimacion.HoraFinActividad;
 
-                SqlParameter sqlpZona = new SqlParameter();
-                sqlpZona.ParameterName = "@Zona";
-                sqlpZona.SqlDbType = SqlDbType.VarChar;
-                if (uOrdenEstimacion.Zona == null)
-                    sqlpZona.Value = DBNull.Value;
-                else
-                    sqlpZona.Value = uOrdenEstimacion.Zona;
+ 
 
                 SqlParameter sqlpCuadrilla = new SqlParameter();
                 sqlpCuadrilla.ParameterName = "@Cuadrilla";
@@ -565,7 +550,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraLlegada);
                 sqlcComando.Parameters.Add(sqlpFechaFinActividad);
                 sqlcComando.Parameters.Add(sqlpHoraFinActividad);
-                sqlcComando.Parameters.Add(sqlpZona);
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 //4. Abrir la conexión

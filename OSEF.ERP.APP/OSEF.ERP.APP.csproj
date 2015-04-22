@@ -154,6 +154,7 @@
     <Content Include="assets\img\controles\EnviarNormal.png" />
     <Content Include="assets\img\controles\EnviarOver.png" />
     <Content Include="assets\img\controles\EnviarPressed.png" />
+    <Content Include="assets\img\controles\EST.png" />
     <Content Include="assets\img\controles\ExcelDisabled.png" />
     <Content Include="assets\img\controles\ExcelNormal.png" />
     <Content Include="assets\img\controles\ExcelOver.png" />
@@ -197,6 +198,7 @@
     <Content Include="assets\img\controles\PrimeroNormal.png" />
     <Content Include="assets\img\controles\PrimeroOver.png" />
     <Content Include="assets\img\controles\PrimeroPressed.png" />
+    <Content Include="assets\img\controles\RES.png" />
     <Content Include="assets\img\controles\right-nav.png" />
     <Content Include="assets\img\controles\SaveDisabled.png" />
     <Content Include="assets\img\controles\SaveNormal.png" />
@@ -363,6 +365,7 @@
     <Content Include="FormaPreciarioExplorador.aspx" />
     <Content Include="FormaPreciarioGeneral.aspx" />
     <Content Include="FormaPreciarioGeneralExplorador.aspx" />
+    <Content Include="FormaReporteEstimacion.aspx" />
     <Content Include="FormaReporteOrdenCambioD.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirCroquisOrdenEstimacion.aspx" />
@@ -416,6 +419,7 @@
     <Content Include="js\buscapreciarios.js" />
     <Content Include="js\formacuadrilla.js" />
     <Content Include="js\formaGeneradorVolumetriaD.js" />
+    <Content Include="js\formaReporteMovimientoEstimacion.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
@@ -485,6 +489,7 @@
     <Content Include="Preciarios.aspx" />
     <Content Include="PreciariosGenerales.aspx" />
     <Content Include="Previa.aspx" />
+    <Content Include="PreviaEstimacion.aspx" />
     <Content Include="PreviaOrdenEstimacion.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
@@ -950,6 +955,13 @@
     <Compile Include="FormaPreciarioGeneralExplorador.aspx.designer.cs">
       <DependentUpon>FormaPreciarioGeneralExplorador.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaReporteEstimacion.aspx.cs">
+      <DependentUpon>FormaReporteEstimacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaReporteEstimacion.aspx.designer.cs">
+      <DependentUpon>FormaReporteEstimacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaReporteOrdenCambioD.aspx.cs">
       <DependentUpon>FormaReporteOrdenCambioD.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1164,6 +1176,13 @@
     <Compile Include="Previa.aspx.designer.cs">
       <DependentUpon>Previa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PreviaEstimacion.aspx.cs">
+      <DependentUpon>PreviaEstimacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreviaEstimacion.aspx.designer.cs">
+      <DependentUpon>PreviaEstimacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PreviaOrdenEstimacion.aspx.cs">
       <DependentUpon>PreviaOrdenEstimacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1214,12 +1233,6 @@
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="reports\AdministracionDeInmuebles.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AdministracionDeInmuebles.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="reports\CPreciario.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1248,12 +1261,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rCroquis.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="reports\ResumenPartidas.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ResumenPartidas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="reports\rFotos.cs">
@@ -1380,10 +1387,6 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="reports\AdministracionDeInmuebles.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AdministracionDeInmuebles.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="reports\CPreciario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CPreciario.cs</LastGenOutput>
@@ -1403,10 +1406,6 @@
     <EmbeddedResource Include="reports\rCroquis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rCroquis.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reports\ResumenPartidas.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ResumenPartidas.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\rFotos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
