@@ -106,7 +106,6 @@ namespace OSEF.ERP.APP
                 List<PreciarioGeneralConcepto> lDetallePreciarioEliminados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosEliminados);
             }
 
-
             PreciarioGeneral oPreciario = new PreciarioGeneral();
 
             //3. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente

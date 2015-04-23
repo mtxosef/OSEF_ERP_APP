@@ -76,6 +76,7 @@ namespace OSEF.ERP.APP
             ReportDocument reporte = (ReportDocument)Session["rCroquis"];
             crvVisor.ToolPanelView = ToolPanelViewType.None;
             crvVisor.ReportSource = reporte;
+            crvVisor.EnableParameterPrompt = false;
             Session["rSeleccion"] = reporte;
         }
 
