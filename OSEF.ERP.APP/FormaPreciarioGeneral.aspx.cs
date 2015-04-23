@@ -86,11 +86,6 @@ namespace OSEF.ERP.APP
             string strRegistrosNuevos = e.ExtraParams["registrosnuevos"];
             string strRegistrosActualizados = e.ExtraParams["registrosactualizados"];
             string strRegistrosEliminados = e.ExtraParams["registroseliminados"];
-
-            bool rnew = false;
-            bool rupdate = false;
-            bool rdeleted = false;
-
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciarioGeneral").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             string strPreciarioDetalle = e.ExtraParams["DetallePreciario"];
@@ -99,19 +94,7 @@ namespace OSEF.ERP.APP
             List<PreciarioGeneralConcepto> lDetallePreciario = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strPreciarioDetalle);
 
             if (!strRegistrosNuevos.Equals("0"))
-            {
-                rnew = true;
-            }
-            if (!strRegistrosActualizados.Equals("0"))
-            {
-                rupdate = true;
-            }
-            if (!strRegistrosEliminados.Equals("0"))
-            {
-                rupdate = true;
-            } 
-            if (rnew)
-            {
+            { 
                 List<PreciarioGeneralConcepto> lDetallePreciarioNuevos = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosNuevos);
             }
             if (!strRegistrosActualizados.Equals("0"))
