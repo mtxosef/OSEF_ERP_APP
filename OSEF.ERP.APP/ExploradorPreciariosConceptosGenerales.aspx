@@ -49,53 +49,7 @@
             <TopBar>
                 <ext:Toolbar ID="tbPreciarios" runat="server">
                     <Items>
-                            <ext:ComboBox
-                                ID="cmbUsuario"
-                                runat="server"
-                                LabelWidth="70"
-                                Width="230"
-                                FieldLabel="USUARIO"
-                                DisplayField="Nombre"
-                                ValueField="ID"
-                                Editable="true"
-                                MatchFieldWidth="true"
-                                ForceSelection="true"
-                                QueryMode="Local"
-                                TypeAhead="true"
-                                EnforceMaxLength="true"
-                                >
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Store>
-                                <ext:Store ID="sUsuarios" runat="server">
-                                    <Model>
-                                        <ext:Model ID="mUsuarios" runat="server" IDProperty="ID">
-                                            <Fields>
-                                                <ext:ModelField Name="ID" Type="String" />
-                                                <ext:ModelField Name="Correo" Type="String" />
-                                                <ext:ModelField Name="Nombre" Type="String" />
-                                                <ext:ModelField Name="APaterno" Type="String" />
-                                                <ext:ModelField Name="AMaterno" Type="String" />
-                                                <ext:ModelField Name="Estatus" Type="String" />
-                                                <ext:ModelField Name="Bloqueado" Type="Boolean" />
-                                                <ext:ModelField Name="EnLinea" Type="Boolean" />
-                                                <ext:ModelField Name="FechaAlta" Type="Date" />
-                                                <ext:ModelField Name="FechaBloqueo" Type="Date" />
-                                                <ext:ModelField Name="UltimoAcceso" Type="Date" />
-                                                <ext:ModelField Name="CambioContrasena" Type="Date" />
-                                            </Fields>
-                                        </ext:Model>
-                                    </Model>
-                                </ext:Store>
-                                </Store>
-                                 <Listeners>
-                                    <Select Fn="cmbUsuarioFiltro_Select" />
-                                </Listeners>
-                            </ext:ComboBox>
+                            
 
 
                              <ext:ComboBox
@@ -128,9 +82,9 @@
                                 <Items>
                                     <ext:ListItem Index="0" Text="(Todos)" Value="Todos"  />
                                 </Items>
-                                <SelectedItems>
+                             <%--   <SelectedItems>
                                     <ext:ListItem Index="0" />
-                                </SelectedItems>
+                                </SelectedItems>--%>
                                 <Listeners>
                                     <Select Fn="cmbSucursalFiltro_Select" />
                                 </Listeners>
@@ -149,13 +103,16 @@
                                         </Model>
                                     </ext:Store>
                                 </Store>
+                                <Listeners>
+                                <Change Fn="cmbSucursal_Change" />
+                                </Listeners>
                             </ext:ComboBox>
  
                         
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="tsExploradorGeneralOrdenesEstimaciones" 
-                        Width="80">
+                        Width="320">
                         
                         </ext:ToolbarSpacer>
 
@@ -241,9 +198,9 @@
                      <ext:DateColumn
                         ID="dcFechaEmision"
                         runat="server"
-                        Text="FECHA EMISIÓN"
+                        Text="EMITIDO"
                         Align="Center"
-                        Width="120"
+                        Width="100"
                         DataIndex="FechaEmision"
                         Format="dd/MM/yyyy">
                         <HeaderItems>
@@ -288,7 +245,7 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Center"
-                        Width="180"
+                        Width="170"
                         DataIndex="Sucursal">
                       <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
@@ -307,7 +264,7 @@
                         runat="server"
                         Text="Importe"
                         Align="Center"
-                        Width="100"
+                        Width="95"
                         DataIndex="ImporteTotal">
                         <Renderer Fn="cImporte_renderer"></Renderer>
                     </ext:Column>
@@ -316,8 +273,55 @@
                         runat="server"
                         Text="USUARIO"
                         Align="Center"
-                        Width="125"
+                        Width="150"
                         DataIndex="Usuario">
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbUsuario"
+                                runat="server"
+                                DisplayField="Nombre"
+                                ValueField="ID"
+                                Editable="true"
+                                MatchFieldWidth="true"
+                                ForceSelection="true"
+                                QueryMode="Local"
+                                TypeAhead="true"
+                                EnforceMaxLength="true"
+                                >
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Store>
+                                <ext:Store ID="sUsuarios" runat="server">
+                                    <Model>
+                                        <ext:Model ID="mUsuarios" runat="server" IDProperty="ID">
+                                            <Fields>
+                                                <ext:ModelField Name="ID" Type="String" />
+                                                <ext:ModelField Name="Correo" Type="String" />
+                                                <ext:ModelField Name="Nombre" Type="String" />
+                                                <ext:ModelField Name="APaterno" Type="String" />
+                                                <ext:ModelField Name="AMaterno" Type="String" />
+                                                <ext:ModelField Name="Estatus" Type="String" />
+                                                <ext:ModelField Name="Bloqueado" Type="Boolean" />
+                                                <ext:ModelField Name="EnLinea" Type="Boolean" />
+                                                <ext:ModelField Name="FechaAlta" Type="Date" />
+                                                <ext:ModelField Name="FechaBloqueo" Type="Date" />
+                                                <ext:ModelField Name="UltimoAcceso" Type="Date" />
+                                                <ext:ModelField Name="CambioContrasena" Type="Date" />
+                                            </Fields>
+                                        </ext:Model>
+                                    </Model>
+                                </ext:Store>
+                                </Store>
+                                 <Listeners>
+                                    <Select Fn="cmbUsuarioFiltro_Select" />
+                                </Listeners>
+                            </ext:ComboBox>
+                        
+                        </HeaderItems>
                     
                     </ext:Column>
                 </Columns>

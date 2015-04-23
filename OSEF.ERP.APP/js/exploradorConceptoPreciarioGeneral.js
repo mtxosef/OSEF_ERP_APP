@@ -141,4 +141,15 @@ var cImporte_renderer = function (valor) {
 };
 
 
+var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
+    App.sSucursales.clearFilter();
+    if (App.cmbSucursal.getValue() != null) {
+        App.sSucursales.filter([{ filterFn: function (item) {
+            if (item.get('CR').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Nombre').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
+            else { return false; }
+        }
+        }]);
+    }
 
+
+};

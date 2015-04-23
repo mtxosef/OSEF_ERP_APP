@@ -493,3 +493,9 @@
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave.sql
 --PreciariosGeneralesConceptosAdicionales(Modificar)
 :r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptosAdicionales\web_spU_ActualizarPreciarioGeneralConceptoAdicional.sql
+------------------------------------------------------------------------------------------------------------------------------------------------------
+--ReportesEstimacion
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerEstimacionPorMovimiento.sql
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerREstimacion.sql
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerResumenDePartidasPorMovimiento.sql
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerRResumenDePartidas.sql

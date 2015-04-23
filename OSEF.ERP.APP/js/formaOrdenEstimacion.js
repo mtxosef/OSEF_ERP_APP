@@ -12,7 +12,7 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
     App.imgbtnCancelar.setDisabled(true);
-
+    App.imgbtnImprimir.setDisabled(true);
     //Limpiar campos
     App.txtfMovID.setValue('');
     App.cmbSucursal.setValue('');
@@ -380,6 +380,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.imgbtnCancelar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
+        App.imgbtnImprimir.setDisabled(false);
         //3. Remover la útima fila
         var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
         if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Precio') == 0) {
@@ -495,6 +496,8 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.txtCuadrilla.setReadOnly(true);
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
+    App.imgbtnImprimir.setDisabled(true);
+    App.imgbtnAfectar.setDisabled(true);
     window.parent.App.wEmergente.setTitle('Movimiento Cancelado');
 };
 
