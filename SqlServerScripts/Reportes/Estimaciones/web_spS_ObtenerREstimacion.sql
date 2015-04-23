@@ -30,6 +30,7 @@ GO
 
 CREATE PROCEDURE web_spS_ObtenerREstimacion
 	-- Add the parameters for the stored procedure here  
+	@IDMovimiento int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -64,5 +65,6 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia 
+		WHERE OE.ID = @IDMovimiento;
 END
 GO
