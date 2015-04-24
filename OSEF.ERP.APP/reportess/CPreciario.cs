@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSEF.ERP.APP.reports {
+namespace OSEF.ERP.APP.reportess {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP.reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Estimaciones : ReportClass {
+    public class CPreciario : ReportClass {
         
-        public Estimaciones() {
+        public CPreciario() {
         }
         
         public override string ResourceName {
             get {
-                return "Estimaciones.rpt";
+                return "CPreciario.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP.reports {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.reports.Estimaciones.rpt";
+                return "OSEF.ERP.APP.reportess.CPreciario.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,44 @@ namespace OSEF.ERP.APP.reports {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_path {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_reviso {
+            get {
+                return this.DataDefinition.ParameterFields[1];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_autorizo {
+            get {
+                return this.DataDefinition.ParameterFields[2];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_elaboro {
+            get {
+                return this.DataDefinition.ParameterFields[3];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedEstimaciones : Component, ICachedReport {
+    public class CachedCPreciario : Component, ICachedReport {
         
-        public CachedEstimaciones() {
+        public CachedCPreciario() {
         }
         
         [Browsable(false)]
@@ -129,7 +161,7 @@ namespace OSEF.ERP.APP.reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Estimaciones rpt = new Estimaciones();
+            CPreciario rpt = new CPreciario();
             rpt.Site = this.Site;
             return rpt;
         }

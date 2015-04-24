@@ -181,15 +181,15 @@
 -- RevisionesD (Acción)
 :r c:\SqlServerScripts\Accion\RevisionesD\web_spI_InsertarRevisionD.sql
 -----------------------------------------------------------------------------------
--- SolicitudesPrestamos (Borrar)
-:r c:\SqlServerScripts\Borrar\SolicitudesPrestamos\web_spD_BorrarSolicitudPrestamo.sql
--- SolicitudesPrestamos (Consultar)
-:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudesPrestamos.sql
-:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudPrestamoPorID.sql
--- SolicitudesPrestamos (Insertar)
-:r c:\SqlServerScripts\Insertar\SolicitudesPrestamos\web_spI_InsertarSolicitudPrestamo.sql
--- SolicitudesPrestamos (Modificar)
-:r c:\SqlServerScripts\Modificar\SolicitudesPrestamos\web_spU_ActualizarSolicitudPrestamo.sql
+---- SolicitudesPrestamos (Borrar)
+--:r c:\SqlServerScripts\Borrar\SolicitudesPrestamos\web_spD_BorrarSolicitudPrestamo.sql
+---- SolicitudesPrestamos (Consultar)
+--:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudesPrestamos.sql
+--:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudPrestamoPorID.sql
+---- SolicitudesPrestamos (Insertar)
+--:r c:\SqlServerScripts\Insertar\SolicitudesPrestamos\web_spI_InsertarSolicitudPrestamo.sql
+---- SolicitudesPrestamos (Modificar)
+--:r c:\SqlServerScripts\Modificar\SolicitudesPrestamos\web_spU_ActualizarSolicitudPrestamo.sql
 -----------------------------------------------------------------------------------
 -- SubCategorias (Borrar)
 :r c:\SqlServerScripts\Borrar\SubCategorias\web_spD_BorrarSubCategoria.sql

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSEF.ERP.APP.reports {
+namespace OSEF.ERP.APP.reportess {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP.reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rCaratulaDeEstimacion : ReportClass {
+    public class rCroquis : ReportClass {
         
-        public rCaratulaDeEstimacion() {
+        public rCroquis() {
         }
         
         public override string ResourceName {
             get {
-                return "rCaratulaDeEstimacion.rpt";
+                return "rCroquis.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP.reports {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.reports.rCaratulaDeEstimacion.rpt";
+                return "OSEF.ERP.APP.reportess.rCroquis.rpt";
             }
             set {
                 // Do nothing
@@ -106,7 +106,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_elaboro {
+        public CrystalDecisions.Shared.IParameterField Parameter_path {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -114,7 +114,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_reviso {
+        public CrystalDecisions.Shared.IParameterField Parameter_elaboro {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -122,7 +122,7 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_autorizo {
+        public CrystalDecisions.Shared.IParameterField Parameter_reviso {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -130,17 +130,25 @@ namespace OSEF.ERP.APP.reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_IDMovimiento {
+        public CrystalDecisions.Shared.IParameterField Parameter_autorizo {
             get {
                 return this.DataDefinition.ParameterFields[3];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_XGenerador_ConceptoID {
+            get {
+                return this.DataDefinition.ParameterFields[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrCaratulaDeEstimacion : Component, ICachedReport {
+    public class CachedrCroquis : Component, ICachedReport {
         
-        public CachedrCaratulaDeEstimacion() {
+        public CachedrCroquis() {
         }
         
         [Browsable(false)]
@@ -177,7 +185,7 @@ namespace OSEF.ERP.APP.reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rCaratulaDeEstimacion rpt = new rCaratulaDeEstimacion();
+            rCroquis rpt = new rCroquis();
             rpt.Site = this.Site;
             return rpt;
         }

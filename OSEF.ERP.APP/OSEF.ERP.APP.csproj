@@ -497,9 +497,6 @@
     <Content Include="Prueba.aspx" />
     <Content Include="pruebaagrega.aspx" />
     <Content Include="Reportes.aspx" />
-    <Content Include="reports\images\A&amp;R-Imagotipo ICONO.jpg" />
-    <Content Include="reports\images\bbva.jpg" />
-    <Content Include="reports\images\logoBBVA.png" />
     <Content Include="resources\css\gantt-scheduler.css" />
     <Content Include="resources\css\sch-all.css" />
     <Content Include="resources\css\sch-gantt-all.css" />
@@ -1233,59 +1230,50 @@
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="reports\CPreciario.cs">
+    <Compile Include="reportess\CPreciario.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CPreciario.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\Estimaciones.cs">
+    <Compile Include="reportess\Estimaciones.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Estimaciones.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\Presupuesto.cs">
+    <Compile Include="reportess\Presupuesto.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Presupuesto.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\rCaratulaDeEstimacion.cs">
+    <Compile Include="reportess\rCaratulaDeEstimacion.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rCaratulaDeEstimacion.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\rCroquis.cs">
+    <Compile Include="reportess\rCroquis.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rCroquis.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\rFotos.cs">
+    <Compile Include="reportess\rFotos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rFotos.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\rNotaDeBitacora.cs">
+    <Compile Include="reportess\rNotaDeBitacora.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rNotaDeBitacora.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\rNumerosGeneradores.cs">
+    <Compile Include="reportess\rNumerosGeneradores.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rNumerosGeneradores.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reports\rResumenPartidas.cs">
+    <Compile Include="reportess\rResumenPartidas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rResumenPartidas.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SolicitudesPrestamos.aspx.cs">
       <DependentUpon>SolicitudesPrestamos.aspx</DependentUpon>
@@ -1387,39 +1375,39 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="reports\CPreciario.rpt">
+    <EmbeddedResource Include="reportess\CPreciario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CPreciario.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\Estimaciones.rpt">
+    <EmbeddedResource Include="reportess\Estimaciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Estimaciones.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\Presupuesto.rpt">
+    <EmbeddedResource Include="reportess\Presupuesto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Presupuesto.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\rCaratulaDeEstimacion.rpt">
+    <EmbeddedResource Include="reportess\rCaratulaDeEstimacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rCaratulaDeEstimacion.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\rCroquis.rpt">
+    <EmbeddedResource Include="reportess\rCroquis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rCroquis.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\rFotos.rpt">
+    <EmbeddedResource Include="reportess\rFotos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rFotos.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\rNotaDeBitacora.rpt">
+    <EmbeddedResource Include="reportess\rNotaDeBitacora.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rNotaDeBitacora.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\rNumerosGeneradores.rpt">
+    <EmbeddedResource Include="reportess\rNumerosGeneradores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rNumerosGeneradores.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reports\rResumenPartidas.rpt">
+    <EmbeddedResource Include="reportess\rResumenPartidas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rResumenPartidas.cs</LastGenOutput>
     </EmbeddedResource>

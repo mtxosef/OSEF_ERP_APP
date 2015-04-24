@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSEF.ERP.APP.reports {
+namespace OSEF.ERP.APP.reportess {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP.reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Presupuesto : ReportClass {
+    public class Estimaciones : ReportClass {
         
-        public Presupuesto() {
+        public Estimaciones() {
         }
         
         public override string ResourceName {
             get {
-                return "Presupuesto.rpt";
+                return "Estimaciones.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP.reports {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.reports.Presupuesto.rpt";
+                return "OSEF.ERP.APP.reportess.Estimaciones.rpt";
             }
             set {
                 // Do nothing
@@ -87,20 +87,12 @@ namespace OSEF.ERP.APP.reports {
                 return this.ReportDefinition.Sections[4];
             }
         }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_path {
-            get {
-                return this.DataDefinition.ParameterFields[0];
-            }
-        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPresupuesto : Component, ICachedReport {
+    public class CachedEstimaciones : Component, ICachedReport {
         
-        public CachedPresupuesto() {
+        public CachedEstimaciones() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace OSEF.ERP.APP.reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Presupuesto rpt = new Presupuesto();
+            Estimaciones rpt = new Estimaciones();
             rpt.Site = this.Site;
             return rpt;
         }
