@@ -76,85 +76,40 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtAutorizo;
         
         /// <summary>
-        /// Control fcReportes.
+        /// Control imgbtnGenerador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcReportes;
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnGenerador;
         
         /// <summary>
-        /// Control fsReportes.
+        /// Control imgbtnCroquis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldSet fsReportes;
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnCroquis;
         
         /// <summary>
-        /// Control chkgpReportes.
+        /// Control imgbtnFacturas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.CheckboxGroup chkgpReportes;
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnFacturas;
         
         /// <summary>
-        /// Control chkGenerador.
+        /// Control imgbtnFotos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkGenerador;
-        
-        /// <summary>
-        /// Control chkFotos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkFotos;
-        
-        /// <summary>
-        /// Control chkCroquis.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkCroquis;
-        
-        /// <summary>
-        /// Control chkFacturas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkFacturas;
-        
-        /// <summary>
-        /// Control FieldContainer1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer1;
-        
-        /// <summary>
-        /// Control chkSeleccionarTodo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkSeleccionarTodo;
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnFotos;
         
         /// <summary>
         /// Control sbParametros1.
@@ -164,23 +119,5 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.StatusBar sbParametros1;
-        
-        /// <summary>
-        /// Control imgbtnGuardar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnGuardar;
-        
-        /// <summary>
-        /// Control imgbtnCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnCancelar;
     }
 }

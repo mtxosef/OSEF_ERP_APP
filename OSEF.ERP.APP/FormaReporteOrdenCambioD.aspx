@@ -32,16 +32,13 @@
 <body>
 <ext:ResourceManager ID="rmFormaReporteOrdenCambioD" runat="server" />
 
-
-
     <form id="form1" runat="server">
     
       <ext:FormPanel 
         ID="fpEspecificarParametros" 
         runat="server"
         Width="580"
-        DefaultButton="imgbtnGuardar"
-        Height="210"
+        Height="120"
         BodyPadding="10"
         DefaultAnchor="100%">
         <Items>
@@ -63,7 +60,9 @@
                          AllowBlank="false">
                          <Listeners>
                                 <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                              
                             </Listeners>
+                         
                     </ext:TextField>
                     <ext:TextField
                         ID="txtReviso"
@@ -74,6 +73,7 @@
                          AllowBlank="false">
                        <Listeners>
                                 <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                               
                             </Listeners>
                     </ext:TextField>
                       <ext:TextField
@@ -85,65 +85,61 @@
                         AllowBlank="false">
                        <Listeners>
                                 <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                   
                             </Listeners>
                     </ext:TextField>
                 </Items>
             </ext:FieldContainer>
-             
-
-             <ext:FieldContainer
-                ID="fcReportes"
-                runat="server"
-                FieldLabel="Reportes"
-                AnchorHorizontal="100%"
-                LabelWidth="120"
-                Layout="HBoxLayout">
-                <Items>
-                     
-                    <ext:FieldSet ID="fsReportes" 
-                        runat="server"  
-                        Width="425"
-                        Layout="HBoxLayout"> 
-                        <Items>
-                         <ext:CheckboxGroup 
-                            ID="chkgpReportes" 
-                            runat="server" 
-                            AllowBlank="false"
-                            Width="415">
-                            <Items>
-                                <ext:Checkbox ID="chkGenerador" runat="server" BoxLabel="Generador" />
-                                <ext:Checkbox ID="chkFotos" runat="server" BoxLabel="Fotos" />
-                                <ext:Checkbox ID="chkCroquis" runat="server" BoxLabel="Croquis" />
-                                <ext:Checkbox ID="chkFacturas" runat="server" BoxLabel="Factura/Notas"/>
-                            </Items>
-                         </ext:CheckboxGroup>
-                         </Items>
-                     </ext:FieldSet>
-                </Items>
-            </ext:FieldContainer>  
-            <ext:FieldContainer
-                ID="FieldContainer1"
-                runat="server"
-                AnchorHorizontal="100%"
-                Layout="HBoxLayout">
-                <Items>
-                   <ext:Checkbox ID="chkSeleccionarTodo" runat="server" BoxLabel="Seleccionar/Deseleccionar Todo">
-                   <DirectEvents>
-                   
-                        <Change OnEvent="chkSeleccionarTodo_Click"></Change>
-                   </DirectEvents>
-                   </ext:Checkbox>
-
-                </Items>
-            </ext:FieldContainer> 
-
         </Items>
+
+                <Content>
+                <div align="center">
+                <br />
+
+                <asp:ImageButton 
+                ID="imgbtnGenerador" 
+                runat="server" 
+                Height="30"
+                Width="30"
+                                            
+                OnClick="imgbtnExportarGenerador_Click"
+                class="imgs" 
+                ImageUrl="assets/img/controles/generador.png"/>
+
+                <asp:ImageButton 
+                ID="imgbtnCroquis" 
+                runat="server" 
+                class="imgs" 
+                    Height="30"
+                    Width="30"
+                    OnClick="imgbtnExportarCroquis_Click"
+                ImageUrl="assets/img/controles/croquis.png"/>
+
+                    <asp:ImageButton 
+                ID="imgbtnFacturas" 
+                runat="server"
+                    Height="30"
+                    Width="30"
+                class="imgs"
+                OnClick="imgbtnExportarFactura_Click" 
+                ImageUrl="assets/img/controles/facturas.png"/>
+
+                <asp:ImageButton 
+                ID="imgbtnFotos" 
+                runat="server" 
+                class="imgs" 
+                OnClick="imgbtnExportarFotos_Click"
+                    Height="30"
+                    Width="30"
+                ImageUrl="assets/img/controles/imagenes.png"/>
+                    </div>
+            </Content>
+                    
             <Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
-                                                text : valid ? 'La información esta completa/correcta' : 'Especifica el personal que firmará el documento/Selecciona un reporte', 
-                                                iconCls: valid ? 'icon-accept' : 'icon-exclamation'
-                                            });
-                                            #{imgbtnGuardar}.setDisabled(!valid);" />
+                                        text : valid ? 'La información esta completa/correcta' : 'Especifica el personal que firmará el documento', 
+                                        iconCls: valid ? 'icon-accept' : 'icon-exclamation'
+                                    });" />
             </Listeners>
             <BottomBar>
                 <ext:StatusBar ID="sbParametros1" 
@@ -151,44 +147,6 @@
                 Cls="x-colorToolbar" 
                 Text="Completa la información" />
             </BottomBar>
-        <Buttons>
-                <ext:ImageButton
-                    ID="imgbtnGuardar"
-                    runat="server"
-                    ImageUrl="assets/img/controles/Guardar.png"
-                    DisabledImageUrl="assets/img/controles/GuardarDisabled.png"
-                    OverImageUrl="assets/img/controles/GuardarOver.png" 
-                    PressedImageUrl="assets/img/controles/GuardarPressed.png" 
-                    ToolTip="Ver Reporte" 
-                    Height="50" 
-                    Width="50"
-                    Disabled="true">
-                    <DirectEvents>
-                        <Click OnEvent="imgbtnExportar_Click" Success="window.open('PreviaOrdenEstimacion.aspx', '_blank');">
-                            <EventMask ShowMask="true" Msg="Cargando Reporte..." />
-                             <ExtraParams>
-                                <ext:Parameter Name="elaboro" Value="App.txtElaboro.getValue()" Mode="Raw" />
-                                <ext:Parameter Name="reviso" Value="App.txtReviso.getValue()" Mode="Raw" />
-                                <ext:Parameter Name="autorizo" Value="App.txtAutorizo.getValue()" Mode="Raw" />
-                            </ExtraParams>
-                        </Click>
-                    </DirectEvents>
-                </ext:ImageButton>
-                <ext:ImageButton 
-                    ID="imgbtnCancelar" 
-                    runat="server" 
-                    ImageUrl="assets/img/controles/Cancelar.png" 
-                    DisabledImageUrl="assets/img/controles/CancelarDisabled.png"
-                    OverImageUrl="assets/img/controles/CancelarOver.png" 
-                    PressedImageUrl="assets/img/controles/CancelarPressed.png" 
-                    ToolTip="Cancelar" 
-                    Height="50" 
-                    Width="50">
-                    <Listeners>
-                        <Click Handler="window.parent.App.wGenerador.hide();" />
-                    </Listeners>
-                </ext:ImageButton>
-            </Buttons>
         </ext:FormPanel>
 
     </form>

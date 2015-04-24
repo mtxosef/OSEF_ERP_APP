@@ -116,15 +116,22 @@ var txtMovID_Change = function (textfield, newValue, oldValue, e) {
 
 
 var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
-    window.parent.App.wEmergente.load('FormaPreciarioGeneralExplorador.aspx');
-    window.parent.App.wEmergente.setHeight(250);
-    window.parent.App.wEmergente.setWidth(600);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Parametros Movimiento ' + registro.get('Id'));
-    window.parent.App.wEmergente.show();
+//    window.parent.App.wEmergente.load('FormaPreciarioGeneralExplorador.aspx');
+//    window.parent.App.wEmergente.setHeight(250);
+//    window.parent.App.wEmergente.setWidth(600);
+//    window.parent.App.wEmergente.center();
+//    window.parent.App.wEmergente.setTitle('Parametros Movimiento ' + registro.get('Id'));
+    //    window.parent.App.wEmergente.show();
+
+    window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');
+    window.parent.App.wGenerador.setHeight(160);
+    window.parent.App.wGenerador.setWidth(590);
+    window.parent.App.wGenerador.center();
+    window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + registro.get('Id'));
+    window.parent.App.wGenerador.show();
 
     //Id mov para reporte
-    Ext.util.Cookies.set('cookieID', registro.get('Id'));
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', registro.get('Id'));
     
 };
 
