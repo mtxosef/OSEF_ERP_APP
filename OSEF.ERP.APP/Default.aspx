@@ -94,11 +94,17 @@
                                                     <Click Fn="miCambiarContrasena_Click" />
                                                 </Listeners>
                                             </ext:MenuItem>
+                                             <ext:MenuItem ID="miReportarProblema" runat="server" Text="Reportar un problema">
+                                              <Listeners>
+                                                <Click Handler=" window.open('http://200.57.115.237:81/support/open.php/','_blank');"></Click>
+                                              </Listeners>
+                                            </ext:MenuItem>
                                             <ext:MenuItem ID="miCerrarSesion" runat="server" Text="Cerrar sesión">
                                                    <DirectEvents>
                                                         <Click  OnEvent="miCerrarSesionClick"></Click>
                                                    </DirectEvents>
                                             </ext:MenuItem>
+                                             
                                         </Items>
                                     </ext:Menu>
                                 </Menu>
