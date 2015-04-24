@@ -310,6 +310,7 @@
     <Content Include="Estados2.aspx" />
     <Content Include="examples-shared.js" />
     <Content Include="Excel.xsl" />
+    <Content Include="ExploradorMesaDeReporte.aspx" />
     <Content Include="ExploradorPreciarioConceptos.aspx" />
     <Content Include="ExploradorPreciariosConceptosGenerales.aspx" />
     <Content Include="fancylibs\blank.gif" />
@@ -415,6 +416,7 @@
     <Content Include="js\consultarPreciario.js" />
     <Content Include="js\cuadrillas.js" />
     <Content Include="js\exploradorConceptoPreciarioGeneral.js" />
+    <Content Include="js\exploradorMesaDeReporte.js" />
     <Content Include="js\formaAyudaBusquedaConceptoPreciario.js" />
     <Content Include="js\buscapreciarios.js" />
     <Content Include="js\formacuadrilla.js" />
@@ -636,6 +638,13 @@
     </Compile>
     <Compile Include="Estados2.aspx.designer.cs">
       <DependentUpon>Estados2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExploradorMesaDeReporte.aspx.cs">
+      <DependentUpon>ExploradorMesaDeReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExploradorMesaDeReporte.aspx.designer.cs">
+      <DependentUpon>ExploradorMesaDeReporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExploradorPreciarioConceptos.aspx.cs">
       <DependentUpon>ExploradorPreciarioConceptos.aspx</DependentUpon>

@@ -499,3 +499,6 @@
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerREstimacion.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerResumenDePartidasPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerRResumenDePartidas.sql
+------------------------------------------------------------------------------------------------------------------------------------------------------
+--Mesa de Reportes(Consultar) 
+:r c:\SqlServerScripts\Consultar\Mesa de Reportes\web_spS_ObtenerMesaDeReporteConcluidos.sql 

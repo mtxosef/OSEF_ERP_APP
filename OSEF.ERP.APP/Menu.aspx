@@ -65,13 +65,14 @@
                                         <div class="text2">Explorador Preciario Concepto Voumetrias</div>
                                     </div>
                                 </a>
-
+                                
                                 <a class="tile wide imagetext wideimage bg-color-red" id="exploradorPreciarioConceptosGenerales" href="#">
                                     <img src="assets/img/Search.png" alt="Explorador Ordenes Estimaciones" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Explorador Ordenes de Cambio</div>
                                     </div>
                                 </a>
+                                
 
                                <a class="tile square image bg-color-yellow" id="gantt" href="#">
                                     <img src="assets/img/menu-gantt.png" alt="Gantt" />
@@ -81,9 +82,15 @@
                                 </a>
 
                             </div>
-
-                         
-
+                            
+                            <div class="tile-column-span-1">
+                                <a class="tile wide imagetext wideimage bg-color-blue" id="MesaDeReporte" href="#">
+                                    <img src="assets/img/Mesa-Reporte.png" alt="Explorador" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Explorador Mesa de Reporte</div>
+                                    </div>
+                                </a> 
+                            </div>
                         </div>
                         <!-- Fin Primer pagina Procesos -->
 
