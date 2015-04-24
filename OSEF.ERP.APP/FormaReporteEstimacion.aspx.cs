@@ -95,7 +95,7 @@ namespace OSEF.ERP.APP
                 }
                 catch (Exception ex)
                 {
-                    ex.Message.ToString();
+                    throw new Exception("Error " + ex.Message);
                 }
                 finally
                 {

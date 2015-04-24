@@ -84,7 +84,7 @@
                             </div>
                             
                             <div class="tile-column-span-1">
-                                <a class="tile wide imagetext wideimage bg-color-blue" id="MesaDeReporte" href="#">
+                                <a class="tile wide imagetext wideimage bg-color-orange" id="MesaDeReporte" href="#">
                                     <img src="assets/img/Mesa-Reporte.png" alt="Explorador" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Explorador Mesa de Reporte</div>

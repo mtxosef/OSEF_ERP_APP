@@ -27,7 +27,7 @@ namespace OSEF.ERP.APP
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
-            reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
+            reporte.Load(Server.MapPath("reportess/" + namereport + ".rpt"));
             reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Vista Preliminar");
 
         }
@@ -37,7 +37,7 @@ namespace OSEF.ERP.APP
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
-            reporte.Load(Server.MapPath("reports/" + namereport + ".rpt"));
+            reporte.Load(Server.MapPath("reportess/" + namereport + ".rpt"));
             reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Vista Preliminar");
 
         }

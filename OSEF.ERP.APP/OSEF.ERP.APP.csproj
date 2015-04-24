@@ -356,7 +356,6 @@
     <Content Include="FormaMenu.aspx" />
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
-    <Content Include="FormaExploradorMesaDeReporte.aspx" />
     <Content Include="FormaOrdenEstimacion.aspx" />
     <Content Include="FormaParametrosP1.aspx" />
     <Content Include="FormaParametrosP2.aspx" />
@@ -492,8 +491,6 @@
     <Content Include="Preciarios.aspx" />
     <Content Include="PreciariosGenerales.aspx" />
     <Content Include="Previa.aspx" />
-    <Content Include="PreviaEstimacion.aspx" />
-    <Content Include="PreviaOrdenEstimacion.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
@@ -514,7 +511,6 @@
     <Content Include="tVtasUnidadesVsTiempo.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Usuarios2.aspx" />
-    <Content Include="VistaPreliminar.aspx" />
     <Content Include="VolumetriasPreciario.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -892,13 +888,6 @@
     <Compile Include="FormaCliente.aspx.designer.cs">
       <DependentUpon>FormaCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormaExploradorMesaDeReporte.aspx.cs">
-      <DependentUpon>FormaExploradorMesaDeReporte.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaExploradorMesaDeReporte.aspx.designer.cs">
-      <DependentUpon>FormaExploradorMesaDeReporte.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FormaOrdenEstimacion.aspx.cs">
       <DependentUpon>FormaOrdenEstimacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1190,20 +1179,6 @@
     <Compile Include="Previa.aspx.designer.cs">
       <DependentUpon>Previa.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PreviaEstimacion.aspx.cs">
-      <DependentUpon>PreviaEstimacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PreviaEstimacion.aspx.designer.cs">
-      <DependentUpon>PreviaEstimacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PreviaOrdenEstimacion.aspx.cs">
-      <DependentUpon>PreviaOrdenEstimacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PreviaOrdenEstimacion.aspx.designer.cs">
-      <DependentUpon>PreviaOrdenEstimacion.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Profesiones.aspx.cs">
       <DependentUpon>Profesiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1342,13 +1317,6 @@
     </Compile>
     <Compile Include="Usuarios2.aspx.designer.cs">
       <DependentUpon>Usuarios2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="VistaPreliminar.aspx.cs">
-      <DependentUpon>VistaPreliminar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VistaPreliminar.aspx.designer.cs">
-      <DependentUpon>VistaPreliminar.aspx</DependentUpon>
     </Compile>
     <Compile Include="VolumetriasPreciario.aspx.cs">
       <DependentUpon>VolumetriasPreciario.aspx</DependentUpon>

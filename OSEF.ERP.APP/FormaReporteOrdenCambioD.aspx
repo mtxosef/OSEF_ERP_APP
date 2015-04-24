@@ -60,9 +60,7 @@
                          AllowBlank="false">
                          <Listeners>
                                 <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                              
-                            </Listeners>
-                         
+                         </Listeners>
                     </ext:TextField>
                     <ext:TextField
                         ID="txtReviso"
@@ -72,9 +70,8 @@
                         Margins="0 3 0 0"
                          AllowBlank="false">
                        <Listeners>
-                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                               
-                            </Listeners>
+                             <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                       </Listeners>
                     </ext:TextField>
                       <ext:TextField
                         ID="txtAutorizo"
