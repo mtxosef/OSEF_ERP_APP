@@ -356,6 +356,7 @@
     <Content Include="FormaMenu.aspx" />
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
+    <Content Include="FormaExploradorMesaDeReporte.aspx" />
     <Content Include="FormaOrdenEstimacion.aspx" />
     <Content Include="FormaParametrosP1.aspx" />
     <Content Include="FormaParametrosP2.aspx" />
@@ -891,6 +892,13 @@
     <Compile Include="FormaCliente.aspx.designer.cs">
       <DependentUpon>FormaCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaExploradorMesaDeReporte.aspx.cs">
+      <DependentUpon>FormaExploradorMesaDeReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaExploradorMesaDeReporte.aspx.designer.cs">
+      <DependentUpon>FormaExploradorMesaDeReporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaOrdenEstimacion.aspx.cs">
       <DependentUpon>FormaOrdenEstimacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1243,46 +1251,55 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CPreciario.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\Estimaciones.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Estimaciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\Presupuesto.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Presupuesto.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rCaratulaDeEstimacion.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rCaratulaDeEstimacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rCroquis.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rCroquis.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rFotos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rFotos.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rNotaDeBitacora.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rNotaDeBitacora.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rNumerosGeneradores.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rNumerosGeneradores.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rResumenPartidas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rResumenPartidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SolicitudesPrestamos.aspx.cs">
       <DependentUpon>SolicitudesPrestamos.aspx</DependentUpon>

@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerMesaDeReporteConcluidos' AND
+			WHERE  name = 'web_spS_ObtenerMesaDeReportesConcluidos' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerMesaDeReporteConcluidos
+	DROP PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
 GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: Jueves 23 de Abril de 2015
--- Description:	Obtener todos los registros de Mesa de Reporte Concluidos
+-- Description:	Obtener todos los registros de Mesa de Reportes Concluidos
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerMesaDeReporteConcluidos
+CREATE PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN

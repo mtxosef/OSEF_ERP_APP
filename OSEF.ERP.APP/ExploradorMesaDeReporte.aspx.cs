@@ -18,7 +18,7 @@ namespace OSEF.ERP.APP
 
                 rmExploradorMesaDeReporte.RegisterIcon(Icon.Delete);
 
-                sMesaDeReporte.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimacionesConcluidos();
+                sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerMesaDeReportesConcluidos();
                 sMesaDeReporte.DataBind();
 
                 sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
@@ -37,7 +37,7 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         protected void OnReadData_sMesaDeReporte(object sender, StoreReadDataEventArgs e)
         {
-            sMesaDeReporte.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimacionesConcluidos();
+            sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerMesaDeReportesConcluidos();
             sMesaDeReporte.DataBind();
         } 
     }

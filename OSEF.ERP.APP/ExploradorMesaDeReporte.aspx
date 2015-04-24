@@ -46,9 +46,6 @@
             <TopBar>
                 <ext:Toolbar ID="tbPreciarios" runat="server">
                     <Items>
-                            
-
-
                              <ext:ComboBox
                                 ID="cmbSucursal"
                                 runat="server"
@@ -108,7 +105,7 @@
                         
                         <ext:ToolbarSpacer 
                         runat="server" 
-                        ID="tsExploradorGeneralOrdenesEstimaciones" 
+                        ID="tsExploradorMesaDeReporte" 
                         Width="320">
                         
                         </ext:ToolbarSpacer>
@@ -165,7 +162,7 @@
                         <ext:DataSorter Property="FechaEmision" Direction="DESC" />
                     </Sorters>
                     <Listeners>
-                        <DataChanged Fn="sOrdenesEstimaciones_DataChanged" />
+                        <DataChanged Fn="sMesaDeReportes_DataChanged" />
                     </Listeners>
                 </ext:Store>
             </Store>

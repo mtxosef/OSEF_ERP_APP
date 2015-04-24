@@ -63,6 +63,7 @@
     <Compile Include="ImagenOrdenEstimacionBusiness.cs" />
     <Compile Include="ImagenVolumetriaDBusiness.cs" />
     <Compile Include="MenuBusiness.cs" />
+    <Compile Include="MesaDeReporteBusiness.cs" />
     <Compile Include="MunicipioBusiness.cs" />
     <Compile Include="OrdenEstimacionBusiness.cs" />
     <Compile Include="OrdenEstimacionDBusiness.cs" />

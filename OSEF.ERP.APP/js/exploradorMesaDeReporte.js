@@ -1,6 +1,6 @@
 ﻿//Cambio en los datos del tablero
-var sOrdenesEstimaciones_DataChanged = function () {
-    if (App.sMesaDeReporte.getCount() > 1 || App.sOrdenesEstimaciones.getCount() == 0) {
+var sMesaDeReportes_DataChanged = function () {
+    if (App.sMesaDeReporte.getCount() > 1 || App.sMesaDeReporte.getCount() == 0) {
         App.sbMesaDeReporte.setText(App.sMesaDeReporte.getCount() + ' ' + 'MOVIMIENTOS');
     }
     else {
@@ -116,15 +116,16 @@ var txtMovID_Change = function (textfield, newValue, oldValue, e) {
 
 
 var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
-    window.parent.App.wEmergente.load('FormaExploradorMesaDeReporte.aspx');
-    window.parent.App.wEmergente.setHeight(250);
-    window.parent.App.wEmergente.setWidth(600);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Parametros Movimiento ' + registro.get('Id'));
-    window.parent.App.wEmergente.show();
+    var w = window.parent.App.wGenerador;
+    w.load('FormaExploradorMesaDeReporte.aspx');
+    w.setHeight(160);
+    w.setWidth(575);
+    w.center();
+    w.setTitle('Reporte del Movimiento ' + registro.get('Id'));
+    w.show();
 
     //Id mov para reporte
-    Ext.util.Cookies.set('cookieID', registro.get('Id'));
+    Ext.util.Cookies.set('cookieEditarMesaDeReporte', registro.get('Id'));
 
 };
 
