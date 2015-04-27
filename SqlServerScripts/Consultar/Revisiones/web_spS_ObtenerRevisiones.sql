@@ -45,7 +45,8 @@ BEGIN
 		FechaEmision,
 		FechaRevision,
 		Observaciones,
-		Comentarios
+		Comentarios,
+		Estatus
 	FROM
 		Revisiones
 END

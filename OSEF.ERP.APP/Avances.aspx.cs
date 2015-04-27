@@ -20,7 +20,7 @@ namespace OSEF.AVANCES.SUCURSALES
         {
             if (!X.IsAjaxRequest)
             {
-                sAvances.DataSource = RevisionBusiness.ObtenerRevisionesUltimaRevision();
+                sAvances.DataSource = RevisionBusiness.ObtenerRevisiones();
                 sAvances.DataBind();
                 rmAvances.RegisterIcon(Icon.Delete);
             }
@@ -33,7 +33,7 @@ namespace OSEF.AVANCES.SUCURSALES
         /// <param name="e"></param>
         protected void OnReadData_sAvances(object sender, StoreReadDataEventArgs e)
         {
-            sAvances.DataSource = RevisionBusiness.ObtenerRevisionesUltimaRevision();
+            sAvances.DataSource = RevisionBusiness.ObtenerRevisiones();
             sAvances.DataBind();
         }
     }
