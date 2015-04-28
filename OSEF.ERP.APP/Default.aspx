@@ -36,7 +36,6 @@
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmDefault" runat="server" HideInDesign="true" />
-
         <ext:Store ID="sUsuario" runat="server">
             <Model>
                 <ext:Model ID="mUsuario" runat="server" IDProperty="ID">
@@ -94,11 +93,17 @@
                                                     <Click Fn="miCambiarContrasena_Click" />
                                                 </Listeners>
                                             </ext:MenuItem>
+                                             <ext:MenuItem ID="miReportarProblema" runat="server" Text="Reportar un problema">
+                                              <Listeners>
+                                                <Click Handler=" window.open('http://200.57.115.237:81/support/open.php/','_blank');"></Click>
+                                              </Listeners>
+                                            </ext:MenuItem>
                                             <ext:MenuItem ID="miCerrarSesion" runat="server" Text="Cerrar sesión">
                                                    <DirectEvents>
                                                         <Click  OnEvent="miCerrarSesionClick"></Click>
                                                    </DirectEvents>
                                             </ext:MenuItem>
+                                             
                                         </Items>
                                     </ext:Menu>
                                 </Menu>
@@ -225,7 +230,7 @@
                 <Show Handler="this.resizer.disable();" Single="true" />
             </Listeners>
         </ext:Window>
-
+        
 
         <ext:Window 
             ID="wGenerador"
@@ -238,6 +243,36 @@
             Region="Center"
             XOnEsc="Ext.emptyFn">
             <Loader ID="Loader2" runat="server" Mode="Frame" AutoLoad="false">
+                <LoadMask ShowMask="true" Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
+        <ext:Window 
+            ID="wNew"
+            runat="server"
+            Icon="New"
+            Hidden="true"
+            Modal="true"
+            Padding="0"
+            Resizable="False"
+            Region="Center"
+            XOnEsc="Ext.emptyFn">
+            <Loader ID="Loader3" runat="server" Mode="Frame" AutoLoad="false">
+                <LoadMask ShowMask="true" Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
+        <ext:Window 
+            ID="wUpdate"
+            runat="server"
+            Icon="ArrowRefresh"
+            Hidden="true"
+            Modal="true"
+            Padding="0"
+            Resizable="False"
+            Region="Center"
+            XOnEsc="Ext.emptyFn">
+            <Loader ID="Loader4" runat="server" Mode="Frame" AutoLoad="false">
                 <LoadMask ShowMask="true" Msg="Cargando..." />
             </Loader>
         </ext:Window>

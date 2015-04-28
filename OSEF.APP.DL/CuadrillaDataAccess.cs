@@ -13,6 +13,7 @@ namespace OSEF.APP.DL
     public class CuadrillaDataAccess
     {
         #region Consultar
+
         public static List<Cuadrilla> ObtenerCuadrillas()
         {
             try
@@ -93,10 +94,7 @@ namespace OSEF.APP.DL
             {
                 throw new Exception("Error capa de datos (public static Cuadrilla ObtenerCuadrillaPorID(string " + strID + ")): " + ex.Message);
             }
-        }
-
-
-
+        } 
 
         /// <summary>
         /// Revisar si existen registros de Cuadrillas en uso
@@ -143,9 +141,9 @@ namespace OSEF.APP.DL
                 throw new Exception("Error capa de datos (public static bool ObtenerRegistrosDeCuadrillaPorID(string " + strID + ")): " + ex.Message);
             }
         }
+
         #endregion
-
-
+         
         #region Modificar
 
         /// <summary>
@@ -266,8 +264,7 @@ namespace OSEF.APP.DL
         }
 
         #endregion
-
-
+         
         #region Eliminar
 
         /// <summary>

@@ -300,4 +300,19 @@ $(document).ready(function () {
             parent.App.pCentro.getLoader().load('Cuadrillas.aspx');
         });
     });
+
+
+    $("#MesaDeReporte").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            parent.App.pCentro.getLoader().load('ExploradorMesaDeReporte.aspx');
+        });
+    });
+
+    $("#CodigoFallas").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            parent.App.pCentro.getLoader().load('CodigoFallas.aspx');
+        });
+    });
 });

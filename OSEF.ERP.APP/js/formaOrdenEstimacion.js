@@ -12,7 +12,7 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
     App.imgbtnCancelar.setDisabled(true);
-
+    App.imgbtnImprimir.setDisabled(true);
     //Limpiar campos
     App.txtfMovID.setValue('');
     App.cmbSucursal.setValue('');
@@ -63,7 +63,7 @@ var imgbtnImprimir_Click = function () {
 
     if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte') {
         window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(320);
+        window.parent.App.wGenerador.setHeight(160);
         window.parent.App.wGenerador.setWidth(590);
         window.parent.App.wGenerador.center();
         window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
@@ -71,7 +71,7 @@ var imgbtnImprimir_Click = function () {
     }
     else {
         window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');
-        window.parent.App.wGenerador.setHeight(250);
+        window.parent.App.wGenerador.setHeight(160);
         window.parent.App.wGenerador.setWidth(590);
         window.parent.App.wGenerador.center();
         window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
@@ -380,6 +380,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.imgbtnCancelar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
+        App.imgbtnImprimir.setDisabled(false);
         //3. Remover la útima fila
         var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
         if (ultimoRegistro.get('ConceptoID').length == 0 && ultimoRegistro.get('Cantidad') == 0 && ultimoRegistro.get('Precio') == 0) {
@@ -495,6 +496,8 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.txtCuadrilla.setReadOnly(true);
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
+    App.imgbtnImprimir.setDisabled(true);
+    App.imgbtnAfectar.setDisabled(true);
     window.parent.App.wEmergente.setTitle('Movimiento Cancelado');
 };
 
@@ -664,7 +667,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.txtCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
-     
+
         App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
@@ -800,12 +803,51 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
 
         //Agregar una fila para seguir capturando
-        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
-        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+        var storeDetalle = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
+
+        //Validaciones antes de cargar el detalle del movimiento
+        if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+
+
+            if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0) {
+                //Obtener el Renglon anterior
+                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                //Insertar un nuevo registro
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+                //Actualiza el renglon anterior pintando el botón de borrar
+//                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //Validar si se habilita el boton de afectar
+                HabilitarAfectar();
+            }
+
+
+        }
+
+        if (App.cmbMov.getValue().trim() == "Mesa de reporte") {
+
+
+            if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0 && storeDetalle.get('IntExt').length != 0) {
+                //Obtener el Renglon anterior
+                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                //Insertar un nuevo registro
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+                //Actualiza el renglon anterior pintando el botón de borrar
+                //App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //Validar si se habilita el boton de afectar
+                HabilitarAfectar();
+            }
+
+
+        }
+
+
+
+//        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
+//        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
         App.imgbtnBorrar.setDisabled(false);
 
         App.cmbMov.setReadOnly(true);
-        HabilitarAfectar();
+//        HabilitarAfectar();
     }
 
 
@@ -883,25 +925,115 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
     App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
     App.dfTotalSinRender.setValue(sum);
     ImporteFinal = sum;
-    
+
 
     //Verificar si abajo de esta columna existe otra
     if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
         //Verificar si toda la fila contiene datos
 
-        if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
-            //Obtener el Renglon anterior
-            var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
-            //Insertar un nuevo registro
-            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
-            //Actualiza el renglon anterior pintando el botón de borrar
-            App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
-            //Validar si se habilita el boton de afectar
-            HabilitarAfectar();
+        if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+
+
+            if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
+                //Obtener el Renglon anterior
+                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                //Insertar un nuevo registro
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+                //Actualiza el renglon anterior pintando el botón de borrar
+                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //Validar si se habilita el boton de afectar
+                HabilitarAfectar();
+            }
+
+
         }
+
+        if (App.cmbMov.getValue().trim() == "Mesa de reporte") {
+
+
+            if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0 && registro.get('IntExt').length != 0) {
+                //Obtener el Renglon anterior
+                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                //Insertar un nuevo registro
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+                //Actualiza el renglon anterior pintando el botón de borrar
+                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //Validar si se habilita el boton de afectar
+                HabilitarAfectar();
+            }
+
+
+        }
+
+
     }
 
 }
+
+//Evento que se lanza despues de editar una columna en PreciarioConceptoOrdenEstimacion
+var cePreciarioConcepto_Edit = function (cellediting, columna) {
+
+
+    if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+        //Verificar si abajo de esta columna existe otra
+        if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
+            //Verificar si toda la fila contiene datos
+            var registro = App.sConceptos.getAt(columna.rowIdx);
+            if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
+                //Obtener el Renglon anterior
+                var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
+                //Insertar un nuevo registro
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+                //Actualiza el renglon anterior pintando el botón de borrar
+                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //Validar si se habilita el boton de afectar
+                HabilitarAfectar();
+            }
+        }
+
+    }
+    if (App.cmbMov.getValue().trim() == "Mesa de reporte") {
+        //Verificar si abajo de esta columna existe otra
+        if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
+            //Verificar si toda la fila contiene datos
+            var registro = App.sConceptos.getAt(columna.rowIdx);
+            if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0 && registro.get('IntExt').length != 0) {
+                //Obtener el Renglon anterior
+                var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
+                //Insertar un nuevo registro
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+                //Actualiza el renglon anterior pintando el botón de borrar
+                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //Validar si se habilita el boton de afectar
+                HabilitarAfectar();
+            }
+        }
+    }
+
+    //Valida que el movimiento sea diferente de nuevo y que la columna en la que se obtenga el valor original seal la unica que se mande al metodo del lado del servidor
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo') {
+        if (columna.field == 'ConceptoID') {
+            Ext.util.Cookies.set('cookieIDBorrarFotosOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
+            Ext.util.Cookies.set('cookieConceptoFotosOrdenEstimacion', columna.originalValue);
+            App.direct.obtenerImagenesPorConcepto();
+        }
+    }
+
+    var sum = 0;
+    App.sConceptos.each(function (record) {
+
+        sum += record.get('Importe');
+    });
+
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
+    App.dfTotalSinRender.setValue(sum);
+    ImporteFinal = sum;
+
+
+};
 
 
 //Trae la descripcion al displayfield
@@ -942,51 +1074,7 @@ var obetenerRenglon_Select = function (a, registro, c) {
 
 
 
-//Evento que se lanza despues de editar una columna en PreciarioConceptoOrdenEstimacion
-var cePreciarioConcepto_Edit = function (cellediting, columna) {
 
-    //Verificar si abajo de esta columna existe otra
-    if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
-        //Verificar si toda la fila contiene datos
-        var registro = App.sConceptos.getAt(columna.rowIdx);
-        if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
-            //Obtener el Renglon anterior
-            var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
-            //Insertar un nuevo registro
-            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
-            //Actualiza el renglon anterior pintando el botón de borrar
-            App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
-            //Validar si se habilita el boton de afectar
-            HabilitarAfectar();
-        }
-    }
-
-
-
-    //Valida que el movimiento sea diferente de nuevo y que la columna en la que se obtenga el valor original seal la unica que se mande al metodo del lado del servidor
-    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo') {
-        if (columna.field == 'ConceptoID') {
-            Ext.util.Cookies.set('cookieIDBorrarFotosOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
-            Ext.util.Cookies.set('cookieConceptoFotosOrdenEstimacion', columna.originalValue);
-            App.direct.obtenerImagenesPorConcepto();
-        }
-    }
-
-    var sum = 0;
-    App.sConceptos.each(function (record) {
-
-        sum += record.get('Importe');
-    });
-
-    var F = Ext.util.Format;
-    F.thousandSeparator = ',';
-    F.decimalSeparator = '.';
-    App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
-    App.dfTotalSinRender.setValue(sum);
-    ImporteFinal = sum;
-
-
-};
 
 
 //Evento de la columna de acciones
@@ -1499,10 +1587,11 @@ function PrimerRenglonDetalle() {
     //Validar si se asigna el primer renglon del concepto
 
 
-        if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != '') {
-
+    if (App.cmbMov.getValue() != null && App.cmbSucursal.getValue() != '') {
+  
             var store = App.gpOrdenEstimacion.getStore();
-                if (store.getCount() == 0) {
+            if (store.getCount() == 0) {
+
                     //Insertar el primer registro
                     store.insert(0, { Renglon: 0 });
             

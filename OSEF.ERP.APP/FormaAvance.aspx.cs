@@ -49,10 +49,10 @@ namespace OSEF.AVANCES.SUCURSALES
             string strRevision = e.ExtraParams["Revision"];
             string strRevisionDObraCivil = e.ExtraParams["RevisionDObraCivil"];
             string strcookieEditarRevision = Cookies.GetCookie("cookieEditarRevision").Value;
-
+            string strSucursal = e.ExtraParams["Sucursal"];
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRevisionForma);
-            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro);
+            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro,strSucursal);
             Revision oRevision = JSON.Deserialize<List<Revision>>(strRevision).FirstOrDefault();
             List<RevisionD> lRevisionD = JSON.Deserialize<List<RevisionD>>(strRevisionDObraCivil);
 
@@ -83,10 +83,10 @@ namespace OSEF.AVANCES.SUCURSALES
             string strRevision = e.ExtraParams["Revision"];
             string strRevisionDObraCivil = e.ExtraParams["RevisionDObraCivil"];
             string strcookieEditarRevision = Cookies.GetCookie("cookieEditarRevision").Value;
-
+            string strSucursal = e.ExtraParams["Sucursal"];
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRevisionForma);
-            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro);
+            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro,strSucursal);
             Revision oRevision = JSON.Deserialize<List<Revision>>(strRevision).FirstOrDefault();
             List<RevisionD> lRevisionD = JSON.Deserialize<List<RevisionD>>(strRevisionDObraCivil);
 
@@ -233,7 +233,7 @@ namespace OSEF.AVANCES.SUCURSALES
         /// </summary>
         /// <param name="dRegistro"></param>
         /// <returns></returns>
-        private Revision ObtenerObjetoDesdeForma(Dictionary<string, string> dRegistro)
+        private Revision ObtenerObjetoDesdeForma(Dictionary<string, string> dRegistro,string sucursal)
         {
             //1. Declarar objeto Revision donde se guardarán los valores
             Revision oRevisionForma = new Revision();
@@ -250,9 +250,6 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "nfSemana":
                         oRevisionForma.Semana = Convert.ToInt16(sd.Value);
                         break;
-                    case "cmbSucursal":
-                        oRevisionForma.Sucursal = sd.Value;
-                        break;
                     case "dfFechaEmision":
                         oRevisionForma.FechaEmision = Convert.ToDateTime(sd.Value);
                         break;
@@ -268,9 +265,11 @@ namespace OSEF.AVANCES.SUCURSALES
                     case "txtfComentarios":
                         oRevisionForma.Comentarios = sd.Value;
                         break;
+
+                       
                 }
             }
-
+            oRevisionForma.Sucursal = sucursal;
             //3. Regresar la Revision
             return oRevisionForma;
         }

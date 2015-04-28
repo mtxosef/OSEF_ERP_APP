@@ -181,15 +181,15 @@
 -- RevisionesD (Acción)
 :r c:\SqlServerScripts\Accion\RevisionesD\web_spI_InsertarRevisionD.sql
 -----------------------------------------------------------------------------------
--- SolicitudesPrestamos (Borrar)
-:r c:\SqlServerScripts\Borrar\SolicitudesPrestamos\web_spD_BorrarSolicitudPrestamo.sql
--- SolicitudesPrestamos (Consultar)
-:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudesPrestamos.sql
-:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudPrestamoPorID.sql
--- SolicitudesPrestamos (Insertar)
-:r c:\SqlServerScripts\Insertar\SolicitudesPrestamos\web_spI_InsertarSolicitudPrestamo.sql
--- SolicitudesPrestamos (Modificar)
-:r c:\SqlServerScripts\Modificar\SolicitudesPrestamos\web_spU_ActualizarSolicitudPrestamo.sql
+---- SolicitudesPrestamos (Borrar)
+--:r c:\SqlServerScripts\Borrar\SolicitudesPrestamos\web_spD_BorrarSolicitudPrestamo.sql
+---- SolicitudesPrestamos (Consultar)
+--:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudesPrestamos.sql
+--:r c:\SqlServerScripts\Consultar\SolicitudesPrestamos\web_spS_ObtenerSolicitudPrestamoPorID.sql
+---- SolicitudesPrestamos (Insertar)
+--:r c:\SqlServerScripts\Insertar\SolicitudesPrestamos\web_spI_InsertarSolicitudPrestamo.sql
+---- SolicitudesPrestamos (Modificar)
+--:r c:\SqlServerScripts\Modificar\SolicitudesPrestamos\web_spU_ActualizarSolicitudPrestamo.sql
 -----------------------------------------------------------------------------------
 -- SubCategorias (Borrar)
 :r c:\SqlServerScripts\Borrar\SubCategorias\web_spD_BorrarSubCategoria.sql
@@ -392,6 +392,7 @@
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimaciones.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimacionesConcluidos.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerMesaDeReporteConcluidos.sql 
 -- OrdenesEstimaciones (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimaciones\web_spI_InsertarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Modificar)
@@ -493,3 +494,27 @@
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave.sql
 --PreciariosGeneralesConceptosAdicionales(Modificar)
 :r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptosAdicionales\web_spU_ActualizarPreciarioGeneralConceptoAdicional.sql
+------------------------------------------------------------------------------------------------------------------------------------------------------
+--ReportesEstimacion
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerEstimacionPorMovimiento.sql
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerREstimacion.sql
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerResumenDePartidasPorMovimiento.sql
+:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerRResumenDePartidas.sql
+------------------------------------------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
+--Mesa de Reportes(Consultar) 
+:r c:\SqlServerScripts\Consultar\Mesa de Reportes\web_spS_ObtenerMesaDeReporteConcluidos.sql 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+--Codigos PPTA(Consultar) 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTA.sql 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAEnUsoPorID.sql 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAPorID.sql 
+--Codigos PPTA(Insertar) 
+:r c:\SqlServerScripts\Insertar\CodigosPPTA\web_spI_InsertarCodigoPPTA.sql  
+--Codigos PPTA(Modificar) 
+:r c:\SqlServerScripts\Modificar\CodigosPPTA\web_spU_ActualizarCodigoPPTA.sql  
+--Codigos PPTA(Borrar) 
+:r c:\SqlServerScripts\Borrar\CodigosPPTA\web_spD_BorrarCodigoPPTA.sql  
+=======
+>>>>>>> origin/master

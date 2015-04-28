@@ -85,6 +85,15 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.MenuItem miCambiarContrasena;
         
         /// <summary>
+        /// Control miReportarProblema.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem miReportarProblema;
+        
+        /// <summary>
         /// Control miCerrarSesion.
         /// </summary>
         /// <remarks>
@@ -146,5 +155,23 @@ namespace OSEF.AVANCES.SUCURSALES {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Window wGenerador;
+        
+        /// <summary>
+        /// Control wNew.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wNew;
+        
+        /// <summary>
+        /// Control wUpdate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Window wUpdate;
     }
 }

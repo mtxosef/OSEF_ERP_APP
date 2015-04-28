@@ -350,8 +350,7 @@ var getNewEncodedRecords = function () {
     
         xndata.pop();
         if (xndata.length > 0) {
-            encodednewrecords = Ext.encode(xndata);
-            alert(xndata.length);
+            encodednewrecords = Ext.encode(xndata); 
             return encodednewrecords;
         } else {
             return 0;

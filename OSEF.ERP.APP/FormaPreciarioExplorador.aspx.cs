@@ -49,7 +49,7 @@ namespace OSEF.ERP.APP
                         string path = AppDomain.CurrentDomain.BaseDirectory;
 
                         var reporte = new ReportDocument();
-                        reporte.Load(Server.MapPath("reports/CPreciario.rpt"));
+                        reporte.Load(Server.MapPath("reportess/CPreciario.rpt"));
                         reporte.SetDataSource(dt);
 
                         //SqlConnectionStringBuilder SConn = new SqlConnectionStringBuilder(connectionString);

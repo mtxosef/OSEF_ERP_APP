@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System.IO;
 
 namespace OSEF.ERP.APP
 {
@@ -16,114 +18,202 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+       
+        }
+
+        protected void imgbtnExportarCroquis_Click(object sender, EventArgs e)
+        {
+            //Parametros del store procedure
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+
+            if (String.IsNullOrEmpty(txtElaboro.Text) ||
+                String.IsNullOrEmpty(txtAutorizo.Text) || 
+                String.IsNullOrEmpty(txtReviso.Text))
+            {
+            
+            }
+            else{
+                //Firmas documento(Parametros)
+                string strElaboro = txtElaboro.Value.ToString();
+                string strReviso = txtReviso.Value.ToString();
+                string strAutorizo = txtAutorizo.Value.ToString();
+
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                try
+                {
+
+
+                    SqlCommand comando = new SqlCommand("web_spS_ObtenerCroquisPorIDMovimiento", conn);
+
+                    SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+
+                    DataTable dt = new DataTable();
+                    adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
+                    adaptador.Fill(dt);
+
+
+                    SqlCommand comando2 = new SqlCommand("web_spS_ObtenerGeneradorPorMovimiento", conn);
+                    SqlDataAdapter adaptador2 = new SqlDataAdapter(comando2);
+
+                    DataTable dt2 = new DataTable();
+                    adaptador2.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adaptador2.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
+                    adaptador2.Fill(dt2);
+
+                    ReportDocument reporteCroquis = new ReportDocument();
+                    reporteCroquis.Load(Server.MapPath("reportess/rCroquis.rpt"));
+                    reporteCroquis.SetDataSource(dt);
+                    reporteCroquis.Subreports[0].SetDataSource(dt2);
+                    reporteCroquis.SetParameterValue("elaboro", strElaboro);
+                    reporteCroquis.SetParameterValue("reviso", strReviso);
+                    reporteCroquis.SetParameterValue("autorizo", strAutorizo);
+                    reporteCroquis.SetParameterValue("path", path);
+
+                    string strDireccion = Server.MapPath(" ") + "\\reportess\\OrdenesDeCambio\\" + strID;
+
+                    //2. Validar si existe el directorio donde se guardaran
+                    if (Directory.Exists(strDireccion))
+                    {
+
+                        reporteCroquis.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rCroquis " + strID + ".pdf"));
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rCroquis " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                        // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
+
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(strDireccion);
+                        reporteCroquis.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rCroquis " + strID + ".pdf"));
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rCroquis " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                    conn.Dispose();
+                }
+
+            }
+            
 
         }
 
-        protected void imgbtnExportar_Click(object sender, DirectEventArgs e)
+
+        protected void imgbtnExportarFotos_Click(object sender, EventArgs e)
         {
-          
+
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+
+            if (String.IsNullOrEmpty(txtElaboro.Text) ||
+               String.IsNullOrEmpty(txtAutorizo.Text) ||
+               String.IsNullOrEmpty(txtReviso.Text))
+            {
+                
+            }
+            else{
+
 
             //Firmas documento(Parametros)
-            string strElaboro = e.ExtraParams["elaboro"];
-            string strReviso = e.ExtraParams["reviso"];
-            string strAutorizo = e.ExtraParams["autorizo"];
-            string nombreCroquis = "rCroquis";
-            string nombreNotaBitacora = "rNotaDeBitacora";
-            string nombreFotos = "rFotos";
-            string nombreGeneradores = "rNumerosGeneradores";
+            string strElaboro = txtElaboro.Value.ToString();
+            string strReviso = txtReviso.Value.ToString();
+            string strAutorizo = txtAutorizo.Value.ToString();
             string path = AppDomain.CurrentDomain.BaseDirectory;
-            Session["eCroquis"] = "0";
-            Session["eFotos"] = "0";
-            Session["eFactura"] = "0";
-            Session["eGenerador"] = "0";
             //1. Configurar la conexión y el tipo de comando
-            var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
             try
             {
-                //Si el check de Croquis esta activado
-                if (chkCroquis.Checked)
-                {
-
-                    using (var comando = new SqlCommand("web_spS_ObtenerCroquisPorIDMovimiento", conn))
-                    {
-                        using (var adaptador = new SqlDataAdapter(comando))
-                        {
-                            DataTable dt = new DataTable();
-                            adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
-                            adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
-                            adaptador.Fill(dt);
-
-
-                            SqlCommand comando2 = new SqlCommand("web_spS_ObtenerGeneradorPorMovimiento", conn);
-                            SqlDataAdapter adaptador2 = new SqlDataAdapter(comando2);
-
-                            DataTable dt2 = new DataTable();
-                            adaptador2.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            adaptador2.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
-                            adaptador2.Fill(dt2);
-
-                            
-
-                            var reporteCroquis = new ReportDocument();
-                            reporteCroquis.Load(Server.MapPath("reports/rCroquis.rpt"));
-                            reporteCroquis.SetDataSource(dt);
-                            reporteCroquis.Subreports[0].SetDataSource(dt2);
-                            reporteCroquis.SetParameterValue("elaboro", strElaboro);
-                            reporteCroquis.SetParameterValue("reviso", strReviso);
-                            reporteCroquis.SetParameterValue("autorizo", strAutorizo);
-                            reporteCroquis.SetParameterValue("path", path);
-
-
-                          
-
-                            Session["eCroquis"] = "1";
-                            Session["nCroquis"] = nombreCroquis;
-                            Session["rCroquis"] = reporteCroquis;
-
-                        } // end using adaptador
-                    } // end using comando
-
-                }//Fin Croquis
-
-
-                //Si el check de Fotos esta activado
-                if (chkFotos.Checked)
-                {
-
                     using (var comando = new SqlCommand("web_spS_ObtenerImagenesPorMovimiento", conn))
                     {
                         using (var adaptador = new SqlDataAdapter(comando))
                         {
                             DataTable dt = new DataTable();
                             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
                             adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
                             adaptador.Fill(dt);
 
 
                             var reporteFotos = new ReportDocument();
-                            reporteFotos.Load(Server.MapPath("reports/rFotos.rpt"));
+                            reporteFotos.Load(Server.MapPath("reportess/rFotos.rpt"));
                             reporteFotos.SetDataSource(dt);
                             reporteFotos.SetParameterValue("elaboro", strElaboro);
                             reporteFotos.SetParameterValue("reviso", strReviso);
                             reporteFotos.SetParameterValue("autorizo", strAutorizo);
                             reporteFotos.SetParameterValue("pathFotos", path);
 
-                            Session["eFotos"] = "1";
-                            Session["nFotos"] = nombreFotos;
-                            Session["rFotos"] = reporteFotos;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\OrdenesDeCambio\\" + strID;
 
+                                 //2. Validar si existe el directorio donde se guardaran
+                              if (Directory.Exists(strDireccion))
+                              {
+
+                                  reporteFotos.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rFotos " + strID + ".pdf"));
+                                  ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rFotos " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                  // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
+                              
+                              }
+                              else
+                              {
+                                  Directory.CreateDirectory(strDireccion);
+                                  reporteFotos.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rFotos " + strID + ".pdf"));
+                                  ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rFotos " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                              }
+                    
                         } // end using adaptador
                     } // end using comando
 
-                }//Fin Fotos
+                }
+           
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                    conn.Dispose();
+                }
+
+            }
+        }
 
 
-                //Si el check de Facturas esta activado
-                if (chkFacturas.Checked)
+        protected void imgbtnExportarFactura_Click(object sender, EventArgs e)
+        {
+
+            //Parametros del store procedure
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+
+
+            if (String.IsNullOrEmpty(txtElaboro.Text) ||
+                String.IsNullOrEmpty(txtAutorizo.Text) ||
+                String.IsNullOrEmpty(txtReviso.Text))
+            {
+                
+            }
+            else
+            {
+
+
+                //Firmas documento(Parametros)
+                string strElaboro = txtElaboro.Value.ToString();
+                string strReviso = txtReviso.Value.ToString();
+                string strAutorizo = txtAutorizo.Value.ToString();
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                try
                 {
 
                     using (var comando = new SqlCommand("web_spS_ObtenerFacturasPorMovimiento", conn))
@@ -132,30 +222,84 @@ namespace OSEF.ERP.APP
                         {
                             DataTable dt = new DataTable();
                             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
                             adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
                             adaptador.Fill(dt);
 
                             var reporteFacturas = new ReportDocument();
-                            reporteFacturas.Load(Server.MapPath("reports/rNotaDeBitacora.rpt"));
+                            reporteFacturas.Load(Server.MapPath("reportess/rNotaDeBitacora.rpt"));
                             reporteFacturas.SetDataSource(dt);
                             reporteFacturas.SetParameterValue("elaboro", strElaboro);
                             reporteFacturas.SetParameterValue("reviso", strReviso);
                             reporteFacturas.SetParameterValue("autorizo", strAutorizo);
                             reporteFacturas.SetParameterValue("pathFact", path);
 
-                            Session["eFactura"] = "1";
-                            Session["nFactura"] = nombreNotaBitacora;
-                            Session["rFactura"] = reporteFacturas;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\OrdenesDeCambio\\" + strID;
+
+                            //2. Validar si existe el directorio donde se guardaran
+                            if (Directory.Exists(strDireccion))
+                            {
+
+                                reporteFacturas.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rNotaDeBitacora " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rNotaDeBitacora " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
+
+                            }
+                            else
+                            {
+                                Directory.CreateDirectory(strDireccion);
+                                reporteFacturas.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rNotaDeBitacora " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rNotaDeBitacora " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                            }
+
+
 
                         } // end using adaptador
                     } // end using comando
 
-                }//Fin Fotos
 
-                //Si el check de Generador esta activado
-                if (chkGenerador.Checked)
+                }
+                catch (Exception ex)
                 {
+                    ex.Message.ToString();
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                    conn.Dispose();
+                }
+            }
+        }
+
+
+        protected void imgbtnExportarGenerador_Click(object sender, EventArgs e)
+        {
+
+            //Parametros del store procedure
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+
+
+            if (String.IsNullOrEmpty(txtElaboro.Text) ||
+               String.IsNullOrEmpty(txtAutorizo.Text) ||
+               String.IsNullOrEmpty(txtReviso.Text))
+            {
+                
+            }
+            else
+            {
+
+
+                //Firmas documento(Parametros)
+                string strElaboro = txtElaboro.Value.ToString();
+                string strReviso = txtReviso.Value.ToString();
+                string strAutorizo = txtAutorizo.Value.ToString();
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                try
+                {
+
+
 
                     using (var comando = new SqlCommand("web_spS_ObtenerGeneradorPorMovimiento", conn))
                     {
@@ -163,58 +307,55 @@ namespace OSEF.ERP.APP
                         {
                             DataTable dt = new DataTable();
                             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                            //adaptador.SelectCommand.Parameters.Add(@"IDConcepto", SqlDbType.NVarChar).Value = strConceptoID;
                             adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
                             adaptador.Fill(dt);
 
                             var reporteGenerador = new ReportDocument();
-                            reporteGenerador.Load(Server.MapPath("reports/rNumerosGeneradores.rpt"));
+                            reporteGenerador.Load(Server.MapPath("reportess/rNumerosGeneradores.rpt"));
                             reporteGenerador.SetDataSource(dt);
                             reporteGenerador.SetParameterValue("elaboro", strElaboro);
                             reporteGenerador.SetParameterValue("reviso", strReviso);
                             reporteGenerador.SetParameterValue("autorizo", strAutorizo);
 
-                            Session["eGenerador"] = "1";
-                            Session["nGenerador"] = nombreGeneradores;
-                            Session["rGenerador"] = reporteGenerador;
+
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\OrdenesDeCambio\\" + strID;
+
+                            //2. Validar si existe el directorio donde se guardaran
+                            if (Directory.Exists(strDireccion))
+                            {
+
+                                reporteGenerador.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rNumerosGeneradores " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rNumerosGeneradores " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
+
+                            }
+                            else
+                            {
+                                Directory.CreateDirectory(strDireccion);
+                                reporteGenerador.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/OrdenesDeCambio/" + strID + "/rNumerosGeneradores " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/OrdenesDeCambio/" + strID + "/rNumerosGeneradores " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                            }
 
                         } // end using adaptador
                     } // end using comando
 
-                }//Fin Fotos
 
 
-            }
-            catch (Exception ex)
-            {
-                ex.Message.ToString();
-            }
-            finally
-            {
-                if (conn.State != ConnectionState.Closed)
-                    conn.Close();
-                conn.Dispose();
-            }
-
-        }
-
-
-        protected void chkSeleccionarTodo_Click(object sender, DirectEventArgs e)
-        {
-
-            if (chkSeleccionarTodo.Checked)
-            {
-                chkFacturas.Checked = true;
-                chkCroquis.Checked = true;
-                chkFotos.Checked = true;
-                chkGenerador.Checked = true;
-            }
-            else {
-                chkFacturas.Checked = false;
-                chkCroquis.Checked = false;
-                chkFotos.Checked = false;
-                chkGenerador.Checked = false;
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                    conn.Dispose();
+                }
             }
         }
+
+
+      
     }
 }

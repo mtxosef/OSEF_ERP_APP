@@ -19,12 +19,26 @@ namespace OSEF.ERP.APP
                 onLoad();
             }
         }
+        #region Consultar
         public void onLoad()
         {
             sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
             sCuadrillas.DataBind();
         }
-         
+
+        /// <summary>
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sCuadrillas(object sender, StoreReadDataEventArgs e)
+        {
+            onLoad();
+        }
+       
+        #endregion
+
+        #region Eliminar
         /// Método para elimnar un registro
         /// </summary>
         /// <param name="strID"></param>
@@ -45,16 +59,7 @@ namespace OSEF.ERP.APP
 
             }
         }
-
-        /// <summary>
-        /// Evento que vuelve a leer los datos para ser cargados al store
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void OnReadData_sCuadrillas(object sender, StoreReadDataEventArgs e)
-        {
-            onLoad();
-        }
+        #endregion
 
     }
 }

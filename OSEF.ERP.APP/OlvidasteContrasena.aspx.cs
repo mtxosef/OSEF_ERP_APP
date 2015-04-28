@@ -112,7 +112,7 @@ namespace OSEF.AVANCES.SUCURSALES
                     mmMensaje.Body = "Tu contraseña es: " + UsuarioBusiness.ObtenerContrasenaPorID(oUsuario.ID);
 
                     //10. Remitente
-                    MailAddress maFrom = new MailAddress("no-reply@osef.com.mx");
+                    MailAddress maFrom = new MailAddress("no-reply@ibuho.mx");
                     mmMensaje.From = maFrom;
 
                     mmMensaje.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure | DeliveryNotificationOptions.OnSuccess;
