@@ -2273,7 +2273,37 @@
                                         BodyPadding="10" 
                                         AutoScroll="true">
                                         <Items>
-                                            <ext:Container 
+                                            <ext:FieldSet
+                                                ID="fsTipoReferencia"
+                                                runat="server"
+                                                Title="Tipo de referencia">
+                                                <Items>
+                                                    <ext:RadioGroup
+                                                        ID="rgTipoReferencia"
+                                                        runat="server"
+                                                        Width="680"
+                                                        LabelWidth="126"  
+                                                        FieldLabel="Tipo"
+                                                        StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                        ColumnsNumber="2"
+                                                        ColumnWidth=".91">
+                                                        <Items>
+                                                            <ext:Radio ID="rPersona" runat="server" BoxLabel="Persona" Checked="true" />
+                                                            <ext:Radio ID="rInstitucion" runat="server" BoxLabel="Institución"  />
+                                                        </Items>
+                                                    </ext:RadioGroup>
+                                                    <ext:Button
+                                                        ID="btnAgregarReferencia"
+                                                        runat="server"
+                                                        Text="Agregar"
+                                                        Margin="5">
+                                                        <Listeners>
+                                                            <Click Fn="btnAgregarReferencia_Click" />
+                                                        </Listeners>
+                                                    </ext:Button>
+                                                </Items>
+                                            </ext:FieldSet>
+                                            <%--<ext:Container 
                                                 ID="fcReferencia1"
                                                 runat="server"
                                                 Layout="ColumnLayout">
@@ -2300,8 +2330,8 @@
                                                         EnforceMaxLength="true">
                                                     </ext:ComboBox>
                                                 </Items>
-                                            </ext:Container>
-                                            <ext:Container 
+                                            </ext:Container>--%>
+                                            <%--<ext:Container 
                                                 ID="fcReferencia2" 
                                                 runat="server"
                                                 Layout="ColumnLayout">
@@ -2320,7 +2350,7 @@
                                                         EnforceMaxLength="true">
                                                     </ext:TextField>
                                                 </Items>
-                                            </ext:Container>
+                                            </ext:Container>--%>
                                         </Items>
                                     </ext:Panel>
                                      <%--Terminado--%>
@@ -2331,7 +2361,37 @@
                                         BodyPadding="10" 
                                         AutoScroll="true">
                                         <Items>
-                                            <ext:Container 
+                                            <ext:FieldSet
+                                                ID="fsTipoBienesSocio"
+                                                runat="server"
+                                                Title="Tipo de bienes">
+                                                <Items>
+                                                    <ext:RadioGroup
+                                                        ID="rgTipoBienesSocio"
+                                                        runat="server"
+                                                        Width="680"
+                                                        LabelWidth="126"  
+                                                        FieldLabel="Tipo"
+                                                        StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                        ColumnsNumber="2"
+                                                        ColumnWidth=".91">
+                                                        <Items>
+                                                            <ext:Radio ID="rBienesMuebles" runat="server" BoxLabel="Bienes Muebles" Checked="true" />
+                                                            <ext:Radio ID="rBienesInmuebles" runat="server" BoxLabel="Bienes Inmuebles"  />
+                                                        </Items>
+                                                    </ext:RadioGroup>
+                                                    <ext:Button
+                                                        ID="btnAgregarBienesSocio"
+                                                        runat="server"
+                                                        Text="Agregar"
+                                                        Margin="5">
+                                                        <Listeners>
+                                                            <Click Fn="btnAgregarBienesSocio_Click" />
+                                                        </Listeners>
+                                                    </ext:Button>
+                                                </Items>
+                                            </ext:FieldSet>
+<%--                                            <ext:Container 
                                                 ID="fcBienes1"
                                                 runat="server"
                                                 Layout="ColumnLayout">
@@ -2390,7 +2450,7 @@
                                                         Step="1">
                                                     </ext:NumberField>
                                                 </Items>
-                                            </ext:Container>
+                                            </ext:Container>--%>
                                         </Items>
                                     </ext:Panel>
                                      <%--Terminado--%>
@@ -3127,6 +3187,36 @@
                                         AutoScroll="true">
                                         <Items>
                                             <ext:FieldSet
+                                                ID="fsBienesAval"
+                                                runat="server"
+                                                Title="Tipo de bienes">
+                                                <Items>
+                                                    <ext:RadioGroup
+                                                        ID="rgBienesAval"
+                                                        runat="server"
+                                                        Width="680"
+                                                        LabelWidth="126"  
+                                                        FieldLabel="Tipo"
+                                                        StyleSpec="margin-right: 6px; margin-bottom: 6px;"
+                                                        ColumnsNumber="2"
+                                                        ColumnWidth=".91">
+                                                        <Items>
+                                                            <ext:Radio ID="rBienesMueblesAval" runat="server" BoxLabel="Bienes Muebles" Checked="true" />
+                                                            <ext:Radio ID="rBienesInmueblesAval" runat="server" BoxLabel="Bienes Inmuebles"  />
+                                                        </Items>
+                                                    </ext:RadioGroup>
+                                                    <ext:Button
+                                                        ID="btnAgregarBienesAval"
+                                                        runat="server"
+                                                        Text="Agregar"
+                                                        Margin="5">
+                                                        <Listeners>
+                                                            <Click Fn="btnAgregarBienesAval_Click" />
+                                                        </Listeners>
+                                                    </ext:Button>
+                                                </Items>
+                                            </ext:FieldSet>
+<%--                                            <ext:FieldSet
                                                 ID="fsBienes"
                                                 runat="server"
                                                 Title="Bienes">
@@ -3190,7 +3280,7 @@
                                                         </Items>
                                                     </ext:Container>
                                                 </Items>
-                                            </ext:FieldSet>
+                                            </ext:FieldSet>--%>
                                         </Items>
                                     </ext:Panel>
                                     <%--Terminado--%>

@@ -617,6 +617,235 @@ var ncImporte_Renderer = function (valor) {
     return F.number(valor, "$000,000,000.00");
 };
 
+//Evento clic del botón agregar campos
+var btnAgregarReferencia_Click = function () {
+    var ID = App.pReferencias.componentLayout.layoutCount;
+    if (App.rPersona.getValue() == true) {
+        //Agregar los campos
+        App.pReferencias.add([
+            { xtype: 'fieldset', title: 'Referencia persona ' + ID, id: 'fsReferenciaPersonal' + ID, items: [
+                { xtype: 'container', id: 'cReferenciaPersona' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
+                    { xtype: 'textfield', id: 'txtfReferenciaNombre' + ID, fieldLabel: 'Nombre', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfReferenciaDomicilio' + ID, fieldLabel: 'Domicilio', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfReferenciaTelefono' + ID, fieldLabel: 'Teléfono', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfReferenciaActividadEconomica' + ID, fieldLabel: 'Actividad', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'button', id: 'btnReferenciaPersonaBorrar' + ID, width: 100, margin: '0 0 6 0', text: 'Borrar', listeners:
+                        {
+                            click:
+                            {
+                                fn: function (btn) {
+                                    for (var i = 1; i < App.pReferencias.items.items.length; i++) {
+                                        var elemento = App.pReferencias.items.items[i];
+                                        if (elemento.id === 'fsReferenciaPersonal' + btn.id.substr(26, 3)) {
+                                            App.pReferencias.remove(elemento.id);
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+                }
+            ]
+            }
+        ]);
+    }
+    else {
+        //Store para los tipos de cuentas
+        var tipoCuenta = Ext.create('Ext.data.Store', {
+            fields: ['ID', 'DESCRIPCION'],
+            data: [
+                { "ID": "TARJETA DE CRÉDITO", "DESCRIPCION": "TARJETA DE CRÉDITO" },
+                { "ID": "TARJETA DÉBITO", "DESCRIPCION": "TARJETA DÉBITO" },
+                { "ID": "CUENTA DE CHEQUES", "DESCRIPCION": "CUENTA DE CHEQUES" },
+                { "ID": "CRÉDITO HIPOTECARIO", "DESCRIPCION": "CRÉDITO HIPOTECARIO" },
+                { "ID": "CRÉDITO AUTOMOTRIZ", "DESCRIPCION": "CRÉDITO AUTOMOTRIZ" },
+            ]
+        });
+
+        App.pReferencias.add([
+            { xtype: 'fieldset', title: 'Referencia institución ' + ID, id: 'fsReferenciaInstitucion' + ID, items: [
+                { xtype: 'container', id: 'cReferenciaInstitucion' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
+                    { xtype: 'textfield', id: 'txtfReferenciaInstitucion' + ID, fieldLabel: 'Nombre insitución', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'combobox', id: 'cmbReferenciaTipoCuenta' + ID, store: tipoCuenta, displayField: 'DESCRIPCION', valueField: 'ID', fieldLabel: 'Tipo cuenta', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfReferenciaNoCuenta' + ID, fieldLabel: 'Número cuenta', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'button', id: 'btnReferenciaInstitucionBorrar' + ID, width: 100, margin: '0 0 0 6', text: 'Borrar', listeners:
+                        {
+                            click:
+                            {
+                                fn: function (btn) {
+                                    for (var i = 1; i < App.pReferencias.items.items.length; i++) {
+                                        var elemento = App.pReferencias.items.items[i];
+                                        if (elemento.id === 'fsReferenciaInstitucion' + btn.id.substr(30, 3)) {
+                                            App.pReferencias.remove(elemento.id);
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+                }
+            ]
+            }
+        ]);
+    }
+};
+
+//Evento clic del botón agregar bienes
+var btnAgregarBienesSocio_Click = function () {
+    var ID = App.pBienes.componentLayout.layoutCount;
+    if (App.rBienesMuebles.getValue() == true) {
+        //Agregar los campos
+        App.pBienes.add([
+            { xtype: 'fieldset', title: 'Bienes muebles' + ID, id: 'fsBienesMuebles' + ID, items: [
+                { xtype: 'container', id: 'cBienesMuebles' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
+                    { xtype: 'textfield', id: 'txtfBienesMueblesTipoMueble' + ID, fieldLabel: 'Tipo mueble', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfBienesMueblesNoSerie' + ID, fieldLabel: 'Número serie', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'numberfield', id: 'nfBienesMueblesValorEstimado' + ID, fieldLabel: 'Valor estimado', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'button', id: 'btnBienesMueblesBorrar' + ID, width: 100, margin: '0 0 6 0', text: 'Borrar', listeners:
+                        {
+                            click:
+                            {
+                                fn: function (btn) {
+                                    for (var i = 1; i < App.pBienes.items.items.length; i++) {
+                                        var elemento = App.pBienes.items.items[i];
+                                        if (elemento.id === 'fsBienesMuebles' + btn.id.substr(22, 3)) {
+                                            App.pBienes.remove(elemento.id);
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+                }
+            ]
+            }
+        ]);
+    }
+    else {
+        //Store para los tipos de cuentas
+        var tipoCuenta = Ext.create('Ext.data.Store', {
+            fields: ['ID', 'DESCRIPCION'],
+            data: [
+                { "ID": "TARJETA DE CRÉDITO", "DESCRIPCION": "TARJETA DE CRÉDITO" },
+                { "ID": "TARJETA DÉBITO", "DESCRIPCION": "TARJETA DÉBITO" },
+                { "ID": "CUENTA DE CHEQUES", "DESCRIPCION": "CUENTA DE CHEQUES" },
+                { "ID": "CRÉDITO HIPOTECARIO", "DESCRIPCION": "CRÉDITO HIPOTECARIO" },
+                { "ID": "CRÉDITO AUTOMOTRIZ", "DESCRIPCION": "CRÉDITO AUTOMOTRIZ" },
+            ]
+        });
+        App.pBienes.add([
+            { xtype: 'fieldset', title: 'Bienes inmuebles ' + ID, id: 'fsBienesInmuebles' + ID, items: [
+                { xtype: 'container', id: 'cBienesInmuebles' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
+                    { xtype: 'textfield', id: 'txtfBienesInmueblesUbicacion' + ID, fieldLabel: 'Ubicación', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'combobox', id: 'cmbBienesInmueblesTipoInmueble' + ID, store: tipoCuenta, displayField: 'DESCRIPCION', valueField: 'ID', fieldLabel: 'Tipo inmueble', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfBienesInmueblesInscripcion' + ID, fieldLabel: 'Inscripción', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'numberfield', id: 'nfBienesInmueblesValorInmueble' + ID, fieldLabel: 'Valor', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'button', id: 'btnBienesInmueblesBorrar' + ID, width: 100, margin: '0 0 6 0', text: 'Borrar', listeners:
+                        {
+                            click:
+                            {
+                                fn: function (btn) {
+                                    for (var i = 1; i < App.pBienes.items.items.length; i++) {
+                                        var elemento = App.pBienes.items.items[i];
+                                        if (elemento.id === 'fsBienesInmuebles' + btn.id.substr(24, 3)) {
+                                            App.pBienes.remove(elemento.id);
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+                }
+            ]
+            }
+        ]);
+    }
+};
+
+var btnAgregarBienesAval_Click = function () {
+    var ID = App.pBienesAval.componentLayout.layoutCount;
+    if (App.rBienesMueblesAval.getValue() == true) {
+        //Agregar los campos
+        App.pBienesAval.add([
+            { xtype: 'fieldset', title: 'Bienes muebles' + ID, id: 'fsBienesMueblesAval' + ID, items: [
+                { xtype: 'container', id: 'cBienesMueblesAval' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
+                    { xtype: 'textfield', id: 'txtfBienesMueblesAvalTipoMueble' + ID, fieldLabel: 'Tipo mueble', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfBienesMueblesAvalNoSerie' + ID, fieldLabel: 'Número serie', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'numberfield', id: 'nfBienesMueblesAvalValorEstimado' + ID, fieldLabel: 'Valor estimado', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'button', id: 'btnBienesMueblesAvalBorrar' + ID, width: 100, margin: '0 0 6 0', text: 'Borrar', listeners:
+                        {
+                            click:
+                            {
+                                fn: function (btn) {
+                                    for (var i = 1; i < App.pBienesAval.items.items.length; i++) {
+                                        var elemento = App.pBienesAval.items.items[i];
+                                        if (elemento.id === 'fsBienesMueblesAval' + btn.id.substr(26, 3)) {
+                                            App.pBienesAval.remove(elemento.id);
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+                }
+            ]
+            }
+        ]);
+    }
+    else {
+        //Store para los tipos de cuentas
+        var tipoCuenta = Ext.create('Ext.data.Store', {
+            fields: ['ID', 'DESCRIPCION'],
+            data: [
+                { "ID": "TARJETA DE CRÉDITO", "DESCRIPCION": "TARJETA DE CRÉDITO" },
+                { "ID": "TARJETA DÉBITO", "DESCRIPCION": "TARJETA DÉBITO" },
+                { "ID": "CUENTA DE CHEQUES", "DESCRIPCION": "CUENTA DE CHEQUES" },
+                { "ID": "CRÉDITO HIPOTECARIO", "DESCRIPCION": "CRÉDITO HIPOTECARIO" },
+                { "ID": "CRÉDITO AUTOMOTRIZ", "DESCRIPCION": "CRÉDITO AUTOMOTRIZ" },
+            ]
+        });
+
+        App.pBienesAval.add([
+            { xtype: 'fieldset', title: 'Bienes inmuebles ' + ID, id: 'fsBienesInmueblesAval' + ID, items: [
+                { xtype: 'container', id: 'cBienesInmueblesAval' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
+                    { xtype: 'textfield', id: 'txtfBienesInmueblesAvalUbicacion' + ID, fieldLabel: 'Ubicación', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'combobox', id: 'cmbBienesInmueblesAvalTipoInmueble' + ID, store: tipoCuenta, displayField: 'DESCRIPCION', valueField: 'ID', fieldLabel: 'Tipo inmueble', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'textfield', id: 'txtfBienesInmueblesAvalInscripcion' + ID, fieldLabel: 'Inscripción', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'numberfield', id: 'nfBienesInmueblesAvalValorInmueble' + ID, fieldLabel: 'Valor', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'button', id: 'btnBienesInmueblesAvalBorrar' + ID, width: 100, margin: '0 0 6 0', text: 'Borrar', listeners:
+                        {
+                            click:
+                            {
+                                fn: function (btn) {
+                                    for (var i = 1; i < App.pBienesAval.items.items.length; i++) {
+                                        var elemento = App.pBienesAval.items.items[i];
+                                        if (elemento.id === 'fsBienesInmueblesAval' + btn.id.substr(28, 3)) {
+                                            App.pBienesAval.remove(elemento.id);
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+                }
+            ]
+            }
+        ]);
+    }
+};
+
 //Asignar los datos del Socio
 function AsignarDatosSocio(registro) {
     //Asignar datos de socio

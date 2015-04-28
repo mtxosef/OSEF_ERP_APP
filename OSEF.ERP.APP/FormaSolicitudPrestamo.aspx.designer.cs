@@ -1831,49 +1831,49 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Panel pReferencias;
         
         /// <summary>
-        /// Control fcReferencia1.
+        /// Control fsTipoReferencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcReferencia1;
+        protected global::Ext.Net.FieldSet fsTipoReferencia;
         
         /// <summary>
-        /// Control txtfInsitucion.
+        /// Control rgTipoReferencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfInsitucion;
+        protected global::Ext.Net.RadioGroup rgTipoReferencia;
         
         /// <summary>
-        /// Control cmbTipoCuenta.
+        /// Control rPersona.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbTipoCuenta;
+        protected global::Ext.Net.Radio rPersona;
         
         /// <summary>
-        /// Control fcReferencia2.
+        /// Control rInstitucion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcReferencia2;
+        protected global::Ext.Net.Radio rInstitucion;
         
         /// <summary>
-        /// Control txtfNoCuenta.
+        /// Control btnAgregarReferencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfNoCuenta;
+        protected global::Ext.Net.Button btnAgregarReferencia;
         
         /// <summary>
         /// Control pBienes.
@@ -1885,58 +1885,49 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Panel pBienes;
         
         /// <summary>
-        /// Control fcBienes1.
+        /// Control fsTipoBienesSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcBienes1;
+        protected global::Ext.Net.FieldSet fsTipoBienesSocio;
         
         /// <summary>
-        /// Control txtfUbicacion.
+        /// Control rgTipoBienesSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfUbicacion;
+        protected global::Ext.Net.RadioGroup rgTipoBienesSocio;
         
         /// <summary>
-        /// Control cmbTipoInmueble.
+        /// Control rBienesMuebles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbTipoInmueble;
+        protected global::Ext.Net.Radio rBienesMuebles;
         
         /// <summary>
-        /// Control fcBienes2.
+        /// Control rBienesInmuebles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcBienes2;
+        protected global::Ext.Net.Radio rBienesInmuebles;
         
         /// <summary>
-        /// Control txtInscripción.
+        /// Control btnAgregarBienesSocio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtInscripción;
-        
-        /// <summary>
-        /// Control nfValorInmueble.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.NumberField nfValorInmueble;
+        protected global::Ext.Net.Button btnAgregarBienesSocio;
         
         /// <summary>
         /// Control pDatosGeneralesAval.
@@ -2650,67 +2641,49 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Panel pBienesAval;
         
         /// <summary>
-        /// Control fsBienes.
+        /// Control fsBienesAval.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldSet fsBienes;
+        protected global::Ext.Net.FieldSet fsBienesAval;
         
         /// <summary>
-        /// Control fcBienesAval1.
+        /// Control rgBienesAval.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcBienesAval1;
+        protected global::Ext.Net.RadioGroup rgBienesAval;
         
         /// <summary>
-        /// Control txtfUbicacionAval.
+        /// Control rBienesMueblesAval.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfUbicacionAval;
+        protected global::Ext.Net.Radio rBienesMueblesAval;
         
         /// <summary>
-        /// Control cmbTipoInmuebleAval.
+        /// Control rBienesInmueblesAval.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbTipoInmuebleAval;
+        protected global::Ext.Net.Radio rBienesInmueblesAval;
         
         /// <summary>
-        /// Control fcBienesAval2.
+        /// Control btnAgregarBienesAval.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Container fcBienesAval2;
-        
-        /// <summary>
-        /// Control txtfInscripcionAval.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfInscripcionAval;
-        
-        /// <summary>
-        /// Control nfValorInmuebleAval.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.NumberField nfValorInmuebleAval;
+        protected global::Ext.Net.Button btnAgregarBienesAval;
         
         /// <summary>
         /// Control pCapacidadPago.
