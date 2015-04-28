@@ -392,6 +392,7 @@
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimaciones.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimacionesConcluidos.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerMesaDeReporteConcluidos.sql 
 -- OrdenesEstimaciones (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimaciones\web_spI_InsertarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Modificar)
@@ -500,6 +501,7 @@
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerResumenDePartidasPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerRResumenDePartidas.sql
 ------------------------------------------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
 --Mesa de Reportes(Consultar) 
 :r c:\SqlServerScripts\Consultar\Mesa de Reportes\web_spS_ObtenerMesaDeReporteConcluidos.sql 
 
@@ -514,3 +516,5 @@
 :r c:\SqlServerScripts\Modificar\CodigosPPTA\web_spU_ActualizarCodigoPPTA.sql  
 --Codigos PPTA(Borrar) 
 :r c:\SqlServerScripts\Borrar\CodigosPPTA\web_spD_BorrarCodigoPPTA.sql  
+=======
+>>>>>>> origin/master
