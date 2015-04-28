@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace OSEF.AVANCES.SUCURSALES {
+namespace OSEF.ERP.APP {
     
     
-    public partial class Default {
+    public partial class CodigoFallas {
         
         /// <summary>
         /// Control form1.
@@ -22,147 +22,183 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmDefault.
+        /// Control rmCodigoPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmDefault;
+        protected global::Ext.Net.ResourceManager rmCodigoPPTA;
         
         /// <summary>
-        /// Control sUsuario.
+        /// Control gpCodigoPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sUsuario;
+        protected global::Ext.Net.GridPanel gpCodigoPPTA;
         
         /// <summary>
-        /// Control mUsuario.
+        /// Control tbCodigoPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mUsuario;
+        protected global::Ext.Net.Toolbar tbCodigoPPTA;
         
         /// <summary>
-        /// Control btnUsuario.
+        /// Control imgbtnNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Button btnUsuario;
+        protected global::Ext.Net.ImageButton imgbtnNuevo;
         
         /// <summary>
-        /// Control mOpciones.
+        /// Control imgbtnEditar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Menu mOpciones;
+        protected global::Ext.Net.ImageButton imgbtnEditar;
         
         /// <summary>
-        /// Control miConfiguracion.
+        /// Control imgbtnBorrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miConfiguracion;
+        protected global::Ext.Net.ImageButton imgbtnBorrar;
         
         /// <summary>
-        /// Control miCambiarContrasena.
+        /// Control tbsCodigoPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miCambiarContrasena;
+        protected global::Ext.Net.ToolbarSpacer tbsCodigoPPTA;
         
         /// <summary>
-        /// Control miCerrarSesion.
+        /// Control imgbtnActualizar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem miCerrarSesion;
+        protected global::Ext.Net.ImageButton imgbtnActualizar;
         
         /// <summary>
-        /// Control imgbtnRegresar.
+        /// Control txtBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnRegresar;
+        protected global::Ext.Net.TextField txtBuscar;
         
         /// <summary>
-        /// Control pCentro.
+        /// Control imgbtnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel pCentro;
+        protected global::Ext.Net.ImageButton imgbtnBuscar;
         
         /// <summary>
-        /// Control wEmergente.
+        /// Control sCodigoPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Window wEmergente;
+        protected global::Ext.Net.Store sCodigoPPTA;
         
         /// <summary>
-        /// Control wAyudaConcepto.
+        /// Control mCodigoPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Window wAyudaConcepto;
+        protected global::Ext.Net.Model mCodigoPPTA;
         
         /// <summary>
-        /// Control wEmergenteGraficas.
+        /// Control cEspecialidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Window wEmergenteGraficas;
+        protected global::Ext.Net.Column cEspecialidad;
         
         /// <summary>
-        /// Control wGenerador.
+        /// Control cMainSaver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Window wGenerador;
+        protected global::Ext.Net.Column cMainSaver;
         
         /// <summary>
-        /// Control wNew.
+        /// Control cDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Window wNew;
+        protected global::Ext.Net.Column cDescripcion;
         
         /// <summary>
-        /// Control wUpdate.
+        /// Control cDias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Window wUpdate;
+        protected global::Ext.Net.Column cDias;
+        
+        /// <summary>
+        /// Control cPrioridad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cPrioridad;
+        
+        /// <summary>
+        /// Control cTiempoEstimado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cTiempoEstimado;
+        
+        /// <summary>
+        /// Control rsmCodigoPPTA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.RowSelectionModel rsmCodigoPPTA;
+        
+        /// <summary>
+        /// Control sbCodigoPPTA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.StatusBar sbCodigoPPTA;
     }
 }

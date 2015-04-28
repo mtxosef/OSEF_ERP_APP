@@ -9200,3 +9200,15 @@ ul#wizard-steps li a {
   text-decoration: none;
   text-transform: uppercase;
 }
+
+
+.bg-color-darkpink {
+  background-color: #CC0066 !important;
+}
+.bg-color-darkpink:hover {
+  background-color: #CC6699 !important;
+}
+
+.bg-color-darkpink:active {
+  background-color: #CC0066 !important;
+}

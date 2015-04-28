@@ -5,13 +5,14 @@ var indice = 0;
 
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
+    var w = window.parent.App.wEmergente;
     Ext.util.Cookies.set('cookieEditarCuadrilla', 'Nuevo');
-    window.parent.App.wEmergente.load('FormaCuadrillas.aspx');
-    window.parent.App.wEmergente.setHeight(310);
-    window.parent.App.wEmergente.setWidth(670);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('NUEVA CUADRILLA');
-    window.parent.App.wEmergente.show();
+    w.load('FormaCuadrillas.aspx');
+    w.setHeight(310);
+    w.setWidth(670);
+    w.center();
+    w.setTitle('NUEVA CUADRILLA');
+    w.show();
 };
  
 //Editar un registro

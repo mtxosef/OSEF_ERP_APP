@@ -5,40 +5,43 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
-using OSEF.APP.BL;
-using OSEF.APP.EL;
+using OSEF.APP.BL; 
 
 namespace OSEF.ERP.APP
 {
-    public partial class Cuadrillas : System.Web.UI.Page
+    public partial class CodigoFallas : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
             if (!X.IsAjaxRequest)
             {
                 onLoad();
             }
         }
+
         #region Consultar
+        
         public void onLoad()
         {
-            sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
-            sCuadrillas.DataBind();
-        }
+            sCodigoPPTA.DataSource = CodigoFallasBusiness.ObtenerCodigoFallas();
+            sCodigoPPTA.DataBind();
+        } 
 
         /// <summary>
         /// Evento que vuelve a leer los datos para ser cargados al store
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void OnReadData_sCuadrillas(object sender, StoreReadDataEventArgs e)
+        protected void OnReadData_sCodigosPPTA(object sender, StoreReadDataEventArgs e)
         {
             onLoad();
         }
        
-        #endregion
 
+        #endregion
+         
         #region Eliminar
+
         /// Método para elimnar un registro
         /// </summary>
         /// <param name="strID"></param>
@@ -48,18 +51,18 @@ namespace OSEF.ERP.APP
             string strID = e.ExtraParams["ID"];
 
             //2. Validar si se elimina el registro
-            if (CuadrillaBusiness.ObtenerRegistrosDeCuadrillaPorID(strID))
+            if (CodigoFallasBusiness.ObtenerRegistrosDeCodigoFallasPorID(strID))
             {
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "true", ParameterMode.Raw));
             }
             else
             {
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("existe", "false", ParameterMode.Raw));
-                CuadrillaBusiness.Borrar(strID);
+                CodigoFallasBusiness.Borrar(strID);
 
             }
         }
+        
         #endregion
-
     }
 }

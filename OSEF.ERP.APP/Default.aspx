@@ -36,7 +36,6 @@
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="rmDefault" runat="server" HideInDesign="true" />
-
         <ext:Store ID="sUsuario" runat="server">
             <Model>
                 <ext:Model ID="mUsuario" runat="server" IDProperty="ID">
@@ -225,7 +224,7 @@
                 <Show Handler="this.resizer.disable();" Single="true" />
             </Listeners>
         </ext:Window>
-
+        
 
         <ext:Window 
             ID="wGenerador"
@@ -238,6 +237,36 @@
             Region="Center"
             XOnEsc="Ext.emptyFn">
             <Loader ID="Loader2" runat="server" Mode="Frame" AutoLoad="false">
+                <LoadMask ShowMask="true" Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
+        <ext:Window 
+            ID="wNew"
+            runat="server"
+            Icon="New"
+            Hidden="true"
+            Modal="true"
+            Padding="0"
+            Resizable="False"
+            Region="Center"
+            XOnEsc="Ext.emptyFn">
+            <Loader ID="Loader3" runat="server" Mode="Frame" AutoLoad="false">
+                <LoadMask ShowMask="true" Msg="Cargando..." />
+            </Loader>
+        </ext:Window>
+
+        <ext:Window 
+            ID="wUpdate"
+            runat="server"
+            Icon="ArrowRefresh"
+            Hidden="true"
+            Modal="true"
+            Padding="0"
+            Resizable="False"
+            Region="Center"
+            XOnEsc="Ext.emptyFn">
+            <Loader ID="Loader4" runat="server" Mode="Frame" AutoLoad="false">
                 <LoadMask ShowMask="true" Msg="Cargando..." />
             </Loader>
         </ext:Window>

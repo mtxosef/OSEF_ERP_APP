@@ -502,3 +502,15 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 --Mesa de Reportes(Consultar) 
 :r c:\SqlServerScripts\Consultar\Mesa de Reportes\web_spS_ObtenerMesaDeReporteConcluidos.sql 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+--Codigos PPTA(Consultar) 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTA.sql 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAEnUsoPorID.sql 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAPorID.sql 
+--Codigos PPTA(Insertar) 
+:r c:\SqlServerScripts\Insertar\CodigosPPTA\web_spI_InsertarCodigoPPTA.sql  
+--Codigos PPTA(Modificar) 
+:r c:\SqlServerScripts\Modificar\CodigosPPTA\web_spU_ActualizarCodigoPPTA.sql  
+--Codigos PPTA(Borrar) 
+:r c:\SqlServerScripts\Borrar\CodigosPPTA\web_spD_BorrarCodigoPPTA.sql  

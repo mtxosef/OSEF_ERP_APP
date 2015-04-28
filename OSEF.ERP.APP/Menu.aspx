@@ -193,6 +193,13 @@
                                     </div>
                                 </a>
 
+                                <a class="tile square image bg-color-darken" id="CodigoFallas" href="#">
+                                    <img src="assets/img/menu-codigofalla.png" alt="" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Codigos PPTA</div>
+                                    </div>
+                                </a>
+
                             </div>
                         </div>
                         <!-- Fin Segunda pagina Catálogos -->

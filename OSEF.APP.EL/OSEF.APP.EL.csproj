@@ -46,14 +46,17 @@
     <Compile Include="CapacidadPago.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CertificadoInversion.cs" />
+    <Compile Include="CodigoFalla.cs" />
     <Compile Include="CodigoPostal.cs" />
     <Compile Include="Colonia.cs" />
     <Compile Include="Concepto.cs" />
     <Compile Include="CroquisOrdenEstimacionD.cs" />
     <Compile Include="Cuadrilla.cs" />
     <Compile Include="CuentaContable.cs" />
+    <Compile Include="Especialidades.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="FacturaOrdenEstimacionD.cs" />
+    <Compile Include="Familias.cs" />
     <Compile Include="Finalidad.cs" />
     <Compile Include="GeneradorOrdenEstimacionD.cs" />
     <Compile Include="GeneradorVolumetriaD.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="SolicitudPrestamo.cs" />
     <Compile Include="Subcategoria.cs" />
+    <Compile Include="SubEspecialidades.cs" />
     <Compile Include="Sucursal.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Volumetria.cs" />

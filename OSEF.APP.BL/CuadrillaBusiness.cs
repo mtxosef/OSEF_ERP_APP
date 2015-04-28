@@ -41,7 +41,6 @@ namespace OSEF.APP.BL
         }
         #endregion
 
-
         #region Insertar
 
         /// <summary>
@@ -55,6 +54,7 @@ namespace OSEF.APP.BL
 
 
         #endregion
+
         #region Modificar
 
         /// <summary>
