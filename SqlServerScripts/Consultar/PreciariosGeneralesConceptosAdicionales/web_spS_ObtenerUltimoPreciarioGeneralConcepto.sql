@@ -35,18 +35,21 @@ BEGIN
 
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
+	DECLARE @ADICIONAL CHAR(30);
 
-    -- Insert statements for procedure here
-	SELECT TOP(1) 'ADC-' + 
+	SET @ADICIONAL = (SELECT TOP(1) 'ADC-' + 
 	CASE 
+	WHEN pgc.CLAVE = null THEN '001'
 	WHEN (LEN(CAST(SUBSTRING(pgc.CLAVE,5,3) as int) + 1)) = 1 THEN '00' + CAST(CAST(SUBSTRING(pgc.CLAVE,5,3) as int) + 1 as CHAR(30))
 	WHEN (LEN(CAST(SUBSTRING(pgc.CLAVE,5,3) as int) + 1)) = 2 THEN '0' + CAST(CAST(SUBSTRING(pgc.CLAVE,5,3) as int) + 1 as CHAR(30))
 	WHEN (LEN(CAST(SUBSTRING(pgc.CLAVE,5,3) as int) + 1)) = 3 THEN CAST(CAST(SUBSTRING(pgc.CLAVE,5,3) as int) + 1 as CHAR(30))
 	END
 	FROM [PreciariosGeneralesConceptos] pgc 
 	WHERE pgc.CLAVE LIKE 'ADC-%' 
-	ORDER BY pgc.ID DESC;
+	ORDER BY pgc.ID DESC);  
+	IF(@ADICIONAL IS NULL)
+		SET @ADICIONAL = 'ADC-001'; 
+	SELECT @ADICIONAL ;
 	
 END
 GO
