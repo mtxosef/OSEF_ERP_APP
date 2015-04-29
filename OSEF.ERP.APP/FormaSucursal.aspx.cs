@@ -227,10 +227,24 @@ namespace OSEF.AVANCES.SUCURSALES
                 //5. Insertar en la base de datos
                 oSucursal.FechaAlta = DateTime.Now;
                 oSucursal.Estatus = "ALTA";
-                oSucursal.ID = SucursalBusiness.Insertar(oSucursal);
-                //6. Mandar mensaje con el código del proveedor
-                var success = new JFunction { Fn = "imgbtnGuardar_Click_Success" };
-                X.Msg.Alert("Registro completo", "<p align='center'>Sucursal registrada con ID: <br/>" + oSucursal.ID + ".</p>", success).Show();
+
+                if (SucursalBusiness.ObtenerCREnSucursales(oSucursal.CR))
+                {
+                    var success = new JFunction { Fn = "imgbtnGuardar_Click_SuccessCR" };
+                    X.Msg.Alert("Alerta", "<p align='center'>La sucursal ya se encuentra registrada con CR: <br/>" + oSucursal.CR + ".</p>", success).Show();
+
+
+                }
+                
+                else{
+                    oSucursal.ID = SucursalBusiness.Insertar(oSucursal);
+                    //6. Mandar mensaje con el código del proveedor
+                    var success = new JFunction { Fn = "imgbtnGuardar_Click_Success" };
+                    X.Msg.Alert("Registro completo", "<p align='center'>Sucursal registrada con ID: <br/>" + oSucursal.ID + ".</p>", success).Show();
+
+                }
+             
+
             }
             else
             {

@@ -14,7 +14,7 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                sEspecialidad.DataSource = CodigoFallasBusiness.();
+                sEspecialidad.DataSource = CodigoFallasBusiness.ObtenerCodigoFallas();
                 sEspecialidad.DataBind();
         }
 
