@@ -501,7 +501,7 @@
                                                         QueryMode="Local"
                                                         TypeAhead="true">
                                                         <Items>
-                                                            <ext:ListItem Index="0" Text="MNX" Value="MNX" />
+                                                            <ext:ListItem Index="0" Text="MXN" Value="MXN" />
                                                             <ext:ListItem Index="1" Text="USD" Value="USD" />
                                                             <ext:ListItem Index="2" Text="EU" Value="EU" />
                                                         </Items>

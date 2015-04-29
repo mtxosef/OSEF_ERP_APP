@@ -98,10 +98,11 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 var sPreciarioGeneral_Load_Success = function () {
     if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
 
-        App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
-        //console.log(App.sCarga);
-        //    App.gpPreciario.getView().focusRow(App.sCarga.getCount()-1);
-        //    App.gpPreciario.editingPlugin.startEdit(App.gpPreciario.store.getAt(App.sCarga.getCount()-1), App.gpPreciario.columns[2]);
+        App.direct.ObtenerUltimoConceptoAdicional({
+            success: function (result) {
+                App.sCarga.insert(App.sCarga.getCount(), { Clave: result });
+            }
+        });
     }
     else {
         var d = new Date();
@@ -193,12 +194,7 @@ var cSubSubCategoria_Renderer = function (valor, columna, registro) {
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
     App.sCarga.removeAt(fila);
-    //    if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo') {
-    //        Ext.util.Cookies.set('cookieIDBorrarFotosVolumetria', App.sVolumetria.getAt(0).get('ID'));
-    //        Ext.util.Cookies.set('cookieConceptoFotosVolumetria', registro.get('ConceptoID'));
-
-    //        App.direct.obtenerImagenesPorConcepto();
-    //    }
+    HabilitarGuardar();
 };
 
 //Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
@@ -282,14 +278,25 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
         //Verificar si toda la fila contiene datos
         var registro = App.sCarga.getAt(columna.rowIdx);
 
-        if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
-            //Insertar un nuevo registro
-            App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-002' }); 
 
-            //Actualiza el renglon anterior pintando el botón de borrar
+        if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
+            //Insertar un nuevo registro 
+            var adc = 'ADC-';
+            var preclave = parseInt(registro.get('Clave').substring(4, 7));
+            var clave = String(preclave + 1);
+
+            if (clave.length = 1) {
+                clave = '00' + clave;
+            } else if (clave.length = 2) {
+                clave = '0' + clave;
+            }else if (clave.length = 3) {
+            }
+            clave = adc.concat(clave); 
+            //Inserta la nueva clave adicional
+            App.sCarga.insert(App.sCarga.getCount(), { Clave: clave }); 
             App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
             //Validar si se habilita el boton de afectar
-           
+
             HabilitarGuardar();
         }
     }

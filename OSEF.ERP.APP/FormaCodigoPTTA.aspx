@@ -48,15 +48,15 @@
                             <ext:ComboBox ID="cmbEspecialidad" runat="server"
                             Width="250"
                             Editable="false"
-                            DisplayField="name"
-                            ValueField="name"
+                            DisplayField="Nombre"
+                            ValueField="ID"
                             QueryMode="Local"
                             TriggerAction="All" AllowBlank="false"
                             EmptyText="Seleccione una especialidad...">  
                                 <Store>
                                     <ext:Store ID="sEspecialidad" runat="server">
                                         <Model>
-                                            <ext:Model ID="mEspecialidad" runat="server" IDProperty="ID">
+                                            <ext:Model ID="mEspecialidad" runat="server">
                                                 <Fields>
                                                     <ext:ModelField Name="ID" Type="String" />
                                                     <ext:ModelField Name="Nombre" Type="String" />

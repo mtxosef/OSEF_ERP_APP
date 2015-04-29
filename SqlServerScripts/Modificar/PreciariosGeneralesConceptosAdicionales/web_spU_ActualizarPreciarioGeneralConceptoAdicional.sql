@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spI_InsertarPreciarioGeneralConceptoAdicional' AND
+			WHERE  name = 'web_spU_ActualizarPreciarioGeneralConceptoAdicional' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spI_InsertarPreciarioGeneralConceptoAdicional
+	DROP PROCEDURE web_spU_ActualizarPreciarioGeneralConceptoAdicional
 GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: Lunes 19 de Abril de 2015
--- Description:	Inserta un registro de Concepto Adicional
+-- Description:	Actualiza un registro de Concepto Adicional
 -- =============================================
-CREATE PROCEDURE web_spI_InsertarPreciarioGeneralConceptoAdicional
+CREATE PROCEDURE web_spU_ActualizarPreciarioGeneralConceptoAdicional
 	-- Add the parameters for the stored procedure here
 	@ID				CHAR(10) OUTPUT,
 	@CLAVE			CHAR(30),
