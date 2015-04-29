@@ -137,7 +137,6 @@ namespace OSEF.ERP.APP
             }
         }
 
-
         /// <summary>
         /// Evento de clic del botón Afectar
         /// </summary>
