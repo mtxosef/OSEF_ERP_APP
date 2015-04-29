@@ -14,8 +14,17 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
                 //sEspecialidad.DataSource = CodigoFallasBusiness.();
+=======
+
+                sEspecialidad.DataSource = CodigoFallasBusiness.ObtenerCodigoFallas();
+>>>>>>> cbd9ae890a81c6c866e8ff844020f8e53fae64ca
                 sEspecialidad.DataBind();
+
+            sEspecialidad.DataSource = EspecialidadesBusiness.ObtenerEspecialidades();
+            sEspecialidad.DataBind(); 
+
         }
 
         #region Insertar

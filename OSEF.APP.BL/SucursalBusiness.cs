@@ -112,6 +112,18 @@ namespace OSEF.APP.BL
             return SucursalDataAccess.ObtenerSucursalesEnRevisionesPorID(strID);
         }
 
+
+        /// <summary>
+        /// Revisar si existen registros de Sucursales
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static bool ObtenerCREnSucursales(int CR)
+        {
+            return SucursalDataAccess.ObtenerCREnSucursales(CR);
+        }
+
+
         /// <summary>
         /// Revisar si existen registros de Sucursales en los preciarios por su ID
         /// </summary>

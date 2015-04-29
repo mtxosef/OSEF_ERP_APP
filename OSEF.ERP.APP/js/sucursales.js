@@ -15,6 +15,11 @@ var imgbtnGuardar_Click_Success = function () {
     window.parent.App.pCentro.getBody().App.sSucursales.reload();
 };
 
+//Evento que ocurre al dar clic en imgbtnGuardar
+var imgbtnGuardar_Click_SuccessCR = function () {
+ 
+};
+
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieEditarSucursal', App.gpSucursales.getSelectionModel().getSelection()[0].get('ID'));

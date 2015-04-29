@@ -392,7 +392,7 @@
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimaciones.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimacionesConcluidos.sql
-:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerMesaDeReporteConcluidos.sql 
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerMesaDeReportesConcluidos.sql 
 -- OrdenesEstimaciones (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimaciones\web_spI_InsertarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Modificar)
@@ -494,17 +494,17 @@
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave.sql
 --PreciariosGeneralesConceptosAdicionales(Modificar)
 :r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptosAdicionales\web_spU_ActualizarPreciarioGeneralConceptoAdicional.sql
-------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+--Preciario Concepto Adicional(Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerUltimoPreciarioGeneralConcepto.sql 
+--Preciario Concepto Adicional(Borrar) 
+:r c:\SqlServerScripts\Borrar\PreciariosGeneralesConceptosAdicionales\web_spD_BorrarPreciarioGeneralConcepto.sql  
+
 --ReportesEstimacion
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerEstimacionPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerREstimacion.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerResumenDePartidasPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerRResumenDePartidas.sql
-------------------------------------------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
---Mesa de Reportes(Consultar) 
-:r c:\SqlServerScripts\Consultar\Mesa de Reportes\web_spS_ObtenerMesaDeReporteConcluidos.sql 
-
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 --Codigos PPTA(Consultar) 
 :r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTA.sql 
@@ -516,5 +516,10 @@
 :r c:\SqlServerScripts\Modificar\CodigosPPTA\web_spU_ActualizarCodigoPPTA.sql  
 --Codigos PPTA(Borrar) 
 :r c:\SqlServerScripts\Borrar\CodigosPPTA\web_spD_BorrarCodigoPPTA.sql  
-=======
->>>>>>> origin/master
+------------------------------------------------------------------------------------------------------------------------------
+--Especialidades(Consultar)
+:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidades.sql 
+:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidadesEnUsoPorID.sql 
+:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidadesPorID.sql 
+
+
