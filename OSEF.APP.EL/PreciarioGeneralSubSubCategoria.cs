@@ -20,7 +20,7 @@ namespace OSEF.APP.EL
         string subcategoria;
         string usuario;
         string estatus;
-        DateTime fechaalta;
+        Nullable<DateTime> fechaalta;
         string tipo;
 
         #endregion
@@ -75,7 +75,7 @@ namespace OSEF.APP.EL
             set { estatus = value; }
         }
 
-        public DateTime FechaAlta
+        public Nullable<DateTime> FechaAlta
         {
             get { return fechaalta; }
             set { fechaalta = value; }

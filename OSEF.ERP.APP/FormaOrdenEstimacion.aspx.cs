@@ -152,8 +152,8 @@ namespace OSEF.ERP.APP
             string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
             string strSucursal = e.ExtraParams["Sucursal"];
             string strDiasAtencion = e.ExtraParams["diasAtencion"];
-
             decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
+
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
             OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
@@ -162,8 +162,10 @@ namespace OSEF.ERP.APP
 
             //Nos traemos el movimiento actual
             string strEstimacion= Cookies.GetCookie("cookieEsEstimacion").Value;
+
             //Nos traemos el ID del movimiento actual
             string iID = Cookies.GetCookie("cookieIDMov").Value;
+
             //Validamos que sea un movimiento de reporte para que avance a estimacion
             if (strEstimacion.Equals("Reporte"))
             {

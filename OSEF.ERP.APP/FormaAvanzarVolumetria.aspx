@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="css/xButton.css" />
     <script type='text/javascript' src="js/volumetrias.js"></script>
     <script type="text/javascript" src="js/avanzarVolumetria.js"></script>
-
 </head>
 <body>
     <ext:ResourceManager 

@@ -329,6 +329,7 @@
     <Content Include="FormaAccesoSucursales.aspx" />
     <Content Include="FormaAnexosSocio.aspx" />
     <Content Include="FormaAvance.aspx" />
+    <Content Include="FormaAvanzarOrdenEstimacion.aspx" />
     <Content Include="FormaAvanzarVolumetria.aspx" />
     <Content Include="FormaAyudaBusquedaConceptoPreciario.aspx" />
     <Content Include="FormaBuscaCodigosPostales.aspx" />
@@ -405,6 +406,7 @@
     <Content Include="js\articulos.js" />
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
+    <Content Include="js\avanzarOrdenEstimacion.js" />
     <Content Include="js\avanzarVolumetria.js" />
     <Content Include="js\buscacodigosPostales.js" />
     <Content Include="js\buscaConceptoPreciario.js" />
@@ -702,6 +704,13 @@
     </Compile>
     <Compile Include="FormaAvance.aspx.designer.cs">
       <DependentUpon>FormaAvance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaAvanzarOrdenEstimacion.aspx.cs">
+      <DependentUpon>FormaAvanzarOrdenEstimacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaAvanzarOrdenEstimacion.aspx.designer.cs">
+      <DependentUpon>FormaAvanzarOrdenEstimacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaAvanzarVolumetria.aspx.cs">
       <DependentUpon>FormaAvanzarVolumetria.aspx</DependentUpon>

@@ -1,6 +1,4 @@
 ﻿var btnAceptar_Click_Success = function (response, result) {
-
-
     //1. Obtener datos de la nueva volumetria
     App.direct.ObtenerVolumetria(result.extraParamsResponse.captura, {
         //2. Asignar los datos a los controles

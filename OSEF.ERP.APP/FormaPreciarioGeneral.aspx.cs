@@ -115,7 +115,9 @@ namespace OSEF.ERP.APP
             if (strcookieEditarPreciario.Equals("Nuevo"))
             {
                 //7. Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
-                oPreciario.FechaAlta = DateTime.Now;
+                oPreciario.FechaAlta =DateTime.Now;
+
+
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 oPreciario.Usuario = oUsuario.ID;
                 oPreciario.Estatus = strEstatus;
@@ -174,7 +176,7 @@ namespace OSEF.ERP.APP
                         ssc.SubCategoria = subcategoria;
                         ssc.Usuario = oUsuario.ID;
                         ssc.Estatus = sd.Estatus;
-                        //ssc.FechaAlta = sd.FechaAlta;
+                        ssc.FechaAlta = sd.FechaAlta;
                         subsubcategoria = PreciarioGeneralSubSubCategoriaBusiness.Insertar(ssc);
                     }
                     //12. Insertar Concepto

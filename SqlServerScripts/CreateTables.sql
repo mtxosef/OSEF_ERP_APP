@@ -339,15 +339,24 @@ CREATE TABLE CapacidadesPagos(
 	Importe						SMALLMONEY		NOT NULL
 )
 
-CREATE TABLE ReferenciasBancarias(
+CREATE TABLE ReferenciasPersonasSolicitudesPrestamos(
 	ID							CHAR(7)			NOT NULL PRIMARY KEY,
 	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
-	Nombre						VARCHAR(50)		NULL,
+	Nombre						VARCHAR(150)	NULL,
+	Domicilio					VARCHAR(200)	NULL,
+	Telefono					VARCHAR(20)		NULL,
+	Actividad					VARCHAR(100)	NULL
+)
+
+CREATE TABLE ReferenciasInstitucionesSolicitudesPrestamos(
+	ID							CHAR(7)			NOT NULL PRIMARY KEY,
+	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
+	Nombre						VARCHAR(100)	NULL,
 	TipoCuenta					VARCHAR(50)		NULL,
 	NoCuenta					VARCHAR(50)		NULL
 )
 
-CREATE TABLE BienesInmuebles(
+CREATE TABLE BienesSolicitudesPrestamos(
 	ID							CHAR(7)			NOT NULL PRIMARY KEY,
 	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
 	TipoPersona					VARCHAR(20)		NOT NULL,

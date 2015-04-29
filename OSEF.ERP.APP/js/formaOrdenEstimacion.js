@@ -257,15 +257,11 @@ var imgbtnBorrar_Click_Success = function (response, result) {
     //    window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
 };
 
-
-
 //Método que se lanza antes de llamar al procedimiento de Afectar
 var imgbtnAfectar_Click_Before = function () {
-
-
     Ext.util.Cookies.set('cookieEsEstimacion', 'No');
+
     if (App.sOrdenEstimacion.getCount() != 0) {
-       
         if (App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
         && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte') {
 
