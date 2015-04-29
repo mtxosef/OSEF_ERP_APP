@@ -146,6 +146,49 @@ namespace OSEF.APP.DL
 
         #region Eliminar
 
+        ///// <summary>
+        ///// Método que borrar algun PreciarioGeneralConcepto por su Preciario
+        ///// </summary>
+        ///// <param name="dID"></param>
+        //public static int Borrar(string dID)
+        //{
+        //    try
+        //    {
+        //        //1. Configurar la conexión y el tipo de comando
+        //        SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+        //        SqlCommand sqlcComando = new SqlCommand();
+        //        sqlcComando.Connection = sqlcConectar;
+        //        sqlcComando.CommandType = CommandType.StoredProcedure;
+        //        sqlcComando.CommandText = "web_spD_BorrarPreciarioGeneralConcepto";
+
+        //        //2. Declarar los parametros
+        //        SqlParameter sqlpPreciario = new SqlParameter();
+        //        sqlpPreciario.ParameterName = "@Preciario";
+        //        sqlpPreciario.SqlDbType = SqlDbType.VarChar;
+        //        sqlpPreciario.Value = dID;
+
+        //        //3. Agregar los parametros al comando
+        //        sqlcComando.Parameters.Add(sqlpPreciario);
+
+        //        //4. Abrir la conexión
+        //        sqlcComando.Connection.Open();
+
+        //        //5. Ejecutar la instrucción DELETE que no regresa filas
+        //        int result = sqlcComando.ExecuteNonQuery();
+
+        //        //6. Cerrar la conexión
+        //        sqlcComando.Connection.Close();
+
+        //        //7. Regresar el resultado
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Error capa de datos (public static int Borrar(PreciarioGeneralConcepto " + dID + ")): " + ex.Message);
+        //    }
+        //}
+
+
         /// <summary>
         /// Método que borrar algun PreciarioGeneralConcepto por su Preciario
         /// </summary>
@@ -159,16 +202,17 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spD_BorrarPreciarioGeneralConcepto";
+                sqlcComando.CommandText = "web_spD_BorrarPreciarioGeneralConceptoAdicional";
 
                 //2. Declarar los parametros
-                SqlParameter sqlpPreciario = new SqlParameter();
-                sqlpPreciario.ParameterName = "@Preciario";
-                sqlpPreciario.SqlDbType = SqlDbType.VarChar;
-                sqlpPreciario.Value = dID;
+                SqlParameter sqlpIdConcepto = new SqlParameter();
+                sqlpIdConcepto.ParameterName = "@ID";
+                sqlpIdConcepto.SqlDbType = SqlDbType.Char;
+                sqlpIdConcepto.Size = 10;
+                sqlpIdConcepto.Value = dID;
 
                 //3. Agregar los parametros al comando
-                sqlcComando.Parameters.Add(sqlpPreciario);
+                sqlcComando.Parameters.Add(sqlpIdConcepto);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -239,6 +283,44 @@ namespace OSEF.APP.DL
         }
 
 
+        /// <summary>
+        /// Obtener un registro de PreciarioGeneralConcepto por su Preciario
+        /// </summary>
+        /// <param name="strPreciario"></param>
+        /// <returns></returns>
+        public static string ObtenerUltimoConceptoAdicional()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerUltimoPreciarioGeneralConcepto";
+
+                //2. Declarar los parametros
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                string result = Convert.ToString(sqlcComando.ExecuteScalar());
+
+                //6. Asignar la lista 
+                
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static PreciarioGeneralConcepto ObtenerUltimoConceptoAdicional()): " + ex.Message);
+            }
+        }
 
         /// <summary>
         /// Obtener todos los registros de PreciarioGeneralConcepto por su ID
@@ -353,5 +435,138 @@ namespace OSEF.APP.DL
 
 
         #endregion
+
+
+        #region Actualizar
+
+        /// <summary>
+        /// Método que actualiza un registro en la tabla de PreciarioConcepto
+        /// </summary>
+        /// <param name="iPreciarioConcepto"></param>
+        public static int Actualizar(PreciarioGeneralConcepto iPreciarioConcepto)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spU_ActualizarPreciarioGeneralConceptoAdicional";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Size = 10;
+                sqlpID.Direction = ParameterDirection.Output;
+
+                //2. Declarar los parametros
+                SqlParameter sqlpClave = new SqlParameter();
+                sqlpClave.ParameterName = "@Clave";
+                sqlpClave.SqlDbType = SqlDbType.Char;
+                sqlpClave.Size = 30;
+                sqlpClave.Value = iPreciarioConcepto.Clave;
+
+                SqlParameter sqlpPreciario = new SqlParameter();
+                sqlpPreciario.ParameterName = "@Preciario";
+                sqlpPreciario.SqlDbType = SqlDbType.VarChar;
+                sqlpPreciario.Value = iPreciarioConcepto.Preciario;
+
+                SqlParameter sqlpDescripcion = new SqlParameter();
+                sqlpDescripcion.ParameterName = "@Descripcion";
+                sqlpDescripcion.SqlDbType = SqlDbType.VarChar;
+                sqlpDescripcion.Value = iPreciarioConcepto.Descripcion;
+
+                SqlParameter sqlpCategoria = new SqlParameter();
+                sqlpCategoria.ParameterName = "@Categoria";
+                sqlpCategoria.SqlDbType = SqlDbType.Char;
+                sqlpCategoria.Size = 10;
+                sqlpCategoria.Value = iPreciarioConcepto.Categoria;
+
+                SqlParameter sqlpSubCategoria = new SqlParameter();
+                sqlpSubCategoria.ParameterName = "@SubCategoria";
+                sqlpSubCategoria.SqlDbType = SqlDbType.Char;
+                sqlpSubCategoria.Size = 10;
+                sqlpSubCategoria.Value = iPreciarioConcepto.SubCategoria;
+
+                SqlParameter sqlpSubSubCategoria = new SqlParameter();
+                sqlpSubSubCategoria.ParameterName = "@SubSubCategoria";
+                sqlpSubSubCategoria.SqlDbType = SqlDbType.Char;
+                sqlpSubSubCategoria.Size = 10;
+                sqlpSubSubCategoria.Value = iPreciarioConcepto.SubSubCategoria;
+
+                SqlParameter sqlpUnidad = new SqlParameter();
+                sqlpUnidad.ParameterName = "@Unidad";
+                sqlpUnidad.SqlDbType = SqlDbType.VarChar;
+                sqlpUnidad.Value = iPreciarioConcepto.Unidad;
+
+                SqlParameter sqlpCosto = new SqlParameter();
+                sqlpCosto.ParameterName = "@Costo";
+                sqlpCosto.SqlDbType = SqlDbType.Decimal;
+                sqlpCosto.Value = iPreciarioConcepto.Costo;
+
+
+                SqlParameter sqlpCantidad = new SqlParameter();
+                sqlpCantidad.ParameterName = "@Cantidad";
+                sqlpCantidad.SqlDbType = SqlDbType.Decimal;
+                sqlpCantidad.Value = iPreciarioConcepto.Cantidad;
+
+
+                SqlParameter sqlpUsuario = new SqlParameter();
+                sqlpUsuario.ParameterName = "@Usuario";
+                sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+                sqlpUsuario.Value = iPreciarioConcepto.Usuario;
+
+                SqlParameter sqlpEstatus = new SqlParameter();
+                sqlpEstatus.ParameterName = "@Estatus";
+                sqlpEstatus.SqlDbType = SqlDbType.VarChar;
+                sqlpEstatus.Value = iPreciarioConcepto.Estatus;
+
+                SqlParameter sqlpFechaAlta = new SqlParameter();
+                sqlpFechaAlta.ParameterName = "@FechaAlta";
+                sqlpFechaAlta.SqlDbType = SqlDbType.SmallDateTime;
+                sqlpFechaAlta.Value = iPreciarioConcepto.FechaAlta;
+
+                SqlParameter sqlpMoneda = new SqlParameter();
+                sqlpMoneda.ParameterName = "@Moneda";
+                sqlpMoneda.SqlDbType = SqlDbType.VarChar;
+                sqlpMoneda.Value = iPreciarioConcepto.Moneda;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpClave);
+                sqlcComando.Parameters.Add(sqlpPreciario);
+                sqlcComando.Parameters.Add(sqlpDescripcion);
+                sqlcComando.Parameters.Add(sqlpCategoria);
+                sqlcComando.Parameters.Add(sqlpSubCategoria);
+                sqlcComando.Parameters.Add(sqlpSubSubCategoria);
+                sqlcComando.Parameters.Add(sqlpUnidad);
+                sqlcComando.Parameters.Add(sqlpCosto);
+                sqlcComando.Parameters.Add(sqlpCantidad);
+                sqlcComando.Parameters.Add(sqlpUsuario);
+                sqlcComando.Parameters.Add(sqlpEstatus);
+                sqlcComando.Parameters.Add(sqlpFechaAlta);
+                sqlcComando.Parameters.Add(sqlpMoneda);
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción INSERT que regresa un dato que es el ID
+                int result = Convert.ToInt32(sqlcComando.ExecuteScalar());
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int Actualizar(PreciarioGeneralConcepto " + iPreciarioConcepto.Clave + ")): " + ex.Message);
+            }
+        }
+
+        #endregion
+
     }
 }

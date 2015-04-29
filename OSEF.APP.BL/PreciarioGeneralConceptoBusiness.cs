@@ -32,7 +32,7 @@ namespace OSEF.APP.BL
         public static int Borrar(string dID)
         {
             return PreciarioGeneralConceptoDataAccess.Borrar(dID);
-        }
+        } 
 
         #endregion
 
@@ -75,6 +75,28 @@ namespace OSEF.APP.BL
         public static List<PreciarioGeneralConcepto> ObtenerPreciarioConceptoFiltro(string strPreciario, string strCategoria, string strSubCategoria, string strSubsubCategoria)
         {
             return PreciarioGeneralConceptoDataAccess.ObtenerPreciarioGeneralConceptoFiltro(strPreciario, strCategoria, strSubCategoria, strSubsubCategoria);
+        }
+
+        /// <summary>
+        /// Método que obtiene el ultimo ID de PreciarioGeneralConcepto
+        /// </summary>
+        /// <returns></returns>
+        public static string ObtenerUltimoConceptoAdicional()
+        {
+            return PreciarioGeneralConceptoDataAccess.ObtenerUltimoConceptoAdicional();
+        }
+
+        #endregion
+
+        #region Actualizar
+
+        /// <summary>
+        /// Método que actualiza algun PreciarioGeneralConcepto por su ID
+        /// </summary>
+        /// <param name="iPreciarioConcepto"></param> 
+       public static int Actualizar(PreciarioGeneralConcepto iPreciarioConcepto)
+        {
+            return PreciarioGeneralConceptoDataAccess.Actualizar(iPreciarioConcepto);
         }
 
         #endregion

@@ -85,27 +85,15 @@ namespace OSEF.ERP.APP
 
             string strRegistrosNuevos = e.ExtraParams["registrosnuevos"];
             string strRegistrosActualizados = e.ExtraParams["registrosactualizados"];
-            string strRegistrosEliminados = e.ExtraParams["registroseliminados"];
+            string strRegistrosEliminados = e.ExtraParams["registroseliminados"]; 
+
             string strcookieEditarPreciario = Cookies.GetCookie("cookieEditarPreciarioGeneral").Value;
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             string strPreciarioDetalle = e.ExtraParams["DetallePreciario"];
 
             //2. Se guarda en una lista el Store que contiene todos los campos para deserealizarlos y usarlos para el insert
             List<PreciarioGeneralConcepto> lDetallePreciario = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strPreciarioDetalle);
-
-            if (!strRegistrosNuevos.Equals("0"))
-            { 
-                List<PreciarioGeneralConcepto> lDetallePreciarioNuevos = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosNuevos);
-            }
-            if (!strRegistrosActualizados.Equals("0"))
-            {
-                List<PreciarioGeneralConcepto> lDetallePreciarioActualizados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosActualizados);
-            }
-            if (!strRegistrosEliminados.Equals("0"))
-            {
-                List<PreciarioGeneralConcepto> lDetallePreciarioEliminados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosEliminados);
-            }
-
+             
             PreciarioGeneral oPreciario = new PreciarioGeneral();
 
             //3. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
@@ -256,11 +244,67 @@ namespace OSEF.ERP.APP
                     oPreciario.Archivo = fufArchivoExcel.FileName;
 
                 //15. Tomamos la sucursal y estatus como parametro independiente por que ya esta deshabilitada
-                oPreciario.ID = strcookieEditarPreciario;
+                oPreciario.ID = strcookieEditarPreciario;//ID PRE
                 oPreciario.Estatus = strEstatus;
 
                 //16. Actualizar los datos del Preciario
-                PreciarioGeneralBusiness.Actualizar(oPreciario);
+                PreciarioGeneralBusiness.Actualizar(oPreciario); 
+
+                //16.1 Validamos si tiene nuevos conceptos  
+                Usuario usr = (Usuario)Session["Usuario"];
+                    if (!strRegistrosNuevos.Equals("0"))
+                    { 
+                        List<PreciarioGeneralConcepto> lDetallePreciarioNuevos = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosNuevos);
+                         foreach (PreciarioGeneralConcepto sd in lDetallePreciarioNuevos)
+                        {
+                            PreciarioGeneralConcepto npgc = new PreciarioGeneralConcepto();
+                            npgc.Clave = sd.Clave;
+                            npgc.Preciario = oPreciario.ID;
+                            npgc.Descripcion = sd.Descripcion;
+                            npgc.Unidad = sd.Unidad;
+                            npgc.Cantidad = sd.Cantidad;
+                            npgc.Costo = sd.Costo;
+                            npgc.Categoria = sd.Categoria;
+                            npgc.SubCategoria = sd.SubCategoria;
+                            npgc.SubSubCategoria = sd.SubSubCategoria;
+                            npgc.Usuario = usr.ID;
+                            npgc.Estatus = oPreciario.Estatus;
+                            npgc.FechaAlta = DateTime.Now ;
+                            npgc.Moneda = sd.Moneda;
+                            PreciarioGeneralConceptoBusiness.Insertar(npgc);
+                        }
+                    }
+                    if (!strRegistrosActualizados.Equals("0"))
+                    { 
+                        List<PreciarioGeneralConcepto> lDetallePreciarioActualizados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosActualizados);
+                        foreach (PreciarioGeneralConcepto sd in lDetallePreciarioActualizados)
+                        {
+                            PreciarioGeneralConcepto npgc = new PreciarioGeneralConcepto();
+                            npgc.Clave = sd.Clave;
+                            npgc.Preciario = oPreciario.ID;
+                            npgc.Descripcion = sd.Descripcion;
+                            npgc.Unidad = sd.Unidad;
+                            npgc.Cantidad = sd.Cantidad;
+                            npgc.Costo = sd.Costo;
+                            npgc.Categoria = sd.Categoria;
+                            npgc.SubCategoria = sd.SubCategoria;
+                            npgc.SubSubCategoria = sd.SubSubCategoria;
+                            npgc.Usuario = usr.ID;
+                            npgc.Estatus = oPreciario.Estatus;
+                            npgc.FechaAlta = DateTime.Now;
+                            npgc.Moneda = sd.Moneda;
+                            PreciarioGeneralConceptoBusiness.Actualizar(npgc);
+                        }
+                    }
+                    if (!strRegistrosEliminados.Equals("0"))
+                    { 
+                        List<PreciarioGeneralConcepto> lDetallePreciarioEliminados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosEliminados);
+                        foreach (PreciarioGeneralConcepto sd in lDetallePreciarioEliminados)
+                        { 
+                            PreciarioGeneralConceptoBusiness.Borrar(sd.ID);
+                        }
+                    }
+                
 
                 //17. Mandar mensaje con el código del preciario
                 var success = new JFunction { Fn = "imgbtnGuardar_Click_Success" };
@@ -585,7 +629,19 @@ namespace OSEF.ERP.APP
             return PreciarioGeneralSubSubCategoriaBusiness.ObtenerPreciarioGeneralSubSubCategoriaPorID(strSubSubCategoria);
         }
 
-       
+        #region Consultar
+
+        /// <summary>
+        /// Evento que obtiene un ADC-XXX
+        /// </summary> 
+        /// <returns></returns>
+        [DirectMethod]
+        public string ObtenerUltimoConceptoAdicional()
+        {
+            return PreciarioGeneralConceptoBusiness.ObtenerUltimoConceptoAdicional();
+        }
+
+        #endregion
 
     }
 }

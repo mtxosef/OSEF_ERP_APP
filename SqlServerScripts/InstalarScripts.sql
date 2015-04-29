@@ -518,3 +518,18 @@
 :r c:\SqlServerScripts\Borrar\CodigosPPTA\web_spD_BorrarCodigoPPTA.sql  
 =======
 >>>>>>> origin/master
+
+------------------------------------------------------------------------------------------------------------------------------
+--Especialidades(Consultar)
+:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidades.sql 
+:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidadesEnUsoPorID.sql 
+:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidadesPorID.sql 
+
+------------------------------------------------------------------------------------------------------------------------------
+--Preciario Concepto Adicional(Consultar)
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerUltimoPreciarioGeneralConcepto.sql 
+--Preciario Concepto Adicional(Borrar) 
+:r c:\SqlServerScripts\Borrar\PreciariosGeneralesConceptosAdicionales\web_spD_BorrarPreciarioGeneralConcepto.sql  
+--Preciario Concepto Adicional(Insertar)
+:r c:\SqlServerScripts\Insertar\PreciariosGeneralesConceptosAdicionales\web_spI_InsertarPreciarioGeneralConceptoAdicional.sql
+
