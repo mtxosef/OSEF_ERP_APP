@@ -1,40 +1,12 @@
 ﻿//Variables gloables
-var estadoNuevo = false;
-var estadoEditar = false;
+var codigoNuevo = false;
+var codigofallaEditar = false;
 var indice = 0;
-
-//Evento que se lanza al abrir un nodo del TreePanel
-var tpCodigosPPTA_BeforeLoad = function (store, operation, options) {
-    //1. Obtener el nodo que se abre
-    var node = operation.node;
-
-    //2. Construir los nodos hijos
-    App.direct.GenerarNodo(node.getId(), {
-        success: function (result) {
-            node.set('loading', false);
-            node.set('loaded', true);
-            var data = Ext.decode(result);
-            if (data.length != 0) {
-                node.appendChild(data, undefined, true);
-                node.expand();
-            }
-        },
-
-        failure: function (errorMsg) {
-            Ext.Msg.alert('Error', errorMsg);
-        }
-    });
-
-    //3. Regresar falso para no lanzar el Load
-    return false;
-};
- 
-
 
 //Accion que se lanza al hacer clic en un registro
 var tpCodigosPPTA_Select = function (gridview, registro, index, gvhtml) {
     //1. Validar que se lance cuando no se hace un nuevo registro
-    if (!estadoNuevo && !estadoEditar) {
+    if (!codigoNuevo && !codigofallaEditar) {
         //2. Habilitar los botones de editar y borrar
         App.imgbtnEditar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(false);
@@ -44,60 +16,31 @@ var tpCodigosPPTA_Select = function (gridview, registro, index, gvhtml) {
 
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
+    var w = window.parent.App.wEmergente;
     Ext.util.Cookies.set('cookieEditarCodigoPPTA', 'Nuevo');
-    window.parent.App.wEmergente.load('FormaCodigoPTTA.aspx');
-    window.parent.App.wEmergente.setHeight(520);
-    window.parent.App.wEmergente.setWidth(385);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('NUEVO CÓDIGO PPTA');
-    window.parent.App.wEmergente.show();
-};
-
-//Editar un registro
-var imgbtnEditar_Click = function (imagebutton, evento, opciones) {
-
-    //1. Campos y Botones a deshabilitar o habilitar 
-    App.imgbtnNuevo.setDisabled(false);
-    App.imgbtnEditar.setDisabled(true);
-    App.imgbtnBorrar.setDisabled(true);
-
-    estadoEditar = true;
-};
-
-
-
-//Editar un registro
-var imgbtnGuardar_Click = function () {
-
-    //1. Validar la información 
-
-    //2. Dejar forma lista para modificar 
-    alert(App.cmbEstado.getValue());
-
-};
-// msg: '<p align="center">Código PPTA registrado ID: ' + App.sVolumetria.getAt(0).get('ID') + '.</p>',
- 
-
-var imgbtnGuardar_change = function () {
-    var regex = /^[0-9]{5,5}$/
-    if (regex.test(App.txtCP.getValue())) {
-        App.imgbtnGuardar.setDisabled(false);
-    } else {
-        App.imgbtnGuardar.setDisabled(true);
-    }
-}
-
+    w.load('FormaCodigoPPTA.aspx');
+    w.setHeight(535);
+    w.setWidth(410);
+    w.center();
+    w.setTitle('NUEVO CÓDIGO PPTA');
+    w.show();
+}; 
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
+    App.imgbtnNuevo.setDisabled(false);
+    App.imgbtnEditar.setDisabled(true);
+    App.imgbtnBorrar.setDisabled(true);
+    var w = window.parent.App.wEmergente; 
     Ext.util.Cookies.set('cookieEditarCodigoPPTA', App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('ID'));
-    window.parent.App.wEmergente.load('FormaCodigoPPTA.aspx');
-    window.parent.App.wEmergente.setHeight(220);
-    window.parent.App.wEmergente.setWidth(670);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('EDITAR CÓGIDO PPTA ' + Ext.util.Cookies.get('cookieEditarCodigoPPTA'));
-    window.parent.App.wEmergente.show();
+    w.load('FormaCodigoPPTA.aspx');
+    w.setHeight(535);
+    w.setWidth(410);
+    w.center();
+    w.setTitle('EDITAR CÓGIDO PPTA ' + Ext.util.Cookies.get('cookieEditarCodigoPPTA'));
+    w.show(); 
 };
+ 
 
 
 
@@ -220,7 +163,7 @@ function getData() {
 //Accion que se lanza al hacer clic en un registro
 var tpCodigoPPTA_Select = function (gridview, registro, index, gvhtml) {
     //1. Validar que se lance cuando no se hace un nuevo registro
-    if (!estadoNuevo && !estadoEditar) {
+    if (!codigoNuevo && !codigofallaEditar) {
         //2. Habilitar los botones de editar y borrar
         App.imgbtnEditar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(false);
@@ -246,3 +189,7 @@ var cvDias_Renderer = function (valor, columna, registro) {
         return "0 días";
     }
 };
+
+var cEspecialidad_Renderer = function (valor, columna, registro) { 
+    return valor.Nombre;
+} 

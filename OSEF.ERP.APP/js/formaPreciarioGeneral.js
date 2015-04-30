@@ -229,8 +229,8 @@ var ceFormaPreciarioGeneral_BeforeEdit = function (editor, context, opciones) {
 };
 
 //Evento que se lanza antes de pintar la columna de comandos
-var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-    if (grid.getStore().getCount() - 1 == rowIndex) {
+var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) { 
+    if ((grid.getStore().getCount() - 1) == rowIndex) {
         toolbar.items.get(0).hide();
     }
 }

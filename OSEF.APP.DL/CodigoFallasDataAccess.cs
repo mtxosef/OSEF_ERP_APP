@@ -177,10 +177,10 @@ namespace OSEF.APP.DL
                 sqlpFamilia.SqlDbType = SqlDbType.Char;
                 sqlpFamilia.Value = iCodigoFallas.Familia;
 
-                SqlParameter sqlpEspecialidades = new SqlParameter();
-                sqlpEspecialidades.ParameterName = "@Especialidades";
-                sqlpEspecialidades.SqlDbType = SqlDbType.Char;
-                sqlpEspecialidades.Value = iCodigoFallas.Especialidades;
+                SqlParameter sqlpSubEspecialidades = new SqlParameter();
+                sqlpSubEspecialidades.ParameterName = "@SubEspecialidad";
+                sqlpSubEspecialidades.SqlDbType = SqlDbType.Char;
+                sqlpSubEspecialidades.Value = iCodigoFallas.Subespecialidad;
 
                 SqlParameter sqlpCodigoMainSaver = new SqlParameter();
                 sqlpCodigoMainSaver.ParameterName = "@CodigoMainSaver";
@@ -212,7 +212,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpEspecialidad);
                 sqlcComando.Parameters.Add(sqlpFamilia);
-                sqlcComando.Parameters.Add(sqlpEspecialidades);
+                sqlcComando.Parameters.Add(sqlpSubEspecialidades);
                 sqlcComando.Parameters.Add(sqlpCodigoMainSaver);
                 sqlcComando.Parameters.Add(sqlpDescripcion);
                 sqlcComando.Parameters.Add(sqlpDias);
@@ -275,9 +275,9 @@ namespace OSEF.APP.DL
                 sqlpFamilia.Value = iCodigoFallas.Familia;
 
                 SqlParameter sqlpEspecialidades = new SqlParameter();
-                sqlpEspecialidades.ParameterName = "@Especialidades";
+                sqlpEspecialidades.ParameterName = "@SubEspecialidad";
                 sqlpEspecialidades.SqlDbType = SqlDbType.Char;
-                sqlpEspecialidades.Value = iCodigoFallas.Especialidades;
+                sqlpEspecialidades.Value = iCodigoFallas.Subespecialidad;
 
                 SqlParameter sqlpCodigoMainSaver = new SqlParameter();
                 sqlpCodigoMainSaver.ParameterName = "@CodigoMainSaver";

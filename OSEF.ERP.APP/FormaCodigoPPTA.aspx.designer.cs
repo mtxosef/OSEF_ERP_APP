@@ -103,6 +103,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mEspecialidad;
         
         /// <summary>
+        /// Control Toolbar3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar Toolbar3;
+        
+        /// <summary>
+        /// Control btnAgregarEspecialidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnAgregarEspecialidades;
+        
+        /// <summary>
         /// Control FieldContainer1.
         /// </summary>
         /// <remarks>
@@ -121,6 +139,42 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbFamilia;
         
         /// <summary>
+        /// Control sFamilias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sFamilias;
+        
+        /// <summary>
+        /// Control mFamilias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mFamilias;
+        
+        /// <summary>
+        /// Control Toolbar2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar Toolbar2;
+        
+        /// <summary>
+        /// Control btnAgregarFamilias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnAgregarFamilias;
+        
+        /// <summary>
         /// Control FieldContainer4.
         /// </summary>
         /// <remarks>
@@ -137,6 +191,42 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbSubEspecialidad;
+        
+        /// <summary>
+        /// Control sSubEspecialidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sSubEspecialidad;
+        
+        /// <summary>
+        /// Control mSubEspecialidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSubEspecialidad;
+        
+        /// <summary>
+        /// Control Toolbar1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar Toolbar1;
+        
+        /// <summary>
+        /// Control btnAgregarSubEspecialidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnAgregarSubEspecialidades;
         
         /// <summary>
         /// Control FieldContainer5.

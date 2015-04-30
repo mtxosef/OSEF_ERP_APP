@@ -12,5 +12,10 @@ namespace OSEF.APP.BL
         {
             return EspecialidadesDataAccess.ObtenerEspecialidades();
         }
+
+        public static Especialidades ObtenerEspecialidadesPorID(string ID)
+        {
+            return EspecialidadesDataAccess.ObtenerEspecialidadesPorID(ID);
+        }
     }
 }

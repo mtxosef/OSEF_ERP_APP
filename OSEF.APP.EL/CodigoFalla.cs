@@ -11,14 +11,19 @@ namespace OSEF.APP.EL
         #region Campos
 
         string id;
-        string especialidad;
-        string familia;
-        string especialidades;
+        string especialidad; 
+        string familia; 
+        string subespecialidad;
+
         string codigomainsaver;
         string descripcion;
         string dias;
         string prioridad;
         string tiempoestimado;
+
+        Especialidades respecialidad;
+        Familias rfamilia;
+        SubEspecialidades rsubespecialidad;
 
         #endregion
 
@@ -29,20 +34,23 @@ namespace OSEF.APP.EL
             get { return id; }
             set { id = value; }
         }
-        public string Especialidad
+
+        public Especialidades REspecialidad
         {
-            get { return especialidad; }
-            set { especialidad = value; }
+            get { return respecialidad; }
+            set { respecialidad = value; }
         }
-        public string Familia
+
+        public Familias RFamilias
         {
-            get { return familia; }
-            set { familia = value; }
+            get { return rfamilia; }
+            set { rfamilia = value; }
         }
-        public string Especialidades
+
+        public SubEspecialidades RSubespecialidad
         {
-            get { return especialidades; }
-            set { especialidades = value; }
+            get { return rsubespecialidad; }
+            set { rsubespecialidad = value; }
         }
         public string CodigoMainSaver
         {
@@ -68,8 +76,23 @@ namespace OSEF.APP.EL
         {
             get { return tiempoestimado; }
             set { tiempoestimado = value; }
-        }  
+        }
 
+        public string Especialidad
+        {
+            get { return especialidad; }
+            set { especialidad = value; }
+        }
+        public string Familia
+        {
+            get { return familia; }
+            set { familia = value; }
+        }
+        public string Subespecialidad
+        {
+            get { return subespecialidad; }
+            set { subespecialidad = value; }
+        }
         #endregion
     }
 }

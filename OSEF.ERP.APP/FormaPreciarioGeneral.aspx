@@ -410,7 +410,7 @@
                                                 ID="ccAcciones"
                                                 runat="server" 
                                                 Width="25">
-                                                <PrepareToolbar Fn="ccAcciones_PrepareToolbar" />
+                                                <PrepareToolbar Handler="ccAcciones_PrepareToolbar" />
                                                 <Commands>
                                                     <ext:GridCommand
                                                         Icon="Delete"

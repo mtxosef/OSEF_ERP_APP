@@ -340,13 +340,14 @@
     <Content Include="FormaCambiarContrasena.aspx" />
     <Content Include="FormaCargaMultiImagenes.aspx" />
     <Content Include="FormaCodigoPostales.aspx" />
-    <Content Include="FormaCodigoPTTA.aspx" />
+    <Content Include="FormaCodigoPPTA.aspx" />
     <Content Include="FormaColonia.aspx" />
     <Content Include="FormaConcepto.aspx" />
     <Content Include="FormaConcepto2.aspx" />
     <Content Include="FormaAvanzarMovimiento.aspx" />
     <Content Include="FormaCroquisOrdenEstimacion.aspx" />
     <Content Include="FormaCuadrillas.aspx" />
+    <Content Include="FormaEspecialidad.aspx" />
     <Content Include="FormaEspecificarFechas.aspx" />
     <Content Include="FormaFacturasOrdenEstimacion.aspx" />
     <Content Include="FormaGaleria.aspx" />
@@ -372,6 +373,7 @@
     <Content Include="FormaReporteEstimacion.aspx" />
     <Content Include="FormaReporteOrdenCambioD.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
+    <Content Include="FormaSubEspecialidad.aspx" />
     <Content Include="FormaSubirCroquisOrdenEstimacion.aspx" />
     <Content Include="FormaSubirFacturasOrdenEstimacion.aspx" />
     <Content Include="FormaSubirImagenesCliente.aspx" />
@@ -426,9 +428,12 @@
     <Content Include="js\buscapreciarios.js" />
     <Content Include="js\formaCodigoppta.js" />
     <Content Include="js\formacuadrilla.js" />
+    <Content Include="js\formaEspecialidad.js" />
+    <Content Include="js\formaFamilias.js" />
     <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\formaReporteMovimientoEstimacion.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
+    <Content Include="js\formaSubEspecialidades.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
     <Content Include="js\cuentasContables.js" />
@@ -527,6 +532,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="FormaFamilias.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulos.aspx.cs">
@@ -782,12 +788,12 @@
     <Compile Include="FormaCodigoPostales.aspx.designer.cs">
       <DependentUpon>FormaCodigoPostales.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormaCodigoPTTA.aspx.cs">
-      <DependentUpon>FormaCodigoPTTA.aspx</DependentUpon>
+    <Compile Include="FormaCodigoPPTA.aspx.cs">
+      <DependentUpon>FormaCodigoPPTA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormaCodigoPTTA.aspx.designer.cs">
-      <DependentUpon>FormaCodigoPTTA.aspx</DependentUpon>
+    <Compile Include="FormaCodigoPPTA.aspx.designer.cs">
+      <DependentUpon>FormaCodigoPPTA.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaColonia.aspx.cs">
       <DependentUpon>FormaColonia.aspx</DependentUpon>
@@ -830,6 +836,13 @@
     </Compile>
     <Compile Include="FormaCuadrillas.aspx.designer.cs">
       <DependentUpon>FormaCuadrillas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaEspecialidad.aspx.cs">
+      <DependentUpon>FormaEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaEspecialidad.aspx.designer.cs">
+      <DependentUpon>FormaEspecialidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaEspecificarFechas.aspx.cs">
       <DependentUpon>FormaEspecificarFechas.aspx</DependentUpon>
@@ -1005,6 +1018,13 @@
     </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.designer.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaSubEspecialidad.aspx.cs">
+      <DependentUpon>FormaSubEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaSubEspecialidad.aspx.designer.cs">
+      <DependentUpon>FormaSubEspecialidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaSubirCroquisOrdenEstimacion.aspx.cs">
       <DependentUpon>FormaSubirCroquisOrdenEstimacion.aspx</DependentUpon>
@@ -1351,6 +1371,13 @@
     </Compile>
     <Compile Include="VolumetriasPreciario.aspx.designer.cs">
       <DependentUpon>VolumetriasPreciario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaFamilias.aspx.cs">
+      <DependentUpon>FormaFamilias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaFamilias.aspx.designer.cs">
+      <DependentUpon>FormaFamilias.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

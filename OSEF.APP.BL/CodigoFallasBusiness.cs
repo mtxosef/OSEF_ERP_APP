@@ -2,22 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OSEF.APP.EL; 
+using OSEF.APP.EL;
 using OSEF.APP.DL;
 
 namespace OSEF.APP.BL
 {
     public class CodigoFallasBusiness
     {
-        #region Consultar 
-        
+        #region Consultar
+
         /// <summary>
         /// Obtener registros de CodigoFalla
         /// </summary> 
         /// <returns>List<CodigoFalla></returns>
         public static List<CodigoFalla> ObtenerCodigoFallas()
         {
-            return CodigoFallasDataAccess.ObtenerCodigoFallas();
+            List<CodigoFalla> lCodigosFallas = CodigoFallasDataAccess.ObtenerCodigoFallas();
+            foreach (CodigoFalla cp in lCodigosFallas)
+            {
+                cp.REspecialidad = EspecialidadesBusiness.ObtenerEspecialidadesPorID(cp.Especialidad);
+                cp.RFamilias = FamiliasBusiness.ObtenerFamiliasPorID(cp.Familia);
+                cp.RSubespecialidad = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cp.Subespecialidad);
+            }
+            return lCodigosFallas;
+        }
+
+        /// <summary>
+        /// Obtener registros de CodigoFalla
+        /// </summary> 
+        /// <returns>CodigoFalla</returns>
+        public static CodigoFalla ObtenerCodigoFallaPorID(string ID)
+        {
+            CodigoFalla cf = CodigoFallasDataAccess.ObtenerCodigoFallasPorID(ID); 
+            cf.REspecialidad = EspecialidadesBusiness.ObtenerEspecialidadesPorID(cf.Especialidad);
+            cf.RFamilias = FamiliasBusiness.ObtenerFamiliasPorID(cf.Familia);
+            cf.RSubespecialidad = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cf.Subespecialidad);
+            return cf;
         }
 
         /// <summary>
