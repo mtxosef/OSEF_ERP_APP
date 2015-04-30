@@ -36,19 +36,24 @@ namespace OSEF.ERP.APP
             //2. Avanzar a Mesa de Reporte
             if (bMesaReporte)
             {
-                int iIDNuevo = RevisionBusiness.AvanzarRevisionPorID(iID, rMesaReporte.InputValue);
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("revision", iIDNuevo.ToString(), ParameterMode.Auto));
+                int iIDNuevo = OrdenEstimacionBusiness.AvanzarReportePorID(iID, rMesaReporte.InputValue);
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ordenestimacion", iIDNuevo.ToString(), ParameterMode.Auto));
+            }
+            else
+            {
+                int iIDNuevo = OrdenEstimacionBusiness.AvanzarReportePorID(iID, rEstimacion.InputValue);
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("ordenestimacion", iIDNuevo.ToString(), ParameterMode.Auto));
             }
         }
 
         /// <summary>
-        /// Obtener el objeto de la Revisión
+        /// Obtener el objeto de la OrdenEstimacion
         /// </summary>
         /// <param name="iID"></param>
         [DirectMethod]
-        public static Revision ObtenerRevision(int iID)
+        public static OrdenEstimacion ObtenerOrdenEstimacion(int iID)
         {
-            return RevisionBusiness.ObtenerRevisionPorID(iID);
+            return OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(iID);
         }
     }
 }

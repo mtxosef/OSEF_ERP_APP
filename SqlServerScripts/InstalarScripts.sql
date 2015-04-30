@@ -336,6 +336,7 @@
 :r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesPorID.sql
 :r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciarioGeneralMnto.sql
 :r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciarioGeneralObra.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGenerales\web_spS_ObtenerPreciariosGeneralesRepetidos.sql
 -- PreciariosGenerales (Insertar)
 :r c:\SqlServerScripts\Insertar\PreciariosGenerales\web_spI_InsertarPreciarioGeneral.sql
 -- PreciariosGenerales (Modificar)

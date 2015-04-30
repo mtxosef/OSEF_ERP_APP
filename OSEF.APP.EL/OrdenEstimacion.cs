@@ -22,7 +22,6 @@ namespace OSEF.APP.EL
         string origen;
         string origenid;
         string usuario;
-        Sucursal rsucursal;
         string reporte;
         string division;
         Nullable<DateTime> fechaorigen;
@@ -37,14 +36,13 @@ namespace OSEF.APP.EL
         string tieneReporte;
         Nullable<DateTime> fechallegada;
         Nullable<DateTime> horallegada;
-
         Nullable<DateTime> fechafinActividad;
         Nullable<DateTime> horafinactividad;
         string cuadrilla;
         decimal importetotal;
 
-       
-
+        Sucursal rsucursal;
+        List<OrdenEstimacionD> rordenestimaciond;
 
         #endregion
 
@@ -108,11 +106,6 @@ namespace OSEF.APP.EL
         {
             get { return usuario; }
             set { usuario = value; }
-        }
-        public Sucursal RSucursal
-        {
-            get { return rsucursal; }
-            set { rsucursal = value; }
         }
 
         public string Reporte
@@ -192,6 +185,7 @@ namespace OSEF.APP.EL
             get { return fechallegada; }
             set { fechallegada = value; }
         }
+
         public Nullable<DateTime> HoraLlegada
         {
             get { return horallegada; }
@@ -203,7 +197,6 @@ namespace OSEF.APP.EL
             get { return fechafinActividad; }
             set { fechafinActividad = value; }
         }
-
 
         public Nullable<DateTime> HoraFinActividad
         {
@@ -222,6 +215,19 @@ namespace OSEF.APP.EL
             get { return importetotal; }
             set { importetotal = value; }
         }
+
+        public Sucursal RSucursal
+        {
+            get { return rsucursal; }
+            set { rsucursal = value; }
+        }
+
+        public List<OrdenEstimacionD> ROrdenEstimacionD
+        {
+            get { return rordenestimaciond; }
+            set { rordenestimaciond = value; }
+        }
+
         #endregion
     }
 }

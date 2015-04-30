@@ -95,7 +95,6 @@
                                 <ext:ModelField Name="ID" Type="String" />
                                 <ext:ModelField Name="CR" Type="String" />
                                 <ext:ModelField Name="Nombre" Type="String" />
-
                                 <ext:ModelField Name="Calle" Type="String" />
                                 <ext:ModelField Name="NoExterior" Type="String" />
                                 <ext:ModelField Name="Colonia" Type="String" />
@@ -122,16 +121,14 @@
                 </ext:Store>
             </Store>
             <ColumnModel>
-                <Columns> 
-                        
-                         <ext:Column
+                <Columns>                        
+                    <ext:Column
                         ID="cCR"
                         runat="server"
                         Text="CR"
                         Align="Left"
                         Width="90"
                         DataIndex="CR" />
-
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
@@ -139,9 +136,6 @@
                         Align="Left"
                         Width="320"
                         DataIndex="Nombre" />
-                        
-                   
-                         
                     <ext:Column
                         ID="cDireccion"
                         runat="server"

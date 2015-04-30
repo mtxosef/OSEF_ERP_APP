@@ -94,21 +94,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
 };
 
 
-//Evento lanzado al cargar el store de avance encabezado
-var sPreciarioGeneral_Load_Success = function () {
-    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
 
-        App.direct.ObtenerUltimoConceptoAdicional({
-            success: function (result) {
-                App.sCarga.insert(App.sCarga.getCount(), { Clave: result });
-            }
-        });
-    }
-    else {
-        var d = new Date();
-        App.dfFechaEmision.setValue(d);
-    }
-};
 
 //Renglones nuevos
 var getRowClass = function (record) {
@@ -143,6 +129,12 @@ var imgbtnGuardar_Click_Success = function () {
     window.parent.App.pCentro.getBody().App.sPreciariosGenerales.reload();
     App.sbFormaPreciario.setText('ACTIVO');
 };
+
+//Evento que ocurre al dar clic en imgbtnGuardar
+var imgbtnGuardar_Click_SuccessRepetido = function () {
+  
+};
+
 
 //Evento lanzado al agregar un registro al store
 var sPreciario_Add = function (avance, registro) {
@@ -193,8 +185,29 @@ var cSubSubCategoria_Renderer = function (valor, columna, registro) {
 //Evento de la columna de acciones
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
-    App.sCarga.removeAt(fila);
-    HabilitarGuardar();
+
+    Ext.Msg.show({
+        id: 'msgConceptoEliminar',
+        title: 'Advertencia',
+        msg: '¿Estás seguro de eliminar este concepto? ',
+        buttons: Ext.MessageBox.YESNO,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        fn: function (btn) {
+
+            if (btn === 'yes') {
+                    App.sCarga.removeAt(fila);
+                    HabilitarGuardar();
+            }
+            else {
+              
+            }
+
+        },
+        icon: Ext.MessageBox.WARNING
+    });
+
+    
 };
 
 //Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
@@ -228,11 +241,46 @@ var ceFormaPreciarioGeneral_BeforeEdit = function (editor, context, opciones) {
     }
 };
 
+
+//Evento lanzado al cargar el store de avance encabezado
+var sPreciarioGeneral_Load_Success = function () {
+    if (Ext.util.Cookies.get('cookieEditarPreciarioGeneral') != 'Nuevo') {
+
+        App.direct.ObtenerUltimoConceptoAdicional({
+            success: function (result) {
+                App.sCarga.insert(App.sCarga.getCount(), { Clave: result });
+          
+                
+
+            }
+        });
+    }
+    else {
+        var d = new Date();
+        App.dfFechaEmision.setValue(d);
+    }
+  
+};
+
 //Evento que se lanza antes de pintar la columna de comandos
+<<<<<<< HEAD
 var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) { 
     if ((grid.getStore().getCount() - 1) == rowIndex) {
         toolbar.items.get(0).hide();
     }
+=======
+var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+
+
+    //    //  App.ccAcciones.commands[0].hide();
+        if (grid.getStore().getCount()-1 == rowIndex) {
+            toolbar.items.get(0).disabled = true;
+        }
+
+
+
+>>>>>>> origin/master
 }
 
 //Se lanza antes de terminar la edición del campo
@@ -269,7 +317,7 @@ var ceFormaPreciarioGeneral_ValidateEdit = function (editor, context, opciones) 
 };
 
 
-//Evento que se lanza despues de editar una columna en PreciarioConceptoVolumetria
+//Evento que se lanza despues de editar una columna en PreciarioConcepto
 var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
 
     //Verificar si abajo de esta columna existe otra
@@ -279,7 +327,7 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
         var registro = App.sCarga.getAt(columna.rowIdx);
 
 
-        if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
+        if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0) {
             //Insertar un nuevo registro 
             var adc = 'ADC-';
             var preclave = parseInt(registro.get('Clave').substring(4, 7));

@@ -1,35 +1,27 @@
 ﻿var btnAceptar_Click_Success = function (response, result) {
     //1. Obtener datos de la nueva revisión
-    App.direct.ObtenerRevision(result.extraParamsResponse.revision, {
+    App.direct.ObtenerOrdenEstimacion(result.extraParamsResponse.ordenestimacion, {
         //2. Asignar los datos a los controles
         success: function (result) {
-            console.log(result, window.parent.App.sRevision);
+            //Actualizar store de OrdenEstimacion
+            window.parent.App.sOrdenEstimacion.getAt(0).set("ID", result.Id);
+            window.parent.App.sOrdenEstimacion.getAt(0).set("Mov", result.Mov);
+            window.parent.App.sOrdenEstimacion.getAt(0).set("MovID", result.MovID);
+            window.parent.App.sOrdenEstimacion.getAt(0).set("Origen", result.Origen);
+            window.parent.App.sOrdenEstimacion.getAt(0).set("OrigenId", result.OrigenId);
+            window.parent.App.sOrdenEstimacion.getAt(0).set("FechaEmision", result.FechaEmision);
+            window.parent.App.sOrdenEstimacion.getAt(0).set("Estatus", result.Estatus);
 
-            //Actualizar store de Revision
-            window.parent.App.sRevision.getAt(0).set('ID', result.ID);
-            window.parent.App.sRevision.getAt(0).set('Mov', result.Mov);
-            window.parent.App.sRevision.getAt(0).set('MovID', result.MovID);
-            window.parent.App.sRevision.getAt(0).set('Origen', result.Origen);
-            window.parent.App.sRevision.getAt(0).set('OrigenID', result.OrigenID);
-            window.parent.App.sRevision.getAt(0).set('Semana', result.Semana);
-            window.parent.App.sRevision.getAt(0).set('Sucursal', result.Sucursal);
-            window.parent.App.sRevision.getAt(0).set('FechaEmision', result.FechaEmision);
-            window.parent.App.sRevision.getAt(0).set('FechaRevision', result.FechaRevision);
-            window.parent.App.sRevision.getAt(0).set('Observaciones', result.Observaciones);
-            window.parent.App.sRevision.getAt(0).set('Comentarios', result.Comentarios);
-            window.parent.App.sRevision.getAt(0).set('Estatus', result.Estatus);
-            window.parent.App.sRevision.getAt(0).set('RSucursal', result.RSucursal);
-
-            window.parent.App.cmbMov.setValue(window.parent.App.sRevision.getAt(0).get('Mov'));
+            window.parent.App.cmbMov.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('Mov'));
             window.parent.App.cmbMov.setReadOnly(false);
             window.parent.App.txtfMovID.setValue('');
-            window.parent.App.nfSemana.setValue(window.parent.App.sRevision.getAt(0).get('Semana'));
-            window.parent.App.nfSemana.setReadOnly(false);
-            window.parent.App.dfFechaEmision.setValue(window.parent.App.sRevision.getAt(0).get('FechaEmision'));
-            window.parent.App.dfFechaRevision.setValue('');
-            window.parent.App.txtfObservaciones.setValue('');
-            window.parent.App.txtfComentarios.setValue('');
-            window.parent.App.sbFormaAvance.setText(window.parent.App.sRevision.getAt(0).get('Estatus'));
+            window.parent.App.dfFechaEmision.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('FechaEmision'));
+            window.parent.App.sbOrdenEstimacion.setText(window.parent.App.sOrdenEstimacion.getAt(0).get('Estatus'));
+
+            //Obtener el Renglon anterior
+            var renglonAnterior = window.parent.App.sConceptos.getAt(window.parent.App.sConceptos.getCount() - 1).get('Renglon') + 1;
+            //Insertar un nuevo registro
+            window.parent.App.sConceptos.insert(window.parent.App.sConceptos.getCount(), { Renglon: renglonAnterior });
 
             HabilitarControlesAvanzar();
             window.parent.App.wEmergente.hide();
@@ -41,13 +33,19 @@
 
 //Habilitar los controles de la FormaAvance
 function HabilitarControlesAvanzar() {
-    window.parent.App.cmbMov.setDisabled(false);
-    window.parent.App.nfSemana.setDisabled(false);
+    window.parent.App.gpOrdenEstimacion.setDisabled(false);
     window.parent.App.dfFechaEmision.setDisabled(false);
-    window.parent.App.dfFechaRevision.setDisabled(false);
     window.parent.App.txtfObservaciones.setDisabled(false);
-    window.parent.App.txtfComentarios.setDisabled(false);
-    window.parent.App.gpObraCivil.setDisabled(false);
     window.parent.App.imgbtnGuardar.setDisabled(false);
     window.parent.App.imgbtnBorrar.setDisabled(false);
+
+    //6. Deshabilita los comandos del grid
+    window.parent.App.ccFotos.commands[0].disabled = false;
+    window.parent.App.ccFotos.commands[1].disabled = false;
+    window.parent.App.ccCroquis.commands[0].disabled = false;
+    window.parent.App.ccCroquis.commands[1].disabled = false;
+    window.parent.App.ccFacturas.commands[0].disabled = false;
+    window.parent.App.ccFacturas.commands[1].disabled = false;
+    window.parent.App.ccConcepto.commands[0].disabled = false;
+    window.parent.App.gpOrdenEstimacion.reconfigure();
 }

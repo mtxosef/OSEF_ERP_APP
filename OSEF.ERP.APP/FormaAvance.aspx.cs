@@ -84,6 +84,7 @@ namespace OSEF.AVANCES.SUCURSALES
             string strRevisionDObraCivil = e.ExtraParams["RevisionDObraCivil"];
             string strcookieEditarRevision = Cookies.GetCookie("cookieEditarRevision").Value;
             string strSucursal = e.ExtraParams["Sucursal"];
+
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRevisionForma);
             Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro,strSucursal);

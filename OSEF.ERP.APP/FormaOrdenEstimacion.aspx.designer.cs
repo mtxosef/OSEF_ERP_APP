@@ -301,22 +301,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcSucursal;
         
         /// <summary>
-        /// Control cmbSucursal.
+        /// Control txtfSucursalCR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField cmbSucursal;
+        protected global::Ext.Net.TextField txtfSucursalCR;
         
         /// <summary>
-        /// Control btnBuscaSucursal.
+        /// Control btnBuscarSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Button btnBuscaSucursal;
+        protected global::Ext.Net.Button btnBuscarSucursal;
         
         /// <summary>
         /// Control txtfSucursalNombre.
@@ -328,13 +328,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfSucursalNombre;
         
         /// <summary>
-        /// Control txtIDSucursal.
+        /// Control txtfSucursalID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtIDSucursal;
+        protected global::Ext.Net.TextField txtfSucursalID;
         
         /// <summary>
         /// Control fcFechaEmision.
@@ -427,13 +427,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fc1;
         
         /// <summary>
-        /// Control txtNoReporte.
+        /// Control txtfNoReporte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtNoReporte;
+        protected global::Ext.Net.TextField txtfNoReporte;
         
         /// <summary>
         /// Control cmbDivision.
@@ -490,13 +490,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcReporte;
         
         /// <summary>
-        /// Control txtReporta.
+        /// Control txtfReporta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtReporta;
+        protected global::Ext.Net.TextField txtfReporta;
         
         /// <summary>
         /// Control fcTrabajoRequerido.
@@ -508,13 +508,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcTrabajoRequerido;
         
         /// <summary>
-        /// Control txtTrabajoRequerido.
+        /// Control txtfTrabajoRequerido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtTrabajoRequerido;
+        protected global::Ext.Net.TextField txtfTrabajoRequerido;
         
         /// <summary>
         /// Control fcAtiende.
@@ -526,31 +526,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcAtiende;
         
         /// <summary>
-        /// Control txtAtiende.
+        /// Control txtfAtiende.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtAtiende;
-        
-        /// <summary>
-        /// Control fcTrabajoRealizado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcTrabajoRealizado;
-        
-        /// <summary>
-        /// Control txtTrabajoRealizado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtTrabajoRealizado;
+        protected global::Ext.Net.TextField txtfAtiende;
         
         /// <summary>
         /// Control pDatosReporteDos.
@@ -580,13 +562,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer FieldContainer1;
         
         /// <summary>
-        /// Control txtCodigoFalla.
+        /// Control txtfCodigoFalla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtCodigoFalla;
+        protected global::Ext.Net.TextField txtfCodigoFalla;
         
         /// <summary>
         /// Control fcRegistros.
@@ -625,13 +607,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer FieldContainer2;
         
         /// <summary>
-        /// Control dfFechallegada.
+        /// Control dfFechaLlegada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateField dfFechallegada;
+        protected global::Ext.Net.DateField dfFechaLlegada;
         
         /// <summary>
         /// Control tfHoraLlegada.
@@ -652,13 +634,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer FieldContainer3;
         
         /// <summary>
-        /// Control dfFFechaFinActividad.
+        /// Control dfFechaFinActividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateField dfFFechaFinActividad;
+        protected global::Ext.Net.DateField dfFechaFinActividad;
         
         /// <summary>
         /// Control tfHoraFinActividad.
@@ -679,13 +661,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcCuadrilla;
         
         /// <summary>
-        /// Control txtCuadrilla.
+        /// Control cmbCuadrilla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox txtCuadrilla;
+        protected global::Ext.Net.ComboBox cmbCuadrilla;
         
         /// <summary>
         /// Control sCuadrillas.

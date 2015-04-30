@@ -675,7 +675,7 @@
                                      <BottomBar>
                                      <ext:PagingToolbar ID="PagingToolbar1" runat="server">
                                         <Items>
-                                            <ext:Label ID="Label1" runat="server" Text="Page size:" />
+                                            <ext:Label ID="Label1" runat="server" Text="Tamaño página:" />
                                             <ext:ToolbarSpacer ID="ToolbarSpacer1" runat="server" Width="10" />
                                             <ext:ComboBox ID="ComboBox1" runat="server" Width="80">
                                                 <Items>
