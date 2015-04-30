@@ -368,6 +368,7 @@
             </ColumnModel>
             <Listeners>
                 <ItemClick Fn="gpOrdenesEstimaciones_ItemClick" />
+                  <ItemDblClick Fn="gpOrdenEstimacion_ItemDblClick" />
             </Listeners>
             <View>
                 <ext:GridView

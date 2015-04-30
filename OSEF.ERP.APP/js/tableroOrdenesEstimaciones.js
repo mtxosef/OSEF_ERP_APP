@@ -24,6 +24,18 @@ var imgbtnEditar_Click = function () {
     window.parent.App.wEmergente.show();
 };
 
+var gpOrdenEstimacion_ItemDblClick = function (gridview, registro, gvhtml, index) {
+
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'));
+
+    window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
+    window.parent.App.wEmergente.setHeight(600);
+    window.parent.App.wEmergente.setWidth(930);
+    window.parent.App.wEmergente.center();
+    window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+    window.parent.App.wEmergente.show();
+}
+
 //Cambio en los datos del tablero
 var sOrdenesEstimaciones_DataChanged = function () {
     if (App.sOrdenesEstimaciones.getCount() > 1 || App.sOrdenesEstimaciones.getCount() == 0) {

@@ -161,11 +161,12 @@
                                 <ext:ModelField Name="InicioObra" Type="Date" />
                                 <ext:ModelField Name="FinObra" Type="Date" />
                                 <ext:ModelField Name="Estatus" Type="String" />
+                                <ext:ModelField Name="CR" Type="Int" />
                             </Fields>
                         </ext:Model>
                     </Model>
                     <Sorters>
-                        <ext:DataSorter Property="ID" Direction="ASC" />
+                        <ext:DataSorter Property="CR" Direction="ASC" />
                     </Sorters>
                     <Listeners>
                         <DataChanged Fn="sSucursales_DataChanged" />
@@ -178,10 +179,10 @@
                     <ext:Column 
                         ID="cID"
                         runat="server"
-                        Text="ID"
+                        Text="CR"
                         Align="Center"
                         Width="110"
-                        DataIndex="ID" />
+                        DataIndex="CR" />
                     <ext:Column
                         ID="cSucursal"
                         runat="server"

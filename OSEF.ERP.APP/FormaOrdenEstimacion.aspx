@@ -721,6 +721,7 @@
                                                     ID="txtfAtiende" 
                                                     runat="server" 
                                                     Width="563" 
+                                                    ReadOnly="true"
                                                     Margins="0 3 0 0"
                                                     EmptyText="Nombre de quien atiende el reporte"
                                                     MaxLength="200"

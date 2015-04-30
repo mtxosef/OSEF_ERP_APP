@@ -27,6 +27,13 @@ namespace OSEF.ERP.APP
                 UsuarioBusiness.checkValidSession(this);
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
                 sCuadrillas.DataBind();
+
+                string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+                if (strcookieEditarOrdenEstimacion.Equals("Nuevo"))
+                {
+                    Usuario oUsuario = (Usuario)Session["Usuario"];
+                    txtfAtiende.Text = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+                }
             }
         }
 
@@ -390,6 +397,8 @@ namespace OSEF.ERP.APP
                 }
             }
 
+           
+
             //3. Regresar el objeto
             return oOrdenEstimacionForma;
         }
@@ -409,6 +418,10 @@ namespace OSEF.ERP.APP
 
             //2. Actualizamos el Estatus e Insertar en la base de datos
             oOrdenEstimacionForma.Estatus = "BORRADOR";
+
+            //oOrdenEstimacionForma.Atiende = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno; 
+
+
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)

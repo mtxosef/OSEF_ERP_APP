@@ -79,8 +79,15 @@ var gpSucursales_ItemClick = function () {
 var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     App.sSucursales.clearFilter();
     App.sSucursales.filter([{ filterFn: function (item) {
-        if (item.get('ID').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('Nombre').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
-        else { return false; }
+
+        console.log(item);
+        console.log(newValue);
+        if (item.get('CR').toString().indexOf(newValue) >-1 || item.get('Nombre').toUpperCase().indexOf(newValue.toUpperCase()) > -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     }]);
 };
