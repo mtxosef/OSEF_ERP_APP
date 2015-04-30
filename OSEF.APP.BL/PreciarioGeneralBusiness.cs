@@ -94,6 +94,17 @@ namespace OSEF.APP.BL
 
         }
 
+        /// <summary>
+        /// Obtener Peeciarios con nombres repetidos
+        /// </summary>
+        /// <param name="strDescripcion"></param>
+        /// <returns></returns>
+        public static bool ObtenerPreciariosGeneralesRepetidos(string strDescripcion)
+        {
+            return PreciarioGeneralDataAccess.ObtenerPreciariosGeneralesRepetidos(strDescripcion);
+
+        }
+
         #endregion
     }
 }
