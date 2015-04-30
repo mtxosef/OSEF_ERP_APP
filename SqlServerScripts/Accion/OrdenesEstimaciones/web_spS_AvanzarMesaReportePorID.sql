@@ -40,39 +40,38 @@ BEGIN
 
     -- Insert statements for procedure here
     DECLARE
-		@MovA			VARCHAR(50),
-		@MovID			VARCHAR(10),
-		@Origen			VARCHAR(50),
-		@OrigenID		VARCHAR(10),
-		@Sucursal		CHAR(10),
-		@FechaEmision	SMALLDATETIME,
-		@Observaciones	VARCHAR(200),
-		@Estatus		VARCHAR(20),
-		@Usuario		VARCHAR(50),
-		@Reporte		VARCHAR(50),
-		@Division		VARCHAR(30),
-		@FechaOrigen	SMALLDATETIME,
-		@FechaMaximaAtencion SMALLDATETIME,
-		@DiasAtencion	DECIMAL(5,0),
-		@Reporto		VARCHAR(100),
-		@TrabajoRequerido VARCHAR(850),
-		@Atiende		VARCHAR(100),
-		@TrabajoRealizado VARCHAR(500),
-		@CodigoFalla	VARCHAR(30),
-		@TieneFotos		VARCHAR(10),
-		@TieneReporte	VARCHAR(10),
-		@FechaLlegada	SMALLDATETIME,
-		@HoraLlegada	DATETIME,
-		@FechaFinActividad SMALLDATETIME,
-		@HoraFinActividad DATETIME,
-		@Cuadrilla		VARCHAR(200),
-		@ImporteTotal	DECIMAL(20,2) 
+		@MovA					VARCHAR(50),
+		@MovID					VARCHAR(10),
+		@Origen					VARCHAR(50),
+		@OrigenID				VARCHAR(10),
+		@Sucursal				CHAR(10),
+		@FechaEmision			SMALLDATETIME,
+		@Observaciones			VARCHAR(200),
+		@Estatus				VARCHAR(20),
+		@Usuario				VARCHAR(50),
+		@Reporte				VARCHAR(50),
+		@Division				VARCHAR(30),
+		@FechaOrigen			SMALLDATETIME,
+		@FechaMaximaAtencion	SMALLDATETIME,
+		@DiasAtencion			DECIMAL(5,0),
+		@Reporto				VARCHAR(100),
+		@TrabajoRequerido		VARCHAR(850),
+		@Atiende				VARCHAR(100),
+		@TrabajoRealizado		VARCHAR(500),
+		@CodigoFalla			VARCHAR(30),
+		@TieneFotos				VARCHAR(10),
+		@TieneReporte			VARCHAR(10),
+		@FechaLlegada			SMALLDATETIME,
+		@HoraLlegada			DATETIME,
+		@FechaFinActividad		SMALLDATETIME,
+		@HoraFinActividad		DATETIME,
+		@Cuadrilla				VARCHAR(200),
+		@ImporteTotal			DECIMAL(20,2) 
 		
 	SELECT
-		@MovA = Mov,
-		@MovID = MovID,
-		@Origen = Origen,
-		@OrigenID = OrigenID,
+		@MovA = @Mov,
+		@Origen = Mov,
+		@OrigenID = MovID,
 		@Sucursal = Sucursal,
 		@FechaEmision = FechaEmision,
 		@Observaciones = Observaciones,
@@ -105,7 +104,6 @@ BEGIN
 		OrdenesEstimaciones
 		(
 			Mov,
-			MovID,
 			Origen,
 			OrigenID,
 			Sucursal,
@@ -134,13 +132,12 @@ BEGIN
 		)
 	VALUES
 		(
-			@Mov,
-			NULL,
 			@MovA,
-			@MovID,
+			@Origen,
+			@OrigenID,
 			@Sucursal,
 			GETDATE(),
-			NULL,
+			@Observaciones,
 			'PENDIENTE',
 			@Usuario,
 			@Reporte,
@@ -164,6 +161,33 @@ BEGIN
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()
+	
+	--INSERTAR EL DETALLE
+	INSERT INTO
+		OrdenesEstimacionesD
+		(
+			ID,
+			Renglon,
+			ConceptoID,
+			Cantidad,
+			Unidad,
+			Precio,
+			Importe,
+			IntExt
+		)
+	SELECT
+		@IDNuevo,
+		Renglon,
+		ConceptoID,
+		Cantidad,
+		Unidad,
+		Precio,
+		Importe,
+		IntExt
+	FROM
+		OrdenesEstimacionesD
+	WHERE
+		ID = @ID
     
 END
 GO

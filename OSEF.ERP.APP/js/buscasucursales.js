@@ -5,11 +5,8 @@ var Gerente_Convert = function (value, record) {
 
 //Asignar la descripción de la subsubcategoria a esta columna
 var cDireccion_Renderer = function (valor, columna, registro) {
-
     return registro.get('Calle') + ' N°.' + registro.get('NoExterior') + ' COL.' + registro.get('RColonia').Descripcion;
-
 };
-
 
 //Hacer la busqueda de información en sucursales
 var txtBuscarSucursal_Change = function (textfield, newValue, oldValue, e) {
@@ -23,10 +20,9 @@ var txtBuscarSucursal_Change = function (textfield, newValue, oldValue, e) {
 
 //Acciones al hacer clic en un registro de busqueda
 var gpBuscaSucursales_ItemDblClick = function (gridview, registro, gvhtml, index) {
-    window.parent.App.wEmergente.getBody().App.cmbSucursal.setValue(App.sBSucursales.getAt(index).get('CR'));
+    window.parent.App.wEmergente.getBody().App.txtfSucursalCR.setValue(App.sBSucursales.getAt(index).get('CR'));
     window.parent.App.wEmergente.getBody().App.txtfSucursalNombre.setValue(App.sBSucursales.getAt(index).get('Nombre'));
-    window.parent.App.wEmergente.getBody().App.txtIDSucursal.setValue(App.sBSucursales.getAt(index).get('ID'));
-
+    window.parent.App.wEmergente.getBody().App.txtfSucursalID.setValue(App.sBSucursales.getAt(index).get('ID'));
     window.parent.App.wAyudaConcepto.hide();
 };
 

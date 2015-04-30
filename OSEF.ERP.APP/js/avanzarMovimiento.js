@@ -3,8 +3,6 @@
     App.direct.ObtenerRevision(result.extraParamsResponse.revision, {
         //2. Asignar los datos a los controles
         success: function (result) {
-            console.log(result, window.parent.App.sRevision);
-
             //Actualizar store de Revision
             window.parent.App.sRevision.getAt(0).set('ID', result.ID);
             window.parent.App.sRevision.getAt(0).set('Mov', result.Mov);

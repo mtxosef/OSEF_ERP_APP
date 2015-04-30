@@ -86,7 +86,7 @@
             Width="910"
             BodyStyle="background-color:#fff;">
             <TopBar>
-                <ext:Toolbar 
+                <ext:Toolbar
                     ID="tbOrdenEstimacion" 
                     runat="server" 
                     Height="40">
@@ -137,7 +137,7 @@
                                         <ext:Parameter Name="OrdenEstimacionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="Sucursal" Value="App.txtIDSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="Sucursal" Value="App.txtfSucursalID.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="diasAtencion" Value="App.nfDiasAtencion.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
@@ -174,7 +174,7 @@
                                         <ext:Parameter Name="OrdenEstimacion" Value="Ext.encode(#{sOrdenEstimacion}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="Movimiento" Value="App.cmbMov.getValue()" Mode="Raw" />
-                                        <ext:Parameter Name="Sucursal" Value="App.txtIDSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="Sucursal" Value="App.txtfSucursalID.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="diasAtencion" Value="App.nfDiasAtencion.getValue()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
@@ -422,54 +422,8 @@
                                             Height="25"
                                             Layout="HBoxLayout">
                                             <Items>
-                                                <%-- <ext:ComboBox
-                                                    ID="cmbSucursal"
-                                                    runat="server"
-                                                    DisplayField="CR"
-                                                    ValueField="ID"
-                                                    Width="200"
-                                                    Margins="0 3 0 0"
-                                                    Cls="spanCustomCombo xEspacioCmbxCustom"
-                                                    AllowBlank="false"
-                                                    PageSize="10"
-                                                    ForceSelection="true"
-                                                    MatchFieldWidth="false"
-                                                    QueryMode="Local"
-                                                    TypeAhead="true">
-                                                    <ListConfig ID="lcSucursal" runat="server" Width="350" Cls="xEspacioCmbxCustom">
-                                                        <ItemTpl ID="itSucursal" runat="server">
-                                                            <Html>
-                                                                <div class="search-item">
-							                                        <h3>{CR}</h3>
-                                                                    <span>{Nombre}</span>
-						                                        </div>
-                                                            </Html>
-                                                        </ItemTpl>
-                                                    </ListConfig>
-                                                    <Store>
-                                                        <ext:Store
-                                                            ID="sSucursal"
-                                                            runat="server">
-                                                            <Model>
-                                                                <ext:Model
-                                                                    ID="mSucursal"
-                                                                    runat="server">
-                                                                    <Fields>
-                                                                    <ext:ModelField Name="ID" Type="String" />
-                                                                        <ext:ModelField Name="CR" Type="String" />
-                                                                        <ext:ModelField Name="Nombre" Type="String" />
-                                                                    </Fields>
-                                                                </ext:Model>                            
-                                                            </Model>
-                                                        </ext:Store>
-                                                    </Store>
-                                                    <Listeners>
-                                                        <Select Fn="cmbSucursal_Select" />
-                                                        <Change Fn="cmbSucursal_Change" />
-                                                    </Listeners>  
-                                                </ext:ComboBox>--%>
                                                 <ext:TextField 
-                                                    ID="cmbSucursal" 
+                                                    ID="txtfSucursalCR" 
                                                     runat="server" 
                                                     Width="200" 
                                                     Margins="0 3 0 0"
@@ -479,17 +433,17 @@
                                                     ReadOnly="true">
                                                     <RightButtons>
                                                         <ext:Button 
-                                                        ID="btnBuscaSucursal" 
-                                                        runat="server" 
-                                                        Icon="Find" 
-                                                        StandOut="true">
+                                                            ID="btnBuscarSucursal" 
+                                                            runat="server" 
+                                                            Icon="Find" 
+                                                            StandOut="true">
                                                             <Listeners>
                                                                 <Click Fn="btnBuscarSucursal_Click" />
                                                             </Listeners>
                                                         </ext:Button>
                                                     </RightButtons>
                                                     <Listeners>
-                                                        <Change Fn="cmbSucursal_Change" />
+                                                        <Change Fn="txtfSucursalCR_Change" />
                                                     </Listeners>
                                                 </ext:TextField>
                                                 <ext:TextField 
@@ -499,24 +453,17 @@
                                                     Disabled="true"> 
                                                 </ext:TextField>
                                                 <ext:TextField 
-                                                    ID="txtIDSucursal" 
+                                                    ID="txtfSucursalID" 
                                                     runat="server"  
                                                     Hidden="true"> 
                                                 </ext:TextField>
-                                                <%--<ext:TextField
-                                                    ID="txtfSucursalNombre"
-                                                    runat="server"
-                                                    Width="360"
-                                                    Margins="0 3 0 0"
-                                                    Disabled="true">
-                                                </ext:TextField>--%>
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer 
                                             ID="fcFechaEmision"
                                             runat="server"
                                             LabelWidth="120"
-                                            FieldLabel="Fecha de Emisión"
+                                            FieldLabel="Fecha de emisión"
                                             AnchorHorizontal="100%"
                                             Layout="HBoxLayout">
                                             <Items>
@@ -527,7 +474,7 @@
                                                     Margins="0 3 0 0" 
                                                     Disabled="false">
                                                     <PickerOptions 
-                                                        ID="pOFechaEmision"
+                                                        ID="poFechaEmision"
                                                         runat="server"
                                                         Cls="my-date-picker">
                                                     </PickerOptions>
@@ -613,7 +560,7 @@
                                             Layout="HBoxLayout">
                                             <Items>
                                                 <ext:TextField 
-                                                    ID="txtNoReporte" 
+                                                    ID="txtfNoReporte" 
                                                     runat="server" 
                                                     Width="80" 
                                                     Margins="0 3 0 0"
@@ -641,10 +588,6 @@
                                                     <SelectedItems>
                                                         <ext:ListItem Index="2" />
                                                     </SelectedItems>
-                                                    <%--<Listeners>
-                                                        <Select Fn="cmbMov_Select" />
-                                                        <Change Fn="sMov_Change"></Change>
-                                                    </Listeners>--%>
                                                 </ext:ComboBox>
                                             </Items>
                                         </ext:FieldContainer>
@@ -676,7 +619,7 @@
                                                             Mode="Value" />
                                                     </CustomConfig>
                                                     <Listeners>
-                                                         <Change Handler="sumarDias(this.getValue(),App.dfFechaMaxima.getValue());" />
+                                                        <Change Handler="sumarDias(this.getValue(),App.dfFechaMaxima.getValue());" />
                                                     </Listeners>
                                                 </ext:DateField>
                                                 <ext:DateField
@@ -689,7 +632,7 @@
                                                     Margins="0 3 0 0" 
                                                     Disabled="false">
                                                     <Listeners>
-                                                         <Change Handler="sumarDias(App.dfFechaOrigen.getValue(), this.getValue());" />
+                                                        <Change Handler="sumarDias(App.dfFechaOrigen.getValue(), this.getValue());" />
                                                     </Listeners>
                                                     <PickerOptions 
                                                         ID="poFechaMaxima"
@@ -731,7 +674,7 @@
                                             Layout="HBoxLayout">
                                             <Items>
                                                 <ext:TextField 
-                                                    ID="txtReporta" 
+                                                    ID="txtfReporta" 
                                                     runat="server" 
                                                     EmptyText="Nombre de quien reportó el problema"
                                                     Width="563" 
@@ -753,7 +696,7 @@
                                             Layout="HBoxLayout">
                                             <Items>
                                                 <ext:TextField 
-                                                    ID="txtTrabajoRequerido" 
+                                                    ID="txtfTrabajoRequerido" 
                                                     runat="server" 
                                                     Width="563" 
                                                     EmptyText="Descripción corta del trabajo requerido"
@@ -775,7 +718,7 @@
                                             Layout="HBoxLayout">
                                             <Items>
                                                 <ext:TextField 
-                                                    ID="txtAtiende" 
+                                                    ID="txtfAtiende" 
                                                     runat="server" 
                                                     Width="563" 
                                                     Margins="0 3 0 0"
@@ -788,7 +731,7 @@
                                                 </ext:TextField>
                                             </Items>
                                         </ext:FieldContainer>
-                                        <ext:FieldContainer
+                                        <%--<ext:FieldContainer
                                             ID="fcTrabajoRealizado"
                                             runat="server"
                                             LabelWidth="120"
@@ -809,7 +752,7 @@
                                                     </Listeners>
                                                 </ext:TextField>
                                             </Items>
-                                        </ext:FieldContainer>
+                                        </ext:FieldContainer>--%>
                                     </Items>
                                 </ext:FieldSet>
                             </Items>
@@ -841,7 +784,7 @@
                                             Layout="HBoxLayout">
                                             <Items>
                                                 <ext:TextField 
-                                                    ID="txtCodigoFalla" 
+                                                    ID="txtfCodigoFalla" 
                                                     runat="server" 
                                                     Width="200" 
                                                     Margins="0 3 0 0"
@@ -897,7 +840,7 @@
                                             Layout="HBoxLayout">
                                             <Items>
                                                 <ext:DateField
-                                                    ID="dfFechallegada"
+                                                    ID="dfFechaLlegada"
                                                     runat="server"
                                                     Width="200"
                                                     Editable="false"
@@ -919,11 +862,11 @@
                                                 <ext:TimeField 
                                                     ID="tfHoraLlegada" 
                                                     runat="server"  
-                                                    Increment="1"
+                                                    Increment="15"
                                                     FieldLabel="Hora de llegada"
                                                     LabelWidth="120" 
                                                     Width="300"
-                                                    Format="hh:mm tt" />
+                                                    Format="H:mm" />
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer 
@@ -935,7 +878,7 @@
                                             Layout="HBoxLayout">
                                             <Items>
                                                 <ext:DateField
-                                                    ID="dfFFechaFinActividad"
+                                                    ID="dfFechaFinActividad"
                                                     runat="server"
                                                     Width="200"
                                                     Vtype="daterange"
@@ -957,11 +900,11 @@
                                                 <ext:TimeField 
                                                     ID="tfHoraFinActividad" 
                                                     runat="server"  
-                                                    Increment="1" 
+                                                    Increment="15" 
                                                     FieldLabel="Hora Fin Actividad"
                                                     LabelWidth="120" 
                                                     Width="300"
-                                                    Format="hh:mm tt"> 
+                                                    Format="H:mm"> 
                                                 </ext:TimeField> 
                                             </Items>
                                         </ext:FieldContainer>
@@ -973,20 +916,8 @@
                                             AnchorHorizontal="100%" 
                                             Layout="HBoxLayout">
                                             <Items>
-                                                <%--<ext:TextField 
-                                                    ID="txtCuadrilla" 
-                                                    runat="server" 
-                                                    Width="503" 
-                                                    EmptyText="Nobre de la cuadrilla quien realizará el trabajo"
-                                                    Margins="0 3 0 0"
-                                                    MaxLength="200"
-                                                    EnforceMaxLength="true">
-                                                    <Listeners>
-                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                                    </Listeners>
-                                                </ext:TextField>--%>
                                                 <ext:ComboBox
-                                                    ID="txtCuadrilla"
+                                                    ID="cmbCuadrilla"
                                                     runat="server"
                                                     DisplayField="Nombre"
                                                     ValueField="ID"

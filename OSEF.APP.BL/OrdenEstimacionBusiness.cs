@@ -101,6 +101,7 @@ namespace OSEF.APP.BL
             //1. Inicializar objeto, complementarlo con la Sucursal
             OrdenEstimacion oOrdenEstimacion = OrdenEstimacionDataAccess.ObtenerOrdenEstimacionaPorID(iID);
             oOrdenEstimacion.RSucursal = SucursalBusiness.ObtenerSucursalPorID(oOrdenEstimacion.Sucursal);
+            oOrdenEstimacion.ROrdenEstimacionD = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(oOrdenEstimacion.Id);
 
             return oOrdenEstimacion;
         }
