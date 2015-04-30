@@ -14,7 +14,17 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string cookieNuevaSubEspecialidad = Cookies.GetCookie("cookieNuevaSubEspecialidad").Value;
+            if (!cookieNuevaSubEspecialidad.Equals("Nuevo"))
+            {
+                SubEspecialidades espe = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cookieNuevaSubEspecialidad);
+                txtID.SetValue(espe.ID);
+                txtNombre.SetValue(espe.Nombre);
+                FieldContainer1.Hidden = false;
+            }
+            else {
+                FieldContainer1.Hidden = true;
+            }
         }
 
         #region Guardar
@@ -31,7 +41,7 @@ namespace OSEF.ERP.APP
 
             //2. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
-            CodigoFalla cf = new CodigoFalla();
+            SubEspecialidades cf = new SubEspecialidades();
             foreach (KeyValuePair<string, string> sd in dRegistro)
             {
                 switch (sd.Key)
@@ -41,23 +51,23 @@ namespace OSEF.ERP.APP
                         break;
 
                     case "txtNombre":
-                        cf.Especialidad = sd.Value;
+                        cf.Nombre = sd.Value;
                         break;
 
                 }
             }
-            string strcookieEditarCodigoPPTA = Cookies.GetCookie("cookieNuevaSubEspecialidad").Value;
-            if (strcookieEditarCodigoPPTA.Equals("Nuevo"))
+            string cookieNuevaSubEspecialidad = Cookies.GetCookie("cookieNuevaSubEspecialidad").Value;
+            if (cookieNuevaSubEspecialidad.Equals("Nuevo"))
             {
                 //3. Insertar en la base de datos
-                cf.ID = CodigoFallasBusiness.Insertar(cf);
+                cf.ID = SubEspecialidadesBusiness.Insertar(cf);
                 //4. Mandar mensaje con el código del codigo ppta
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
             }
             else
             {
-                CodigoFallasBusiness.Actualizar(cf);
-                cf.ID = strcookieEditarCodigoPPTA;
+                SubEspecialidadesBusiness.Actualizar(cf);
+                cf.ID = cookieNuevaSubEspecialidad;
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
             }
         }

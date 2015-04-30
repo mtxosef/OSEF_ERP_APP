@@ -20,14 +20,18 @@ namespace OSEF.ERP.APP
             {
                 CodigoFalla cf = CodigoFallasBusiness.ObtenerCodigoFallaPorID(strcookieEditarCodigoPPTA);
                 txtID.SetValue(cf.ID);
-                cmbEspecialidad.SelectedItem.Text= cf.REspecialidad.Nombre;
-                cmbFamilia.SelectedItem.Text= cf.RFamilias.Nombre;
+                cmbEspecialidad.SelectedItem.Text = cf.REspecialidad.Nombre;
+                cmbFamilia.SelectedItem.Text = cf.RFamilias.Nombre;
                 cmbSubEspecialidad.SelectedItem.Text = cf.RSubespecialidad.Nombre;
                 txtCodigoMainSaver.SetValue(cf.CodigoMainSaver);
                 txtDescripcion.SetValue(cf.Descripcion);
                 txtDias.SetValue(cf.Dias);
                 txtPrioridad.SetValue(cf.Prioridad);
                 txtTiempoEstimado.SetValue(cf.TiempoEstimado);
+            }
+            else
+            {
+                FieldContainer2.Hidden = true;
             }
         }
 
@@ -102,6 +106,7 @@ namespace OSEF.ERP.APP
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
             }
         }
+
         #endregion
 
         #region Consultar

@@ -49,13 +49,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
-        /// Control FieldContainer2.
+        /// Control FieldContainer1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer2;
+        protected global::Ext.Net.FieldContainer FieldContainer1;
         
         /// <summary>
         /// Control txtID.
@@ -67,13 +67,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtID;
         
         /// <summary>
-        /// Control FieldContainer1.
+        /// Control FieldContainer2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer1;
+        protected global::Ext.Net.FieldContainer FieldContainer2;
         
         /// <summary>
         /// Control txtNombre.

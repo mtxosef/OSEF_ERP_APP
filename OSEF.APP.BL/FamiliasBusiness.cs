@@ -9,6 +9,7 @@ namespace OSEF.APP.BL
 {
     public class FamiliasBusiness
     {
+        #region Consultar
         public static List<Familias> ObtenerFamilias()
         {
             return FamiliasDataAccess.ObtenerFamilias();
@@ -17,5 +18,30 @@ namespace OSEF.APP.BL
         {
             return FamiliasDataAccess.ObtenerFamiliasPorID(ID);
         }
+
+        #endregion
+
+        #region Insertar
+        /// <summary>
+        /// Método que inserta un nuevo registro a la tabla de Especialidades
+        /// </summary>
+        /// <param name="iEspecialidades"></param>
+        public static string Insertar(Familias iFamilias)
+        {
+            return FamiliasDataAccess.Insertar(iFamilias);
+        }
+        #endregion 
+         
+        #region Modificar
+        /// <summary>
+        /// Método que actualiza alguna especialidad por su ID
+        /// </summary>
+        /// <param name="ID"></param>
+        public static int Actualizar(Familias fam)
+        {
+            return FamiliasDataAccess.Actualizar(fam);
+        }
+
+        #endregion
     }
 }

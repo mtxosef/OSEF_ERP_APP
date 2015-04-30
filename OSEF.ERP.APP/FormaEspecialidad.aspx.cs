@@ -15,7 +15,17 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string cookieNuevaEspecialidad = Cookies.GetCookie("cookieNuevaEspecialidad").Value;
+            if (!cookieNuevaEspecialidad.Equals("Nuevo"))
+            {
+                Especialidades espe = EspecialidadesBusiness.ObtenerEspecialidadesPorID(cookieNuevaEspecialidad);
+                txtID.SetValue(espe.ID);
+                txtNombre.SetValue(espe.Nombre);
+                FieldContainer1.Hidden = false;
+            }
+            else { 
+                FieldContainer1.Hidden = true;
+            }
         }
         #region Guardar
 
@@ -31,34 +41,33 @@ namespace OSEF.ERP.APP
 
             //2. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
-            CodigoFalla cf = new CodigoFalla();
+            Especialidades espe = new Especialidades();
             foreach (KeyValuePair<string, string> sd in dRegistro)
             {
                 switch (sd.Key)
                 {
                     case "txtID":
-                        cf.ID = sd.Value;
+                        espe.ID = sd.Value;
                         break;
 
                     case "txtNombre":
-                        cf.Especialidad = sd.Value;
-                        break;
-
+                        espe.Nombre = sd.Value;
+                        break; 
                 }
             }
             string strcookieEditarCodigoPPTA = Cookies.GetCookie("cookieNuevaEspecialidad").Value;
             if (strcookieEditarCodigoPPTA.Equals("Nuevo"))
             {
                 //3. Insertar en la base de datos
-                cf.ID = CodigoFallasBusiness.Insertar(cf);
+                espe.ID = EspecialidadesBusiness.Insertar(espe);
                 //4. Mandar mensaje con el código del codigo ppta
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", espe.ID, ParameterMode.Value));
             }
             else
             {
-                CodigoFallasBusiness.Actualizar(cf);
-                cf.ID = strcookieEditarCodigoPPTA;
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+                EspecialidadesBusiness.Actualizar(espe);
+                espe.ID = strcookieEditarCodigoPPTA;
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", espe.ID, ParameterMode.Value));
             }
         }
         #endregion

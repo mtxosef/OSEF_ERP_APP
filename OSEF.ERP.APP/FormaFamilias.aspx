@@ -30,11 +30,11 @@
     <form id="form1" runat="server">
     
     <ext:ResourceManager ID="rmFamilia" runat="server" HideInDesign="true" />
-    <ext:FormPanel ID="fpFamilia" runat="server" Height="190" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" MonitorResize="true">
+    <ext:FormPanel ID="fpFamilia" runat="server" Height="150" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" MonitorResize="true">
         <Items>
             <ext:Panel ID="Panel1" runat="server">
                 <Items> 
-                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
                             <ext:TextField ID="txtID" runat="server" Width="250" Disabled="false" ReadOnly="true"
@@ -42,11 +42,15 @@
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer>  
-                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="NOMBRE" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="NOMBRE" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
                             <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false"
                                 EmptyText="ESCRIBA UN NOMBRE PARA LA FAMILIA" MaxLength="99">  
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change" />
+                                    <Blur Handler="App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase())"/>
+                                </Listeners>
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer>  

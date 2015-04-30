@@ -59,7 +59,7 @@ var imgbtnNuevaEspecialidad_Click = function () {
     var w = window.parent.App.wNew;
     Ext.util.Cookies.set('cookieNuevaEspecialidad', 'Nuevo');
     w.load('FormaEspecialidad.aspx');
-    w.setHeight(230);
+    w.setHeight(200);
     w.setWidth(380);
     w.center();
     w.setTitle('NUEVA ESPECIALIDAD');
@@ -71,7 +71,7 @@ var imgbtnNuevaFamilia_Click = function () {
     var w = window.parent.App.wNew;
     Ext.util.Cookies.set('cookieNuevaFamilia', 'Nuevo');
     w.load('FormaFamilias.aspx');
-    w.setHeight(230);
+    w.setHeight(200);
     w.setWidth(380);
     w.center();
     w.setTitle('NUEVA FAMILIA');
@@ -83,7 +83,7 @@ var imgbtnNuevaSubEspecialidad_Click = function () {
     var w = window.parent.App.wNew;
     Ext.util.Cookies.set('cookieNuevaSubEspecialidad', 'Nuevo');
     w.load('FormaSubEspecialidad.aspx');
-    w.setHeight(230);
+    w.setHeight(200);
     w.setWidth(380);
     w.center();
     w.setTitle('NUEVA SUBESPECIALIDAD');

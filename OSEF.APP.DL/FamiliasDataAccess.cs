@@ -90,5 +90,111 @@ namespace OSEF.APP.DL
         }
 
         #endregion
+         
+        #region Insertar
+
+        /// <summary>
+        /// Método que inserta un nuevo registro a la tabla de xxxxx
+        /// </summary>
+        /// <param name="iFamilias"></param>
+        public static string Insertar(Familias iFamilias)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spI_InsertarFamilias";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Value = iFamilias.ID;
+                sqlpID.Size = 10;
+                sqlpID.Direction = ParameterDirection.Output;
+
+                SqlParameter sqlpNombre = new SqlParameter();
+                sqlpNombre.ParameterName = "@Nombre";
+                sqlpNombre.SqlDbType = SqlDbType.Char;
+                sqlpNombre.Value = iFamilias.Nombre;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpNombre);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción INSERT que regresa un dato que es el ID
+                int result = Convert.ToInt32(sqlcComando.ExecuteScalar());
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return sqlcComando.Parameters["@ID"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int Insertar(Especialidades " + iFamilias.ID + ")): " + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Actualizar
+
+        /// <summary>
+        /// Método que modifica un registro a la tabla de xxxxx
+        /// </summary>
+        /// <param name="iFamilias"></param>
+        public static int Actualizar(Familias iFamilias)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spU_ActualizarEspecialidades";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Value = iFamilias.ID;
+
+                SqlParameter sqlpNombre = new SqlParameter();
+                sqlpNombre.ParameterName = "@Nombre";
+                sqlpNombre.SqlDbType = SqlDbType.Char;
+                sqlpNombre.Value = iFamilias.Nombre;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpNombre);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int Actualizar(Familias " + iFamilias.ID + ")): " + ex.Message);
+            }
+        }
+
+        #endregion
     }
 }

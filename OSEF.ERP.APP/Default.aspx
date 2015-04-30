@@ -250,10 +250,10 @@
         <ext:Window 
             ID="wNew"
             runat="server"
-            Icon="New"
+            Icon="Application"
             Hidden="true"
             Modal="true"
-            Padding="0"
+            Padding="5"
             Resizable="False"
             Region="Center"
             XOnEsc="Ext.emptyFn">
@@ -268,7 +268,7 @@
             Icon="ArrowRefresh"
             Hidden="true"
             Modal="true"
-            Padding="0"
+            Padding="5"
             Resizable="False"
             Region="Center"
             XOnEsc="Ext.emptyFn">

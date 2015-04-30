@@ -41,7 +41,7 @@
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="Especialidad" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="ESPECIALIDAD" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items> 
                             <ext:ComboBox ID="cmbEspecialidad" runat="server"
@@ -82,7 +82,7 @@
                     </ext:Toolbar>
                         </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="Familia"
+                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="FAMILIA"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items>
                              <ext:ComboBox ID="cmbFamilia" runat="server"
@@ -123,7 +123,7 @@
                     </ext:Toolbar>
                        </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer4" runat="server" FieldLabel="SubEspecialidad"
+                    <ext:FieldContainer ID="FieldContainer4" runat="server" FieldLabel="SUBESPECIALIDAD"
                         AnchorHorizontal="100%" Layout="HBoxLayout" AllowBlank="false">
                         <Items>
                             <ext:ComboBox ID="cmbSubEspecialidad" runat="server"
@@ -164,7 +164,7 @@
                     </ext:Toolbar>
                        </Items>
                     </ext:FieldContainer>
-                    <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="Main Saver"
+                    <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="MAIN SAVER"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items> 
                          <ext:TextField ID="txtCodigoMainSaver" runat="server" AllowBlank="false" Width="250" Disabled="false"
@@ -176,7 +176,7 @@
                             </ext:TextField>
                        </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer6" runat="server" FieldLabel="Descripción"
+                    <ext:FieldContainer ID="FieldContainer6" runat="server" FieldLabel="DESCRIPCIÓN"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items>
                             <ext:TextArea ID="txtDescripcion" runat="server" Height="150" Width="250" Disabled="false" AllowBlank="false"

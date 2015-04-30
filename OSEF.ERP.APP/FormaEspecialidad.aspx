@@ -26,27 +26,30 @@
     <link rel="stylesheet" href="css/xButton.css" />
     <script type="text/javascript" src="js/formaEspecialidad.js"></script>
 </head>
-<body>
+<body class=">
     <form id="form1" runat="server">
-    
     <ext:ResourceManager ID="rmEspecialidad" runat="server" HideInDesign="true" />
-    <ext:FormPanel ID="fpEspecialidad" runat="server" Height="190" Margins="3 3 3 3" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" MonitorResize="true">
+    <ext:FormPanel ID="fpEspecialidad" runat="server" Height="150" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" MonitorResize="true">
         <Items>
             <ext:Panel ID="Panel1" runat="server">
                 <Items> 
-                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
-                            <ext:TextField ID="txtID" runat="server" Margins="3 3 3 3" Width="250" Disabled="false" ReadOnly="true"
+                            <ext:TextField ID="txtID" runat="server" Width="250" Disabled="false" ReadOnly="true"
                                 EmptyText="" MaxLength="99">  
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer>  
-                    <ext:FieldContainer ID="FieldContainer1" runat="server" Margins="3 3 3 3" FieldLabel="NOMBRE" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="NOMBRE" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
                             <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false"
                                 EmptyText="ESCRIBA UN NOMBRE PARA LA ESPECIALIDAD" MaxLength="99">  
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change" />
+                                    <Blur Handler="App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase())"/>
+                                </Listeners>
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer>  

@@ -78,9 +78,6 @@ var rMnto_Change = function (radio) {
     HabilitarGuardar();
 };
 
-
-
-
 //Hacer la busqueda de información
 var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     App.sCarga.clearFilter();
@@ -92,10 +89,7 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     //App.sCarga.getSelectionModel().deselectAll();
   
 };
-
-
-
-
+ 
 //Renglones nuevos
 var getRowClass = function (record) {
     if (record.phantom) {
@@ -130,12 +124,11 @@ var imgbtnGuardar_Click_Success = function () {
     App.sbFormaPreciario.setText('ACTIVO');
 };
 
-//Evento que ocurre al dar clic en imgbtnGuardar
-var imgbtnGuardar_Click_SuccessRepetido = function () {
-  
-};
-
-
+////Evento que ocurre al dar clic en imgbtnGuardar
+//var imgbtnGuardar_Click_SuccessRepetido = function () {
+//  
+//};
+ 
 //Evento lanzado al agregar un registro al store
 var sPreciario_Add = function (avance, registro) {
     //Lo que pasa cuando se selecciona un registro y es diferente de nuevo
@@ -201,13 +194,10 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
             }
             else {
               
-            }
-
+            } 
         },
         icon: Ext.MessageBox.WARNING
-    });
-
-    
+    }); 
 };
 
 //Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
@@ -248,10 +238,7 @@ var sPreciarioGeneral_Load_Success = function () {
 
         App.direct.ObtenerUltimoConceptoAdicional({
             success: function (result) {
-                App.sCarga.insert(App.sCarga.getCount(), { Clave: result });
-          
-                
-
+                App.sCarga.insert(App.sCarga.getCount(), { Clave: result }); 
             }
         });
     }
@@ -262,26 +249,14 @@ var sPreciarioGeneral_Load_Success = function () {
   
 };
 
-//Evento que se lanza antes de pintar la columna de comandos
-<<<<<<< HEAD
-var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) { 
-    if ((grid.getStore().getCount() - 1) == rowIndex) {
-        toolbar.items.get(0).hide();
-    }
-=======
 var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-
-
-
     //    //  App.ccAcciones.commands[0].hide();
-        if (grid.getStore().getCount()-1 == rowIndex) {
-            toolbar.items.get(0).disabled = true;
-        }
-
-
-
->>>>>>> origin/master
-}
+    console.log(grid.getStore().getCount());
+    console.log(rowIndex,'dd');
+    if (grid.getStore().getCount() - 1 == rowIndex) {
+        toolbar.items.get(0).disabled = true;
+    }
+};
 
 //Se lanza antes de terminar la edición del campo
 var ceFormaPreciarioGeneral_ValidateEdit = function (editor, context, opciones) {
@@ -344,13 +319,10 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
             //Inserta la nueva clave adicional
             App.sCarga.insert(App.sCarga.getCount(), { Clave: clave }); 
             App.gpPreciario.getView().refreshNode(App.sCarga.getCount() - 2);
-            //Validar si se habilita el boton de afectar
-
+            //Validar si se habilita el boton de afectar 
             HabilitarGuardar();
         }
-    }
-
-
+    } 
 };
 
 
@@ -376,7 +348,7 @@ function HabilitarGuardar() {
     else {
         App.imgbtnGuardar.setDisabled(true);
     }
-}
+};
 
 
 //Acciones del boton d agregar concepto en el detalle
@@ -388,9 +360,7 @@ var imgbtnBuscar_Click = function (columna, comando, registro, fila, opciones) {
     window.parent.App.wAyudaConcepto.setTitle('Selecciona concepto');
     window.parent.App.wAyudaConcepto.show();
 };
-
-
-
+ 
 //Obtiene las filas agregadas, editadas y eliminadas del store
 var getNewEncodedRecords = function () {
 
@@ -412,7 +382,7 @@ var getNewEncodedRecords = function () {
             return 0;
         }
     }
-}
+};
 
 var getRemovedRecords = function () {
     var store = App.sCarga;
@@ -431,7 +401,7 @@ var getRemovedRecords = function () {
             return 0;
         }
     }
-}
+};
 
 var getUpdatedRecords = function () {
 
@@ -451,4 +421,4 @@ var getUpdatedRecords = function () {
             return 0;
         }
     }
-}
+};
