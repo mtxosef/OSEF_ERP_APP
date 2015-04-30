@@ -183,6 +183,13 @@ namespace OSEF.ERP.APP
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Reporte", ParameterMode.Value));
             }
 
+            //4. Lanzar la afectación del Movimiento
+            if (strMovimiento.Trim().Equals("Orden de Cambio"))
+            {
+                OrdenEstimacionBusiness.AfectarOrdenPorID(oFormaOrdenEstimacion);
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Orden", ParameterMode.Value));
+            }
+
             //6. Actualizar el objeto y el store de OrdenEstimacion
             oOrdenEstimacion = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(oFormaOrdenEstimacion.Id);
             sOrdenEstimacion.GetAt(0).Set("MovID", oOrdenEstimacion.MovID);

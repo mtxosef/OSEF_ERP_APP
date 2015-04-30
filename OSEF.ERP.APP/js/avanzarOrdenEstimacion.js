@@ -3,28 +3,54 @@
     App.direct.ObtenerOrdenEstimacion(result.extraParamsResponse.ordenestimacion, {
         //2. Asignar los datos a los controles
         success: function (result) {
-            //Actualizar store de OrdenEstimacion
-            window.parent.App.sOrdenEstimacion.getAt(0).set("ID", result.Id);
-            window.parent.App.sOrdenEstimacion.getAt(0).set("Mov", result.Mov);
-            window.parent.App.sOrdenEstimacion.getAt(0).set("MovID", result.MovID);
-            window.parent.App.sOrdenEstimacion.getAt(0).set("Origen", result.Origen);
-            window.parent.App.sOrdenEstimacion.getAt(0).set("OrigenId", result.OrigenId);
-            window.parent.App.sOrdenEstimacion.getAt(0).set("FechaEmision", result.FechaEmision);
-            window.parent.App.sOrdenEstimacion.getAt(0).set("Estatus", result.Estatus);
+            if (result.Mov == 'Mesa de reporte') {
+                //Actualizar store de OrdenEstimacion
+                window.parent.App.sOrdenEstimacion.getAt(0).set("ID", result.Id);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("Mov", result.Mov);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("MovID", result.MovID);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("Origen", result.Origen);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("OrigenId", result.OrigenId);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("FechaEmision", result.FechaEmision);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("Estatus", result.Estatus);
 
-            window.parent.App.cmbMov.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('Mov'));
-            window.parent.App.cmbMov.setReadOnly(false);
-            window.parent.App.txtfMovID.setValue('');
-            window.parent.App.dfFechaEmision.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('FechaEmision'));
-            window.parent.App.sbOrdenEstimacion.setText(window.parent.App.sOrdenEstimacion.getAt(0).get('Estatus'));
+                window.parent.App.cmbMov.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('Mov'));
+                window.parent.App.cmbMov.setReadOnly(false);
+                window.parent.App.txtfMovID.setValue('');
+                window.parent.App.dfFechaEmision.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('FechaEmision'));
+                window.parent.App.sbOrdenEstimacion.setText(window.parent.App.sOrdenEstimacion.getAt(0).get('Estatus'));
 
-            //Obtener el Renglon anterior
-            var renglonAnterior = window.parent.App.sConceptos.getAt(window.parent.App.sConceptos.getCount() - 1).get('Renglon') + 1;
-            //Insertar un nuevo registro
-            window.parent.App.sConceptos.insert(window.parent.App.sConceptos.getCount(), { Renglon: renglonAnterior });
+                //Obtener el Renglon anterior
+                var renglonAnterior = window.parent.App.sConceptos.getAt(window.parent.App.sConceptos.getCount() - 1).get('Renglon') + 1;
+                //Insertar un nuevo registro
+                window.parent.App.sConceptos.insert(window.parent.App.sConceptos.getCount(), { Renglon: renglonAnterior });
 
-            HabilitarControlesAvanzar();
-            window.parent.App.wEmergente.hide();
+            
+
+                HabilitarControlesAvanzar();
+                window.parent.App.wEmergente.hide();
+            }
+
+            else if (result.Mov == 'Estimacion') {
+
+                window.parent.App.sOrdenEstimacion.getAt(0).set("ID", result.Id);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("Mov", result.Mov);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("MovID", result.MovID);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("Origen", result.Origen);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("OrigenId", result.OrigenId);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("FechaEmision", result.FechaEmision);
+                window.parent.App.sOrdenEstimacion.getAt(0).set("Estatus", result.Estatus);
+
+                window.parent.App.cmbMov.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('Mov'));
+                window.parent.App.cmbMov.setReadOnly(false);
+                window.parent.App.txtfMovID.setValue('');
+                window.parent.App.dfFechaEmision.setValue(window.parent.App.sOrdenEstimacion.getAt(0).get('FechaEmision'));
+                window.parent.App.sbOrdenEstimacion.setText(window.parent.App.sOrdenEstimacion.getAt(0).get('Estatus'));
+
+                window.parent.App.imgbtnGuardar.setDisabled(true);
+                window.parent.App.imgbtnAfectar.setDisabled(true);
+
+                window.parent.App.wEmergente.hide();
+            }
         },
         failure: function (errorMessage) { },
         eventMask: { showMask: true }

@@ -59,7 +59,7 @@ var imgbtnFormaNuevo_Click = function () {
 };
 
 var imgbtnImprimir_Click = function () {
-    if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte') {
+    if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte' || App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
         window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
         window.parent.App.wGenerador.setHeight(160);
         window.parent.App.wGenerador.setWidth(590);
@@ -276,8 +276,9 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     //1. Actualizar el store del tablero
     window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     var d = new Date();
-
+   
     if (result.extraParamsResponse.mov == 'Estimacion') {
+
         //2. Lanzar ventana de movimiento afectado
         Ext.Msg.show({
             id: 'msgAvanzar',
@@ -288,7 +289,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
-        
+        App.sConceptos.removeAt(App.sConceptos.getCount() - 1);
         //Actualizar campos 
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         App.cmbMov.setReadOnly(true);
@@ -302,6 +303,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.dfFechaEmision.setValue(d);
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
 
+        
+
         //6. Deshabilita los comandos del grid
         App.ccFotos.commands[0].disabled = false;
         App.ccFotos.commands[1].disabled = false;
@@ -310,6 +313,10 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.ccFacturas.commands[0].disabled = false;
         App.ccFacturas.commands[1].disabled = false;
         App.gpOrdenEstimacion.reconfigure();
+
+
+
+
     }
 
     if (result.extraParamsResponse.mov == 'Reporte') {
@@ -732,9 +739,10 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.cmbMov.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
-        App.imgbtnAfectar.setDisabled(false);
-        App.imgbtnGuardar.setDisabled(false);
+        App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(true);
+        App.imgbtnImprimir.setDisabled(false);
     }
 
     //Valida el estatus para ver si permite seguir capturando o no
