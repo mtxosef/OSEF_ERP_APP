@@ -327,7 +327,8 @@ var ceFormaPreciarioGeneral_Edit = function (cellediting, columna, opciones) {
         var registro = App.sCarga.getAt(columna.rowIdx);
 
 
-        if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0 && registro.get('Categoria').length != 0) {
+        if (registro.get('Descripcion').length != 0 && registro.get('Unidad').length != 0 && registro.get('Precio') != 0
+        && registro.get('Categoria').length != 0 && registro.get('SubCategoria').length != 0 && registro.get('SubSubCategoria').length != 0) {
             //Insertar un nuevo registro 
             var adc = 'ADC-';
             var preclave = parseInt(registro.get('Clave').substring(4, 7));
