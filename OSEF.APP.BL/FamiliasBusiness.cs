@@ -14,6 +14,10 @@ namespace OSEF.APP.BL
         {
             return FamiliasDataAccess.ObtenerFamilias();
         }
+        public static List<Familias> ObtenerFamiliasPorEspecialidad(string ID)
+        {
+            return FamiliasDataAccess.ObtenerFamiliasPorEspecialidad(ID);
+        }
         public static Familias ObtenerFamiliasPorID(string ID)
         {
             return FamiliasDataAccess.ObtenerFamiliasPorID(ID);

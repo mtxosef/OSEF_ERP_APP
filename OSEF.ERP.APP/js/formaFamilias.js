@@ -45,9 +45,9 @@ var imgbtnGuardar_change = function () {
     var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,499}$/
     if (regex.test(App.txtNombre.getValue())) {
         App.imgbtnGuardar.setDisabled(false);
-        App.sbSubEspecialidad.setText('La información esta completa/correcta.');
+        App.sbFamilia.setText('La información esta completa/correcta.');
     } else {
         App.imgbtnGuardar.setDisabled(true);
-        App.sbSubEspecialidad.setText('No se permiten caracteres especiales o vacíos.');
+        App.sbFamilia.setText('No se permiten caracteres especiales o vacíos.');
     }
 }

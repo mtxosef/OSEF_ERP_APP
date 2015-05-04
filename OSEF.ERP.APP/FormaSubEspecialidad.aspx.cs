@@ -20,11 +20,14 @@ namespace OSEF.ERP.APP
                 SubEspecialidades espe = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cookieNuevaSubEspecialidad);
                 txtID.SetValue(espe.ID);
                 txtNombre.SetValue(espe.Nombre);
+
                 FieldContainer1.Hidden = false;
             }
             else {
                 FieldContainer1.Hidden = true;
             }
+            sFamilias.DataSource = FamiliasBusiness.ObtenerFamilias();
+            sFamilias.DataBind();
         }
 
         #region Guardar
@@ -52,6 +55,10 @@ namespace OSEF.ERP.APP
 
                     case "txtNombre":
                         cf.Nombre = sd.Value;
+                        break;
+
+                    case "cmbFamilia":
+                        cf.Familia = sd.Value;
                         break;
 
                 }

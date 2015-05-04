@@ -10,6 +10,8 @@ namespace OSEF.APP.EL
         #region Campos
         string id;
         string nombre;
+        string familia;
+        Familias rfamilia;
         #endregion
 
         #region Propiedades
@@ -22,6 +24,18 @@ namespace OSEF.APP.EL
         {
             get { return nombre; }
             set { nombre = value; }
+        }
+
+        public string Familia
+        {
+            get { return familia; }
+            set { familia = value; }
+        }
+
+        public Familias RFamilia
+        {
+            get { return rfamilia; }
+            set { rfamilia = value; }
         }
         #endregion
     }

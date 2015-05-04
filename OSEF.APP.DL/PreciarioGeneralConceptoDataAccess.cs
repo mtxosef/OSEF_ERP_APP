@@ -458,8 +458,7 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 10;
-                sqlpID.Direction = ParameterDirection.Output;
+                sqlpID.Size = 10; 
 
                 //2. Declarar los parametros
                 SqlParameter sqlpClave = new SqlParameter();
@@ -511,8 +510,7 @@ namespace OSEF.APP.DL
                 sqlpCantidad.ParameterName = "@Cantidad";
                 sqlpCantidad.SqlDbType = SqlDbType.Decimal;
                 sqlpCantidad.Value = iPreciarioConcepto.Cantidad;
-
-
+                 
                 SqlParameter sqlpUsuario = new SqlParameter();
                 sqlpUsuario.ParameterName = "@Usuario";
                 sqlpUsuario.SqlDbType = SqlDbType.VarChar;
@@ -521,12 +519,7 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEstatus = new SqlParameter();
                 sqlpEstatus.ParameterName = "@Estatus";
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
-                sqlpEstatus.Value = iPreciarioConcepto.Estatus;
-
-                SqlParameter sqlpFechaAlta = new SqlParameter();
-                sqlpFechaAlta.ParameterName = "@FechaAlta";
-                sqlpFechaAlta.SqlDbType = SqlDbType.SmallDateTime;
-                sqlpFechaAlta.Value = iPreciarioConcepto.FechaAlta;
+                sqlpEstatus.Value = iPreciarioConcepto.Estatus; 
 
                 SqlParameter sqlpMoneda = new SqlParameter();
                 sqlpMoneda.ParameterName = "@Moneda";
@@ -545,14 +538,13 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpCosto);
                 sqlcComando.Parameters.Add(sqlpCantidad);
                 sqlcComando.Parameters.Add(sqlpUsuario);
-                sqlcComando.Parameters.Add(sqlpEstatus);
-                sqlcComando.Parameters.Add(sqlpFechaAlta);
+                sqlcComando.Parameters.Add(sqlpEstatus); 
                 sqlcComando.Parameters.Add(sqlpMoneda);
                 //4. Abrir la conexión
-                sqlcComando.Connection.Open();
+                sqlcComando.Connection.Open(); 
 
-                //5. Ejecutar la instrucción INSERT que regresa un dato que es el ID
-                int result = Convert.ToInt32(sqlcComando.ExecuteScalar());
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
 
                 //6. Cerrar la conexión
                 sqlcComando.Connection.Close();

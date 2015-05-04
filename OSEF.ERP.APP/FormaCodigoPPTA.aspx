@@ -28,20 +28,26 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <ext:ResourceManager ID="rmCodigoPPTA" runat="server" HideInDesign="true" />
-    <ext:FormPanel ID="fpCodigoPPTAs" runat="server" Height="490" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" MonitorResize="true">
+    <ext:ResourceManager ID="rmCodigoPPTA" runat="server" HideInDesign="true" /> 
+    
+        <ext:FormPanel 
+            ID="fpCodigoPPTAs"
+            runat="server" 
+            MonitorResize="true"
+            Height="490"
+            Width="910" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" >
         <Items>
             <ext:Panel ID="Panel1" runat="server">
                 <Items> 
                     <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
-                            <ext:TextField ID="txtID" runat="server" Width="250" Disabled="false" ReadOnly="true"
+                            <ext:TextField ID="txtID" runat="server" Width="250"  ReadOnly="true"
                                 EmptyText="" MaxLength="99">  
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="ESPECIALIDAD" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="Especialidad" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items> 
                             <ext:ComboBox ID="cmbEspecialidad" runat="server"
@@ -51,7 +57,7 @@
                             ValueField="ID"
                             QueryMode="Local"
                             TriggerAction="All" AllowBlank="false"
-                            EmptyText="Seleccione una especialidad...">  
+                            EmptyText="Seleccione una especialidad..." TypeAhead="true" ForceSelection="true" MatchFieldWidth="true">  
                                 <Store>
                                     <ext:Store ID="sEspecialidad" runat="server">
                                         <Model>
@@ -63,10 +69,14 @@
                                             </ext:Model>
                                         </Model> 
                                     </ext:Store>
-                                </Store>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
+                                </Store> 
+                                <DirectEvents>
+                                    <Change OnEvent="cmbEspecialidad_Select">
+                                        <ExtraParams>
+                                            <ext:Parameter Name="vEspecialidad" Value="App.cmbEspecialidad.getValue()" Mode="Raw" />
+                                        </ExtraParams>
+                                    </Change>
+                                </DirectEvents>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar3" 
                         runat="server" 
@@ -82,7 +92,7 @@
                     </ext:Toolbar>
                         </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="FAMILIA"
+                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="Familia"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items>
                              <ext:ComboBox ID="cmbFamilia" runat="server"
@@ -92,7 +102,7 @@
                             ValueField="ID"
                             QueryMode="Local"
                             TriggerAction="All" AllowBlank="false"
-                            EmptyText="Seleccione una familia...">  
+                            EmptyText="Seleccione una familia..." TypeAhead="true" ForceSelection="true" MatchFieldWidth="true">  
                                 <Store>
                                     <ext:Store ID="sFamilias" runat="server">
                                         <Model>
@@ -104,10 +114,14 @@
                                             </ext:Model>
                                         </Model> 
                                     </ext:Store>
-                                </Store>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems> 
+                                </Store> 
+                                <DirectEvents>
+                                    <Change OnEvent="cmbFamilia_Select">
+                                        <ExtraParams>
+                                            <ext:Parameter Name="vFamilia" Value="App.cmbFamilia.getValue()" Mode="Raw" />
+                                        </ExtraParams>
+                                    </Change>
+                                </DirectEvents>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar2" 
                         runat="server" 
@@ -123,17 +137,17 @@
                     </ext:Toolbar>
                        </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer4" runat="server" FieldLabel="SUBESPECIALIDAD"
+                    <ext:FieldContainer ID="FieldContainer4" runat="server" FieldLabel="SubEspecialidad"
                         AnchorHorizontal="100%" Layout="HBoxLayout" AllowBlank="false">
                         <Items>
                             <ext:ComboBox ID="cmbSubEspecialidad" runat="server"
                             Width="250"
                             Editable="false"
-                            DisplayField="Nombre"
-                            ValueField="ID"
+                            DisplayField="Nombre" 
+                            ValueField="ID" 
                             QueryMode="Local"
                             TriggerAction="All" AllowBlank="false"
-                            EmptyText="Seleccione una SubEspecialidad..."> 
+                            EmptyText="Seleccione una SubEspecialidad..." TypeAhead="true" ForceSelection="true" MatchFieldWidth="true"> 
                                 <Store>
                                     <ext:Store ID="sSubEspecialidad" runat="server">
                                         <Model>
@@ -146,9 +160,6 @@
                                         </Model> 
                                     </ext:Store>
                                 </Store>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems> 
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar1" 
                         runat="server" 
@@ -164,10 +175,10 @@
                     </ext:Toolbar>
                        </Items>
                     </ext:FieldContainer>
-                    <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="MAIN SAVER"
+                    <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="Main Saver"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items> 
-                         <ext:TextField ID="txtCodigoMainSaver" runat="server" AllowBlank="false" Width="250" Disabled="false"
+                         <ext:TextField ID="txtCodigoMainSaver" runat="server" AllowBlank="false" Width="250" Disabled="false" Margins="0 0 0 0"
                                 EmptyText="Escriba un código main saver">  
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
@@ -176,7 +187,7 @@
                             </ext:TextField>
                        </Items>
                     </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer6" runat="server" FieldLabel="DESCRIPCIÓN"
+                    <ext:FieldContainer ID="FieldContainer6" runat="server" FieldLabel="Descripción"
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items>
                             <ext:TextArea ID="txtDescripcion" runat="server" Height="150" Width="250" Disabled="false" AllowBlank="false"
@@ -255,7 +266,7 @@
             <BottomBar>
                 <ext:StatusBar ID="sbPPTA" runat="server" Cls="x-colorToolbar" Text="Sin validar información" />
             </BottomBar>
-    </ext:FormPanel>
+            </ext:FormPanel>
     </form>
 </body>
 </html>

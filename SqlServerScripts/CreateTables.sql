@@ -666,12 +666,15 @@ CREATE TABLE Especialidades(
 
 CREATE TABLE Familias(
 	ID							CHAR(10) NOT NULL PRIMARY KEY,
-	Nombre						VARCHAR(500) NOT NULL
+	Nombre						VARCHAR(500) NOT NULL,
+	Especialidad				CHAR(10) NOT NULL FOREIGN KEY REFERENCES Especialidades(ID)
+
 )
 
 CREATE TABLE SubEspecialidades(
 	ID							CHAR(10) NOT NULL PRIMARY KEY,
-	Nombre						VARCHAR(250) NOT NULL
+	Nombre						VARCHAR(250) NOT NULL,
+	Familia						CHAR(10) NOT NULL FOREIGN KEY REFERENCES Familias(ID)
 )
 
 CREATE TABLE CodigoPPTA(

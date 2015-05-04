@@ -69,7 +69,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpID);
 
                 //4. Abrir la conexión
-                sqlcComando.Connection.Open(); 
+                sqlcComando.Connection.Open();
 
                 //5. Ejecutar la instrucción SELECT que regresa filas
                 SqlDataReader reader = sqlcComando.ExecuteReader();
@@ -86,6 +86,47 @@ namespace OSEF.APP.DL
             catch (Exception ex)
             {
                 throw new Exception("Error capa de datos (public static Familias ObtenerFamiliasPorID(string " + strID + ")): " + ex.Message);
+            }
+        }
+
+        public static List<Familias> ObtenerFamiliasPorEspecialidad(string strID)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerFamiliasPorEspecialidad";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@IDESPECIALIDAD";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Value = strID;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Especialidades
+                List<Familias> result = LibraryGenerics<Familias>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static Familias ObtenerFamiliasPorEspecialidad(string " + strID + ")): " + ex.Message);
             }
         }
 
@@ -121,9 +162,15 @@ namespace OSEF.APP.DL
                 sqlpNombre.SqlDbType = SqlDbType.Char;
                 sqlpNombre.Value = iFamilias.Nombre;
 
+                SqlParameter sqlpEspecialidad = new SqlParameter();
+                sqlpEspecialidad.ParameterName = "@IDESPECIALIDAD";
+                sqlpEspecialidad.SqlDbType = SqlDbType.Char;
+                sqlpEspecialidad.Value = iFamilias.Especialidad;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpNombre);
+                sqlcComando.Parameters.Add(sqlpEspecialidad);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -173,9 +220,15 @@ namespace OSEF.APP.DL
                 sqlpNombre.SqlDbType = SqlDbType.Char;
                 sqlpNombre.Value = iFamilias.Nombre;
 
+                SqlParameter sqlpEspecialidad = new SqlParameter();
+                sqlpEspecialidad.ParameterName = "@IDESPECIALIDAD";
+                sqlpEspecialidad.SqlDbType = SqlDbType.Char;
+                sqlpEspecialidad.Value = iFamilias.Especialidad;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpNombre);
+                sqlcComando.Parameters.Add(sqlpEspecialidad);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();

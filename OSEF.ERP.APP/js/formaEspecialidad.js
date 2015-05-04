@@ -35,6 +35,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             }
         });
     } 
+   
     window.parent.App.wEmergente.getBody().App.sEspecialidad.reload();
 
 };

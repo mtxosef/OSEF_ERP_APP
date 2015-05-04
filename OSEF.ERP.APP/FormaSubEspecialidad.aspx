@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css" />
     <link rel="stylesheet" href="css/xPanel.css" />
     <link rel="stylesheet" href="css/xButton.css" />
-    <script type="text/javascript" src="js/formaEspecialidad.js"></script>
+    <script type="text/javascript" src="js/formaSubEspecialidades.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -45,14 +45,39 @@
                         Layout="HBoxLayout">
                         <Items>
                             <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false"
-                                EmptyText="ESCRIBA UN NOMBRE PARA LA SUBESPECIALIDAD" MaxLength="99">
+                                EmptyText="NOMBRE DE LA SUBESPECIALIDAD" MaxLength="99">
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
                                     <Blur Handler="App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase())"/>
                                 </Listeners>
                             </ext:TextField>
                         </Items>
-                    </ext:FieldContainer>  
+                    </ext:FieldContainer>   <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="FAMILIA"
+                        AnchorHorizontal="100%" Layout="HBoxLayout">
+                        <Items>
+                             <ext:ComboBox ID="cmbFamilia" runat="server"
+                            Width="250"
+                            Editable="false"
+                            DisplayField="Nombre"
+                            ValueField="ID"
+                            QueryMode="Local"
+                            TriggerAction="All" AllowBlank="false"
+                            EmptyText="Seleccione una familia...">  
+                                <Store>
+                                    <ext:Store ID="sFamilias" runat="server">
+                                        <Model>
+                                            <ext:Model ID="mFamilias" runat="server">
+                                                <Fields>
+                                                    <ext:ModelField Name="ID" Type="String" />
+                                                    <ext:ModelField Name="Nombre" Type="String" />
+                                                </Fields>
+                                            </ext:Model>
+                                        </Model> 
+                                    </ext:Store>
+                                </Store>  
+                            </ext:ComboBox> 
+                       </Items>
+                    </ext:FieldContainer> 
                 </Items>
                 <Buttons>
                     <ext:ImageButton ID="imgbtnGuardar" runat="server" ImageUrl="assets/img/controles/Guardar.png"

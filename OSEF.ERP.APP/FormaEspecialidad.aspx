@@ -45,7 +45,7 @@
                         Layout="HBoxLayout">
                         <Items>
                             <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false"
-                                EmptyText="ESCRIBA UN NOMBRE PARA LA ESPECIALIDAD" MaxLength="99">  
+                                EmptyText="NOMBRE DE LA ESPECIALIDAD" MaxLength="99">  
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
                                     <Blur Handler="App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase())"/>
