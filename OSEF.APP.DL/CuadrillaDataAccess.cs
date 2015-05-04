@@ -70,7 +70,16 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Value = strID;
+
+                if (strID == null)
+                {
+                    sqlpID.Value = DBNull.Value;
+                }
+                else {
+                    sqlpID.Value = strID;
+                }
+
+                
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);

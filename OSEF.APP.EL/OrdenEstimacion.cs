@@ -43,7 +43,9 @@ namespace OSEF.APP.EL
 
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
+        Cuadrilla rcuadrilla;
 
+        
         #endregion
 
         #region Propiedades
@@ -228,6 +230,12 @@ namespace OSEF.APP.EL
             set { rordenestimaciond = value; }
         }
 
+
+        public Cuadrilla RCuadrilla
+        {
+            get { return rcuadrilla; }
+            set { rcuadrilla = value; }
+        }
         #endregion
     }
 }

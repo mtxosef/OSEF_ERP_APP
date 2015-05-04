@@ -411,6 +411,8 @@
 :r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerOrdenEstimacionDPorOrdenEstimacion.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerEstimacionDPorMesaReporte.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerOrdenEstimacionDExploradorConcluidos.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerOrdenesCambios.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimacionesD\web_spS_ObtenerMesaDeReportesConcluidos.sql
 -- OrdenesEstimacionesD (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimacionesD\web_spI_InsertarOrdenEstimacionD.sql
 -- OrdenesEstimacionesD (Modificar)

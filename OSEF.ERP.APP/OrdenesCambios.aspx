@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OrdenesEstimaciones.aspx.cs" Inherits="OSEF.ERP.APP.OrdenesCambio" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OrdenesCambios.aspx.cs" Inherits="OSEF.ERP.APP.OrdenesCambios" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
      <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type='text/javascript' src="js/tableroOrdenesEstimaciones.js"></script>
+    <script type='text/javascript' src="js/tableroOrdenesCambios.js"></script>
 
     
 </head>
@@ -39,7 +39,7 @@
             runat="server"
             Height="420"
             Width="960"
-            Title="REPORTES & ESTIMACIONES"
+            Title="ÓRDENES DE CAMBIO"
             EnableColumnHide="false"
             EnableColumnMove="false"
             Header="true"
@@ -132,10 +132,11 @@
                 </ext:Toolbar>
             </TopBar>
             <Store>
+                 
                 <ext:Store
                     ID="sOrdenesEstimaciones"
                     runat="server"
-                     OnReadData="OnReadData_sOrdenesEstimaciones"
+                    OnReadData="OnReadData_sOrdenesEstimaciones"
                     >
                     <Model>
                         <ext:Model ID="mOrdenesEstimaciones" runat="server">
@@ -173,62 +174,16 @@
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="170"
+                        Width="190"
                         DataIndex="Mov">
-                         <HeaderItems>
-                            <ext:ComboBox
-                                ID="cmbMovimiento"
-                                runat="server"
-                                ForceSelection="true"
-                                Editable="false">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                    <ext:ListItem Index="1" Text="Mesa de reporte" Value="Mesa de reporte"/>
-                                    <ext:ListItem Index="2" Text="Orden de Cambio" Value="Orden de Cambio"/>
-                                    <ext:ListItem Index="3" Text="Estimación" Value="Estimacion"/>
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Listeners>
-                                    <Select Fn="cmbMovimientoFiltro_Select" />
-                                </Listeners>
-                            </ext:ComboBox>
-                        </HeaderItems>
                         <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
-                    <ext:Column
-                        ID="cReporte"
-                        runat="server"
-                        Text="REPORTE"
-                        Align="Center"
-                        Width="80"
-                        DataIndex="Reporte">
-                        <HeaderItems>
-                            <ext:TextField
-                                ID="txtReporte"
-                                EmptyText="Busca"
-                                runat="server">
-                                <Listeners>
-                                    <Change Fn="txtReporteFiltro_Change" />
-                                </Listeners>
-                            </ext:TextField>
-                        </HeaderItems>
-                    </ext:Column>
-                    <ext:Column
-                        ID="cObservaciones"
-                        runat="server"
-                        Text="ASUNTO"
-                        Align="Center"
-                        Width="210"
-                        DataIndex="Observaciones">
-                    </ext:Column> 
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
                         Text="SUCURSAL"
                         Align="Left"
-                        Width="225"
+                        Width="275"
                         DataIndex="Sucursal">
                       <Renderer Fn="cSucursal_Renderer" />
                         <HeaderItems>
@@ -272,7 +227,7 @@
                         runat="server"
                         Text="FECHA EMISIÓN"
                         Align="Center"
-                        Width="100"
+                        Width="155"
                         DataIndex="FechaEmision"
                         Format="dd/MM/yyyy">
                         <HeaderItems>
@@ -317,7 +272,7 @@
                         runat="server"
                         Text="ESTATUS"
                         Align="Center"
-                        Width="90"
+                        Width="155"
                         DataIndex="Estatus">
                         <HeaderItems>
                             <ext:ComboBox
@@ -335,9 +290,9 @@
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                                <Listeners>
+                              <%--  <Listeners>
                                     <Select Fn="cmbEstatusFiltro_Select" />
-                                </Listeners>
+                                </Listeners>--%>
                               
 
                             </ext:ComboBox>
@@ -346,90 +301,11 @@
 
                     </ext:Column> 
                     <ext:Column
-                        ID="cZona"
-                        runat="server"
-                        Text="ZONA"
-                        Align="Center"
-                        Width="110"
-                        DataIndex="Sucursal">
-                         <Renderer Fn="cZona_Renderer" />
-                      <%--  <HeaderItems>
-                            <ext:ComboBox
-                                ID="ComboBox1"
-                                runat="server"
-                                ForceSelection="true"
-                                Editable="false">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                    <ext:ListItem Index="1" Text="PENDIENTE" />
-                                    <ext:ListItem Index="2" Text="BORRADOR" />
-                                    <ext:ListItem Index="3" Text="CONCLUIDO" />
-                                    <ext:ListItem Index="4" Text="CANCELADO" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Listeners>
-                                    <Select Fn="cmbEstatusFiltro_Select" />
-                                </Listeners>
-
-                            </ext:ComboBox>
-                        </HeaderItems>--%>
-                    </ext:Column> 
-                    <ext:Column
-                        ID="cCuadrilla"
-                        runat="server"
-                        Text="CUADRILLA"
-                        Align="Center"
-                        Width="110"
-                        DataIndex="Cuadrilla">
-                         <Renderer Fn="cCuadrilla_Renderer" />
-                             <HeaderItems>
-                             <ext:ComboBox
-                                ID="cmbCuadrillas"
-                                runat="server"
-                                Editable="false"
-                                DisplayField="Nombre"
-                                ValueField="ID">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Store>
-                                <ext:Store ID="sCuadrilla" runat="server">
-                                    <Model>
-                                        <ext:Model ID="mCuadrillas" runat="server" IDProperty="ID">
-                                            <Fields>
-                                                <ext:ModelField Name="ID" Type="String" />
-                                                <ext:ModelField Name="Nombre" Type="String" />
-                                            </Fields>
-                                        </ext:Model>
-                                    </Model>
-                                </ext:Store>
-                                </Store>
-                                 <Listeners>
-                                    <Select Fn="cmbCuadrillasFiltro_Select" />
-                                </Listeners>
-                            </ext:ComboBox>
-                    
-                        </HeaderItems>
-                    </ext:Column>
-                    <ext:Column
-                        ID="cTrabajoRequerido"
-                        runat="server"
-                        Text="TRABAJO REQUERIDO"
-                        Align="Center"
-                        Width="170"
-                        DataIndex="TrabajoRequerido">
-                    </ext:Column> 
-                    <ext:Column
                         ID="cUsuario"
                         runat="server"
                         Text="USUARIO"
                         Align="Center"
-                        Width="125"
+                        Width="155"
                         DataIndex="Usuario">
                         <HeaderItems>
                              <ext:ComboBox

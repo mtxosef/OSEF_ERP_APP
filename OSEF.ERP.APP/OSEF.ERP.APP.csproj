@@ -434,6 +434,7 @@
     <Content Include="js\formaReporteMovimientoEstimacion.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
     <Content Include="js\formaSubEspecialidades.js" />
+    <Content Include="js\tableroOrdenesCambios.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
     <Content Include="js\cuentasContables.js" />
@@ -494,6 +495,7 @@
     <Content Include="Menus.aspx" />
     <Content Include="Municipios.aspx" />
     <Content Include="OlvidasteContrasena2.aspx" />
+    <Content Include="OrdenesCambios.aspx" />
     <Content Include="OrdenesEstimaciones.aspx" />
     <Content Include="Plants.xml">
       <SubType>Designer</SubType>
@@ -1190,6 +1192,13 @@
     <Compile Include="OlvidasteContrasena2.aspx.designer.cs">
       <DependentUpon>OlvidasteContrasena2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="OrdenesCambios.aspx.cs">
+      <DependentUpon>OrdenesCambios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrdenesCambios.aspx.designer.cs">
+      <DependentUpon>OrdenesCambios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="OrdenesEstimaciones.aspx.cs">
       <DependentUpon>OrdenesEstimaciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1321,6 +1330,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rPresupuesto.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rResumenPartidas.cs">
       <AutoGen>True</AutoGen>

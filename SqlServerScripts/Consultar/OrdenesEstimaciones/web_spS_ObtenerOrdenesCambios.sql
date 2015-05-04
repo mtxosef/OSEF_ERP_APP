@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerOrdenesEstimaciones' AND
+			WHERE  name = 'web_spS_ObtenerOrdenesCambios' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerOrdenesEstimaciones
+	DROP PROCEDURE web_spS_ObtenerOrdenesCambios
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Viernes 05 de Diciembre de 2014
 -- Description:	Obtener todos los registros de Revisiones
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerOrdenesEstimaciones
+CREATE PROCEDURE web_spS_ObtenerOrdenesCambios
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -69,6 +69,6 @@ BEGIN
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-	 Mov in('Mesa de reporte','Estimacion')
+	 Mov ='Orden de Cambio'
 END
 GO
