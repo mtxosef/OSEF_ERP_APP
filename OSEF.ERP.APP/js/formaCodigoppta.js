@@ -89,3 +89,5 @@ var imgbtnNuevaSubEspecialidad_Click = function () {
     w.setTitle('NUEVA SUBESPECIALIDAD');
     w.show();
 }; 
+
+
