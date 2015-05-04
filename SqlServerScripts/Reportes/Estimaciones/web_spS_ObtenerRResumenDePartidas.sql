@@ -39,7 +39,7 @@ BEGIN
    SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
 		OE.ID, OE.Observaciones OBRA,
-		OED.ConceptoID,OED.Cantidad, OED.Precio,OED.Importe,OED.IntExt,
+		OED.ConceptoID,OED.Cantidad, OED.Precio,OED.Importe,OED.IntExt,OE.FechaEmision,
 		--Datos de la sucursal
 		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto

@@ -1317,6 +1317,11 @@
       <DependentUpon>rNumerosGeneradores.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reportess\rPresupuesto.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rPresupuesto.rpt</DependentUpon>
+    </Compile>
     <Compile Include="reportess\rResumenPartidas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1454,6 +1459,10 @@
     <EmbeddedResource Include="reportess\rNumerosGeneradores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rNumerosGeneradores.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportess\rPresupuesto.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rPresupuesto.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportess\rResumenPartidas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
