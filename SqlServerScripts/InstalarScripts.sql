@@ -513,6 +513,7 @@
 :r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTA.sql 
 :r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAEnUsoPorID.sql 
 :r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAPorID.sql 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerMainSaverEnCodigoPPTA.sql 
 --Codigos PPTA(Insertar) 
 :r c:\SqlServerScripts\Insertar\CodigosPPTA\web_spI_InsertarCodigoPPTA.sql  
 --Codigos PPTA(Modificar) 
