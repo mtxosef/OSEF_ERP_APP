@@ -136,8 +136,7 @@
                 <ext:Store
                     ID="sOrdenesEstimaciones"
                     runat="server"
-                    OnReadData="OnReadData_sOrdenesEstimaciones"
-                    >
+                    OnReadData="OnReadData_sOrdenesEstimaciones">
                     <Model>
                         <ext:Model ID="mOrdenesEstimaciones" runat="server">
                             <Fields>
