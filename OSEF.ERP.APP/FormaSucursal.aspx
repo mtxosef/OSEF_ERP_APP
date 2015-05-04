@@ -52,13 +52,9 @@
                     <ext:ModelField Name="EntreCalles" Type="String" />
                     <ext:ModelField Name="NoExterior" Type="String" />
                     <ext:ModelField Name="NoInterior" Type="String" />
-                     
                     <ext:ModelField Name="CodigoPostal" Type="String" />
-                    
                     <ext:ModelField Name="Colonia" Type="String" />
-                    
                     <ext:ModelField Name="Estado" Type="String" />
-                    
                     <ext:ModelField Name="Municipio" Type="String" /> 
                      
                     <ext:ModelField Name="RCodigopostal" Type="Object" />

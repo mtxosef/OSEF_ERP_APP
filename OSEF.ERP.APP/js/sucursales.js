@@ -140,8 +140,6 @@ var sSucursal_Add = function (sucursal, registro) {
     var dif = fFecha1 - fFecha2;
     var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
 
-
-    console.log(registro);
     App.txtfID.setValue(registro[0].get('ID'));
     App.nfCR.setValue(registro[0].get('CR'));
     App.txtfNombre.setValue(registro[0].get('Nombre'));

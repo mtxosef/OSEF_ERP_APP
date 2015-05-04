@@ -1,9 +1,8 @@
 ﻿var imgbtnGuardar_change = function () {
     var regex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,99}$/
-    var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,499}$/
+    var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{3,499}$/ 
     if (regex.test(App.txtCodigoMainSaver.getValue()) && desregex.test(App.txtDescripcion.getValue())
-    && Ext.getCmp('txtDias').getValue() > 0 && Ext.getCmp('txtPrioridad').getValue() > 0 && Ext.getCmp('txtTiempoEstimado').getValue() > 0) {
-        App.txtCodigoMainSaver.setValue(App.txtCodigoMainSaver.getValue());
+    && Ext.getCmp('txtDias').getValue() != null && Ext.getCmp('txtPrioridad').getValue() != null && Ext.getCmp('txtTiempoEstimado').getValue() != null) {
         App.imgbtnGuardar.setDisabled(false);
         App.sbPPTA.setText('La información esta completa/correcta.');
     } else {
@@ -72,7 +71,7 @@ var imgbtnNuevaFamilia_Click = function () {
     Ext.util.Cookies.set('cookieNuevaFamilia', 'Nuevo');
     w.load('FormaFamilias.aspx');
     w.setHeight(200);
-    w.setWidth(380);
+    w.setWidth(390);
     w.center();
     w.setTitle('NUEVA FAMILIA');
     w.show();
@@ -84,8 +83,39 @@ var imgbtnNuevaSubEspecialidad_Click = function () {
     Ext.util.Cookies.set('cookieNuevaSubEspecialidad', 'Nuevo');
     w.load('FormaSubEspecialidad.aspx');
     w.setHeight(200);
-    w.setWidth(380);
+    w.setWidth(390);
     w.center();
     w.setTitle('NUEVA SUBESPECIALIDAD');
     w.show();
-}; 
+};
+ 
+//Evento lanzado al cargar el store de la sucursal
+var sCodigoPPTA_Load = function () {
+    App.direct.sCodigoPPTA_Load();
+};
+
+
+//Evento lanzado al agregar un registro al store
+var sCodigoPPTA_Add = function (sucursal, registro) { 
+    App.txtID.setValue(registro[0].get('ID'));
+    App.cmbEspecialidad.setValue(registro[0].get('REspecialidad').ID);
+    App.txtCodigoMainSaver.setValue(registro[0].get('CodigoMainSaver'));
+    App.txtDescripcion.setValue(registro[0].get('Descripcion'));
+    App.txtDias.setValue(registro[0].get('Dias'));
+    App.txtPrioridad.setValue(registro[0].get('Prioridad'));
+    App.txtTiempoEstimado.setValue(registro[0].get('TiempoEstimado'));
+};
+
+//Evento al cargar el store de Familia
+var sFamilia_Load = function () {
+    if (App.sCodigoPPTA.getAt(0) != undefined) {
+        App.cmbFamilia.setValue(App.sCodigoPPTA.getAt(0).get('Familia'));
+    }
+};
+
+//Evento al cargar el store de SubEspecialidad
+var sSubespecialidad_Load = function () {
+    if (App.sCodigoPPTA.getAt(0) != undefined) {
+        App.cmbSubEspecialidad.setValue(App.sCodigoPPTA.getAt(0).get('SubEspecialidad'));
+    }
+};

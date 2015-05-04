@@ -17,14 +17,17 @@ namespace OSEF.ERP.APP
             string cookieNuevaFamilia = Cookies.GetCookie("cookieNuevaFamilia").Value;
             if (!cookieNuevaFamilia.Equals("Nuevo"))
             {
-                SubEspecialidades espe = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cookieNuevaFamilia);
+                Familias espe = FamiliasBusiness.ObtenerFamiliasPorID(cookieNuevaFamilia);
                 txtID.SetValue(espe.ID);
-                txtNombre.SetValue(espe.Nombre);
+                txtNombre.SetValue(espe.Nombre); 
+                cmbEspecialidad.SelectedItem.Text = EspecialidadesBusiness.ObtenerEspecialidadesPorID(espe.REspecialidad.ID).Nombre;
                 FieldContainer1.Hidden = false;
             }
             else {
                 FieldContainer1.Hidden = true;
             }
+            sEspecialidad.DataSource = EspecialidadesBusiness.ObtenerEspecialidades();
+            sEspecialidad.DataBind();
         }
         #region Guardar
 
@@ -40,17 +43,20 @@ namespace OSEF.ERP.APP
 
             //2. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
-            Familias cf = new Familias();
+            Familias f = new Familias();
             foreach (KeyValuePair<string, string> sd in dRegistro)
             {
                 switch (sd.Key)
                 {
                     case "txtID":
-                        cf.ID = sd.Value;
+                        f.ID = sd.Value;
                         break;
 
                     case "txtNombre":
-                        cf.Nombre = sd.Value;
+                        f.Nombre = sd.Value;
+                        break;
+                    case "cmbEspecialidad":
+                        f.Especialidad = sd.Value;
                         break;
 
                 }
@@ -59,15 +65,15 @@ namespace OSEF.ERP.APP
             if (cookieNuevaFamilia.Equals("Nuevo"))
             {
                 //3. Insertar en la base de datos
-                cf.ID = FamiliasBusiness.Insertar(cf);
+                f.ID = FamiliasBusiness.Insertar(f);
                 //4. Mandar mensaje con el código del codigo ppta
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", f.ID, ParameterMode.Value));
             }
             else
             {
-                FamiliasBusiness.Actualizar(cf);
-                cf.ID = cookieNuevaFamilia;
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+                FamiliasBusiness.Actualizar(f);
+                f.ID = cookieNuevaFamilia;
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", f.ID, ParameterMode.Value));
             }
         }
         #endregion

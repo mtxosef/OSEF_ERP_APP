@@ -170,7 +170,8 @@
             </Columns>
         </ColumnModel> 
         <Listeners>
-            <ItemDblClick Fn="tpCodigoPPTA_Select" />
+            <ItemClick Fn="tpCodigoPPTA_Select" />
+            <ItemDblClick Fn="imgbtnEditar_Click" />
         </Listeners>
         <SelectionModel>
             <ext:RowSelectionModel ID="rsmCodigoPPTA" runat="server">

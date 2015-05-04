@@ -31,6 +31,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ResourceManager rmCodigoPPTA;
         
         /// <summary>
+        /// Control sCodigoPPTA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sCodigoPPTA;
+        
+        /// <summary>
+        /// Control mCodigoPPTA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mCodigoPPTA;
+        
+        /// <summary>
         /// Control fpCodigoPPTAs.
         /// </summary>
         /// <remarks>

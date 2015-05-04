@@ -130,8 +130,7 @@
                                 <ext:Parameter Name="vNumero" Value="App.nfBuscar.getValue()" Mode="Raw" />
                             </ExtraParams>
                         </Change>
-                    </DirectEvents>  
-                   
+                    </DirectEvents>   
                     </ext:NumberField>
                 </Items>
             </ext:Toolbar>

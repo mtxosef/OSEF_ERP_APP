@@ -531,7 +531,8 @@
 --Familias(Consultar)
 :r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamilias.sql 
 :r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamiliasEnUsoPorID.sql 
-:r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamiliasPorID.sql  
+:r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamiliasPorEspecialidad.sql  
+:r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamiliasPorID.sql   
 --Familias(Insertar) 
 :r c:\SqlServerScripts\Insertar\Familias\web_spI_InsertarFamilias.sql  
 --Familias(Borrar) 
@@ -540,6 +541,7 @@
 --SubEspecialidades(Consultar)
 :r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidades.sql 
 :r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidadesEnUsoPorID.sql 
+:r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidadesPorFamilia.sql 
 :r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidadesPorID.sql 
 --SubEspecialidades(Insertar) 
 :r c:\SqlServerScripts\Insertar\SubEspecialidades\web_spI_InsertarSubEspecialidades.sql  

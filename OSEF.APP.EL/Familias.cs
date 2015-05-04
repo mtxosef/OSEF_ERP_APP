@@ -10,6 +10,8 @@ namespace OSEF.APP.EL
         #region Campos
         string id;
         string nombre;
+        string especialidad;
+        Especialidades respecialidad;
         #endregion
 
         #region Propiedades
@@ -22,6 +24,18 @@ namespace OSEF.APP.EL
         {
             get { return nombre; }
             set { nombre = value; }
+        }
+
+        public string Especialidad
+        {
+            get { return especialidad; }
+            set { especialidad = value; }
+        }
+
+        public Especialidades REspecialidad
+        {
+            get { return respecialidad; }
+            set { respecialidad = value; }
         }
         #endregion
     }

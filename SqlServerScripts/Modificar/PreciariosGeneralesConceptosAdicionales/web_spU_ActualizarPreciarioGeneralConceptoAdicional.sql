@@ -29,7 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spU_ActualizarPreciarioGeneralConceptoAdicional
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(10) OUTPUT,
+	@ID				CHAR(10),
 	@CLAVE			CHAR(30),
 	@Preciario		VARCHAR(7),
 	@Descripcion	VARCHAR(2000),
@@ -40,106 +40,29 @@ CREATE PROCEDURE web_spU_ActualizarPreciarioGeneralConceptoAdicional
 	@Costo			DECIMAL(20,2),
 	@Cantidad		DECIMAL(10,2),
 	@Usuario		VARCHAR(50),
-	@Estatus		VARCHAR(20),
-	@FechaAlta		SMALLDATETIME,
+	@Estatus		VARCHAR(20), 
 	@Moneda			VARCHAR(30)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
+	 
+    -- Insert statements for procedure here 
+UPDATE [dbo].[PreciariosGeneralesConceptos]
+   SET [CLAVE] = @CLAVE
+      ,[Preciario] = @Preciario
+      ,[Descripcion] = @Descripcion
+      ,[Categoria] = @Categoria
+      ,[SubCategoria] = @SubCategoria
+      ,[SubSubCategoria] = @SubSubCategoria
+      ,[Unidad] = @Unidad
+      ,[Costo] = @Costo
+      ,[Cantidad] = @Cantidad
+      ,[Usuario] = @Usuario
+      ,[Estatus] = @Estatus 
+      ,[MONEDA] = @Moneda
+ WHERE [ID] = @ID;
 
-	
-	--Formar el ID
-	DECLARE
-		@ID_TEMP INT,
-		@VALOR CHAR(10)
-		
-		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 2, LEN(ID)) AS INT)) FROM PreciariosGeneralesConceptos WHERE ID LIKE 'C%'
-		IF (@ID_TEMP IS NOT NULL)
-		BEGIN
-			SET @ID_TEMP = @ID_TEMP + 1
-		END
-		ELSE
-		BEGIN
-			SET @ID_TEMP = 1
-		END
-
-		--DECIMAL
-		IF ((@ID_TEMP / 10) < 1)
-		BEGIN
-			SET @VALOR = 'C00000000' + CAST(@ID_TEMP AS CHAR(1))
-		END
-		ELSE IF ((@ID_TEMP / 100) < 1)
-		BEGIN
-			SET @VALOR = 'C0000000' + CAST(@ID_TEMP AS CHAR(2))
-		END
-		ELSE IF ((@ID_TEMP / 1000) < 1)
-		BEGIN
-			SET @VALOR = 'C000000' + CAST(@ID_TEMP AS CHAR(3))
-		END
-		ELSE IF ((@ID_TEMP / 10000) < 1)
-		BEGIN
-			SET @VALOR = 'C00000' + CAST(@ID_TEMP AS CHAR(4))
-		END
-		ELSE IF ((@ID_TEMP / 100000) < 1)
-		BEGIN
-			SET @VALOR = 'C0000' + CAST(@ID_TEMP AS CHAR(5))
-		END
-		ELSE IF ((@ID_TEMP / 1000000) < 1)
-		BEGIN
-			SET @VALOR = 'C000' + CAST(@ID_TEMP AS CHAR(6))
-		END
-		ELSE IF ((@ID_TEMP / 1000000) < 1)
-		BEGIN
-			SET @VALOR = 'C00' + CAST(@ID_TEMP AS CHAR(7))
-		END
-		ELSE IF ((@ID_TEMP / 1000000) < 1)
-		BEGIN
-			SET @VALOR = 'C0' + CAST(@ID_TEMP AS CHAR(8))
-		END
-		ELSE
-		BEGIN
-			SET @VALOR = 'C' + CAST(@ID_TEMP AS CHAR(9))
-		END
-		
-		SELECT @ID = @VALOR
-
-    -- Insert statements for procedure here
-    INSERT INTO
-		PreciariosGeneralesConceptos
-		(
-			ID,
-			CLAVE,
-			Preciario,
-			Descripcion,
-			Categoria,
-			SubCategoria,
-			SubSubCategoria,
-			Unidad,
-			Costo,
-			Cantidad,
-			Usuario,
-			Estatus,
-			FechaAlta,
-			Moneda
-		)
-	VALUES
-		(
-			@ID,
-			@CLAVE,
-			@Preciario,
-			@Descripcion,
-			@Categoria,
-			@SubCategoria,
-			@SubSubCategoria,
-			@Unidad,
-			@Costo,
-			@Cantidad,
-			@Usuario,
-			@Estatus,
-			@FechaAlta,
-			@Moneda
-		)
 END
 GO
