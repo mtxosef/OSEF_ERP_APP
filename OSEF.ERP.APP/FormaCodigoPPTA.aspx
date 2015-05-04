@@ -30,6 +30,31 @@
     <form id="form1" runat="server">
     <ext:ResourceManager ID="rmCodigoPPTA" runat="server" HideInDesign="true" /> 
     
+     <ext:Store ID="sCodigoPPTA" runat="server">
+        <Model>
+            <ext:Model ID="mCodigoPPTA" runat="server" IDProperty="ID">
+                <Fields>
+                    <ext:ModelField Name="ID" Type="String" />
+                    <ext:ModelField Name="Especialidad" Type="String" />
+                    <ext:ModelField Name="Familia" Type="String" />
+                    <ext:ModelField Name="SubEspecialidad" Type="String" />
+                    <ext:ModelField Name="REspecialidad" Type="Object" />
+                    <ext:ModelField Name="RFamilia" Type="Object" />
+                    <ext:ModelField Name="RSubespecialidad" Type="Object" />
+                    <ext:ModelField Name="CodigoMainSaver" Type="String" />
+                    <ext:ModelField Name="Descripcion" Type="String" />   
+                    <ext:ModelField Name="Dias" Type="String" />   
+                    <ext:ModelField Name="Prioridad" Type="String" />   
+                    <ext:ModelField Name="TiempoEstimado" Type="String" />    
+                </Fields>
+            </ext:Model>
+        </Model>
+        <Listeners>
+            <Load Fn="sCodigoPPTA_Load" />
+            <Add Fn="sCodigoPPTA_Add" />
+        </Listeners>
+    </ext:Store>
+
         <ext:FormPanel 
             ID="fpCodigoPPTAs"
             runat="server" 
@@ -67,7 +92,7 @@
                                                     <ext:ModelField Name="Nombre" Type="String" />
                                                 </Fields>
                                             </ext:Model>
-                                        </Model> 
+                                        </Model>  
                                     </ext:Store>
                                 </Store> 
                                 <DirectEvents>
@@ -113,6 +138,9 @@
                                                 </Fields>
                                             </ext:Model>
                                         </Model> 
+                                        <Listeners>
+                                            <Load Fn="sFamilia_Load" />
+                                        </Listeners>
                                     </ext:Store>
                                 </Store> 
                                 <DirectEvents>
@@ -158,6 +186,9 @@
                                                 </Fields>
                                             </ext:Model>
                                         </Model> 
+                                        <Listeners>
+                                            <Load Fn="sSubespecialidad_Load" />
+                                        </Listeners>
                                     </ext:Store>
                                 </Store>
                             </ext:ComboBox>
@@ -188,7 +219,7 @@
                        </Items>
                     </ext:FieldContainer> 
                     <ext:FieldContainer ID="FieldContainer6" runat="server" FieldLabel="Descripción"
-                        AnchorHorizontal="100%" Layout="HBoxLayout">
+                        AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
                         <Items>
                             <ext:TextArea ID="txtDescripcion" runat="server" Height="150" Width="250" Disabled="false" AllowBlank="false"
                                 EmptyText="Escriba una descripción" MaxLength="499"> 
@@ -200,9 +231,9 @@
                         </Items>
                     </ext:FieldContainer> 
                     <ext:FieldContainer ID="FieldContainer7" runat="server" FieldLabel="Días" 
-                        AnchorHorizontal="100%" Layout="HBoxLayout">
+                        AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
                         <Items>
-                            <ext:NumberField ID="txtDias" runat="server" Width="250" MinValue="0" MaxValue="365" AllowExponential="false" MaxLength="3"> 
+                            <ext:NumberField ID="txtDias" runat="server" Width="250" MinValue="0" MaxValue="365" AllowExponential="false" MaxLength="3" Editable="false"  AllowBlank="false"> 
                             <Listeners>
                                 <Change Fn="imgbtnGuardar_change" />
                             </Listeners>
@@ -210,9 +241,9 @@
                         </Items>
                     </ext:FieldContainer> 
                     <ext:FieldContainer ID="FieldContainer8" runat="server" FieldLabel="Prioridad" 
-                        AnchorHorizontal="100%" Layout="HBoxLayout">
+                        AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
                         <Items>
-                            <ext:NumberField ID="txtPrioridad" runat="server" Width="250" MinValue="1" MaxValue="5" AllowExponential="false" MaxLength="3" > 
+                            <ext:NumberField ID="txtPrioridad" runat="server" Width="250" MinValue="1" MaxValue="5" AllowExponential="false" MaxLength="3" AllowBlank="false" Editable="false" > 
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
                                 </Listeners>
@@ -222,7 +253,7 @@
                     <ext:FieldContainer ID="FieldContainer9" runat="server" FieldLabel="Tiempo Estimado" 
                         AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items>
-                            <ext:NumberField ID="txtTiempoEstimado" runat="server" Width="250" MinValue="0" MaxValue="365" AllowExponential="false" MaxLength="3">  
+                            <ext:NumberField ID="txtTiempoEstimado" runat="server" Width="250" MinValue="0" MaxValue="365" AllowExponential="false" MaxLength="3"  AllowBlank="false"  Editable="false" >  
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
                                 </Listeners>

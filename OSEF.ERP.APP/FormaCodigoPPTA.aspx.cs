@@ -14,31 +14,38 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            onLoadData();
+        }
+
+        /// <summary>
+        /// Evento que se lanza al cargar el store
+        /// </summary>
+        [DirectMethod]
+        public void sCodigoPPTA_Load()
+        {
+
             string strcookieEditarCodigoPPTA = Cookies.GetCookie("cookieEditarCodigoPPTA").Value;
             onLoadData();
             if (!strcookieEditarCodigoPPTA.Equals("Nuevo"))
             {
-                cmbFamilia.GetStore().RemoveAll(); 
-                cmbSubEspecialidad.GetStore().RemoveAll();
-
-                CodigoFalla cf = CodigoFallasBusiness.ObtenerCodigoFallaPorID(strcookieEditarCodigoPPTA); 
-                sFamilias.DataSource = FamiliasBusiness.ObtenerFamiliasPorEspecialidad(cf.REspecialidad.ID);
-                sFamilias.DataBind();
-                sSubEspecialidad.DataSource = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorFamilia(cf.RFamilias.ID);
-                sSubEspecialidad.DataBind();
-
-                txtID.SetValue(cf.ID); 
-                cmbEspecialidad.SelectedItem.Text = cf.REspecialidad.Nombre; 
-                cmbFamilia.SelectedItem.Text = cf.RFamilias.Nombre;
-                cmbSubEspecialidad.SelectedItem.Text = cf.RSubespecialidad.Nombre; 
-                txtCodigoMainSaver.SetValue(cf.CodigoMainSaver);
-                txtDescripcion.SetValue(cf.Descripcion);
-                txtDias.SetValue(cf.Dias);
-                txtPrioridad.SetValue(cf.Prioridad);
-                txtTiempoEstimado.SetValue(cf.TiempoEstimado);
+                CodigoFalla oCodigoPPTA = CodigoFallasBusiness.ObtenerCodigoFallaPorID(strcookieEditarCodigoPPTA);
+                sCodigoPPTA.Add(new
+                {
+                    ID = oCodigoPPTA.ID,
+                    Especialidad = oCodigoPPTA.Especialidad,
+                    Familia = oCodigoPPTA.Familia,
+                    SubEspecialidad = oCodigoPPTA.Subespecialidad,
+                    REspecialidad = oCodigoPPTA.REspecialidad,
+                    RFamilia = oCodigoPPTA.RFamilias,
+                    RSubespecialidad = oCodigoPPTA.RSubespecialidad,
+                    CodigoMainSaver = oCodigoPPTA.CodigoMainSaver,
+                    Descripcion = oCodigoPPTA.Descripcion,
+                    Dias = oCodigoPPTA.Dias,
+                    Prioridad = oCodigoPPTA.Prioridad,
+                    TiempoEstimado = oCodigoPPTA.TiempoEstimado 
+                }); 
             }
         }
-
         #region Guardar
 
         /// <summary>

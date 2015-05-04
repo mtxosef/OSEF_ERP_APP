@@ -44,7 +44,7 @@
                     <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="NOMBRE" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
-                            <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false"
+                            <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false" AllowBlank="false"
                                 EmptyText="NOMBRE DE LA ESPECIALIDAD" MaxLength="99">  
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />

@@ -46,7 +46,7 @@
                         Layout="HBoxLayout">
                         <Items>
                             <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false"
-                                EmptyText="NOMBRE DE LA FAMILIA" MaxLength="99">  
+                                EmptyText="NOMBRE DE LA FAMILIA" MaxLength="99" AllowBlank="false">  
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
                                     <Blur Handler="App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase())"/>
@@ -77,6 +77,9 @@
                                         </Model> 
                                     </ext:Store>
                                 </Store> 
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change" />
+                                </Listeners>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar3" 
                         runat="server" 
