@@ -104,7 +104,6 @@
                                         <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="tipoObra" Value="App.rObra.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="tipoMnto" Value="App.rMnto.getValue()" Mode="Raw" />
-
                                         <ext:Parameter Name="registrosnuevos" Value="getNewEncodedRecords()" Mode="Raw" />
                                         <ext:Parameter Name="registrosactualizados" Value="getUpdatedRecords()" Mode="Raw" />
                                         <ext:Parameter Name="registroseliminados" Value="getRemovedRecords()" Mode="Raw" />

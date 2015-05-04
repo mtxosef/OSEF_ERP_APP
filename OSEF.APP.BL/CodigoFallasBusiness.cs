@@ -49,6 +49,18 @@ namespace OSEF.APP.BL
             return CodigoFallasDataAccess.ObtenerRegistrosDeCodigoFallasPorID(strID);
         }
 
+
+
+        /// <summary>
+        /// Revisar si existen registros de Main Saver
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static bool ObtenerMainSaverEnCodigoPPTA(string MS)
+        {
+            return CodigoFallasDataAccess.ObtenerMainSaverEnCodigoPPTA(MS);
+        }
+
         #endregion
 
         #region Insertar

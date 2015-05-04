@@ -43,7 +43,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 var imgbtnGuardar_change = function () {
     var regex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{2,99}$/
     var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,499}$/
-    if (regex.test(App.txtNombre.getValue().trim()) && App.cmbEspecialidad.getValue().length>0) {
+    if (regex.test(App.txtNombre.getValue().trim()) && desregex.test(App.cmbEspecialidad.getValue())) {
         App.imgbtnGuardar.setDisabled(false);
         App.sbFamilia.setText('La información esta completa/correcta.');
     } else {
