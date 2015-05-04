@@ -75,7 +75,7 @@ BEGIN
 		@Sucursal = Sucursal,
 		@FechaEmision = FechaEmision,
 		@Observaciones = Observaciones,
-		@Estatus = Estatus,
+		--@Estatus = Estatus,
 		@Usuario = Usuario,
 		@Reporte = Reporte,
 		@Division = Division,
@@ -99,6 +99,15 @@ BEGIN
 		OrdenesEstimaciones
 	WHERE
 		ID = @ID
+		
+	IF (@Mov = 'Mesa de reporte')
+	BEGIN
+		SET @Estatus = 'BORRADOR'
+	END
+	ELSE
+	BEGIN
+		SET @Estatus = 'PENDIENTE'
+	END
 		
 	INSERT INTO
 		OrdenesEstimaciones
@@ -138,7 +147,7 @@ BEGIN
 			@Sucursal,
 			GETDATE(),
 			@Observaciones,
-			'PENDIENTE',
+			@Estatus,
 			@Usuario,
 			@Reporte,
 			@Division,
@@ -188,6 +197,124 @@ BEGIN
 		OrdenesEstimacionesD
 	WHERE
 		ID = @ID
+		
+	--INSERTAR GENERADOR SI LO HAY
+	IF EXISTS(SELECT MovID FROM GeneradorOrdenEstimacionD WHERE MovID = @ID)
+	BEGIN
+		INSERT INTO
+			GeneradorOrdenEstimacionD
+			(
+				MovID,
+				ConceptoID,
+				Numero,
+				Descripcion,
+				Eje,
+				EntreEje1,
+				EntreEje2,
+				Area,
+				Largo,
+				Ancho,
+				Alto,
+				Cantidad,
+				Total
+			)
+		SELECT
+			@IDNuevo,
+			ConceptoID,
+			Numero,
+			Descripcion,
+			Eje,
+			EntreEje1,
+			EntreEje2,
+			Area,
+			Largo,
+			Ancho,
+			Alto,
+			Cantidad,
+			Total
+		FROM
+			GeneradorOrdenEstimacionD
+		WHERE
+			MovID = @ID
+	END
+	
+	--INSERTAR FOTOS SI LAS HAY
+	IF EXISTS(SELECT MovID FROM ImagenesOrdenEstimacionD WHERE MovID = @ID)
+	BEGIN
+		INSERT INTO
+			ImagenesOrdenEstimacionD
+			(
+				MovID,
+				Concepto,
+				Nombre,
+				Direccion,
+				Usuario,
+				FechaAlta
+			)
+		SELECT
+			@IDNuevo,
+			Concepto,
+			Nombre,
+			Direccion,
+			Usuario,
+			FechaAlta
+		FROM
+			ImagenesOrdenEstimacionD
+		WHERE
+			MovID = @ID
+	END
+	
+	--INSERTAR CROQUIS SI LO HAY
+	IF EXISTS(SELECT MovID FROM CroquisOrdenEstimacionD WHERE MovID = @ID)
+	BEGIN
+		INSERT INTO
+			CroquisOrdenEstimacionD
+			(
+				MovID,
+				Concepto,
+				Nombre,
+				Direccion,
+				Usuario,
+				FechaAlta
+			)
+		SELECT
+			@IDNuevo,
+			Concepto,
+			Nombre,
+			Direccion,
+			Usuario,
+			FechaAlta
+		FROM
+			CroquisOrdenEstimacionD
+		WHERE
+			MovID = @ID
+	END
+	
+	--INSERTAR FACTURA SI LA HAY
+	IF EXISTS(SELECT MovID FROM FacturasOrdenEstimacionD WHERE MovID = @ID)
+	BEGIN
+		INSERT INTO
+			FacturasOrdenEstimacionD
+			(
+				MovID,
+				Concepto,
+				Nombre,
+				Direccion,
+				Usuario,
+				FechaAlta
+			)
+		SELECT
+			@IDNuevo,
+			Concepto,
+			Nombre,
+			Direccion,
+			Usuario,
+			FechaAlta
+		FROM
+			FacturasOrdenEstimacionD
+		WHERE
+			MovID = @ID
+	END
     
 END
 GO

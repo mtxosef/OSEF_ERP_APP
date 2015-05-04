@@ -340,7 +340,7 @@ CREATE TABLE CapacidadesPagos(
 )
 
 CREATE TABLE ReferenciasPersonasSolicitudesPrestamos(
-	ID							CHAR(7)			NOT NULL PRIMARY KEY,
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
 	Nombre						VARCHAR(150)	NULL,
 	Domicilio					VARCHAR(200)	NULL,
@@ -349,20 +349,27 @@ CREATE TABLE ReferenciasPersonasSolicitudesPrestamos(
 )
 
 CREATE TABLE ReferenciasInstitucionesSolicitudesPrestamos(
-	ID							CHAR(7)			NOT NULL PRIMARY KEY,
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
 	Nombre						VARCHAR(100)	NULL,
 	TipoCuenta					VARCHAR(50)		NULL,
 	NoCuenta					VARCHAR(50)		NULL
 )
 
-CREATE TABLE BienesSolicitudesPrestamos(
-	ID							CHAR(7)			NOT NULL PRIMARY KEY,
+CREATE TABLE BienesInmueblesSolicitudesPrestamos(
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
-	TipoPersona					VARCHAR(20)		NOT NULL,
-	Ubicacion					VARCHAR(50)		NULL,
-	Inscripcion					VARCHAR(50)		NULL,
 	Tipo						VARCHAR(50)		NULL,
+	NoSerie						VARCHAR(50)		NULL,
+	Valor						INT				NULL
+)
+
+CREATE TABLE BienesMueblesSolicitudesPrestamos(
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
+	Ubicacion					VARCHAR(200)	NULL,
+	Tipo						VARCHAR(50)		NULL,
+	Inscripcion					VARCHAR(50)		NULL,
 	Valor						INT				NULL
 )
 
@@ -689,8 +696,10 @@ CREATE TABLE CodigoPPTA(
 --DROP TABLE GruposMenu
 --DROP TABLE Beneficiarios
 --DROP TABLE CertificadosInversiones
---DROP TABLE BienesInmuebles
---DROP TABLE ReferenciasBancarias
+--DROP TABLE ReferenciasPersonasSolicitudesPrestamos
+--DROP TABLE ReferenciasInstitucionesSolicitudesPrestamos
+--DROP TABLE BienesInmueblesSolicitudesPrestamos
+--DROP TABLE BienesMueblesSolicitudesPrestamos
 --DROP TABLE SolicitudesPrestamos
 --DROP TABLE Articulos
 --DROP TABLE Finalidades
