@@ -143,9 +143,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 var txtBuscarCodigoFalla_Change = function (textfield, newValue, oldValue, e) {
     App.sCodigoPPTA.clearFilter();
     App.sCodigoPPTA.filter([{ filterFn: function (item) {
-        if (item.get('CodigoMainSaver').toUpperCase().indexOf(newValue.toUpperCase()) > -1
-            || item.get('Especialidad').toUpperCase().indexOf(newValue.toUpperCase()) > -1
-            || item.get('CodigoMainSaver').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
+        if (item.get('CodigoMainSaver').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
         else { return false; }
     }
     }]);

@@ -46,6 +46,7 @@ var imgbtnGuardar_change = function () {
     if (regex.test(App.txtNombre.getValue())) {
         App.imgbtnGuardar.setDisabled(false);
         App.sbEspecialidad.setText('La información esta completa/correcta.');
+        App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase())
     } else {
         App.imgbtnGuardar.setDisabled(true);
         App.sbEspecialidad.setText('No se permiten caracteres especiales o vacíos.');

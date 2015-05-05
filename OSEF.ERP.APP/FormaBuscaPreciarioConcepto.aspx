@@ -326,6 +326,9 @@
                                             ID="gvPreciario"
                                             runat="server"
                                             StripeRows="true">
+                                            <Listeners>
+                                             <ItemKeyDown Fn="gpConceptos_keyDown" />
+                                            </Listeners>
                                         </ext:GridView>
                                     </View>
                                 </ext:GridPanel>
