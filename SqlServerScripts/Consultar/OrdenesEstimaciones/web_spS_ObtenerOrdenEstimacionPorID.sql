@@ -55,7 +55,6 @@ BEGIN
 		DiasAtencion,
 		Reporto,
 		TrabajoRequerido,
-		Atiende,
 		TrabajoRealizado,
 		CodigoFalla,
 		TieneFotos,

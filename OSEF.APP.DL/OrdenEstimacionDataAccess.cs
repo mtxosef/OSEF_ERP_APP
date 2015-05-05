@@ -156,17 +156,6 @@ namespace OSEF.APP.DL
                 else
                     sqlpTrabajoRequerido.Value = iOrdenEstimacion.TrabajoRequerido;
 
-                SqlParameter sqlpAtiende = new SqlParameter();
-                sqlpAtiende.ParameterName = "@Atiende";
-                sqlpAtiende.SqlDbType = SqlDbType.VarChar;
-
-                if (iOrdenEstimacion.Atiende == null)
-                    sqlpAtiende.Value = DBNull.Value;
-                else
-                    sqlpAtiende.Value = iOrdenEstimacion.Atiende;
-
-
-              
 
                 SqlParameter sqlpTrabajoRealizado = new SqlParameter();
                 sqlpTrabajoRealizado.ParameterName = "@TrabajoRealizado";
@@ -265,7 +254,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpDiasAtencion);
                 sqlcComando.Parameters.Add(sqlpReporto);
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
-                sqlcComando.Parameters.Add(sqlpAtiende);
                 sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
                 sqlcComando.Parameters.Add(sqlpCodigoFalla);
                 sqlcComando.Parameters.Add(sqlpTieneFotos);
@@ -422,15 +410,6 @@ namespace OSEF.APP.DL
                     sqlpReporto.Value = uOrdenEstimacion.Reporto;
 
 
-                SqlParameter sqlpAtiende = new SqlParameter();
-                sqlpAtiende.ParameterName = "@Atiende";
-                sqlpAtiende.SqlDbType = SqlDbType.VarChar;
-
-                if (uOrdenEstimacion.Atiende == null)
-                    sqlpAtiende.Value = DBNull.Value;
-                else
-                    sqlpAtiende.Value = uOrdenEstimacion.Atiende;
-
 
                 SqlParameter sqlpTrabajoRequerido = new SqlParameter();
                 sqlpTrabajoRequerido.ParameterName = "@TrabajoRequerido";
@@ -541,7 +520,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpDiasAtencion);
                 sqlcComando.Parameters.Add(sqlpReporto);
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
-                sqlcComando.Parameters.Add(sqlpAtiende);
                 sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
                 sqlcComando.Parameters.Add(sqlpCodigoFalla);
                 sqlcComando.Parameters.Add(sqlpTieneFotos);

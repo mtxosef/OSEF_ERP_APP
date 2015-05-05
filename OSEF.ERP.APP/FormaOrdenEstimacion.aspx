@@ -569,26 +569,19 @@
                                                         <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                                                     </Listeners>
                                                 </ext:TextField>
-                                                <ext:ComboBox 
-                                                    ID="cmbDivision"
+                                                <ext:TextField 
+                                                    ID="txtfCodigoFalla" 
                                                     runat="server"
-                                                    FieldLabel="División"
-                                                    Width="400"
+                                                    FieldLabel="Código de falla" 
+                                                    LabelWidth="115"
+                                                    Width="320" 
                                                     Margins="0 3 0 0"
-                                                    Editable="false"
-                                                    AllowBlank="false">
-                                                    <Items>
-                                                        <ext:ListItem Index="0" Text="NORTE" Value="NORTE" />
-                                                        <ext:ListItem Index="1" Text="NORESTE" Value="NORESTE" />
-                                                        <ext:ListItem Index="2" Text="OCCIDENTE" Value="OCCIDENTE" />
-                                                        <ext:ListItem Index="3" Text="CENTRO" Value="CENTRO" />
-                                                        <ext:ListItem Index="4" Text="VALLE DE MÉXICO" Value="VALLE DE MÉXICO" />
-                                                        <ext:ListItem Index="5" Text="SURESTE" Value="SURESTE" />
-                                                    </Items>
-                                                    <SelectedItems>
-                                                        <ext:ListItem Index="2" />
-                                                    </SelectedItems>
-                                                </ext:ComboBox>
+                                                    Text="">
+                                                    <Listeners>
+                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                                    </Listeners>
+                                                </ext:TextField>
+
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer 
@@ -709,93 +702,84 @@
                                                 </ext:TextField>
                                             </Items>
                                         </ext:FieldContainer>
-                                        <ext:FieldContainer
-                                            ID="fcAtiende"
-                                            runat="server"
-                                            LabelWidth="120"
-                                            FieldLabel="Atiende"
-                                            AnchorHorizontal="100%" 
-                                            Layout="HBoxLayout">
-                                            <Items>
-                                                <ext:TextField 
-                                                    ID="txtfAtiende" 
-                                                    runat="server" 
-                                                    Width="563" 
-                                                    ReadOnly="true"
-                                                    Margins="0 3 0 0"
-                                                    EmptyText="Nombre de quien atiende el reporte"
-                                                    MaxLength="200"
-                                                    EnforceMaxLength="true">
-                                                    <Listeners>
-                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                                    </Listeners>
-                                                </ext:TextField>
-                                            </Items>
-                                        </ext:FieldContainer>
-                                        <%--<ext:FieldContainer
-                                            ID="fcTrabajoRealizado"
-                                            runat="server"
-                                            LabelWidth="120"
-                                            FieldLabel="Trabajo Realizado"
-                                            AnchorHorizontal="100%" 
-                                            Layout="HBoxLayout">
-                                            <Items>
-                                                <ext:TextField 
-                                                    ID="txtTrabajoRealizado" 
-                                                    runat="server" 
-                                                    Width="563" 
-                                                    EmptyText="Descripción del trabajo realizado"
-                                                    Margins="0 3 0 0"
-                                                    MaxLength="200"
-                                                    EnforceMaxLength="true">
-                                                    <Listeners>
-                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                                    </Listeners>
-                                                </ext:TextField>
-                                            </Items>
-                                        </ext:FieldContainer>--%>
-                                    </Items>
-                                </ext:FieldSet>
-                            </Items>
-                        </ext:Panel>
-                        <%--Tercer panel de para los datos del reporte--%>
-                        <ext:Panel 
-                            ID="pDatosReporteDos" 
-                            runat="server" 
-                            Title="Datos Reporte 2"
-                            BodyPadding="5"
-                            Hidden="true"
-                            Width="900"
-                            Height="206" 
-                            AutoScroll="false">
-                            <Items>
-                                <ext:FieldSet 
-                                    ID="FieldSet1" 
-                                    runat="server" 
-                                    Title="Datos Reporte 2" 
-                                    DefaultAnchor="100%"
-                                    AutoScroll="false">
-                                    <Items>
                                         <ext:FieldContainer 
                                             ID="FieldContainer1"
                                             runat="server"
-                                            FieldLabel="Código de Falla"
+                                            FieldLabel="División"
                                             LabelWidth="120"
                                             AnchorHorizontal="100%"
                                             Layout="HBoxLayout">
                                             <Items>
-                                                <ext:TextField 
-                                                    ID="txtfCodigoFalla" 
-                                                    runat="server" 
-                                                    Width="200" 
+                                                <ext:ComboBox 
+                                                    ID="cmbDivision"
+                                                    runat="server"
+                                                    Width="200"
                                                     Margins="0 3 0 0"
-                                                    Text="">
+                                                    Editable="false"
+                                                    AllowBlank="false">
+                                                    <Items>
+                                                        <ext:ListItem Index="0" Text="NORTE" Value="NORTE" />
+                                                        <ext:ListItem Index="1" Text="NORESTE" Value="NORESTE" />
+                                                        <ext:ListItem Index="2" Text="OCCIDENTE" Value="OCCIDENTE" />
+                                                        <ext:ListItem Index="3" Text="CENTRO" Value="CENTRO" />
+                                                        <ext:ListItem Index="4" Text="VALLE DE MÉXICO" Value="VALLE DE MÉXICO" />
+                                                        <ext:ListItem Index="5" Text="SURESTE" Value="SURESTE" />
+                                                    </Items>
+                                                    <SelectedItems>
+                                                        <ext:ListItem Index="2" />
+                                                    </SelectedItems>
+                                                </ext:ComboBox>
+
+                                                <ext:ComboBox
+                                                    ID="cmbCuadrilla"
+                                                    runat="server"
+                                                    DisplayField="Nombre"
+                                                    ValueField="ID"
+                                                    LabelWidth="110"
+                                                    FieldLabel="Cuadrilla"
+                                                    Width="360"
+                                                    MatchFieldWidth="false"
+                                                    Margins="0 3 0 0"
+                                                    Cls="spanCustomCombo xEspacioCmbxCustom"
+                                                    PageSize="10"
+                                                    AllowBlank="false"
+                                                    ForceSelection="true"
+                                                    QueryMode="Local"
+                                                    TypeAhead="true">
+                                                    <ListConfig ID="lcCuadrilla" runat="server" Width="350" Cls="xEspacioCmbxCustom">
+                                                        <ItemTpl ID="itCuadrilla" runat="server">
+                                                            <Html>
+                                                                <div class="search-item">
+							                                        <h3>{ID}</h3>
+                                                                    <span>{Nombre}</span>
+						                                        </div>
+                                                            </Html>
+                                                        </ItemTpl>
+                                                    </ListConfig>
+                                                    <Store>
+                                                        <ext:Store
+                                                            ID="sCuadrillas"
+                                                            runat="server">
+                                                            <Model>
+                                                                <ext:Model
+                                                                    ID="mCuadrillas"
+                                                                    runat="server">
+                                                                    <Fields>
+                                                                        <ext:ModelField Name="ID" />
+                                                                        <ext:ModelField Name="Nombre" />
+                                                                    </Fields>
+                                                                </ext:Model>                            
+                                                            </Model>
+                                                        </ext:Store>
+                                                    </Store>
                                                     <Listeners>
-                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                                        <Change Fn="cmbCuadrilla_Change" />
                                                     </Listeners>
-                                                </ext:TextField>
+                                                </ext:ComboBox>
+
                                             </Items>
                                         </ext:FieldContainer>
+
                                         <ext:FieldContainer 
                                             ID="fcRegistros"
                                             runat="server"
@@ -820,8 +804,8 @@
                                                     ID="cmbTieneReporte"
                                                     runat="server"
                                                     FieldLabel="¿Tiene Reporte?"
-                                                    LabelWidth="120" 
-                                                    Width="300"
+                                                    LabelWidth="110" 
+                                                    Width="360"
                                                     Margins="0 3 0 0"
                                                     Editable="false"
                                                     AllowBlank="false">
@@ -832,6 +816,31 @@
                                                 </ext:ComboBox>
                                             </Items>
                                         </ext:FieldContainer>
+
+
+                                    </Items>
+                                </ext:FieldSet>
+                            </Items>
+                        </ext:Panel>
+                        <%--Tercer panel de para los datos del reporte--%>
+                        <ext:Panel 
+                            ID="pDatosReporteDos" 
+                            runat="server" 
+                            Title="Tiempos Reporte" 
+                            BodyPadding="5"
+                            Hidden="true"
+                            Width="900"
+                            Height="206" 
+                            AutoScroll="false">
+                            <Items>
+                                <ext:FieldSet 
+                                    ID="FieldSet1" 
+                                    runat="server" 
+                                    Title="Tiempos Reporte" 
+                                    DefaultAnchor="100%"
+                                    AutoScroll="false">
+                                    <Items>
+                                        
                                         <ext:FieldContainer 
                                             ID="FieldContainer2"
                                             runat="server"
@@ -909,60 +918,6 @@
                                                 </ext:TimeField> 
                                             </Items>
                                         </ext:FieldContainer>
-                                        <ext:FieldContainer
-                                            ID="fcCuadrilla"
-                                            runat="server"
-                                            LabelWidth="120"
-                                            FieldLabel="Cuadrilla"
-                                            AnchorHorizontal="100%" 
-                                            Layout="HBoxLayout">
-                                            <Items>
-                                                <ext:ComboBox
-                                                    ID="cmbCuadrilla"
-                                                    runat="server"
-                                                    DisplayField="Nombre"
-                                                    ValueField="ID"
-                                                    Width="200"
-                                                    MatchFieldWidth="false"
-                                                    Margins="0 3 0 0"
-                                                    Cls="spanCustomCombo xEspacioCmbxCustom"
-                                                    PageSize="10"
-                                                    AllowBlank="false"
-                                                    ForceSelection="true"
-                                                    QueryMode="Local"
-                                                    TypeAhead="true">
-                                                    <ListConfig ID="lcCuadrilla" runat="server" Width="350" Cls="xEspacioCmbxCustom">
-                                                        <ItemTpl ID="itCuadrilla" runat="server">
-                                                            <Html>
-                                                                <div class="search-item">
-							                                        <h3>{ID}</h3>
-                                                                    <span>{Nombre}</span>
-						                                        </div>
-                                                            </Html>
-                                                        </ItemTpl>
-                                                    </ListConfig>
-                                                    <Store>
-                                                        <ext:Store
-                                                            ID="sCuadrillas"
-                                                            runat="server">
-                                                            <Model>
-                                                                <ext:Model
-                                                                    ID="mCuadrillas"
-                                                                    runat="server">
-                                                                    <Fields>
-                                                                        <ext:ModelField Name="ID" />
-                                                                        <ext:ModelField Name="Nombre" />
-                                                                    </Fields>
-                                                                </ext:Model>                            
-                                                            </Model>
-                                                        </ext:Store>
-                                                    </Store>
-                                                    <Listeners>
-                                                        <Change Fn="cmbCuadrilla_Change" />
-                                                    </Listeners>
-                                                </ext:ComboBox>
-                                            </Items>
-                                        </ext:FieldContainer> 
                                     </Items>
                                 </ext:FieldSet>
                             </Items>

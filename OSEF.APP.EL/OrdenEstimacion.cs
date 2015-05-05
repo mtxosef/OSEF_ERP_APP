@@ -29,7 +29,6 @@ namespace OSEF.APP.EL
         decimal diasatencion;
         string reporto;
         string trabajorequerido;
-        string atiende;
         string trabajorealizado;
         string codigofalla;
         string tienefotos;
@@ -152,11 +151,7 @@ namespace OSEF.APP.EL
             set { trabajorequerido = value; }
         }
 
-        public string Atiende
-        {
-            get { return atiende; }
-            set { atiende = value; }
-        }
+     
 
         public string TrabajoRealizado
         {

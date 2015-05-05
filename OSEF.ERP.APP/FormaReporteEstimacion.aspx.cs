@@ -11,6 +11,7 @@ using System.Data;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.IO;
+using OSEF.APP.EL;
 
 namespace OSEF.ERP.APP
 {
@@ -18,7 +19,8 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Usuario oUsuario = (Usuario)Session["Usuario"];
+            txtElaboro.Text = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
         }
 
         protected void imgbtnExportarCroquis_Click(object sender, EventArgs e)

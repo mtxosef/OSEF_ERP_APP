@@ -99,3 +99,6 @@ ALTER TABLE OrdenesEstimacionesD ADD Moneda VARCHAR(10)
 
 --Cambios Christian 21 de Abril
 ALTER TABLE OrdenesEstimaciones DROP COLUMN Zona 
+
+--Cambios Christian 04 de Mayo
+ALTER TABLE OrdenesEstimaciones DROP COLUMN Atiende 
