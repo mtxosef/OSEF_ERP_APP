@@ -48,8 +48,7 @@ BEGIN
 	UPDATE [dbo].[CodigoPPTA]
 	SET [Especialidad] = @Especialidad
 	  ,[Familia] = @Familia
-	  ,[SubEspecialidad] = @SubEspecialidad
-      ,[CodigoMainSaver] = @CodigoMainSaver
+	  ,[SubEspecialidad] = @SubEspecialidad 
       ,[Descripcion] = @Descripcion
       ,[Dias] = @Dias
       ,[Prioridad] = @Prioridad

@@ -58,15 +58,14 @@
             ID="fpCodigoPPTAs"
             runat="server" 
             MonitorResize="true"
-            Height="490"
+            Height="465"
             Width="910" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" >
         <Items>
             <ext:Panel ID="Panel1" runat="server">
                 <Items> 
-                     <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="Main Saver"
-                        AnchorHorizontal="100%" Layout="HBoxLayout">
+                     <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="Main Saver" AnchorHorizontal="100%" Layout="HBoxLayout">
                         <Items> 
-                         <ext:TextField ID="txtCodigoMainSaver" runat="server" AllowBlank="false" Width="250" Disabled="false" Margins="0 0 0 0"
+                         <ext:TextField ID="txtCodigoMainSaver" runat="server" AllowBlank="false" Width="250" Disabled="false" Margins="0 0 0 0" MaxLength="49" MinLength="3"
                                 EmptyText="Escriba un código main saver">  
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
@@ -107,6 +106,9 @@
                                         </ExtraParams>
                                     </Change>
                                 </DirectEvents>
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change"></Change>
+                                </Listeners>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar3" 
                         runat="server" 
@@ -145,7 +147,7 @@
                                         </Model> 
                                         <Listeners>
                                             <Load Fn="sFamilia_Load" />
-                                        </Listeners>
+                                        </Listeners>  
                                     </ext:Store>
                                 </Store> 
                                 <DirectEvents>
@@ -155,6 +157,9 @@
                                         </ExtraParams>
                                     </Change>
                                 </DirectEvents>
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change"></Change>
+                                </Listeners>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar2" 
                         runat="server" 
@@ -194,8 +199,14 @@
                                         <Listeners>
                                             <Load Fn="sSubespecialidad_Load" />
                                         </Listeners>
+                                         <Parameters>
+                                            <ext:StoreParameter Name="vFamilia" Value="InitialValue" ApplyMode="IfNotExists" />
+                                        </Parameters>
                                     </ext:Store>
-                                </Store>
+                                </Store> 
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change"></Change>
+                                </Listeners>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar1" 
                         runat="server" 
@@ -216,7 +227,7 @@
                         AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
                         <Items>
                             <ext:TextArea ID="txtDescripcion" runat="server" Height="150" Width="250" Disabled="false" AllowBlank="false"
-                                EmptyText="Escriba una descripción" MaxLength="499"> 
+                                EmptyText="Escriba una descripción" MaxLength="499" EnforceMaxLength="true"> 
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
                                     <Blur Handler="App.txtDescripcion.setValue(App.txtDescripcion.getValue().toUpperCase());"/>

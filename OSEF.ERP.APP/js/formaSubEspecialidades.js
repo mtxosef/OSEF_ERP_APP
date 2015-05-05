@@ -34,10 +34,11 @@ var imgbtnGuardar_Click_Success = function (response, result) {
                 }
             }
         });
-    }
-    var vespecialidad = window.parent.App.wEmergente.getBody().App.cmbEspecialidad.getValue();
-    if(vespecialidad != null){
-        window.parent.App.wEmergente.getBody().App.sSubEspecialidad.reload({ Especialidad: vespecialidad });
+    } 
+    window.parent.App.wEmergente.getBody().App.sSubEspecialidad.reload();
+    var vFamilia = window.parent.App.wEmergente.getBody().App.cmbFamilia.getValue();
+    if (vFamilia != null) {
+        window.parent.App.wEmergente.getBody().App.direct.recargar_SubEspecialidades(vFamilia);
     }
 };
 

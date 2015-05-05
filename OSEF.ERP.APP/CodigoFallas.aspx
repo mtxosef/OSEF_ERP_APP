@@ -142,17 +142,8 @@
         <ColumnModel>
             <Columns> 
             <%--<ext:Column ID="cID" runat="server" Text="ID" Align="Center" Width="100" DataIndex="ID"></ext:Column>--%>
-                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="150"
+                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="220"
                     DataIndex="CodigoMainSaver">  
-                </ext:Column>
-                <ext:Column ID="cEspecialidad" runat="server" Text="ESPECIALIDAD" Align="Center" Width="160" DataIndex="REspecialidad"> 
-                    <Renderer Fn="cEspecialidad_Renderer" />
-                </ext:Column>
-                <ext:Column ID="cFamilia" runat="server" Text="FAMILIA" Align="Center" Width="160" DataIndex="RFamilias"> 
-                    <Renderer Fn="cFamilia_Renderer" />
-                </ext:Column>
-                <ext:Column ID="Column1" runat="server" Text="SUBESPECIALIDAD" Align="Center" Width="160" DataIndex="RSubespecialidad"> 
-                    <Renderer Fn="cSubEspecialidad_Renderer" />
                 </ext:Column>
                 <ext:Column 
                 ID="cDescripcion" 
@@ -162,7 +153,7 @@
                 Width="255"
                 DataIndex="Descripcion">  
                 </ext:Column> 
-                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="90"
+                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="190"
                     DataIndex="Dias">  
                     <Renderer Fn="cvDias_Renderer"></Renderer>
                 </ext:Column>

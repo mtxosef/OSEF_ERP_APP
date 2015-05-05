@@ -145,12 +145,28 @@ namespace OSEF.ERP.APP
         /// Evento que se lanza al seleccionar una Familia
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void cmbFamilia_Select(object sender, DirectEventArgs e)
+        /// <param name="e"></param>  
+        public void cmbFamilia_Select(object sender, DirectEventArgs e)
         {
             //1. Obtener el valor seleccionado 
             string strFamilia = e.ExtraParams["vFamilia"];
             sSubEspecialidad.DataSource = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorFamilia(strFamilia);
+            sSubEspecialidad.DataBind();
+        }
+
+        [DirectMethod]
+        public void recargar_Familias(string strFamilia)
+        {
+            //1. Obtener el valor seleccionado 
+            sFamilias.DataSource = FamiliasBusiness.ObtenerFamiliasPorEspecialidad(strFamilia);
+            sFamilias.DataBind();
+        }
+
+        [DirectMethod]
+        public void recargar_SubEspecialidades(string strSubEspecialidades)
+        {
+            //1. Obtener el valor seleccionado  
+            sSubEspecialidad.DataSource = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorFamilia(strSubEspecialidades);
             sSubEspecialidad.DataBind();
         }
         #endregion
