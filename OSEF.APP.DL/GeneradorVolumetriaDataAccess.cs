@@ -41,10 +41,6 @@ namespace OSEF.APP.DL
                 sqlpPreciarioConcepto.Size = 10;
                 sqlpPreciarioConcepto.Value = iGeneradorVolumetriaD.ConceptoID;
 
-                SqlParameter sqlpNumero = new SqlParameter();
-                sqlpNumero.ParameterName = "@Numero";
-                sqlpNumero.SqlDbType = SqlDbType.VarChar;
-                sqlpNumero.Value = iGeneradorVolumetriaD.Numero;
 
                 SqlParameter sqlpDescripcion = new SqlParameter();
                 sqlpDescripcion.ParameterName = "@Descripcion";
@@ -105,7 +101,6 @@ namespace OSEF.APP.DL
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpPreciarioConcepto);
-                sqlcComando.Parameters.Add(sqlpNumero);
                 sqlcComando.Parameters.Add(sqlpDescripcion);
                 sqlcComando.Parameters.Add(sqlpEje);
                 sqlcComando.Parameters.Add(sqlpEntreEje1);

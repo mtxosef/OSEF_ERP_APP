@@ -112,24 +112,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.CommandColumn ccAcciones;
         
         /// <summary>
-        /// Control cNo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cNo;
-        
-        /// <summary>
-        /// Control txtfNo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfNo;
-        
-        /// <summary>
         /// Control cArea.
         /// </summary>
         /// <remarks>

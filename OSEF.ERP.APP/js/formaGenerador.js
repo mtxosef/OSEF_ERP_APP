@@ -120,14 +120,15 @@ var ceGenerador_Edit = function (cellediting, columna) {
 
 
 
-        if (registro.get('Numero').length != 0
-        && registro.get('Area').length != 0
+        if (registro.get('Area').length != 0
         && registro.get('Total') != 0 && App.sFormaGenerador.getCount() < 19) {
 
             //Insertar un nuevo registro
             App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
             //Actualiza el renglon anterior pintando el botón de borrar
             App.gpFormaGenerador.getView().refreshNode(App.sFormaGenerador.getCount() - 2);
+
+           
             //Validar si se habilita el boton de afectar
             HabilitarGuardar();
 
@@ -325,8 +326,7 @@ function HabilitarGuardar() {
         if (App.gpFormaGenerador.getStore().getCount() != 0) 
             {
 
-                if (App.sFormaGenerador.getAt(0).get('Numero').length != 0
-                    && App.sFormaGenerador.getAt(0).get('Area').length != 0
+                if (App.sFormaGenerador.getAt(0).get('Area').length != 0
                     && App.sFormaGenerador.getAt(0).get('Total') != 0) {
 
                     App.imgbtnAceptar.setDisabled(false);
@@ -352,3 +352,19 @@ var imgbtnAceptar_Click = function () {
     window.parent.App.wGenerador.hide();
 }
 
+
+
+
+var txtDescripcion_Corta_SpecialKey = function (field, eventArgs) {
+
+
+
+    if (eventArgs.getKey() == eventArgs.ENTER) {
+
+      
+
+    }
+
+
+
+};

@@ -506,25 +506,6 @@ var sOrdenesMantenimiento_Load = function () {
 //Evento lanzado al agregar un registro al store
 var sOrdenesMantenimiento_Add = function (avance, registro) {
 
-    //Valida el estatus para ver si permite seguir capturando o no
-    //    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
-    //        App.cmbMov.setValue(registro[0].get('Mov'));
-    //        App.txtfMovID.setValue(registro[0].get('MovID'));
-    //        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
-    //        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
-    //        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
-    //        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
-    //        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
-
-    //        //Deshabilita los campos en un movimiento afectado
-    //       
-    //        App.cmbMov.setReadOnly(true);
-    //        App.dfFechaEmision.setDisabled(true);
-    //        App.imgbtnAfectar.setDisabled(true);
-    //        App.imgbtnGuardar.setDisabled(true);
-    //        App.imgbtnCancelar.setDisabled(false);
-    //        App.txtfObservaciones.setDisabled(false);
-    //    }
 
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
@@ -790,11 +771,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0) {
                 //Obtener el Renglon anterior
-                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                var auxRenglonAnterior = App.sConceptos.getCount() - 1;
+                var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
                 //Insertar un nuevo registro
                 App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
                 //Actualiza el renglon anterior pintando el botón de borrar
-//                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
                 //Validar si se habilita el boton de afectar
                 HabilitarAfectar();
             }
@@ -807,7 +789,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0 && storeDetalle.get('IntExt').length != 0) {
                 //Obtener el Renglon anterior
-                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                var auxRenglonAnterior = App.sConceptos.getCount()-1;
+                var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
                 //Insertar un nuevo registro
                 App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
                 //Actualiza el renglon anterior pintando el botón de borrar
@@ -821,12 +804,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
 
 
-//        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
-//        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+        //        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
+        //        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
         App.imgbtnBorrar.setDisabled(false);
 
         App.cmbMov.setReadOnly(true);
-//        HabilitarAfectar();
+        //        HabilitarAfectar();
     }
 
 
@@ -923,8 +906,6 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
                 //Validar si se habilita el boton de afectar
                 HabilitarAfectar();
             }
-
-
         }
 
         if (App.cmbMov.getValue().trim() == "Mesa de reporte") {

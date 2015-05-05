@@ -31,7 +31,6 @@ CREATE PROCEDURE web_spI_InsertarGeneradorVolumetriaD
 	-- Add the parameters for the stored procedure here
 	@ID					INT,
 	@Concepto			CHAR(10),
-	@Numero				VARCHAR(50),
 	@Descripcion		VARCHAR(500),
 	@Eje				VARCHAR(50),
 	@EntreEje1			VARCHAR(50),
@@ -54,7 +53,6 @@ BEGIN
 		(
 			MovID,
 			ConceptoID,
-			Numero,
 			Descripcion,
 			Eje,
 			EntreEje1,
@@ -70,7 +68,6 @@ BEGIN
 		(
 			@ID,
 			@Concepto,
-			@Numero,
 			@Descripcion,
 			@Eje,
 			@EntreEje1,
