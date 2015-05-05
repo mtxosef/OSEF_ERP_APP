@@ -142,16 +142,9 @@
         <ColumnModel>
             <Columns> 
             <%--<ext:Column ID="cID" runat="server" Text="ID" Align="Center" Width="100" DataIndex="ID"></ext:Column>--%>
-<<<<<<< HEAD
                 <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="220"
                     DataIndex="CodigoMainSaver">  
                 </ext:Column>
-=======
-                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="175"
-                    DataIndex="CodigoMainSaver">  
-                </ext:Column>
-              
->>>>>>> origin/master
                 <ext:Column 
                 ID="cDescripcion" 
                 runat="server" 
@@ -159,12 +152,8 @@
                 Align="Center" 
                 Width="305"
                 DataIndex="Descripcion">  
-                </ext:Column> 
-<<<<<<< HEAD
-                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="190"
-=======
-                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="100"
->>>>>>> origin/master
+                </ext:Column>   
+                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="100" 
                     DataIndex="Dias">  
                     <Renderer Fn="cvDias_Renderer"></Renderer>
                 </ext:Column>
