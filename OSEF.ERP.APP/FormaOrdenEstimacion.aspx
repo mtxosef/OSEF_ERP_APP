@@ -139,6 +139,9 @@
                                         <ext:Parameter Name="OrdenEstimacionD" Value="Ext.encode(#{sConceptos}.getRecordsValues())" Mode="Raw" />
                                         <ext:Parameter Name="Sucursal" Value="App.txtfSucursalID.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="diasAtencion" Value="App.nfDiasAtencion.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="fechaMaxima" Value="App.dfFechaMaxima.getValue()" Mode="Raw" />
+
+                                        
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
@@ -556,6 +559,7 @@
                                             runat="server"
                                             FieldLabel="No. Reporte"
                                             LabelWidth="120"
+                                             Height="25"
                                             AnchorHorizontal="100%"
                                             Layout="HBoxLayout">
                                             <Items>
@@ -575,11 +579,24 @@
                                                     FieldLabel="Código de falla" 
                                                     LabelWidth="115"
                                                     Width="320" 
+                                                    ReadOnly="true"
                                                     Margins="0 3 0 0"
                                                     Text="">
-                                                    <Listeners>
+
+                                                    <RightButtons>
+                                                        <ext:Button 
+                                                            ID="btnBuscaCodigoFalla" 
+                                                            runat="server" 
+                                                            Icon="Find" 
+                                                            StandOut="true">
+                                                            <Listeners>
+                                                                <Click Fn="btnBuscarCodigos_Click" />
+                                                            </Listeners>
+                                                        </ext:Button>
+                                                    </RightButtons>
+                                                 <%--   <Listeners>
                                                         <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                                    </Listeners>
+                                                    </Listeners>--%>
                                                 </ext:TextField>
 
                                             </Items>
@@ -612,7 +629,7 @@
                                                             Mode="Value" />
                                                     </CustomConfig>
                                                     <Listeners>
-                                                        <Change Handler="sumarDias(this.getValue(),App.dfFechaMaxima.getValue());" />
+                                                        <Change Handler="sumarDiasAtencion(App.nfDiasAtencion.getValue(),this.getValue());" />
                                                     </Listeners>
                                                 </ext:DateField>
                                                 <ext:DateField
@@ -623,10 +640,8 @@
                                                     Editable="false"
                                                     Vtype="daterange"
                                                     Margins="0 3 0 0" 
-                                                    Disabled="false">
-                                                    <Listeners>
-                                                        <Change Handler="sumarDias(App.dfFechaOrigen.getValue(), this.getValue());" />
-                                                    </Listeners>
+                                                    Disabled="true">
+                                                   
                                                     <PickerOptions 
                                                         ID="poFechaMaxima"
                                                         runat="server"
@@ -655,6 +670,9 @@
                                                     MaxValue="999999999"
                                                     MinValue="0"
                                                     Step="1">
+                                                     <Listeners>
+                                                        <Change Handler="sumarDiasAtencion(this.getValue(),App.dfFechaOrigen.getValue());" />
+                                                    </Listeners>
                                                 </ext:NumberField>
                                             </Items>
                                         </ext:FieldContainer>
@@ -671,6 +689,7 @@
                                                     ID="txtfTrabajoRequerido" 
                                                     runat="server" 
                                                     Width="563" 
+                                                    ReadOnly="true"
                                                     EmptyText="Descripción corta del trabajo requerido"
                                                     Margins="0 3 0 0"
                                                     MaxLength="200"

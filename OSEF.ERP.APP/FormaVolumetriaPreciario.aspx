@@ -367,6 +367,7 @@
                                     FieldLabel="Preciario"
                                     AnchorHorizontal="100%"
                                     LabelWidth="120"
+                                     Height="25"
                                     Layout="HBoxLayout">
                                     <Items>
                                         <%--<ext:ComboBox
@@ -431,7 +432,7 @@
                                         ReadOnly="true"> 
                                                     <RightButtons>
                                                         <ext:Button 
-                                                        ID="Button1" 
+                                                        ID="btnBuscarPreciario" 
                                                         runat="server" 
                                                         Icon="Find" 
                                                         StandOut="true">

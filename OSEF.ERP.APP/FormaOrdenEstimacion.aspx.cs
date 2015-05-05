@@ -110,7 +110,7 @@ namespace OSEF.ERP.APP
             string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
             string strSucursal = e.ExtraParams["Sucursal"];
             string strDiasAtencion = e.ExtraParams["diasAtencion"];
-
+            string strFechaMaxima = e.ExtraParams["fechaMaxima"];
 
             if (strDiasAtencion.Equals("1") || strDiasAtencion.Equals("null"))
             {
@@ -118,6 +118,10 @@ namespace OSEF.ERP.APP
             }
 
             decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
+            DateTime fechaMaxima = Convert.ToDateTime(strFechaMaxima);
+
+           
+
 
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
@@ -127,6 +131,7 @@ namespace OSEF.ERP.APP
 
             //3. Guardar o Actuaizar el Movimiento
             oFormaOrdenEstimacion.DiasAtencion = diasAtencion;
+            oFormaOrdenEstimacion.FechaMaximaAtencion = fechaMaxima;
             string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD);
 
             //4. Validar que efecto realizará para Guardar o Afectar
