@@ -148,15 +148,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cDescripcion;
         
         /// <summary>
-        /// Control cDias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cDias;
-        
-        /// <summary>
         /// Control cPrioridad.
         /// </summary>
         /// <remarks>

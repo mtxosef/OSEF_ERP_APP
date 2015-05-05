@@ -150,18 +150,14 @@
                 runat="server" 
                 Text="DESCRIPCIÓN" 
                 Align="Center" 
-                Width="305"
+                Width="375"
                 DataIndex="Descripcion">  
                 </ext:Column>   
-                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="100" 
-                    DataIndex="Dias">  
-                    <Renderer Fn="cvDias_Renderer"></Renderer>
-                </ext:Column>
-                <ext:Column ID="cPrioridad" runat="server" Text="PRIORIDAD" Align="Center" Width="175"
+                <ext:Column ID="cPrioridad" runat="server" Text="PRIORIDAD" Align="Center" Width="165"
                     DataIndex="Prioridad">  
                 </ext:Column>
-                <ext:Column ID="cTiempoEstimado" runat="server" Text="TIEMPO ESTIMADO" Align="Center" Width="175"
-                    DataIndex="TiempoEstimado">  
+                <ext:Column ID="cTiempoEstimado" runat="server" Text="TIEMPO ESTIMADO" Align="Center" Width="165"
+                    DataIndex="Dias">  
                     <Renderer Fn="cvDias_Renderer"></Renderer>
                 </ext:Column>
             </Columns>
