@@ -328,6 +328,7 @@
                                     <Select Fn="gpConceptos_Select"></Select>
                                         <ItemClick Fn="gpConceptos_ItemClick" />
                                         <ItemDblClick Fn="gpConceptos_ItemDblClick" />
+                                      
                                     </Listeners>
                                     <SelectionModel>
                                         <ext:RowSelectionModel
@@ -340,6 +341,9 @@
                                             ID="gvPreciario"
                                             runat="server"
                                             StripeRows="true">
+                                            <Listeners>
+                                             <ItemKeyDown Fn="gpConceptos_keyDown" />
+                                            </Listeners>
                                         </ext:GridView>
                                     </View>
                                 </ext:GridPanel>
