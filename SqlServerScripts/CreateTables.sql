@@ -361,7 +361,7 @@ CREATE TABLE BienesInmueblesSolicitudesPrestamos(
 	SolicitudPrestamo			CHAR(8)			NOT NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
 	Tipo						VARCHAR(50)		NULL,
 	NoSerie						VARCHAR(50)		NULL,
-	Valor						INT				NULL
+	Valor						MONEY			NULL
 )
 
 CREATE TABLE BienesMueblesSolicitudesPrestamos(
@@ -370,7 +370,7 @@ CREATE TABLE BienesMueblesSolicitudesPrestamos(
 	Ubicacion					VARCHAR(200)	NULL,
 	Tipo						VARCHAR(50)		NULL,
 	Inscripcion					VARCHAR(50)		NULL,
-	Valor						INT				NULL
+	Valor						MONEY			NULL
 )
 
 CREATE TABLE CertificadosInversiones(

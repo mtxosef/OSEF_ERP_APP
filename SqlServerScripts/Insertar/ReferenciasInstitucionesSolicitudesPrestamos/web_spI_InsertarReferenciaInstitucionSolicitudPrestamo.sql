@@ -18,23 +18,22 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spI_InsertarReferenciaPersonaSolicitudPrestamo' AND
+			WHERE  name = 'web_spI_InsertarReferenciaInstitucionSolicitudPrestamo' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spI_InsertarReferenciaPersonaSolicitudPrestamo
+	DROP PROCEDURE web_spI_InsertarReferenciaInstitucionSolicitudPrestamo
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Lunes 04 de Mayo de 2015
--- Description:	Insertar un registro de un Bien Mueble para una Solicitud de Préstamo
+-- Description:	Insertar un registro de una Referencia de alguna Institución para una Solicitud de Préstamo
 -- =============================================
-CREATE PROCEDURE web_spI_InsertarReferenciaPersonaSolicitudPrestamo
+CREATE PROCEDURE web_spI_InsertarReferenciaInstitucionSolicitudPrestamo
 	-- Add the parameters for the stored procedure here
 	@ID						INT OUTPUT,
 	@SolicitudPrestamo		CHAR(8),
-	@Ubicacion				VARCHAR(200),
-	@Tipo					VARCHAR(50),
-	@Inscripcion			VARCHAR(50),
-	@Valor					INT
+	@Nombre					VARCHAR(100),
+	@TipoCuenta				VARCHAR(50),
+	@NoCuenta				VARCHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -43,21 +42,19 @@ BEGIN
 
     -- Insert statements for procedure here
     INSERT INTO
-		ReferenciasPersonasSolicitudesPrestamos
+		ReferenciasInstitucionesSolicitudesPrestamos
 		(
 			SolicitudPrestamo,
-			Ubicacion,
-			Tipo,
-			Inscripcion,
-			Valor
+			Nombre,
+			TipoCuenta,
+			NoCuenta
 		)
 	VALUES
 		(
 			@SolicitudPrestamo,
-			@Ubicacion,
-			@Tipo,
-			@Inscripcion,
-			@Valor
+			@Nombre,
+			@TipoCuenta,
+			@NoCuenta
 		)
 		
 	SELECT @ID = SCOPE_IDENTITY()

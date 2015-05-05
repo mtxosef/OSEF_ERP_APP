@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloDataAccess.cs" />
+    <Compile Include="BienInmuebleSolicitudPrestamoDataAccess.cs" />
+    <Compile Include="BienMuebleSolicitudPrestamoDataAccess.cs" />
     <Compile Include="CapacidadPagoDataAccess.cs" />
     <Compile Include="CategoriaDataAccess.cs" />
     <Compile Include="ClienteDataAccess.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="ProfesionDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDataAccess.cs" />
+    <Compile Include="ReferenciaInstitucionSolicitudPrestamoDataAccess.cs" />
+    <Compile Include="ReferenciaPersonaSolicitudPrestamoDataAccess.cs" />
     <Compile Include="RevisionDataAccess.cs" />
     <Compile Include="RevisionDDataAccess.cs" />
     <Compile Include="SolicitudPrestamoDataAccess.cs" />
