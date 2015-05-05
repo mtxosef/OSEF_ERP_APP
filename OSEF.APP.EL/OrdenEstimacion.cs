@@ -29,7 +29,6 @@ namespace OSEF.APP.EL
         decimal diasatencion;
         string reporto;
         string trabajorequerido;
-        string atiende;
         string trabajorealizado;
         string codigofalla;
         string tienefotos;
@@ -43,7 +42,9 @@ namespace OSEF.APP.EL
 
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
+        Cuadrilla rcuadrilla;
 
+        
         #endregion
 
         #region Propiedades
@@ -150,11 +151,7 @@ namespace OSEF.APP.EL
             set { trabajorequerido = value; }
         }
 
-        public string Atiende
-        {
-            get { return atiende; }
-            set { atiende = value; }
-        }
+     
 
         public string TrabajoRealizado
         {
@@ -228,6 +225,12 @@ namespace OSEF.APP.EL
             set { rordenestimaciond = value; }
         }
 
+
+        public Cuadrilla RCuadrilla
+        {
+            get { return rcuadrilla; }
+            set { rcuadrilla = value; }
+        }
         #endregion
     }
 }

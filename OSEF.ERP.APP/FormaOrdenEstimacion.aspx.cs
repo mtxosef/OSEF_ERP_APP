@@ -28,12 +28,7 @@ namespace OSEF.ERP.APP
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
                 sCuadrillas.DataBind();
 
-                string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-                if (strcookieEditarOrdenEstimacion.Equals("Nuevo"))
-                {
-                    Usuario oUsuario = (Usuario)Session["Usuario"];
-                    txtfAtiende.Text = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
-                }
+              
             }
         }
 
@@ -86,7 +81,6 @@ namespace OSEF.ERP.APP
                     DiasAtencion=oOrdenEstimacion.DiasAtencion,
                     Reporto=oOrdenEstimacion.Reporto,
                     TrabajoRequerido=oOrdenEstimacion.TrabajoRequerido,
-                    Atiende=oOrdenEstimacion.Atiende,
                     TrabajoRealizado=oOrdenEstimacion.TrabajoRealizado,
                     CodigoFalla=oOrdenEstimacion.CodigoFalla,
                     TieneFotos=oOrdenEstimacion.TieneFotos,
@@ -244,7 +238,6 @@ namespace OSEF.ERP.APP
             //    sOrdenEstimacion.GetAt(0).Set("DiasAtencion", nuevosValores.DiasAtencion);
             //    sOrdenEstimacion.GetAt(0).Set("Reporto", nuevosValores.Reporto);
             //    sOrdenEstimacion.GetAt(0).Set("TrabajoRequerido", nuevosValores.TrabajoRequerido);
-            //    sOrdenEstimacion.GetAt(0).Set("Atiende", nuevosValores.Atiende);
 
             //    //Campos extras 2 
             //    sOrdenEstimacion.GetAt(0).Set("TrabajoRealizado", nuevosValores.TrabajoRealizado);
@@ -351,9 +344,6 @@ namespace OSEF.ERP.APP
                     case "txtfTrabajoRequerido":
                         oOrdenEstimacionForma.TrabajoRequerido = sd.Value;
                         break;
-                    case "txtfAtiende":
-                        oOrdenEstimacionForma.Atiende = sd.Value;
-                        break;
                     //6. Tercer pestaña
                     case "txtfCodigoFalla":
                         oOrdenEstimacionForma.CodigoFalla= sd.Value;
@@ -419,8 +409,7 @@ namespace OSEF.ERP.APP
             //2. Actualizamos el Estatus e Insertar en la base de datos
             oOrdenEstimacionForma.Estatus = "BORRADOR";
 
-            //oOrdenEstimacionForma.Atiende = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno; 
-
+          
 
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
@@ -451,7 +440,6 @@ namespace OSEF.ERP.APP
                     DiasAtencion = oOrdenEstimacionForma.DiasAtencion,
                     Reporto = oOrdenEstimacionForma.Reporto,
                     TrabajoRequerido = oOrdenEstimacionForma.TrabajoRequerido,
-                    Atiende = oOrdenEstimacionForma.Atiende,
 
                     //6. Tercera parte
                     TrabajoRealizado = oOrdenEstimacionForma.TrabajoRealizado,
@@ -491,7 +479,6 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("DiasAtencion", oOrdenEstimacionForma.DiasAtencion);
                 sOrdenEstimacion.GetAt(0).Set("Reporto", oOrdenEstimacionForma.Reporto);
                 sOrdenEstimacion.GetAt(0).Set("TrabajoRequerido", oOrdenEstimacionForma.TrabajoRequerido);
-                sOrdenEstimacion.GetAt(0).Set("Atiende", oOrdenEstimacionForma.Atiende);
 
                 //11. Campos extras 2
                 sOrdenEstimacion.GetAt(0).Set("TrabajoRealizado", oOrdenEstimacionForma.TrabajoRealizado);

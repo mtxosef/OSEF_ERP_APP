@@ -54,7 +54,6 @@ BEGIN
 		DiasAtencion,
 		Reporto,
 		TrabajoRequerido,
-		Atiende,
 		TrabajoRealizado,
 		CodigoFalla,
 		TieneFotos,
@@ -68,5 +67,7 @@ BEGIN
 		
 	FROM
 		OrdenesEstimaciones
+	WHERE 
+	 Mov in('Mesa de reporte','Estimacion')
 END
 GO

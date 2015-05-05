@@ -736,7 +736,7 @@ CREATE TABLE CodigoPPTA(
 --DROP TABLE Usuarios
 --DROP TABLE OrdenesEstimaciones
 --DROP TABLE OrdenesEstimacionesD
---DROP TABLE Especialidad
---DROP TABLE Familia
---DROP TABLE SubEspecialidad
+--DROP TABLE Especialidades
+--DROP TABLE Familias
+--DROP TABLE SubEspecialidades
 --DROP TABLE CodigoPPTA

@@ -156,17 +156,6 @@ namespace OSEF.APP.DL
                 else
                     sqlpTrabajoRequerido.Value = iOrdenEstimacion.TrabajoRequerido;
 
-                SqlParameter sqlpAtiende = new SqlParameter();
-                sqlpAtiende.ParameterName = "@Atiende";
-                sqlpAtiende.SqlDbType = SqlDbType.VarChar;
-
-                if (iOrdenEstimacion.Atiende == null)
-                    sqlpAtiende.Value = DBNull.Value;
-                else
-                    sqlpAtiende.Value = iOrdenEstimacion.Atiende;
-
-
-              
 
                 SqlParameter sqlpTrabajoRealizado = new SqlParameter();
                 sqlpTrabajoRealizado.ParameterName = "@TrabajoRealizado";
@@ -265,7 +254,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpDiasAtencion);
                 sqlcComando.Parameters.Add(sqlpReporto);
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
-                sqlcComando.Parameters.Add(sqlpAtiende);
                 sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
                 sqlcComando.Parameters.Add(sqlpCodigoFalla);
                 sqlcComando.Parameters.Add(sqlpTieneFotos);
@@ -422,15 +410,6 @@ namespace OSEF.APP.DL
                     sqlpReporto.Value = uOrdenEstimacion.Reporto;
 
 
-                SqlParameter sqlpAtiende = new SqlParameter();
-                sqlpAtiende.ParameterName = "@Atiende";
-                sqlpAtiende.SqlDbType = SqlDbType.VarChar;
-
-                if (uOrdenEstimacion.Atiende == null)
-                    sqlpAtiende.Value = DBNull.Value;
-                else
-                    sqlpAtiende.Value = uOrdenEstimacion.Atiende;
-
 
                 SqlParameter sqlpTrabajoRequerido = new SqlParameter();
                 sqlpTrabajoRequerido.ParameterName = "@TrabajoRequerido";
@@ -541,7 +520,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpDiasAtencion);
                 sqlcComando.Parameters.Add(sqlpReporto);
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
-                sqlcComando.Parameters.Add(sqlpAtiende);
                 sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
                 sqlcComando.Parameters.Add(sqlpCodigoFalla);
                 sqlcComando.Parameters.Add(sqlpTieneFotos);
@@ -659,6 +637,48 @@ namespace OSEF.APP.DL
             }
         }
 
+
+
+
+        /// <summary>
+        /// Obtener todos los registros de OrdenesEstimaciones
+        /// </summary>
+        /// <returns></returns>
+        public static List<OrdenEstimacion> ObtenerOrdenesCambios()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerOrdenesCambios";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<OrdenEstimacion> result = LibraryGenerics<OrdenEstimacion>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<OrdenEstimacion> ObtenerOrdenesCambios()): " + ex.Message);
+            }
+        }
 
         /// <summary>
         /// Obtener todos los registros de OrdenesEstimaciones

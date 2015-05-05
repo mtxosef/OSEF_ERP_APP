@@ -105,10 +105,17 @@ namespace OSEF.ERP.APP
             string strcookieEditarCodigoPPTA = Cookies.GetCookie("cookieEditarCodigoPPTA").Value;
             if (strcookieEditarCodigoPPTA.Equals("Nuevo"))
             {
-                //3. Insertar en la base de datos
-                cf.ID = CodigoFallasBusiness.Insertar(cf);
-                //4. Mandar mensaje con el código del codigo ppta
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+
+                if (CodigoFallasBusiness.ObtenerMainSaverEnCodigoPPTA(cf.CodigoMainSaver))
+                {
+                    var success = new JFunction { Fn = "imgbtnGuardar_Click_SuccessCR" };
+                    X.Msg.Alert("Alerta", "<p align='center'>El Main Saver ya se encuentra registrado: <br/>" + cf.CodigoMainSaver + ".</p>", success).Show();
+                } else {
+                    //3. Insertar en la base de datos
+                    cf.ID = CodigoFallasBusiness.Insertar(cf);
+                    //4. Mandar mensaje con el código del codigo ppta
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+                }
             }
             else
             {

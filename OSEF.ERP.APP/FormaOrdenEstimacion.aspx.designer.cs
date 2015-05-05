@@ -436,13 +436,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfNoReporte;
         
         /// <summary>
-        /// Control cmbDivision.
+        /// Control txtfCodigoFalla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbDivision;
+        protected global::Ext.Net.TextField txtfCodigoFalla;
         
         /// <summary>
         /// Control fcFechaOrigen.
@@ -517,42 +517,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfTrabajoRequerido;
         
         /// <summary>
-        /// Control fcAtiende.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcAtiende;
-        
-        /// <summary>
-        /// Control txtfAtiende.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfAtiende;
-        
-        /// <summary>
-        /// Control pDatosReporteDos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Panel pDatosReporteDos;
-        
-        /// <summary>
-        /// Control FieldSet1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldSet FieldSet1;
-        
-        /// <summary>
         /// Control FieldContainer1.
         /// </summary>
         /// <remarks>
@@ -562,13 +526,40 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer FieldContainer1;
         
         /// <summary>
-        /// Control txtfCodigoFalla.
+        /// Control cmbDivision.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtfCodigoFalla;
+        protected global::Ext.Net.ComboBox cmbDivision;
+        
+        /// <summary>
+        /// Control cmbCuadrilla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbCuadrilla;
+        
+        /// <summary>
+        /// Control sCuadrillas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sCuadrillas;
+        
+        /// <summary>
+        /// Control mCuadrillas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mCuadrillas;
         
         /// <summary>
         /// Control fcRegistros.
@@ -596,6 +587,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbTieneReporte;
+        
+        /// <summary>
+        /// Control pDatosReporteDos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel pDatosReporteDos;
+        
+        /// <summary>
+        /// Control FieldSet1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet FieldSet1;
         
         /// <summary>
         /// Control FieldContainer2.
@@ -650,42 +659,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TimeField tfHoraFinActividad;
-        
-        /// <summary>
-        /// Control fcCuadrilla.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcCuadrilla;
-        
-        /// <summary>
-        /// Control cmbCuadrilla.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbCuadrilla;
-        
-        /// <summary>
-        /// Control sCuadrillas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store sCuadrillas;
-        
-        /// <summary>
-        /// Control mCuadrillas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mCuadrillas;
         
         /// <summary>
         /// Control pDetalle.

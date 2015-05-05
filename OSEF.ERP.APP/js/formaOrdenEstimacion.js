@@ -32,7 +32,6 @@ var imgbtnFormaNuevo_Click = function () {
     App.nfDiasAtencion.setValue('');
     App.txtfReporta.setValue('');
     App.txtfTrabajoRequerido.setValue('');
-    App.txtfAtiende.setValue('');
 
     App.txtfCodigoFalla.setValue('');
     App.cmbTieneFotos.setValue('');
@@ -88,7 +87,19 @@ var sMov_Add = function (store, registros, index, eOpts) {
 
     //Validar si es nuevo, se asigna el movimiento 
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo') {
-        
+
+        //identificamos que tablero de que modulo es
+        var tablero = window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.title;
+
+        if (tablero == 'REPORTES & ESTIMACIONES') {
+            App.cmbMov.select('Mesa de reporte');
+            App.cmbMov.setReadOnly(true);
+        }
+        else {
+            App.cmbMov.select('Orden de Cambio');
+            App.cmbMov.setReadOnly(true);
+        }
+
         // App.cmbMov.setReadOnly(true);
         App.dfFechaEmision.setValue(d);
         App.cmbMov.focus();
@@ -343,7 +354,6 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.nfDiasAtencion.setReadOnly(true);
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
-        App.txtfAtiende.setReadOnly(true);
         App.txtfCodigoFalla.setReadOnly(true);
         App.cmbTieneFotos.setReadOnly(true);
         App.cmbTieneReporte.setReadOnly(true);
@@ -466,7 +476,6 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.nfDiasAtencion.setReadOnly(true);
     App.txtfReporta.setReadOnly(true);
     App.txtfTrabajoRequerido.setReadOnly(true);
-    App.txtfAtiende.setReadOnly(true);
     App.txtfCodigoFalla.setReadOnly(true);
     App.cmbTieneFotos.setReadOnly(true);
     App.cmbTieneReporte.setReadOnly(true);
@@ -562,7 +571,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.nfDiasAtencion.setValue(registro[0].get('DiasAtencion'));
         App.txtfReporta.setValue(registro[0].get('Reporto'));
         App.txtfTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
-        App.txtfAtiende.setValue(registro[0].get('Atiende'));
 
         App.txtfCodigoFalla.setValue(registro[0].get('CodigoFalla'));
         App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
@@ -593,7 +601,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.nfDiasAtencion.setReadOnly(true);
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
-        App.txtfAtiende.setReadOnly(true);
 
         App.txtfCodigoFalla.setReadOnly(true);
         App.cmbTieneFotos.setReadOnly(true);
@@ -634,7 +641,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.nfDiasAtencion.setValue(registro[0].get('DiasAtencion'));
         App.txtfReporta.setValue(registro[0].get('Reporto'));
         App.txtfTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
-        App.txtfAtiende.setValue(registro[0].get('Atiende'));
         App.txtfCodigoFalla.setValue(registro[0].get('CodigoFalla'));
         App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
         App.cmbTieneReporte.setValue(registro[0].get('TieneReporte'));
@@ -702,7 +708,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.nfDiasAtencion.setValue(registro[0].get('DiasAtencion'));
         App.txtfReporta.setValue(registro[0].get('Reporto'));
         App.txtfTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
-        App.txtfAtiende.setValue(registro[0].get('Atiende'));
 
         App.txtfCodigoFalla.setValue(registro[0].get('CodigoFalla'));
         App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
@@ -723,7 +728,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.nfDiasAtencion.setReadOnly(true);
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
-        App.txtfAtiende.setReadOnly(true);
         App.txtfCodigoFalla.setReadOnly(true);
         App.cmbTieneFotos.setReadOnly(true);
         App.cmbTieneReporte.setReadOnly(true);

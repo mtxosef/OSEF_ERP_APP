@@ -18,18 +18,17 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerOrdenEstimacionPorID' AND
+			WHERE  name = 'web_spS_ObtenerOrdenesCambios' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerOrdenEstimacionPorID
+	DROP PROCEDURE web_spS_ObtenerOrdenesCambios
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Viernes 05 de Diciembre de 2014
--- Description:	Obtener un registro de Revisiones por su ID
+-- Description:	Obtener todos los registros de Revisiones
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerOrdenEstimacionPorID
+CREATE PROCEDURE web_spS_ObtenerOrdenesCambios
 	-- Add the parameters for the stored procedure here
-	@ID	INT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -65,9 +64,10 @@ BEGIN
 		HoraFinActividad,
 		Cuadrilla,
 		ImporteTotal
+		
 	FROM
 		OrdenesEstimaciones
-	WHERE
-		ID = @ID
+	WHERE 
+	 Mov ='Orden de Cambio'
 END
 GO

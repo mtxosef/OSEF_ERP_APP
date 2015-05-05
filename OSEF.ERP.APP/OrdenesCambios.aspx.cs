@@ -9,11 +9,10 @@ using Ext.Net;
 
 namespace OSEF.ERP.APP
 {
-    public partial class OrdenesCambio : System.Web.UI.Page
+    public partial class OrdenesCambios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             //1. Si no hay AjaxRequest
             if (!X.IsAjaxRequest)
             {
@@ -26,12 +25,11 @@ namespace OSEF.ERP.APP
                 sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
                 sSucursales.DataBind();
 
-               
-                sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
+
+                sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesCambios();
                 sOrdenesEstimaciones.DataBind();
 
-                sCuadrilla.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
-                sCuadrilla.DataBind();
+              
 
                 rmOrdenesEstimaciones.RegisterIcon(Icon.Delete);
             }
@@ -44,7 +42,7 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         protected void OnReadData_sOrdenesEstimaciones(object sender, StoreReadDataEventArgs e)
         {
-            sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
+            sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesCambios();
             sOrdenesEstimaciones.DataBind();
         }
     }

@@ -394,6 +394,7 @@
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimacionesConcluidos.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerMesaDeReportesConcluidos.sql 
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesCambios.sql
 -- OrdenesEstimaciones (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimaciones\web_spI_InsertarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Modificar)
@@ -511,6 +512,7 @@
 :r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTA.sql 
 :r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAEnUsoPorID.sql 
 :r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerCodigoPPTAPorID.sql 
+:r c:\SqlServerScripts\Consultar\CodigosPPTA\web_spS_ObtenerMainSaverEnCodigoPPTA.sql 
 --Codigos PPTA(Insertar) 
 :r c:\SqlServerScripts\Insertar\CodigosPPTA\web_spI_InsertarCodigoPPTA.sql  
 --Codigos PPTA(Modificar) 

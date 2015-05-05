@@ -119,3 +119,7 @@ var sSubespecialidad_Load = function () {
         App.cmbSubEspecialidad.setValue(App.sCodigoPPTA.getAt(0).get('SubEspecialidad'));
     }
 };
+//Evento que ocurre al dar clic en imgbtnGuardar
+var imgbtnGuardar_Click_SuccessCR = function () {
+
+};
