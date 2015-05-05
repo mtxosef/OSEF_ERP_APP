@@ -64,7 +64,7 @@
         <Items>
             <ext:Panel ID="Panel1" runat="server">
                 <Items> 
-                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="ID" AnchorHorizontal="100%"
+                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="CÓDIGO" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items>
                             <ext:TextField ID="txtID" runat="server" Width="250"  ReadOnly="true"

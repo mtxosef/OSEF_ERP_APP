@@ -41,9 +41,10 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 };
 
 var imgbtnGuardar_change = function () {
-    var regex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,99}$/
-    var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,499}$/
-    if (regex.test(App.txtNombre.getValue())) { 
+    var regex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{2,99}$/
+    var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{2,499}$/
+    if (regex.test(App.txtNombre.getValue()) &&
+     App.cmbFamilia.getValue() != null) { 
         App.imgbtnGuardar.setDisabled(false);
         App.sbSubEspecialidad.setText('La información esta completa/correcta.');
     } else {
