@@ -355,6 +355,7 @@
             </ColumnModel>
             <Listeners>
                 <ItemClick Fn="gpVolumetrias_ItemClick" />
+                 <ItemDblClick Fn="gpVolumetrias_ItemDblClick" />
             </Listeners>
             <View>
                 <ext:GridView

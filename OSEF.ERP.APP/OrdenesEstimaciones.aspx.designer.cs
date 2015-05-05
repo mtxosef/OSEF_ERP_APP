@@ -175,6 +175,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cObservaciones;
         
         /// <summary>
+        /// Control cReporta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cReporta;
+        
+        /// <summary>
         /// Control cSucursal.
         /// </summary>
         /// <remarks>
@@ -211,22 +220,40 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mSucursales;
         
         /// <summary>
-        /// Control dcFechaEmision.
+        /// Control dcFechaOrigen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.DateColumn dcFechaEmision;
+        protected global::Ext.Net.DateColumn dcFechaOrigen;
         
         /// <summary>
-        /// Control cmbFechaRevision.
+        /// Control cmbFechaOrigen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbFechaRevision;
+        protected global::Ext.Net.ComboBox cmbFechaOrigen;
+        
+        /// <summary>
+        /// Control dcFechaMaxima.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DateColumn dcFechaMaxima;
+        
+        /// <summary>
+        /// Control ComboBox1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox ComboBox1;
         
         /// <summary>
         /// Control cEstatus.
