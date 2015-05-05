@@ -31,8 +31,8 @@ var imgbtnEditar_Click = function () {
     App.imgbtnNuevo.setDisabled(false);
     App.imgbtnEditar.setDisabled(true);
     App.imgbtnBorrar.setDisabled(true);
-    var w = window.parent.App.wEmergente; 
-    Ext.util.Cookies.set('cookieEditarCodigoPPTA', App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('ID'));
+    var w = window.parent.App.wEmergente;
+    Ext.util.Cookies.set('cookieEditarCodigoPPTA', App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('CodigoMainSaver').trim());
     w.load('FormaCodigoPPTA.aspx');
     w.setHeight(535);
     w.setWidth(410);
@@ -60,7 +60,7 @@ var imgbtnBorrar_Click_Success = function (response, result) {
         });
     }
     else {
-        var identificador = App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('ID');
+        var identificador = App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('CodigoMainSaver');
 
         App.sCodigoPPTA.removeAt(App.gpCodigoPPTA.getSelectionModel().getSelection()[0].index);
         Ext.net.Notification.show({
@@ -68,7 +68,7 @@ var imgbtnBorrar_Click_Success = function (response, result) {
             pinEvent: 'click',
             header: true,
             width: 350,
-            html: '<p class="deletePop">ID: ' + identificador + '</p><p class="deletePop">Codigo PPTA eliminado .</p>',
+            html: '<p class="deletePop">CodigoMainSaver: ' + identificador + '</p><p class="deletePop">Codigo PPTA eliminado .</p>',
             title: 'Registro eliminado'
         });
         App.gpCodigoPPTA.getSelectionModel().deselectAll();
@@ -81,14 +81,14 @@ var imgbtnBorrar_Click_Success = function (response, result) {
    
 
 //Cell Editor
-var ceCodigoPPTA_Edit = function (cellEdit, datos, options) {
-    var festado = App.sEstados.findRecord('ID', datos.value);
-    var rsts = datos.record.get('REstado');
-    rsts.ID = festado.get('ID');
-    rsts.Descripcion = festado.get('Descripcion');
-    datos.record.set('REstado', rsts);
+//var ceCodigoPPTA_Edit = function (cellEdit, datos, options) {
+//    var festado = App.sEstados.findRecord('ID', datos.value);
+//    var rsts = datos.record.get('REstado');
+//    rsts.ID = festado.get('ID');
+//    rsts.Descripcion = festado.get('Descripcion');
+//    datos.record.set('REstado', rsts);
 
-};
+//};
 
 //Editar el registro en el que se esta posicionado
 var imgbtnsEditar_Click = function () {
@@ -112,7 +112,7 @@ var imgbtnsEditar_Click = function () {
 var ceCodigoPPTA_ValidateEdit = function (editor, context) {
     var store = App.gpCodigoPPTA.getStore();
     if (context.field == 'Numero') {
-        App.direct.ActualizarCodigoPPTA(store.getAt(context.rowIdx).get('ID'), store.getAt(context.rowIdx).get('Numero'), context.value.toUpperCase());
+        App.direct.ActualizarCodigoPPTA(store.getAt(context.rowIdx).get('CodigoMainSaver'), store.getAt(context.rowIdx).get('Numero'), context.value.toUpperCase());
     }
 };
 
@@ -123,7 +123,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
     Ext.Msg.show({
         id: 'msgCP',
         title: 'CÓDIGO PPTA ',
-        msg: '<p align="center">CP: ' + result.extraParamsResponse.data + ' registrado.</p>',
+        msg: '<p align="center">Código Main Saver: ' + result.extraParamsResponse.data + ' registrado.</p>',
         buttons: Ext.MessageBox.OK,
         onEsc: Ext.emptyFn,
         closable: false,
@@ -143,7 +143,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 var txtBuscarCodigoFalla_Change = function (textfield, newValue, oldValue, e) {
     App.sCodigoPPTA.clearFilter();
     App.sCodigoPPTA.filter([{ filterFn: function (item) {
-        if (item.get('ID').toUpperCase().indexOf(newValue.toUpperCase()) > -1
+        if (item.get('CodigoMainSaver').toUpperCase().indexOf(newValue.toUpperCase()) > -1
             || item.get('Especialidad').toUpperCase().indexOf(newValue.toUpperCase()) > -1
             || item.get('CodigoMainSaver').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
         else { return false; }
@@ -190,6 +190,12 @@ var cvDias_Renderer = function (valor, columna, registro) {
     }
 };
 
-var cEspecialidad_Renderer = function (valor, columna, registro) { 
+var cEspecialidad_Renderer = function (valor, columna, registro) {
+    return valor.Nombre;
+}
+var cSubEspecialidad_Renderer = function (valor, columna, registro) {
+    return valor.Nombre;
+}
+var cFamilia_Renderer = function (valor, columna, registro) {
     return valor.Nombre;
 } 

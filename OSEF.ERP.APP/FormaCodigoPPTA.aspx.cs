@@ -31,14 +31,13 @@ namespace OSEF.ERP.APP
                 CodigoFalla oCodigoPPTA = CodigoFallasBusiness.ObtenerCodigoFallaPorID(strcookieEditarCodigoPPTA);
                 sCodigoPPTA.Add(new
                 {
-                    ID = oCodigoPPTA.ID,
+                    CodigoMainSaver = oCodigoPPTA.CodigoMainSaver,
                     Especialidad = oCodigoPPTA.Especialidad,
                     Familia = oCodigoPPTA.Familia,
                     SubEspecialidad = oCodigoPPTA.Subespecialidad,
                     REspecialidad = oCodigoPPTA.REspecialidad,
                     RFamilia = oCodigoPPTA.RFamilias,
                     RSubespecialidad = oCodigoPPTA.RSubespecialidad,
-                    CodigoMainSaver = oCodigoPPTA.CodigoMainSaver,
                     Descripcion = oCodigoPPTA.Descripcion,
                     Dias = oCodigoPPTA.Dias,
                     Prioridad = oCodigoPPTA.Prioridad,
@@ -65,8 +64,8 @@ namespace OSEF.ERP.APP
             {
                 switch (sd.Key)
                 {
-                    case "txtID":
-                        cf.ID = sd.Value;
+                    case "txtCodigoMainSaver":
+                        cf.CodigoMainSaver = sd.Value;
                         break;
 
                     case "cmbEspecialidad":
@@ -80,11 +79,7 @@ namespace OSEF.ERP.APP
                     case "cmbSubEspecialidad":
                         cf.Subespecialidad = sd.Value;
                         break;
-
-                    case "txtCodigoMainSaver":
-                        cf.CodigoMainSaver = sd.Value;
-                        break;
-
+                         
                     case "txtDescripcion":
                         cf.Descripcion = sd.Value;
                         break;
@@ -112,16 +107,16 @@ namespace OSEF.ERP.APP
                     X.Msg.Alert("Alerta", "<p align='center'>El Main Saver ya se encuentra registrado: <br/>" + cf.CodigoMainSaver + ".</p>", success).Show();
                 } else {
                     //3. Insertar en la base de datos
-                    cf.ID = CodigoFallasBusiness.Insertar(cf);
+                    cf.CodigoMainSaver = CodigoFallasBusiness.Insertar(cf);
                     //4. Mandar mensaje con el código del codigo ppta
-                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.CodigoMainSaver, ParameterMode.Value));
                 }
             }
             else
             {
                 CodigoFallasBusiness.Actualizar(cf);
-                cf.ID = strcookieEditarCodigoPPTA;
-                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.ID, ParameterMode.Value));
+                cf.CodigoMainSaver = strcookieEditarCodigoPPTA;
+                e.ExtraParamsResponse.Add(new Ext.Net.Parameter("data", cf.CodigoMainSaver, ParameterMode.Value));
             }
         }
 

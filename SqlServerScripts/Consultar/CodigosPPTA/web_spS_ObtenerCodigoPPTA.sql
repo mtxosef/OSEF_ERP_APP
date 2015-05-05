@@ -34,11 +34,10 @@ BEGIN
 
     -- Insert statements for procedure here
 	SELECT 
-	cf.ID, 
+	cf.CodigoMainSaver, 
 	cf.Especialidad, 
 	cf.Familia,
 	cf.SubEspecialidad,
-	cf.CodigoMainSaver, 
 	cf.Descripcion, 
 	cf.Dias, 
 	cf.Prioridad, 

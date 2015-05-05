@@ -29,11 +29,10 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spU_ActualizarCodigoPPTA
 	-- Add the parameters for the stored procedure here
-	@ID				CHAR(10), 
+	@CodigoMainSaver				VARCHAR(50) ,
 	@Especialidad				VARCHAR(10),
 	@Familia						VARCHAR(100),
 	@SubEspecialidad				VARCHAR(10),
-	@CodigoMainSaver				VARCHAR(50) ,
 	@Descripcion					VARCHAR(500) ,
 	@Dias						CHAR(5) ,
 	@Prioridad					CHAR(2) ,
@@ -55,7 +54,7 @@ BEGIN
       ,[Dias] = @Dias
       ,[Prioridad] = @Prioridad
       ,[TiempoEstimado] = @TiempoEstimado
-	WHERE [dbo].[CodigoPPTA].[ID] = @ID;
+	WHERE [dbo].[CodigoPPTA].[CodigoMainSaver] = @CodigoMainSaver;
 
 END
 GO

@@ -35,9 +35,10 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             }
         });
     }
-
-    window.parent.App.wEmergente.getBody().App.sSubEspecialidades.reload(); 
-
+    var vespecialidad = window.parent.App.wEmergente.getBody().App.cmbEspecialidad.getValue();
+    if(vespecialidad != null){
+        window.parent.App.wEmergente.getBody().App.sSubEspecialidad.reload({ Especialidad: vespecialidad });
+    }
 };
 
 var imgbtnGuardar_change = function () {

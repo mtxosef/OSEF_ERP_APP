@@ -29,7 +29,7 @@ IF EXISTS (	SELECT name
 GO
 CREATE PROCEDURE web_spS_ObtenerCodigoPPTAEnUsoPorID
 	-- Add the parameters for the stored procedure here
-	@ID CHAR(10)
+	@ID CHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,7 +37,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	IF EXISTS(SELECT A.ID FROM [dbo].[CodigoPPTA] A INNER JOIN OrdenesEstimaciones OE ON A.ID = OE.CodigoFalla WHERE A.ID = @ID)
+	IF EXISTS(SELECT A.CodigoMainSaver FROM [dbo].[CodigoPPTA] A INNER JOIN OrdenesEstimaciones OE ON A.CodigoMainSaver = OE.CodigoFalla WHERE A.CodigoMainSaver = @ID)
 	BEGIN
 		SELECT CAST(1 AS BIT)
 	END

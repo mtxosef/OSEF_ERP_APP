@@ -16,7 +16,7 @@ GO
 -- =============================================
 -- Author:		<Giovanni Flores>
 -- Create date: <2015-03-29>
--- Description:	<Elimina un codigo PPTA en base a su ID>
+-- Description:	<Elimina un codigo PPTA en base a su Main Saver>
 -- =============================================
 -- =============================================
 -- Create procedure basic template
@@ -29,7 +29,7 @@ IF EXISTS (	SELECT name
 GO
 CREATE PROCEDURE web_spD_BorrarCodigoPPTA
 	-- Add the parameters for the stored procedure here
-	@ID CHAR(10)
+	@ID CHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -37,6 +37,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	DELETE CodigoPPTA WHERE CodigoPPTA.ID = @ID;
+	DELETE CodigoPPTA WHERE CodigoPPTA.CodigoMainSaver = @ID;
 END
 GO

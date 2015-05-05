@@ -70,7 +70,7 @@
                                     Msg="Eliminando registro">
                                 </EventMask>
                                 <ExtraParams>
-                                    <ext:Parameter Name="ID" Value="App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('ID')"
+                                    <ext:Parameter Name="ID" Value="App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('CodigoMainSaver').trim()"
                                         Mode="Raw">
                                     </ext:Parameter>
                                 </ExtraParams>
@@ -119,7 +119,7 @@
                             <ext:ModelField Name="ID" Type="String" />
                             <ext:ModelField Name="Especialidad" Type="String" /> 
                             <ext:ModelField Name="Familia" Type="String" /> 
-                            <ext:ModelField Name="Especialidades" Type="String" /> 
+                            <ext:ModelField Name="SubEspecialidad" Type="String" /> 
                             <ext:ModelField Name="CodigoMainSaver" Type="String" />
                             <ext:ModelField Name="Descripcion" Type="String" /> 
                             <ext:ModelField Name="Dias" Type="String" /> 
@@ -142,11 +142,17 @@
         <ColumnModel>
             <Columns> 
             <%--<ext:Column ID="cID" runat="server" Text="ID" Align="Center" Width="100" DataIndex="ID"></ext:Column>--%>
+                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="150"
+                    DataIndex="CodigoMainSaver">  
+                </ext:Column>
                 <ext:Column ID="cEspecialidad" runat="server" Text="ESPECIALIDAD" Align="Center" Width="160" DataIndex="REspecialidad"> 
                     <Renderer Fn="cEspecialidad_Renderer" />
                 </ext:Column>
-                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="150"
-                    DataIndex="CodigoMainSaver">  
+                <ext:Column ID="cFamilia" runat="server" Text="FAMILIA" Align="Center" Width="160" DataIndex="RFamilias"> 
+                    <Renderer Fn="cFamilia_Renderer" />
+                </ext:Column>
+                <ext:Column ID="Column1" runat="server" Text="SUBESPECIALIDAD" Align="Center" Width="160" DataIndex="RSubespecialidad"> 
+                    <Renderer Fn="cSubEspecialidad_Renderer" />
                 </ext:Column>
                 <ext:Column 
                 ID="cDescripcion" 

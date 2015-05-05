@@ -8,13 +8,10 @@ namespace OSEF.APP.EL
     public class CodigoFalla
     {
 
-        #region Campos
-
-        string id;
+        #region Campos 
         string especialidad; 
         string familia; 
         string subespecialidad;
-
         string codigomainsaver;
         string descripcion;
         string dias;
@@ -28,13 +25,12 @@ namespace OSEF.APP.EL
         #endregion
 
         #region Propiedades 
-        
-        public string ID
+         
+        public string CodigoMainSaver
         {
-            get { return id; }
-            set { id = value; }
+            get { return codigomainsaver; }
+            set { codigomainsaver = value; }
         }
-
         public Especialidades REspecialidad
         {
             get { return respecialidad; }
@@ -51,11 +47,6 @@ namespace OSEF.APP.EL
         {
             get { return rsubespecialidad; }
             set { rsubespecialidad = value; }
-        }
-        public string CodigoMainSaver
-        {
-            get { return codigomainsaver; }
-            set { codigomainsaver = value; }
         }
         public string Descripcion
         {

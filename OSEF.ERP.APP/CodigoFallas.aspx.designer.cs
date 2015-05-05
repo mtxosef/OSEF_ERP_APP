@@ -130,6 +130,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mCodigoPPTA;
         
         /// <summary>
+        /// Control cMainSaver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cMainSaver;
+        
+        /// <summary>
         /// Control cEspecialidad.
         /// </summary>
         /// <remarks>
@@ -139,13 +148,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cEspecialidad;
         
         /// <summary>
-        /// Control cMainSaver.
+        /// Control cFamilia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cMainSaver;
+        protected global::Ext.Net.Column cFamilia;
+        
+        /// <summary>
+        /// Control Column1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column1;
         
         /// <summary>
         /// Control cDescripcion.

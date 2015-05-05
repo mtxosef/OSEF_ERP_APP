@@ -97,7 +97,7 @@ var sCodigoPPTA_Load = function () {
 
 //Evento lanzado al agregar un registro al store
 var sCodigoPPTA_Add = function (sucursal, registro) { 
-    App.txtID.setValue(registro[0].get('ID'));
+//    App.txtID.setValue(registro[0].get('ID'));
     App.cmbEspecialidad.setValue(registro[0].get('REspecialidad').ID);
     App.txtCodigoMainSaver.setValue(registro[0].get('CodigoMainSaver'));
     App.txtDescripcion.setValue(registro[0].get('Descripcion'));

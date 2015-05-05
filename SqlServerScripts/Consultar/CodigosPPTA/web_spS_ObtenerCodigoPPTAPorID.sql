@@ -26,7 +26,7 @@ IF EXISTS (	SELECT name
 GO
 CREATE PROCEDURE web_spS_ObtenerCodigoPPTAPorID
 	-- Add the parameters for the stored procedure here 
-	@ID CHAR(10)
+	@ID CHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -36,15 +36,14 @@ BEGIN
     -- Insert statements for procedure here
 	
 	SELECT 
-	cf.ID, 
+	cf.CodigoMainSaver, 
 	cf.Especialidad, 
 	cf.Familia,
 	cf.SubEspecialidad,
-	cf.CodigoMainSaver, 
 	cf.Descripcion, 
 	cf.Dias, 
 	cf.Prioridad, 
 	cf.TiempoEstimado 
-	FROM CodigoPPTA cf WHERE cf.ID = @ID;
+	FROM CodigoPPTA cf WHERE cf.CodigoMainSaver = @ID;
 END
 GO
