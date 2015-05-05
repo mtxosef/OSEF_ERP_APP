@@ -658,28 +658,7 @@
                                                 </ext:NumberField>
                                             </Items>
                                         </ext:FieldContainer>
-                                        <ext:FieldContainer
-                                            ID="fcReporte"
-                                            runat="server"
-                                            LabelWidth="120"
-                                            FieldLabel="Reportó"
-                                            AnchorHorizontal="100%" 
-                                            Layout="HBoxLayout">
-                                            <Items>
-                                                <ext:TextField 
-                                                    ID="txtfReporta" 
-                                                    runat="server" 
-                                                    EmptyText="Nombre de quien reportó el problema"
-                                                    Width="563" 
-                                                    Margins="0 3 0 0"
-                                                    MaxLength="200"
-                                                    EnforceMaxLength="true">
-                                                    <Listeners>
-                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                                    </Listeners>
-                                                </ext:TextField>
-                                            </Items>
-                                        </ext:FieldContainer>
+                                        
                                         <ext:FieldContainer
                                             ID="fcTrabajoRequerido"
                                             runat="server"
@@ -693,6 +672,29 @@
                                                     runat="server" 
                                                     Width="563" 
                                                     EmptyText="Descripción corta del trabajo requerido"
+                                                    Margins="0 3 0 0"
+                                                    MaxLength="200"
+                                                    EnforceMaxLength="true">
+                                                    <Listeners>
+                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
+                                                    </Listeners>
+                                                </ext:TextField>
+                                            </Items>
+                                        </ext:FieldContainer>
+
+                                        <ext:FieldContainer
+                                            ID="fcReporte"
+                                            runat="server"
+                                            LabelWidth="120"
+                                            FieldLabel="Reportó"
+                                            AnchorHorizontal="100%" 
+                                            Layout="HBoxLayout">
+                                            <Items>
+                                                <ext:TextField 
+                                                    ID="txtfReporta" 
+                                                    runat="server" 
+                                                    EmptyText="Nombre de quien reportó el problema"
+                                                    Width="563" 
                                                     Margins="0 3 0 0"
                                                     MaxLength="200"
                                                     EnforceMaxLength="true">
