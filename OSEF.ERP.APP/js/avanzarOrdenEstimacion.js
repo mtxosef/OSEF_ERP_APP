@@ -24,8 +24,8 @@
                 //Insertar un nuevo registro
                 window.parent.App.sConceptos.insert(window.parent.App.sConceptos.getCount(), { Renglon: renglonAnterior });
 
-            
-
+                //Recargar el tablero
+                window.parent.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
                 HabilitarControlesAvanzar();
                 window.parent.App.wEmergente.hide();
             }
@@ -49,6 +49,9 @@
                 window.parent.App.imgbtnGuardar.setDisabled(true);
                 window.parent.App.imgbtnAfectar.setDisabled(true);
 
+
+                //Recargar el tablero
+                window.parent.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
                 window.parent.App.wEmergente.hide();
             }
         },
