@@ -172,35 +172,6 @@
             </Store>
             <ColumnModel>
                 <Columns>
-                    <ext:Column 
-                        ID="cMovimiento"
-                        runat="server"
-                        Text="MOVIMIENTO"
-                        Align="Center"
-                        Width="170"
-                        DataIndex="Mov">
-                         <HeaderItems>
-                            <ext:ComboBox
-                                ID="cmbMovimiento"
-                                runat="server"
-                                ForceSelection="true"
-                                Editable="false">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                    <ext:ListItem Index="1" Text="Mesa de reporte" Value="Mesa de reporte"/>
-                                    <ext:ListItem Index="2" Text="Orden de Cambio" Value="Orden de Cambio"/>
-                                    <ext:ListItem Index="3" Text="Estimación" Value="Estimacion"/>
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Listeners>
-                                    <Select Fn="cmbMovimientoFiltro_Select" />
-                                </Listeners>
-                            </ext:ComboBox>
-                        </HeaderItems>
-                        <Renderer Fn="cMov_Renderer" />
-                    </ext:Column>
                     <ext:Column
                         ID="cReporte"
                         runat="server"
@@ -219,22 +190,7 @@
                             </ext:TextField>
                         </HeaderItems>
                     </ext:Column>
-                    <ext:Column
-                        ID="cObservaciones"
-                        runat="server"
-                        Text="ASUNTO"
-                        Align="Center"
-                        Width="210"
-                        DataIndex="Observaciones">
-                    </ext:Column> 
-                    <ext:Column
-                        ID="cReporta"
-                        runat="server"
-                        Text="REPORTA"
-                        Align="Center"
-                        Width="110"
-                        DataIndex="Reporto">
-                    </ext:Column> 
+                    
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
@@ -279,6 +235,25 @@
                         </HeaderItems>
 
                     </ext:Column>
+                    
+                    <ext:Column
+                        ID="cReporta"
+                        runat="server"
+                        Text="REPORTA"
+                        Align="Center"
+                        Width="110"
+                        DataIndex="Reporto">
+                    </ext:Column> 
+                    
+                    <ext:Column
+                        ID="cTrabajoRequerido"
+                        runat="server"
+                        Text="TRABAJO REQUERIDO"
+                        Align="Center"
+                        Width="170"
+                        DataIndex="TrabajoRequerido">
+                    </ext:Column> 
+                    
                     <ext:DateColumn
                         ID="dcFechaOrigen"
                         runat="server"
@@ -324,6 +299,7 @@
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:DateColumn>
+                    
                     <ext:DateColumn
                         ID="dcFechaMaxima"
                         runat="server"
@@ -369,39 +345,16 @@
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:DateColumn>
+                    
                     <ext:Column
-                        ID="cEstatus"
+                        ID="cObservaciones"
                         runat="server"
-                        Text="ESTATUS"
+                        Text="ASUNTO"
                         Align="Center"
-                        Width="90"
-                        DataIndex="Estatus">
-                        <HeaderItems>
-                            <ext:ComboBox
-                                ID="cmbFiltroEstatus"
-                                runat="server"
-                                ForceSelection="true"
-                                Editable="false">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                    <ext:ListItem Index="1" Text="PENDIENTE" />
-                                    <ext:ListItem Index="2" Text="BORRADOR" />
-                                    <ext:ListItem Index="3" Text="CONCLUIDO" />
-                                    <ext:ListItem Index="4" Text="CANCELADO" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Listeners>
-                                    <Select Fn="cmbEstatusFiltro_Select" />
-                                </Listeners>
-                              
-
-                            </ext:ComboBox>
-                        </HeaderItems>
-
-
+                        Width="210"
+                        DataIndex="Observaciones">
                     </ext:Column> 
+                    
                     <ext:Column
                         ID="cZona"
                         runat="server"
@@ -433,6 +386,7 @@
                             </ext:ComboBox>
                         </HeaderItems>--%>
                     </ext:Column> 
+                    
                     <ext:Column
                         ID="cCuadrilla"
                         runat="server"
@@ -473,14 +427,37 @@
                     
                         </HeaderItems>
                     </ext:Column>
-                    <ext:Column
-                        ID="cTrabajoRequerido"
+                    
+                    <ext:Column 
+                        ID="cMovimiento"
                         runat="server"
-                        Text="TRABAJO REQUERIDO"
+                        Text="MOVIMIENTO"
                         Align="Center"
                         Width="170"
-                        DataIndex="TrabajoRequerido">
-                    </ext:Column> 
+                        DataIndex="Mov">
+                         <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbMovimiento"
+                                runat="server"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="Mesa de reporte" Value="Mesa de reporte"/>
+                                    <ext:ListItem Index="2" Text="Orden de Cambio" Value="Orden de Cambio"/>
+                                    <ext:ListItem Index="3" Text="Estimación" Value="Estimacion"/>
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbMovimientoFiltro_Select" />
+                                </Listeners>
+                            </ext:ComboBox>
+                        </HeaderItems>
+                        <Renderer Fn="cMov_Renderer" />
+                    </ext:Column>
+                    
                     <ext:Column
                         ID="cUsuario"
                         runat="server"
@@ -531,6 +508,36 @@
                         </HeaderItems>
                             
                     </ext:Column>
+                    
+                    <ext:Column
+                        ID="cEstatus"
+                        runat="server"
+                        Text="ESTATUS"
+                        Align="Center"
+                        Width="90"
+                        DataIndex="Estatus">
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbFiltroEstatus"
+                                runat="server"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="PENDIENTE" />
+                                    <ext:ListItem Index="2" Text="BORRADOR" />
+                                    <ext:ListItem Index="3" Text="CONCLUIDO" />
+                                    <ext:ListItem Index="4" Text="CANCELADO" />
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbEstatusFiltro_Select" />
+                                </Listeners> 
+                            </ext:ComboBox>
+                        </HeaderItems> 
+                    </ext:Column> 
                 </Columns>
             </ColumnModel>
             <Listeners>
