@@ -211,6 +211,7 @@
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnRevisionesPorID.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesSinPreciario.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesDisponibles.sql
+:r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesCR.sql
 -- Sucursales (Insertar)
 :r c:\SqlServerScripts\Insertar\Sucursales\web_spI_InsertarSucursal.sql
 -- Sucursales (Modificar)
