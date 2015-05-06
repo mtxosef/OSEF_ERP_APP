@@ -18,12 +18,12 @@ namespace OSEF.APP.BL
         public static List<CodigoFalla> ObtenerCodigoFallas()
         {
             List<CodigoFalla> lCodigosFallas = CodigoFallasDataAccess.ObtenerCodigoFallas();
-            foreach (CodigoFalla cp in lCodigosFallas)
-            {
-                cp.REspecialidad = EspecialidadesBusiness.ObtenerEspecialidadesPorID(cp.Especialidad);
-                cp.RFamilias = FamiliasBusiness.ObtenerFamiliasPorID(cp.Familia);
-                cp.RSubespecialidad = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cp.Subespecialidad);
-            }
+            //foreach (CodigoFalla cp in lCodigosFallas)
+            //{
+            //    cp.REspecialidad = EspecialidadesBusiness.ObtenerEspecialidadesPorID(cp.Especialidad);
+            //    cp.RFamilias = FamiliasBusiness.ObtenerFamiliasPorID(cp.Familia);
+            //    cp.RSubespecialidad = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cp.Subespecialidad);
+            //}
             return lCodigosFallas;
         }
 
@@ -34,9 +34,9 @@ namespace OSEF.APP.BL
         public static CodigoFalla ObtenerCodigoFallaPorID(string ID)
         {
             CodigoFalla cf = CodigoFallasDataAccess.ObtenerCodigoFallasPorID(ID); 
-            cf.REspecialidad = EspecialidadesBusiness.ObtenerEspecialidadesPorID(cf.Especialidad);
-            cf.RFamilias = FamiliasBusiness.ObtenerFamiliasPorID(cf.Familia);
-            cf.RSubespecialidad = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cf.Subespecialidad);
+            //cf.REspecialidad = EspecialidadesBusiness.ObtenerEspecialidadesPorID(cf.Especialidad);
+            //cf.RFamilias = FamiliasBusiness.ObtenerFamiliasPorID(cf.Familia);
+            //cf.RSubespecialidad = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorID(cf.Subespecialidad);
             return cf;
         }
 

@@ -37,13 +37,7 @@ BEGIN
 	
 	SELECT 
 	cf.CodigoMainSaver, 
-	cf.Especialidad, 
-	cf.Familia,
-	cf.SubEspecialidad,
-	cf.Descripcion, 
-	cf.Dias, 
-	cf.Prioridad, 
-	cf.TiempoEstimado 
+	cf.Dias
 	FROM CodigoPPTA cf WHERE cf.CodigoMainSaver = @ID;
 END
 GO

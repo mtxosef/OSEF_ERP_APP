@@ -116,18 +116,18 @@
                 <Model>
                     <ext:Model ID="mCodigoPPTA" runat="server" IDProperty="ID">
                         <Fields>
-                            <ext:ModelField Name="ID" Type="String" />
+                         <%--   <ext:ModelField Name="ID" Type="String" />
                             <ext:ModelField Name="Especialidad" Type="String" /> 
                             <ext:ModelField Name="Familia" Type="String" /> 
-                            <ext:ModelField Name="SubEspecialidad" Type="String" /> 
+                            <ext:ModelField Name="SubEspecialidad" Type="String" />--%> 
                             <ext:ModelField Name="CodigoMainSaver" Type="String" />
-                            <ext:ModelField Name="Descripcion" Type="String" /> 
+                        <%--    <ext:ModelField Name="Descripcion" Type="String" />--%> 
                             <ext:ModelField Name="Dias" Type="String" /> 
-                            <ext:ModelField Name="Prioridad" Type="String" /> 
+                            <%--<ext:ModelField Name="Prioridad" Type="String" /> 
                             <ext:ModelField Name="TiempoEstimado" Type="String" /> 
                             <ext:ModelField Name="REspecialidad" Type="Object" />
                             <ext:ModelField Name="RFamilias" Type="Object" />
-                            <ext:ModelField Name="RSubespecialidad" Type="Object" />
+                            <ext:ModelField Name="RSubespecialidad" Type="Object" />--%>
                         </Fields>
                     </ext:Model>
                 </Model>
@@ -141,22 +141,10 @@
         </Store>
         <ColumnModel>
             <Columns> 
-            <%--<ext:Column ID="cID" runat="server" Text="ID" Align="Center" Width="100" DataIndex="ID"></ext:Column>--%>
-                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="220"
+                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="375"
                     DataIndex="CodigoMainSaver">  
                 </ext:Column>
-                <ext:Column 
-                ID="cDescripcion" 
-                runat="server" 
-                Text="DESCRIPCIÓN" 
-                Align="Center" 
-                Width="375"
-                DataIndex="Descripcion">  
-                </ext:Column>   
-                <ext:Column ID="cPrioridad" runat="server" Text="PRIORIDAD" Align="Center" Width="165"
-                    DataIndex="Prioridad">  
-                </ext:Column>
-                <ext:Column ID="cTiempoEstimado" runat="server" Text="TIEMPO ESTIMADO" Align="Center" Width="165"
+                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="565"
                     DataIndex="Dias">  
                     <Renderer Fn="cvDias_Renderer"></Renderer>
                 </ext:Column>

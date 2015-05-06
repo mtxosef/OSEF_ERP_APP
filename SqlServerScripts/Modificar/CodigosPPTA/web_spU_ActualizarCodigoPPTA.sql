@@ -30,13 +30,8 @@ GO
 CREATE PROCEDURE web_spU_ActualizarCodigoPPTA
 	-- Add the parameters for the stored procedure here
 	@CodigoMainSaver				VARCHAR(50) ,
-	@Especialidad				VARCHAR(10),
-	@Familia						VARCHAR(100),
-	@SubEspecialidad				VARCHAR(10),
-	@Descripcion					VARCHAR(500) ,
-	@Dias						CHAR(5) ,
-	@Prioridad					CHAR(2) ,
-	@TiempoEstimado				CHAR(5) 
+	@Dias						CHAR(5) 
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -46,13 +41,7 @@ BEGIN
     -- Insert statements for procedure here 
 
 	UPDATE [dbo].[CodigoPPTA]
-	SET [Especialidad] = @Especialidad
-	  ,[Familia] = @Familia
-	  ,[SubEspecialidad] = @SubEspecialidad 
-      ,[Descripcion] = @Descripcion
-      ,[Dias] = @Dias
-      ,[Prioridad] = @Prioridad
-      ,[TiempoEstimado] = @TiempoEstimado
+	SET [Dias] = @Dias
 	WHERE [dbo].[CodigoPPTA].[CodigoMainSaver] = @CodigoMainSaver;
 
 END

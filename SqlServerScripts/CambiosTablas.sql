@@ -104,3 +104,4 @@ ALTER TABLE OrdenesEstimaciones DROP COLUMN Zona
 ALTER TABLE OrdenesEstimaciones DROP COLUMN Atiende 
 ALTER TABLE GeneradorOrdenEstimacionD DROP COLUMN Numero 
 ALTER TABLE GeneradorVolumetriaD DROP COLUMN Numero 
+

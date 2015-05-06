@@ -19,8 +19,8 @@ var imgbtnNuevo_Click = function () {
     var w = window.parent.App.wEmergente;
     Ext.util.Cookies.set('cookieEditarCodigoPPTA', 'Nuevo');
     w.load('FormaCodigoPPTA.aspx');
-    w.setHeight(515);
-    w.setWidth(410);
+    w.setHeight(200);
+    w.setWidth(380);
     w.center();
     w.setTitle('NUEVO CÓDIGO PPTA');
     w.show();
@@ -34,8 +34,8 @@ var imgbtnEditar_Click = function () {
     var w = window.parent.App.wEmergente;
     Ext.util.Cookies.set('cookieEditarCodigoPPTA', App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('CodigoMainSaver').trim());
     w.load('FormaCodigoPPTA.aspx');
-    w.setHeight(515);
-    w.setWidth(410);
+    w.setHeight(200);
+    w.setWidth(380);
     w.center();
     w.setTitle('EDITAR CÓGIDO PPTA ' + Ext.util.Cookies.get('cookieEditarCodigoPPTA'));
     w.show(); 
