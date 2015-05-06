@@ -237,6 +237,8 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
+        //4. Recargar el tablero
+        window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     }
 };
 
@@ -467,6 +469,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.gpOrdenEstimacion.reconfigure();
 
     }
+    //4. Recargar el tablero
+    window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
 
 
 };
