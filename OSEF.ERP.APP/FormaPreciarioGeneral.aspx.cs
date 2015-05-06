@@ -294,6 +294,7 @@ namespace OSEF.ERP.APP
                         foreach (PreciarioGeneralConcepto sd in lDetallePreciarioActualizados)
                         {
                             PreciarioGeneralConcepto npgc = new PreciarioGeneralConcepto();
+                            npgc.ID = sd.ID;
                             npgc.Clave = sd.Clave;
                             npgc.Preciario = oPreciario.ID;
                             npgc.Descripcion = sd.Descripcion;
