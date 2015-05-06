@@ -689,7 +689,6 @@
                                                     ID="txtfTrabajoRequerido" 
                                                     runat="server" 
                                                     Width="563" 
-                                                    ReadOnly="true"
                                                     EmptyText="Descripción corta del trabajo requerido"
                                                     Margins="0 3 0 0"
                                                     MaxLength="200"

@@ -92,7 +92,6 @@
                         <ext:Model ID="mCodigosPPTA" runat="server" IDProperty="CodigoMainSaver">
                             <Fields>
                                 <ext:ModelField Name="CodigoMainSaver" Type="String" />
-                                <ext:ModelField Name="Descripcion" Type="String" />
                                 <ext:ModelField Name="Dias" Type="String" /> 
                             </Fields>
                         </ext:Model>
@@ -115,10 +114,10 @@
                     <ext:Column
                         ID="cDescripcion"
                         runat="server"
-                        Text="DESCRIPCIÓN"
+                        Text="DIAS"
                         Align="Left"
                         Width="420"
-                        DataIndex="Descripcion" />
+                        DataIndex="Dias" />
                 </Columns>
             </ColumnModel>
             <Listeners>
