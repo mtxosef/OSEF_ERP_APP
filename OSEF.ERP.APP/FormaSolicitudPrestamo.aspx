@@ -28,6 +28,19 @@
         </ext:Store>
 
         <ext:Store
+            ID="Store1"
+            runat="server">
+            <Model>
+                <ext:Model ID="Model1" runat="server" IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Descripcion" Type="String" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+        </ext:Store>
+
+        <ext:Store
             ID="sSolicitudPrestamo"
             runat="server">
             <Model>
@@ -334,10 +347,10 @@
                                                                 Disabled="false"
                                                                 FieldLabel="Estado civil">
                                                                 <Items>
-                                                                    <ext:ListItem Index="0" Text="" Value="SOLTERO" />
-                                                                    <ext:ListItem Index="1" Text="" Value="CASADO" />
-                                                                    <ext:ListItem Index="2" Text="" Value="UNIÓN LIBRE" />
-                                                                    <ext:ListItem Index="3" Text="" Value="OTRO" />
+                                                                    <ext:ListItem Index="0" Text="SOLTERO" Value="SOLTERO" />
+                                                                    <ext:ListItem Index="1" Text="CASADO" Value="CASADO" />
+                                                                    <ext:ListItem Index="2" Text="UNIÓN LIBRE" Value="UNIÓN LIBRE" />
+                                                                    <ext:ListItem Index="3" Text="OTRO" Value="OTRO" />
                                                                 </Items>
                                                                 <Listeners>
                                                                     <Change Fn="cmbEstadoCivil_Change" />
@@ -3094,8 +3107,24 @@
                                                         ID="fcOcupacionAval5"
                                                         runat="server"
                                                         Layout="ColumnLayout">
+                                                        <Defaults>
+                                                            <ext:Parameter Name="Width" Value="737" Mode="Raw" />
+                                                            <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
+                                                            <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
+                                                            <ext:Parameter Name="MaxLength" Value="50" Mode="Raw" />
+                                                        </Defaults>
                                                         <Items>
-                                                            <ext:RadioGroup
+                                                            <ext:TextField 
+                                                                ID="txtAvalEmpresaGiroComercial" 
+                                                                runat="server"
+                                                                FieldLabel="Giro comercial"
+                                                                StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Listeners>
+                                                                    <Blur Handler="App.txtAvalEmpresaGiroComercial.setValue(App.txtAvalEmpresaGiroComercial.getValue().toUpperCase());" />
+                                                                </Listeners>
+                                                            </ext:TextField>
+<%--                                                            <ext:RadioGroup
                                                                 ID="rgAvalEmpresaTipo"
                                                                 runat="server"
                                                                 Width="737"
@@ -3108,7 +3137,7 @@
                                                                     <ext:Radio ID="rAvalEmpresaTipoEmpleado" runat="server" BoxLabel="Empleado" Checked="true" />
                                                                     <ext:Radio ID="rAvalEmpresaTipoGiroComercial" runat="server" BoxLabel="Giro comercial"  />
                                                                 </Items>
-                                                            </ext:RadioGroup>
+                                                            </ext:RadioGroup>--%>
                                                         </Items>
                                                     </ext:Container> 
                                                     <ext:Container 

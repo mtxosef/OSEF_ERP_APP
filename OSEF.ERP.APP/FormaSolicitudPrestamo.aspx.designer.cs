@@ -58,6 +58,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mEstados;
         
         /// <summary>
+        /// Control Store1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store Store1;
+        
+        /// <summary>
+        /// Control Model1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model Model1;
+        
+        /// <summary>
         /// Control sSolicitudPrestamo.
         /// </summary>
         /// <remarks>
@@ -2551,31 +2569,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Container fcOcupacionAval5;
         
         /// <summary>
-        /// Control rgAvalEmpresaTipo.
+        /// Control txtAvalEmpresaGiroComercial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.RadioGroup rgAvalEmpresaTipo;
-        
-        /// <summary>
-        /// Control rAvalEmpresaTipoEmpleado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Radio rAvalEmpresaTipoEmpleado;
-        
-        /// <summary>
-        /// Control rAvalEmpresaTipoGiroComercial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Radio rAvalEmpresaTipoGiroComercial;
+        protected global::Ext.Net.TextField txtAvalEmpresaGiroComercial;
         
         /// <summary>
         /// Control fcOcupacionAval6.

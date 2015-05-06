@@ -590,12 +590,13 @@ var cmbCliente_Change = function (combobox, valorNuevo, valorAnterior) {
 
 //Evento que se lanza al cambiar un valor en el ComboBox de EstadoCivil
 var cmbEstadoCivil_Change = function (combobox, valorNuevo, valorAnterior, opciones) {
-    if (valorNuevo !== 'CASADO') {
-        App.tbSolicitudPrestamo.closeTab(App.pDatosConyugue);
-    }
-    else {
+    if (valorNuevo == 'CASADO' || valorNuevo == 'UNIÓN LIBRE') {
         App.tbSolicitudPrestamo.addTab(App.pDatosConyugue, 3);
         App.tbSolicitudPrestamo.setActiveTab(0);
+    }
+    else {
+        console.log(valorNuevo);
+        App.tbSolicitudPrestamo.closeTab(App.pDatosConyugue);
     }
 };
 
@@ -732,18 +733,19 @@ var btnAgregarBienesSocio_Click = function () {
         var tipoCuenta = Ext.create('Ext.data.Store', {
             fields: ['ID', 'DESCRIPCION'],
             data: [
-                { "ID": "TARJETA DE CRÉDITO", "DESCRIPCION": "TARJETA DE CRÉDITO" },
-                { "ID": "TARJETA DÉBITO", "DESCRIPCION": "TARJETA DÉBITO" },
-                { "ID": "CUENTA DE CHEQUES", "DESCRIPCION": "CUENTA DE CHEQUES" },
-                { "ID": "CRÉDITO HIPOTECARIO", "DESCRIPCION": "CRÉDITO HIPOTECARIO" },
-                { "ID": "CRÉDITO AUTOMOTRIZ", "DESCRIPCION": "CRÉDITO AUTOMOTRIZ" },
+                { "ID": "CASA", "DESCRIPCION": "CASA" },
+                { "ID": "DEPARTAMENTO", "DESCRIPCION": "DEPARTAMENTO" },
+                { "ID": "TERRENO", "DESCRIPCION": "TERRENO" },
+                { "ID": "LOCAL", "DESCRIPCION": "LOCAL" },
+                { "ID": "EDIFICIO", "DESCRIPCION": "EDIFICIO" },
+                { "ID": "RANCHO", "DESCRIPCION": "RANCHO" }
             ]
         });
         App.pBienes.add([
             { xtype: 'fieldset', title: 'Bienes inmuebles ' + ID, id: 'fsBienesInmuebles' + ID, items: [
                 { xtype: 'container', id: 'cBienesInmuebles' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
                     { xtype: 'textfield', id: 'txtfBienesInmueblesUbicacion' + ID, fieldLabel: 'Ubicación', style: { marginRight: '6px', marginBottom: '6px'} },
-                    { xtype: 'combobox', id: 'cmbBienesInmueblesTipoInmueble' + ID, store: tipoCuenta, displayField: 'DESCRIPCION', valueField: 'ID', fieldLabel: 'Tipo inmueble', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'combobox', id: 'cmbBienesInmueblesTipoInmueble' + ID, store: tipoCuenta, displayField: 'DESCRIPCION', valueField: 'ID', fieldLabel: 'Tipo inmueble', style: { marginRight: '6px', marginBottom: '6px'}, forceSelection: false },
                     { xtype: 'textfield', id: 'txtfBienesInmueblesInscripcion' + ID, fieldLabel: 'Inscripción', style: { marginRight: '6px', marginBottom: '6px'} },
                     { xtype: 'numberfield', id: 'nfBienesInmueblesValorInmueble' + ID, fieldLabel: 'Valor', style: { marginRight: '6px', marginBottom: '6px'} },
                     { xtype: 'button', id: 'btnBienesInmueblesBorrar' + ID, width: 100, margin: '0 0 6 0', text: 'Borrar', listeners:
@@ -807,11 +809,12 @@ var btnAgregarBienesAval_Click = function () {
         var tipoCuenta = Ext.create('Ext.data.Store', {
             fields: ['ID', 'DESCRIPCION'],
             data: [
-                { "ID": "TARJETA DE CRÉDITO", "DESCRIPCION": "TARJETA DE CRÉDITO" },
-                { "ID": "TARJETA DÉBITO", "DESCRIPCION": "TARJETA DÉBITO" },
-                { "ID": "CUENTA DE CHEQUES", "DESCRIPCION": "CUENTA DE CHEQUES" },
-                { "ID": "CRÉDITO HIPOTECARIO", "DESCRIPCION": "CRÉDITO HIPOTECARIO" },
-                { "ID": "CRÉDITO AUTOMOTRIZ", "DESCRIPCION": "CRÉDITO AUTOMOTRIZ" },
+                { "ID": "CASA", "DESCRIPCION": "CASA" },
+                { "ID": "DEPARTAMENTO", "DESCRIPCION": "DEPARTAMENTO" },
+                { "ID": "TERRENO", "DESCRIPCION": "TERRENO" },
+                { "ID": "LOCAL", "DESCRIPCION": "LOCAL" },
+                { "ID": "EDIFICIO", "DESCRIPCION": "EDIFICIO" },
+                { "ID": "RANCHO", "DESCRIPCION": "RANCHO" }
             ]
         });
 
@@ -819,7 +822,7 @@ var btnAgregarBienesAval_Click = function () {
             { xtype: 'fieldset', title: 'Bienes inmuebles ' + ID, id: 'fsBienesInmueblesAval' + ID, items: [
                 { xtype: 'container', id: 'cBienesInmueblesAval' + ID, layout: 'column', defaults: { width: 365, labelWidth: 120 }, items: [
                     { xtype: 'textfield', id: 'txtfBienesInmueblesAvalUbicacion' + ID, fieldLabel: 'Ubicación', style: { marginRight: '6px', marginBottom: '6px'} },
-                    { xtype: 'combobox', id: 'cmbBienesInmueblesAvalTipoInmueble' + ID, store: tipoCuenta, displayField: 'DESCRIPCION', valueField: 'ID', fieldLabel: 'Tipo inmueble', style: { marginRight: '6px', marginBottom: '6px'} },
+                    { xtype: 'combobox', id: 'cmbBienesInmueblesAvalTipoInmueble' + ID, store: tipoCuenta, displayField: 'DESCRIPCION', valueField: 'ID', fieldLabel: 'Tipo inmueble', style: { marginRight: '6px', marginBottom: '6px' }, forceSelection: false },
                     { xtype: 'textfield', id: 'txtfBienesInmueblesAvalInscripcion' + ID, fieldLabel: 'Inscripción', style: { marginRight: '6px', marginBottom: '6px'} },
                     { xtype: 'numberfield', id: 'nfBienesInmueblesAvalValorInmueble' + ID, fieldLabel: 'Valor', style: { marginRight: '6px', marginBottom: '6px'} },
                     { xtype: 'button', id: 'btnBienesInmueblesAvalBorrar' + ID, width: 100, margin: '0 0 6 0', text: 'Borrar', listeners:
