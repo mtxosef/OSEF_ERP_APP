@@ -102,3 +102,5 @@ ALTER TABLE OrdenesEstimaciones DROP COLUMN Zona
 
 --Cambios Christian 04 de Mayo
 ALTER TABLE OrdenesEstimaciones DROP COLUMN Atiende 
+ALTER TABLE GeneradorOrdenEstimacionD DROP COLUMN Numero 
+ALTER TABLE GeneradorVolumetriaD DROP COLUMN Numero 

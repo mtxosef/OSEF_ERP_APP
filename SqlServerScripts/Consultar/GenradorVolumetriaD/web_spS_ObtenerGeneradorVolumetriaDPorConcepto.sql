@@ -41,7 +41,6 @@ BEGIN
 	SELECT
 		MovID,
 		ConceptoID,
-		Numero,
 		Descripcion,
 		Eje,
 		EntreEje1,

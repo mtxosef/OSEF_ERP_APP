@@ -35,9 +35,11 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             }
         });
     }
-
-    window.parent.App.wEmergente.getBody().App.sFamilias.reload();  
-
+    window.parent.App.wEmergente.getBody().App.sFamilias.reload();
+    var vEspecialidad = window.parent.App.wEmergente.getBody().App.cmbEspecialidad.getValue();
+    if (vEspecialidad != null) {
+        window.parent.App.wEmergente.getBody().App.direct.recargar_Familias(vEspecialidad);
+    }
 };
 
 var imgbtnGuardar_change = function () {

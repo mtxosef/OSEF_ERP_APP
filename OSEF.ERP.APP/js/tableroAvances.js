@@ -30,6 +30,16 @@ var imgbtnEditar_Click = function () {
     window.parent.App.wEmergente.show();
 };
 
+var gpAvances_ItemDblClick = function (gridview, registro, gvhtml, index) {
+    Ext.util.Cookies.set('cookieEditarRevision', App.gpAvances.getSelectionModel().getSelection()[0].get('ID'));
+    window.parent.App.wEmergente.load('FormaAvance.aspx');
+    window.parent.App.wEmergente.setHeight(600);
+    window.parent.App.wEmergente.setWidth(930);
+    window.parent.App.wEmergente.center();
+    window.parent.App.wEmergente.setTitle('Editar avance ' + Ext.util.Cookies.get('cookieEditarRevision'));
+    window.parent.App.wEmergente.show();
+}
+
 //Concatenar la columna de Movimiento
 var cMov_Renderer = function (valor, metaData, registro) {
     var estatus = registro.get('Estatus');

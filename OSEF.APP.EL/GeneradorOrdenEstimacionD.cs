@@ -10,8 +10,7 @@ namespace OSEF.APP.EL
         #region Campos
 
         int movid;
-        string conceptoid;
-        string numero; 
+        string conceptoid; 
         string descripcion;
         string eje;
         string entreEje1;
@@ -41,11 +40,6 @@ namespace OSEF.APP.EL
             set { conceptoid = value; }
         }
 
-        public string Numero
-        {
-            get { return numero; }
-            set { numero = value; }
-        }
 
         public string Descripcion
         {

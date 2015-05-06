@@ -155,6 +155,30 @@ var btnBuscarSucursal_Click = function () {
     window.parent.App.wAyudaConcepto.show();
 };
 
+//Evento de clic del botón BuscarCodigo
+var btnBuscarCodigos_Click = function () {
+
+    if (App.dfFechaOrigen.getValue() != null) {
+        window.parent.App.wAyudaConcepto.load('FormaBuscaCodigoPPTA.aspx');
+        window.parent.App.wAyudaConcepto.setHeight(370);
+        window.parent.App.wAyudaConcepto.setWidth(615);
+        window.parent.App.wAyudaConcepto.center();
+        window.parent.App.wAyudaConcepto.setTitle('Seleccionar Código');
+        window.parent.App.wAyudaConcepto.show();
+    }
+    else {
+        Ext.Msg.show({
+            id: 'msgOrdenesEstimaciones',
+            title: 'CÓDIGO FALLA',
+            msg: '<p align="center">Debes de seleccionar una fecha de origen.</p>',
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.INFO
+        });
+    }
+};
+
 //Evento que se lanza al poner algun caracter en el control de la Sucursal
 var txtfSucursalCR_Change = function () {
     //Validar si se habilita Guardar
@@ -506,25 +530,6 @@ var sOrdenesMantenimiento_Load = function () {
 //Evento lanzado al agregar un registro al store
 var sOrdenesMantenimiento_Add = function (avance, registro) {
 
-    //Valida el estatus para ver si permite seguir capturando o no
-    //    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO') {
-    //        App.cmbMov.setValue(registro[0].get('Mov'));
-    //        App.txtfMovID.setValue(registro[0].get('MovID'));
-    //        App.cmbSucursal.setValue(registro[0].get('Sucursal'));
-    //        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
-    //        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
-    //        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
-    //        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
-
-    //        //Deshabilita los campos en un movimiento afectado
-    //       
-    //        App.cmbMov.setReadOnly(true);
-    //        App.dfFechaEmision.setDisabled(true);
-    //        App.imgbtnAfectar.setDisabled(true);
-    //        App.imgbtnGuardar.setDisabled(true);
-    //        App.imgbtnCancelar.setDisabled(false);
-    //        App.txtfObservaciones.setDisabled(false);
-    //    }
 
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
@@ -790,11 +795,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0) {
                 //Obtener el Renglon anterior
-                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                var auxRenglonAnterior = App.sConceptos.getCount() - 1;
+                var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
                 //Insertar un nuevo registro
                 App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
                 //Actualiza el renglon anterior pintando el botón de borrar
-//                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
+                //                App.gpOrdenEstimacion.getView().refreshNode(App.sConceptos.getCount() - 2);
                 //Validar si se habilita el boton de afectar
                 HabilitarAfectar();
             }
@@ -807,7 +813,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0 && storeDetalle.get('IntExt').length != 0) {
                 //Obtener el Renglon anterior
-                var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
+                var auxRenglonAnterior = App.sConceptos.getCount()-1;
+                var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
                 //Insertar un nuevo registro
                 App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
                 //Actualiza el renglon anterior pintando el botón de borrar
@@ -821,12 +828,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
 
 
-//        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
-//        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+        //        var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
+        //        App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
         App.imgbtnBorrar.setDisabled(false);
 
         App.cmbMov.setReadOnly(true);
-//        HabilitarAfectar();
+        //        HabilitarAfectar();
     }
 
 
@@ -923,8 +930,6 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
                 //Validar si se habilita el boton de afectar
                 HabilitarAfectar();
             }
-
-
         }
 
         if (App.cmbMov.getValue().trim() == "Mesa de reporte") {
@@ -1646,43 +1651,30 @@ function PrimerRenglonDetalle() {
     }
 
 
-    //Suma dias
-    function sumarDias(d, fecha) {
+  
 
-      
+    // Función que suma o resta días a la fecha indicada
 
-        var aux = new Date();
+    function sumarDiasAtencion(d, fecha) {
 
-        if (d == null) {
-            d = aux;
+        if (fecha != null) { 
+
+            var sFecha = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
+            var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
+            var aFecha = sFecha.split(sep);
+            var fecha = aFecha[2] + '/' + aFecha[1] + '/' + aFecha[0];
+            fecha = new Date(fecha);
+            fecha.setDate(fecha.getDate() + parseInt(d));
+            var anno = fecha.getFullYear();
+            var mes = fecha.getMonth() + 1;
+            var dia = fecha.getDate();
+            mes = (mes < 10) ? ("0" + mes) : mes;
+            dia = (dia < 10) ? ("0" + dia) : dia;
+            var fechaFinal = dia + sep + mes + sep + anno;
+          
+            App.dfFechaMaxima.setValue(fechaFinal);
         }
-
-        if (fecha == null) {
-            fecha = aux;
-        }
-
-
-        //Calculo de dias para que el texfield de dias 
-        var f1 = d;
-        var f2 = fecha;
-
-        var fechaFormateada1 = f1.getDate() + '/' + (f1.getMonth() + 1) + '/' + f1.getFullYear();
-        var fechaFormateada2 = f2.getDate() + '/' + (f2.getMonth() + 1) + '/' + f2.getFullYear();
-
-        var aFecha1 = fechaFormateada1.split('/');
-        var aFecha2 = fechaFormateada2.split('/');
-
-        var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
-        var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
-
-        var dif = fFecha1 - fFecha2;
-        var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
-
-        var numeroDias = parseFloat(dias)*(-1)
-        App.nfDiasAtencion.setValue(numeroDias);
     }
-
-
 
    
 

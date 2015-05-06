@@ -27,7 +27,7 @@
     <script type='text/javascript' src="js/formaGeneradorVolumetriaD.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" onsubmit="return false;">
     
 
      <ext:ResourceManager ID="rmFormaGenerador" runat="server" HideInDesign="true" />
@@ -116,7 +116,6 @@
                                     <ext:ModelField Name="MovID" Type="Int" />
                                     <ext:ModelField Name="ConceptoID" Type="String" />
                                     <ext:ModelField Name="Descripcion" Type="String" />
-                                    <ext:ModelField Name="Numero" Type="String" />
                                     <ext:ModelField Name="Eje" Type="String" />
                                     <ext:ModelField Name="EntreEje1" Type="String" />
                                     <ext:ModelField Name="EntreEje2" Type="String" />
@@ -156,24 +155,10 @@
                             </Listeners>
                         </ext:CommandColumn>
                         <ext:Column
-                            ID="cNo"
-                            runat="server"
-                            Text="No."
-                            Width="60"
-                            DataIndex="Numero">
-                            <Editor>
-                                <ext:TextField ID="txtfNo" runat="server">
-                                      <Listeners>
-                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                    </Listeners>            
-                                </ext:TextField>
-                            </Editor>
-                        </ext:Column>
-                        <ext:Column
                             ID="cArea"
                             runat="server"
                             Text="AREA"
-                            Width="200"
+                            Width="270"
                             DataIndex="Area">
                             <Editor>
                                 <ext:TextField ID="txtfArea" runat="server">

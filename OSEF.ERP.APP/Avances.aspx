@@ -242,6 +242,7 @@
             </ColumnModel>
             <Listeners>
                 <ItemClick Fn="gpAvances_ItemClick" />
+                <ItemDblClick Fn="gpAvances_ItemDblClick" />
             </Listeners>
             <SelectionModel>
                 <ext:RowSelectionModel

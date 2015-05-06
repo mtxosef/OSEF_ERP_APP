@@ -70,7 +70,7 @@
                                     Msg="Eliminando registro">
                                 </EventMask>
                                 <ExtraParams>
-                                    <ext:Parameter Name="ID" Value="App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('ID')"
+                                    <ext:Parameter Name="ID" Value="App.gpCodigoPPTA.getSelectionModel().getSelection()[0].get('CodigoMainSaver').trim()"
                                         Mode="Raw">
                                     </ext:Parameter>
                                 </ExtraParams>
@@ -91,7 +91,7 @@
                             ID="txtBuscar"
                             runat="server"
                             AutoFocus="true"
-                            EmptyText="Buscar por: ID, MainSaver, Especialidad"
+                            EmptyText="Buscar código"
                             Width="260">
                             <Listeners>
                                 <Change Fn="txtBuscarCodigoFalla_Change" />
@@ -119,7 +119,7 @@
                             <ext:ModelField Name="ID" Type="String" />
                             <ext:ModelField Name="Especialidad" Type="String" /> 
                             <ext:ModelField Name="Familia" Type="String" /> 
-                            <ext:ModelField Name="Especialidades" Type="String" /> 
+                            <ext:ModelField Name="SubEspecialidad" Type="String" /> 
                             <ext:ModelField Name="CodigoMainSaver" Type="String" />
                             <ext:ModelField Name="Descripcion" Type="String" /> 
                             <ext:ModelField Name="Dias" Type="String" /> 
@@ -142,10 +142,7 @@
         <ColumnModel>
             <Columns> 
             <%--<ext:Column ID="cID" runat="server" Text="ID" Align="Center" Width="100" DataIndex="ID"></ext:Column>--%>
-                <ext:Column ID="cEspecialidad" runat="server" Text="ESPECIALIDAD" Align="Center" Width="160" DataIndex="REspecialidad"> 
-                    <Renderer Fn="cEspecialidad_Renderer" />
-                </ext:Column>
-                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="150"
+                <ext:Column ID="cMainSaver" runat="server" Text="CÓDIGO MAINSAVER" Align="Center" Width="220"
                     DataIndex="CodigoMainSaver">  
                 </ext:Column>
                 <ext:Column 
@@ -153,18 +150,14 @@
                 runat="server" 
                 Text="DESCRIPCIÓN" 
                 Align="Center" 
-                Width="255"
+                Width="375"
                 DataIndex="Descripcion">  
-                </ext:Column> 
-                <ext:Column ID="cDias" runat="server" Text="DIAS" Align="Center" Width="90"
-                    DataIndex="Dias">  
-                    <Renderer Fn="cvDias_Renderer"></Renderer>
-                </ext:Column>
-                <ext:Column ID="cPrioridad" runat="server" Text="PRIORIDAD" Align="Center" Width="120"
+                </ext:Column>   
+                <ext:Column ID="cPrioridad" runat="server" Text="PRIORIDAD" Align="Center" Width="165"
                     DataIndex="Prioridad">  
                 </ext:Column>
-                <ext:Column ID="cTiempoEstimado" runat="server" Text="TIEMPO ESTIMADO" Align="Center" Width="175"
-                    DataIndex="TiempoEstimado">  
+                <ext:Column ID="cTiempoEstimado" runat="server" Text="TIEMPO ESTIMADO" Align="Center" Width="165"
+                    DataIndex="Dias">  
                     <Renderer Fn="cvDias_Renderer"></Renderer>
                 </ext:Column>
             </Columns>

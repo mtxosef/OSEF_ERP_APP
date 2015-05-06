@@ -22,6 +22,16 @@ var imgbtnEditar_Click = function () {
     window.parent.App.wEmergente.show();
 };
 
+var gpVolumetrias_ItemDblClick = function (gridview, registro, gvhtml, index) {
+    Ext.util.Cookies.set('cookieEditarVolumetria', App.gpVolumetrias.getSelectionModel().getSelection()[0].get('ID'));
+    window.parent.App.wEmergente.load('FormaVolumetriaPreciario.aspx');
+    window.parent.App.wEmergente.setHeight(591.5);
+    window.parent.App.wEmergente.setWidth(930);
+    window.parent.App.wEmergente.center();
+    window.parent.App.wEmergente.setTitle('Editar Volumetría ' + Ext.util.Cookies.get('cookieEditarVolumetria'));
+    window.parent.App.wEmergente.show();
+}
+
 //Concatenar la columna de Movimiento
 var cMov_Renderer = function (valor, metaData, registro) {
     var estatus = registro.get('Estatus');

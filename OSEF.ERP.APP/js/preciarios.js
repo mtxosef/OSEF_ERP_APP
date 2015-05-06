@@ -172,7 +172,7 @@ var sPreciario_Load_Success = function () {
 
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo') {
         store = window.parent.App.pCentro.getBody().App.sPreciarios;
-        App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
+//        App.sCarga.insert(App.sCarga.getCount(), { Clave: 'ADC-001' });
         //console.log(App.sCarga);
         //    App.gpPreciario.getView().focusRow(App.sCarga.getCount()-1);
         //    App.gpPreciario.editingPlugin.startEdit(App.gpPreciario.store.getAt(App.sCarga.getCount()-1), App.gpPreciario.columns[2]);

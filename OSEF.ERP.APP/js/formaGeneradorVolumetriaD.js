@@ -102,8 +102,7 @@ var ceGenerador_Edit = function (cellediting, columna) {
 
 
 
-        if (registro.get('Numero').length != 0
-        && registro.get('Area').length != 0
+        if (registro.get('Area').length != 0
         && registro.get('Total') != 0 && App.sFormaGenerador.getCount() < 19 ) {
 
             //Insertar un nuevo registro
@@ -330,8 +329,7 @@ function HabilitarGuardar() {
 
         if (App.gpFormaGenerador.getStore().getCount() != 0) {
 
-            if (App.sFormaGenerador.getAt(0).get('Numero').length != 0
-                    && App.sFormaGenerador.getAt(0).get('Area').length != 0
+            if (App.sFormaGenerador.getAt(0).get('Area').length != 0
                     && App.sFormaGenerador.getAt(0).get('Total') != 0) {
 
                 App.imgbtnAceptar.setDisabled(false);

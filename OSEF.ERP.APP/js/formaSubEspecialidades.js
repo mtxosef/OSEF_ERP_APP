@@ -34,10 +34,12 @@ var imgbtnGuardar_Click_Success = function (response, result) {
                 }
             }
         });
+    } 
+    window.parent.App.wEmergente.getBody().App.sSubEspecialidad.reload();
+    var vFamilia = window.parent.App.wEmergente.getBody().App.cmbFamilia.getValue();
+    if (vFamilia != null) {
+        window.parent.App.wEmergente.getBody().App.direct.recargar_SubEspecialidades(vFamilia);
     }
-
-    window.parent.App.wEmergente.getBody().App.sSubEspecialidades.reload(); 
-
 };
 
 var imgbtnGuardar_change = function () {

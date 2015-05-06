@@ -10,7 +10,7 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class CodigoFallas {
+    public partial class FormaBuscaCodigoPPTA {
         
         /// <summary>
         /// Control form1.
@@ -22,67 +22,40 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmCodigoPPTA.
+        /// Control rmBuscaPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmCodigoPPTA;
+        protected global::Ext.Net.ResourceManager rmBuscaPPTA;
         
         /// <summary>
-        /// Control gpCodigoPPTA.
+        /// Control gpCodigosPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gpCodigoPPTA;
+        protected global::Ext.Net.GridPanel gpCodigosPPTA;
         
         /// <summary>
-        /// Control tbCodigoPPTA.
+        /// Control tbCodigos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbCodigoPPTA;
+        protected global::Ext.Net.Toolbar tbCodigos;
         
         /// <summary>
-        /// Control imgbtnNuevo.
+        /// Control tbsCodigos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnNuevo;
-        
-        /// <summary>
-        /// Control imgbtnEditar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnEditar;
-        
-        /// <summary>
-        /// Control imgbtnBorrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBorrar;
-        
-        /// <summary>
-        /// Control tbsCodigoPPTA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ToolbarSpacer tbsCodigoPPTA;
+        protected global::Ext.Net.ToolbarSpacer tbsCodigos;
         
         /// <summary>
         /// Control imgbtnActualizar.
@@ -103,40 +76,40 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtBuscar;
         
         /// <summary>
-        /// Control imgbtnBuscar.
+        /// Control imgbtnActualizarGrupoMenu.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnBuscar;
+        protected global::Ext.Net.ImageButton imgbtnActualizarGrupoMenu;
         
         /// <summary>
-        /// Control sCodigoPPTA.
+        /// Control sCodigosPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sCodigoPPTA;
+        protected global::Ext.Net.Store sCodigosPPTA;
         
         /// <summary>
-        /// Control mCodigoPPTA.
+        /// Control mCodigosPPTA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Model mCodigoPPTA;
+        protected global::Ext.Net.Model mCodigosPPTA;
         
         /// <summary>
-        /// Control cMainSaver.
+        /// Control cCodigo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cMainSaver;
+        protected global::Ext.Net.Column cCodigo;
         
         /// <summary>
         /// Control cDescripcion.
@@ -148,39 +121,21 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cDescripcion;
         
         /// <summary>
-        /// Control cPrioridad.
+        /// Control rsmCodigos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cPrioridad;
+        protected global::Ext.Net.RowSelectionModel rsmCodigos;
         
         /// <summary>
-        /// Control cTiempoEstimado.
+        /// Control stsCodigos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cTiempoEstimado;
-        
-        /// <summary>
-        /// Control rsmCodigoPPTA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.RowSelectionModel rsmCodigoPPTA;
-        
-        /// <summary>
-        /// Control sbCodigoPPTA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.StatusBar sbCodigoPPTA;
+        protected global::Ext.Net.StatusBar stsCodigos;
     }
 }

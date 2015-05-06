@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaBuscaSucursal.aspx.cs" Inherits="OSEF.ERP.APP.FormaBuscaSucursal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaBuscaCodigoPPTA.aspx.cs" Inherits="OSEF.ERP.APP.FormaBuscaCodigoPPTA" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head  runat="server">
     <title></title>
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
@@ -24,26 +24,26 @@
     <link rel="stylesheet" href="css/xFieldSet.css" />
     <link rel="stylesheet" href="css/xPanel.css" />
     <link rel="stylesheet" href="css/xButton.css" />
-    <script type='text/javascript' src="js/buscasucursales.js"></script>
+    <script type='text/javascript' src="js/buscaCodigoPPTA.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="rmSucursales" runat="server" HideInDesign="true" />
+        <ext:ResourceManager ID="rmBuscaPPTA" runat="server" HideInDesign="true" />
 
         <ext:GridPanel
-            ID="gpSucursales"
+            ID="gpCodigosPPTA"
             runat="server"
             Height="320"
-            Width="700"
-            Title="SUCURSALES"
+            Width="600"
+            Title="CÓDIGOS PPTA"
             EnableColumnHide="false"
             EnableColumnMove="false"
             Header="false"
             TitleAlign="Left" >
             <TopBar>
-                <ext:Toolbar ID="tbSucursales" runat="server">
+                <ext:Toolbar ID="tbCodigos" runat="server">
                     <Items>
-                        <ext:ToolbarSpacer ID="tbsSucursal" runat="server" Width="400">
+                        <ext:ToolbarSpacer ID="tbsCodigos" runat="server" Width="300">
                         </ext:ToolbarSpacer>
                         <ext:ImageButton
                             ID="imgbtnActualizar"
@@ -55,7 +55,7 @@
                             Height="50"
                             Width="50">
                             <Listeners>
-                                <Click Handler="#{sSucursales}.reload(); App.imgbtnEditar.setDisabled(true); App.imgbtnBorrar.setDisabled(true);" />
+                                <Click Handler="#{sCodigosPPTA}.reload(); App.imgbtnEditar.setDisabled(true);" />
                             </Listeners>
                         </ext:ImageButton>
                         <ext:TextField 
@@ -83,80 +83,56 @@
                 </ext:Toolbar>
             </TopBar>
             <Store>
+           
                 <ext:Store
-                    ID="sBSucursales"
+                    ID="sCodigosPPTA"
                     runat="server"
-                    OnReadData="OnReadData_sSucursales">
+                     OnReadData="OnReadData_sCodigosPPTA">
                     <Model>
-                        <ext:Model ID="mSucursales" runat="server" IDProperty="ID">
+                        <ext:Model ID="mCodigosPPTA" runat="server" IDProperty="CodigoMainSaver">
                             <Fields>
-                                <ext:ModelField Name="ID" Type="String" />
-                                <ext:ModelField Name="CR" Type="String" />
-                                <ext:ModelField Name="Nombre" Type="String" />
-                                <ext:ModelField Name="Calle" Type="String" />
-                                <ext:ModelField Name="NoExterior" Type="String" />
-                                <ext:ModelField Name="Colonia" Type="String" />
-                                <ext:ModelField Name="RColonia" Type="Object" />
-                                <ext:ModelField Name="Gerente" Type="String">
-                                    <Convert Fn="Gerente_Convert" />
-                                </ext:ModelField>
-                                <ext:ModelField Name="GerenteBBVANombre" Type="String" />
-                                <ext:ModelField Name="GerenteBBVAAPaterno" Type="String" />
-                                <ext:ModelField Name="GerenteBBVAAMaterno" Type="String" />
-                                <ext:ModelField Name="InicioObra" Type="Date" />
-                                <ext:ModelField Name="FinObra" Type="Date" />
-                                <ext:ModelField Name="Estatus" Type="String" />
+                                <ext:ModelField Name="CodigoMainSaver" Type="String" />
+                                <ext:ModelField Name="Descripcion" Type="String" />
+                                <ext:ModelField Name="Dias" Type="String" /> 
                             </Fields>
                         </ext:Model>
                     </Model>
                     <Sorters>
-                        <ext:DataSorter Property="ID" Direction="ASC" />
+                        <ext:DataSorter Property="CodigoMainSaver" Direction="ASC" />
                     </Sorters>
-                    <Listeners>
-                        <DataChanged Fn="sBSucursales_DataChanged" />
-                    </Listeners>
                   
                 </ext:Store>
             </Store>
             <ColumnModel>
                 <Columns>                        
                     <ext:Column
-                        ID="cCR"
+                        ID="cCodigo"
                         runat="server"
-                        Text="CR"
+                        Text="CÓDIGO"
                         Align="Left"
-                        Width="90"
-                        DataIndex="CR" />
+                        Width="160"
+                        DataIndex="CodigoMainSaver" />
                     <ext:Column
-                        ID="cSucursal"
+                        ID="cDescripcion"
                         runat="server"
-                        Text="SUCURSAL"
+                        Text="DESCRIPCIÓN"
                         Align="Left"
-                        Width="320"
-                        DataIndex="Nombre" />
-                    <ext:Column
-                        ID="cDireccion"
-                        runat="server"
-                        Text="DIRECCIÓN"
-                        Align="Center"
-                        Width="260"
-                        DataIndex="Calle" >
-                        <Renderer Fn="cDireccion_Renderer">  </Renderer>
-                        </ext:Column>
+                        Width="420"
+                        DataIndex="Descripcion" />
                 </Columns>
             </ColumnModel>
             <Listeners>
-                <ItemDblClick Fn="gpBuscaSucursales_ItemDblClick" />
+                <ItemDblClick Fn="gpBuscaCodigos_ItemDblClick" />
             </Listeners>
             <SelectionModel>
                 <ext:RowSelectionModel
-                    ID="rsmSucursales"
+                    ID="rsmCodigos"
                     runat="server">
                 </ext:RowSelectionModel>
             </SelectionModel>
             <FooterBar>
                 <ext:StatusBar
-                    ID="stsbSucursales"
+                    ID="stsCodigos"
                     runat="server"
                     Text="*ELIJA UN REGISTRO DE LA TABLA"
                     StatusAlign="Left">

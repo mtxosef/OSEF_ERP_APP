@@ -67,22 +67,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
-        /// Control FieldContainer2.
+        /// Control FieldContainer5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer2;
+        protected global::Ext.Net.FieldContainer FieldContainer5;
         
         /// <summary>
-        /// Control txtID.
+        /// Control txtCodigoMainSaver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtID;
+        protected global::Ext.Net.TextField txtCodigoMainSaver;
         
         /// <summary>
         /// Control FieldContainer3.
@@ -245,24 +245,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Button btnAgregarSubEspecialidades;
-        
-        /// <summary>
-        /// Control FieldContainer5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer5;
-        
-        /// <summary>
-        /// Control txtCodigoMainSaver.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCodigoMainSaver;
         
         /// <summary>
         /// Control FieldContainer6.

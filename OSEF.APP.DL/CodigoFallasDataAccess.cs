@@ -166,7 +166,7 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 10;
+                sqlpID.Size = 50;
                 sqlpID.Value = strID;
 
                 //3. Agregar los parametros al comando
@@ -211,12 +211,12 @@ namespace OSEF.APP.DL
                 sqlcComando.CommandType = CommandType.StoredProcedure;
                 sqlcComando.CommandText = "web_spU_ActualizarCodigoPPTA";
 
-                //2. Declarar los parametros
-                SqlParameter sqlpID = new SqlParameter();
-                sqlpID.ParameterName = "@ID";
-                sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Value = iCodigoFallas.ID;
-
+                //2. Declarar los parametros  
+                SqlParameter sqlpCodigoMainSaver = new SqlParameter();
+                sqlpCodigoMainSaver.ParameterName = "@CodigoMainSaver";
+                sqlpCodigoMainSaver.SqlDbType = SqlDbType.Char;
+                sqlpCodigoMainSaver.Value = iCodigoFallas.CodigoMainSaver;
+                 
                 SqlParameter sqlpEspecialidad = new SqlParameter();
                 sqlpEspecialidad.ParameterName = "@Especialidad";
                 sqlpEspecialidad.SqlDbType = SqlDbType.Char;
@@ -231,11 +231,6 @@ namespace OSEF.APP.DL
                 sqlpSubEspecialidades.ParameterName = "@SubEspecialidad";
                 sqlpSubEspecialidades.SqlDbType = SqlDbType.Char;
                 sqlpSubEspecialidades.Value = iCodigoFallas.Subespecialidad;
-
-                SqlParameter sqlpCodigoMainSaver = new SqlParameter();
-                sqlpCodigoMainSaver.ParameterName = "@CodigoMainSaver";
-                sqlpCodigoMainSaver.SqlDbType = SqlDbType.Char;
-                sqlpCodigoMainSaver.Value = iCodigoFallas.CodigoMainSaver;
 
                 SqlParameter sqlpDescripcion = new SqlParameter();
                 sqlpDescripcion.ParameterName = "@Descripcion";
@@ -259,11 +254,10 @@ namespace OSEF.APP.DL
 
 
                 //3. Agregar los parametros al comando
-                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpCodigoMainSaver);
                 sqlcComando.Parameters.Add(sqlpEspecialidad);
                 sqlcComando.Parameters.Add(sqlpFamilia);
                 sqlcComando.Parameters.Add(sqlpSubEspecialidades);
-                sqlcComando.Parameters.Add(sqlpCodigoMainSaver);
                 sqlcComando.Parameters.Add(sqlpDescripcion);
                 sqlcComando.Parameters.Add(sqlpDias);
                 sqlcComando.Parameters.Add(sqlpPrioridad);
@@ -283,7 +277,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Modificar(CodigoFallas " + iCodigoFallas.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Modificar(CodigoFallas " + iCodigoFallas.CodigoMainSaver + ")): " + ex.Message);
             }
         }
 
@@ -307,12 +301,11 @@ namespace OSEF.APP.DL
                 sqlcComando.CommandText = "web_spI_InsertarCodigoPPTA";
 
                 //2. Declarar los parametros
-                SqlParameter sqlpID = new SqlParameter();
-                sqlpID.ParameterName = "@ID";
-                sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Value = iCodigoFallas.ID;
-                sqlpID.Size = 10;
-                sqlpID.Direction = ParameterDirection.Output;
+                SqlParameter sqlpCodigoMainSaver = new SqlParameter();
+                sqlpCodigoMainSaver.ParameterName = "@CodigoMainSaver";
+                sqlpCodigoMainSaver.SqlDbType = SqlDbType.Char;
+                sqlpCodigoMainSaver.Size = 50;
+                sqlpCodigoMainSaver.Value = iCodigoFallas.CodigoMainSaver;
 
                 SqlParameter sqlpEspecialidad = new SqlParameter();
                 sqlpEspecialidad.ParameterName = "@Especialidad";
@@ -324,15 +317,10 @@ namespace OSEF.APP.DL
                 sqlpFamilia.SqlDbType = SqlDbType.Char;
                 sqlpFamilia.Value = iCodigoFallas.Familia;
 
-                SqlParameter sqlpEspecialidades = new SqlParameter();
-                sqlpEspecialidades.ParameterName = "@SubEspecialidad";
-                sqlpEspecialidades.SqlDbType = SqlDbType.Char;
-                sqlpEspecialidades.Value = iCodigoFallas.Subespecialidad;
-
-                SqlParameter sqlpCodigoMainSaver = new SqlParameter();
-                sqlpCodigoMainSaver.ParameterName = "@CodigoMainSaver";
-                sqlpCodigoMainSaver.SqlDbType = SqlDbType.Char;
-                sqlpCodigoMainSaver.Value = iCodigoFallas.CodigoMainSaver;
+                SqlParameter sqlpSubEspecialidad = new SqlParameter();
+                sqlpSubEspecialidad.ParameterName = "@SubEspecialidad";
+                sqlpSubEspecialidad.SqlDbType = SqlDbType.Char;
+                sqlpSubEspecialidad.Value = iCodigoFallas.Subespecialidad;
 
                 SqlParameter sqlpDescripcion = new SqlParameter();
                 sqlpDescripcion.ParameterName = "@Descripcion";
@@ -355,11 +343,10 @@ namespace OSEF.APP.DL
                 sqlpTiempoEstimado.Value = iCodigoFallas.TiempoEstimado;
 
                 //3. Agregar los parametros al comando
-                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpCodigoMainSaver);
                 sqlcComando.Parameters.Add(sqlpEspecialidad);
                 sqlcComando.Parameters.Add(sqlpFamilia);
-                sqlcComando.Parameters.Add(sqlpEspecialidades);
-                sqlcComando.Parameters.Add(sqlpCodigoMainSaver);
+                sqlcComando.Parameters.Add(sqlpSubEspecialidad);
                 sqlcComando.Parameters.Add(sqlpDescripcion);
                 sqlcComando.Parameters.Add(sqlpDias);
                 sqlcComando.Parameters.Add(sqlpPrioridad);
@@ -375,11 +362,11 @@ namespace OSEF.APP.DL
                 sqlcComando.Connection.Close();
 
                 //7. Regresar el resultado
-                return sqlcComando.Parameters["@ID"].Value.ToString();
+                return sqlcComando.Parameters["@CodigoMainSaver"].Value.ToString();
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Insertar(CodigoFallas " + iCodigoFallas.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Insertar(CodigoFallas " + iCodigoFallas.CodigoMainSaver + ")): " + ex.Message);
             }
         }
 
@@ -406,7 +393,7 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 10;
+                sqlpID.Size = 50;
                 sqlpID.Value = dID;
 
                 //3. Agregar los parametros al comando

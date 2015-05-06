@@ -445,6 +445,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfCodigoFalla;
         
         /// <summary>
+        /// Control btnBuscaCodigoFalla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnBuscaCodigoFalla;
+        
+        /// <summary>
         /// Control fcFechaOrigen.
         /// </summary>
         /// <remarks>
@@ -481,24 +490,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.NumberField nfDiasAtencion;
         
         /// <summary>
-        /// Control fcReporte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcReporte;
-        
-        /// <summary>
-        /// Control txtfReporta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtfReporta;
-        
-        /// <summary>
         /// Control fcTrabajoRequerido.
         /// </summary>
         /// <remarks>
@@ -515,6 +506,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfTrabajoRequerido;
+        
+        /// <summary>
+        /// Control fcReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcReporte;
+        
+        /// <summary>
+        /// Control txtfReporta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfReporta;
         
         /// <summary>
         /// Control FieldContainer1.

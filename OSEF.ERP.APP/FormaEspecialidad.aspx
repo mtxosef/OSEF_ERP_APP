@@ -47,8 +47,8 @@
                             <ext:TextField ID="txtNombre" runat="server" Width="250" Disabled="false" ReadOnly="false" AllowBlank="false"
                                 EmptyText="NOMBRE DE LA ESPECIALIDAD" MaxLength="99">  
                                 <Listeners>
-                                    <Change Fn="imgbtnGuardar_change" />
-                                    <Blur Handler="App.txtNombre.setValue(App.txtNombre.getValue().toUpperCase())"/>
+                                   
+                                    <Blur Fn="imgbtnGuardar_change"/>
                                 </Listeners>
                             </ext:TextField>
                         </Items>

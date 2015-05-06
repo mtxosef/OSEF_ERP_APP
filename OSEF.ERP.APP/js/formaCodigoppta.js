@@ -2,7 +2,9 @@
     var regex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{1,99}$/
     var desregex = /^[a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ.,-_]{3,499}$/ 
     if (regex.test(App.txtCodigoMainSaver.getValue()) && desregex.test(App.txtDescripcion.getValue())
-    && Ext.getCmp('txtDias').getValue() != null && Ext.getCmp('txtPrioridad').getValue() != null && Ext.getCmp('txtTiempoEstimado').getValue() != null) {
+    && Ext.getCmp('txtDias').getValue() != null && Ext.getCmp('txtPrioridad').getValue() != null
+    && Ext.getCmp('txtTiempoEstimado').getValue() != null
+    && App.cmbEspecialidad.getValue() != null && App.cmbFamilia.getValue() != null && App.cmbSubEspecialidad.getValue() != null) {
         App.imgbtnGuardar.setDisabled(false);
         App.sbPPTA.setText('La información esta completa/correcta.');
     } else {
@@ -96,14 +98,16 @@ var sCodigoPPTA_Load = function () {
 
 
 //Evento lanzado al agregar un registro al store
-var sCodigoPPTA_Add = function (sucursal, registro) { 
-    App.txtID.setValue(registro[0].get('ID'));
+var sCodigoPPTA_Add = function (sucursal, registro) {
+    //    App.txtID.setValue(registro[0].get('ID'));
     App.cmbEspecialidad.setValue(registro[0].get('REspecialidad').ID);
     App.txtCodigoMainSaver.setValue(registro[0].get('CodigoMainSaver'));
     App.txtDescripcion.setValue(registro[0].get('Descripcion'));
     App.txtDias.setValue(registro[0].get('Dias'));
     App.txtPrioridad.setValue(registro[0].get('Prioridad'));
     App.txtTiempoEstimado.setValue(registro[0].get('TiempoEstimado'));
+    //    App.txtCodigoMainSaver.setDisabled(true);
+    App.txtCodigoMainSaver.setReadOnly(true);
 };
 
 //Evento al cargar el store de Familia
@@ -123,3 +127,4 @@ var sSubespecialidad_Load = function () {
 var imgbtnGuardar_Click_SuccessCR = function () {
 
 };
+

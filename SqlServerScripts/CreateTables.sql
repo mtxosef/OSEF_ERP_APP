@@ -685,11 +685,10 @@ CREATE TABLE SubEspecialidades(
 )
 
 CREATE TABLE CodigoPPTA(
-	ID							CHAR(10) NOT NULL PRIMARY KEY,
+	CodigoMainSaver				CHAR(50) NOT NULL PRIMARY KEY,
 	Especialidad				CHAR(10) NOT NULL FOREIGN KEY REFERENCES Especialidades(ID),
 	Familia						CHAR(10) NOT NULL FOREIGN KEY REFERENCES Familias(ID),
-	SubEspecialidad				CHAR(10) NOT NULL FOREIGN KEY REFERENCES SubEspecialidades(ID),
-	CodigoMainSaver				VARCHAR(50) NULL,
+	SubEspecialidad				CHAR(10) NOT NULL FOREIGN KEY REFERENCES SubEspecialidades(ID), 
 	Descripcion					VARCHAR(500) NULL,
 	Dias						CHAR(5) NULL,
 	Prioridad					CHAR(2) NULL,
@@ -736,7 +735,8 @@ CREATE TABLE CodigoPPTA(
 --DROP TABLE Usuarios
 --DROP TABLE OrdenesEstimaciones
 --DROP TABLE OrdenesEstimacionesD
---DROP TABLE Especialidades
---DROP TABLE Familias
 --DROP TABLE SubEspecialidades
+--DROP TABLE Familias
+--DROP TABLE Especialidades
 --DROP TABLE CodigoPPTA
+

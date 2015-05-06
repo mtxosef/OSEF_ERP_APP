@@ -32,16 +32,15 @@
     
      <ext:Store ID="sCodigoPPTA" runat="server">
         <Model>
-            <ext:Model ID="mCodigoPPTA" runat="server" IDProperty="ID">
+            <ext:Model ID="mCodigoPPTA" runat="server" IDProperty="CodigoMainSaver">
                 <Fields>
-                    <ext:ModelField Name="ID" Type="String" />
+                    <ext:ModelField Name="CodigoMainSaver" Type="String" />
                     <ext:ModelField Name="Especialidad" Type="String" />
                     <ext:ModelField Name="Familia" Type="String" />
                     <ext:ModelField Name="SubEspecialidad" Type="String" />
                     <ext:ModelField Name="REspecialidad" Type="Object" />
                     <ext:ModelField Name="RFamilia" Type="Object" />
                     <ext:ModelField Name="RSubespecialidad" Type="Object" />
-                    <ext:ModelField Name="CodigoMainSaver" Type="String" />
                     <ext:ModelField Name="Descripcion" Type="String" />   
                     <ext:ModelField Name="Dias" Type="String" />   
                     <ext:ModelField Name="Prioridad" Type="String" />   
@@ -59,19 +58,24 @@
             ID="fpCodigoPPTAs"
             runat="server" 
             MonitorResize="true"
-            Height="490"
+            Height="465"
             Width="910" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" >
         <Items>
             <ext:Panel ID="Panel1" runat="server">
                 <Items> 
-                    <ext:FieldContainer ID="FieldContainer2" runat="server" FieldLabel="CÓDIGO" AnchorHorizontal="100%"
-                        Layout="HBoxLayout">
-                        <Items>
-                            <ext:TextField ID="txtID" runat="server" Width="250"  ReadOnly="true"
-                                EmptyText="" MaxLength="99">  
+                     <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="Main Saver" AnchorHorizontal="100%" Layout="HBoxLayout">
+                        <Items> 
+                         <ext:TextField ID="txtCodigoMainSaver" runat="server" AllowBlank="false" Width="250" Disabled="false" Margins="0 0 0 0" MaxLength="49" MinLength="3"
+                                EmptyText="Escriba un código main saver">  
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change" />
+                                    <Blur Handler="App.txtCodigoMainSaver.setValue(App.txtCodigoMainSaver.getValue().toUpperCase());"/>
+                                </Listeners>
                             </ext:TextField>
-                        </Items>
+                       </Items>
                     </ext:FieldContainer> 
+                    
+
                     <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="Especialidad" AnchorHorizontal="100%"
                         Layout="HBoxLayout">
                         <Items> 
@@ -102,6 +106,9 @@
                                         </ExtraParams>
                                     </Change>
                                 </DirectEvents>
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change"></Change>
+                                </Listeners>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar3" 
                         runat="server" 
@@ -140,7 +147,7 @@
                                         </Model> 
                                         <Listeners>
                                             <Load Fn="sFamilia_Load" />
-                                        </Listeners>
+                                        </Listeners>  
                                     </ext:Store>
                                 </Store> 
                                 <DirectEvents>
@@ -150,6 +157,9 @@
                                         </ExtraParams>
                                     </Change>
                                 </DirectEvents>
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change"></Change>
+                                </Listeners>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar2" 
                         runat="server" 
@@ -189,8 +199,14 @@
                                         <Listeners>
                                             <Load Fn="sSubespecialidad_Load" />
                                         </Listeners>
+                                         <Parameters>
+                                            <ext:StoreParameter Name="vFamilia" Value="InitialValue" ApplyMode="IfNotExists" />
+                                        </Parameters>
                                     </ext:Store>
-                                </Store>
+                                </Store> 
+                                <Listeners>
+                                    <Change Fn="imgbtnGuardar_change"></Change>
+                                </Listeners>
                             </ext:ComboBox>
                             <ext:Toolbar ID="Toolbar1" 
                         runat="server" 
@@ -206,23 +222,12 @@
                     </ext:Toolbar>
                        </Items>
                     </ext:FieldContainer>
-                    <ext:FieldContainer ID="FieldContainer5" runat="server" FieldLabel="Main Saver"
-                        AnchorHorizontal="100%" Layout="HBoxLayout">
-                        <Items> 
-                         <ext:TextField ID="txtCodigoMainSaver" runat="server" AllowBlank="false" Width="250" Disabled="false" Margins="0 0 0 0"
-                                EmptyText="Escriba un código main saver">  
-                                <Listeners>
-                                    <Change Fn="imgbtnGuardar_change" />
-                                    <Blur Handler="App.txtCodigoMainSaver.setValue(App.txtCodigoMainSaver.getValue().toUpperCase());"/>
-                                </Listeners>
-                            </ext:TextField>
-                       </Items>
-                    </ext:FieldContainer> 
+                   
                     <ext:FieldContainer ID="FieldContainer6" runat="server" FieldLabel="Descripción"
                         AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
                         <Items>
                             <ext:TextArea ID="txtDescripcion" runat="server" Height="150" Width="250" Disabled="false" AllowBlank="false"
-                                EmptyText="Escriba una descripción" MaxLength="499"> 
+                                EmptyText="Escriba una descripción" MaxLength="499" EnforceMaxLength="true"> 
                                 <Listeners>
                                     <Change Fn="imgbtnGuardar_change" />
                                     <Blur Handler="App.txtDescripcion.setValue(App.txtDescripcion.getValue().toUpperCase());"/>

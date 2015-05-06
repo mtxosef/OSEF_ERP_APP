@@ -64,7 +64,7 @@ namespace OSEF.ERP.APP
                 {
 
                     //2. Validar que el objeto no venga en blanco
-                    if (sd.Area.Equals(string.Empty) || sd.Numero.Equals(string.Empty) || sd.Total == 0)
+                    if (sd.Area.Equals(string.Empty) || sd.Total == 0)
                         continue;
                     else
                     {
@@ -87,7 +87,7 @@ namespace OSEF.ERP.APP
                 {
 
                     //2. Validar que el objeto no venga en blanco
-                    if (sd.Area.Equals(string.Empty) || sd.Numero.Equals(string.Empty) || sd.Total == 0)
+                    if (sd.Area.Equals(string.Empty) ||  sd.Total == 0)
                         continue;
                     else
                     {
