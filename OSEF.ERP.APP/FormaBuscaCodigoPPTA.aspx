@@ -34,7 +34,7 @@
             ID="gpCodigosPPTA"
             runat="server"
             Height="320"
-            Width="600"
+            Width="595"
             Title="CÓDIGOS PPTA"
             EnableColumnHide="false"
             EnableColumnMove="false"
@@ -109,14 +109,14 @@
                         runat="server"
                         Text="CÓDIGO"
                         Align="Left"
-                        Width="160"
+                        Width="270"
                         DataIndex="CodigoMainSaver" />
                     <ext:Column
                         ID="cDescripcion"
                         runat="server"
                         Text="DIAS"
                         Align="Left"
-                        Width="420"
+                        Width="300"
                         DataIndex="Dias" />
                 </Columns>
             </ColumnModel>
