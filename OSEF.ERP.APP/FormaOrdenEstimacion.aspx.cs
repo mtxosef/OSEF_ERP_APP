@@ -330,13 +330,13 @@ namespace OSEF.ERP.APP
                         oOrdenEstimacionForma.Division = sd.Value;
                         break;
                     case "dfFechaOrigen":
-                        if (sd.Value == null)
+                        if (sd.Value == null || sd.Value.Equals(""))
                             oOrdenEstimacionForma.FechaOrigen = null;
                         else
                             oOrdenEstimacionForma.FechaOrigen = Convert.ToDateTime(sd.Value);
                         break;
                     case "dfFechaMaxima":
-                        if (sd.Value == null)
+                        if (sd.Value == null || sd.Value.Equals(""))
                             oOrdenEstimacionForma.FechaMaximaAtencion = null;
                         else
                             oOrdenEstimacionForma.FechaMaximaAtencion = Convert.ToDateTime(sd.Value);
@@ -391,8 +391,12 @@ namespace OSEF.ERP.APP
                         oOrdenEstimacionForma.ImporteTotal = Convert.ToDecimal(sd.Value);
                         break;
                     case "tHoraOrigen":
-                        oOrdenEstimacionForma.HoraOrigen = Convert.ToDateTime(sd.Value);
+                         if (sd.Value == null || sd.Value.Equals(""))
+                             oOrdenEstimacionForma.HoraOrigen = null;
+                        else
+                             oOrdenEstimacionForma.HoraOrigen = Convert.ToDateTime(sd.Value);
                         break;
+
                 }
             }
 

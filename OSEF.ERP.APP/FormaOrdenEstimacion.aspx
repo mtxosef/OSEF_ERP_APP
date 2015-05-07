@@ -70,7 +70,6 @@
                         <ext:ModelField Name="Zona" Type="String" />
                         <ext:ModelField Name="Cuadrilla" Type="String" />
                         <ext:ModelField Name="ImporteFinal" Type="Float" />
-                        <ext:ModelField Name="HoraOrigen" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
