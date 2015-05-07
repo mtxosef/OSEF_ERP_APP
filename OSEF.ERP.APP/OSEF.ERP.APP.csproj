@@ -1301,12 +1301,6 @@
       <DependentUpon>Estimaciones.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reportess\Presupuesto.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Presupuesto.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="reportess\rCaratulaDeEstimacion.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1463,10 +1457,6 @@
     <EmbeddedResource Include="reportess\Estimaciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Estimaciones.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reportess\Presupuesto.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Presupuesto.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportess\rCaratulaDeEstimacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
