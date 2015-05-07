@@ -64,7 +64,8 @@ BEGIN
 		FechaFinActividad,
 		HoraFinActividad,
 		Cuadrilla,
-		ImporteTotal
+		ImporteTotal,
+		HoraOrigen
 	FROM
 		OrdenesEstimaciones
 	WHERE

@@ -39,6 +39,7 @@ namespace OSEF.APP.EL
         Nullable<DateTime> horafinactividad;
         string cuadrilla;
         decimal importetotal;
+        Nullable<DateTime> Horaorigen;
 
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
@@ -231,6 +232,12 @@ namespace OSEF.APP.EL
             get { return rcuadrilla; }
             set { rcuadrilla = value; }
         }
+        public Nullable<DateTime> HoraOrigen
+        {
+            get { return Horaorigen; }
+            set { Horaorigen = value; }
+        }
+
         #endregion
     }
 }

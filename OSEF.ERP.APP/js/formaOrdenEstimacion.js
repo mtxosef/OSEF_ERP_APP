@@ -45,6 +45,8 @@ var imgbtnFormaNuevo_Click = function () {
     App.tfHoraFinActividad.setValue('');
     App.tfHoraFinActividad.setReadOnly(false);
     App.cmbCuadrilla.setValue('');
+    App.tHoraOrigen.setValue('');
+    App.tHoraOrigen.setReadOnly(false);
 
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
@@ -377,6 +379,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.cmbDivision.setReadOnly(true);
         App.dfFechaOrigen.setReadOnly(true);
         App.dfFechaMaxima.setReadOnly(true);
+        App.tHoraOrigen.setReadOnly(true);
         App.nfDiasAtencion.setReadOnly(true);
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
@@ -512,6 +515,7 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.dfFechaFinActividad.setReadOnly(true);
     App.tfHoraFinActividad.setReadOnly(true);
     App.cmbCuadrilla.setReadOnly(true);
+    App.tHoraOrigen.setReadOnly(true);
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     App.imgbtnImprimir.setDisabled(true);
@@ -576,6 +580,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
         App.dfFechaOrigen.setValue(registro[0].get('FechaOrigen'));
+        App.tHoraOrigen.setValue(registro[0].get('HoraOrigen'));
         App.dfFechaMaxima.setValue(registro[0].get('FechaMaximaAtencion'));
         App.nfDiasAtencion.setValue(registro[0].get('DiasAtencion'));
         App.txtfReporta.setValue(registro[0].get('Reporto'));
@@ -633,7 +638,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
     //Si es Reporte Y NO ESTA AFECTADO
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR'
          && registro[0].get('Mov').trim() == "Mesa de reporte") {
-
+        console.log(registro);
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
@@ -646,6 +651,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
         App.dfFechaOrigen.setValue(registro[0].get('FechaOrigen'));
+        App.tHoraOrigen.setValue(registro[0].get('HoraOrigen'));
         App.dfFechaMaxima.setValue(registro[0].get('FechaMaximaAtencion'));
         App.nfDiasAtencion.setValue(registro[0].get('DiasAtencion'));
         App.txtfReporta.setValue(registro[0].get('Reporto'));
@@ -733,6 +739,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfNoReporte.setReadOnly(true);
         App.cmbDivision.setReadOnly(true);
         App.dfFechaOrigen.setReadOnly(true);
+        App.tHoraOrigen.setReadOnly(true);
         App.dfFechaMaxima.setReadOnly(true);
         App.nfDiasAtencion.setReadOnly(true);
         App.txtfReporta.setReadOnly(true);
@@ -817,7 +824,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0 && storeDetalle.get('IntExt').length != 0) {
                 //Obtener el Renglon anterior
-                var auxRenglonAnterior = App.sConceptos.getCount()-1;
+                var auxRenglonAnterior = App.sConceptos.getCount() - 1;
                 var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
                 //Insertar un nuevo registro
                 App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });

@@ -55,7 +55,8 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 		@FechaFinActividad SMALLDATETIME,
 		@HoraFinActividad DATETIME,
 		@Cuadrilla		CHAR(10),
-		@ImporteTotal	DECIMAL(20,2) 
+		@ImporteTotal	DECIMAL(20,2),
+		@HoraOrigen		DATETIME
 	
 AS
 BEGIN
@@ -92,7 +93,8 @@ BEGIN
 			FechaFinActividad ,
 			HoraFinActividad ,
 			Cuadrilla,
-			ImporteTotal
+			ImporteTotal,
+			HoraOrigen
 		)
 	VALUES (
 			@Mov,
@@ -120,7 +122,8 @@ BEGIN
 			@FechaFinActividad ,
 			@HoraFinActividad ,
 			@Cuadrilla,
-			@ImporteTotal
+			@ImporteTotal,
+			@HoraOrigen
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

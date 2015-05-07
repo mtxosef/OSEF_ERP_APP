@@ -89,8 +89,9 @@ namespace OSEF.ERP.APP
                     HoraLlegada=oOrdenEstimacion.HoraLlegada,
                     FechaFinActividad=oOrdenEstimacion.FechaFinActividad,
                     HoraFinActividad=oOrdenEstimacion.HoraFinActividad,
-                    Cuadrilla=oOrdenEstimacion.Cuadrilla,
-                    ImporteTotal = oOrdenEstimacion.ImporteTotal
+                    Cuadrilla = oOrdenEstimacion.Cuadrilla,
+                    ImporteTotal = oOrdenEstimacion.ImporteTotal,
+                    HoraOrigen = oOrdenEstimacion.HoraOrigen
                 });
             }
         }
@@ -389,6 +390,9 @@ namespace OSEF.ERP.APP
                     case "dfTotalSinRender":
                         oOrdenEstimacionForma.ImporteTotal = Convert.ToDecimal(sd.Value);
                         break;
+                    case "tHoraOrigen":
+                        oOrdenEstimacionForma.HoraOrigen = Convert.ToDateTime(sd.Value);
+                        break;
                 }
             }
 
@@ -456,7 +460,8 @@ namespace OSEF.ERP.APP
                     FechaFinActividad = oOrdenEstimacionForma.FechaFinActividad,
                     HoraFinActividad = oOrdenEstimacionForma.HoraFinActividad,
                     Cuadrilla = oOrdenEstimacionForma.Cuadrilla,
-                    ImporteFinal = oOrdenEstimacionForma.ImporteTotal
+                    ImporteFinal = oOrdenEstimacionForma.ImporteTotal,
+                    HoraOrigen = oOrdenEstimacionForma.HoraOrigen
                 });
 
                 //7. Guardar Detalle y regresar valor
@@ -498,6 +503,7 @@ namespace OSEF.ERP.APP
 
                 //12. Importe
                 sOrdenEstimacion.GetAt(0).Set("ImporteFinal", oOrdenEstimacionForma.ImporteTotal);
+                sOrdenEstimacion.GetAt(0).Set("HoraOrigen", oOrdenEstimacionForma.HoraOrigen);
 
                 //13. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);

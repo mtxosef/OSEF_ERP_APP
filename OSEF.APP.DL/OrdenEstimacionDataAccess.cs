@@ -235,6 +235,14 @@ namespace OSEF.APP.DL
                 sqlpImporteTotal.Precision = 20;
                 sqlpImporteTotal.Scale = 2;
                 sqlpImporteTotal.Value = iOrdenEstimacion.ImporteTotal;
+                 
+                SqlParameter sqlpHoraOrigen= new SqlParameter();
+                sqlpHoraOrigen.ParameterName = "@HoraOrigen";
+                sqlpHoraOrigen.SqlDbType = SqlDbType.SmallDateTime;
+                if (iOrdenEstimacion.HoraOrigen == null)
+                    sqlpHoraOrigen.Value = DBNull.Value;
+                else
+                    sqlpHoraOrigen.Value = iOrdenEstimacion.HoraOrigen;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -264,6 +272,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraFinActividad);
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
+                sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -408,9 +417,7 @@ namespace OSEF.APP.DL
                     sqlpReporto.Value = DBNull.Value;
                 else
                     sqlpReporto.Value = uOrdenEstimacion.Reporto;
-
-
-
+                 
                 SqlParameter sqlpTrabajoRequerido = new SqlParameter();
                 sqlpTrabajoRequerido.ParameterName = "@TrabajoRequerido";
                 sqlpTrabajoRequerido.SqlDbType = SqlDbType.VarChar;
@@ -419,8 +426,7 @@ namespace OSEF.APP.DL
                     sqlpTrabajoRequerido.Value = DBNull.Value;
                 else
                     sqlpTrabajoRequerido.Value = uOrdenEstimacion.TrabajoRequerido;
-
-
+                 
                 SqlParameter sqlpTrabajoRealizado = new SqlParameter();
                 sqlpTrabajoRealizado.ParameterName = "@TrabajoRealizado";
                 sqlpTrabajoRealizado.SqlDbType = SqlDbType.VarChar;
@@ -484,9 +490,7 @@ namespace OSEF.APP.DL
                     sqlpHoraFinActividad.Value = DBNull.Value;
                 else
                     sqlpHoraFinActividad.Value = uOrdenEstimacion.HoraFinActividad;
-
- 
-
+                 
                 SqlParameter sqlpCuadrilla = new SqlParameter();
                 sqlpCuadrilla.ParameterName = "@Cuadrilla";
                 sqlpCuadrilla.SqlDbType = SqlDbType.VarChar;
@@ -494,15 +498,21 @@ namespace OSEF.APP.DL
                     sqlpCuadrilla.Value = DBNull.Value;
                 else
                     sqlpCuadrilla.Value = uOrdenEstimacion.Cuadrilla;
-
-
+                 
                 SqlParameter sqlpImporteTotal = new SqlParameter();
                 sqlpImporteTotal.ParameterName = "@ImporteTotal";
                 sqlpImporteTotal.SqlDbType = SqlDbType.Decimal;
                 sqlpImporteTotal.Precision = 20;
-                sqlpImporteTotal.Scale = 2;
-               
-                    sqlpImporteTotal.Value = uOrdenEstimacion.ImporteTotal;
+                sqlpImporteTotal.Scale = 2; 
+                sqlpImporteTotal.Value = uOrdenEstimacion.ImporteTotal;
+
+                SqlParameter sqlpHoraOrigen = new SqlParameter();
+                sqlpHoraOrigen.ParameterName = "@HoraOrigen";
+                sqlpHoraOrigen.SqlDbType = SqlDbType.SmallDateTime;
+                if (uOrdenEstimacion.HoraOrigen == null)
+                    sqlpHoraOrigen.Value = DBNull.Value;
+                else
+                    sqlpHoraOrigen.Value = uOrdenEstimacion.HoraOrigen;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -530,6 +540,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraFinActividad);
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
+                sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

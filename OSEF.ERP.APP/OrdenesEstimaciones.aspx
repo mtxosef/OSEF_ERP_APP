@@ -159,6 +159,7 @@
                                 <ext:ModelField Name="FechaOrigen" Type="Date" />
                                 <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
                                 <ext:ModelField Name="Reporto" Type="String" />
+                                <ext:ModelField Name="HoraOrigen" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>

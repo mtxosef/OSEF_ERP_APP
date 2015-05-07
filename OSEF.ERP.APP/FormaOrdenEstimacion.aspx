@@ -70,6 +70,7 @@
                         <ext:ModelField Name="Zona" Type="String" />
                         <ext:ModelField Name="Cuadrilla" Type="String" />
                         <ext:ModelField Name="ImporteFinal" Type="Float" />
+                        <ext:ModelField Name="HoraOrigen" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -553,6 +554,7 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
+
                                         <ext:FieldContainer 
                                             ID="fc1"
                                             runat="server"
@@ -596,6 +598,7 @@
 
                                             </Items>
                                         </ext:FieldContainer>
+
                                         <ext:FieldContainer 
                                             ID="fcFechaOrigen"
                                             runat="server"
@@ -635,10 +638,10 @@
                                                      LabelWidth="110"
                                                     FieldLabel="Hora de Origen" 
                                                     Width="360"
-                                                    Format="H:mm" />
+                                                    Format="H:mm"
+                                                    Disabled="false" />
                                             </Items>
                                         </ext:FieldContainer>
-
 
                                          <ext:FieldContainer 
                                             ID="fcAtencion"
@@ -738,6 +741,7 @@
                                                 </ext:TextField>
                                             </Items>
                                         </ext:FieldContainer>
+
                                         <ext:FieldContainer 
                                             ID="FieldContainer1"
                                             runat="server"
@@ -815,9 +819,6 @@
 
                                             </Items>
                                         </ext:FieldContainer>
-
-                                    
-
 
                                     </Items>
                                 </ext:FieldSet>
