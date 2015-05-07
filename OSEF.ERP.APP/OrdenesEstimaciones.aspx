@@ -89,25 +89,6 @@
                         </ext:ImageButton>
 
 
-                        <%--      <ext:ImageButton
-                                ID="imgbtnExporToExcel"
-                                runat="server"
-                                 ImageUrl="assets/img/controles/ExcelNormal.png"
-                                OverImageUrl="assets/img/controles/ExcelOver.png"
-                                PressedImageUrl="assets/img/controles/ExcelPressed.png"
-                                DisabledImageUrl="assets/img/controles/ExcelDisabled.png"
-                                 ToolTip="Exportar a excel"
-                                Height="50"
-                                Width="50">  
-                                <DirectEvents>
-							        <Click OnEvent="ExportEt" >
-								        <ExtraParams>
-                                             <ext:Parameter Name="nombreReporte" Value="App.cmbCuadrillas.getValue()" Mode="Raw" />
-								        </ExtraParams>
-							        </Click>
-						        </DirectEvents>
-                            </ext:ImageButton>--%>
-
                         <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="430">
                         </ext:ToolbarSpacer>
                          <ext:Container
@@ -185,7 +166,7 @@
                                 <ext:ModelField Name="FechaOrigen" Type="Date" />
                                 <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
                                 <ext:ModelField Name="Reporto" Type="String" />
-                                <ext:ModelField Name="HoraOrigen" Type="String" /> 
+                                <ext:ModelField Name="HoraOrigen" Type="Date" /> 
                                  <ext:ModelField Name="Reporte" Type="String" />
                                  <ext:ModelField Name="Sucursal" Type="String" />
                                  <ext:ModelField Name="RSucursal" Type="Object" />
@@ -197,6 +178,7 @@
                                  <ext:ModelField Name="Zona" Type="String" />
                                  <ext:ModelField Name="Cuadrilla" Type="String" />
                                  <ext:ModelField Name="RCuadrilla" Type="Object" /> 
+                                 <ext:ModelField Name="TieneReporte" Type="String" /> 
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -291,6 +273,8 @@
                         Width="170"
                         DataIndex="TrabajoRequerido">
                     </ext:Column> 
+
+                    
                     
                     <ext:DateColumn
                         ID="dcFechaOrigen"
@@ -338,6 +322,16 @@
                         </HeaderItems>
                     </ext:DateColumn>
                     
+                     <ext:DateColumn
+                        ID="dcHoraOrigen"
+                        runat="server"
+                        Text="HORA ORIGEN"
+                        Align="Center"
+                        Width="80"
+                        Format="H:mm"
+                        DataIndex="HoraOrigen">
+                    </ext:DateColumn> 
+
                     <ext:DateColumn
                         ID="dcFechaMaxima"
                         runat="server"
@@ -465,7 +459,16 @@
                     
                         </HeaderItems>
                     </ext:Column>
-                    
+
+                      <ext:Column
+                        ID="cTieneReporte"
+                        runat="server"
+                        Text="¿REPORTE?"
+                        Align="Center"
+                        Width="70"
+                        DataIndex="TieneReporte">
+                    </ext:Column>
+
                     <ext:Column 
                         ID="cMovimiento"
                         runat="server"

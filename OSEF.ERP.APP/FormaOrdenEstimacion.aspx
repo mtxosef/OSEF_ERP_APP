@@ -954,8 +954,31 @@
                                                     Width="300"
                                                     Format="H:mm"> 
                                                 </ext:TimeField> 
+                                                <ext:FileUploadField 
+                                                    ID="fufNormal"
+                                                    runat="server"
+                                                    Width="10"
+                                                   Hidden="true"
+                                                    Icon="Attach"
+                                                    ButtonText="Reporte"
+                                                    Margins="0 75 0 0"
+                                                    AllowBlank="false">
+                                                    <Listeners>
+                                                        <Change Handler="fufNormal_Change(event,this);"  ></Change>
+                                                        
+                                                    </Listeners>
+                                                </ext:FileUploadField>
+                                                <ext:Image 
+                                                    ID="imgNormal"
+                                                    runat="server"
+                                                    Hidden="true"
+                                                    Width="100"
+                                                    Cls="imgs"
+                                                    Height="100" />
                                             </Items>
                                         </ext:FieldContainer>
+
+
                                     </Items>
                                 </ext:FieldSet>
                             </Items>

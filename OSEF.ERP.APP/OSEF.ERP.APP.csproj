@@ -82,6 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adjuntos\prueba.jpg" />
     <Content Include="app.js" />
     <Content Include="app\controller\Navigation.js" />
     <Content Include="app\controller\Settings.js" />
@@ -194,6 +195,7 @@
     <Content Include="assets\img\controles\pdfNormal.png" />
     <Content Include="assets\img\controles\pdfOver.png" />
     <Content Include="assets\img\controles\pdfPressed.png" />
+    <Content Include="assets\img\controles\PRE.png" />
     <Content Include="assets\img\controles\PrimeroDisabled.png" />
     <Content Include="assets\img\controles\PrimeroNormal.png" />
     <Content Include="assets\img\controles\PrimeroOver.png" />
@@ -1412,6 +1414,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\img\menu\" />
+    <Folder Include="imagenesReportes\" />
     <Folder Include="imagesVolumetrias\" />
     <Folder Include="images\menu\" />
     <Folder Include="preciariosGenerales\" />

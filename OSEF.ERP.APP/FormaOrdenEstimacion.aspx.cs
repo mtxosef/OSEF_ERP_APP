@@ -28,7 +28,10 @@ namespace OSEF.ERP.APP
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
                 sCuadrillas.DataBind();
 
+
+
               
+                
             }
         }
 
@@ -93,6 +96,10 @@ namespace OSEF.ERP.APP
                     ImporteTotal = oOrdenEstimacion.ImporteTotal,
                     HoraOrigen = oOrdenEstimacion.HoraOrigen
                 });
+
+
+              //  imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
+
             }
         }
 
@@ -422,14 +429,36 @@ namespace OSEF.ERP.APP
             //2. Actualizamos el Estatus e Insertar en la base de datos
             oOrdenEstimacionForma.Estatus = "BORRADOR";
 
-          
 
+            if (oOrdenEstimacionForma.Reporte.Length > 0)
+            {
+                string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
+
+                //2. Validar si existe el directorio donde se guardaran las imagenes
+                if (Directory.Exists(strDireccion))
+                {
+                    fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                }
+                else
+                {
+                    Directory.CreateDirectory(strDireccion);
+                    fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                }
+
+                //Guardamos en la bd
+                // oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Id + "\\" + fufNormal.FileName;
+            }
+
+            else {
+           
+                
+            }
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)
             {
                 oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
-               
+
                 //4. Agregar el objeto al Store de Revisión
                 sOrdenEstimacion.Add(new
                 {
@@ -442,7 +471,7 @@ namespace OSEF.ERP.APP
                     RSucursal = oOrdenEstimacionForma.RSucursal,
                     Estatus = oOrdenEstimacionForma.Estatus,
                     Usuario = oOrdenEstimacionForma.Usuario,
-                    Origen=oOrdenEstimacionForma.Origen,
+                    Origen = oOrdenEstimacionForma.Origen,
                     OrigenId = oOrdenEstimacionForma.OrigenId,
                     Reporte = oOrdenEstimacionForma.Reporte,
 
@@ -468,8 +497,11 @@ namespace OSEF.ERP.APP
                     HoraOrigen = oOrdenEstimacionForma.HoraOrigen
                 });
 
+
+
+
                 //7. Guardar Detalle y regresar valor
-                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
+                GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
                 return "insertar";
             }
             else

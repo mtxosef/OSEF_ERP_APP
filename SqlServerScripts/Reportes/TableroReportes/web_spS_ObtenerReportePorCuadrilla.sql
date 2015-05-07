@@ -46,6 +46,7 @@ BEGIN
 		S.Nombre Sucursal,
 		--DATOS DEL REPORTE 2
 		OE.FechaOrigen,
+		OE.HoraOrigen,
 		OE.Reporto,
 		OE.TrabajoRequerido,
 		OE.FechaMaximaAtencion,

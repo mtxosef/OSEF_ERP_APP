@@ -96,6 +96,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
         if (tablero == 'REPORTES & ESTIMACIONES') {
             App.cmbMov.select('Mesa de reporte');
             App.cmbMov.setReadOnly(true);
+          
         }
         else {
             App.cmbMov.select('Orden de Cambio');
@@ -116,17 +117,23 @@ var sMov_Change = function (combo) {
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
         App.cIntExt.hidden = false;
+
+        App.fufNormal.hidden=false;
+        App.imgNormal.hidden = false;
     }
 
     if (combo.value.trim() == 'Orden de Cambio') {
         Ext.util.Cookies.set('cookieMovimientoIdentificador', 'Obra');
-        App.pDatosReporte.hide(); 
+        App.pDatosReporte.hide();
         App.pDatosReporte.tab.hide();
         App.pDatosReporteDos.tab.hide();
         App.pDatosReporte.hide();
         App.cIntExt.hidden = true;
     }
 };
+
+
+
 
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
 var cmbMov_Select = function (combobox, registro) {
@@ -1699,5 +1706,52 @@ function PrimerRenglonDetalle() {
             }
             }]);
         }
-       
-    };
+
+};
+
+
+
+//Imagen Preview Normal
+var fufNormal_Change = function (event, control) {
+
+    var filePath = control.value;
+    //Se declara un arreglo con las extenciones que serán permitidas
+    var validFilesTypes = ["jpg", "jpeg", "png", "gif"];
+
+    //Se extrae la cadena a apartir del punto
+    var ext = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+    //Se declara la bandera falsa
+    var isValidFile = false;
+    //se recorre el arreglo que contiene las extenciones validas y se compara
+    for (var i = 0; i < validFilesTypes.length; i++) {
+        //Si la extenvion es igual a la valida la variable es igual a true
+        if (ext == validFilesTypes[i]) {
+            isValidFile = true;
+            break;
+        }
+    }
+    //si no es valida no la deja pasar y manda el mensaje ademas de poner en blanco el control
+    if (!isValidFile) {
+        filePath.value = null;
+        control.reset();
+
+        Ext.Msg.show({
+            id: 'msgPreciarios',
+            title: 'Advertencia Preciarios',
+            msg: "Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "),
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+
+    }
+
+    if (isValidFile) {
+        App.imgNormal.setImageUrl(URL.createObjectURL(event.target.files[0]));
+    }
+    else {
+        return isValidFile;
+    }
+
+};
