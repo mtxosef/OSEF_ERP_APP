@@ -234,7 +234,7 @@
 							    <Click OnEvent="ExportEt" IsUpload="true"  >
 								    <ExtraParams>
 									    <ext:Parameter Name="data" Value="#{gpExploradorConceptosPreciario}.getRowsValues({ filterField : function (r,name, value) { 
-                                                                         return name == 'Clave' || name == 'Descripcion' || name == 'Cantidad' || name == 'Utilizada' || name == 'Importefinal';
+                                                                         return name == 'Clave' || name == 'Descripcion' || name == 'Cantidad' || name == 'Utilizada' || name == 'Costo' || name == 'Importefinal';
                                                                          }})" 
                                      Mode="Raw" 
                                      Encode="true" />

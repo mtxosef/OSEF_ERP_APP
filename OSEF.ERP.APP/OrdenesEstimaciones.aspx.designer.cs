@@ -85,6 +85,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ToolbarSpacer tbsOrdenesCambio;
         
         /// <summary>
+        /// Control cCorreoEnviado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cCorreoEnviado;
+        
+        /// <summary>
+        /// Control imgbtnGenerador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnGenerador;
+        
+        /// <summary>
         /// Control imgbtnActualizar.
         /// </summary>
         /// <remarks>

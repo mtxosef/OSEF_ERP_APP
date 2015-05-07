@@ -89,11 +89,44 @@
                         </ext:ImageButton>
 
 
-                       
+                        <%--      <ext:ImageButton
+                                ID="imgbtnExporToExcel"
+                                runat="server"
+                                 ImageUrl="assets/img/controles/ExcelNormal.png"
+                                OverImageUrl="assets/img/controles/ExcelOver.png"
+                                PressedImageUrl="assets/img/controles/ExcelPressed.png"
+                                DisabledImageUrl="assets/img/controles/ExcelDisabled.png"
+                                 ToolTip="Exportar a excel"
+                                Height="50"
+                                Width="50">  
+                                <DirectEvents>
+							        <Click OnEvent="ExportEt" >
+								        <ExtraParams>
+                                             <ext:Parameter Name="nombreReporte" Value="App.cmbCuadrillas.getValue()" Mode="Raw" />
+								        </ExtraParams>
+							        </Click>
+						        </DirectEvents>
+                            </ext:ImageButton>--%>
 
-                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="490">
+                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="430">
                         </ext:ToolbarSpacer>
-
+                         <ext:Container
+                                ID="cCorreoEnviado"
+                                runat="server">
+                                 <Content>
+                                     <asp:ImageButton 
+                                        ID="imgbtnGenerador" 
+                                        runat="server" 
+                                        Height="50"
+                                        Width="50"
+                                        OnClick="ExportEt"
+                                        class="imgs" 
+                                        ImageUrl="assets/img/controles/ExcelNormal.png"/>
+                                </Content>
+            
+            
+                            </ext:Container>
+                        
 
                         <ext:ImageButton
                             ID="imgbtnActualizar"
@@ -144,22 +177,30 @@
                                 <ext:ModelField Name="Id" Type="Int" />
                                 <ext:ModelField Name="Mov" Type="String" />
                                 <ext:ModelField Name="MovID" Type="String" />
-                                <ext:ModelField Name="Sucursal" Type="String" />
-                                 <ext:ModelField Name="RSucursal" Type="Object" />
                                 <ext:ModelField Name="FechaEmision" Type="Date" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
-                                <ext:ModelField Name="Estatus" Type="String" />
                                 <ext:ModelField Name="Usuario" Type="String" />
-                                <ext:ModelField Name="Reporte" Type="String" />
-                                <ext:ModelField Name="Zona" Type="String" />
-                                <ext:ModelField Name="Cuadrilla" Type="String" />
-                                <ext:ModelField Name="RCuadrilla" Type="Object" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
+<<<<<<< HEAD
                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
                                 <ext:ModelField Name="FechaOrigen" Type="Date" />
                                 <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
                                 <ext:ModelField Name="Reporto" Type="String" />
                                 <ext:ModelField Name="HoraOrigen" Type="String" />
+=======
+                                
+                                 <ext:ModelField Name="Reporte" Type="String" />
+                                 <ext:ModelField Name="Sucursal" Type="String" />
+                                 <ext:ModelField Name="RSucursal" Type="Object" />
+                                 <ext:ModelField Name="FechaOrigen" Type="Date" />
+                                 <ext:ModelField Name="Reporto" Type="String" />
+                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
+                                 <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
+                                 <ext:ModelField Name="Estatus" Type="String" />
+                                 <ext:ModelField Name="Zona" Type="String" />
+                                 <ext:ModelField Name="Cuadrilla" Type="String" />
+                                 <ext:ModelField Name="RCuadrilla" Type="Object" />
+>>>>>>> origin/master
                             </Fields>
                         </ext:Model>
                     </Model>

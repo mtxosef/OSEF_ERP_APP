@@ -6,6 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using Ext.Net;
+using System.Text;
+using System.Xml;
+using Newtonsoft.Json;
+using System.Xml.Xsl;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace OSEF.ERP.APP
 {
@@ -46,6 +54,57 @@ namespace OSEF.ERP.APP
         {
             sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
             sOrdenesEstimaciones.DataBind();
+        }
+
+
+        //Exporta a Excel el grid
+        protected void ExportEt(object sender, EventArgs e)
+        {
+ 
+                string nombreReporte = cmbCuadrillas.Text;  
+           
+
+            //1. Configurar la conexión y el tipo de comando
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+            try
+            {
+
+
+                SqlCommand comando = new SqlCommand("web_spS_ObtenerReportePorCuadrilla", conn);
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+
+                DataTable dt = new DataTable();
+                adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adaptador.SelectCommand.Parameters.Add(@"CUADRILLA", SqlDbType.Char).Value = nombreReporte;
+                adaptador.Fill(dt);
+
+
+               
+                ReportDocument reporteCuadrila = new ReportDocument();
+                reporteCuadrila.Load(Server.MapPath("reportess/rReportesCuadrillas.rpt"));
+                reporteCuadrila.SetDataSource(dt);
+
+
+                reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Cuadrilla " + nombreReporte);
+
+              
+
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+            finally
+            {
+                if (conn.State != ConnectionState.Closed)
+                    conn.Close();
+                conn.Dispose();
+            }
+
+
+
         }
     }
 }
