@@ -180,15 +180,12 @@
                                 <ext:ModelField Name="FechaEmision" Type="Date" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
                                 <ext:ModelField Name="Usuario" Type="String" />
-                                <ext:ModelField Name="Observaciones" Type="String" />
-<<<<<<< HEAD
+                                <ext:ModelField Name="Observaciones" Type="String" /> 
                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
                                 <ext:ModelField Name="FechaOrigen" Type="Date" />
                                 <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
                                 <ext:ModelField Name="Reporto" Type="String" />
-                                <ext:ModelField Name="HoraOrigen" Type="String" />
-=======
-                                
+                                <ext:ModelField Name="HoraOrigen" Type="String" /> 
                                  <ext:ModelField Name="Reporte" Type="String" />
                                  <ext:ModelField Name="Sucursal" Type="String" />
                                  <ext:ModelField Name="RSucursal" Type="Object" />
@@ -199,8 +196,7 @@
                                  <ext:ModelField Name="Estatus" Type="String" />
                                  <ext:ModelField Name="Zona" Type="String" />
                                  <ext:ModelField Name="Cuadrilla" Type="String" />
-                                 <ext:ModelField Name="RCuadrilla" Type="Object" />
->>>>>>> origin/master
+                                 <ext:ModelField Name="RCuadrilla" Type="Object" /> 
                             </Fields>
                         </ext:Model>
                     </Model>
