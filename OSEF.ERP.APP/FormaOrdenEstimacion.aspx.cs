@@ -94,11 +94,10 @@ namespace OSEF.ERP.APP
                     HoraFinActividad=oOrdenEstimacion.HoraFinActividad,
                     Cuadrilla = oOrdenEstimacion.Cuadrilla,
                     ImporteTotal = oOrdenEstimacion.ImporteTotal,
-                    HoraOrigen = oOrdenEstimacion.HoraOrigen
-                });
-
-
-              //  imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
+                    HoraOrigen = oOrdenEstimacion.HoraOrigen, 
+                    RutaImagen = oOrdenEstimacion.RutaImagen
+                }); 
+                imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
             }
         }
@@ -111,47 +110,46 @@ namespace OSEF.ERP.APP
         [DirectMethod]
         protected void imgbtnGuardar_Click(object sender, DirectEventArgs e)
         {
-            //1. Obtener datos de la Forma y saber si es edición o nuevo
-            string strOrdenEstimacionForma = e.ExtraParams["OrdenEstimacionForma"];
-            string strOrdenEstimacion = e.ExtraParams["OrdenEstimacion"];
-            string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
-            string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string strSucursal = e.ExtraParams["Sucursal"];
-            string strDiasAtencion = e.ExtraParams["diasAtencion"];
-            string strFechaMaxima = e.ExtraParams["fechaMaxima"];
+            
+                //1. Obtener datos de la Forma y saber si es edición o nuevo
+                string strOrdenEstimacionForma = e.ExtraParams["OrdenEstimacionForma"];
+                string strOrdenEstimacion = e.ExtraParams["OrdenEstimacion"];
+                string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
+                string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+                string strSucursal = e.ExtraParams["Sucursal"];
+                string strDiasAtencion = e.ExtraParams["diasAtencion"];
+                string strFechaMaxima = e.ExtraParams["fechaMaxima"];
 
-            if (strDiasAtencion.Equals("1") || strDiasAtencion.Equals("null"))
-            {
-                strDiasAtencion = "0";
-            }
+                if (strDiasAtencion.Equals("1") || strDiasAtencion.Equals("null"))
+                {
+                    strDiasAtencion = "0";
+                }
 
-            decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
-            DateTime fechaMaxima = Convert.ToDateTime(strFechaMaxima);
-
-           
+                decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
+                DateTime fechaMaxima = Convert.ToDateTime(strFechaMaxima);
 
 
-            //2. Serializar el encabezado y el detalle
-            Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
-            OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
-            OrdenEstimacion oOrdenEstimacion = JSON.Deserialize<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
-            List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
+                //2. Serializar el encabezado y el detalle
+                Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
+                OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
+                OrdenEstimacion oOrdenEstimacion = JSON.Deserialize<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
+                List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
 
-            //3. Guardar o Actuaizar el Movimiento
-            oFormaOrdenEstimacion.DiasAtencion = diasAtencion;
-            oFormaOrdenEstimacion.FechaMaximaAtencion = fechaMaxima;
-            string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD);
+                //3. Guardar o Actuaizar el Movimiento
+                oFormaOrdenEstimacion.DiasAtencion = diasAtencion;
+                oFormaOrdenEstimacion.FechaMaximaAtencion = fechaMaxima;
+                string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD);
 
-            //4. Validar que efecto realizará para Guardar o Afectar
-            switch (strAccion)
-            {
-                case "insertar":
-                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "insertar", ParameterMode.Value));
-                    break;
-                case "modificar":
-                    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "modificar", ParameterMode.Value));
-                    break;
-            }
+                //4. Validar que efecto realizará para Guardar o Afectar
+                switch (strAccion)
+                {
+                    case "insertar":
+                        e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "insertar", ParameterMode.Value));
+                        break;
+                    case "modificar":
+                        e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "modificar", ParameterMode.Value));
+                        break;
+                } 
         }
 
         /// <summary>
@@ -403,7 +401,9 @@ namespace OSEF.ERP.APP
                         else
                              oOrdenEstimacionForma.HoraOrigen = Convert.ToDateTime(sd.Value);
                         break;
-
+                    case "fufNormal":
+                        oOrdenEstimacionForma.RutaImagen = sd.Value;
+                        break; 
                 }
             }
 
@@ -427,13 +427,17 @@ namespace OSEF.ERP.APP
             oOrdenEstimacionForma.Usuario = oUsuario.ID;
 
             //2. Actualizamos el Estatus e Insertar en la base de datos
-            oOrdenEstimacionForma.Estatus = "BORRADOR";
-
-
-            if (oOrdenEstimacionForma.Reporte.Length > 0)
+            oOrdenEstimacionForma.Estatus = "BORRADOR"; 
+            string strReporte = oOrdenEstimacionForma.Reporte;
+            string strImagen = fufNormal.FileName;
+            oOrdenEstimacionForma.RutaImagen = strImagen;
+            if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
+            {
+                oOrdenEstimacionForma.RutaImagen = "";
+            }
+            else
             {
                 string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
-
                 //2. Validar si existe el directorio donde se guardaran las imagenes
                 if (Directory.Exists(strDireccion))
                 {
@@ -446,12 +450,7 @@ namespace OSEF.ERP.APP
                 }
 
                 //Guardamos en la bd
-                // oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Id + "\\" + fufNormal.FileName;
-            }
-
-            else {
-           
-                
+                oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
             }
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
@@ -494,7 +493,8 @@ namespace OSEF.ERP.APP
                     HoraFinActividad = oOrdenEstimacionForma.HoraFinActividad,
                     Cuadrilla = oOrdenEstimacionForma.Cuadrilla,
                     ImporteFinal = oOrdenEstimacionForma.ImporteTotal,
-                    HoraOrigen = oOrdenEstimacionForma.HoraOrigen
+                    HoraOrigen = oOrdenEstimacionForma.HoraOrigen,
+                    RutaImagen = oOrdenEstimacionForma.RutaImagen
                 });
 
 

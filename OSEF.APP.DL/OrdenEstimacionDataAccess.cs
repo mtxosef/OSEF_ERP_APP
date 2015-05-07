@@ -244,6 +244,11 @@ namespace OSEF.APP.DL
                 else
                     sqlpHoraOrigen.Value = iOrdenEstimacion.HoraOrigen;
 
+                SqlParameter sqlpRutaImagen = new SqlParameter();
+                sqlpRutaImagen.ParameterName = "@RutaImagen";
+                sqlpRutaImagen.SqlDbType = SqlDbType.VarChar;
+                sqlpRutaImagen.Value = iOrdenEstimacion.RutaImagen;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -273,6 +278,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
+                sqlcComando.Parameters.Add(sqlpRutaImagen);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -514,6 +520,11 @@ namespace OSEF.APP.DL
                 else
                     sqlpHoraOrigen.Value = uOrdenEstimacion.HoraOrigen;
 
+                SqlParameter sqlpRutaImagen = new SqlParameter();
+                sqlpRutaImagen.ParameterName = "@RutaImagen";
+                sqlpRutaImagen.SqlDbType = SqlDbType.VarChar;
+                sqlpRutaImagen.Value = uOrdenEstimacion.RutaImagen;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -541,6 +552,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpCuadrilla);
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
+                sqlcComando.Parameters.Add(sqlpRutaImagen);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

@@ -54,7 +54,8 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 		@HoraFinActividad DATETIME,
 		@Cuadrilla		CHAR(10) ,
 		@ImporteTotal	DECIMAL(20,2),
-		@HoraOrigen		DATETIME
+		@HoraOrigen		DATETIME,
+		@RutaImagen		VARCHAR(500)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -89,8 +90,8 @@ BEGIN
 		HoraFinActividad = @HoraFinActividad,
 		Cuadrilla = @Cuadrilla,
 		ImporteTotal = @ImporteTotal,
-		HoraOrigen = @HoraOrigen 
-		
+		HoraOrigen = @HoraOrigen,
+		RutaImagen = @RutaImagen
 	WHERE
 		ID = @ID
 END

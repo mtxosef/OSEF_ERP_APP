@@ -56,7 +56,8 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 		@HoraFinActividad DATETIME,
 		@Cuadrilla		CHAR(10),
 		@ImporteTotal	DECIMAL(20,2),
-		@HoraOrigen		DATETIME
+		@HoraOrigen		DATETIME,
+		@RutaImagen		VARCHAR(500)
 	
 AS
 BEGIN
@@ -94,7 +95,8 @@ BEGIN
 			HoraFinActividad ,
 			Cuadrilla,
 			ImporteTotal,
-			HoraOrigen
+			HoraOrigen,
+			RutaImagen
 		)
 	VALUES (
 			@Mov,
@@ -123,7 +125,8 @@ BEGIN
 			@HoraFinActividad ,
 			@Cuadrilla,
 			@ImporteTotal,
-			@HoraOrigen
+			@HoraOrigen,
+			@RutaImagen
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

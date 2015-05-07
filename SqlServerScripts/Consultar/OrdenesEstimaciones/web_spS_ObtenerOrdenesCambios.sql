@@ -64,8 +64,8 @@ BEGIN
 		HoraFinActividad,
 		Cuadrilla,
 		ImporteTotal,
-		HoraOrigen
-		
+		HoraOrigen,
+		RutaImagen
 	FROM
 		OrdenesEstimaciones
 	WHERE 

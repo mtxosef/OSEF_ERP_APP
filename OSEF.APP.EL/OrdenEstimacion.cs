@@ -40,6 +40,7 @@ namespace OSEF.APP.EL
         string cuadrilla;
         decimal importetotal;
         Nullable<DateTime> Horaorigen;
+        string Rutaimagen;
 
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
@@ -236,6 +237,12 @@ namespace OSEF.APP.EL
         {
             get { return Horaorigen; }
             set { Horaorigen = value; }
+        }
+
+        public string RutaImagen
+        {
+            get { return Rutaimagen; }
+            set { Rutaimagen = value; }
         }
 
         #endregion

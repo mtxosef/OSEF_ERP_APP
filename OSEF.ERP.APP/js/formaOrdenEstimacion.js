@@ -644,8 +644,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
     //Si es Reporte Y NO ESTA AFECTADO
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR'
-         && registro[0].get('Mov').trim() == "Mesa de reporte") {
-        console.log(registro);
+         && registro[0].get('Mov').trim() == "Mesa de reporte") { 
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
@@ -1712,46 +1711,85 @@ function PrimerRenglonDetalle() {
 
 
 //Imagen Preview Normal
-var fufNormal_Change = function (event, control) {
+var fufNormal_Change = function (event, control, txtReporte) {
 
-    var filePath = control.value;
-    //Se declara un arreglo con las extenciones que serán permitidas
-    var validFilesTypes = ["jpg", "jpeg", "png", "gif"];
+    if (txtReporte.length != 0) {
 
-    //Se extrae la cadena a apartir del punto
-    var ext = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
-    //Se declara la bandera falsa
-    var isValidFile = false;
-    //se recorre el arreglo que contiene las extenciones validas y se compara
-    for (var i = 0; i < validFilesTypes.length; i++) {
-        //Si la extenvion es igual a la valida la variable es igual a true
-        if (ext == validFilesTypes[i]) {
-            isValidFile = true;
-            break;
+        var filePath = control.value;
+        //Se declara un arreglo con las extenciones que serán permitidas
+        var validFilesTypes = ["jpg", "jpeg", "png", "gif"];
+
+        //Se extrae la cadena a apartir del punto
+        var ext = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+        //Se declara la bandera falsa
+        var isValidFile = false;
+        //se recorre el arreglo que contiene las extenciones validas y se compara
+        for (var i = 0; i < validFilesTypes.length; i++) {
+            //Si la extenvion es igual a la valida la variable es igual a true
+            if (ext == validFilesTypes[i]) {
+                isValidFile = true;
+                break;
+            }
+        }
+        //si no es valida no la deja pasar y manda el mensaje ademas de poner en blanco el control
+        if (!isValidFile) {
+            filePath.value = null;
+            control.reset();
+
+            Ext.Msg.show({
+                id: 'msgPreciarios',
+                title: 'Advertencia Preciarios',
+                msg: "Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "),
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+
+        if (isValidFile) {
+            App.imgNormal.setImageUrl(URL.createObjectURL(event.target.files[0]));
+
+            if (App.sOrdenEstimacion.getAt(0) != undefined) {
+                App.sOrdenEstimacion.getAt(0).set('RutaImagen', URL.createObjectURL(event.target.files[0]));
+            }
+
+        }
+        else {
+            return isValidFile;
         }
     }
-    //si no es valida no la deja pasar y manda el mensaje ademas de poner en blanco el control
-    if (!isValidFile) {
-        filePath.value = null;
-        control.reset();
-
-        Ext.Msg.show({
-            id: 'msgPreciarios',
-            title: 'Advertencia Preciarios',
-            msg: "Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "),
-            buttons: Ext.MessageBox.OK,
-            onEsc: Ext.emptyFn,
-            closable: false,
-            icon: Ext.MessageBox.WARNING
-        });
-
-    }
-
-    if (isValidFile) {
-        App.imgNormal.setImageUrl(URL.createObjectURL(event.target.files[0]));
-    }
     else {
-        return isValidFile;
-    }
+            Ext.Msg.show({
+                id: 'msgOrdenEstimacion',
+                title: 'Advertencia',
+                msg: "Es necesario ingresar un Número de Reporte.",
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
 
-};
+    };
+
+
+    var PopupPic = function () {
+
+        if (App.sOrdenEstimacion.getAt(0) != undefined) {
+            var direccion = App.sOrdenEstimacion.getAt(0).get('RutaImagen');
+            window.open(direccion, "", "resizable=1,HEIGHT=500,WIDTH=600");
+        }
+        else {
+            Ext.Msg.show({
+                id: 'msgOrdenEstimacion',
+                title: 'Advertencia',
+                msg: "Debes de guardar el movimiento antes",
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+
+    } 

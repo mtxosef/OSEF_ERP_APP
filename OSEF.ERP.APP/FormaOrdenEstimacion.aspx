@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/formaOrdenEstimacion.js"></script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -70,6 +72,7 @@
                         <ext:ModelField Name="Zona" Type="String" />
                         <ext:ModelField Name="Cuadrilla" Type="String" />
                         <ext:ModelField Name="ImporteFinal" Type="Float" />
+                        <ext:ModelField Name="RutaImagen" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -567,8 +570,7 @@
                                                     ID="txtfNoReporte" 
                                                     runat="server" 
                                                     Width="80" 
-                                                    Margins="0 3 0 0"
-                                                    Text="">
+                                                    Margins="0 3 0 0">
                                                     <Listeners>
                                                         <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                                                     </Listeners>
@@ -841,7 +843,7 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
-                                            <ext:FieldContainer 
+                                        <ext:FieldContainer 
                                             ID="fcRegistros"
                                             runat="server"
                                             FieldLabel="¿Tiene Fotos?"
@@ -877,7 +879,6 @@
                                                 </ext:ComboBox>
                                             </Items>
                                         </ext:FieldContainer>
-
 
                                         <ext:FieldContainer 
                                             ID="FieldContainer2"
@@ -957,14 +958,13 @@
                                                 <ext:FileUploadField 
                                                     ID="fufNormal"
                                                     runat="server"
-                                                    Width="10"
-                                                   Hidden="true"
+                                                    Width="10" 
                                                     Icon="Attach"
                                                     ButtonText="Reporte"
                                                     Margins="0 75 0 0"
                                                     AllowBlank="false">
                                                     <Listeners>
-                                                        <Change Handler="fufNormal_Change(event,this);"  ></Change>
+                                                        <Change Handler="fufNormal_Change(event,this,App.txtfNoReporte.getValue());"  ></Change>
                                                         
                                                     </Listeners>
                                                 </ext:FileUploadField>
@@ -972,13 +972,15 @@
                                                     ID="imgNormal"
                                                     runat="server"
                                                     Hidden="true"
-                                                    Width="100"
-                                                    Cls="imgs"
-                                                    Height="100" />
+                                                    Height="100"
+                                                    Cls="img-resize"
+                                                    Width="100">
+                                                    <Listeners>
+                                                        <Click Fn="PopupPic"></Click>
+                                                    </Listeners>
+                                                    </ext:Image>
                                             </Items>
-                                        </ext:FieldContainer>
-
-
+                                        </ext:FieldContainer> 
                                     </Items>
                                 </ext:FieldSet>
                             </Items>
@@ -1326,7 +1328,6 @@
                 </ext:Toolbar>
             </BottomBar>
         </ext:FormPanel>
-
         <ext:Window 
             ID="wEmergente"
             runat="server"
@@ -1341,7 +1342,6 @@
                 <LoadMask ShowMask="true" Msg="Cargando..." />
             </Loader>
         </ext:Window>
-
     </form>
 </body>
 </html>
