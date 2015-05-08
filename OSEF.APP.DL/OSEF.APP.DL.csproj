@@ -54,6 +54,8 @@
     <Compile Include="CroquisOrdenEstimacionDDataAccess.cs" />
     <Compile Include="CuadrillaDataAccess.cs" />
     <Compile Include="CuentaContableDataAccess.cs" />
+    <Compile Include="CuestionarioDataAccess.cs" />
+    <Compile Include="EmpresaDataAccess.cs" />
     <Compile Include="EspecialidadesDataAccess.cs" />
     <Compile Include="EstadoDataAccess.cs" />
     <Compile Include="FacturaOrdenEstimacionDDataAccess.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="MunicipioDataAccess.cs" />
     <Compile Include="OrdenEstimacionDataAccess.cs" />
     <Compile Include="OrdenEstimacionDDataAccess.cs" />
+    <Compile Include="ParticipanteDataAccess.cs" />
     <Compile Include="PreciarioCategoriaDataAccess.cs" />
     <Compile Include="PreciarioConceptosDataAccess.cs" />
     <Compile Include="PreciarioDataAccess.cs" />
@@ -84,12 +87,14 @@
     <Compile Include="ProveedorDataAccess.cs" />
     <Compile Include="ReferenciaInstitucionSolicitudPrestamoDataAccess.cs" />
     <Compile Include="ReferenciaPersonaSolicitudPrestamoDataAccess.cs" />
+    <Compile Include="RespuestasDataAccess.cs" />
     <Compile Include="RevisionDataAccess.cs" />
     <Compile Include="RevisionDDataAccess.cs" />
     <Compile Include="SolicitudPrestamoDataAccess.cs" />
     <Compile Include="SubcategoriaDataAccess.cs" />
     <Compile Include="SubEspecialidadesDataAccess.cs" />
     <Compile Include="SucursalDataAccess.cs" />
+    <Compile Include="TipoParticipanteDataAccess.cs" />
     <Compile Include="UsuarioDataAccess.cs" />
     <Compile Include="VolumetriaDataAccess.cs" />
     <Compile Include="VolumetriaDDataAccess.cs" />

@@ -146,6 +146,111 @@ var imgbtnSiguiente_Click = function () {
 var imgbtnUltimo_Click = function () {
 };
 
+//Evento que se lanza al cargar datos al Store
+var sCategorias_Load = function (store, registros, transaccion, opciones) {
+
+};
+
+//Evento que se lanza al cargar datos al Store
+var sSubCategorias_Load = function (store, registros, transaccion, opciones) {
+
+};
+
+//Evento que se lanza al cargar datos al Store
+var sConceptos_Load = function (store, registros, transaccion, opciones) {
+    //1. Recorrer el Store de Categorias
+    App.sCategorias.each(function (registro) {
+
+        //2. Crear el Panel que contrendra un TabP
+        var pCategoria = Ext.create('Ext.panel.Panel', {
+            id: 'p' + registro.get('ID'),
+            title: registro.get('Descripcion')
+        });
+
+        //3. Agregar el Panel al control TabPanel
+        App.tpDetalle.addTab(pCategoria);
+
+        //2. Crear el modelo de Conceptos para la Categoria
+        Ext.define('mConcepto' + registro.get('ID'), {
+            extend: 'Ext.data.Model',
+            idProperty: 'ID',
+            fields: [
+                { name: 'ID', type: 'string' },
+                { name: 'Modulo', type: 'string' },
+                { name: 'Orden', type: 'int' },
+                { name: 'Descripcion', type: 'string' },
+                { name: 'Categoria', type: 'string' },
+                { name: 'SubCategoria', type: 'string' }
+            ]
+        });
+
+        //3. Crear el Store para los Conceptos
+        var sConceptos = Ext.create('Ext.data.Store', {
+            storeId: 'sConceptos' + registro.get('ID'),
+            model: 'mConcepto' + registro.get('ID')
+        });
+
+        //4. Filtrar el store de Conceptos por su Categoria
+        store.each(function (record, index) {
+            if (record.get('Categoria') == registro.get('ID')) {
+                sConceptos.add(record);
+            }
+        });
+
+        //Construir GridPanel
+        var sCategoria = Ext.create('Ext.data.Store', {
+            storeId: 's' + registro.get('ID'),
+            fields: [
+                        { name: 'Revision', type: 'int' },
+                        { name: 'Renglon', type: 'int' },
+                        { name: 'Concepto', type: 'string' },
+                        { name: 'Proveedor', type: 'string' },
+                        { name: 'Programado', type: 'float' },
+                        { name: 'Real', type: 'float' }
+                    ],
+            data: { 'items': [
+                   { 'Revision': 1, 'Renglon': 1, 'Concepto': '555-111-1224', 'Proveedor': 'Osef Technology', 'Programado': 23.65, 'Real': 10.45 },
+                   { 'Revision': 1, 'Renglon': 2, 'Concepto': '555-222-1234', 'Proveedor': 'Osef Technology', 'Programado': 23.54, 'Real': 14.58 },
+                   { 'Revision': 1, 'Renglon': 3, 'Concepto': '555-222-1244', 'Proveedor': 'Osef Technology', 'Programado': 78.45, 'Real': 75.65 },
+                   { 'Revision': 1, 'Renglon': 4, 'Concepto': '555-222-1254', 'Proveedor': 'Osef Technology', 'Programado': 14.25, 'Real': 20.56}]
+            },
+            proxy: {
+                type: 'memory',
+                reader: {
+                    type: 'json',
+                    root: 'items'
+                }
+            }
+        });
+
+        var gpCategoria = Ext.create('Ext.grid.Panel', {
+            id: 'gpCategoria' + registro.get('ID'),
+            store: Ext.data.StoreManager.lookup('s' + registro.get('ID')),
+            columns: [
+                { id: 'ccEliminar' + registro.get('ID'), width: 25, xtype: "commandcolumn", commands: [{ xtype: "button", command: "Borrar", tooltip: { text: "Borrar" }, iconCls: "#Delete"}]/*, prepareToolbar:ccAcciones_PrepareToolbar,listeners:{command:{fn:ccAcciones_Command}}}*/ },
+                { id: 'cConcepto' + registro.get('ID'), text: 'Concepto', dataIndex: 'Concepto', flex: 1, editor: { id: 'cmbConceptos' + registro.get('ID'), xtype: 'combobox', displayField: 'Descripcion', valueField: 'ID', queryMode: 'local', store: sConceptos } },
+                { id: 'cProveedor' + registro.get('ID'), text: 'Proveedor', dataIndex: 'Proveedor', flex: 1, editor: { id: 'cmbProveedores' + registro.get('ID'), xtype: 'combobox', displayField: 'Nombre', valueField: 'ID', queryMode: 'local', store: App.sProveedores} },
+                { id: 'cProgramado' + registro.get('ID'), text: 'Programado', dataIndex: 'Programado', xtype: 'numbercolumn', align: 'center', renderer: cProgramado_Renderer, editor: { id: 'nfProgramado' + registro.get('ID'), xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
+                { id: 'cReal' + registro.get('ID'), text: 'Real', dataIndex: 'Real', xtype: 'numbercolumn', align: 'center', renderer: cReal_Renderer, editor: { id: 'nfReal' + registro.get('ID'), xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0 } }
+            ],
+            height: 210,
+            width: 870,
+            enableColumnHide: false,
+            enableColumnMove: false,
+            enableColumnResize: false,
+            header: false,
+            sortableColumns: false,
+            plugins: {
+                id: 'ceCategoria' + registro.get('ID'),
+                ptype: 'cellediting',
+                clicksToEdit: 1
+            }
+        });
+
+        pCategoria.add(gpCategoria);
+    });
+};
+
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
 var cmbMov_Select = function (combobox, registro) {
     //Asignar Fecha en el control Fecha de emisión
@@ -174,11 +279,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
         App.nfSemana.setReadOnly(true);
         App.dfFechaEmision.setValue(d);
         App.cmbSucursal.focus();
-
-
     }
-
-   
 };
 
 //Evento que se lanza al cambiar el valor de la Semana
@@ -297,7 +398,7 @@ var ceObraCivil_Edit = function (cellediting, columna) {
 //Evento lanzado al cargar el store de avance encabezado
 var sRevision_Load = function () {
     App.direct.sRevision_Load();
-    store = window.parent.App.pCentro.getBody().App.sAvances;
+    //store = window.parent.App.pCentro.getBody().App.sAvances;
 };
 
 //Evento lanzado al agregar un registro al store

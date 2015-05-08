@@ -9,7 +9,7 @@ using OSEF.APP.BL;
 using System.Web.Security;
 using OSEF.APP.EL;
 
-namespace OSEF.AVANCES.SUCURSALES
+namespace OSEF.ERP.APP
 {
     public partial class Login : System.Web.UI.Page
     {

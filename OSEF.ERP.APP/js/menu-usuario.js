@@ -322,4 +322,11 @@ $(document).ready(function () {
             parent.App.pCentro.getLoader().load('OrdenesCambios.aspx');
         });
     });
+
+    $("#eRegistro").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            parent.App.pCentro.getLoader().load('ExploradorRegistroConaproch.aspx');
+        });
+    });
 });
