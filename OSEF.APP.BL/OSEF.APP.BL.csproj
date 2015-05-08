@@ -57,11 +57,10 @@
     <Compile Include="CroquisOrdenEstimacionBusiness.cs" />
     <Compile Include="CuadrillaBusiness.cs" />
     <Compile Include="CuentaContableBusiness.cs" />
-    <Compile Include="EspecialidadesBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="FacturaOrdenEstimacionBusiness.cs" />
-    <Compile Include="FamiliasBusiness.cs" />
     <Compile Include="FinalidadBusiness.cs" />
+    <Compile Include="FirmasReportesBusiness.cs" />
     <Compile Include="GeneradorOrdenEstimacionDBusiness.cs" />
     <Compile Include="GeneradorVolumetriaDBusiness.cs" />
     <Compile Include="GrupoMenuBusiness.cs" />
@@ -91,7 +90,6 @@
     <Compile Include="RevisionDBusiness.cs" />
     <Compile Include="SolicitudPrestamoBusiness.cs" />
     <Compile Include="SubcategoriaBusiness.cs" />
-    <Compile Include="SubEspecialidadesBusiness.cs" />
     <Compile Include="SucursalBusiness.cs" />
     <Compile Include="UsuarioBusiness.cs" />
     <Compile Include="VolumetriaBusiness.cs" />

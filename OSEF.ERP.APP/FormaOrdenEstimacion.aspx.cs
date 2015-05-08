@@ -119,25 +119,38 @@ namespace OSEF.ERP.APP
                 string strSucursal = e.ExtraParams["Sucursal"];
                 string strDiasAtencion = e.ExtraParams["diasAtencion"];
                 string strFechaMaxima = e.ExtraParams["fechaMaxima"];
-
-                if (strDiasAtencion.Equals("1") || strDiasAtencion.Equals("null"))
-                {
-                    strDiasAtencion = "0";
-                }
-
+                //Convertir a decimal los dias de atencion
                 decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
-                DateTime fechaMaxima = Convert.ToDateTime(strFechaMaxima);
-
-
+                
                 //2. Serializar el encabezado y el detalle
                 Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
                 OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
                 OrdenEstimacion oOrdenEstimacion = JSON.Deserialize<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
                 List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
 
+                //Si la fecha maxima viene nula se valida y si no se toma el parametro y se convierte a DateTime
+                if (strFechaMaxima.Equals("") || strFechaMaxima.Equals("null"))
+                {
+                    oFormaOrdenEstimacion.FechaMaximaAtencion = null;
+                }
+
+                else {
+                    DateTime fechaMaxima = Convert.ToDateTime(strFechaMaxima);
+                    oFormaOrdenEstimacion.FechaMaximaAtencion = fechaMaxima;
+                }
+
+
+                //Se verifica que los dias no vengan en nulos
+                if (strDiasAtencion.Equals("1") || strDiasAtencion.Equals("null"))
+                {
+                    oFormaOrdenEstimacion.DiasAtencion = 0;
+                }
+                else {
+                    oFormaOrdenEstimacion.DiasAtencion = diasAtencion;
+                }
                 //3. Guardar o Actuaizar el Movimiento
-                oFormaOrdenEstimacion.DiasAtencion = diasAtencion;
-                oFormaOrdenEstimacion.FechaMaximaAtencion = fechaMaxima;
+               
+                
                 string strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD);
 
                 //4. Validar que efecto realizará para Guardar o Afectar
@@ -431,27 +444,37 @@ namespace OSEF.ERP.APP
             string strReporte = oOrdenEstimacionForma.Reporte;
             string strImagen = fufNormal.FileName;
             oOrdenEstimacionForma.RutaImagen = strImagen;
-            if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
+
+            //Validamos que aunque exista el numero de reporte pero si no capturo imagen se guarde
+            if (oOrdenEstimacionForma.Reporte.Length > 0 && strImagen.Equals(""))
             {
                 oOrdenEstimacionForma.RutaImagen = "";
             }
-            else
-            {
-                string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
-                //2. Validar si existe el directorio donde se guardaran las imagenes
-                if (Directory.Exists(strDireccion))
+            else {
+                if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
                 {
-                    fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                    oOrdenEstimacionForma.RutaImagen = "";
                 }
                 else
                 {
-                    Directory.CreateDirectory(strDireccion);
-                    fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
-                }
+                    string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
+                    //2. Validar si existe el directorio donde se guardaran las imagenes
+                    if (Directory.Exists(strDireccion))
+                    {
+                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(strDireccion);
+                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                    }
 
-                //Guardamos en la bd
-                oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
+                    //Guardamos en la bd
+                    oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
+                }
+            
             }
+          
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)

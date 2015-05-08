@@ -12,15 +12,45 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.IO;
 using OSEF.APP.EL;
+using OSEF.APP.BL;
 
 namespace OSEF.ERP.APP
 {
     public partial class FormaReporteEstimacion : System.Web.UI.Page
     {
+
+        /// <summary>
+        /// Se produce al principio de la inicialización de la página.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
+
+            if (oFirmas == null)
+            {
+               sbParametros1.Text="Debes de configurar las firmas";
+                
+                imgbtnPresupuesto.Enabled = false;
+                imgbtnResumen.Enabled = false;
+                imgbtnEstimacion.Enabled = false;
+                imgbtnGenerador.Enabled = false;
+                imgbtnCroquis.Enabled = false;
+                imgbtnFacturas.Enabled = false;
+                imgbtnFotos.Enabled = false;
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario oUsuario = (Usuario)Session["Usuario"];
-            txtElaboro.Text = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
+
+            if (oFirmas == null)
+            {
+                this.Dispose();
+            }
         }
 
         protected void imgbtnExportarCroquis_Click(object sender, EventArgs e)
@@ -28,18 +58,18 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-                String.IsNullOrEmpty(txtAutorizo.Text) ||
-                String.IsNullOrEmpty(txtReviso.Text))
-            {
-
-            }
-            else
-            {
+          
                 //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
+               // string strElaboro = txtElaboro.Value.ToString();
+               // string strReviso = txtReviso.Value.ToString();
+                //string strAutorizo = txtAutorizo.Value.ToString();
+
+                FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
+
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+                string strReviso = oFirmas.FirmaReviso;
+                string strAutorizo = oFirmas.FirmaAutorizo;
 
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
@@ -106,9 +136,6 @@ namespace OSEF.ERP.APP
                     conn.Dispose();
                 }
 
-            }
-
-
         }
 
         protected void imgbtnExportarFotos_Click(object sender, EventArgs e)
@@ -117,20 +144,14 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-               String.IsNullOrEmpty(txtAutorizo.Text) ||
-               String.IsNullOrEmpty(txtReviso.Text))
-            {
+              FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
-            }
-            else
-            {
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+                string strReviso = oFirmas.FirmaReviso;
+                string strAutorizo = oFirmas.FirmaAutorizo;
 
 
-                //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -188,7 +209,6 @@ namespace OSEF.ERP.APP
                     conn.Dispose();
                 }
 
-            }
         }
 
         protected void imgbtnExportarFactura_Click(object sender, EventArgs e)
@@ -197,21 +217,13 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
+              FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-                String.IsNullOrEmpty(txtAutorizo.Text) ||
-                String.IsNullOrEmpty(txtReviso.Text))
-            {
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+                string strReviso = oFirmas.FirmaReviso;
+                string strAutorizo = oFirmas.FirmaAutorizo;
 
-            }
-            else
-            {
-
-
-                //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -270,7 +282,6 @@ namespace OSEF.ERP.APP
                         conn.Close();
                     conn.Dispose();
                 }
-            }
         }
 
         protected void imgbtnExportarGenerador_Click(object sender, EventArgs e)
@@ -279,21 +290,12 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
+  FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-               String.IsNullOrEmpty(txtAutorizo.Text) ||
-               String.IsNullOrEmpty(txtReviso.Text))
-            {
-
-            }
-            else
-            {
-
-
-                //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+                string strReviso = oFirmas.FirmaReviso;
+                string strAutorizo = oFirmas.FirmaAutorizo;
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -353,7 +355,6 @@ namespace OSEF.ERP.APP
                         conn.Close();
                     conn.Dispose();
                 }
-            }
         }
 
         protected void imgbtnEstimacion_click(object sender, EventArgs e)
@@ -361,22 +362,14 @@ namespace OSEF.ERP.APP
 
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            
+            
+            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
-
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-               String.IsNullOrEmpty(txtAutorizo.Text) ||
-               String.IsNullOrEmpty(txtReviso.Text))
-            {
-
-            }
-            else
-            {
-
-
-                //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+                string strReviso = oFirmas.FirmaReviso;
+                string strAutorizo = oFirmas.FirmaAutorizo;
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -436,7 +429,7 @@ namespace OSEF.ERP.APP
                         conn.Close();
                     conn.Dispose();
                 }
-            }
+            
         }
 
         protected void imgbtnResumen_click(object sender, EventArgs e)
@@ -445,19 +438,12 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
+              FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-               String.IsNullOrEmpty(txtAutorizo.Text) ||
-               String.IsNullOrEmpty(txtReviso.Text))
-            {
-
-            }
-            else
-            {
-                //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
+                Usuario oUsuario = (Usuario)Session["Usuario"];
+                string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
+                string strReviso = oFirmas.FirmaReviso;
+                string strAutorizo = oFirmas.FirmaAutorizo;
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -514,7 +500,7 @@ namespace OSEF.ERP.APP
                         conn.Close();
                     conn.Dispose();
                 }
-            }
+            
         }
 
         protected void imgbtnPresupuesto_click(object sender, EventArgs e)

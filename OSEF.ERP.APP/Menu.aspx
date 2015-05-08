@@ -231,16 +231,7 @@
                                                      
                             </div>
 
-                            <div class="tile-column-span-1">
-                            <a class="tile square bg-color-green" href="#" id="reportes">
-                                   <img src="assets/img/menu-reportes.png" alt="Reportes" />
-                                    <div class="textover-wrapper transparent">
-                                        <div class="text4">Reportes</div>
-                                    </div>
-                                </a>    
-
-                                
-                            </div>
+                          
 
 
                             <div class="tile-column-span-1">

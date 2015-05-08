@@ -89,8 +89,23 @@
                         </ext:ImageButton>
 
 
-                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="430">
+                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="380">
                         </ext:ToolbarSpacer>
+
+                        <ext:ImageButton
+                            ID="imgbtnFirmas"
+                            runat="server"
+                            ImageUrl="assets/img/controles/AutorizarNormal.png"
+                            DisabledImageUrl="assets/img/controles/AutorizarDisabled.png"
+                            OverImageUrl="assets/img/controles/AutorizarOver.png"
+                            PressedImageUrl="assets/img/controles/AutorizarPressed.png"
+                            Height="50"
+                            Width="50">
+                             <Listeners>
+                                <Click Fn="imgbtnFirmas_Click" />
+                            </Listeners>
+                        </ext:ImageButton>
+
                          <ext:Container
                                 ID="cCorreoEnviado"
                                 runat="server">
@@ -104,11 +119,7 @@
                                         class="imgs" 
                                         ImageUrl="assets/img/controles/ExcelNormal.png"/>
                                 </Content>
-            
-            
                             </ext:Container>
-                        
-
                         <ext:ImageButton
                             ID="imgbtnActualizar"
                             runat="server"

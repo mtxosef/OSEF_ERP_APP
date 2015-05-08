@@ -45,12 +45,12 @@
              <ext:FieldContainer
                 ID="fcFirmas"
                 runat="server"
-                FieldLabel="Firmas"
+              
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">
                 <Items>
-                      <ext:TextField
+                     <%-- <ext:TextField
                         ID="txtElaboro"
                         runat="server"
                         Width="140"
@@ -83,7 +83,7 @@
                        <Listeners>
                                 <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                             </Listeners>
-                    </ext:TextField>
+                    </ext:TextField>--%>
                 </Items>
             </ext:FieldContainer>
         </Items>
@@ -162,17 +162,17 @@
                 ImageUrl="assets/img/controles/imagenes.png"/>
                     </div>
             </Content>
-            <Listeners>
+            <%--<Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({
                                                 text : valid ? 'La información esta completa/correcta' : 'Especifica el personal que firmará el documento', 
                                                 iconCls: valid ? 'icon-accept' : 'icon-exclamation'
                                             });" />
-            </Listeners>
+            </Listeners>--%>
             <BottomBar>
                 <ext:StatusBar ID="sbParametros1" 
                 runat="server"
                 Cls="x-colorToolbar" 
-                Text="Completa la información" />
+                Text="Selecciona reporte a imprimir" />
             </BottomBar>
        
         </ext:FormPanel>

@@ -670,6 +670,14 @@ CREATE TABLE CodigoPPTA(
 	CodigoMainSaver				CHAR(50) NOT NULL PRIMARY KEY,
 	Dias						CHAR(5) NULL
 )
+
+CREATE TABLE FirmasReportes(
+	FirmaReviso				VARCHAR(100) NOT NULL,
+	FirmaAutorizo			VARCHAR(100) NOT NULL,
+	Modulo					VARCHAR(100) NULL,
+)
+
+
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
 --DROP TABLE Beneficiarios

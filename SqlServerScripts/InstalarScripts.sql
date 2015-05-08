@@ -502,9 +502,7 @@
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerUltimoPreciarioGeneralConcepto.sql 
 --Preciario Concepto Adicional(Borrar) 
 :r c:\SqlServerScripts\Borrar\PreciariosGeneralesConceptosAdicionales\web_spD_BorrarPreciarioGeneralConcepto.sql  
-
 --ReportesEstimacion
-:r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerEstimacionPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerREstimacion.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerResumenDePartidasPorMovimiento.sql
 :r c:\SqlServerScripts\Reportes\Estimaciones\web_spS_ObtenerRResumenDePartidas.sql
@@ -523,3 +521,10 @@
 ------------------------------------------------------------------------------------------------------------------------------
 -- Reporte de Cuadrillas
 :r c:\SqlServerScripts\Reportes\TableroReportes\web_spS_ObtenerReportePorCuadrilla.sql
+-----------------------------------------------------------------------------------
+-- Colonias (Consultar)
+:r c:\SqlServerScripts\Consultar\FirmasReportes\web_spS_ObtenerFirmasPorModulo.sql
+-- Colonias (Insertar)
+:r c:\SqlServerScripts\Insertar\FirmasReportes\web_spI_InsertarFirmas.sql
+-- Colonias (Modificar)
+:r c:\SqlServerScripts\Modificar\FirmasReportes\web_spU_ActualizarFirmas.sql

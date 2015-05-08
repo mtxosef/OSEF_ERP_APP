@@ -101,7 +101,7 @@ namespace OSEF.AVANCES.SUCURSALES
         /// Evento que se lanza al cargar el store
         /// </summary>
         [DirectMethod]
-        public void sColonia_Load()
+        public void sFirmas_Load()
         {
             string strcookieEditarColonia = Cookies.GetCookie("cookieEditarColonia").Value;
             if (!strcookieEditarColonia.Equals("Nuevo"))

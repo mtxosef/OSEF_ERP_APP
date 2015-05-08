@@ -58,33 +58,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcFirmas;
         
         /// <summary>
-        /// Control txtElaboro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtElaboro;
-        
-        /// <summary>
-        /// Control txtReviso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtReviso;
-        
-        /// <summary>
-        /// Control txtAutorizo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtAutorizo;
-        
-        /// <summary>
         /// Control imgbtnPresupuesto.
         /// </summary>
         /// <remarks>

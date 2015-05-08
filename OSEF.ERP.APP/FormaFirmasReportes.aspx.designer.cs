@@ -10,7 +10,25 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class FormaEspecialidad {
+    public partial class FormaFirmasReportes {
+        
+        /// <summary>
+        /// Control Head1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        
+        /// <summary>
+        /// Control rmFormaFirmas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ResourceManager rmFormaFirmas;
         
         /// <summary>
         /// Control form1.
@@ -22,67 +40,67 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmEspecialidad.
+        /// Control sFirmasReportes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmEspecialidad;
+        protected global::Ext.Net.Store sFirmasReportes;
         
         /// <summary>
-        /// Control fpEspecialidad.
+        /// Control mFormaFirmas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel fpEspecialidad;
+        protected global::Ext.Net.Model mFormaFirmas;
         
         /// <summary>
-        /// Control Panel1.
+        /// Control fpEspecificarParametros.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel1;
+        protected global::Ext.Net.FormPanel fpEspecificarParametros;
         
         /// <summary>
-        /// Control FieldContainer1.
+        /// Control fcFirmas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer1;
+        protected global::Ext.Net.FieldContainer fcFirmas;
         
         /// <summary>
-        /// Control txtID.
+        /// Control txtReviso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtID;
+        protected global::Ext.Net.TextField txtReviso;
         
         /// <summary>
-        /// Control FieldContainer2.
+        /// Control txtAutorizo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer FieldContainer2;
+        protected global::Ext.Net.TextField txtAutorizo;
         
         /// <summary>
-        /// Control txtNombre.
+        /// Control sbParametros1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtNombre;
+        protected global::Ext.Net.StatusBar sbParametros1;
         
         /// <summary>
         /// Control imgbtnGuardar.
@@ -101,14 +119,5 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ImageButton imgbtnCancelar;
-        
-        /// <summary>
-        /// Control sbEspecialidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.StatusBar sbEspecialidad;
     }
 }

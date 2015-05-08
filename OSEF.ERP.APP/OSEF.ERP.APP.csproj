@@ -350,9 +350,9 @@
     <Content Include="FormaAvanzarMovimiento.aspx" />
     <Content Include="FormaCroquisOrdenEstimacion.aspx" />
     <Content Include="FormaCuadrillas.aspx" />
-    <Content Include="FormaEspecialidad.aspx" />
     <Content Include="FormaEspecificarFechas.aspx" />
     <Content Include="FormaFacturasOrdenEstimacion.aspx" />
+    <Content Include="FormaFirmasReportes.aspx" />
     <Content Include="FormaGaleria.aspx" />
     <Content Include="FormaGenerador.aspx" />
     <Content Include="FormaGeneradorVolumetriaD.aspx" />
@@ -364,11 +364,6 @@
     <Content Include="FormaMenu2.aspx" />
     <Content Include="FormaCliente.aspx" />
     <Content Include="FormaOrdenEstimacion.aspx" />
-    <Content Include="FormaParametrosP1.aspx" />
-    <Content Include="FormaParametrosP2.aspx" />
-    <Content Include="FormaParametrosP3.aspx" />
-    <Content Include="FormaParametrosP4.aspx" />
-    <Content Include="FormaParametrosP5.aspx" />
     <Content Include="FormaPreciario.aspx" />
     <Content Include="FormaPreciarioExplorador.aspx" />
     <Content Include="FormaPreciarioGeneral.aspx" />
@@ -376,7 +371,6 @@
     <Content Include="FormaReporteEstimacion.aspx" />
     <Content Include="FormaReporteOrdenCambioD.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
-    <Content Include="FormaSubEspecialidad.aspx" />
     <Content Include="FormaSubirCroquisOrdenEstimacion.aspx" />
     <Content Include="FormaSubirFacturasOrdenEstimacion.aspx" />
     <Content Include="FormaSubirImagenesCliente.aspx" />
@@ -432,12 +426,10 @@
     <Content Include="js\buscapreciarios.js" />
     <Content Include="js\formaCodigoppta.js" />
     <Content Include="js\formacuadrilla.js" />
-    <Content Include="js\formaEspecialidad.js" />
-    <Content Include="js\formaFamilias.js" />
+    <Content Include="js\formaFirmas.js" />
     <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\formaReporteMovimientoEstimacion.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
-    <Content Include="js\formaSubEspecialidades.js" />
     <Content Include="js\tableroOrdenesCambios.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
@@ -450,11 +442,9 @@
     <Content Include="js\login.js" />
     <Content Include="js\menus2.js" />
     <Content Include="js\olvidarContrasena.js" />
-    <Content Include="js\parametrosP1.js" />
     <Content Include="js\preciarios.js" />
     <Content Include="js\preciariosGenerales.js" />
     <Content Include="js\profesiones.js" />
-    <Content Include="js\reportes.js" />
     <Content Include="js\solicitudesPrestamos.js" />
     <Content Include="js\subirImagenesCliente.js" />
     <Content Include="js\subirImagenesOrdenEstimacion.js" />
@@ -513,7 +503,6 @@
     <Content Include="Clientes.aspx" />
     <Content Include="Prueba.aspx" />
     <Content Include="pruebaagrega.aspx" />
-    <Content Include="Reportes.aspx" />
     <Content Include="resources\css\gantt-scheduler.css" />
     <Content Include="resources\css\sch-all.css" />
     <Content Include="resources\css\sch-gantt-all.css" />
@@ -538,7 +527,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="FormaFamilias.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulos.aspx.cs">
@@ -850,13 +838,6 @@
     <Compile Include="FormaCuadrillas.aspx.designer.cs">
       <DependentUpon>FormaCuadrillas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormaEspecialidad.aspx.cs">
-      <DependentUpon>FormaEspecialidad.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaEspecialidad.aspx.designer.cs">
-      <DependentUpon>FormaEspecialidad.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FormaEspecificarFechas.aspx.cs">
       <DependentUpon>FormaEspecificarFechas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -870,6 +851,13 @@
     </Compile>
     <Compile Include="FormaFacturasOrdenEstimacion.aspx.designer.cs">
       <DependentUpon>FormaFacturasOrdenEstimacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaFirmasReportes.aspx.cs">
+      <DependentUpon>FormaFirmasReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaFirmasReportes.aspx.designer.cs">
+      <DependentUpon>FormaFirmasReportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaGaleria.aspx.cs">
       <DependentUpon>FormaGaleria.aspx</DependentUpon>
@@ -948,41 +936,6 @@
     <Compile Include="FormaOrdenEstimacion.aspx.designer.cs">
       <DependentUpon>FormaOrdenEstimacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormaParametrosP1.aspx.cs">
-      <DependentUpon>FormaParametrosP1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaParametrosP1.aspx.designer.cs">
-      <DependentUpon>FormaParametrosP1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormaParametrosP2.aspx.cs">
-      <DependentUpon>FormaParametrosP2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaParametrosP2.aspx.designer.cs">
-      <DependentUpon>FormaParametrosP2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormaParametrosP3.aspx.cs">
-      <DependentUpon>FormaParametrosP3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaParametrosP3.aspx.designer.cs">
-      <DependentUpon>FormaParametrosP3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormaParametrosP4.aspx.cs">
-      <DependentUpon>FormaParametrosP4.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaParametrosP4.aspx.designer.cs">
-      <DependentUpon>FormaParametrosP4.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormaParametrosP5.aspx.cs">
-      <DependentUpon>FormaParametrosP5.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaParametrosP5.aspx.designer.cs">
-      <DependentUpon>FormaParametrosP5.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FormaPreciario.aspx.cs">
       <DependentUpon>FormaPreciario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1031,13 +984,6 @@
     </Compile>
     <Compile Include="FormaSolicitudPrestamo.aspx.designer.cs">
       <DependentUpon>FormaSolicitudPrestamo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormaSubEspecialidad.aspx.cs">
-      <DependentUpon>FormaSubEspecialidad.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaSubEspecialidad.aspx.designer.cs">
-      <DependentUpon>FormaSubEspecialidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaSubirCroquisOrdenEstimacion.aspx.cs">
       <DependentUpon>FormaSubirCroquisOrdenEstimacion.aspx</DependentUpon>
@@ -1282,13 +1228,6 @@
     <Compile Include="pruebaagrega.aspx.designer.cs">
       <DependentUpon>pruebaagrega.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes.aspx.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
-    </Compile>
     <Compile Include="reportess\CPreciario.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1397,13 +1336,6 @@
     </Compile>
     <Compile Include="VolumetriasPreciario.aspx.designer.cs">
       <DependentUpon>VolumetriasPreciario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormaFamilias.aspx.cs">
-      <DependentUpon>FormaFamilias.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormaFamilias.aspx.designer.cs">
-      <DependentUpon>FormaFamilias.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
