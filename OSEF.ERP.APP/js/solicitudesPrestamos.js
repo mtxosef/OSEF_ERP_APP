@@ -595,7 +595,6 @@ var cmbEstadoCivil_Change = function (combobox, valorNuevo, valorAnterior, opcio
         App.tbSolicitudPrestamo.setActiveTab(0);
     }
     else {
-        console.log(valorNuevo);
         App.tbSolicitudPrestamo.closeTab(App.pDatosConyugue);
     }
 };

@@ -10,7 +10,7 @@ using OSEF.APP.BL;
 using System.Web.Security;
 using System.Configuration;
 
-namespace OSEF.AVANCES.SUCURSALES
+namespace OSEF.ERP.APP
 {
     public partial class Default : System.Web.UI.Page
     {

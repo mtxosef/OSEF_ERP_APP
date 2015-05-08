@@ -61,6 +61,90 @@
             </Listeners>
         </ext:Store>
 
+        <ext:Store
+            ID="sProveedores"
+            runat="server">
+            <Model>
+                <ext:Model ID="mProveedores" runat="server" IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Nombre" Type="String" />
+                        <ext:ModelField Name="ContactoNombre" Type="String" />
+                        <ext:ModelField Name="ContactoAPaterno" Type="String" />
+                        <ext:ModelField Name="ContactoAMaterno" Type="String" />
+                        <ext:ModelField Name="Correo" Type="String" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <Sorters>
+                <ext:DataSorter Property="ID" Direction="ASC" />
+            </Sorters>
+        </ext:Store>
+
+        <ext:Store
+            ID="sCategorias"
+            runat="server">
+            <Model>
+                <ext:Model
+                    ID="mCategorias"
+                    runat="server"
+                    IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Orden" Type="Int" />
+                        <ext:ModelField Name="Descripcion" Type="String" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <Listeners>
+                <Load Fn="sCategorias_Load" />
+            </Listeners>
+        </ext:Store>
+
+        <ext:Store
+            ID="sSubCategorias"
+            runat="server">
+            <Model>
+                <ext:Model
+                    ID="mSubCategorias"
+                    runat="server"
+                    IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Orden" Type="Int" />
+                        <ext:ModelField Name="Descripcion" Type="String" />
+                        <ext:ModelField Name="Categoria" Type="String" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <Listeners>
+                <Load Fn="sSubCategorias_Load" />
+            </Listeners>
+        </ext:Store>
+
+        <ext:Store
+            ID="sConceptos"
+            runat="server">
+            <Model>
+                <ext:Model ID="mConceptos" runat="server">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="Modulo" Type="String" />
+                        <ext:ModelField Name="Orden" Type="Int" />
+                        <ext:ModelField Name="Descripcion" Type="String" />
+                        <ext:ModelField Name="Categoria" Type="String" />
+                        <ext:ModelField Name="SubCategoria" Type="String" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <Sorters>
+                <ext:DataSorter Property="Categoria" Direction="ASC" />
+            </Sorters>
+            <Listeners>
+                <Load Fn="sConceptos_Load" />
+            </Listeners>
+        </ext:Store>
+
         <ext:FormPanel 
             ID="fpFormaAvance"
             runat="server" 
@@ -592,14 +676,13 @@
                             <Items>
                                 <%--   Aqui va todo el show--%>
                                 <ext:TabPanel 
-                                    ID="tpCategorias" 
-                                    runat="server" 
-                                    ActiveTabIndex="0" 
+                                    ID="tpDetalle" 
+                                    runat="server"
                                     Width="900" 
                                     Height="243"
                                     Plain="true" 
                                     Cls="custotabpanel xchris">
-                                    <Items>
+                                    <%--<Items>--%>
 <%--                                        <ext:Panel 
                                             ID="pSuministros" 
                                             runat="server" 
@@ -681,7 +764,7 @@
                                                 <%-- FinSuministros--%>
 <%--                                            </Items>
                                         </ext:Panel>--%>
-                                        <ext:Panel 
+<%--                                        <ext:Panel
                                             ID="pObraCivil" 
                                             runat="server" 
                                             Title="Obra Civil">
@@ -783,27 +866,6 @@
                                                                         runat="server"
                                                                         DisplayField="Nombre"
                                                                         ValueField="ID">
-                                                                        <Store>
-                                                                            <ext:Store
-                                                                                ID="sProveedores"
-                                                                                runat="server">
-                                                                                <Model>
-                                                                                    <ext:Model ID="mProveedores" runat="server" IDProperty="ID">
-                                                                                        <Fields>
-                                                                                            <ext:ModelField Name="ID" Type="String" />
-                                                                                            <ext:ModelField Name="Nombre" Type="String" />
-                                                                                            <ext:ModelField Name="ContactoNombre" Type="String" />
-                                                                                            <ext:ModelField Name="ContactoAPaterno" Type="String" />
-                                                                                            <ext:ModelField Name="ContactoAMaterno" Type="String" />
-                                                                                            <ext:ModelField Name="Correo" Type="String" />
-                                                                                        </Fields>
-                                                                                    </ext:Model>
-                                                                                </Model>
-                                                                                <Sorters>
-                                                                                    <ext:DataSorter Property="ID" Direction="ASC" />
-                                                                                </Sorters>
-                                                                            </ext:Store>
-                                                                        </Store>
                                                                     </ext:ComboBox>
                                                                 </Editor>
                                                             </ext:Column>
@@ -882,7 +944,7 @@
                                                     </View>
                                                 </ext:GridPanel>
                                             </Items>
-                                        </ext:Panel>
+                                        </ext:Panel>--%>
                                         <%-- <ext:Panel
                                             ID="pInstalaciones"
                                             runat="server"
@@ -965,7 +1027,7 @@
                                                 <%-- FinInstalaciones--%>
                                             <%--</Items>
                                         </ext:Panel> --%>
-                                    </Items>
+                                    <%--</Items>--%>
                                 </ext:TabPanel>
                                 <%--   Aqui va todo el show--%>
                             </Items>
@@ -1018,7 +1080,7 @@
             </Loader>
         </ext:Window>
 
-         <ext:Window 
+        <ext:Window 
         ID="wCargarImagenes" 
         runat="server" 
         Icon="Application"

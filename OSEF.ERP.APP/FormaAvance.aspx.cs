@@ -27,14 +27,22 @@ namespace OSEF.AVANCES.SUCURSALES
                 sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
                 sSucursales.DataBind();
 
-                //3. Cargar Conceptos
-                sConceptos.DataSource = ConceptoBusiness.ObtenerConceptos();
-                sConceptos.DataBind();
-
-                //4. Cargar Proveedores
+                //3. Cargar Proveedores
                 sProveedores.DataSource = ProveedorBusiness.ObtenerProveedores();
                 sProveedores.DataBind();
-            }
+
+                //4. Cargar las Categorias
+                sCategorias.DataSource = CategoriaBusiness.ObtenerCategorias();
+                sCategorias.DataBind();
+
+                //5. Cargar las SubCategorias
+                sSubCategorias.DataSource = SubcategoriaBusiness.ObtenerSubCategorias();
+                sSubCategorias.DataBind();
+
+                //6. Cargar todos los Conceptos
+                sConceptos.DataSource = ConceptoBusiness.ObtenerConceptos();
+                sConceptos.DataBind();
+           }
         }
 
         /// <summary>
@@ -130,8 +138,8 @@ namespace OSEF.AVANCES.SUCURSALES
                 Revision oRevision = RevisionBusiness.ObtenerRevisionPorID(Convert.ToInt32(strcookieEditarRevision));
                 
                 //Cargar el detalle del movimiento
-                sObraCivil.DataSource = RevisionDBusiness.ObtenerRevisionesDPorRevision(oRevision.ID);
-                sObraCivil.DataBind();
+                //sObraCivil.DataSource = RevisionDBusiness.ObtenerRevisionesDPorRevision(oRevision.ID);
+                //sObraCivil.DataBind();
 
                 sRevision.Add(new
                 {

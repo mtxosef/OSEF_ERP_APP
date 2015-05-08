@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OSEF.ERP.APP.Default" %>
 
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
 
