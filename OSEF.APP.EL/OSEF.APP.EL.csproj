@@ -55,6 +55,11 @@
     <Compile Include="CroquisOrdenEstimacionD.cs" />
     <Compile Include="Cuadrilla.cs" />
     <Compile Include="CuentaContable.cs" />
+
+    <Compile Include="Cuestionario.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="Especialidades.cs" />
+
     <Compile Include="Estado.cs" />
     <Compile Include="FacturaOrdenEstimacionD.cs" />
     <Compile Include="Finalidad.cs" />
@@ -69,6 +74,7 @@
     <Compile Include="Municipio.cs" />
     <Compile Include="OrdenEstimacion.cs" />
     <Compile Include="OrdenEstimacionD.cs" />
+    <Compile Include="Participante.cs" />
     <Compile Include="Preciario.cs" />
     <Compile Include="PreciarioCategoria.cs" />
     <Compile Include="PreciarioConcepto.cs" />
@@ -85,12 +91,14 @@
     <Compile Include="ReferenciaBancaria.cs" />
     <Compile Include="ReferenciaInstitucionSolicitudPrestamo.cs" />
     <Compile Include="ReferenciaPersonaSolicitudPrestamo.cs" />
+    <Compile Include="Respuestas.cs" />
     <Compile Include="Revision.cs" />
     <Compile Include="RevisionD.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="SolicitudPrestamo.cs" />
     <Compile Include="Subcategoria.cs" />
     <Compile Include="Sucursal.cs" />
+    <Compile Include="TipoParticipante.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Volumetria.cs" />
     <Compile Include="VolumetriaD.cs" />

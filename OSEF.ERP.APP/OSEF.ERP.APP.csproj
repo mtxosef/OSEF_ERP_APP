@@ -278,6 +278,7 @@
     <Content Include="ConsultarPreciario.aspx" />
     <Content Include="css\customControls2.css" />
     <Content Include="css\customControls.css" />
+    <Content Include="css\customeControls.css" />
     <Content Include="css\login2.css" />
     <Content Include="css\login.css" />
     <Content Include="css\metroButtons.css" />
@@ -285,6 +286,7 @@
     <Content Include="css\osef_cajapopular.css" />
     <Content Include="css\osef_combobox.css" />
     <Content Include="css\preliminar.css" />
+    <Content Include="css\registro.css" />
     <Content Include="css\xButton.css" />
     <Content Include="css\xComboBox.css" />
     <Content Include="css\xCustomChart.css" />
@@ -309,6 +311,7 @@
     <Content Include="data.js" />
     <Content Include="Default.aspx" />
     <Content Include="Default2.aspx" />
+    <Content Include="Default3.aspx" />
     <Content Include="Estados.aspx" />
     <Content Include="Estados2.aspx" />
     <Content Include="examples-shared.js" />
@@ -316,6 +319,7 @@
     <Content Include="ExploradorMesaDeReporte.aspx" />
     <Content Include="ExploradorPreciarioConceptos.aspx" />
     <Content Include="ExploradorPreciariosConceptosGenerales.aspx" />
+    <Content Include="ExploradorRegistroConaproch.aspx" />
     <Content Include="fancylibs\blank.gif" />
     <Content Include="fancylibs\fancybox_loading%402x.gif" />
     <Content Include="fancylibs\fancybox_loading.gif" />
@@ -368,6 +372,7 @@
     <Content Include="FormaPreciarioExplorador.aspx" />
     <Content Include="FormaPreciarioGeneral.aspx" />
     <Content Include="FormaPreciarioGeneralExplorador.aspx" />
+    <Content Include="FormaRegistroConaproch.aspx" />
     <Content Include="FormaReporteEstimacion.aspx" />
     <Content Include="FormaReporteOrdenCambioD.aspx" />
     <Content Include="FormaSolicitudPrestamo.aspx" />
@@ -382,6 +387,25 @@
     <Content Include="Global.asax" />
     <Content Include="gnt-all-debug.js" />
     <Content Include="GruposMenu2.aspx" />
+    <Content Include="imagenes\agrupadores\cuestionario.png" />
+    <Content Include="imagenes\agrupadores\datos-de-contacto.png" />
+    <Content Include="imagenes\agrupadores\Datos-de-facturacion.png" />
+    <Content Include="imagenes\agrupadores\datos-personales.png" />
+    <Content Include="imagenes\buttons\registrar-clic.png" />
+    <Content Include="imagenes\buttons\registrar-deshabilitado.png" />
+    <Content Include="imagenes\buttons\registrar-normal.png" />
+    <Content Include="imagenes\buttons\registrar-sobre.png" />
+    <Content Include="imagenes\cabecera\barra-logos.png" />
+    <Content Include="imagenes\cabecera\barra-superior-central.png" />
+    <Content Include="imagenes\cabecera\barra-superior-derecha.png" />
+    <Content Include="imagenes\cabecera\barra-superior-izquierda.png" />
+    <Content Include="imagenes\fondos\f_b.jpg" />
+    <Content Include="imagenes\login\btnLogin.png" />
+    <Content Include="imagenes\login\btnLogin_Adv.png" />
+    <Content Include="imagenes\login\btnLogin_MouseClick.png" />
+    <Content Include="imagenes\login\btnLogin_MouseOver.png" />
+    <Content Include="imagenes\login\siglo_xxi_logo_white.png" />
+    <Content Include="imagenes\pie\barra-inferior.png" />
     <Content Include="images\A&amp;R-Imagotipo ICONO.jpg" />
     <Content Include="images\banco.jpg" />
     <Content Include="images\bbva.jpg" />
@@ -402,6 +426,7 @@
     <Content Include="images\user-login.png" />
     <Content Include="images\youtube.png" />
     <Content Include="InnerForm.aspx" />
+    <Content Include="js\administrador.js" />
     <Content Include="js\articulos.js" />
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
@@ -430,6 +455,13 @@
     <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\formaReporteMovimientoEstimacion.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
+
+
+    <Content Include="js\formaSubEspecialidades.js" />
+    <Content Include="js\lib\jQuery\jquery-migrate-1.2.1.min.js" />
+    <Content Include="js\lib\jQuery\jquery.min.js" />
+    <Content Include="js\registro.js" />
+
     <Content Include="js\tableroOrdenesCambios.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
@@ -455,8 +487,10 @@
     <Content Include="js\volumetrias.js" />
     <Content Include="js\tablerovolumetrias.js" />
     <Content Include="Login2.aspx" />
+    <Content Include="Login3.aspx" />
     <Content Include="lte-ie7.js" />
     <Content Include="Menu2.aspx" />
+    <Content Include="Menu3.aspx" />
     <Content Include="Menus2.aspx" />
     <Content Include="Municipios2.aspx" />
     <Content Include="OlvidasteContrasena.aspx" />
@@ -635,6 +669,13 @@
     <Compile Include="Default2.aspx.designer.cs">
       <DependentUpon>Default2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default3.aspx.cs">
+      <DependentUpon>Default3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default3.aspx.designer.cs">
+      <DependentUpon>Default3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Estados.aspx.cs">
       <DependentUpon>Estados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -669,6 +710,13 @@
     </Compile>
     <Compile Include="ExploradorPreciariosConceptosGenerales.aspx.designer.cs">
       <DependentUpon>ExploradorPreciariosConceptosGenerales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExploradorRegistroConaproch.aspx.cs">
+      <DependentUpon>ExploradorRegistroConaproch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExploradorRegistroConaproch.aspx.designer.cs">
+      <DependentUpon>ExploradorRegistroConaproch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finalidades.aspx.cs">
       <DependentUpon>Finalidades.aspx</DependentUpon>
@@ -964,6 +1012,13 @@
     <Compile Include="FormaPreciarioGeneralExplorador.aspx.designer.cs">
       <DependentUpon>FormaPreciarioGeneralExplorador.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaRegistroConaproch.aspx.cs">
+      <DependentUpon>FormaRegistroConaproch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaRegistroConaproch.aspx.designer.cs">
+      <DependentUpon>FormaRegistroConaproch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaReporteEstimacion.aspx.cs">
       <DependentUpon>FormaReporteEstimacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1058,12 +1113,26 @@
     <Compile Include="Login2.aspx.designer.cs">
       <DependentUpon>Login2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login3.aspx.cs">
+      <DependentUpon>Login3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login3.aspx.designer.cs">
+      <DependentUpon>Login3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menu2.aspx.cs">
       <DependentUpon>Menu2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Menu2.aspx.designer.cs">
       <DependentUpon>Menu2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu3.aspx.cs">
+      <DependentUpon>Menu3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu3.aspx.designer.cs">
+      <DependentUpon>Menu3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menus2.aspx.cs">
       <DependentUpon>Menus2.aspx</DependentUpon>
@@ -1373,6 +1442,7 @@
     <Content Include="Plants.ashx" />
     <None Include="fonts\weblysleekuil.ttf" />
     <None Include="fonts\weblysleekuisl.ttf" />
+    <None Include="js\lib\jQuery\jquery-1.10.2.min.map" />
     <None Include="resources\fonts\icomoon.eot" />
     <None Include="resources\fonts\icomoon.ttf" />
     <None Include="resources\fonts\icomoon.woff" />
