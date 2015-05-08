@@ -14,7 +14,7 @@ namespace OSEF.ERP.APP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            onLoadData();
+            //onLoadData();
         }
 
         /// <summary>
@@ -25,23 +25,23 @@ namespace OSEF.ERP.APP
         {
 
             string strcookieEditarCodigoPPTA = Cookies.GetCookie("cookieEditarCodigoPPTA").Value;
-            onLoadData();
+            //onLoadData();
             if (!strcookieEditarCodigoPPTA.Equals("Nuevo"))
             {
                 CodigoFalla oCodigoPPTA = CodigoFallasBusiness.ObtenerCodigoFallaPorID(strcookieEditarCodigoPPTA);
                 sCodigoPPTA.Add(new
                 {
                     CodigoMainSaver = oCodigoPPTA.CodigoMainSaver,
-                    Especialidad = oCodigoPPTA.Especialidad,
-                    Familia = oCodigoPPTA.Familia,
-                    SubEspecialidad = oCodigoPPTA.Subespecialidad,
-                    REspecialidad = oCodigoPPTA.REspecialidad,
-                    RFamilia = oCodigoPPTA.RFamilias,
-                    RSubespecialidad = oCodigoPPTA.RSubespecialidad,
-                    Descripcion = oCodigoPPTA.Descripcion,
-                    Dias = oCodigoPPTA.Dias,
-                    Prioridad = oCodigoPPTA.Prioridad,
-                    TiempoEstimado = oCodigoPPTA.TiempoEstimado 
+                    //Especialidad = oCodigoPPTA.Especialidad,
+                    //Familia = oCodigoPPTA.Familia,
+                    //SubEspecialidad = oCodigoPPTA.Subespecialidad,
+                    //REspecialidad = oCodigoPPTA.REspecialidad,
+                    //RFamilia = oCodigoPPTA.RFamilias,
+                    //RSubespecialidad = oCodigoPPTA.RSubespecialidad,
+                    //Descripcion = oCodigoPPTA.Descripcion,
+                    Dias = oCodigoPPTA.Dias
+                    //Prioridad = oCodigoPPTA.Prioridad,
+                    //TiempoEstimado = oCodigoPPTA.TiempoEstimado 
                 }); 
             }
         }
@@ -68,33 +68,33 @@ namespace OSEF.ERP.APP
                         cf.CodigoMainSaver = sd.Value;
                         break;
 
-                    case "cmbEspecialidad":
-                        cf.Especialidad = sd.Value;
-                        break;
+                    //case "cmbEspecialidad":
+                    //    cf.Especialidad = sd.Value;
+                    //    break;
 
-                    case "cmbFamilia":
-                        cf.Familia = sd.Value;
-                        break;
+                    //case "cmbFamilia":
+                    //    cf.Familia = sd.Value;
+                    //    break;
 
-                    case "cmbSubEspecialidad":
-                        cf.Subespecialidad = sd.Value;
-                        break;
+                    //case "cmbSubEspecialidad":
+                    //    cf.Subespecialidad = sd.Value;
+                    //    break;
                          
-                    case "txtDescripcion":
-                        cf.Descripcion = sd.Value;
-                        break;
+                    //case "txtDescripcion":
+                    //    cf.Descripcion = sd.Value;
+                    //    break;
 
                     case "txtDias":
                         cf.Dias = sd.Value;
                         break;
 
-                    case "txtPrioridad":
-                        cf.Prioridad = sd.Value;
-                        break;
+                    //case "txtPrioridad":
+                    //    cf.Prioridad = sd.Value;
+                    //    break;
 
-                    case "txtTiempoEstimado":
-                        cf.TiempoEstimado = sd.Value;
-                        break;
+                    //case "txtTiempoEstimado":
+                    //    cf.TiempoEstimado = sd.Value;
+                    //    break;
                 }
             }
             string strcookieEditarCodigoPPTA = Cookies.GetCookie("cookieEditarCodigoPPTA").Value;
@@ -123,52 +123,52 @@ namespace OSEF.ERP.APP
         #endregion
 
         #region Consultar
-        public void onLoadData() {
-            sEspecialidad.DataSource = EspecialidadesBusiness.ObtenerEspecialidades();
-            sEspecialidad.DataBind();  
-        }
+        //public void onLoadData() {
+        //    sEspecialidad.DataSource = EspecialidadesBusiness.ObtenerEspecialidades();
+        //    sEspecialidad.DataBind();  
+        //}
 
 
-        /// <summary>
-        /// Evento que se lanza al seleccionar una Especialidad
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void cmbEspecialidad_Select(object sender, DirectEventArgs e)
-        {
-            //1. Obtener el valor seleccionado
-            string strEspecialidad = e.ExtraParams["vEspecialidad"];
-            sFamilias.DataSource = FamiliasBusiness.ObtenerFamiliasPorEspecialidad(strEspecialidad);
-            sFamilias.DataBind();
-        }
-        /// <summary>
-        /// Evento que se lanza al seleccionar una Familia
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>  
-        public void cmbFamilia_Select(object sender, DirectEventArgs e)
-        {
-            //1. Obtener el valor seleccionado 
-            string strFamilia = e.ExtraParams["vFamilia"];
-            sSubEspecialidad.DataSource = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorFamilia(strFamilia);
-            sSubEspecialidad.DataBind();
-        }
+        ///// <summary>
+        ///// Evento que se lanza al seleccionar una Especialidad
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //protected void cmbEspecialidad_Select(object sender, DirectEventArgs e)
+        //{
+        //    //1. Obtener el valor seleccionado
+        //    string strEspecialidad = e.ExtraParams["vEspecialidad"];
+        //    sFamilias.DataSource = FamiliasBusiness.ObtenerFamiliasPorEspecialidad(strEspecialidad);
+        //    sFamilias.DataBind();
+        //}
+        ///// <summary>
+        ///// Evento que se lanza al seleccionar una Familia
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>  
+        //public void cmbFamilia_Select(object sender, DirectEventArgs e)
+        //{
+        //    //1. Obtener el valor seleccionado 
+        //    string strFamilia = e.ExtraParams["vFamilia"];
+        //    sSubEspecialidad.DataSource = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorFamilia(strFamilia);
+        //    sSubEspecialidad.DataBind();
+        //}
 
-        [DirectMethod]
-        public void recargar_Familias(string strFamilia)
-        {
-            //1. Obtener el valor seleccionado 
-            sFamilias.DataSource = FamiliasBusiness.ObtenerFamiliasPorEspecialidad(strFamilia);
-            sFamilias.DataBind();
-        }
+        //[DirectMethod]
+        //public void recargar_Familias(string strFamilia)
+        //{
+        //    //1. Obtener el valor seleccionado 
+        //    sFamilias.DataSource = FamiliasBusiness.ObtenerFamiliasPorEspecialidad(strFamilia);
+        //    sFamilias.DataBind();
+        //}
 
-        [DirectMethod]
-        public void recargar_SubEspecialidades(string strSubEspecialidades)
-        {
-            //1. Obtener el valor seleccionado  
-            sSubEspecialidad.DataSource = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorFamilia(strSubEspecialidades);
-            sSubEspecialidad.DataBind();
-        }
+        //[DirectMethod]
+        //public void recargar_SubEspecialidades(string strSubEspecialidades)
+        //{
+        //    //1. Obtener el valor seleccionado  
+        //    sSubEspecialidad.DataSource = SubEspecialidadesBusiness.ObtenerSubEspecialidadesPorFamilia(strSubEspecialidades);
+        //    sSubEspecialidad.DataBind();
+        //}
         #endregion
     }
 }

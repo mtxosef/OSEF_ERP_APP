@@ -2,7 +2,7 @@
 var txtBuscarSucursal_Change = function (textfield, newValue, oldValue, e) {
     App.sCodigosPPTA.clearFilter();
     App.sCodigosPPTA.filter([{ filterFn: function (item) {
-        if (item.get('CodigoMainSaver').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('Descripcion').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
+        if (item.get('CodigoMainSaver').toUpperCase().indexOf(newValue.toUpperCase()) > -1 ) { return true; }
         else { return false; }
     }
     }]);
@@ -13,6 +13,5 @@ var txtBuscarSucursal_Change = function (textfield, newValue, oldValue, e) {
 var gpBuscaCodigos_ItemDblClick = function (gridview, registro, gvhtml, index) {
     window.parent.App.wEmergente.getBody().App.txtfCodigoFalla.setValue(App.sCodigosPPTA.getAt(index).get('CodigoMainSaver'));
     window.parent.App.wEmergente.getBody().App.nfDiasAtencion.setValue(App.sCodigosPPTA.getAt(index).get('Dias'));
-    window.parent.App.wEmergente.getBody().App.txtfTrabajoRequerido.setValue(App.sCodigosPPTA.getAt(index).get('Descripcion'));
     window.parent.App.wAyudaConcepto.hide();
 };

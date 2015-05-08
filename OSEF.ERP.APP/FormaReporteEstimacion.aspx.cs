@@ -517,6 +517,64 @@ namespace OSEF.ERP.APP
             }
         }
 
+        protected void imgbtnPresupuesto_click(object sender, EventArgs e)
+        {
 
+            //Parametros del store procedure
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                try
+                {
+                    using (var comando = new SqlCommand("web_spS_ObtenerREstimacion", conn))
+                    {
+                        using (var adaptador = new SqlDataAdapter(comando))
+                        {
+                            DataTable dt = new DataTable();
+                            adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                            adaptador.SelectCommand.Parameters.Add(@"IDMovimiento", SqlDbType.Int).Value = Convert.ToInt32(strID);
+                            adaptador.Fill(dt);
+
+                            var reporteEstimaciones = new ReportDocument();
+                            reporteEstimaciones.Load(Server.MapPath("reportess/rPresupuesto.rpt"));
+                            reporteEstimaciones.SetDataSource(dt);
+
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
+
+                            //2. Validar si existe el directorio donde se guardaran
+                            if (Directory.Exists(strDireccion))
+                            {
+
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
+
+                            }
+                            else
+                            {
+                                Directory.CreateDirectory(strDireccion);
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                            }
+
+                        } // end using adaptador
+                    } // end using comando
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                    conn.Dispose();
+                }
+            
+        }
     }
 }

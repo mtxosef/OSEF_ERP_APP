@@ -94,6 +94,16 @@
                 <div align="center">
                 <br />
                    
+                      <asp:ImageButton 
+            ID="imgbtnPresupuesto" 
+            runat="server" 
+           OnClick="imgbtnPresupuesto_click"
+            Height="30"
+            Width="30"
+            class="imgs" 
+            ImageUrl="assets/img/controles/PRE.png"/>
+
+
                   <asp:ImageButton 
             ID="imgbtnResumen" 
             runat="server" 

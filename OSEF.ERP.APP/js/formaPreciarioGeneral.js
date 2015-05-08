@@ -92,12 +92,20 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
  
 //Renglones nuevos
 var getRowClass = function (record) {
+
+
     if (record.phantom) {
         return "new-row";
+
     }
 
     if (record.dirty) {
+        App.imgbtnGuardar.setDisabled(false);
         return "dirty-row";
+
+    }
+    else if (record.dirty== false) {
+        App.imgbtnGuardar.setDisabled(true);
     }
 };
 
@@ -250,9 +258,7 @@ var sPreciarioGeneral_Load_Success = function () {
 };
 
 var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-    //    //  App.ccAcciones.commands[0].hide();
-    console.log(grid.getStore().getCount());
-    console.log(rowIndex,'dd');
+
     if (grid.getStore().getCount() - 1 == rowIndex) {
         toolbar.items.get(0).disabled = true;
     }

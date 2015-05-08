@@ -38,8 +38,6 @@ namespace OSEF.APP.BL
 
         #endregion
 
-
-
         #region Eliminar
 
         /// <summary>
@@ -126,8 +124,6 @@ namespace OSEF.APP.BL
 
 
         #endregion
-
-
 
         #region Acciones
 

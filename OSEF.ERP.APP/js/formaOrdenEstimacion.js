@@ -45,6 +45,8 @@ var imgbtnFormaNuevo_Click = function () {
     App.tfHoraFinActividad.setValue('');
     App.tfHoraFinActividad.setReadOnly(false);
     App.cmbCuadrilla.setValue('');
+    App.tHoraOrigen.setValue('');
+    App.tHoraOrigen.setReadOnly(false);
 
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
@@ -94,6 +96,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
         if (tablero == 'REPORTES & ESTIMACIONES') {
             App.cmbMov.select('Mesa de reporte');
             App.cmbMov.setReadOnly(true);
+          
         }
         else {
             App.cmbMov.select('Orden de Cambio');
@@ -114,17 +117,23 @@ var sMov_Change = function (combo) {
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
         App.cIntExt.hidden = false;
+
+        App.fufNormal.hidden=false;
+        App.imgNormal.hidden = false;
     }
 
     if (combo.value.trim() == 'Orden de Cambio') {
         Ext.util.Cookies.set('cookieMovimientoIdentificador', 'Obra');
-        App.pDatosReporte.hide(); 
+        App.pDatosReporte.hide();
         App.pDatosReporte.tab.hide();
         App.pDatosReporteDos.tab.hide();
         App.pDatosReporte.hide();
         App.cIntExt.hidden = true;
     }
 };
+
+
+
 
 //Evento que se lanza al seleccionar un elemento del ComboBox de Movimiento
 var cmbMov_Select = function (combobox, registro) {
@@ -237,6 +246,8 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
+        //4. Recargar el tablero
+        window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     }
 };
 
@@ -375,6 +386,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.cmbDivision.setReadOnly(true);
         App.dfFechaOrigen.setReadOnly(true);
         App.dfFechaMaxima.setReadOnly(true);
+        App.tHoraOrigen.setReadOnly(true);
         App.nfDiasAtencion.setReadOnly(true);
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
@@ -467,6 +479,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.gpOrdenEstimacion.reconfigure();
 
     }
+    //4. Recargar el tablero
+    window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
 
 
 };
@@ -508,6 +522,7 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.dfFechaFinActividad.setReadOnly(true);
     App.tfHoraFinActividad.setReadOnly(true);
     App.cmbCuadrilla.setReadOnly(true);
+    App.tHoraOrigen.setReadOnly(true);
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     App.imgbtnImprimir.setDisabled(true);
@@ -572,6 +587,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
         App.dfFechaOrigen.setValue(registro[0].get('FechaOrigen'));
+        App.tHoraOrigen.setValue(registro[0].get('HoraOrigen'));
         App.dfFechaMaxima.setValue(registro[0].get('FechaMaximaAtencion'));
         App.nfDiasAtencion.setValue(registro[0].get('DiasAtencion'));
         App.txtfReporta.setValue(registro[0].get('Reporto'));
@@ -628,8 +644,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
     //Si es Reporte Y NO ESTA AFECTADO
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR'
-         && registro[0].get('Mov').trim() == "Mesa de reporte") {
-
+         && registro[0].get('Mov').trim() == "Mesa de reporte") { 
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
@@ -642,6 +657,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
         App.dfFechaOrigen.setValue(registro[0].get('FechaOrigen'));
+        App.tHoraOrigen.setValue(registro[0].get('HoraOrigen'));
         App.dfFechaMaxima.setValue(registro[0].get('FechaMaximaAtencion'));
         App.nfDiasAtencion.setValue(registro[0].get('DiasAtencion'));
         App.txtfReporta.setValue(registro[0].get('Reporto'));
@@ -729,6 +745,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfNoReporte.setReadOnly(true);
         App.cmbDivision.setReadOnly(true);
         App.dfFechaOrigen.setReadOnly(true);
+        App.tHoraOrigen.setReadOnly(true);
         App.dfFechaMaxima.setReadOnly(true);
         App.nfDiasAtencion.setReadOnly(true);
         App.txtfReporta.setReadOnly(true);
@@ -813,7 +830,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0 && storeDetalle.get('IntExt').length != 0) {
                 //Obtener el Renglon anterior
-                var auxRenglonAnterior = App.sConceptos.getCount()-1;
+                var auxRenglonAnterior = App.sConceptos.getCount() - 1;
                 var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
                 //Insertar un nuevo registro
                 App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
@@ -1688,5 +1705,91 @@ function PrimerRenglonDetalle() {
             }
             }]);
         }
-       
+
+};
+
+
+
+//Imagen Preview Normal
+var fufNormal_Change = function (event, control, txtReporte) {
+
+    if (txtReporte.length != 0) {
+
+        var filePath = control.value;
+        //Se declara un arreglo con las extenciones que serán permitidas
+        var validFilesTypes = ["jpg", "jpeg", "png", "gif"];
+
+        //Se extrae la cadena a apartir del punto
+        var ext = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+        //Se declara la bandera falsa
+        var isValidFile = false;
+        //se recorre el arreglo que contiene las extenciones validas y se compara
+        for (var i = 0; i < validFilesTypes.length; i++) {
+            //Si la extenvion es igual a la valida la variable es igual a true
+            if (ext == validFilesTypes[i]) {
+                isValidFile = true;
+                break;
+            }
+        }
+        //si no es valida no la deja pasar y manda el mensaje ademas de poner en blanco el control
+        if (!isValidFile) {
+            filePath.value = null;
+            control.reset();
+
+            Ext.Msg.show({
+                id: 'msgPreciarios',
+                title: 'Advertencia Preciarios',
+                msg: "Extensión inválida, sólo archivos con extensión:\n\n" + validFilesTypes.join(", "),
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+
+        if (isValidFile) {
+            App.imgNormal.setImageUrl(URL.createObjectURL(event.target.files[0]));
+
+            if (App.sOrdenEstimacion.getAt(0) != undefined) {
+                App.sOrdenEstimacion.getAt(0).set('RutaImagen', URL.createObjectURL(event.target.files[0]));
+            }
+
+        }
+        else {
+            return isValidFile;
+        }
+    }
+    else {
+            Ext.Msg.show({
+                id: 'msgOrdenEstimacion',
+                title: 'Advertencia',
+                msg: "Es necesario ingresar un Número de Reporte.",
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+
     };
+
+
+    var PopupPic = function () {
+
+        if (App.sOrdenEstimacion.getAt(0) != undefined) {
+            var direccion = App.sOrdenEstimacion.getAt(0).get('RutaImagen');
+            window.open(direccion, "", "resizable=1,HEIGHT=500,WIDTH=600");
+        }
+        else {
+            Ext.Msg.show({
+                id: 'msgOrdenEstimacion',
+                title: 'Advertencia',
+                msg: "Debes de guardar el movimiento antes",
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+
+    } 

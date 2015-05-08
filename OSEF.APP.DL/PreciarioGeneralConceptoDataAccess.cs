@@ -458,7 +458,8 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 10; 
+                sqlpID.Size = 10;
+                sqlpID.Value = iPreciarioConcepto.ID;
 
                 //2. Declarar los parametros
                 SqlParameter sqlpClave = new SqlParameter();

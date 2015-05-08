@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
+    <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/formaOrdenEstimacion.js"></script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -53,6 +55,7 @@
                         <ext:ModelField Name="Reporte" Type="String" />
                         <ext:ModelField Name="Division" Type="String" />
                         <ext:ModelField Name="FechaOrigen" Type="Date" />
+                        <ext:ModelField Name="HoraOrigen" Type="Date" />
                         <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
                         <ext:ModelField Name="DiasAtencion" Type="Float" />
                         <ext:ModelField Name="Reporto" Type="String" />
@@ -69,6 +72,7 @@
                         <ext:ModelField Name="Zona" Type="String" />
                         <ext:ModelField Name="Cuadrilla" Type="String" />
                         <ext:ModelField Name="ImporteFinal" Type="Float" />
+                        <ext:ModelField Name="RutaImagen" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -140,8 +144,6 @@
                                         <ext:Parameter Name="Sucursal" Value="App.txtfSucursalID.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="diasAtencion" Value="App.nfDiasAtencion.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="fechaMaxima" Value="App.dfFechaMaxima.getValue()" Mode="Raw" />
-
-                                        
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
@@ -554,6 +556,7 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
+
                                         <ext:FieldContainer 
                                             ID="fc1"
                                             runat="server"
@@ -567,8 +570,7 @@
                                                     ID="txtfNoReporte" 
                                                     runat="server" 
                                                     Width="80" 
-                                                    Margins="0 3 0 0"
-                                                    Text="">
+                                                    Margins="0 3 0 0">
                                                     <Listeners>
                                                         <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                                                     </Listeners>
@@ -582,7 +584,6 @@
                                                     ReadOnly="true"
                                                     Margins="0 3 0 0"
                                                     Text="">
-
                                                     <RightButtons>
                                                         <ext:Button 
                                                             ID="btnBuscaCodigoFalla" 
@@ -594,13 +595,11 @@
                                                             </Listeners>
                                                         </ext:Button>
                                                     </RightButtons>
-                                                 <%--   <Listeners>
-                                                        <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                                    </Listeners>--%>
                                                 </ext:TextField>
 
                                             </Items>
                                         </ext:FieldContainer>
+
                                         <ext:FieldContainer 
                                             ID="fcFechaOrigen"
                                             runat="server"
@@ -632,7 +631,28 @@
                                                         <Change Handler="sumarDiasAtencion(App.nfDiasAtencion.getValue(),this.getValue());" />
                                                     </Listeners>
                                                 </ext:DateField>
-                                                <ext:DateField
+                                                <ext:TimeField 
+                                                    ID="tHoraOrigen" 
+                                                    runat="server"  
+                                                    Increment="15"
+                                                     Margins="0 3 0 0" 
+                                                     LabelWidth="110"
+                                                    FieldLabel="Hora de Origen" 
+                                                    Width="360"
+                                                    Format="H:mm"
+                                                    Disabled="false" />
+                                            </Items>
+                                        </ext:FieldContainer>
+
+                                         <ext:FieldContainer 
+                                            ID="fcAtencion"
+                                            runat="server"
+                                            FieldLabel="Fecha Atencion"
+                                            LabelWidth="120"
+                                            AnchorHorizontal="100%"
+                                            Layout="HBoxLayout">
+                                            <Items>
+                                            <ext:DateField
                                                     ID="dfFechaMaxima"
                                                     runat="server"
                                                     EmptyText="Fecha Máxima Atención"
@@ -641,7 +661,6 @@
                                                     Vtype="daterange"
                                                     Margins="0 3 0 0" 
                                                     Disabled="true">
-                                                   
                                                     <PickerOptions 
                                                         ID="poFechaMaxima"
                                                         runat="server"
@@ -658,14 +677,15 @@
                                                     ID="nfDiasAtencion"
                                                     runat="server"
                                                     AllowDecimals="true"
-                                                    Width="157"
+                                                    Width="360"
                                                     Text="1"
                                                     AllowExponential="false"
                                                     DecimalPrecision="2"
                                                     DecimalSeparator="."
                                                     MaxLength="10"
                                                     Disabled="true"
-                                                    EmptyText="Dias Atención"
+                                                    LabelWidth="110"
+                                                    FieldLabel="Dias Atención"
                                                     EnforceMaxLength="true"
                                                     MaxValue="999999999"
                                                     MinValue="0"
@@ -689,7 +709,6 @@
                                                     ID="txtfTrabajoRequerido" 
                                                     runat="server" 
                                                     Width="563" 
-                                                    ReadOnly="true"
                                                     EmptyText="Descripción corta del trabajo requerido"
                                                     Margins="0 3 0 0"
                                                     MaxLength="200"
@@ -723,6 +742,7 @@
                                                 </ext:TextField>
                                             </Items>
                                         </ext:FieldContainer>
+
                                         <ext:FieldContainer 
                                             ID="FieldContainer1"
                                             runat="server"
@@ -801,6 +821,28 @@
                                             </Items>
                                         </ext:FieldContainer>
 
+                                    </Items>
+                                </ext:FieldSet>
+                            </Items>
+                        </ext:Panel>
+                        <%--Tercer panel de para los datos del reporte--%>
+                        <ext:Panel 
+                            ID="pDatosReporteDos" 
+                            runat="server" 
+                            Title="Tiempos Reporte" 
+                            BodyPadding="5"
+                            Hidden="true"
+                            Width="900"
+                            Height="206" 
+                            AutoScroll="false">
+                            <Items>
+                                <ext:FieldSet 
+                                    ID="FieldSet1" 
+                                    runat="server" 
+                                    Title="Tiempos Reporte" 
+                                    DefaultAnchor="100%"
+                                    AutoScroll="false">
+                                    <Items>
                                         <ext:FieldContainer 
                                             ID="fcRegistros"
                                             runat="server"
@@ -825,8 +867,8 @@
                                                     ID="cmbTieneReporte"
                                                     runat="server"
                                                     FieldLabel="¿Tiene Reporte?"
-                                                    LabelWidth="110" 
-                                                    Width="360"
+                                                   LabelWidth="120" 
+                                                    Width="300"
                                                     Margins="0 3 0 0"
                                                     Editable="false"
                                                     AllowBlank="false">
@@ -838,30 +880,6 @@
                                             </Items>
                                         </ext:FieldContainer>
 
-
-                                    </Items>
-                                </ext:FieldSet>
-                            </Items>
-                        </ext:Panel>
-                        <%--Tercer panel de para los datos del reporte--%>
-                        <ext:Panel 
-                            ID="pDatosReporteDos" 
-                            runat="server" 
-                            Title="Tiempos Reporte" 
-                            BodyPadding="5"
-                            Hidden="true"
-                            Width="900"
-                            Height="206" 
-                            AutoScroll="false">
-                            <Items>
-                                <ext:FieldSet 
-                                    ID="FieldSet1" 
-                                    runat="server" 
-                                    Title="Tiempos Reporte" 
-                                    DefaultAnchor="100%"
-                                    AutoScroll="false">
-                                    <Items>
-                                        
                                         <ext:FieldContainer 
                                             ID="FieldContainer2"
                                             runat="server"
@@ -937,8 +955,32 @@
                                                     Width="300"
                                                     Format="H:mm"> 
                                                 </ext:TimeField> 
+                                                <ext:FileUploadField 
+                                                    ID="fufNormal"
+                                                    runat="server"
+                                                    Width="10" 
+                                                    Icon="Attach"
+                                                    ButtonText="Reporte"
+                                                    Margins="0 75 0 0"
+                                                    AllowBlank="false">
+                                                    <Listeners>
+                                                        <Change Handler="fufNormal_Change(event,this,App.txtfNoReporte.getValue());"  ></Change>
+                                                        
+                                                    </Listeners>
+                                                </ext:FileUploadField>
+                                                <ext:Image 
+                                                    ID="imgNormal"
+                                                    runat="server"
+                                                    Hidden="true"
+                                                    Height="100"
+                                                    Cls="img-resize"
+                                                    Width="100">
+                                                    <Listeners>
+                                                        <Click Fn="PopupPic"></Click>
+                                                    </Listeners>
+                                                    </ext:Image>
                                             </Items>
-                                        </ext:FieldContainer>
+                                        </ext:FieldContainer> 
                                     </Items>
                                 </ext:FieldSet>
                             </Items>
@@ -1286,7 +1328,6 @@
                 </ext:Toolbar>
             </BottomBar>
         </ext:FormPanel>
-
         <ext:Window 
             ID="wEmergente"
             runat="server"
@@ -1301,7 +1342,6 @@
                 <LoadMask ShowMask="true" Msg="Cargando..." />
             </Loader>
         </ext:Window>
-
     </form>
 </body>
 </html>

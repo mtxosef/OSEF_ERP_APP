@@ -211,6 +211,7 @@
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnRevisionesPorID.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesSinPreciario.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesDisponibles.sql
+:r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesCR.sql
 -- Sucursales (Insertar)
 :r c:\SqlServerScripts\Insertar\Sucursales\web_spI_InsertarSucursal.sql
 -- Sucursales (Modificar)
@@ -520,33 +521,5 @@
 --Codigos PPTA(Borrar) 
 :r c:\SqlServerScripts\Borrar\CodigosPPTA\web_spD_BorrarCodigoPPTA.sql  
 ------------------------------------------------------------------------------------------------------------------------------
---Especialidades(Consultar)
-:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidades.sql 
-:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidadesEnUsoPorID.sql 
-:r c:\SqlServerScripts\Consultar\Especialidades\web_spS_ObtenerEspecialidadesPorID.sql 
---Especialidades(Insertar) 
-:r c:\SqlServerScripts\Insertar\Especialidades\web_spI_InsertarEspecialidades.sql  
---Especialidades(Borrar) 
-:r c:\SqlServerScripts\Borrar\Especialidades\web_spD_BorrarEspecialidades.sql  
-
-------------------------------------------------------------------------------------------------------------------------------
---Familias(Consultar)
-:r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamilias.sql 
-:r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamiliasEnUsoPorID.sql 
-:r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamiliasPorEspecialidad.sql  
-:r c:\SqlServerScripts\Consultar\Familias\web_spS_ObtenerFamiliasPorID.sql   
---Familias(Insertar) 
-:r c:\SqlServerScripts\Insertar\Familias\web_spI_InsertarFamilias.sql  
---Familias(Borrar) 
-:r c:\SqlServerScripts\Borrar\Familias\web_spD_BorrarFamilias.sql  
-------------------------------------------------------------------------------------------------------------------------------
---SubEspecialidades(Consultar)
-:r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidades.sql 
-:r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidadesEnUsoPorID.sql 
-:r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidadesPorFamilia.sql 
-:r c:\SqlServerScripts\Consultar\SubEspecialidades\web_spS_ObtenerSubEspecialidadesPorID.sql 
---SubEspecialidades(Insertar) 
-:r c:\SqlServerScripts\Insertar\SubEspecialidades\web_spI_InsertarSubEspecialidades.sql  
---SubEspecialidades(Borrar) 
-:r c:\SqlServerScripts\Borrar\SubEspecialidades\web_spD_BorrarSubEspecialidades.sql  
-
+-- Reporte de Cuadrillas
+:r c:\SqlServerScripts\Reportes\TableroReportes\web_spS_ObtenerReportePorCuadrilla.sql

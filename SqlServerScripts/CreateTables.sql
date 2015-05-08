@@ -666,33 +666,9 @@ CREATE TABLE GeneradorVolumetriaD(
 	Total						DECIMAL(10,2)	NOT NULL
 )
 
-CREATE TABLE Especialidades(
-	ID							CHAR(10) NOT NULL PRIMARY KEY,
-	Nombre						VARCHAR(250) NOT NULL
-)
-
-CREATE TABLE Familias(
-	ID							CHAR(10) NOT NULL PRIMARY KEY,
-	Nombre						VARCHAR(500) NOT NULL,
-	Especialidad				CHAR(10) NOT NULL FOREIGN KEY REFERENCES Especialidades(ID)
-
-)
-
-CREATE TABLE SubEspecialidades(
-	ID							CHAR(10) NOT NULL PRIMARY KEY,
-	Nombre						VARCHAR(250) NOT NULL,
-	Familia						CHAR(10) NOT NULL FOREIGN KEY REFERENCES Familias(ID)
-)
-
 CREATE TABLE CodigoPPTA(
 	CodigoMainSaver				CHAR(50) NOT NULL PRIMARY KEY,
-	Especialidad				CHAR(10) NOT NULL FOREIGN KEY REFERENCES Especialidades(ID),
-	Familia						CHAR(10) NOT NULL FOREIGN KEY REFERENCES Familias(ID),
-	SubEspecialidad				CHAR(10) NOT NULL FOREIGN KEY REFERENCES SubEspecialidades(ID), 
-	Descripcion					VARCHAR(500) NULL,
-	Dias						CHAR(5) NULL,
-	Prioridad					CHAR(2) NULL,
-	TiempoEstimado				CHAR(5) NULL
+	Dias						CHAR(5) NULL
 )
 --DROP TABLE Menus
 --DROP TABLE GruposMenu
@@ -735,8 +711,7 @@ CREATE TABLE CodigoPPTA(
 --DROP TABLE Usuarios
 --DROP TABLE OrdenesEstimaciones
 --DROP TABLE OrdenesEstimacionesD
---DROP TABLE SubEspecialidades
---DROP TABLE Familias
---DROP TABLE Especialidades
 --DROP TABLE CodigoPPTA
+
+
 

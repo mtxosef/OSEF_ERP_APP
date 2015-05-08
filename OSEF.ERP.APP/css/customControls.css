@@ -73,3 +73,8 @@ a /*Quita la decoración de los enlaces*/
     margin-top: 0px;
     padding-top: 3px;
 }
+
+.img-resize
+{
+        cursor:pointer; 
+} 

@@ -217,51 +217,51 @@ namespace OSEF.APP.DL
                 sqlpCodigoMainSaver.SqlDbType = SqlDbType.Char;
                 sqlpCodigoMainSaver.Value = iCodigoFallas.CodigoMainSaver;
                  
-                SqlParameter sqlpEspecialidad = new SqlParameter();
-                sqlpEspecialidad.ParameterName = "@Especialidad";
-                sqlpEspecialidad.SqlDbType = SqlDbType.Char;
-                sqlpEspecialidad.Value = iCodigoFallas.Especialidad;
+                //SqlParameter sqlpEspecialidad = new SqlParameter();
+                //sqlpEspecialidad.ParameterName = "@Especialidad";
+                //sqlpEspecialidad.SqlDbType = SqlDbType.Char;
+                //sqlpEspecialidad.Value = iCodigoFallas.Especialidad;
 
-                SqlParameter sqlpFamilia = new SqlParameter();
-                sqlpFamilia.ParameterName = "@Familia";
-                sqlpFamilia.SqlDbType = SqlDbType.Char;
-                sqlpFamilia.Value = iCodigoFallas.Familia;
+                //SqlParameter sqlpFamilia = new SqlParameter();
+                //sqlpFamilia.ParameterName = "@Familia";
+                //sqlpFamilia.SqlDbType = SqlDbType.Char;
+                //sqlpFamilia.Value = iCodigoFallas.Familia;
 
-                SqlParameter sqlpSubEspecialidades = new SqlParameter();
-                sqlpSubEspecialidades.ParameterName = "@SubEspecialidad";
-                sqlpSubEspecialidades.SqlDbType = SqlDbType.Char;
-                sqlpSubEspecialidades.Value = iCodigoFallas.Subespecialidad;
+                //SqlParameter sqlpSubEspecialidades = new SqlParameter();
+                //sqlpSubEspecialidades.ParameterName = "@SubEspecialidad";
+                //sqlpSubEspecialidades.SqlDbType = SqlDbType.Char;
+                //sqlpSubEspecialidades.Value = iCodigoFallas.Subespecialidad;
 
-                SqlParameter sqlpDescripcion = new SqlParameter();
-                sqlpDescripcion.ParameterName = "@Descripcion";
-                sqlpDescripcion.SqlDbType = SqlDbType.Char;
-                sqlpDescripcion.Value = iCodigoFallas.Descripcion;
+                //SqlParameter sqlpDescripcion = new SqlParameter();
+                //sqlpDescripcion.ParameterName = "@Descripcion";
+                //sqlpDescripcion.SqlDbType = SqlDbType.Char;
+                //sqlpDescripcion.Value = iCodigoFallas.Descripcion;
 
                 SqlParameter sqlpDias = new SqlParameter();
                 sqlpDias.ParameterName = "@Dias";
                 sqlpDias.SqlDbType = SqlDbType.Char;
                 sqlpDias.Value = iCodigoFallas.Dias;
 
-                SqlParameter sqlpPrioridad = new SqlParameter();
-                sqlpPrioridad.ParameterName = "@Prioridad";
-                sqlpPrioridad.SqlDbType = SqlDbType.Char;
-                sqlpPrioridad.Value = iCodigoFallas.Prioridad;
+                //SqlParameter sqlpPrioridad = new SqlParameter();
+                //sqlpPrioridad.ParameterName = "@Prioridad";
+                //sqlpPrioridad.SqlDbType = SqlDbType.Char;
+                //sqlpPrioridad.Value = iCodigoFallas.Prioridad;
 
-                SqlParameter sqlpTiempoEstimado = new SqlParameter();
-                sqlpTiempoEstimado.ParameterName = "@TiempoEstimado";
-                sqlpTiempoEstimado.SqlDbType = SqlDbType.Char;
-                sqlpTiempoEstimado.Value = iCodigoFallas.TiempoEstimado;
+                //SqlParameter sqlpTiempoEstimado = new SqlParameter();
+                //sqlpTiempoEstimado.ParameterName = "@TiempoEstimado";
+                //sqlpTiempoEstimado.SqlDbType = SqlDbType.Char;
+                //sqlpTiempoEstimado.Value = iCodigoFallas.TiempoEstimado;
 
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpCodigoMainSaver);
-                sqlcComando.Parameters.Add(sqlpEspecialidad);
-                sqlcComando.Parameters.Add(sqlpFamilia);
-                sqlcComando.Parameters.Add(sqlpSubEspecialidades);
-                sqlcComando.Parameters.Add(sqlpDescripcion);
+                //sqlcComando.Parameters.Add(sqlpEspecialidad);
+                //sqlcComando.Parameters.Add(sqlpFamilia);
+                //sqlcComando.Parameters.Add(sqlpSubEspecialidades);
+                //sqlcComando.Parameters.Add(sqlpDescripcion);
                 sqlcComando.Parameters.Add(sqlpDias);
-                sqlcComando.Parameters.Add(sqlpPrioridad);
-                sqlcComando.Parameters.Add(sqlpTiempoEstimado); 
+                //sqlcComando.Parameters.Add(sqlpPrioridad);
+                //sqlcComando.Parameters.Add(sqlpTiempoEstimado); 
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -307,50 +307,50 @@ namespace OSEF.APP.DL
                 sqlpCodigoMainSaver.Size = 50;
                 sqlpCodigoMainSaver.Value = iCodigoFallas.CodigoMainSaver;
 
-                SqlParameter sqlpEspecialidad = new SqlParameter();
-                sqlpEspecialidad.ParameterName = "@Especialidad";
-                sqlpEspecialidad.SqlDbType = SqlDbType.Char;
-                sqlpEspecialidad.Value = iCodigoFallas.Especialidad;
+                //SqlParameter sqlpEspecialidad = new SqlParameter();
+                //sqlpEspecialidad.ParameterName = "@Especialidad";
+                //sqlpEspecialidad.SqlDbType = SqlDbType.Char;
+                //sqlpEspecialidad.Value = iCodigoFallas.Especialidad;
 
-                SqlParameter sqlpFamilia = new SqlParameter();
-                sqlpFamilia.ParameterName = "@Familia";
-                sqlpFamilia.SqlDbType = SqlDbType.Char;
-                sqlpFamilia.Value = iCodigoFallas.Familia;
+                //SqlParameter sqlpFamilia = new SqlParameter();
+                //sqlpFamilia.ParameterName = "@Familia";
+                //sqlpFamilia.SqlDbType = SqlDbType.Char;
+                //sqlpFamilia.Value = iCodigoFallas.Familia;
 
-                SqlParameter sqlpSubEspecialidad = new SqlParameter();
-                sqlpSubEspecialidad.ParameterName = "@SubEspecialidad";
-                sqlpSubEspecialidad.SqlDbType = SqlDbType.Char;
-                sqlpSubEspecialidad.Value = iCodigoFallas.Subespecialidad;
+                //SqlParameter sqlpSubEspecialidad = new SqlParameter();
+                //sqlpSubEspecialidad.ParameterName = "@SubEspecialidad";
+                //sqlpSubEspecialidad.SqlDbType = SqlDbType.Char;
+                //sqlpSubEspecialidad.Value = iCodigoFallas.Subespecialidad;
 
-                SqlParameter sqlpDescripcion = new SqlParameter();
-                sqlpDescripcion.ParameterName = "@Descripcion";
-                sqlpDescripcion.SqlDbType = SqlDbType.Char;
-                sqlpDescripcion.Value = iCodigoFallas.Descripcion;
+                //SqlParameter sqlpDescripcion = new SqlParameter();
+                //sqlpDescripcion.ParameterName = "@Descripcion";
+                //sqlpDescripcion.SqlDbType = SqlDbType.Char;
+                //sqlpDescripcion.Value = iCodigoFallas.Descripcion;
 
                 SqlParameter sqlpDias = new SqlParameter();
                 sqlpDias.ParameterName = "@Dias";
                 sqlpDias.SqlDbType = SqlDbType.Char;
                 sqlpDias.Value = iCodigoFallas.Dias;
 
-                SqlParameter sqlpPrioridad = new SqlParameter();
-                sqlpPrioridad.ParameterName = "@Prioridad";
-                sqlpPrioridad.SqlDbType = SqlDbType.Char;
-                sqlpPrioridad.Value = iCodigoFallas.Prioridad;
+                //SqlParameter sqlpPrioridad = new SqlParameter();
+                //sqlpPrioridad.ParameterName = "@Prioridad";
+                //sqlpPrioridad.SqlDbType = SqlDbType.Char;
+                //sqlpPrioridad.Value = iCodigoFallas.Prioridad;
 
-                SqlParameter sqlpTiempoEstimado = new SqlParameter();
-                sqlpTiempoEstimado.ParameterName = "@TiempoEstimado";
-                sqlpTiempoEstimado.SqlDbType = SqlDbType.Char;
-                sqlpTiempoEstimado.Value = iCodigoFallas.TiempoEstimado;
+                //SqlParameter sqlpTiempoEstimado = new SqlParameter();
+                //sqlpTiempoEstimado.ParameterName = "@TiempoEstimado";
+                //sqlpTiempoEstimado.SqlDbType = SqlDbType.Char;
+                //sqlpTiempoEstimado.Value = iCodigoFallas.TiempoEstimado;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpCodigoMainSaver);
-                sqlcComando.Parameters.Add(sqlpEspecialidad);
-                sqlcComando.Parameters.Add(sqlpFamilia);
-                sqlcComando.Parameters.Add(sqlpSubEspecialidad);
-                sqlcComando.Parameters.Add(sqlpDescripcion);
+                //sqlcComando.Parameters.Add(sqlpEspecialidad);
+                //sqlcComando.Parameters.Add(sqlpFamilia);
+                //sqlcComando.Parameters.Add(sqlpSubEspecialidad);
+                //sqlcComando.Parameters.Add(sqlpDescripcion);
                 sqlcComando.Parameters.Add(sqlpDias);
-                sqlcComando.Parameters.Add(sqlpPrioridad);
-                sqlcComando.Parameters.Add(sqlpTiempoEstimado);
+                //sqlcComando.Parameters.Add(sqlpPrioridad);
+                //sqlcComando.Parameters.Add(sqlpTiempoEstimado);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();

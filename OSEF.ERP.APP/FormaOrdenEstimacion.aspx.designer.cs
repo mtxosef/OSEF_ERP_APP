@@ -472,6 +472,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.DateField dfFechaOrigen;
         
         /// <summary>
+        /// Control tHoraOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TimeField tHoraOrigen;
+        
+        /// <summary>
+        /// Control fcAtencion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fcAtencion;
+        
+        /// <summary>
         /// Control dfFechaMaxima.
         /// </summary>
         /// <remarks>
@@ -571,6 +589,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mCuadrillas;
         
         /// <summary>
+        /// Control pDatosReporteDos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel pDatosReporteDos;
+        
+        /// <summary>
+        /// Control FieldSet1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet FieldSet1;
+        
+        /// <summary>
         /// Control fcRegistros.
         /// </summary>
         /// <remarks>
@@ -596,24 +632,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbTieneReporte;
-        
-        /// <summary>
-        /// Control pDatosReporteDos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Panel pDatosReporteDos;
-        
-        /// <summary>
-        /// Control FieldSet1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldSet FieldSet1;
         
         /// <summary>
         /// Control FieldContainer2.
@@ -668,6 +686,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TimeField tfHoraFinActividad;
+        
+        /// <summary>
+        /// Control fufNormal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FileUploadField fufNormal;
+        
+        /// <summary>
+        /// Control imgNormal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Image imgNormal;
         
         /// <summary>
         /// Control pDetalle.

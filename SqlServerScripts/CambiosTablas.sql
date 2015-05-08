@@ -104,3 +104,7 @@ ALTER TABLE OrdenesEstimaciones DROP COLUMN Zona
 ALTER TABLE OrdenesEstimaciones DROP COLUMN Atiende 
 ALTER TABLE GeneradorOrdenEstimacionD DROP COLUMN Numero 
 ALTER TABLE GeneradorVolumetriaD DROP COLUMN Numero 
+--Cambios Giovanni Flores 06 de Mayo
+ALTER TABLE OrdenesEstimaciones ADD HoraOrigen DATETIME NULL
+--Cambios Giovanni Flores 07 de Mayo
+ALTER TABLE OrdenesEstimaciones ADD RutaImagen VARCHAR(500) NULL

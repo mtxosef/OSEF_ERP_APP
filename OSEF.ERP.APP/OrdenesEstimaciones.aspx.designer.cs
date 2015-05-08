@@ -85,6 +85,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ToolbarSpacer tbsOrdenesCambio;
         
         /// <summary>
+        /// Control cCorreoEnviado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cCorreoEnviado;
+        
+        /// <summary>
+        /// Control imgbtnGenerador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnGenerador;
+        
+        /// <summary>
         /// Control imgbtnActualizar.
         /// </summary>
         /// <remarks>
@@ -130,24 +148,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mOrdenesEstimaciones;
         
         /// <summary>
-        /// Control cMovimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cMovimiento;
-        
-        /// <summary>
-        /// Control cmbMovimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbMovimiento;
-        
-        /// <summary>
         /// Control cReporte.
         /// </summary>
         /// <remarks>
@@ -164,24 +164,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtReporte;
-        
-        /// <summary>
-        /// Control cObservaciones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cObservaciones;
-        
-        /// <summary>
-        /// Control cReporta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cReporta;
         
         /// <summary>
         /// Control cSucursal.
@@ -220,6 +202,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mSucursales;
         
         /// <summary>
+        /// Control cReporta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cReporta;
+        
+        /// <summary>
+        /// Control cTrabajoRequerido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cTrabajoRequerido;
+        
+        /// <summary>
         /// Control dcFechaOrigen.
         /// </summary>
         /// <remarks>
@@ -236,6 +236,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ComboBox cmbFechaOrigen;
+        
+        /// <summary>
+        /// Control dcHoraOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DateColumn dcHoraOrigen;
         
         /// <summary>
         /// Control dcFechaMaxima.
@@ -256,22 +265,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox ComboBox1;
         
         /// <summary>
-        /// Control cEstatus.
+        /// Control cObservaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cEstatus;
-        
-        /// <summary>
-        /// Control cmbFiltroEstatus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbFiltroEstatus;
+        protected global::Ext.Net.Column cObservaciones;
         
         /// <summary>
         /// Control cZona.
@@ -319,13 +319,31 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mCuadrillas;
         
         /// <summary>
-        /// Control cTrabajoRequerido.
+        /// Control cTieneReporte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cTrabajoRequerido;
+        protected global::Ext.Net.Column cTieneReporte;
+        
+        /// <summary>
+        /// Control cMovimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cMovimiento;
+        
+        /// <summary>
+        /// Control cmbMovimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbMovimiento;
         
         /// <summary>
         /// Control cUsuario.
@@ -362,6 +380,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model mUsuarios;
+        
+        /// <summary>
+        /// Control cEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cEstatus;
+        
+        /// <summary>
+        /// Control cmbFiltroEstatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbFiltroEstatus;
         
         /// <summary>
         /// Control gvOrdenesEstimaciones.

@@ -23,14 +23,14 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerEstimacionPorMovimiento' AND
+			WHERE  name = 'web_spS_ObtenerReportePorCuadrilla' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerEstimacionPorMovimiento
+	DROP PROCEDURE web_spS_ObtenerReportePorCuadrilla
 GO
 
-CREATE PROCEDURE web_spS_ObtenerEstimacionPorMovimiento
+CREATE PROCEDURE web_spS_ObtenerReportePorCuadrilla
 	-- Add the parameters for the stored procedure here
-	@IDMovimiento int
+		@CUADRILLA CHAR(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -39,33 +39,30 @@ BEGIN
 
     -- Insert statements for procedure here
 		SELECT 
-		--ID DE MOVIMIENTO Y CONCEPTOS
-		OE.ID,OE.ImporteTotal TOTALFINAL, OE.Observaciones OBRA,
-		OED.ConceptoID,OED.Cantidad, OED.Precio,OED.Importe,OED.IntExt,
+		--DATOS DEL REPORTE
+		OE.Reporte,
 		--Datos de la sucursal
-		S.CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
-		--Datos del concepto
-		PGC.CLAVE,PGC.Descripcion DescripcionPreGenConceptos,OED.Cantidad,OED.Unidad,PGCAT.Descripcion DescripcionPreGenCat
-		--Encabezado del movimiento(No del reporte)
+		S.CR,
+		S.Nombre Sucursal,
+		--DATOS DEL REPORTE 2
+		OE.FechaOrigen,
+		OE.HoraOrigen,
+		OE.Reporto,
+		OE.TrabajoRequerido,
+		OE.FechaMaximaAtencion,
+		OE.Estatus,
+		S.DireccionZona,
+		--DATOS DEL REPORTE 3
+		C.Descripcion
+		
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
-		LEFT JOIN OrdenesEstimacionesD OED
-		ON OE.ID = OED.ID
-		-- Nos trameos los datos complementarios del concepto
-		LEFT JOIN PreciariosGeneralesConceptos PGC 
-		ON OED.ConceptoID = PGC.ID
-		-- Nos trameos los categoria(partida) del concepto
-		LEFT JOIN PreciariosGeneralesCategorias PGCAT 
-		ON PGC.Categoria = PGCAT.ID
+		LEFT JOIN Cuadrillas C
+		ON OE.Cuadrilla = C.ID
 		-- Nos trameos los datos de la sucursal
 		LEFT JOIN Sucursales S
 		ON S.ID = OE.Sucursal
-		LEFT JOIN Municipios M
-		ON M.ID =  S.Municipio
-		LEFT JOIN Estados E
-		ON E.ID =  S.Estado
-		LEFT JOIN Colonias C
-		ON C.ID = S.Colonia
-		WHERE OE.ID = @IDMovimiento;
+		
+		WHERE OE.Cuadrilla = @CUADRILLA;
 END
 GO

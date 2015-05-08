@@ -35,16 +35,7 @@
             <ext:Model ID="mCodigoPPTA" runat="server" IDProperty="CodigoMainSaver">
                 <Fields>
                     <ext:ModelField Name="CodigoMainSaver" Type="String" />
-                    <ext:ModelField Name="Especialidad" Type="String" />
-                    <ext:ModelField Name="Familia" Type="String" />
-                    <ext:ModelField Name="SubEspecialidad" Type="String" />
-                    <ext:ModelField Name="REspecialidad" Type="Object" />
-                    <ext:ModelField Name="RFamilia" Type="Object" />
-                    <ext:ModelField Name="RSubespecialidad" Type="Object" />
-                    <ext:ModelField Name="Descripcion" Type="String" />   
-                    <ext:ModelField Name="Dias" Type="String" />   
-                    <ext:ModelField Name="Prioridad" Type="String" />   
-                    <ext:ModelField Name="TiempoEstimado" Type="String" />    
+                    <ext:ModelField Name="Dias" Type="String" />      
                 </Fields>
             </ext:Model>
         </Model>
@@ -58,8 +49,10 @@
             ID="fpCodigoPPTAs"
             runat="server" 
             MonitorResize="true"
-            Height="465"
-            Width="910" DefaultButton="imgbtnGuardar" Layout="HBoxLayout" >
+            Height="150"
+            Width="365" 
+            DefaultButton="imgbtnGuardar" 
+            Layout="HBoxLayout" >
         <Items>
             <ext:Panel ID="Panel1" runat="server">
                 <Items> 
@@ -76,165 +69,7 @@
                     </ext:FieldContainer> 
                     
 
-                    <ext:FieldContainer ID="FieldContainer3" runat="server" FieldLabel="Especialidad" AnchorHorizontal="100%"
-                        Layout="HBoxLayout">
-                        <Items> 
-                            <ext:ComboBox ID="cmbEspecialidad" runat="server"
-                            Width="250"
-                            Editable="false"
-                            DisplayField="Nombre"
-                            ValueField="ID"
-                            QueryMode="Local"
-                            TriggerAction="All" AllowBlank="false"
-                            EmptyText="Seleccione una especialidad..." TypeAhead="true" ForceSelection="true" MatchFieldWidth="true">  
-                                <Store>
-                                    <ext:Store ID="sEspecialidad" runat="server">
-                                        <Model>
-                                            <ext:Model ID="mEspecialidad" runat="server">
-                                                <Fields>
-                                                    <ext:ModelField Name="ID" Type="String" />
-                                                    <ext:ModelField Name="Nombre" Type="String" />
-                                                </Fields>
-                                            </ext:Model>
-                                        </Model>  
-                                    </ext:Store>
-                                </Store> 
-                                <DirectEvents>
-                                    <Change OnEvent="cmbEspecialidad_Select">
-                                        <ExtraParams>
-                                            <ext:Parameter Name="vEspecialidad" Value="App.cmbEspecialidad.getValue()" Mode="Raw" />
-                                        </ExtraParams>
-                                    </Change>
-                                </DirectEvents>
-                                <Listeners>
-                                    <Change Fn="imgbtnGuardar_change"></Change>
-                                </Listeners>
-                            </ext:ComboBox>
-                            <ext:Toolbar ID="Toolbar3" 
-                        runat="server" 
-                        Flex="1"                         
-                        Flat="true">
-                        <Items>
-                            <ext:Button ID="btnAgregarEspecialidades" runat="server" Icon="Add" >
-                                <Listeners>
-                                    <Click Fn="imgbtnNuevaEspecialidad_Click"></Click>
-                                </Listeners>
-                            </ext:Button> 
-                        </Items>
-                    </ext:Toolbar>
-                        </Items>
-                    </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer1" runat="server" FieldLabel="Familia"
-                        AnchorHorizontal="100%" Layout="HBoxLayout">
-                        <Items>
-                             <ext:ComboBox ID="cmbFamilia" runat="server"
-                            Width="250"
-                            Editable="false"
-                            DisplayField="Nombre"
-                            ValueField="ID"
-                            QueryMode="Local"
-                            TriggerAction="All" AllowBlank="false"
-                            EmptyText="Seleccione una familia..." TypeAhead="true" ForceSelection="true" MatchFieldWidth="true">  
-                                <Store>
-                                    <ext:Store ID="sFamilias" runat="server">
-                                        <Model>
-                                            <ext:Model ID="mFamilias" runat="server">
-                                                <Fields>
-                                                    <ext:ModelField Name="ID" Type="String" />
-                                                    <ext:ModelField Name="Nombre" Type="String" />
-                                                </Fields>
-                                            </ext:Model>
-                                        </Model> 
-                                        <Listeners>
-                                            <Load Fn="sFamilia_Load" />
-                                        </Listeners>  
-                                    </ext:Store>
-                                </Store> 
-                                <DirectEvents>
-                                    <Change OnEvent="cmbFamilia_Select">
-                                        <ExtraParams>
-                                            <ext:Parameter Name="vFamilia" Value="App.cmbFamilia.getValue()" Mode="Raw" />
-                                        </ExtraParams>
-                                    </Change>
-                                </DirectEvents>
-                                <Listeners>
-                                    <Change Fn="imgbtnGuardar_change"></Change>
-                                </Listeners>
-                            </ext:ComboBox>
-                            <ext:Toolbar ID="Toolbar2" 
-                        runat="server" 
-                        Flex="1"                         
-                        Flat="true">
-                        <Items>
-                            <ext:Button ID="btnAgregarFamilias" runat="server" Icon="Add"  >
-                                <Listeners>
-                                    <Click Fn="imgbtnNuevaFamilia_Click"></Click>
-                                </Listeners>
-                            </ext:Button>  
-                        </Items>
-                    </ext:Toolbar>
-                       </Items>
-                    </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer4" runat="server" FieldLabel="SubEspecialidad"
-                        AnchorHorizontal="100%" Layout="HBoxLayout" AllowBlank="false">
-                        <Items>
-                            <ext:ComboBox ID="cmbSubEspecialidad" runat="server"
-                            Width="250"
-                            Editable="false"
-                            DisplayField="Nombre" 
-                            ValueField="ID" 
-                            QueryMode="Local"
-                            TriggerAction="All" AllowBlank="false"
-                            EmptyText="Seleccione una SubEspecialidad..." TypeAhead="true" ForceSelection="true" MatchFieldWidth="true"> 
-                                <Store>
-                                    <ext:Store ID="sSubEspecialidad" runat="server">
-                                        <Model>
-                                            <ext:Model ID="mSubEspecialidad" runat="server">
-                                                <Fields>
-                                                    <ext:ModelField Name="ID" Type="String" />
-                                                    <ext:ModelField Name="Nombre" Type="String" />
-                                                </Fields>
-                                            </ext:Model>
-                                        </Model> 
-                                        <Listeners>
-                                            <Load Fn="sSubespecialidad_Load" />
-                                        </Listeners>
-                                         <Parameters>
-                                            <ext:StoreParameter Name="vFamilia" Value="InitialValue" ApplyMode="IfNotExists" />
-                                        </Parameters>
-                                    </ext:Store>
-                                </Store> 
-                                <Listeners>
-                                    <Change Fn="imgbtnGuardar_change"></Change>
-                                </Listeners>
-                            </ext:ComboBox>
-                            <ext:Toolbar ID="Toolbar1" 
-                        runat="server" 
-                        Flex="1"                         
-                        Flat="true">
-                        <Items>
-                            <ext:Button ID="btnAgregarSubEspecialidades" runat="server" Icon="Add" Margins="0 0 0 0" >
-                                <Listeners>
-                                    <Click Fn="imgbtnNuevaSubEspecialidad_Click"></Click>
-                                </Listeners>
-                            </ext:Button> 
-                        </Items>
-                    </ext:Toolbar>
-                       </Items>
-                    </ext:FieldContainer>
-                   
-                    <ext:FieldContainer ID="FieldContainer6" runat="server" FieldLabel="Descripción"
-                        AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
-                        <Items>
-                            <ext:TextArea ID="txtDescripcion" runat="server" Height="150" Width="250" Disabled="false" AllowBlank="false"
-                                EmptyText="Escriba una descripción" MaxLength="499" EnforceMaxLength="true"> 
-                                <Listeners>
-                                    <Change Fn="imgbtnGuardar_change" />
-                                    <Blur Handler="App.txtDescripcion.setValue(App.txtDescripcion.getValue().toUpperCase());"/>
-                                </Listeners>
-                            </ext:TextArea>
-                        </Items>
-                    </ext:FieldContainer> 
+                 
                     <ext:FieldContainer ID="FieldContainer7" runat="server" FieldLabel="Días" 
                         AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
                         <Items>
@@ -243,26 +78,6 @@
                                 <Change Fn="imgbtnGuardar_change" />
                             </Listeners>
                                 </ext:NumberField>
-                        </Items>
-                    </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer8" runat="server" FieldLabel="Prioridad" 
-                        AnchorHorizontal="100%" Layout="HBoxLayout"  AllowBlank="false">
-                        <Items>
-                            <ext:NumberField ID="txtPrioridad" runat="server" Width="250" MinValue="1" MaxValue="5" AllowExponential="false" MaxLength="3" AllowBlank="false" Editable="false" > 
-                                <Listeners>
-                                    <Change Fn="imgbtnGuardar_change" />
-                                </Listeners>
-                            </ext:NumberField>
-                        </Items>
-                    </ext:FieldContainer> 
-                    <ext:FieldContainer ID="FieldContainer9" runat="server" FieldLabel="Tiempo Estimado" 
-                        AnchorHorizontal="100%" Layout="HBoxLayout">
-                        <Items>
-                            <ext:NumberField ID="txtTiempoEstimado" runat="server" Width="250" MinValue="0" MaxValue="365" AllowExponential="false" MaxLength="3"  AllowBlank="false"  Editable="false" >  
-                                <Listeners>
-                                    <Change Fn="imgbtnGuardar_change" />
-                                </Listeners>
-                            </ext:NumberField>
                         </Items>
                     </ext:FieldContainer> 
                 </Items>

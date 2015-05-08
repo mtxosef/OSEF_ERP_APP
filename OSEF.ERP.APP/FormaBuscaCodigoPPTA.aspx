@@ -34,7 +34,7 @@
             ID="gpCodigosPPTA"
             runat="server"
             Height="320"
-            Width="600"
+            Width="595"
             Title="CÓDIGOS PPTA"
             EnableColumnHide="false"
             EnableColumnMove="false"
@@ -92,7 +92,6 @@
                         <ext:Model ID="mCodigosPPTA" runat="server" IDProperty="CodigoMainSaver">
                             <Fields>
                                 <ext:ModelField Name="CodigoMainSaver" Type="String" />
-                                <ext:ModelField Name="Descripcion" Type="String" />
                                 <ext:ModelField Name="Dias" Type="String" /> 
                             </Fields>
                         </ext:Model>
@@ -110,15 +109,15 @@
                         runat="server"
                         Text="CÓDIGO"
                         Align="Left"
-                        Width="160"
+                        Width="270"
                         DataIndex="CodigoMainSaver" />
                     <ext:Column
                         ID="cDescripcion"
                         runat="server"
-                        Text="DESCRIPCIÓN"
+                        Text="DIAS"
                         Align="Left"
-                        Width="420"
-                        DataIndex="Descripcion" />
+                        Width="300"
+                        DataIndex="Dias" />
                 </Columns>
             </ColumnModel>
             <Listeners>

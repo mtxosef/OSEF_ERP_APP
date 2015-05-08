@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP.reportess {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Presupuesto : ReportClass {
+    public class rReportesCuadrillas : ReportClass {
         
-        public Presupuesto() {
+        public rReportesCuadrillas() {
         }
         
         public override string ResourceName {
             get {
-                return "Presupuesto.rpt";
+                return "rReportesCuadrillas.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP.reportess {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.reportess.Presupuesto.rpt";
+                return "OSEF.ERP.APP.reportess.rReportesCuadrillas.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace OSEF.ERP.APP.reportess {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_path {
+        public CrystalDecisions.Shared.IParameterField Parameter_CUADRILLA {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,9 +98,9 @@ namespace OSEF.ERP.APP.reportess {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPresupuesto : Component, ICachedReport {
+    public class CachedrReportesCuadrillas : Component, ICachedReport {
         
-        public CachedPresupuesto() {
+        public CachedrReportesCuadrillas() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace OSEF.ERP.APP.reportess {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Presupuesto rpt = new Presupuesto();
+            rReportesCuadrillas rpt = new rReportesCuadrillas();
             rpt.Site = this.Site;
             return rpt;
         }
