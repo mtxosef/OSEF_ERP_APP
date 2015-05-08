@@ -54,11 +54,8 @@
     <Compile Include="CroquisOrdenEstimacionDDataAccess.cs" />
     <Compile Include="CuadrillaDataAccess.cs" />
     <Compile Include="CuentaContableDataAccess.cs" />
-
     <Compile Include="CuestionarioDataAccess.cs" />
     <Compile Include="EmpresaDataAccess.cs" />
-    <Compile Include="EspecialidadesDataAccess.cs" />
-
     <Compile Include="EstadoDataAccess.cs" />
     <Compile Include="FacturaOrdenEstimacionDDataAccess.cs" />
     <Compile Include="FinalidadDataAccess.cs" />

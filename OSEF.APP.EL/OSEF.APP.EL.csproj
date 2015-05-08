@@ -55,11 +55,8 @@
     <Compile Include="CroquisOrdenEstimacionD.cs" />
     <Compile Include="Cuadrilla.cs" />
     <Compile Include="CuentaContable.cs" />
-
     <Compile Include="Cuestionario.cs" />
     <Compile Include="Empresa.cs" />
-    <Compile Include="Especialidades.cs" />
-
     <Compile Include="Estado.cs" />
     <Compile Include="FacturaOrdenEstimacionD.cs" />
     <Compile Include="Finalidad.cs" />
