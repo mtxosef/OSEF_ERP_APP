@@ -72,6 +72,7 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia
-		WHERE OE.ID = @IDMovimiento;
+		WHERE OE.ID = @IDMovimiento
+		AND FOD.Concepto IS NOT NULL;
 END
 GO
