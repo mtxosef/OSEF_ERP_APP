@@ -16,6 +16,7 @@ using OSEF.APP.BL;
 using System;
 using System.IO;
 using System.IO.Compression;
+using Ionic.Zip;
 
 
 namespace OSEF.ERP.APP
@@ -564,65 +565,47 @@ namespace OSEF.ERP.APP
             
         }
 
-        protected void crearZip(string url)
-        {  
-            DirectoryInfo directorySelected = new DirectoryInfo(url);
-            List<FileInfo> fi = new  List<FileInfo>(directorySelected.GetFiles());
-
-            //Se crea el archivo principal
-            string file = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-
-            //foreach(FileInfo fileToCompress in
-            //using (FileStream originalFileStream = fileToCompress.OpenRead())
-            //{
-            //    if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz")
-            //    {
-            //        using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz"))
-            //        {
-            //            using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
-            //            {
-            //                originalFileStream.CopyTo(compressionStream);
-            //            }
-            //        }
-            //    }
-            //}
-
-
-
-            foreach (FileInfo fileToCompress in fi)
-            {
-                Compress(fileToCompress, url); 
-            }
-
-        }
-
-        public void Compress(FileInfo fileToCompress, string url)
+        protected void crearZip(string url,string rutaGuarda,string ID)
         {
-            using (FileStream originalFileStream = fileToCompress.OpenRead())
+
+            try
             {
-                if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz")
+                //Listamos los archivos que trae el directorio
+                DirectoryInfo directorySelected = new DirectoryInfo(url);
+                List<FileInfo> fi = new List<FileInfo>(directorySelected.GetFiles());
+                //Definimos le nombre que llevara nuestro archio comprimido
+                string fileName = "Reportes Mov. "+ID + ".zip";
+                //Limpiamos le stream
+                Response.Clear();
+                //Metenmos la lista de archivos que contiene el directorio en una lista de tipo string
+                List<string> lista = new List<string>();
+
+                foreach (FileInfo fileToString in fi)
                 {
-                    using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz"))
-                    {
-                        using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
-                        {
-                            originalFileStream.CopyTo(compressionStream); 
-                        }
-                    }
+                    //Le concatenamos la ruta donde se va a leer el archivo
+                    lista.Add(rutaGuarda + fileToString.ToString());
+                }
+                //Creamos el archivo
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.ContentType = "application/x-zip-compressed";
+                //Llenamos le archivo con la lista
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.AddFiles(lista, ID);
+                    zip.Save(Response.OutputStream);
                 }
             }
+            catch (System.Exception ex)
+            {
+                throw new Exception("Error " + ex.Message);
+                
+            }
+            finally {
+                Response.End();
+                Response.Close();
+            }
         }
-        //////Checar https://github.com/icsharpcode/SharpZipLib/wiki/Zip-Samples#anchorCreateIIS
-        protected void descargarZIP(string url)
-        {
-            string fileName = Cookies.GetCookie("cookieEditarOrdenEstimacion") + ".zip";
-            string fullpath = url + fileName;
-            Response.Clear(); 
-            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName); 
-            Response.ContentType = "application/x-zip-compressed";
-            Response.WriteFile(fullpath); 
-            Response.End();
-        }
+
         protected void imgbtnTodo(object sender, EventArgs e)
         {
             imgbtnExportarFotos_Click(sender, e);
@@ -632,8 +615,7 @@ namespace OSEF.ERP.APP
             imgbtnExportarGenerador_Click(sender, e);
             imgbtnEstimacion_click(sender, e);
             imgbtnResumen_click(sender, e);
-            crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
-            //descargarZIP(Server.MapPath(" ") + "\\reportess\\Estimaciones\\");
+            crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value, Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value + "\\", Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
         }
         //END
     }

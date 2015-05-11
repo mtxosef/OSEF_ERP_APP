@@ -58,9 +58,8 @@
     <Reference Include="Ext.Net.Utilities">
       <HintPath>..\References\Ext.Net.Utilities.dll</HintPath>
     </Reference>
-    <Reference Include="Ionic.Zip, Version=1.9.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\References\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
@@ -459,7 +458,6 @@
     <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\formaReporteMovimientoEstimacion.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
-    <Content Include="js\formaSubEspecialidades.js" />
     <Content Include="js\lib\jQuery\jquery-migrate-1.2.1.min.js" />
     <Content Include="js\lib\jQuery\jquery.min.js" />
     <Content Include="js\registro.js" />
@@ -1304,12 +1302,6 @@
       <DependentUpon>CPreciario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reportess\Estimaciones.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Estimaciones.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="reportess\rCaratulaDeEstimacion.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1457,10 +1449,6 @@
     <EmbeddedResource Include="reportess\CPreciario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CPreciario.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reportess\Estimaciones.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Estimaciones.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportess\rCaratulaDeEstimacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

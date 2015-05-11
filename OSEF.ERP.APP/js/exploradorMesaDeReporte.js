@@ -119,7 +119,7 @@ var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, inde
     var w = window.parent.App.wGenerador;
     w.load('FormaReporteEstimacion.aspx');
     w.setHeight(160);
-    w.setWidth(575);
+    w.setWidth(590);
     w.center();
     w.setTitle('Reporte del Movimiento ' + registro.get('Id'));
     w.show();
