@@ -13,6 +13,10 @@ using CrystalDecisions.Shared;
 using System.IO;
 using OSEF.APP.EL;
 using OSEF.APP.BL;
+using System;
+using System.IO;
+using System.IO.Compression;
+
 
 namespace OSEF.ERP.APP
 {
@@ -27,7 +31,8 @@ namespace OSEF.ERP.APP
         protected void Page_PreInit(object sender, EventArgs e)
         {
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
-
+            //Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
             if (oFirmas == null)
             {
                sbParametros1.Text="Debes de configurar las firmas";
@@ -45,12 +50,8 @@ namespace OSEF.ERP.APP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
-
-            if (oFirmas == null)
-            {
-                this.Dispose();
-            }
+            // Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
         }
 
         protected void imgbtnExportarCroquis_Click(object sender, EventArgs e)
@@ -562,5 +563,78 @@ namespace OSEF.ERP.APP
                 }
             
         }
+
+        protected void crearZip(string url)
+        {  
+            DirectoryInfo directorySelected = new DirectoryInfo(url);
+            List<FileInfo> fi = new  List<FileInfo>(directorySelected.GetFiles());
+
+            //Se crea el archivo principal
+            string file = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+
+            //foreach(FileInfo fileToCompress in
+            //using (FileStream originalFileStream = fileToCompress.OpenRead())
+            //{
+            //    if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz")
+            //    {
+            //        using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz"))
+            //        {
+            //            using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
+            //            {
+            //                originalFileStream.CopyTo(compressionStream);
+            //            }
+            //        }
+            //    }
+            //}
+
+
+
+            foreach (FileInfo fileToCompress in fi)
+            {
+                Compress(fileToCompress, url); 
+            }
+
+        }
+
+        public void Compress(FileInfo fileToCompress, string url)
+        {
+            using (FileStream originalFileStream = fileToCompress.OpenRead())
+            {
+                if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz")
+                {
+                    using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz"))
+                    {
+                        using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
+                        {
+                            originalFileStream.CopyTo(compressionStream); 
+                        }
+                    }
+                }
+            }
+        }
+        //////Checar https://github.com/icsharpcode/SharpZipLib/wiki/Zip-Samples#anchorCreateIIS
+        protected void descargarZIP(string url)
+        {
+            string fileName = Cookies.GetCookie("cookieEditarOrdenEstimacion") + ".zip";
+            string fullpath = url + fileName;
+            Response.Clear(); 
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName); 
+            Response.ContentType = "application/x-zip-compressed";
+            Response.WriteFile(fullpath); 
+            Response.End();
+        }
+        protected void imgbtnTodo(object sender, EventArgs e)
+        {
+            imgbtnExportarFotos_Click(sender, e);
+            imgbtnPresupuesto_click(sender, e);
+            imgbtnExportarCroquis_Click(sender, e);
+            imgbtnExportarFactura_Click(sender, e);
+            imgbtnExportarGenerador_Click(sender, e);
+            imgbtnEstimacion_click(sender, e);
+            imgbtnResumen_click(sender, e);
+            crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
+            //descargarZIP(Server.MapPath(" ") + "\\reportess\\Estimaciones\\");
+        }
+        //END
     }
 }
