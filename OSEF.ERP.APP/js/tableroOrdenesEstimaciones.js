@@ -15,13 +15,20 @@ var imgbtnNuevo_Click = function () {
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'));
-  
-    window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
-    window.parent.App.wEmergente.setHeight(600);
-    window.parent.App.wEmergente.setWidth(930);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
-    window.parent.App.wEmergente.show();
+//    App.direct.VerificarImagenes(App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'), {
+//        success: function (result) { 
+//                Ext.util.Cookies.set('Fotos', result);
+                window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
+                window.parent.App.wEmergente.setHeight(600);
+                window.parent.App.wEmergente.setWidth(930);
+                window.parent.App.wEmergente.center();
+                window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+                window.parent.App.wEmergente.show(); 
+//        },
+//        failure: function (errorMsg) {
+//            Ext.Msg.alert('Error', errorMsg);
+//        }
+//    }); 
 };
 
 //Evento de click del botón Editar
@@ -37,13 +44,22 @@ var imgbtnFirmas_Click = function () {
 var gpOrdenEstimacion_ItemDblClick = function (gridview, registro, gvhtml, index) {
 
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'));
+   
+//    App.direct.VerificarImagenes(App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'), {
+//        success: function (result) {
+//            Ext.util.Cookies.set('Fotos', result);
+            window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
+            window.parent.App.wEmergente.setHeight(600);
+            window.parent.App.wEmergente.setWidth(930);
+            window.parent.App.wEmergente.center();
+            window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+            window.parent.App.wEmergente.show();
+//        },
+//        failure: function (errorMsg) {
+//            Ext.Msg.alert('Error', errorMsg);
+//        }
+//    }); 
 
-    window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
-    window.parent.App.wEmergente.setHeight(600);
-    window.parent.App.wEmergente.setWidth(930);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
-    window.parent.App.wEmergente.show();
 }
 
 //Cambio en los datos del tablero

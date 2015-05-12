@@ -122,6 +122,16 @@ namespace OSEF.APP.BL
             return oOrdenEstimacion;
         }
 
+        /// <summary>
+        /// Obtener registros de ImagenOrdenEstimacionD por su ID
+        /// </summary>
+        /// <param name="iID"></param>
+        /// <returns></returns>
+        public static List<ImagenOrdenEstimacionD> ObtenerOrdenEstimacionDPorID(int ID, string IDConcepto)
+        {
+            List<ImagenOrdenEstimacionD> oe = OrdenEstimacionDataAccess.ObtenerOrdenEstimacionDPorID(ID,IDConcepto);
+            return oe;
+        }
 
         #endregion
 

@@ -26,12 +26,7 @@ namespace OSEF.ERP.APP
                 //2. Checar ticket de autenticación
                 UsuarioBusiness.checkValidSession(this);
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
-                sCuadrillas.DataBind();
-
-
-
-              
-                
+                sCuadrillas.DataBind(); 
             }
         }
 
@@ -747,5 +742,45 @@ namespace OSEF.ERP.APP
             //Cambia el estatus del movimiento
             OrdenEstimacionBusiness.CancelarOrdenEstimacionPorID(strID);
         }
-    }
+
+
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarImagenes(int strID, string IDConcepto)
+        {
+            List<ImagenOrdenEstimacionD> oeb = OrdenEstimacionBusiness.ObtenerOrdenEstimacionDPorID(strID,IDConcepto);
+            if (oeb.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarCroquis(int strID)
+        {
+
+            return 0;
+        }
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarFacturas(int strID)
+        {
+
+            return 0;
+        }
+    } 
 }

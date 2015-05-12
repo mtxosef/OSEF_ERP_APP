@@ -30,7 +30,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="rmFormaOrdenEstimacion" runat="server" HideInDesign="true" />
+        <ext:ResourceManager ID="rmFormaOrdenEstimacion" runat="server" HideInDesign="true" >
+        </ext:ResourceManager>
     
         <ext:Store
             ID="sOrdenEstimacion"
@@ -1216,8 +1217,10 @@
                                                     </ext:GridCommand>
                                                 </Commands>
                                                 <Listeners>
-                                                    <Command Fn="ccFotos_Command" />
+                                                    <Command Fn="ccFotos_Command" /> 
                                                 </Listeners>
+                                                <Renderer Fn="cCheckFotos_Renderer" />
+                                                
                                             </ext:CommandColumn>
                                             <ext:CommandColumn
                                                 ID="ccCroquis"
@@ -1240,6 +1243,7 @@
                                                 <Listeners>
                                                     <Command Fn="ccCroquis_Command" />
                                                 </Listeners>
+                                                <Renderer Fn="cCheckCroquis_Renderer" />
                                             </ext:CommandColumn>
                                             <ext:CommandColumn
                                                 ID="ccFacturas"
@@ -1261,8 +1265,9 @@
                                                 </Commands>
                                                 <Listeners>
                                                     <Command Fn="ccFactura_Command" />
-                                                </Listeners>
-                                            </ext:CommandColumn>
+                                                </Listeners> 
+                                                <Renderer Fn="cCheckFacturas_Renderer" />
+                                            </ext:CommandColumn> 
                                         </Columns>
                                     </ColumnModel>
                                     <Listeners>

@@ -23,7 +23,7 @@ IF EXISTS (	SELECT name
 	DROP PROCEDURE web_spS_ObtenerImagenOrdenEstimacionDPorID
 GO
 -- =============================================
--- Author:		Orlando Esparza
+-- Author:		Giovanni Flores
 -- Create date: Viernes 20 de Febrero de 2014
 -- Description:	Obtener los registros de Imagenes Volumetrias por su Volumetria y PreciarioConcepto
 -- =============================================
@@ -45,7 +45,7 @@ BEGIN
 		Usuario,
 		FechaAlta
 	FROM
-		ImagenesOrdenEstimacionD
+		ImagenesOrdenEstimacionD ioed
 	WHERE
 		MovID = @ID;
 END
