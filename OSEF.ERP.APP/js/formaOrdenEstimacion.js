@@ -130,6 +130,7 @@ var sMov_Change = function (combo) {
         App.pDatosReporte.hide();
         App.cIntExt.hidden = true;
     }
+    App.gpOrdenEstimacion.reconfigure();
 };
 
 

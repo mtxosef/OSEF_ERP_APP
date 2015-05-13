@@ -40,7 +40,7 @@ BEGIN
 		SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
 		OE.ID,
-		OED.ConceptoID,
+		OED.ConceptoID,OE.Mov,
 		--Datos de la sucursal
 		CONVERT(VARCHAR(4),S.CR) CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
 		--Datos del concepto

@@ -38,21 +38,29 @@ BEGIN
 
     -- Insert statements for procedure here
 SELECT
-	oed.ID,	oed.Renglon,
-	oed.ConceptoID,		oed.Cantidad,
-	oed.Unidad,		oed.Precio,
-	oed.Importe,		oed.IntExt,
-	oed.Moneda,
-	(SELECT COUNT(*) FROM ImagenesOrdenEstimacionD ioed WHERE ioed.MovID = @ID AND ioed.Concepto = oed.ConceptoID) Fotos, 
-	(SELECT COUNT(*) FROM CroquisOrdenEstimacionD coed WHERE coed.MovID = @ID AND coed.Concepto = oed.ConceptoID) Croquis, 
-	(SELECT COUNT(*) FROM FacturasOrdenEstimacionD foed WHERE foed.MovID = @ID AND foed.Concepto = oed.ConceptoID) Facturas
-	FROM OrdenesEstimacionesD oed
-	WHERE oed.ID = @ID
-	GROUP BY oed.ID, oed.Renglon,
-		oed.ConceptoID,		oed.Cantidad,
-		oed.Unidad,		oed.Precio,
-		oed.Importe,		oed.IntExt,
-		oed.Moneda;
+	OED.ID,	
+	OED.Renglon,
+	OED.ConceptoID,		
+	OED.Cantidad,
+	OED.Unidad,		
+	OED.Precio,
+	OED.Importe,		
+	OED.IntExt,
+	OED.Moneda,
+	(SELECT COUNT(*) FROM ImagenesOrdenEstimacionD IOED WHERE IOED.MovID = @ID AND IOED.Concepto = OED.ConceptoID) Fotos, 
+	(SELECT COUNT(*) FROM CroquisOrdenEstimacionD COED WHERE COED.MovID = @ID AND COED.Concepto = OED.ConceptoID) Croquis, 
+	(SELECT COUNT(*) FROM FacturasOrdenEstimacionD FOED WHERE FOED.MovID = @ID AND FOED.Concepto = OED.ConceptoID) Facturas
+	FROM OrdenesEstimacionesD OED
+	WHERE OED.ID = @ID
+	GROUP BY 
+		OED.ID, oed.Renglon,
+		OED.ConceptoID,		
+		OED.Cantidad,
+		OED.Unidad,		
+		OED.Precio,
+		OED.Importe,		
+		OED.IntExt,
+		OED.Moneda;
 
 END
 GO

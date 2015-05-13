@@ -1296,6 +1296,12 @@
     <Compile Include="pruebaagrega.aspx.designer.cs">
       <DependentUpon>pruebaagrega.aspx</DependentUpon>
     </Compile>
+    <Compile Include="reportess\AutItemAdicioYOFueCatPreCat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutItemAdicioYOFueCatPreCat.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportess\CPreciario.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1446,6 +1452,10 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="reportess\AutItemAdicioYOFueCatPreCat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AutItemAdicioYOFueCatPreCat.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reportess\CPreciario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CPreciario.cs</LastGenOutput>
