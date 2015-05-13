@@ -61,25 +61,31 @@ var imgbtnFormaNuevo_Click = function () {
 
 var imgbtnImprimir_Click = function () {
     if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte' || App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
-//        if (App.txtfNoReporte.getValue().length > 0 && App.txtfNoReporte.getValue() != null && App.txtfNoReporte.getValue().trim() !='') {
-            Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue()); 
-            window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
-            window.parent.App.wGenerador.setHeight(160);
-            window.parent.App.wGenerador.setWidth(590);
-            window.parent.App.wGenerador.center();
-            window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
-            window.parent.App.wGenerador.show();
-//        } else {
-//            Ext.Msg.show({
-//                id: 'msgOrdenesEstimaciones',
-//                title: 'ADVERTENCIA',
-//                msg: '<p align="center">Es necesario un No. de Reporte.</p>',
-//                buttons: Ext.MessageBox.OK,
-//                onEsc: Ext.emptyFn,
-//                closable: false,
-//                icon: Ext.MessageBox.INFO
-//            });
-//        }
+        //        if (App.txtfNoReporte.getValue().length > 0 && App.txtfNoReporte.getValue() != null && App.txtfNoReporte.getValue().trim() !='') {
+
+
+       Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue());
+      
+
+
+
+        window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
+        window.parent.App.wGenerador.setHeight(160);
+        window.parent.App.wGenerador.setWidth(590);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+        window.parent.App.wGenerador.show();
+        //        } else {
+        //            Ext.Msg.show({
+        //                id: 'msgOrdenesEstimaciones',
+        //                title: 'ADVERTENCIA',
+        //                msg: '<p align="center">Es necesario un No. de Reporte.</p>',
+        //                buttons: Ext.MessageBox.OK,
+        //                onEsc: Ext.emptyFn,
+        //                closable: false,
+        //                icon: Ext.MessageBox.INFO
+        //            });
+        //        }
     }
     else {
         window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');

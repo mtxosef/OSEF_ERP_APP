@@ -13,8 +13,6 @@ using CrystalDecisions.Shared;
 using System.IO;
 using OSEF.APP.EL;
 using OSEF.APP.BL;
-using System;
-using System.IO;
 using System.IO.Compression;
 using Ionic.Zip;
 
@@ -59,7 +57,8 @@ namespace OSEF.ERP.APP
             {
                 imgbtnTodos.Enabled = true;
             }
-            else {
+            else
+            {
                 imgbtnTodos.Enabled = false;
             }
             
@@ -518,8 +517,10 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
+            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
+            string strReviso = oFirmas.FirmaReviso;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
                 try
@@ -536,6 +537,7 @@ namespace OSEF.ERP.APP
                             var reporteEstimaciones = new ReportDocument();
                             reporteEstimaciones.Load(Server.MapPath("reportess/rPresupuesto.rpt"));
                             reporteEstimaciones.SetDataSource(dt);
+                            reporteEstimaciones.SetParameterValue("reviso", strReviso);
 
                             string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
