@@ -61,12 +61,25 @@ var imgbtnFormaNuevo_Click = function () {
 
 var imgbtnImprimir_Click = function () {
     if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte' || App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
-        window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(160);
-        window.parent.App.wGenerador.setWidth(590);
-        window.parent.App.wGenerador.center();
-        window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
-        window.parent.App.wGenerador.show();
+        if (App.txtfNoReporte.getValue().length > 0 && App.txtfNoReporte.getValue() != null && App.txtfNoReporte.getValue().trim() !='') {
+            Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue()); 
+            window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
+            window.parent.App.wGenerador.setHeight(160);
+            window.parent.App.wGenerador.setWidth(590);
+            window.parent.App.wGenerador.center();
+            window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+            window.parent.App.wGenerador.show();
+        } else {
+            Ext.Msg.show({
+                id: 'msgOrdenesEstimaciones',
+                title: 'ADVERTENCIA',
+                msg: '<p align="center">Es necesario un No. de Reporte.</p>',
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.INFO
+            });
+        }
     }
     else {
         window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');
@@ -289,8 +302,7 @@ var imgbtnBorrar_Click_Success = function (response, result) {
 };
 
 //Método que se lanza antes de llamar al procedimiento de Afectar
-var imgbtnAfectar_Click_Before = function () {
-    console.log(App.sOrdenEstimacion.getAt(0));
+var imgbtnAfectar_Click_Before = function () { 
     Ext.util.Cookies.set('cookieEsEstimacion', 'No');
 
     if (App.sOrdenEstimacion.getCount() != 0) {
