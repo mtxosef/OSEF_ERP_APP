@@ -134,3 +134,8 @@ var fileSelectionError = function (item, file, errorCode, message) {
 var loadFailed = function () {
     alert("Something went wrong while loading SWFUpload. If this were a real application we'd clean up and then give you an alternative");
 };
+
+
+var onSuccess_ReloadParent = function () { 
+    
+}

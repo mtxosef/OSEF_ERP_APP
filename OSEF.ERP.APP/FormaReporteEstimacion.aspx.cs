@@ -45,6 +45,7 @@ namespace OSEF.ERP.APP
                 imgbtnCroquis.Enabled = false;
                 imgbtnFacturas.Enabled = false;
                 imgbtnFotos.Enabled = false;
+                imgbtnTodos.Enabled = false;
             }
         }
 
@@ -53,13 +54,21 @@ namespace OSEF.ERP.APP
         {
             // Checar ticket de autenticación
             UsuarioBusiness.checkValidSession(this);
+            string nReporte = Cookies.GetCookie("NReporte").Value;
+            if (nReporte != null && nReporte.Trim().Length > 0)
+            {
+                imgbtnTodos.Enabled = true;
+            }
+            else {
+                imgbtnTodos.Enabled = false;
+            }
+            
         }
 
         protected void imgbtnExportarCroquis_Click(object sender, EventArgs e)
         {
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
           
                 //Firmas documento(Parametros)
                // string strElaboro = txtElaboro.Value.ToString();
@@ -144,7 +153,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -217,7 +226,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -290,9 +299,9 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
-  FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
+            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
@@ -363,7 +372,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
             
             
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
@@ -438,7 +447,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -509,7 +518,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -574,7 +583,7 @@ namespace OSEF.ERP.APP
                 DirectoryInfo directorySelected = new DirectoryInfo(url);
                 List<FileInfo> fi = new List<FileInfo>(directorySelected.GetFiles());
                 //Definimos le nombre que llevara nuestro archio comprimido
-                string fileName = "Reportes Mov. "+ID + ".zip";
+                string fileName = "Reportes Mov. "+ ID + ".zip";
                 //Limpiamos le stream
                 Response.Clear();
                 //Metenmos la lista de archivos que contiene el directorio en una lista de tipo string
@@ -608,14 +617,18 @@ namespace OSEF.ERP.APP
 
         protected void imgbtnTodo(object sender, EventArgs e)
         {
-            imgbtnExportarFotos_Click(sender, e);
-            imgbtnPresupuesto_click(sender, e);
-            imgbtnExportarCroquis_Click(sender, e);
-            imgbtnExportarFactura_Click(sender, e);
-            imgbtnExportarGenerador_Click(sender, e);
-            imgbtnEstimacion_click(sender, e);
-            imgbtnResumen_click(sender, e);
-            crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value, Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value + "\\", Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
+            string nReporte = Cookies.GetCookie("NReporte").Value;
+            if (nReporte != null)
+            {
+                imgbtnExportarFotos_Click(sender, e);
+                imgbtnPresupuesto_click(sender, e);
+                imgbtnExportarCroquis_Click(sender, e);
+                imgbtnExportarFactura_Click(sender, e);
+                imgbtnExportarGenerador_Click(sender, e);
+                imgbtnEstimacion_click(sender, e);
+                imgbtnResumen_click(sender, e);
+                crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value, Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value + "\\", nReporte);
+            }
         }
         //END
     }
