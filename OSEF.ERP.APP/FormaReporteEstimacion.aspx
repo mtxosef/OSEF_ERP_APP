@@ -163,7 +163,7 @@
                     </div>
                     <div align="right">
                 <asp:ImageButton 
-                ID="ImageButton1" 
+                ID="imgbtnTodos" 
                 runat="server" 
                 class="imgs" 
                 OnClick="imgbtnTodo"

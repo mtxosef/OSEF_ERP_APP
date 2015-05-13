@@ -127,7 +127,8 @@
                             runat="server"
                             Text="Iniciar"
                             Icon="Tick"
-                            Handler="#{muSubirImagenesOrdenEstimacion}.startUpload();" />
+                            Handler="#{muSubirImagenesOrdenEstimacion}.startUpload(); window.parent.App.wEmergente.getBody().App.sConceptos.reload();" > 
+                            </ext:Button>
                         <ext:Button
                             ID="btnCancelar"
                             runat="server"

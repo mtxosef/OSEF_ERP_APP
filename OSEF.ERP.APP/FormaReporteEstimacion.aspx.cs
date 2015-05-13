@@ -45,6 +45,7 @@ namespace OSEF.ERP.APP
                 imgbtnCroquis.Enabled = false;
                 imgbtnFacturas.Enabled = false;
                 imgbtnFotos.Enabled = false;
+                imgbtnTodos.Enabled = false;
             }
         }
 
@@ -53,13 +54,21 @@ namespace OSEF.ERP.APP
         {
             // Checar ticket de autenticación
             UsuarioBusiness.checkValidSession(this);
+            string nReporte = Cookies.GetCookie("NReporte").Value;
+            if (nReporte != null && nReporte.Trim().Length > 0)
+            {
+                imgbtnTodos.Enabled = true;
+            }
+            else {
+                imgbtnTodos.Enabled = false;
+            }
+            
         }
 
         protected void imgbtnExportarCroquis_Click(object sender, EventArgs e)
         {
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
-            string nReporte = Cookies.GetCookie("NReporte").Value;
           
                 //Firmas documento(Parametros)
                // string strElaboro = txtElaboro.Value.ToString();
@@ -107,22 +116,22 @@ namespace OSEF.ERP.APP
                     reporteCroquis.SetParameterValue("autorizo", strAutorizo);
                     reporteCroquis.SetParameterValue("path", path);
 
-                    string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte;
+                    string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
                     //2. Validar si existe el directorio donde se guardaran
                     if (Directory.Exists(strDireccion))
                     {
 
-                        reporteCroquis.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rCroquis " + nReporte + ".pdf"));
-                        ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rCroquis " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                        reporteCroquis.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rCroquis " + strID + ".pdf"));
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rCroquis " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                         // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
 
                     }
                     else
                     {
                         Directory.CreateDirectory(strDireccion);
-                        reporteCroquis.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rCroquis " + nReporte + ".pdf"));
-                        ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rCroquis " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                        reporteCroquis.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rCroquis " + strID + ".pdf"));
+                        ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rCroquis " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                     }
 
 
@@ -144,8 +153,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string nReporte = Cookies.GetCookie("NReporte").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -178,22 +186,22 @@ namespace OSEF.ERP.APP
                             reporteFotos.SetParameterValue("autorizo", strAutorizo);
                             reporteFotos.SetParameterValue("pathFotos", path);
 
-                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
                             //2. Validar si existe el directorio donde se guardaran
                             if (Directory.Exists(strDireccion))
                             {
 
-                                reporteFotos.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rFotos " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rFotos " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteFotos.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rFotos " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rFotos " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                                 // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
 
                             }
                             else
                             {
                                 Directory.CreateDirectory(strDireccion);
-                                reporteFotos.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rFotos " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rFotos " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteFotos.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rFotos " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rFotos " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                             }
 
                         } // end using adaptador
@@ -218,8 +226,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string nReporte = Cookies.GetCookie("NReporte").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -251,22 +258,22 @@ namespace OSEF.ERP.APP
                             reporteFacturas.SetParameterValue("autorizo", strAutorizo);
                             reporteFacturas.SetParameterValue("pathFact", path);
 
-                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
                             //2. Validar si existe el directorio donde se guardaran
                             if (Directory.Exists(strDireccion))
                             {
 
-                                reporteFacturas.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rNotaDeBitacora " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rNotaDeBitacora " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteFacturas.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rNotaDeBitacora " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rNotaDeBitacora " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                                 // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
 
                             }
                             else
                             {
                                 Directory.CreateDirectory(strDireccion);
-                                reporteFacturas.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rNotaDeBitacora " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rNotaDeBitacora " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteFacturas.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rNotaDeBitacora " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rNotaDeBitacora " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                             }
 
 
@@ -292,8 +299,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string nReporte = Cookies.GetCookie("NReporte").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -326,22 +332,22 @@ namespace OSEF.ERP.APP
                             reporteGenerador.SetParameterValue("autorizo", strAutorizo);
 
 
-                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
                             //2. Validar si existe el directorio donde se guardaran
                             if (Directory.Exists(strDireccion))
                             {
 
-                                reporteGenerador.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rNumerosGeneradores " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rNumerosGeneradores " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteGenerador.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rNumerosGeneradores " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rNumerosGeneradores " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                                 // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
 
                             }
                             else
                             {
                                 Directory.CreateDirectory(strDireccion);
-                                reporteGenerador.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rNumerosGeneradores " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rNumerosGeneradores " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteGenerador.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rNumerosGeneradores " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rNumerosGeneradores " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                             }
 
                         } // end using adaptador
@@ -366,8 +372,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string nReporte = Cookies.GetCookie("NReporte").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
             
             
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
@@ -401,22 +406,22 @@ namespace OSEF.ERP.APP
                             reporteEstimaciones.SetParameterValue("autorizo", strAutorizo);
 
 
-                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
                             //2. Validar si existe el directorio donde se guardaran
                             if (Directory.Exists(strDireccion))
                             {
 
-                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rCaratulaDeEstimacion " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rCaratulaDeEstimacion " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rCaratulaDeEstimacion " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rCaratulaDeEstimacion " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                                 // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
 
                             }
                             else
                             {
                                 Directory.CreateDirectory(strDireccion);
-                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rCaratulaDeEstimacion " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rCaratulaDeEstimacion " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rCaratulaDeEstimacion " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rCaratulaDeEstimacion " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                             }
 
                         } // end using adaptador
@@ -442,8 +447,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string nReporte = Cookies.GetCookie("NReporte").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -473,22 +477,22 @@ namespace OSEF.ERP.APP
                             reporteEstimaciones.SetParameterValue("autorizo", strAutorizo);
 
 
-                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
                             //2. Validar si existe el directorio donde se guardaran
                             if (Directory.Exists(strDireccion))
                             {
 
-                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rResumenPartidas " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rResumenPartidas " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rResumenPartidas " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rResumenPartidas " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                                 // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
 
                             }
                             else
                             {
                                 Directory.CreateDirectory(strDireccion);
-                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rResumenPartidas " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rResumenPartidas " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rResumenPartidas " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rResumenPartidas " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                             }
 
                         } // end using adaptador
@@ -514,8 +518,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-            string nReporte = Cookies.GetCookie("NReporte").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -534,22 +537,22 @@ namespace OSEF.ERP.APP
                             reporteEstimaciones.Load(Server.MapPath("reportess/rPresupuesto.rpt"));
                             reporteEstimaciones.SetDataSource(dt);
 
-                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte;
+                            string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
                             //2. Validar si existe el directorio donde se guardaran
                             if (Directory.Exists(strDireccion))
                             {
 
-                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rPresupuesto " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rPresupuesto " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                                 // reporteFotos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "rFotos " + strID);
 
                             }
                             else
                             {
                                 Directory.CreateDirectory(strDireccion);
-                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + nReporte + "/rPresupuesto " + nReporte + ".pdf"));
-                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + nReporte + "/rPresupuesto " + nReporte + ".pdf',null,'height=700,width=660');popup.focus();", true);
+                                reporteEstimaciones.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf"));
+                                ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/Estimaciones/" + strID + "/rPresupuesto " + strID + ".pdf',null,'height=700,width=660');popup.focus();", true);
                             }
 
                         } // end using adaptador
@@ -580,7 +583,7 @@ namespace OSEF.ERP.APP
                 DirectoryInfo directorySelected = new DirectoryInfo(url);
                 List<FileInfo> fi = new List<FileInfo>(directorySelected.GetFiles());
                 //Definimos le nombre que llevara nuestro archio comprimido
-                string fileName = "Reportes Mov. "+ID + ".zip";
+                string fileName = "Reportes Mov. "+ ID + ".zip";
                 //Limpiamos le stream
                 Response.Clear();
                 //Metenmos la lista de archivos que contiene el directorio en una lista de tipo string
@@ -624,7 +627,7 @@ namespace OSEF.ERP.APP
                 imgbtnExportarGenerador_Click(sender, e);
                 imgbtnEstimacion_click(sender, e);
                 imgbtnResumen_click(sender, e);
-                crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte, Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + nReporte + "\\", nReporte);
+                crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value, Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value + "\\", nReporte);
             }
         }
         //END
