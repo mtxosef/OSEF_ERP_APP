@@ -472,7 +472,7 @@ namespace OSEF.ERP.APP
                             var reporteEstimaciones = new ReportDocument();
                             reporteEstimaciones.Load(Server.MapPath("reportess/rResumenPartidas.rpt"));
                             reporteEstimaciones.SetDataSource(dt);
-                            reporteEstimaciones.SetParameterValue("elaboro", strElaboro);
+                            reporteEstimaciones.SetParameterValue("reviso", strReviso);
                             reporteEstimaciones.SetParameterValue("autorizo", strAutorizo);
 
 
