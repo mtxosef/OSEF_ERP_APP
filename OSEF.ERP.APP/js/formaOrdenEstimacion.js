@@ -8,7 +8,7 @@ var imgbtnFormaNuevo_Click = function () {
 
     //Habilitar o Deshabilitar controles
     App.cmbMov.setValue("");
-    App.cmbMov.setReadOnly(false);
+    App.cmbMov.setReadOnly(true);
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
     App.imgbtnCancelar.setDisabled(true);
@@ -61,14 +61,8 @@ var imgbtnFormaNuevo_Click = function () {
 
 var imgbtnImprimir_Click = function () {
     if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte' || App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
-        //        if (App.txtfNoReporte.getValue().length > 0 && App.txtfNoReporte.getValue() != null && App.txtfNoReporte.getValue().trim() !='') {
-
-
-       Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue());
-      
-
-
-
+        //        if (App.txtfNoReporte.getValue().length > 0 && App.txtfNoReporte.getValue() != null && App.txtfNoReporte.getValue().trim() !='') { 
+       Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue()); 
         window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
         window.parent.App.wGenerador.setHeight(160);
         window.parent.App.wGenerador.setWidth(590);
@@ -247,13 +241,13 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + App.sOrdenEstimacion.getAt(0).get('ID'));
         App.cmbMov.setReadOnly(true);
         //6. Deshabilita los comandos del grid
-            App.ccFotos.commands[0].disabled = false;
-            App.ccFotos.commands[1].disabled = false;
-            App.ccCroquis.commands[0].disabled = false;
-            App.ccCroquis.commands[1].disabled = false;
-            App.ccFacturas.commands[0].disabled = false;
-            App.ccFacturas.commands[1].disabled = false;
-            App.gpOrdenEstimacion.reconfigure();
+        App.ccFotos.commands[0].disabled = false;
+        App.ccFotos.commands[1].disabled = false;
+        App.ccCroquis.commands[0].disabled = false;
+        App.ccCroquis.commands[1].disabled = false;
+        App.ccFacturas.commands[0].disabled = false;
+        App.ccFacturas.commands[1].disabled = false;
+        App.gpOrdenEstimacion.reconfigure();
 
     }
     else {
@@ -269,6 +263,19 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         //4. Recargar el tablero
         window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     }
+        App.sConceptos.reload({
+            callback: function () {
+    if (App.sConceptos.getCount() > 0) {
+                //Obtener el Renglon anterior
+                var auxRenglonAnterior = App.sConceptos.getCount() - 1;
+                var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior }); 
+            } else { 
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: 1 });
+            }
+            }
+        });
+
 };
 
 //Para el botón de eliminar de la forma, Eliminar un registro
@@ -1145,6 +1152,9 @@ var sConceptos_Load = function (avance, registro, index) {
     F.decimalSeparator = '.';
     App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
     App.dfTotalSinRender.setValue(sum);
+
+ 
+
 }
 
 
@@ -1321,7 +1331,7 @@ var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
     if (registro.get('ConceptoID') != '') {
 
         Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
-
+    
         if (nombre == 'cnCargarFotos') {
             window.parent.App.wGenerador.load('FormaSubirImagenesOrdenEstimacion.aspx');
             window.parent.App.wGenerador.setHeight(350);
@@ -1820,22 +1830,6 @@ var fufNormal_Change = function (event, control, txtReporte) {
     var cSinFotos_Renderer = function (value, metadata, registro) { 
         metadata.style = "background-color: #FF1205; color: #fff;";
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //Render column
     var cCheckFotos_Renderer = function (value, metadata, registro) {
         if (registro.get('Fotos') > 0 && registro.get('ConceptoID').trim().length > 0) {

@@ -136,6 +136,3 @@ var loadFailed = function () {
 };
 
 
-var onSuccess_ReloadParent = function () { 
-    
-}

@@ -1013,6 +1013,8 @@
                                     <Store>
                                         <ext:Store
                                             ID="sConceptos"
+                                            OnReadData="sConceptos_OnReadData"
+                                           
                                             runat="server">
                                             <Model>
                                                 <ext:Model 
@@ -1039,6 +1041,7 @@
                                             <Listeners>
                                                 <Update Fn="sConceptos_DataUpdate" ></Update>
                                                 <Load Fn="sConceptos_Load"></Load>
+                                                
                                             </Listeners>
                                         </ext:Store>
                                     </Store>

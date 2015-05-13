@@ -55,6 +55,9 @@ namespace OSEF.ERP.APP
             oImagenOrdenEstimacionD.FechaAlta = DateTime.Now;
 
             ImagenOrdenEstimacionBusiness.Insertar(oImagenOrdenEstimacionD);
+
+            
+          
         }
         
     }

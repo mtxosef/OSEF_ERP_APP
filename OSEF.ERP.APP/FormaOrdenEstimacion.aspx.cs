@@ -30,6 +30,19 @@ namespace OSEF.ERP.APP
             }
         }
 
+
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void sConceptos_OnReadData(object sender, StoreReadDataEventArgs e)
+        {
+            //Obtener la cookie al cargar
+            string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(Convert.ToInt32(strcookieEditarOrdenEstimacion));
+            sConceptos.DataBind();
+
+        }
         /// <summary>
         /// Evento que se lanza al cargar el store
         /// </summary>

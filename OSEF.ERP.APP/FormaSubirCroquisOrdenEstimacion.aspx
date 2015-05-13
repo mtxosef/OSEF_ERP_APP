@@ -117,7 +117,8 @@
                                 <UploadComplete Handler="updateRecord(file.id, 'Progreso', 1); updateRecord(file.id, 'Estatus', 'Cargado');" />
                                 <UploadAborted Handler="updateRecord(file.id, 'Estatus', 'Abortado');" />
                                 <UploadRemoved Handler="var store = this.up('grid').store; store.remove(store.getById(file.id));" />
-                                <UploadError Fn="uploadError" />
+                                <UploadError Fn="uploadError" /><%--
+                                <UploadSuccess Handler="window.parent.App.wEmergente.getBody().App.sConceptos.reload();"></UploadSuccess>--%>
                                 <FileSelectionError Fn="fileSelectionError" />
                             </Listeners>
                         </ext:MultiUpload>
