@@ -1030,6 +1030,9 @@
                                                         <ext:ModelField Name="IntExt" Type="String" />
                                                         <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
                                                         <ext:ModelField Name="Moneda" Type="String" />
+                                                        <ext:ModelField Name="Fotos" Type="Int" />
+                                                        <ext:ModelField Name="Croquis" Type="Int" />
+                                                        <ext:ModelField Name="Facturas" Type="Int" />
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>

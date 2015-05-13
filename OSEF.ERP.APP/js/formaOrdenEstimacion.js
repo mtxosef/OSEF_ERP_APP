@@ -1801,50 +1801,40 @@ var fufNormal_Change = function (event, control, txtReporte) {
     var cSinFotos_Renderer = function (value, metadata, registro) { 
         metadata.style = "background-color: #FF1205; color: #fff;";
     };
-     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //Render column
     var cCheckFotos_Renderer = function (value, metadata, registro) {
-        var movId = Ext.util.Cookies.get('cookieEditarOrdenEstimacion'); 
-        Ext.util.Cookies.set('Fotos', 0);
-        App.direct.VerificarImagenes(movId, registro.get('ConceptoID').trim(), {
-            success: function (result) {
-                return result;
-            },
-            failure: function (errorMsg) {
-                Ext.Msg.alert('Error', errorMsg);
-            }
-        }); 
-        if (registro.get('ConceptoID').trim().length > 0) {
-            var haspictures = Ext.util.Cookies.get('Fotos');
-            if (haspictures == 1) {
-                metadata.style = "background-color: green; color: #fff;";
-            } else {
-                metadata.style = "background-color: red; color: #fff;";
+        if (registro.get('Fotos') > 0 && registro.get('ConceptoID').trim().length > 0) {
+            metadata.style = "background-color: #669900; color: #fff;";
+        } else {
+            if (registro.get('ConceptoID').trim().length > 1) {
+                metadata.style = "background-color: #CC0000; color: #fff;";
             }
         }
     }
 
     //Render column
     var cCheckCroquis_Renderer = function (value, metadata, registro) {
-        var movId = Ext.util.Cookies.get('cookieEditarOrdenEstimacion');
-        metadata.style = "background-color: #FF1205; color: #fff;";
-        App.direct.VerificarCroquis(movId, {
-            success: function (result) {
-                alert("Result Croquis: " + result);
-                Ext.util.Cookies.set('FotosCroquis', result);
-            },
-            failure: function (errorMsg) {
-                Ext.Msg.alert('Error', errorMsg);
-            }
-        });
-        if (registro.get('ConceptoID').trim().length > 0) {
-            var haspictures = Ext.util.Cookies.get('FotosCroquis');
-            alert("Croquis " + haspictures);
-            if (haspictures == 1) {
-                metadata.style = "background-color: green; color: #fff;";
-            } else {
-                metadata.style = "background-color: red; color: #fff;";
+        if (registro.get('Croquis') > 0 && registro.get('ConceptoID').trim().length > 0) {
+            metadata.style = "background-color: #669900; color: #fff;";
+        } else {
+            if (registro.get('ConceptoID').trim().length > 1) {
+                metadata.style = "background-color: #CC0000; color: #fff;";
             }
         }
     }
@@ -1852,18 +1842,13 @@ var fufNormal_Change = function (event, control, txtReporte) {
 
     //Render column
     var cCheckFacturas_Renderer = function (value, metadata, registro) {
-        var movId = Ext.util.Cookies.get('cookieEditarOrdenEstimacion');
-        metadata.style = "background-color: #FF1205; color: #fff;";
-        App.direct.VerificarFacturas(movId, {
-            success: function (result) {
-                Ext.util.Cookies.set('FotosFacturas', result);
-            },
-            failure: function (errorMsg) {
-                Ext.Msg.alert('Error', errorMsg);
+        if (registro.get('Facturas') > 0 && registro.get('ConceptoID').trim().length > 0) {
+            metadata.style = "background-color: #669900; color: #fff;";
+        } else {
+            if (registro.get('ConceptoID').trim().length > 1) {
+                metadata.style = "background-color: #CC0000; color: #fff;";
             }
-        });
-        var haspictures = Ext.util.Cookies.get('FotosFacturas');
-        if (haspictures == 1) {
-            metadata.style = "background-color: green; color: #fff;";
         }
     }
+
+    
