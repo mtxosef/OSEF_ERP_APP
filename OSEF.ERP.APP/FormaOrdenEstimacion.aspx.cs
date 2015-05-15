@@ -94,8 +94,6 @@ namespace OSEF.ERP.APP
                     TrabajoRequerido=oOrdenEstimacion.TrabajoRequerido,
                     TrabajoRealizado=oOrdenEstimacion.TrabajoRealizado,
                     CodigoFalla=oOrdenEstimacion.CodigoFalla,
-                    TieneFotos=oOrdenEstimacion.TieneFotos,
-                    TieneReporte=oOrdenEstimacion.TieneReporte,
                     FechaLlegada=oOrdenEstimacion.FechaLlegada,
                     HoraLlegada=oOrdenEstimacion.HoraLlegada,
                     FechaFinActividad=oOrdenEstimacion.FechaFinActividad,
@@ -380,12 +378,7 @@ namespace OSEF.ERP.APP
                     case "txtfCodigoFalla":
                         oOrdenEstimacionForma.CodigoFalla= sd.Value;
                         break;
-                    case "cmbTieneFotos":
-                        oOrdenEstimacionForma.TieneFotos = sd.Value;
-                        break;
-                    case "cmbTieneReporte":
-                        oOrdenEstimacionForma.TieneReporte = sd.Value;
-                        break;
+                 
                     case "dfFechaLlegada":
                         if (sd.Value == null)
                             oOrdenEstimacionForma.FechaLlegada = null;
@@ -516,8 +509,6 @@ namespace OSEF.ERP.APP
                     //6. Tercera parte
                     TrabajoRealizado = oOrdenEstimacionForma.TrabajoRealizado,
                     CodigoFalla = oOrdenEstimacionForma.CodigoFalla,
-                    TieneFotos = oOrdenEstimacionForma.TieneFotos,
-                    TieneReporte = oOrdenEstimacionForma.TieneReporte,
                     FechaLlegada = oOrdenEstimacionForma.FechaLlegada,
                     HoraLlegada = oOrdenEstimacionForma.HoraLlegada,
                     FechaFinActividad = oOrdenEstimacionForma.FechaFinActividad,
@@ -560,8 +551,6 @@ namespace OSEF.ERP.APP
                 //11. Campos extras 2
                 sOrdenEstimacion.GetAt(0).Set("TrabajoRealizado", oOrdenEstimacionForma.TrabajoRealizado);
                 sOrdenEstimacion.GetAt(0).Set("CodigoFalla", oOrdenEstimacionForma.CodigoFalla);
-                sOrdenEstimacion.GetAt(0).Set("TieneFotos", oOrdenEstimacionForma.TieneFotos);
-                sOrdenEstimacion.GetAt(0).Set("TieneReporte", oOrdenEstimacionForma.TieneReporte);
                 sOrdenEstimacion.GetAt(0).Set("FechaLlegada", oOrdenEstimacionForma.FechaLlegada);
                 sOrdenEstimacion.GetAt(0).Set("HoraLlegada", oOrdenEstimacionForma.HoraLlegada);
                 sOrdenEstimacion.GetAt(0).Set("FechaFinActividad", oOrdenEstimacionForma.FechaFinActividad);

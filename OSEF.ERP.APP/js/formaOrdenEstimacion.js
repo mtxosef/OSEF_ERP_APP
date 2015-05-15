@@ -34,8 +34,6 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtfTrabajoRequerido.setValue('');
 
     App.txtfCodigoFalla.setValue('');
-    App.cmbTieneFotos.setValue('');
-    App.cmbTieneReporte.setValue('');
     App.dfFechaLlegada.setValue('');
     App.dfFechaLlegada.setReadOnly(false);
     App.tfHoraLlegada.setValue('');
@@ -417,8 +415,6 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
         App.txtfCodigoFalla.setReadOnly(true);
-        App.cmbTieneFotos.setReadOnly(true);
-        App.cmbTieneReporte.setReadOnly(true);
         App.dfFechaLlegada.setReadOnly(true);
         App.tfHoraLlegada.setReadOnly(true);
         App.dfFechaFinActividad.setReadOnly(true);
@@ -541,8 +537,6 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.txtfReporta.setReadOnly(true);
     App.txtfTrabajoRequerido.setReadOnly(true);
     App.txtfCodigoFalla.setReadOnly(true);
-    App.cmbTieneFotos.setReadOnly(true);
-    App.cmbTieneReporte.setReadOnly(true);
     App.dfFechaLlegada.setReadOnly(true);
     App.tfHoraLlegada.setReadOnly(true);
     App.dfFechaFinActividad.setReadOnly(true);
@@ -620,8 +614,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
 
         App.txtfCodigoFalla.setValue(registro[0].get('CodigoFalla'));
-        App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
-        App.cmbTieneReporte.setValue(registro[0].get('TieneReporte'));
         App.dfFechaLlegada.setValue(registro[0].get('FechaLlegada'));
         App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
@@ -650,8 +642,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfTrabajoRequerido.setReadOnly(true);
 
         App.txtfCodigoFalla.setReadOnly(true);
-        App.cmbTieneFotos.setReadOnly(true);
-        App.cmbTieneReporte.setReadOnly(true);
         App.dfFechaLlegada.setReadOnly(true);
         App.tfHoraLlegada.setReadOnly(true);
         App.dfFechaFinActividad.setReadOnly(true);
@@ -689,8 +679,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfReporta.setValue(registro[0].get('Reporto'));
         App.txtfTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
         App.txtfCodigoFalla.setValue(registro[0].get('CodigoFalla'));
-        App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
-        App.cmbTieneReporte.setValue(registro[0].get('TieneReporte'));
         App.dfFechaLlegada.setValue(registro[0].get('FechaLlegada'));
         App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
@@ -757,8 +745,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfTrabajoRequerido.setValue(registro[0].get('TrabajoRequerido'));
 
         App.txtfCodigoFalla.setValue(registro[0].get('CodigoFalla'));
-        App.cmbTieneFotos.setValue(registro[0].get('TieneFotos'));
-        App.cmbTieneReporte.setValue(registro[0].get('TieneReporte'));
         App.dfFechaLlegada.setValue(registro[0].get('FechaLlegada'));
         App.tfHoraLlegada.setValue(registro[0].get('HoraLlegada'));
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
@@ -777,8 +763,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
         App.txtfCodigoFalla.setReadOnly(true);
-        App.cmbTieneFotos.setReadOnly(true);
-        App.cmbTieneReporte.setReadOnly(true);
         App.dfFechaLlegada.setReadOnly(true);
         App.tfHoraLlegada.setReadOnly(true);
         App.dfFechaFinActividad.setReadOnly(true);

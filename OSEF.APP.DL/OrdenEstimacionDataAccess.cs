@@ -173,21 +173,7 @@ namespace OSEF.APP.DL
                 else
                     sqlpCodigoFalla.Value = iOrdenEstimacion.CodigoFalla;
 
-                SqlParameter sqlpTieneFotos = new SqlParameter();
-                sqlpTieneFotos.ParameterName = "@TieneFotos";
-                sqlpTieneFotos.SqlDbType = SqlDbType.VarChar;
-                if (iOrdenEstimacion.TieneFotos == null)
-                    sqlpTieneFotos.Value = DBNull.Value;
-                else
-                    sqlpTieneFotos.Value = iOrdenEstimacion.TieneFotos;
-
-                SqlParameter sqlpTieneReporte = new SqlParameter();
-                sqlpTieneReporte.ParameterName = "@TieneReporte";
-                sqlpTieneReporte.SqlDbType = SqlDbType.VarChar;
-                if (iOrdenEstimacion.TieneReporte == null)
-                    sqlpTieneReporte.Value = DBNull.Value;
-                else
-                    sqlpTieneReporte.Value = iOrdenEstimacion.TieneReporte;
+            
 
                 SqlParameter sqlpFechaLlegada = new SqlParameter();
                 sqlpFechaLlegada.ParameterName = "@FechaLlegada";
@@ -269,8 +255,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
                 sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
                 sqlcComando.Parameters.Add(sqlpCodigoFalla);
-                sqlcComando.Parameters.Add(sqlpTieneFotos);
-                sqlcComando.Parameters.Add(sqlpTieneReporte);
                 sqlcComando.Parameters.Add(sqlpFechaLlegada);
                 sqlcComando.Parameters.Add(sqlpHoraLlegada);
                 sqlcComando.Parameters.Add(sqlpFechaFinActividad);
@@ -449,21 +433,7 @@ namespace OSEF.APP.DL
                 else
                     sqlpCodigoFalla.Value = uOrdenEstimacion.CodigoFalla;
 
-                SqlParameter sqlpTieneFotos = new SqlParameter();
-                sqlpTieneFotos.ParameterName = "@TieneFotos";
-                sqlpTieneFotos.SqlDbType = SqlDbType.VarChar;
-                if (uOrdenEstimacion.TieneFotos == null)
-                    sqlpTieneFotos.Value = DBNull.Value;
-                else
-                    sqlpTieneFotos.Value = uOrdenEstimacion.TieneFotos;
-
-                SqlParameter sqlpTieneReporte = new SqlParameter();
-                sqlpTieneReporte.ParameterName = "@TieneReporte";
-                sqlpTieneReporte.SqlDbType = SqlDbType.VarChar;
-                if (uOrdenEstimacion.TieneReporte == null)
-                    sqlpTieneReporte.Value = DBNull.Value;
-                else
-                    sqlpTieneReporte.Value = uOrdenEstimacion.TieneReporte;
+              
 
                 SqlParameter sqlpFechaLlegada = new SqlParameter();
                 sqlpFechaLlegada.ParameterName = "@FechaLlegada";
@@ -543,8 +513,6 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpTrabajoRequerido);
                 sqlcComando.Parameters.Add(sqlpTrabajoRealizado);
                 sqlcComando.Parameters.Add(sqlpCodigoFalla);
-                sqlcComando.Parameters.Add(sqlpTieneFotos);
-                sqlcComando.Parameters.Add(sqlpTieneReporte);
                 sqlcComando.Parameters.Add(sqlpFechaLlegada);
                 sqlcComando.Parameters.Add(sqlpHoraLlegada);
                 sqlcComando.Parameters.Add(sqlpFechaFinActividad);

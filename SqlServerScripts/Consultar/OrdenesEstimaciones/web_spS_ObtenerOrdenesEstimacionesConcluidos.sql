@@ -56,8 +56,6 @@ BEGIN
 		TrabajoRequerido,
 		TrabajoRealizado,
 		CodigoFalla,
-		TieneFotos,
-		TieneReporte,
 		FechaLlegada,
 		HoraLlegada,
 		FechaFinActividad,

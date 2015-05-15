@@ -31,8 +31,6 @@ namespace OSEF.APP.EL
         string trabajorequerido;
         string trabajorealizado;
         string codigofalla;
-        string tienefotos;
-        string tieneReporte;
         Nullable<DateTime> fechallegada;
         Nullable<DateTime> horallegada;
         Nullable<DateTime> fechafinActividad;
@@ -167,18 +165,7 @@ namespace OSEF.APP.EL
             set { codigofalla = value; }
         }
 
-        public string TieneFotos
-        {
-            get { return tienefotos; }
-            set { tienefotos = value; }
-        }
-
-        public string TieneReporte
-        {
-            get { return tieneReporte; }
-            set { tieneReporte = value; }
-        }
-
+       
         public Nullable<DateTime> FechaLlegada
         {
             get { return fechallegada; }

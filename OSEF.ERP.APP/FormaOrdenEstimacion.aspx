@@ -64,8 +64,6 @@
                         <ext:ModelField Name="Atiende" Type="String" />
                         <ext:ModelField Name="TrabajoRealizado" Type="String" />
                         <ext:ModelField Name="CodigoFalla" Type="String" />
-                        <ext:ModelField Name="TieneFotos" Type="String" />
-                        <ext:ModelField Name="TieneReporte" Type="String" />
                         <ext:ModelField Name="FechaLlegada" Type="Date" />
                         <ext:ModelField Name="HoraLlegada" Type="Date" />
                         <ext:ModelField Name="FechaFinActividad" Type="Date" />
@@ -485,6 +483,13 @@
                                                         Cls="my-date-picker">
                                                     </PickerOptions>
                                                 </ext:DateField>
+                                                <ext:Checkbox
+                                                    ID="chkAtendido" 
+                                                    runat="server"
+                                                    Name="chkAtendido"
+                                                    FieldLabel="Atendido"
+                                                    Checked="true">
+                                                </ext:Checkbox>
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer
@@ -844,42 +849,6 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
-                                        <ext:FieldContainer 
-                                            ID="fcRegistros"
-                                            runat="server"
-                                            FieldLabel="¿Tiene Fotos?"
-                                            LabelWidth="120"
-                                            AnchorHorizontal="100%"
-                                            Layout="HBoxLayout">
-                                            <Items>
-                                                <ext:ComboBox 
-                                                    ID="cmbTieneFotos"
-                                                    runat="server"
-                                                    Width="200"
-                                                    Margins="0 3 0 0"
-                                                    Editable="false"
-                                                    AllowBlank="false">
-                                                    <Items>
-                                                        <ext:ListItem Index="0" Text="SI" Value="SI" />
-                                                        <ext:ListItem Index="1" Text="NO" Value="NO" />
-                                                    </Items>
-                                                </ext:ComboBox>
-                                                <ext:ComboBox 
-                                                    ID="cmbTieneReporte"
-                                                    runat="server"
-                                                    FieldLabel="¿Tiene Reporte?"
-                                                   LabelWidth="120" 
-                                                    Width="300"
-                                                    Margins="0 3 0 0"
-                                                    Editable="false"
-                                                    AllowBlank="false">
-                                                    <Items>
-                                                        <ext:ListItem Index="0" Text="SI" Value="SI" />
-                                                        <ext:ListItem Index="1" Text="NO" Value="NO" />
-                                                    </Items>
-                                                </ext:ComboBox>
-                                            </Items>
-                                        </ext:FieldContainer>
 
                                         <ext:FieldContainer 
                                             ID="FieldContainer2"

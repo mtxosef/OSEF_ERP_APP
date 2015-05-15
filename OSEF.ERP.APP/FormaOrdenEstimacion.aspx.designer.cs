@@ -355,6 +355,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.DateField dfFechaEmision;
         
         /// <summary>
+        /// Control chkAtendido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkAtendido;
+        
+        /// <summary>
         /// Control fcObservaciones.
         /// </summary>
         /// <remarks>
@@ -605,33 +614,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.FieldSet FieldSet1;
-        
-        /// <summary>
-        /// Control fcRegistros.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.FieldContainer fcRegistros;
-        
-        /// <summary>
-        /// Control cmbTieneFotos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbTieneFotos;
-        
-        /// <summary>
-        /// Control cmbTieneReporte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbTieneReporte;
         
         /// <summary>
         /// Control FieldContainer2.

@@ -253,3 +253,20 @@ var cCuadrilla_Renderer = function (valor, columna, registro) {
         return registro.get('RCuadrilla').Nombre;
     }
 };
+
+
+//Asignar la descripción de la cuadrilla a esta columna
+var cTieneReporte_Renderer = function (valor, columna, registro) {
+
+    if (valor.length == 0) {
+        columna.style = "background-color: #FEBB5D;";
+        return 'No';
+    }
+    else {
+        columna.style = "background-color: #0C8D1B; color: #fff;";
+        return 'Si';
+        
+    }
+};
+
+

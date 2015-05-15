@@ -108,3 +108,7 @@ ALTER TABLE GeneradorVolumetriaD DROP COLUMN Numero
 ALTER TABLE OrdenesEstimaciones ADD HoraOrigen DATETIME NULL
 --Cambios Giovanni Flores 07 de Mayo
 ALTER TABLE OrdenesEstimaciones ADD RutaImagen VARCHAR(500) NULL
+
+--Cambios Christian 15 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones DROP COLUMN TieneFotos 
+ALTER TABLE OrdenesEstimaciones DROP COLUMN TieneReporte 

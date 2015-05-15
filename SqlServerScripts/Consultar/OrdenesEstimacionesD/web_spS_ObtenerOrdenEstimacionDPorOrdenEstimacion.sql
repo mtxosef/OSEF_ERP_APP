@@ -60,7 +60,8 @@ SELECT
 		OED.Precio,
 		OED.Importe,		
 		OED.IntExt,
-		OED.Moneda;
+		OED.Moneda
+	ORDER BY OED.Renglon ASC;
 
 END
 GO
