@@ -245,8 +245,13 @@
                                 runat="server"
                                 DisplayField="Nombre"
                                 ValueField="ID"
+
                                 ForceSelection="true"
-                                Editable="false">
+                                Editable="true"
+                                 MatchFieldWidth="true"
+                            QueryMode="Local"
+                            TypeAhead="true"
+                                >
                                 <Items>
                                     <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
                                 </Items>

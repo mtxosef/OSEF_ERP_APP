@@ -550,6 +550,47 @@ namespace OSEF.APP.DL
         }
 
 
+        /// <summary>
+        /// Obtener todos los registros de Sucursales en uso
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesEnUso()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerSucursalesEnUso";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<Sucursal> result = LibraryGenerics<Sucursal>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<Sucursal> ObtenerSucursalesEnUso()): " + ex.Message);
+            }
+        }
+
+
 
         /// <summary>
         /// Obtener todos los registros de Sucursales

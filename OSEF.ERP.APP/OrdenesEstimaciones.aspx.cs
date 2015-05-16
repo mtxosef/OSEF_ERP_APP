@@ -32,9 +32,11 @@ namespace OSEF.ERP.APP
                 sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
                 sUsuarios.DataBind();
 
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
-                sSucursales.DataBind();
+                //sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                //sSucursales.DataBind();
 
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUso();
+                sSucursales.DataBind();
 
                 sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
                 sOrdenesEstimaciones.DataBind();

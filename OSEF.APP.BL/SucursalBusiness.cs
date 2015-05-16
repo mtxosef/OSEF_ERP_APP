@@ -63,16 +63,36 @@ namespace OSEF.APP.BL
             //return SucursalDataAccess.ObtenerSucursales();
             List<Sucursal> lSucursal = SucursalDataAccess.ObtenerSucursales();
 
-            foreach(Sucursal c in lSucursal){
+            foreach (Sucursal c in lSucursal)
+            {
                 c.RColonia = ColoniaBusiness.ObtenerColoniaPorID(c.Colonia);
-                
+
             }
 
 
-                return lSucursal;
+            return lSucursal;
         }
-        
 
+
+
+        /// <summary>
+        /// Método que obtiene todos los regsitros de Sucursales en uso
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesEnUso()
+        {
+            //return SucursalDataAccess.ObtenerSucursales();
+            List<Sucursal> lSucursal = SucursalDataAccess.ObtenerSucursalesEnUso();
+
+            foreach (Sucursal c in lSucursal)
+            {
+                c.RColonia = ColoniaBusiness.ObtenerColoniaPorID(c.Colonia);
+
+            }
+
+
+            return lSucursal;
+        }
 
         /// <summary>
         /// Método que obtiene todos los regsitros de Sucursales

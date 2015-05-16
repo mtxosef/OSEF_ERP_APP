@@ -446,36 +446,49 @@ namespace OSEF.ERP.APP
             string strImagen = fufNormal.FileName;
             oOrdenEstimacionForma.RutaImagen = strImagen;
 
-            //Validamos que aunque exista el numero de reporte pero si no capturo imagen se guarde
-            if (oOrdenEstimacionForma.Reporte.Length > 0 && strImagen.Equals(""))
+            string prueba = oOrdenEstimacion.RutaImagen;
+
+
+            if (prueba.Length > 0)
             {
-                oOrdenEstimacionForma.RutaImagen = "";
+                oOrdenEstimacionForma.RutaImagen = oOrdenEstimacion.RutaImagen;
             }
             else {
-                if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
+                //Validamos que aunque exista el numero de reporte pero si no capturo imagen se guarde
+                if (oOrdenEstimacionForma.Reporte.Length > 0 && strImagen.Equals(""))
                 {
                     oOrdenEstimacionForma.RutaImagen = "";
                 }
                 else
                 {
-                    string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
-                    //2. Validar si existe el directorio donde se guardaran las imagenes
-                    if (Directory.Exists(strDireccion))
+                    if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
                     {
-                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        oOrdenEstimacionForma.RutaImagen = "";
                     }
                     else
                     {
-                        Directory.CreateDirectory(strDireccion);
-                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
+                        //2. Validar si existe el directorio donde se guardaran las imagenes
+                        if (Directory.Exists(strDireccion))
+                        {
+                            fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(strDireccion);
+                            fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        }
+
+                        //Guardamos en la bd
+                        oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
                     }
 
-                    //Guardamos en la bd
-                    oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
                 }
+          
             
             }
-          
+
+           
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)
