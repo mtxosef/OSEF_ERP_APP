@@ -27,7 +27,7 @@ namespace OSEF.ERP.APP
             {
 
                 //Checar ticket de autenticación
-                UsuarioBusiness.checkValidSession(this);
+                //UsuarioBusiness.checkValidSession(this);
 
                 //2. Asignar Categorias
                 sCategoria.DataSource = PreciarioGeneralCategoriaBusiness.ObtenerPreciarioGeneralCategoriaPorPreciario(Cookies.GetCookie("cookieEditarPreciarioGeneral").Value);

@@ -24,7 +24,7 @@ namespace OSEF.ERP.APP
             if (!X.IsAjaxRequest)
             {
                 //2. Checar ticket de autenticación
-                UsuarioBusiness.checkValidSession(this);
+                //UsuarioBusiness.checkValidSession(this);
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
                 sCuadrillas.DataBind(); 
             }
@@ -226,97 +226,6 @@ namespace OSEF.ERP.APP
             oOrdenEstimacion = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(oFormaOrdenEstimacion.Id);
             sOrdenEstimacion.GetAt(0).Set("MovID", oOrdenEstimacion.MovID);
             sOrdenEstimacion.GetAt(0).Set("Estatus", oOrdenEstimacion.Estatus);
-
-            //Nos traemos el movimiento actual
-            //string strEstimacion= Cookies.GetCookie("cookieEsEstimacion").Value;
-
-            //Nos traemos el ID del movimiento actual
-            //string iID = Cookies.GetCookie("cookieIDMov").Value;
-
-            //Validamos que sea un movimiento de reporte para que avance a estimacion
-            //if (strEstimacion.Equals("Reporte"))
-            //{
-            //    //Se ejecuta el procedure que avanza e inserta en la tabla el nuevo movimiento
-            //    int iIDNuevo = OrdenEstimacionBusiness.AvanzarReportePorID(Convert.ToInt32(iID), "Estimacion");
-                
-            //    //Obtenemos los nuevos valores del nuevo movimiento
-            //    OrdenEstimacion nuevosValores= OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(Convert.ToInt32(iIDNuevo));
-
-            //    //Cargar el detalle del movimiento
-            //    sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrigen(nuevosValores.OrigenId);
-            //    sConceptos.DataBind();
-
-            //    //Se manda el parametro que hara la validacion del lado del cliente
-            //    e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Estimacion", ParameterMode.Value));
-
-            //    //Actualizar store 
-            //    sOrdenEstimacion.GetAt(0).Set("ID", iIDNuevo);
-            //    sOrdenEstimacion.GetAt(0).Set("Mov", nuevosValores.Mov);
-            //    sOrdenEstimacion.GetAt(0).Set("MovID", nuevosValores.MovID);
-            //    sOrdenEstimacion.GetAt(0).Set("Origen", nuevosValores.Origen);
-            //    sOrdenEstimacion.GetAt(0).Set("OrigenID", nuevosValores.OrigenId);
-            //    sOrdenEstimacion.GetAt(0).Set("Sucursal", nuevosValores.Sucursal);
-            //    sOrdenEstimacion.GetAt(0).Set("FechaEmision", nuevosValores.FechaEmision);
-            //    sOrdenEstimacion.GetAt(0).Set("Observaciones", nuevosValores.Observaciones);
-            //    sOrdenEstimacion.GetAt(0).Set("Estatus", nuevosValores.Estatus);
-            //    sOrdenEstimacion.GetAt(0).Set("RSucursal", nuevosValores.RSucursal);
-
-            //    //Campos extras de reporte
-            //    sOrdenEstimacion.GetAt(0).Set("Reporte", nuevosValores.Reporte);
-            //    sOrdenEstimacion.GetAt(0).Set("Division", nuevosValores.Division);
-            //    sOrdenEstimacion.GetAt(0).Set("FechaOrigen", nuevosValores.FechaOrigen);
-            //    sOrdenEstimacion.GetAt(0).Set("FechaMaximaAtencion", nuevosValores.FechaMaximaAtencion);
-            //    sOrdenEstimacion.GetAt(0).Set("DiasAtencion", nuevosValores.DiasAtencion);
-            //    sOrdenEstimacion.GetAt(0).Set("Reporto", nuevosValores.Reporto);
-            //    sOrdenEstimacion.GetAt(0).Set("TrabajoRequerido", nuevosValores.TrabajoRequerido);
-
-            //    //Campos extras 2 
-            //    sOrdenEstimacion.GetAt(0).Set("TrabajoRealizado", nuevosValores.TrabajoRealizado);
-            //    sOrdenEstimacion.GetAt(0).Set("CodigoFalla", nuevosValores.CodigoFalla);
-            //    sOrdenEstimacion.GetAt(0).Set("TieneFotos", nuevosValores.TieneFotos);
-            //    sOrdenEstimacion.GetAt(0).Set("TieneReporte", nuevosValores.TieneReporte);
-            //    sOrdenEstimacion.GetAt(0).Set("FechaLlegada", nuevosValores.FechaLlegada);
-            //    sOrdenEstimacion.GetAt(0).Set("HoraLlegada", nuevosValores.HoraLlegada);
-            //    sOrdenEstimacion.GetAt(0).Set("FechaFinActividad", nuevosValores.FechaFinActividad);
-            //    sOrdenEstimacion.GetAt(0).Set("HoraFinActividad", nuevosValores.HoraFinActividad);
-            //    sOrdenEstimacion.GetAt(0).Set("Cuadrilla", nuevosValores.Cuadrilla);
-            //    sOrdenEstimacion.GetAt(0).Set("ImporteFinal", nuevosValores.ImporteTotal);
-            //}
-            ////Si no es estimacion sale de la validacion y afecta normal
-            //else
-            //{
-            //    //3. Guardar o Actuaizar el Movimiento
-            //    strAccion = GuardarMovimiento(ref oFormaOrdenEstimacion, oOrdenEstimacion, lOrdenEstimacionD,strSucursal,diasAtencion);
-
-            //    //4. Validar que efecto realizará para Guardar o Afectar
-            //    switch (strAccion)
-            //    {
-            //        case "insertar":
-            //            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "insertar", ParameterMode.Value));
-            //            break;
-            //        case "modificar":
-            //            e.ExtraParamsResponse.Add(new Ext.Net.Parameter("accion", "modificar", ParameterMode.Value));
-            //            break;
-            //    }
-             
-            //    //4. Lanzar la afectación del Movimiento
-            //    if (strMovimiento.Trim().Equals("Orden de Cambio"))
-            //    {
-            //        OrdenEstimacionBusiness.AfectarOrdenPorID(oFormaOrdenEstimacion);
-            //        e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Orden", ParameterMode.Value));
-            //    }
-            //    if (strMovimiento.Trim().Equals("Mesa de reporte"))
-            //    {
-            //        OrdenEstimacionBusiness.AfectarEstimacionPorID(oFormaOrdenEstimacion);
-            //        e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Reporte", ParameterMode.Value));
-            //    }
-
-            //    oOrdenEstimacion = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(oFormaOrdenEstimacion.Id);
-                
-            //    //7. Actualizar store de Revision
-            //    sOrdenEstimacion.GetAt(0).Set("MovID", oOrdenEstimacion.MovID);
-            //    sOrdenEstimacion.GetAt(0).Set("Estatus", oOrdenEstimacion.Estatus);
-            //}
         }
 
         /// <summary>
@@ -447,56 +356,36 @@ namespace OSEF.ERP.APP
             //2. Actualizamos el Estatus e Insertar en la base de datos
             oOrdenEstimacionForma.Estatus = "BORRADOR"; 
             string strReporte = oOrdenEstimacionForma.Reporte;
-            string strImagen = fufNormal.FileName;
-            oOrdenEstimacionForma.RutaImagen = strImagen;
+           // string strImagen = fufNormal.FileName;
+           // oOrdenEstimacionForma.RutaImagen = strImagen;
 
-            string prueba = oOrdenEstimacion.RutaImagen;
-
-
-            if (prueba.Length > 0)
-            {
-                oOrdenEstimacionForma.RutaImagen = oOrdenEstimacion.RutaImagen;
-            }
-            else {
-                //Validamos que aunque exista el numero de reporte pero si no capturo imagen se guarde
-                if (oOrdenEstimacionForma.Reporte.Length > 0 && strImagen.Equals(""))
-                {
-                    oOrdenEstimacionForma.RutaImagen = "";
-                }
-                else
-                {
-                    if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
-                    {
-                        oOrdenEstimacionForma.RutaImagen = "";
-                    }
-                    else
-                    {
-                        string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
-                        //2. Validar si existe el directorio donde se guardaran las imagenes
-                        if (Directory.Exists(strDireccion))
-                        {
-                            fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
-                        }
-                        else
-                        {
-                            Directory.CreateDirectory(strDireccion);
-                            fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
-                        }
-
-                        //Guardamos en la bd
-                        oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
-                    }
-
-                }
-          
-            
-            }
-
-           
+            string bandera = Cookies.GetCookie("cookieTieneImagenReporte").Value;
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)
             {
+                if (bandera.Equals("SI"))
+                {
+                    string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
+                    //2. Validar si existe el directorio donde se guardaran las imagenes
+                    if (Directory.Exists(strDireccion))
+                    {
+                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(strDireccion);
+                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                    }
+
+                    //Guardamos en la bd
+                    oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
+                }
+                else
+                {
+                    oOrdenEstimacionForma.RutaImagen = "";
+                }
+
                 oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
 
                 //4. Agregar el objeto al Store de Revisión
@@ -538,8 +427,6 @@ namespace OSEF.ERP.APP
                 });
 
 
-
-
                 //7. Guardar Detalle y regresar valor
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
                 return "insertar";
@@ -547,6 +434,27 @@ namespace OSEF.ERP.APP
             else
             {
                 //8. Complementar datos y actualizar encabezado
+                if (bandera.Equals("SI"))
+                {
+                    string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
+                    //2. Validar si existe el directorio donde se guardaran las imagenes
+                    if (Directory.Exists(strDireccion))
+                    {
+                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(strDireccion);
+                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                    }
+                    //Guardamos en la bd
+                    oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
+
+                }
+                else {
+                    oOrdenEstimacionForma.RutaImagen = oOrdenEstimacion.RutaImagen;
+                }
+
                 oOrdenEstimacionForma.Id = oOrdenEstimacion.Id;
                 OrdenEstimacionBusiness.ActualizarOrdenEstimacion(oOrdenEstimacionForma);
 
@@ -578,7 +486,7 @@ namespace OSEF.ERP.APP
                 //12. Importe
                 sOrdenEstimacion.GetAt(0).Set("ImporteFinal", oOrdenEstimacionForma.ImporteTotal);
                 sOrdenEstimacion.GetAt(0).Set("HoraOrigen", oOrdenEstimacionForma.HoraOrigen);
-
+                sOrdenEstimacion.GetAt(0).Set("RutaImagen", oOrdenEstimacionForma.RutaImagen);
                 //13. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);

@@ -27,7 +27,7 @@ namespace OSEF.ERP.APP
             if (!X.IsAjaxRequest)
             {
                 //2. Checar ticket de autenticación
-                UsuarioBusiness.checkValidSession(this);
+                //UsuarioBusiness.checkValidSession(this);
                 //3. Llenar Store de OrdenesEstimaciones, Preciarios y Usuarios
                 sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
                 sUsuarios.DataBind();

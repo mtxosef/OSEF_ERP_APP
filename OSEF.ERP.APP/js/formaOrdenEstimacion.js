@@ -1755,10 +1755,13 @@ function PrimerRenglonDetalle() {
 
 };
 
-
+Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO')
 
 //Imagen Preview Normal
 var fufNormal_Change = function (event, control, txtReporte) {
+    console.log(App.sOrdenEstimacion.getAt(0));
+
+    
 
     if (txtReporte.length != 0) {
 
@@ -1801,24 +1804,27 @@ var fufNormal_Change = function (event, control, txtReporte) {
                 App.sOrdenEstimacion.getAt(0).set('RutaImagen', URL.createObjectURL(event.target.files[0]));
             }
 
+            Ext.util.Cookies.set('cookieTieneImagenReporte', 'SI')
+
         }
         else {
+            Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO')
             return isValidFile;
         }
     }
     else {
-            Ext.Msg.show({
-                id: 'msgOrdenEstimacion',
-                title: 'Advertencia',
-                msg: "Es necesario ingresar un Número de Reporte.",
-                buttons: Ext.MessageBox.OK,
-                onEsc: Ext.emptyFn,
-                closable: false,
-                icon: Ext.MessageBox.WARNING
-            });
-        }
+        Ext.Msg.show({
+            id: 'msgOrdenEstimacion',
+            title: 'Advertencia',
+            msg: "Es necesario ingresar un Número de Reporte.",
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+    }
 
-    };
+};
 
 
     var PopupPic = function () {

@@ -33,7 +33,7 @@ namespace OSEF.AVANCES.SUCURSALES
             if (!X.IsAjaxRequest)
             {
                 //2. Checar ticket de autenticación
-                UsuarioBusiness.checkValidSession(this);
+                //UsuarioBusiness.checkValidSession(this);
 
                 //3. Llenar Store de Revisiones, Preciarios y Usuarios
                 sVolumetrias.DataSource = VolumetriaBusiness.ObtenerVolumetrias();
