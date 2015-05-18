@@ -14,14 +14,13 @@ var imgbtnNuevo_Click = function () {
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
-    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'));
-  
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id')); 
     window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
     window.parent.App.wEmergente.setHeight(600);
     window.parent.App.wEmergente.setWidth(930);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
-    window.parent.App.wEmergente.show();
+    window.parent.App.wEmergente.show();  
 };
 
 //Evento de click del botón Editar
@@ -36,14 +35,13 @@ var imgbtnFirmas_Click = function () {
 
 var gpOrdenEstimacion_ItemDblClick = function (gridview, registro, gvhtml, index) {
 
-    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id'));
-
-    window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
-    window.parent.App.wEmergente.setHeight(600);
-    window.parent.App.wEmergente.setWidth(930);
-    window.parent.App.wEmergente.center();
-    window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
-    window.parent.App.wEmergente.show();
+    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.gpOrdenesEstimaciones.getSelectionModel().getSelection()[0].get('Id')); 
+            window.parent.App.wEmergente.load('FormaOrdenEstimacion.aspx');
+            window.parent.App.wEmergente.setHeight(600);
+            window.parent.App.wEmergente.setWidth(930);
+            window.parent.App.wEmergente.center();
+            window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
+            window.parent.App.wEmergente.show(); 
 }
 
 //Cambio en los datos del tablero
@@ -255,3 +253,20 @@ var cCuadrilla_Renderer = function (valor, columna, registro) {
         return registro.get('RCuadrilla').Nombre;
     }
 };
+
+
+//Asignar la descripción de la cuadrilla a esta columna
+var cTieneReporte_Renderer = function (valor, columna, registro) {
+
+    if (valor.length == 0) {
+        columna.style = "background-color: #FEBB5D;";
+        return 'No';
+    }
+    else {
+        columna.style = "background-color: #0C8D1B; color: #fff;";
+        return 'Si';
+        
+    }
+};
+
+

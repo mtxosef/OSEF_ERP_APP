@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using CrystalDecisions.CrystalReports.Engine;
+using OSEF.APP.EL;
 
 namespace OSEF.ERP.APP
 {
@@ -31,10 +32,12 @@ namespace OSEF.ERP.APP
                 sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
                 sUsuarios.DataBind();
 
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                //sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                //sSucursales.DataBind();
+
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUso();
                 sSucursales.DataBind();
 
-               
                 sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
                 sOrdenesEstimaciones.DataBind();
 
@@ -60,9 +63,9 @@ namespace OSEF.ERP.APP
         //Exporta a Excel el grid
         protected void ExportEt(object sender, EventArgs e)
         {
- 
-                string nombreReporte = cmbCuadrillas.Text;  
-           
+
+            string nombreReporte = cmbCuadrillas.Text;
+
 
             //1. Configurar la conexión y el tipo de comando
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -80,7 +83,7 @@ namespace OSEF.ERP.APP
                 adaptador.Fill(dt);
 
 
-               
+
                 ReportDocument reporteCuadrila = new ReportDocument();
                 reporteCuadrila.Load(Server.MapPath("reportess/rReportesCuadrillas.rpt"));
                 reporteCuadrila.SetDataSource(dt);
@@ -88,7 +91,7 @@ namespace OSEF.ERP.APP
 
                 reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Cuadrilla " + nombreReporte);
 
-              
+
 
 
             }
@@ -105,6 +108,60 @@ namespace OSEF.ERP.APP
 
 
 
+        }
+
+
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarImagenes(int strID, string IDConcepto)
+        {
+            List<ImagenOrdenEstimacionD> oeb = OrdenEstimacionBusiness.ObtenerOrdenEstimacionDPorID(strID, IDConcepto);
+            if (oeb.Count > 0)
+            {
+                Cookies.Set("Fotos", 1, DateTime.Now.AddSeconds(30), "", "", false);
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
+
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarCroquis(int strID)
+        {
+            if (strID > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarFacturas(int strID)
+        {
+            if (strID > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

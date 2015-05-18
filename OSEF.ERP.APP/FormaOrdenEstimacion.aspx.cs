@@ -26,15 +26,23 @@ namespace OSEF.ERP.APP
                 //2. Checar ticket de autenticación
                 UsuarioBusiness.checkValidSession(this);
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
-                sCuadrillas.DataBind();
-
-
-
-              
-                
+                sCuadrillas.DataBind(); 
             }
         }
 
+
+        /// Evento que vuelve a leer los datos para ser cargados al store
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void sConceptos_OnReadData(object sender, StoreReadDataEventArgs e)
+        {
+            //Obtener la cookie al cargar
+            string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            sConceptos.DataSource = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(Convert.ToInt32(strcookieEditarOrdenEstimacion));
+            sConceptos.DataBind();
+
+        }
         /// <summary>
         /// Evento que se lanza al cargar el store
         /// </summary>
@@ -86,8 +94,6 @@ namespace OSEF.ERP.APP
                     TrabajoRequerido=oOrdenEstimacion.TrabajoRequerido,
                     TrabajoRealizado=oOrdenEstimacion.TrabajoRealizado,
                     CodigoFalla=oOrdenEstimacion.CodigoFalla,
-                    TieneFotos=oOrdenEstimacion.TieneFotos,
-                    TieneReporte=oOrdenEstimacion.TieneReporte,
                     FechaLlegada=oOrdenEstimacion.FechaLlegada,
                     HoraLlegada=oOrdenEstimacion.HoraLlegada,
                     FechaFinActividad=oOrdenEstimacion.FechaFinActividad,
@@ -372,12 +378,7 @@ namespace OSEF.ERP.APP
                     case "txtfCodigoFalla":
                         oOrdenEstimacionForma.CodigoFalla= sd.Value;
                         break;
-                    case "cmbTieneFotos":
-                        oOrdenEstimacionForma.TieneFotos = sd.Value;
-                        break;
-                    case "cmbTieneReporte":
-                        oOrdenEstimacionForma.TieneReporte = sd.Value;
-                        break;
+                 
                     case "dfFechaLlegada":
                         if (sd.Value == null)
                             oOrdenEstimacionForma.FechaLlegada = null;
@@ -445,36 +446,49 @@ namespace OSEF.ERP.APP
             string strImagen = fufNormal.FileName;
             oOrdenEstimacionForma.RutaImagen = strImagen;
 
-            //Validamos que aunque exista el numero de reporte pero si no capturo imagen se guarde
-            if (oOrdenEstimacionForma.Reporte.Length > 0 && strImagen.Equals(""))
+            string prueba = oOrdenEstimacion.RutaImagen;
+
+
+            if (prueba.Length > 0)
             {
-                oOrdenEstimacionForma.RutaImagen = "";
+                oOrdenEstimacionForma.RutaImagen = oOrdenEstimacion.RutaImagen;
             }
             else {
-                if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
+                //Validamos que aunque exista el numero de reporte pero si no capturo imagen se guarde
+                if (oOrdenEstimacionForma.Reporte.Length > 0 && strImagen.Equals(""))
                 {
                     oOrdenEstimacionForma.RutaImagen = "";
                 }
                 else
                 {
-                    string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
-                    //2. Validar si existe el directorio donde se guardaran las imagenes
-                    if (Directory.Exists(strDireccion))
+                    if (oOrdenEstimacionForma.Reporte.Equals("") && strImagen.Equals(""))
                     {
-                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        oOrdenEstimacionForma.RutaImagen = "";
                     }
                     else
                     {
-                        Directory.CreateDirectory(strDireccion);
-                        fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        string strDireccion = Server.MapPath(" ") + "\\imagenesReportes\\" + oOrdenEstimacionForma.Reporte;
+                        //2. Validar si existe el directorio donde se guardaran las imagenes
+                        if (Directory.Exists(strDireccion))
+                        {
+                            fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(strDireccion);
+                            fufNormal.PostedFile.SaveAs(strDireccion + "\\" + fufNormal.FileName);
+                        }
+
+                        //Guardamos en la bd
+                        oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
                     }
 
-                    //Guardamos en la bd
-                    oOrdenEstimacionForma.RutaImagen = "imagenesReportes\\" + oOrdenEstimacionForma.Reporte + "\\" + fufNormal.FileName;
                 }
+          
             
             }
-          
+
+           
 
             //3. Lo que sucede cuando es nuevo y no se habia guardado
             if (oOrdenEstimacion == null)
@@ -508,8 +522,6 @@ namespace OSEF.ERP.APP
                     //6. Tercera parte
                     TrabajoRealizado = oOrdenEstimacionForma.TrabajoRealizado,
                     CodigoFalla = oOrdenEstimacionForma.CodigoFalla,
-                    TieneFotos = oOrdenEstimacionForma.TieneFotos,
-                    TieneReporte = oOrdenEstimacionForma.TieneReporte,
                     FechaLlegada = oOrdenEstimacionForma.FechaLlegada,
                     HoraLlegada = oOrdenEstimacionForma.HoraLlegada,
                     FechaFinActividad = oOrdenEstimacionForma.FechaFinActividad,
@@ -552,8 +564,6 @@ namespace OSEF.ERP.APP
                 //11. Campos extras 2
                 sOrdenEstimacion.GetAt(0).Set("TrabajoRealizado", oOrdenEstimacionForma.TrabajoRealizado);
                 sOrdenEstimacion.GetAt(0).Set("CodigoFalla", oOrdenEstimacionForma.CodigoFalla);
-                sOrdenEstimacion.GetAt(0).Set("TieneFotos", oOrdenEstimacionForma.TieneFotos);
-                sOrdenEstimacion.GetAt(0).Set("TieneReporte", oOrdenEstimacionForma.TieneReporte);
                 sOrdenEstimacion.GetAt(0).Set("FechaLlegada", oOrdenEstimacionForma.FechaLlegada);
                 sOrdenEstimacion.GetAt(0).Set("HoraLlegada", oOrdenEstimacionForma.HoraLlegada);
                 sOrdenEstimacion.GetAt(0).Set("FechaFinActividad", oOrdenEstimacionForma.FechaFinActividad);
@@ -747,5 +757,45 @@ namespace OSEF.ERP.APP
             //Cambia el estatus del movimiento
             OrdenEstimacionBusiness.CancelarOrdenEstimacionPorID(strID);
         }
-    }
+
+
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarImagenes(int strID, string IDConcepto)
+        {
+            List<ImagenOrdenEstimacionD> oeb = OrdenEstimacionBusiness.ObtenerOrdenEstimacionDPorID(strID,IDConcepto);
+            if (oeb.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarCroquis(int strID)
+        {
+
+            return 0;
+        }
+        /// <summary>
+        /// Método para borrar las imagenes si se borra el movimiento completo
+        /// </summary>
+        /// <param name="strID"></param>
+        [DirectMethod]
+        public static int VerificarFacturas(int strID)
+        {
+
+            return 0;
+        }
+    } 
 }

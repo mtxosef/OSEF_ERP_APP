@@ -21,7 +21,9 @@ namespace OSEF.APP.EL
         decimal precio;
         decimal importe;
         string moneda;
-
+        int fotos;
+        int croquis;
+        int facturas;
 
         PreciarioGeneralConcepto rpreciarioconceptos;
         OrdenEstimacion rmovimiento;
@@ -100,6 +102,21 @@ namespace OSEF.APP.EL
         {
             get { return moneda; }
             set { moneda = value; }
+        }
+        public int Fotos
+        {
+            get { return fotos; }
+            set { fotos = value; }
+        }
+        public int Croquis
+        {
+            get { return croquis; }
+            set { croquis = value; }
+        }
+        public int Facturas
+        {
+            get { return facturas; }
+            set { facturas = value; }
         }
         #endregion
     }

@@ -59,6 +59,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Ext.Net.Utilities.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\References\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1356,16 +1359,16 @@
     <Compile Include="pruebaagrega.aspx.designer.cs">
       <DependentUpon>pruebaagrega.aspx</DependentUpon>
     </Compile>
+    <Compile Include="reportess\AutItemAdicioYOFueCatPreCat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutItemAdicioYOFueCatPreCat.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportess\CPreciario.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CPreciario.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="reportess\Estimaciones.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Estimaciones.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportess\rCaratulaDeEstimacion.cs">
@@ -1506,6 +1509,7 @@
     <None Include="gantt-scheduler\resources\fonts\icomoon.woff" />
     <None Include="gantt-scheduler\save_data.php" />
     <None Include="js\lib\jQuery\jquery-1.10.2.min.map" />
+    <Content Include="packages.config" />
     <None Include="resources\fonts\icomoon.eot" />
     <None Include="resources\fonts\icomoon.ttf" />
     <None Include="resources\fonts\icomoon.woff" />
@@ -1515,13 +1519,13 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="reportess\AutItemAdicioYOFueCatPreCat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AutItemAdicioYOFueCatPreCat.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reportess\CPreciario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CPreciario.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reportess\Estimaciones.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Estimaciones.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportess\rCaratulaDeEstimacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

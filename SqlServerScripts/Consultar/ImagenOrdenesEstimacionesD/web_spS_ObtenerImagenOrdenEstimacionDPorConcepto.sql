@@ -18,19 +18,18 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerImagenOrdenEstimacionDPorConcepto' AND
+			WHERE  name = 'web_spS_ObtenerImagenOrdenEstimacionDPorID' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerImagenOrdenEstimacionDPorConcepto
+	DROP PROCEDURE web_spS_ObtenerImagenOrdenEstimacionDPorID
 GO
 -- =============================================
 -- Author:		Orlando Esparza
 -- Create date: Viernes 20 de Febrero de 2014
 -- Description:	Obtener los registros de Imagenes Volumetrias por su Volumetria y PreciarioConcepto
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerImagenOrdenEstimacionDPorConcepto
+CREATE PROCEDURE web_spS_ObtenerImagenOrdenEstimacionDPorID
 	-- Add the parameters for the stored procedure here
-	@ID			INT,
-	@Concepto	CHAR(10)
+	@ID			INT 
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -48,6 +47,6 @@ BEGIN
 	FROM
 		ImagenesOrdenEstimacionD
 	WHERE
-		MovID = @ID AND Concepto = @Concepto
+		MovID = @ID;
 END
 GO

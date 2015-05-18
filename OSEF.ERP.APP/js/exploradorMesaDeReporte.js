@@ -116,15 +116,19 @@ var txtMovID_Change = function (textfield, newValue, oldValue, e) {
 
 
 var gpExploradorConceptos_ItemClick = function (gridview, registro, gvhtml, index) {
+
+    Ext.util.Cookies.set('NReporte', registro.get('Reporte'));
+
     var w = window.parent.App.wGenerador;
     w.load('FormaReporteEstimacion.aspx');
     w.setHeight(160);
-    w.setWidth(575);
+    w.setWidth(590);
     w.center();
     w.setTitle('Reporte del Movimiento ' + registro.get('Id'));
     w.show();
 
     //Id mov para reporte
+    
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', registro.get('Id'));
 
 };

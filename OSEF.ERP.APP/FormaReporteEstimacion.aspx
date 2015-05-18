@@ -151,7 +151,7 @@
                 class="imgs"
                 OnClick="imgbtnExportarFactura_Click" 
                 ImageUrl="assets/img/controles/facturas.png"/>
-
+                
                 <asp:ImageButton 
                 ID="imgbtnFotos" 
                 runat="server" 
@@ -161,6 +161,16 @@
                     Width="30"
                 ImageUrl="assets/img/controles/imagenes.png"/>
                     </div>
+                    <div align="right">
+                <asp:ImageButton 
+                ID="imgbtnTodos" 
+                runat="server" 
+                class="imgs" 
+                OnClick="imgbtnTodo"
+                    Height="30"
+                    Width="30"
+                ImageUrl="assets/img/controles/bajar.png"/>
+                </div>
             </Content>
             <%--<Listeners>
                 <ValidityChange Handler="this.dockedItems.get(0).setStatus({

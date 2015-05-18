@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -98,6 +102,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="resources\fonts\icomoon.eot" />
     <None Include="resources\fonts\icomoon.ttf" />
     <None Include="resources\fonts\icomoon.woff" />

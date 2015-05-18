@@ -208,6 +208,7 @@
 -- Sucursales (Consultar)
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursales.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalPorID.sql
+:r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnUso.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnRevisionesPorID.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesSinPreciario.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesDisponibles.sql
@@ -522,9 +523,9 @@
 -- Reporte de Cuadrillas
 :r c:\SqlServerScripts\Reportes\TableroReportes\web_spS_ObtenerReportePorCuadrilla.sql
 -----------------------------------------------------------------------------------
--- Colonias (Consultar)
+-- Firmas (Consultar)
 :r c:\SqlServerScripts\Consultar\FirmasReportes\web_spS_ObtenerFirmasPorModulo.sql
--- Colonias (Insertar)
+-- Firmas (Insertar)
 :r c:\SqlServerScripts\Insertar\FirmasReportes\web_spI_InsertarFirmas.sql
--- Colonias (Modificar)
+-- Firmas (Modificar)
 :r c:\SqlServerScripts\Modificar\FirmasReportes\web_spU_ActualizarFirmas.sql

@@ -37,19 +37,31 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		Renglon,
-		ConceptoID,
-		Cantidad,
-		Unidad,
-		Precio,
-		Importe,
-		IntExt,
-		Moneda
-	FROM
-		OrdenesEstimacionesD
-	WHERE
-		ID = @ID
+SELECT
+	OED.ID,	
+	OED.Renglon,
+	OED.ConceptoID,		
+	OED.Cantidad,
+	OED.Unidad,		
+	OED.Precio,
+	OED.Importe,		
+	OED.IntExt,
+	OED.Moneda,
+	(SELECT COUNT(*) FROM ImagenesOrdenEstimacionD IOED WHERE IOED.MovID = @ID AND IOED.Concepto = OED.ConceptoID) Fotos, 
+	(SELECT COUNT(*) FROM CroquisOrdenEstimacionD COED WHERE COED.MovID = @ID AND COED.Concepto = OED.ConceptoID) Croquis, 
+	(SELECT COUNT(*) FROM FacturasOrdenEstimacionD FOED WHERE FOED.MovID = @ID AND FOED.Concepto = OED.ConceptoID) Facturas
+	FROM OrdenesEstimacionesD OED
+	WHERE OED.ID = @ID
+	GROUP BY 
+		OED.ID, oed.Renglon,
+		OED.ConceptoID,		
+		OED.Cantidad,
+		OED.Unidad,		
+		OED.Precio,
+		OED.Importe,		
+		OED.IntExt,
+		OED.Moneda
+	ORDER BY OED.Renglon ASC;
+
 END
 GO

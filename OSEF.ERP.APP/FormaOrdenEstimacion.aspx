@@ -30,7 +30,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="rmFormaOrdenEstimacion" runat="server" HideInDesign="true" />
+        <ext:ResourceManager ID="rmFormaOrdenEstimacion" runat="server" HideInDesign="true" >
+        </ext:ResourceManager>
     
         <ext:Store
             ID="sOrdenEstimacion"
@@ -63,8 +64,6 @@
                         <ext:ModelField Name="Atiende" Type="String" />
                         <ext:ModelField Name="TrabajoRealizado" Type="String" />
                         <ext:ModelField Name="CodigoFalla" Type="String" />
-                        <ext:ModelField Name="TieneFotos" Type="String" />
-                        <ext:ModelField Name="TieneReporte" Type="String" />
                         <ext:ModelField Name="FechaLlegada" Type="Date" />
                         <ext:ModelField Name="HoraLlegada" Type="Date" />
                         <ext:ModelField Name="FechaFinActividad" Type="Date" />
@@ -484,6 +483,13 @@
                                                         Cls="my-date-picker">
                                                     </PickerOptions>
                                                 </ext:DateField>
+                                                <ext:Checkbox
+                                                    ID="chkAtendido" 
+                                                    runat="server"
+                                                    Name="chkAtendido"
+                                                    FieldLabel="Atendido"
+                                                    Checked="true">
+                                                </ext:Checkbox>
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer
@@ -843,42 +849,6 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
-                                        <ext:FieldContainer 
-                                            ID="fcRegistros"
-                                            runat="server"
-                                            FieldLabel="¿Tiene Fotos?"
-                                            LabelWidth="120"
-                                            AnchorHorizontal="100%"
-                                            Layout="HBoxLayout">
-                                            <Items>
-                                                <ext:ComboBox 
-                                                    ID="cmbTieneFotos"
-                                                    runat="server"
-                                                    Width="200"
-                                                    Margins="0 3 0 0"
-                                                    Editable="false"
-                                                    AllowBlank="false">
-                                                    <Items>
-                                                        <ext:ListItem Index="0" Text="SI" Value="SI" />
-                                                        <ext:ListItem Index="1" Text="NO" Value="NO" />
-                                                    </Items>
-                                                </ext:ComboBox>
-                                                <ext:ComboBox 
-                                                    ID="cmbTieneReporte"
-                                                    runat="server"
-                                                    FieldLabel="¿Tiene Reporte?"
-                                                   LabelWidth="120" 
-                                                    Width="300"
-                                                    Margins="0 3 0 0"
-                                                    Editable="false"
-                                                    AllowBlank="false">
-                                                    <Items>
-                                                        <ext:ListItem Index="0" Text="SI" Value="SI" />
-                                                        <ext:ListItem Index="1" Text="NO" Value="NO" />
-                                                    </Items>
-                                                </ext:ComboBox>
-                                            </Items>
-                                        </ext:FieldContainer>
 
                                         <ext:FieldContainer 
                                             ID="FieldContainer2"
@@ -1012,6 +982,8 @@
                                     <Store>
                                         <ext:Store
                                             ID="sConceptos"
+                                            OnReadData="sConceptos_OnReadData"
+                                           
                                             runat="server">
                                             <Model>
                                                 <ext:Model 
@@ -1029,12 +1001,16 @@
                                                         <ext:ModelField Name="IntExt" Type="String" />
                                                         <ext:ModelField Name="RPreciarioConceptos" Type="Object" />
                                                         <ext:ModelField Name="Moneda" Type="String" />
+                                                        <ext:ModelField Name="Fotos" Type="Int" />
+                                                        <ext:ModelField Name="Croquis" Type="Int" />
+                                                        <ext:ModelField Name="Facturas" Type="Int" />
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
                                             <Listeners>
                                                 <Update Fn="sConceptos_DataUpdate" ></Update>
                                                 <Load Fn="sConceptos_Load"></Load>
+                                                
                                             </Listeners>
                                         </ext:Store>
                                     </Store>
@@ -1216,8 +1192,10 @@
                                                     </ext:GridCommand>
                                                 </Commands>
                                                 <Listeners>
-                                                    <Command Fn="ccFotos_Command" />
+                                                    <Command Fn="ccFotos_Command" /> 
                                                 </Listeners>
+                                                <Renderer Fn="cCheckFotos_Renderer" />
+                                                
                                             </ext:CommandColumn>
                                             <ext:CommandColumn
                                                 ID="ccCroquis"
@@ -1240,6 +1218,7 @@
                                                 <Listeners>
                                                     <Command Fn="ccCroquis_Command" />
                                                 </Listeners>
+                                                <Renderer Fn="cCheckCroquis_Renderer" />
                                             </ext:CommandColumn>
                                             <ext:CommandColumn
                                                 ID="ccFacturas"
@@ -1261,8 +1240,9 @@
                                                 </Commands>
                                                 <Listeners>
                                                     <Command Fn="ccFactura_Command" />
-                                                </Listeners>
-                                            </ext:CommandColumn>
+                                                </Listeners> 
+                                                <Renderer Fn="cCheckFacturas_Renderer" />
+                                            </ext:CommandColumn> 
                                         </Columns>
                                     </ColumnModel>
                                     <Listeners>

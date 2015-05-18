@@ -13,6 +13,9 @@ using CrystalDecisions.Shared;
 using System.IO;
 using OSEF.APP.EL;
 using OSEF.APP.BL;
+using System.IO.Compression;
+using Ionic.Zip;
+
 
 namespace OSEF.ERP.APP
 {
@@ -27,7 +30,8 @@ namespace OSEF.ERP.APP
         protected void Page_PreInit(object sender, EventArgs e)
         {
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
-
+            //Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
             if (oFirmas == null)
             {
                sbParametros1.Text="Debes de configurar las firmas";
@@ -39,25 +43,31 @@ namespace OSEF.ERP.APP
                 imgbtnCroquis.Enabled = false;
                 imgbtnFacturas.Enabled = false;
                 imgbtnFotos.Enabled = false;
+                imgbtnTodos.Enabled = false;
             }
         }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
-
-            if (oFirmas == null)
+            // Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
+            string nReporte = Cookies.GetCookie("NReporte").Value;
+            if (nReporte != null && nReporte.Trim().Length > 0)
             {
-                this.Dispose();
+                imgbtnTodos.Enabled = true;
             }
+            else
+            {
+                imgbtnTodos.Enabled = false;
+            }
+            
         }
 
         protected void imgbtnExportarCroquis_Click(object sender, EventArgs e)
         {
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
           
                 //Firmas documento(Parametros)
                // string strElaboro = txtElaboro.Value.ToString();
@@ -142,7 +152,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -215,7 +225,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -288,9 +298,9 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
-  FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
+            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
@@ -361,7 +371,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
             
             
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
@@ -436,7 +446,7 @@ namespace OSEF.ERP.APP
         {
 
             //Parametros del store procedure
-            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value; 
 
               FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
@@ -462,7 +472,7 @@ namespace OSEF.ERP.APP
                             var reporteEstimaciones = new ReportDocument();
                             reporteEstimaciones.Load(Server.MapPath("reportess/rResumenPartidas.rpt"));
                             reporteEstimaciones.SetDataSource(dt);
-                            reporteEstimaciones.SetParameterValue("elaboro", strElaboro);
+                            reporteEstimaciones.SetParameterValue("reviso", strReviso);
                             reporteEstimaciones.SetParameterValue("autorizo", strAutorizo);
 
 
@@ -509,6 +519,8 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
+            FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
+            string strReviso = oFirmas.FirmaReviso;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
                 try
@@ -525,6 +537,7 @@ namespace OSEF.ERP.APP
                             var reporteEstimaciones = new ReportDocument();
                             reporteEstimaciones.Load(Server.MapPath("reportess/rPresupuesto.rpt"));
                             reporteEstimaciones.SetDataSource(dt);
+                            reporteEstimaciones.SetParameterValue("reviso", strReviso);
 
                             string strDireccion = Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + strID;
 
@@ -562,5 +575,63 @@ namespace OSEF.ERP.APP
                 }
             
         }
+
+        protected void crearZip(string url,string rutaGuarda,string ID)
+        {
+
+            try
+            {
+                //Listamos los archivos que trae el directorio
+                DirectoryInfo directorySelected = new DirectoryInfo(url);
+                List<FileInfo> fi = new List<FileInfo>(directorySelected.GetFiles());
+                //Definimos le nombre que llevara nuestro archio comprimido
+                string fileName = "Reportes Mov. "+ ID + ".zip";
+                //Limpiamos le stream
+                Response.Clear();
+                //Metenmos la lista de archivos que contiene el directorio en una lista de tipo string
+                List<string> lista = new List<string>();
+
+                foreach (FileInfo fileToString in fi)
+                {
+                    //Le concatenamos la ruta donde se va a leer el archivo
+                    lista.Add(rutaGuarda + fileToString.ToString());
+                }
+                //Creamos el archivo
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.ContentType = "application/x-zip-compressed";
+                //Llenamos le archivo con la lista
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.AddFiles(lista, ID);
+                    zip.Save(Response.OutputStream);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception("Error " + ex.Message);
+                
+            }
+            finally {
+                Response.End();
+                Response.Close();
+            }
+        }
+
+        protected void imgbtnTodo(object sender, EventArgs e)
+        {
+            string nReporte = Cookies.GetCookie("NReporte").Value;
+            if (nReporte != null)
+            {
+                imgbtnExportarFotos_Click(sender, e);
+                imgbtnPresupuesto_click(sender, e);
+                imgbtnExportarCroquis_Click(sender, e);
+                imgbtnExportarFactura_Click(sender, e);
+                imgbtnExportarGenerador_Click(sender, e);
+                imgbtnEstimacion_click(sender, e);
+                imgbtnResumen_click(sender, e);
+                crearZip(Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value, Server.MapPath(" ") + "\\reportess\\Estimaciones\\" + Cookies.GetCookie("cookieEditarOrdenEstimacion").Value + "\\", nReporte);
+            }
+        }
+        //END
     }
 }

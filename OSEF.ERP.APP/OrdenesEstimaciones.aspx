@@ -189,7 +189,7 @@
                                  <ext:ModelField Name="Zona" Type="String" />
                                  <ext:ModelField Name="Cuadrilla" Type="String" />
                                  <ext:ModelField Name="RCuadrilla" Type="Object" /> 
-                                 <ext:ModelField Name="TieneReporte" Type="String" /> 
+                                 <ext:ModelField Name="RutaImagen" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -222,6 +222,15 @@
                         </HeaderItems>
                     </ext:Column>
                     
+                      <ext:Column
+                        ID="cTieneReporte"
+                        runat="server"
+                        Text="¿REPORTE?"
+                        Align="Center"
+                        Width="70"
+                        DataIndex="RutaImagen">
+                         <Renderer Fn="cTieneReporte_Renderer" />
+                    </ext:Column>
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
@@ -236,8 +245,13 @@
                                 runat="server"
                                 DisplayField="Nombre"
                                 ValueField="ID"
+
                                 ForceSelection="true"
-                                Editable="false">
+                                Editable="true"
+                                 MatchFieldWidth="true"
+                            QueryMode="Local"
+                            TypeAhead="true"
+                                >
                                 <Items>
                                     <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
                                 </Items>
@@ -471,14 +485,6 @@
                         </HeaderItems>
                     </ext:Column>
 
-                      <ext:Column
-                        ID="cTieneReporte"
-                        runat="server"
-                        Text="¿REPORTE?"
-                        Align="Center"
-                        Width="70"
-                        DataIndex="TieneReporte">
-                    </ext:Column>
 
                     <ext:Column 
                         ID="cMovimiento"

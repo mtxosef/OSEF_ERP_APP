@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
     <script type="text/javascript" src="js/subirImagenesOrdenEstimacion.js"></script>
+
+  
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
@@ -119,6 +121,7 @@
                                 <UploadRemoved Handler="var store = this.up('grid').store; store.remove(store.getById(file.id));" />
                                 <UploadError Fn="uploadError" />
                                 <FileSelectionError Fn="fileSelectionError" />
+                                <UploadSuccess Handler=""></UploadSuccess>
                             </Listeners>
                         </ext:MultiUpload>
                         <ext:ToolbarSeparator />
@@ -127,7 +130,9 @@
                             runat="server"
                             Text="Iniciar"
                             Icon="Tick"
-                            Handler="#{muSubirImagenesOrdenEstimacion}.startUpload();" />
+                            Handler="#{muSubirImagenesOrdenEstimacion}.startUpload();" > 
+                           
+                            </ext:Button>
                         <ext:Button
                             ID="btnCancelar"
                             runat="server"

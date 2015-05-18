@@ -40,7 +40,7 @@ BEGIN
     -- Insert statements for procedure here
 		SELECT 
 		--ID DE MOVIMIENTO Y CONCEPTOS
-		OE.ID,
+		OE.ID,OE.Mov,
 		OED.ConceptoID,
 		--Datos de la sucursal
 		CONVERT(VARCHAR(4),S.CR) CR,S.Nombre Sucursal,S.Calle,S.NoExterior,S.NoInterior,C.Descripcion Colonia,M.Descripcion Municipio,E.Descripcion Estado,
@@ -73,6 +73,7 @@ BEGIN
 		ON E.ID =  S.Estado
 		LEFT JOIN Colonias C
 		ON C.ID = S.Colonia
-		WHERE OE.ID = @IDMovimiento;
+		WHERE OE.ID = @IDMovimiento
+		AND COD.Concepto IS NOT NULL;
 END
 GO
