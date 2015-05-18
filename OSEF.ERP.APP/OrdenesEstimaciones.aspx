@@ -190,6 +190,7 @@
                                  <ext:ModelField Name="Cuadrilla" Type="String" />
                                  <ext:ModelField Name="RCuadrilla" Type="Object" /> 
                                  <ext:ModelField Name="RutaImagen" Type="String" />
+                                 <ext:ModelField Name="Atendido" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -231,6 +232,17 @@
                         DataIndex="RutaImagen">
                          <Renderer Fn="cTieneReporte_Renderer" />
                     </ext:Column>
+
+                    <ext:Column 
+                    ID="cAtendido"
+                    runat="server"
+                    Text="ATENDIDO"
+                    Align="Center"
+                    Width="70"
+                    DataIndex="Atendido">
+                         <Renderer Fn="cAtendido_Renderer" />
+                    </ext:Column>
+
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
@@ -299,8 +311,6 @@
                         DataIndex="TrabajoRequerido">
                     </ext:Column> 
 
-                    
-                    
                     <ext:DateColumn
                         ID="dcFechaOrigen"
                         runat="server"

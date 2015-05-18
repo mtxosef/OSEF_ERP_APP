@@ -100,8 +100,9 @@ namespace OSEF.ERP.APP
                     HoraFinActividad=oOrdenEstimacion.HoraFinActividad,
                     Cuadrilla = oOrdenEstimacion.Cuadrilla,
                     ImporteTotal = oOrdenEstimacion.ImporteTotal,
-                    HoraOrigen = oOrdenEstimacion.HoraOrigen, 
-                    RutaImagen = oOrdenEstimacion.RutaImagen
+                    HoraOrigen = oOrdenEstimacion.HoraOrigen,
+                    RutaImagen = oOrdenEstimacion.RutaImagen,
+                    Atendido = oOrdenEstimacion.Atendido
                 }); 
                 imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
@@ -418,6 +419,9 @@ namespace OSEF.ERP.APP
                     case "fufNormal":
                         oOrdenEstimacionForma.RutaImagen = sd.Value;
                         break; 
+                    case "chkAtendido":
+                        oOrdenEstimacionForma.Atendido = sd.Value;
+                        break;
                 }
             }
 
@@ -529,7 +533,8 @@ namespace OSEF.ERP.APP
                     Cuadrilla = oOrdenEstimacionForma.Cuadrilla,
                     ImporteFinal = oOrdenEstimacionForma.ImporteTotal,
                     HoraOrigen = oOrdenEstimacionForma.HoraOrigen,
-                    RutaImagen = oOrdenEstimacionForma.RutaImagen
+                    RutaImagen = oOrdenEstimacionForma.RutaImagen,
+                    Atendido = oOrdenEstimacionForma.Atendido
                 });
 
 

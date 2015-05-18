@@ -107,7 +107,6 @@ var sMov_Add = function (store, registros, index, eOpts) {
         if (tablero == 'REPORTES & ESTIMACIONES') {
             App.cmbMov.select('Mesa de reporte');
             App.cmbMov.setReadOnly(true);
-          
         }
         else {
             App.cmbMov.select('Orden de Cambio');
@@ -131,6 +130,9 @@ var sMov_Change = function (combo) {
 
         App.fufNormal.hidden=false;
         App.imgNormal.hidden = false;
+
+
+
     }
 
     if (combo.value.trim() == 'Orden de Cambio') {
@@ -140,6 +142,8 @@ var sMov_Change = function (combo) {
         App.pDatosReporteDos.tab.hide();
         App.pDatosReporte.hide();
         App.cIntExt.hidden = true;
+     
+       
     }
     App.gpOrdenEstimacion.reconfigure();
 };
@@ -564,7 +568,7 @@ var sOrdenesMantenimiento_Load = function () {
 
 //Evento lanzado al agregar un registro al store
 var sOrdenesMantenimiento_Add = function (avance, registro) {
-
+    console.log(registro);
     App.fufNormal.setValue('dsfsdfsdfsdf');
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
@@ -582,6 +586,15 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         //Deshabilita los campos en un movimiento afectado
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
+
+        App.chkAtendido.setReadOnly(true);
+
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        } 
+
         App.txtfSucursalCR.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(true);
@@ -623,7 +636,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnImprimir.setDisabled(false);
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
-
         App.cIntExt.hidden = false;
 
         App.cmbMov.setReadOnly(true);
@@ -647,10 +659,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setReadOnly(true);
         App.tfHoraFinActividad.setReadOnly(true);
         App.cmbCuadrilla.setReadOnly(true);
-
-
-
-
+        App.chkAtendido.setReadOnly(true);
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        }
         App.imgbtnAfectar.setDisabled(false);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
@@ -685,6 +699,11 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        }
 
         App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
@@ -708,6 +727,15 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        }
+
+       
+
 
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
@@ -750,6 +778,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
+
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        }
 
         //Deshabilita controles
         App.txtfObservaciones.setReadOnly(true);
@@ -1847,5 +1881,3 @@ var fufNormal_Change = function (event, control, txtReporte) {
             }
         }
     }
-
-    

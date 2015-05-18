@@ -268,5 +268,14 @@ var cTieneReporte_Renderer = function (valor, columna, registro) {
         
     }
 };
-
-
+ 
+//Render column
+var cAtendido_Renderer = function (value, columna, registro) {
+    if (registro.get('Atendido').trim().length > 0 && registro.get('Atendido') == "Si") {
+        columna.style = "background-color: #0C8D1B; color: #fff;";
+        return "Si";
+    } else {
+        columna.style = "background-color: #ff0033; color: #fff;";
+        return "No";
+    }
+} 

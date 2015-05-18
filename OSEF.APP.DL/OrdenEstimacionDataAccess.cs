@@ -235,6 +235,14 @@ namespace OSEF.APP.DL
                 sqlpRutaImagen.SqlDbType = SqlDbType.VarChar;
                 sqlpRutaImagen.Value = iOrdenEstimacion.RutaImagen;
 
+                SqlParameter sqlpAtendido = new SqlParameter();
+                sqlpAtendido.ParameterName = "@Atendido";
+                sqlpAtendido.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.Atendido == null)
+                    sqlpAtendido.Value = "NO";
+                else
+                    sqlpAtendido.Value = "SI"; 
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -263,6 +271,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
+                sqlcComando.Parameters.Add(sqlpAtendido);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -495,6 +504,14 @@ namespace OSEF.APP.DL
                 sqlpRutaImagen.SqlDbType = SqlDbType.VarChar;
                 sqlpRutaImagen.Value = uOrdenEstimacion.RutaImagen;
 
+                SqlParameter sqlpAtendido = new SqlParameter();
+                sqlpAtendido.ParameterName = "@Atendido";
+                sqlpAtendido.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.Atendido == "False")
+                    sqlpAtendido.Value = "No";
+                else
+                    sqlpAtendido.Value = "Si"; 
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -521,6 +538,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
+                sqlcComando.Parameters.Add(sqlpAtendido);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
