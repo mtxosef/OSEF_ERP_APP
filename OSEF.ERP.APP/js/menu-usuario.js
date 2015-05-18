@@ -234,7 +234,7 @@ $(document).ready(function () {
         $("#contenedor").fadeOut(timer, function () {
             parent.App.imgbtnRegresar.show();
             //            parent.App.lblRegresar.show();
-            parent.App.pCentro.getLoader().load('gantt-scheduler.html');
+            parent.App.pCentro.getLoader().load('Principal2.aspx');
         });
     });
 

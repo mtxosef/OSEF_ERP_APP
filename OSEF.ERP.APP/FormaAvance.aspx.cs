@@ -9,7 +9,7 @@ using System.Globalization;
 using OSEF.APP.BL;
 using OSEF.APP.EL;
 
-namespace OSEF.AVANCES.SUCURSALES
+namespace OSEF.ERP.APP
 {
     public partial class FormaAvance : System.Web.UI.Page
     {

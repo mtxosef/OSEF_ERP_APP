@@ -51,15 +51,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\CrystalDecisions.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Ext.Net, Version=2.5.2.10682, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
+    <Reference Include="Ext.Net, Version=2.5.3.31210, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Ext.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Ext.Net.Utilities">
+    <Reference Include="Ext.Net.Utilities, Version=2.5.0.0, Culture=neutral, PublicKeyToken=2c34ac34702a3c23, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Ext.Net.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -77,7 +79,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Transformer.NET">
+    <Reference Include="Transformer.NET, Version=2.1.1.22883, Culture=neutral, PublicKeyToken=e274d618e7c603a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Transformer.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -384,6 +387,28 @@
     <Content Include="FormaUsuario2.aspx" />
     <Content Include="FormaVolumetriaPreciario.aspx" />
     <Content Include="gantt-scheduler.html" />
+    <Content Include="gantt-scheduler\app.js" />
+    <Content Include="gantt-scheduler\app\controller\Navigation.js" />
+    <Content Include="gantt-scheduler\app\controller\Settings.js" />
+    <Content Include="gantt-scheduler\app\model\Resource.js" />
+    <Content Include="gantt-scheduler\app\store\TaskStore.js" />
+    <Content Include="gantt-scheduler\app\view\Gantt.js" />
+    <Content Include="gantt-scheduler\app\view\GanttToolbar.js" />
+    <Content Include="gantt-scheduler\app\view\Navigation.js" />
+    <Content Include="gantt-scheduler\app\view\ResourceHistogram.js" />
+    <Content Include="gantt-scheduler\app\view\ResourceList.js" />
+    <Content Include="gantt-scheduler\app\view\ResourceSchedule.js" />
+    <Content Include="gantt-scheduler\app\view\Settings.js" />
+    <Content Include="gantt-scheduler\app\view\Viewport.js" />
+    <Content Include="gantt-scheduler\data.js" />
+    <Content Include="gantt-scheduler\data2.js" />
+    <Content Include="gantt-scheduler\gantt-scheduler.html" />
+    <Content Include="gantt-scheduler\license.txt" />
+    <Content Include="gantt-scheduler\lte-ie7.js" />
+    <Content Include="gantt-scheduler\resources\css\gantt-scheduler.css" />
+    <Content Include="gantt-scheduler\resources\css\style.css" />
+    <Content Include="gantt-scheduler\resources\fonts\icomoon.dev.svg" />
+    <Content Include="gantt-scheduler\resources\fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="gnt-all-debug.js" />
     <Content Include="GruposMenu2.aspx" />
@@ -455,13 +480,9 @@
     <Content Include="js\formaGeneradorVolumetriaD.js" />
     <Content Include="js\formaReporteMovimientoEstimacion.js" />
     <Content Include="js\formaReporteMovimientoOrdenCambio.js" />
-
-
-    <Content Include="js\formaSubEspecialidades.js" />
     <Content Include="js\lib\jQuery\jquery-migrate-1.2.1.min.js" />
     <Content Include="js\lib\jQuery\jquery.min.js" />
     <Content Include="js\registro.js" />
-
     <Content Include="js\tableroOrdenesCambios.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
@@ -532,18 +553,48 @@
     <Content Include="Preciarios.aspx" />
     <Content Include="PreciariosGenerales.aspx" />
     <Content Include="Previa.aspx" />
+    <Content Include="Principal2.aspx" />
     <Content Include="Profesiones.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Clientes.aspx" />
     <Content Include="Prueba.aspx" />
     <Content Include="pruebaagrega.aspx" />
     <Content Include="resources\css\gantt-scheduler.css" />
+    <Content Include="resources\css\sch-all-crisp.css" />
+    <Content Include="resources\css\sch-all-debug.css" />
+    <Content Include="resources\css\sch-all-neptune.css" />
     <Content Include="resources\css\sch-all.css" />
     <Content Include="resources\css\sch-gantt-all.css" />
+    <Content Include="resources\css\sch-gantt-crisp-all.css" />
+    <Content Include="resources\css\sch-gantt-neptune-all.css" />
     <Content Include="resources\css\style.css" />
     <Content Include="resources\fonts\icomoon.dev.svg" />
     <Content Include="resources\fonts\icomoon.svg" />
+    <Content Include="resources\images\1px.png" />
+    <Content Include="resources\images\add.png" />
+    <Content Include="resources\images\altrow.png" />
+    <Content Include="resources\images\close-icon.png" />
+    <Content Include="resources\images\column-header-bg.gif" />
+    <Content Include="resources\images\column-header-over-bg.gif" />
     <Content Include="resources\images\column-weekend-header-bg.gif" />
+    <Content Include="resources\images\delete.gif" />
+    <Content Include="resources\images\dependencyterminal.png" />
+    <Content Include="resources\images\drop-no.gif" />
+    <Content Include="resources\images\drop-yes.gif" />
+    <Content Include="resources\images\edit.png" />
+    <Content Include="resources\images\invalid_line.gif" />
+    <Content Include="resources\images\overriddenDay.png" />
+    <Content Include="resources\images\overriddenWeekDay.png" />
+    <Content Include="resources\images\page-horizontal-icon.png" />
+    <Content Include="resources\images\page-vertical-icon.png" />
+    <Content Include="resources\images\pattern.png" />
+    <Content Include="resources\images\pdf-icon.png" />
+    <Content Include="resources\images\png-icon.png" />
+    <Content Include="resources\images\progressbar-handle.png" />
+    <Content Include="resources\images\resize-handle-hor.gif" />
+    <Content Include="resources\images\resize-handle-ver.gif" />
+    <Content Include="resources\images\transp-1px.png" />
+    <Content Include="resources\images\zonebg.png" />
     <Content Include="sch-all-debug.js" />
     <Content Include="SolicitudesPrestamos.aspx" />
     <Content Include="Subcategorias.aspx" />
@@ -563,6 +614,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\DataTabla.cs" />
     <Compile Include="Articulos.aspx.cs">
       <DependentUpon>Articulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1261,6 +1313,13 @@
     <Compile Include="Previa.aspx.designer.cs">
       <DependentUpon>Previa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Principal2.aspx.cs">
+      <DependentUpon>Principal2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal2.aspx.designer.cs">
+      <DependentUpon>Principal2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profesiones.aspx.cs">
       <DependentUpon>Profesiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1442,6 +1501,10 @@
     <Content Include="Plants.ashx" />
     <None Include="fonts\weblysleekuil.ttf" />
     <None Include="fonts\weblysleekuisl.ttf" />
+    <None Include="gantt-scheduler\resources\fonts\icomoon.eot" />
+    <None Include="gantt-scheduler\resources\fonts\icomoon.ttf" />
+    <None Include="gantt-scheduler\resources\fonts\icomoon.woff" />
+    <None Include="gantt-scheduler\save_data.php" />
     <None Include="js\lib\jQuery\jquery-1.10.2.min.map" />
     <None Include="resources\fonts\icomoon.eot" />
     <None Include="resources\fonts\icomoon.ttf" />

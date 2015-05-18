@@ -167,11 +167,11 @@ font-weight:normal;
     color: #000;
 }
 
-.x-grid-with-row-lines .x-grid-table-summary
+/*.x-grid-with-row-lines .x-grid-table-summary
 {
     border: 0;
     display: none;
-}
+}*/
 
 /*Para el icono del estatus en los tableros*/
 .IconColumnaEstatus
