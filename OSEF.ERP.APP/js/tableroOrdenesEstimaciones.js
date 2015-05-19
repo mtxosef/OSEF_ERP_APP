@@ -262,7 +262,7 @@ var cReporte_Renderer = function (valor, metaData, registro) {
         case 'CANCELADO':
             return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="cancelar" /> ' + registro.get('Reporte');
     }
-};s
+};
 
 
 //Asignar la descripción de la cuadrilla a esta columna
