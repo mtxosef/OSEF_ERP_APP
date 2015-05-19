@@ -69,6 +69,44 @@ BEGIN
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-	 Mov in('Mesa de reporte','Estimacion') AND MovEnLinea = 1;
+	 Mov in('Mesa de reporte','Estimacion') AND MovEnLinea = 1
+	 AND Estatus IN('CONCLUIDO','PENDIENTE','BORRADOR')
+UNION	 
+	SELECT
+		ID,
+		Mov,
+		MovID,
+		Sucursal,
+		FechaEmision,
+		Observaciones,
+		Estatus,
+		Usuario,
+		Origen,
+		OrigenID,
+		Reporte,
+		Division,
+		FechaOrigen,
+		FechaMaximaAtencion,
+		DiasAtencion,
+		Reporto,
+		TrabajoRequerido,
+		TrabajoRealizado,
+		CodigoFalla,
+		FechaLlegada,
+		HoraLlegada,
+		FechaFinActividad,
+		HoraFinActividad,
+		Cuadrilla,
+		ImporteTotal,
+		HoraOrigen,
+		RutaImagen,
+		Atendido 
+		
+	FROM
+		OrdenesEstimaciones
+	WHERE 
+	 Mov in('Mesa de reporte','Estimacion') AND MovEnLinea = 0
+	 AND Estatus IN('BORRADOR') 
+
 END
 GO

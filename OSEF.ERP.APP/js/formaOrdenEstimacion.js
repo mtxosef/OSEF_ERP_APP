@@ -521,8 +521,13 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
     }
     //4. Recargar el tablero
-    window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+   
+    window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload({
+        callback: function () {
+            window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.getSelectionModel().select(window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.find("Id", Ext.util.Cookies.get('cookieEditarOrdenEstimacion')));
+        }
 
+    });
 
 };
 
