@@ -87,11 +87,18 @@
                             Width="50"
                             Disabled="true">
                         </ext:ImageButton>
-
-
-                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="380">
+                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="250">
                         </ext:ToolbarSpacer>
-
+                        <ext:Checkbox
+                            ID="chkHistorial" 
+                            runat="server"
+                            Name="chkHistorial"
+                            FieldLabel="Historial" 
+                            Checked="false">
+                            <Listeners>
+                                <Change Fn="chkHistorial_Change"></Change>
+                            </Listeners>
+                        </ext:Checkbox> 
                         <ext:ImageButton
                             ID="imgbtnFirmas"
                             runat="server"
@@ -190,6 +197,7 @@
                                  <ext:ModelField Name="Cuadrilla" Type="String" />
                                  <ext:ModelField Name="RCuadrilla" Type="Object" /> 
                                  <ext:ModelField Name="RutaImagen" Type="String" />
+                                 <ext:ModelField Name="Atendido" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -231,6 +239,17 @@
                         DataIndex="RutaImagen">
                          <Renderer Fn="cTieneReporte_Renderer" />
                     </ext:Column>
+
+                    <ext:Column 
+                    ID="cAtendido"
+                    runat="server"
+                    Text="ATENDIDO"
+                    Align="Center"
+                    Width="70"
+                    DataIndex="Atendido">
+                         <Renderer Fn="cAtendido_Renderer" />
+                    </ext:Column>
+
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
@@ -299,8 +318,6 @@
                         DataIndex="TrabajoRequerido">
                     </ext:Column> 
 
-                    
-                    
                     <ext:DateColumn
                         ID="dcFechaOrigen"
                         runat="server"

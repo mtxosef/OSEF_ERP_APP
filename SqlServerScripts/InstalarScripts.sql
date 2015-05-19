@@ -393,6 +393,7 @@
 :r c:\SqlServerScripts\Borrar\OrdenesEstimaciones\web_spD_BorrarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Consultar)
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimaciones.sql
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerHistorialDeOrdenesEstimaciones.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimacionesConcluidos.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerMesaDeReportesConcluidos.sql 

@@ -27,7 +27,7 @@ namespace OSEF.ERP.APP
             if (!X.IsAjaxRequest)
             {
                 //2. Checar ticket de autenticación
-                UsuarioBusiness.checkValidSession(this);
+                //UsuarioBusiness.checkValidSession(this);
                 //3. Llenar Store de OrdenesEstimaciones, Preciarios y Usuarios
                 sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
                 sUsuarios.DataBind();
@@ -57,8 +57,11 @@ namespace OSEF.ERP.APP
         {
             sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
             sOrdenesEstimaciones.DataBind();
+
         }
 
+
+      
 
         //Exporta a Excel el grid
         protected void ExportEt(object sender, EventArgs e)
@@ -70,9 +73,7 @@ namespace OSEF.ERP.APP
             //1. Configurar la conexión y el tipo de comando
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
             try
-            {
-
-
+            { 
                 SqlCommand comando = new SqlCommand("web_spS_ObtenerReportePorCuadrilla", conn);
 
                 SqlDataAdapter adaptador = new SqlDataAdapter(comando);
@@ -90,9 +91,7 @@ namespace OSEF.ERP.APP
 
 
                 reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Cuadrilla " + nombreReporte);
-
-
-
+                 
 
             }
             catch (Exception ex)
@@ -104,10 +103,7 @@ namespace OSEF.ERP.APP
                 if (conn.State != ConnectionState.Closed)
                     conn.Close();
                 conn.Dispose();
-            }
-
-
-
+            } 
         }
 
 
@@ -162,6 +158,20 @@ namespace OSEF.ERP.APP
             {
                 return 0;
             }
+        }
+         
+        [DirectMethod]
+        public void ObtenerOrdenesEstimaciones()
+        {
+            sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesEstimaciones();
+            sOrdenesEstimaciones.DataBind();
+        }
+
+        [DirectMethod]
+        public void ObtenerHistorialDeOrdenesEstimaciones()
+        {
+            sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerHistorialDeOrdenesEstimaciones();
+            sOrdenesEstimaciones.DataBind();
         }
     }
 }

@@ -45,6 +45,8 @@ var imgbtnFormaNuevo_Click = function () {
     App.cmbCuadrilla.setValue('');
     App.tHoraOrigen.setValue('');
     App.tHoraOrigen.setReadOnly(false);
+    App.chkAtendido.setValue(false);
+
 
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
@@ -107,7 +109,6 @@ var sMov_Add = function (store, registros, index, eOpts) {
         if (tablero == 'REPORTES & ESTIMACIONES') {
             App.cmbMov.select('Mesa de reporte');
             App.cmbMov.setReadOnly(true);
-          
         }
         else {
             App.cmbMov.select('Orden de Cambio');
@@ -131,6 +132,9 @@ var sMov_Change = function (combo) {
 
         App.fufNormal.hidden=false;
         App.imgNormal.hidden = false;
+
+
+
     }
 
     if (combo.value.trim() == 'Orden de Cambio') {
@@ -140,6 +144,8 @@ var sMov_Change = function (combo) {
         App.pDatosReporteDos.tab.hide();
         App.pDatosReporte.hide();
         App.cIntExt.hidden = true;
+     
+       
     }
     App.gpOrdenEstimacion.reconfigure();
 };
@@ -259,20 +265,29 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             icon: Ext.MessageBox.INFO
         });
         //4. Recargar el tablero
-        window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
-    }
-        App.sConceptos.reload({
+
+        window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload({
             callback: function () {
-    if (App.sConceptos.getCount() > 0) {
+                window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.getSelectionModel().select(window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.find("Id", Ext.util.Cookies.get('cookieEditarOrdenEstimacion')));
+            }
+
+        });
+
+
+
+    }
+    App.sConceptos.reload({
+        callback: function () {
+            if (App.sConceptos.getCount() > 0) {
                 //Obtener el Renglon anterior
                 var auxRenglonAnterior = App.sConceptos.getCount() - 1;
                 var renglonAnterior = App.sConceptos.getAt(auxRenglonAnterior).get('Renglon') + 1;
-                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior }); 
-            } else { 
+                App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+            } else {
                 App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: 1 });
             }
-            }
-        });
+        }
+    });
 
 };
 
@@ -420,6 +435,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.dfFechaFinActividad.setReadOnly(true);
         App.tfHoraFinActividad.setReadOnly(true);
         App.cmbCuadrilla.setReadOnly(true);
+        App.chkAtendido.setReadOnly(true);
+
 
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
@@ -432,6 +449,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.imgbtnBorrar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnImprimir.setDisabled(false);
+
+        
 
         //3. Remover la útima fila
         var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
@@ -502,8 +521,13 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
     }
     //4. Recargar el tablero
-    window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+   
+    window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload({
+        callback: function () {
+            window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.getSelectionModel().select(window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.find("Id", Ext.util.Cookies.get('cookieEditarOrdenEstimacion')));
+        }
 
+    });
 
 };
 
@@ -564,8 +588,7 @@ var sOrdenesMantenimiento_Load = function () {
 
 //Evento lanzado al agregar un registro al store
 var sOrdenesMantenimiento_Add = function (avance, registro) {
-
-    App.fufNormal.setValue('dsfsdfsdfsdf');
+   
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
     && registro[0].get('Mov').trim() == "Orden de Cambio") {
@@ -582,6 +605,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         //Deshabilita los campos en un movimiento afectado
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
+
+
         App.txtfSucursalCR.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(true);
@@ -623,7 +648,6 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnImprimir.setDisabled(false);
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
-
         App.cIntExt.hidden = false;
 
         App.cmbMov.setReadOnly(true);
@@ -647,10 +671,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setReadOnly(true);
         App.tfHoraFinActividad.setReadOnly(true);
         App.cmbCuadrilla.setReadOnly(true);
-
-
-
-
+        App.chkAtendido.setReadOnly(true);
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        }
         App.imgbtnAfectar.setDisabled(false);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
@@ -685,6 +711,11 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
 
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        }
 
         App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
@@ -708,6 +739,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
 
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
@@ -750,6 +782,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
+
+        if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
+            App.chkAtendido.setValue(true);
+        } else {
+            App.chkAtendido.setValue(false);
+        }
 
         //Deshabilita controles
         App.txtfObservaciones.setReadOnly(true);
@@ -1721,10 +1759,13 @@ function PrimerRenglonDetalle() {
 
 };
 
-
+Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO')
 
 //Imagen Preview Normal
 var fufNormal_Change = function (event, control, txtReporte) {
+    console.log(App.sOrdenEstimacion.getAt(0));
+
+    
 
     if (txtReporte.length != 0) {
 
@@ -1767,24 +1808,27 @@ var fufNormal_Change = function (event, control, txtReporte) {
                 App.sOrdenEstimacion.getAt(0).set('RutaImagen', URL.createObjectURL(event.target.files[0]));
             }
 
+            Ext.util.Cookies.set('cookieTieneImagenReporte', 'SI')
+
         }
         else {
+            Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO')
             return isValidFile;
         }
     }
     else {
-            Ext.Msg.show({
-                id: 'msgOrdenEstimacion',
-                title: 'Advertencia',
-                msg: "Es necesario ingresar un Número de Reporte.",
-                buttons: Ext.MessageBox.OK,
-                onEsc: Ext.emptyFn,
-                closable: false,
-                icon: Ext.MessageBox.WARNING
-            });
-        }
+        Ext.Msg.show({
+            id: 'msgOrdenEstimacion',
+            title: 'Advertencia',
+            msg: "Es necesario ingresar un Número de Reporte.",
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
+    }
 
-    };
+};
 
 
     var PopupPic = function () {
@@ -1847,5 +1891,3 @@ var fufNormal_Change = function (event, control, txtReporte) {
             }
         }
     }
-
-    

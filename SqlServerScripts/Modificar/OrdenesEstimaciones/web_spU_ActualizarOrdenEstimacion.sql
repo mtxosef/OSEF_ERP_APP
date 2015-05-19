@@ -45,15 +45,16 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@Reporto		VARCHAR(100),
 	@TrabajoRequerido VARCHAR(850),
 	@TrabajoRealizado VARCHAR(500),
-		@CodigoFalla	VARCHAR(30),
-		@FechaLlegada	SMALLDATETIME,
+	@CodigoFalla	VARCHAR(30),
+	@FechaLlegada	SMALLDATETIME,
 	@HoraLlegada	DATETIME,
-		@FechaFinActividad SMALLDATETIME,
-		@HoraFinActividad DATETIME,
-		@Cuadrilla		CHAR(10) ,
-		@ImporteTotal	DECIMAL(20,2),
-		@HoraOrigen		DATETIME,
-		@RutaImagen		VARCHAR(500)
+	@FechaFinActividad SMALLDATETIME,
+	@HoraFinActividad DATETIME,
+	@Cuadrilla		CHAR(10) ,
+	@ImporteTotal	DECIMAL(20,2),
+	@HoraOrigen		DATETIME,
+	@RutaImagen		VARCHAR(500),
+	@Atendido		VARCHAR(5)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -87,7 +88,8 @@ BEGIN
 		Cuadrilla = @Cuadrilla,
 		ImporteTotal = @ImporteTotal,
 		HoraOrigen = @HoraOrigen,
-		RutaImagen = @RutaImagen
+		RutaImagen = @RutaImagen,
+		Atendido = @Atendido
 	WHERE
 		ID = @ID
 END

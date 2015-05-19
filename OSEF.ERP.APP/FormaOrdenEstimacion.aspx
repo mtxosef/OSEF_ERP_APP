@@ -72,6 +72,7 @@
                         <ext:ModelField Name="Cuadrilla" Type="String" />
                         <ext:ModelField Name="ImporteFinal" Type="Float" />
                         <ext:ModelField Name="RutaImagen" Type="String" />
+                        <ext:ModelField Name="Atendido" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -483,13 +484,7 @@
                                                         Cls="my-date-picker">
                                                     </PickerOptions>
                                                 </ext:DateField>
-                                                <ext:Checkbox
-                                                    ID="chkAtendido" 
-                                                    runat="server"
-                                                    Name="chkAtendido"
-                                                    FieldLabel="Atendido"
-                                                    Checked="true">
-                                                </ext:Checkbox>
+                                                
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer
@@ -588,7 +583,7 @@
                                                     LabelWidth="115"
                                                     Width="320" 
                                                     ReadOnly="true"
-                                                    Margins="0 3 0 0"
+                                                    Margins="0 40 0 0"
                                                     Text="">
                                                     <RightButtons>
                                                         <ext:Button 
@@ -602,7 +597,13 @@
                                                         </ext:Button>
                                                     </RightButtons>
                                                 </ext:TextField>
-
+                                                <ext:Checkbox
+                                                    ID="chkAtendido" 
+                                                    runat="server"
+                                                    Name="chkAtendido"
+                                                    FieldLabel="Atendido"
+                                                    Checked="false">
+                                                </ext:Checkbox>
                                             </Items>
                                         </ext:FieldContainer>
 

@@ -73,6 +73,25 @@ namespace OSEF.APP.BL
 
 
         /// <summary>
+        /// Método que obtiene todos los registros del Historial De OrdenEstimacion
+        /// </summary>
+        /// <returns></returns>
+        public static List<OrdenEstimacion> ObtenerHistorialDeOrdenesEstimaciones()
+        {
+            //1. Obtener las OrdenesEstimaciones en una lista
+            List<OrdenEstimacion> lOrdenesEstimaciones = OrdenEstimacionDataAccess.ObtenerHistorialDeOrdenesEstimaciones();
+
+            //2. Complementarlas con sucursal
+            foreach (OrdenEstimacion sd in lOrdenesEstimaciones)
+            {
+                sd.RSucursal = SucursalBusiness.ObtenerSucursalPorID(sd.Sucursal);
+                sd.RCuadrilla = CuadrillaBusiness.ObtenerCuadrillaPorID(sd.Cuadrilla);
+            }
+            return lOrdenesEstimaciones;
+        }
+
+
+        /// <summary>
         /// Método que obtiene todos los regsitros de OrdenEstimacion
         /// </summary>
         /// <returns></returns>

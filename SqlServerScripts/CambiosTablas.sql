@@ -112,3 +112,9 @@ ALTER TABLE OrdenesEstimaciones ADD RutaImagen VARCHAR(500) NULL
 --Cambios Christian 15 de Mayo 2015
 ALTER TABLE OrdenesEstimaciones DROP COLUMN TieneFotos 
 ALTER TABLE OrdenesEstimaciones DROP COLUMN TieneReporte 
+
+--Cambios Giovanni Flores 18 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones ADD Atendido VARCHAR(5) NULL
+
+--Cambios Giovanni Flores 18 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones ADD MovEnLinea BIT NULL

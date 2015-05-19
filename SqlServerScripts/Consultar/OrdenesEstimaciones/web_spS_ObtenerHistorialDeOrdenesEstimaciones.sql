@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerOrdenesCambios' AND
+			WHERE  name = 'web_spS_ObtenerHistorialDeOrdenesEstimaciones' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerOrdenesCambios
+	DROP PROCEDURE web_spS_ObtenerHistorialDeOrdenesEstimaciones
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Viernes 05 de Diciembre de 2014
--- Description:	Obtener todos los registros de Revisiones
+-- Author:		Giovanni Flores
+-- Create date: Martes 19 de Mayo de 2015
+-- Description:	Obtener todos los registros de Ordenes y Estimaciones
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerOrdenesCambios
+CREATE PROCEDURE web_spS_ObtenerHistorialDeOrdenesEstimaciones
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -64,10 +64,11 @@ BEGIN
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido
+		Atendido 
+		
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-	 Mov ='Orden de Cambio'
+	 Mov in('Mesa de reporte','Estimacion');
 END
 GO

@@ -235,6 +235,14 @@ namespace OSEF.APP.DL
                 sqlpRutaImagen.SqlDbType = SqlDbType.VarChar;
                 sqlpRutaImagen.Value = iOrdenEstimacion.RutaImagen;
 
+                SqlParameter sqlpAtendido = new SqlParameter();
+                sqlpAtendido.ParameterName = "@Atendido";
+                sqlpAtendido.SqlDbType = SqlDbType.VarChar;
+                if (iOrdenEstimacion.Atendido == null)
+                    sqlpAtendido.Value = "NO";
+                else
+                    sqlpAtendido.Value = "SI"; 
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -263,6 +271,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
+                sqlcComando.Parameters.Add(sqlpAtendido);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -495,6 +504,14 @@ namespace OSEF.APP.DL
                 sqlpRutaImagen.SqlDbType = SqlDbType.VarChar;
                 sqlpRutaImagen.Value = uOrdenEstimacion.RutaImagen;
 
+                SqlParameter sqlpAtendido = new SqlParameter();
+                sqlpAtendido.ParameterName = "@Atendido";
+                sqlpAtendido.SqlDbType = SqlDbType.VarChar;
+                if (uOrdenEstimacion.Atendido == "False")
+                    sqlpAtendido.Value = "No";
+                else
+                    sqlpAtendido.Value = "Si"; 
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpMov);
@@ -521,6 +538,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpImporteTotal);
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
+                sqlcComando.Parameters.Add(sqlpAtendido);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -625,6 +643,47 @@ namespace OSEF.APP.DL
             catch (Exception ex)
             {
                 throw new Exception("Error capa de datos (public static List<OrdenEstimacion> ObtenerOrdenesEstimaciones()): " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Obtener todos los registros de OrdenesEstimaciones
+        /// </summary>
+        /// <returns></returns>
+        public static List<OrdenEstimacion> ObtenerHistorialDeOrdenesEstimaciones()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerHistorialDeOrdenesEstimaciones";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<OrdenEstimacion> result = LibraryGenerics<OrdenEstimacion>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<OrdenEstimacion> ObtenerHistorialDeOrdenesEstimaciones()): " + ex.Message);
             }
         }
 

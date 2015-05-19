@@ -85,6 +85,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ToolbarSpacer tbsOrdenesCambio;
         
         /// <summary>
+        /// Control chkHistorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkHistorial;
+        
+        /// <summary>
         /// Control imgbtnFirmas.
         /// </summary>
         /// <remarks>
@@ -182,6 +191,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cTieneReporte;
+        
+        /// <summary>
+        /// Control cAtendido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cAtendido;
         
         /// <summary>
         /// Control cSucursal.

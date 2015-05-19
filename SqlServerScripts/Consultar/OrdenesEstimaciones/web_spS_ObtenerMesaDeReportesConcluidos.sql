@@ -63,10 +63,11 @@ BEGIN
 		Cuadrilla,
 		ImporteTotal,
 		HoraOrigen,
-		RutaImagen
+		RutaImagen,
+		Atendido
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte'
+		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1;
 END
 GO

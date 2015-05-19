@@ -40,7 +40,8 @@ BEGIN
     UPDATE OrdenesEstimaciones
     SET
 		MovID = 'R' + CAST(ID AS VARCHAR(9)),
-		Estatus = 'CONCLUIDO'
+		Estatus = 'CONCLUIDO',
+		MovEnLinea =1
 	WHERE
 		ID = @ID
 END

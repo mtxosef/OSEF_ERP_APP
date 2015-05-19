@@ -65,7 +65,8 @@ BEGIN
 		@Cuadrilla				VARCHAR(200),
 		@ImporteTotal			DECIMAL(20,2),
 		@HoraOrigen				DATETIME,
-		@RutaImagen				VARCHAR(500)
+		@RutaImagen				VARCHAR(500),
+		@Atendido				VARCHAR(5)
 		
 	SELECT
 		@MovA = @Mov,
@@ -92,12 +93,15 @@ BEGIN
 		@Cuadrilla = Cuadrilla,
 		@ImporteTotal = ImporteTotal,
 		@HoraOrigen = HoraOrigen,
-		@RutaImagen = RutaImagen
+		@RutaImagen = RutaImagen,
+		@Atendido = Atendido
 	FROM
 		OrdenesEstimaciones
 	WHERE
 		ID = @ID
 		
+	UPDATE OrdenesEstimaciones SET MovEnLinea = 0 WHERE ID = @ID;
+
 	IF (@Mov = 'Mesa de reporte')
 	BEGIN
 		SET @Estatus = 'BORRADOR'
@@ -134,7 +138,9 @@ BEGIN
 			Cuadrilla,
 			ImporteTotal,
 			HoraOrigen,
-			RutaImagen
+			RutaImagen,
+			Atendido,
+			MovEnLinea
 		)
 	VALUES
 		(
@@ -162,7 +168,9 @@ BEGIN
 			@Cuadrilla,
 			@ImporteTotal,
 			@HoraOrigen,
-			@RutaImagen
+			@RutaImagen,
+			@Atendido,
+			1
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()

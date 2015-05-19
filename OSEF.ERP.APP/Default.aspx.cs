@@ -15,16 +15,34 @@ namespace OSEF.ERP.APP
     public partial class Default : System.Web.UI.Page
     {
         /// <summary>
+        /// Se produce al principio de la inicialización de la página.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            UsuarioBusiness.checkValidSession(this);
+            Usuario oUsuario = (Usuario)Session["Usuario"];
+
+            if (oUsuario == null) {
+                FormsAuthentication.SignOut();
+                Response.Redirect("~/Login.aspx", true);
+            }
+        }
+
+        /// <summary>
         /// Evento que se lanza al cargar la página
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            UsuarioBusiness.checkValidSession(this);
+       
+           UsuarioBusiness.checkValidSession(this);
             Cookies.Set("osefTheme", ConfigurationManager.AppSettings["osefTheme"].ToString(), DateTime.Now.AddDays(30), "/", null, false);
-           
+             
         }
+
 
         /// <summary>
         /// Evento que se lanza al cargar el Store de Usuario

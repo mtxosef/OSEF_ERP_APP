@@ -31,7 +31,7 @@ namespace OSEF.ERP.APP
         {
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
             //Checar ticket de autenticación
-            UsuarioBusiness.checkValidSession(this);
+            //UsuarioBusiness.checkValidSession(this);
             if (oFirmas == null)
             {
                sbParametros1.Text="Debes de configurar las firmas";
@@ -51,7 +51,7 @@ namespace OSEF.ERP.APP
         protected void Page_Load(object sender, EventArgs e)
         {
             // Checar ticket de autenticación
-            UsuarioBusiness.checkValidSession(this);
+            //UsuarioBusiness.checkValidSession(this);
             string nReporte = Cookies.GetCookie("NReporte").Value;
             if (nReporte != null && nReporte.Trim().Length > 0)
             {

@@ -52,6 +52,7 @@ BEGIN
 		OE.FechaMaximaAtencion,
 		OE.Estatus,
 		S.DireccionZona,
+		OE.Atendido,
 		--DATOS DEL REPORTE 3
 		C.Descripcion
 		
