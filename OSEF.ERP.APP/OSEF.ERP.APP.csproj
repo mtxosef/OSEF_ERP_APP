@@ -618,6 +618,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\DataTabla.cs" />
+    <Compile Include="ActionExecutingContext.cs" />
     <Compile Include="Articulos.aspx.cs">
       <DependentUpon>Articulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

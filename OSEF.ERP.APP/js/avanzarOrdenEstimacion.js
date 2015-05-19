@@ -26,6 +26,7 @@
 
                 //Recargar el tablero
                 window.parent.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+
                 HabilitarControlesAvanzar();
                 window.parent.App.wEmergente.hide();
             }
@@ -67,7 +68,8 @@ function HabilitarControlesAvanzar() {
     window.parent.App.txtfObservaciones.setDisabled(false);
     window.parent.App.imgbtnGuardar.setDisabled(false);
     window.parent.App.imgbtnBorrar.setDisabled(false);
-
+    window.parent.App.chkAtendido.setReadOnly(false);
+  
     //6. Deshabilita los comandos del grid
     window.parent.App.ccFotos.commands[0].disabled = false;
     window.parent.App.ccFotos.commands[1].disabled = false;
