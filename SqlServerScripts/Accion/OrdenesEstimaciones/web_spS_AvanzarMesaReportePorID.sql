@@ -100,6 +100,8 @@ BEGIN
 	WHERE
 		ID = @ID
 		
+	UPDATE OrdenesEstimaciones SET MovEnLinea = 0 WHERE ID = @ID;
+
 	IF (@Mov = 'Mesa de reporte')
 	BEGIN
 		SET @Estatus = 'BORRADOR'
@@ -137,7 +139,8 @@ BEGIN
 			ImporteTotal,
 			HoraOrigen,
 			RutaImagen,
-			Atendido
+			Atendido,
+			MovEnLinea
 		)
 	VALUES
 		(
@@ -166,7 +169,8 @@ BEGIN
 			@ImporteTotal,
 			@HoraOrigen,
 			@RutaImagen,
-			@Atendido
+			@Atendido,
+			1
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()

@@ -115,3 +115,6 @@ ALTER TABLE OrdenesEstimaciones DROP COLUMN TieneReporte
 
 --Cambios Giovanni Flores 18 de Mayo 2015
 ALTER TABLE OrdenesEstimaciones ADD Atendido VARCHAR(5) NULL
+
+--Cambios Giovanni Flores 18 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones ADD MovEnLinea BIT NULL

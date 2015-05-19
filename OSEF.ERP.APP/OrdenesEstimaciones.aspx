@@ -87,11 +87,18 @@
                             Width="50"
                             Disabled="true">
                         </ext:ImageButton>
-
-
-                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="380">
+                        <ext:ToolbarSpacer ID="tbsOrdenesCambio" runat="server" Width="250">
                         </ext:ToolbarSpacer>
-
+                        <ext:Checkbox
+                            ID="chkHistorial" 
+                            runat="server"
+                            Name="chkHistorial"
+                            FieldLabel="Historial" 
+                            Checked="false">
+                            <Listeners>
+                                <Change Fn="chkHistorial_Change"></Change>
+                            </Listeners>
+                        </ext:Checkbox> 
                         <ext:ImageButton
                             ID="imgbtnFirmas"
                             runat="server"

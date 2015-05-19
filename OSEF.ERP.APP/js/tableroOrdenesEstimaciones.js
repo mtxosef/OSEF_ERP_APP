@@ -278,4 +278,8 @@ var cAtendido_Renderer = function (value, columna, registro) {
         columna.style = "background-color: #ff0033; color: #fff;";
         return "No";
     }
-} 
+}
+
+var chkHistorial_Change = function () {
+    App.chkHistorial.getValue() == true ? App.direct.ObtenerHistorialDeOrdenesEstimaciones() : App.direct.ObtenerOrdenesEstimaciones();
+}

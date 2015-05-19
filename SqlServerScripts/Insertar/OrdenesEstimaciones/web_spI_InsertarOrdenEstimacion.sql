@@ -94,7 +94,8 @@ BEGIN
 			ImporteTotal,
 			HoraOrigen,
 			RutaImagen,
-			Atendido
+			Atendido,
+			MovEnLinea
 		)
 	VALUES (
 			@Mov,
@@ -123,7 +124,8 @@ BEGIN
 			@ImporteTotal,
 			@HoraOrigen,
 			@RutaImagen,
-			@Atendido
+			@Atendido,
+			1
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

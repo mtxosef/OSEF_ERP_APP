@@ -64,11 +64,11 @@ BEGIN
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido
+		Atendido 
 		
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-	 Mov in('Mesa de reporte','Estimacion')
+	 Mov in('Mesa de reporte','Estimacion') AND MovEnLinea = 1;
 END
 GO

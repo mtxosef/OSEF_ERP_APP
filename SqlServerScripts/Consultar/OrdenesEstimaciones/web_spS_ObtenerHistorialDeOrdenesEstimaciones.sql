@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerMesaDeReportesConcluidos' AND
+			WHERE  name = 'web_spS_ObtenerHistorialDeOrdenesEstimaciones' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
+	DROP PROCEDURE web_spS_ObtenerHistorialDeOrdenesEstimaciones
 GO
 -- =============================================
 -- Author:		Giovanni Flores
--- Create date: Jueves 23 de Abril de 2015
--- Description:	Obtener todos los registros de Mesa de Reportes Concluidos
+-- Create date: Martes 19 de Mayo de 2015
+-- Description:	Obtener todos los registros de Ordenes y Estimaciones
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
+CREATE PROCEDURE web_spS_ObtenerHistorialDeOrdenesEstimaciones
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -64,10 +64,11 @@ BEGIN
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido
+		Atendido 
+		
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1;
+	 Mov in('Mesa de reporte','Estimacion');
 END
 GO
