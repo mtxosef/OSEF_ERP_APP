@@ -216,8 +216,9 @@
                         runat="server"
                         Text="REPORTE"
                         Align="Center"
-                        Width="80"
+                        Width="110"
                         DataIndex="Reporte">
+                        <Renderer Fn="cReporte_Renderer" />
                         <HeaderItems>
                             <ext:TextField
                                 ID="txtReporte"
@@ -508,7 +509,7 @@
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="170"
+                        Width="140"
                         DataIndex="Mov">
                          <HeaderItems>
                             <ext:ComboBox
@@ -519,7 +520,6 @@
                                 <Items>
                                     <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
                                     <ext:ListItem Index="1" Text="Mesa de reporte" Value="Mesa de reporte"/>
-                                    <ext:ListItem Index="2" Text="Orden de Cambio" Value="Orden de Cambio"/>
                                     <ext:ListItem Index="3" Text="Estimación" Value="Estimacion"/>
                                 </Items>
                                 <SelectedItems>

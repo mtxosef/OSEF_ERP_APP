@@ -59,7 +59,7 @@ var sOrdenesEstimaciones_DataChanged = function () {
 var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     App.sOrdenesEstimaciones.clearFilter();
     App.sOrdenesEstimaciones.filter([{ filterFn: function (item) {
-        if (item.get('Mov').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('MovID').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
+        if (item.get('Mov').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('Id').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
         else { return false; }
     }
     }]);
@@ -233,17 +233,36 @@ var cZona_Renderer = function (valor, columna, registro) {
 var cMov_Renderer = function (valor, metaData, registro) {
     var estatus = registro.get('Estatus');
 
+    return registro.get('Mov') + " " + registro.get('MovID');
+      
+
+//    switch (estatus) {
+//        case 'BORRADOR':
+//            return '<img class="IconColumnaEstatus" src="images/borrador.png" alt="borrador" />' + registro.get('Mov') + " " + registro.get('MovID');
+//        case 'PENDIENTE':
+//            return '<img class="IconColumnaEstatus" src="images/pendiente.png" alt="pendiente" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+//        case 'CONCLUIDO':
+//            return '<img class="IconColumnaEstatus" src="images/concluido.png" alt="concluido" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+//        case 'CANCELADO':
+//            return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="cancelar" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+//    }
+};
+
+//Concatenar la columna de Movimiento
+var cReporte_Renderer = function (valor, metaData, registro) {
+    var estatus = registro.get('Estatus');
+
     switch (estatus) {
         case 'BORRADOR':
-            return '<img class="IconColumnaEstatus" src="images/borrador.png" alt="borrador" />' + registro.get('Mov') + " " + registro.get('MovID');
+            return '<img class="IconColumnaEstatus" src="images/borrador.png" alt="borrador" />' + registro.get('Reporte');
         case 'PENDIENTE':
-            return '<img class="IconColumnaEstatus" src="images/pendiente.png" alt="pendiente" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+            return '<img class="IconColumnaEstatus" src="images/pendiente.png" alt="pendiente" /> ' + registro.get('Reporte');
         case 'CONCLUIDO':
-            return '<img class="IconColumnaEstatus" src="images/concluido.png" alt="concluido" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+            return '<img class="IconColumnaEstatus" src="images/concluido.png" alt="concluido" /> ' + registro.get('Reporte');
         case 'CANCELADO':
-            return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="cancelar" /> ' + registro.get('Mov') + " " + registro.get('MovID');
+            return '<img class="IconColumnaEstatus" src="images/cancelar.png" alt="cancelar" /> ' + registro.get('Reporte');
     }
-};
+};s
 
 
 //Asignar la descripción de la cuadrilla a esta columna
