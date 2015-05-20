@@ -143,6 +143,16 @@
                     OnClick="imgbtnExportarCroquis_Click"
                 ImageUrl="assets/img/controles/croquis.png"/>
 
+
+                 <asp:ImageButton 
+                ID="imgbtnFotos" 
+                runat="server" 
+                class="imgs" 
+                OnClick="imgbtnExportarFotos_Click"
+                    Height="30"
+                    Width="30"
+                ImageUrl="assets/img/controles/imagenes.png"/>
+
                     <asp:ImageButton 
                 ID="imgbtnFacturas" 
                 runat="server"
@@ -152,14 +162,7 @@
                 OnClick="imgbtnExportarFactura_Click" 
                 ImageUrl="assets/img/controles/facturas.png"/>
                 
-                <asp:ImageButton 
-                ID="imgbtnFotos" 
-                runat="server" 
-                class="imgs" 
-                OnClick="imgbtnExportarFotos_Click"
-                    Height="30"
-                    Width="30"
-                ImageUrl="assets/img/controles/imagenes.png"/>
+               
                     </div>
                     <div align="right">
                 <asp:ImageButton 

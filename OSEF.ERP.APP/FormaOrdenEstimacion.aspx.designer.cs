@@ -688,6 +688,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Image imgNormal;
         
         /// <summary>
+        /// Control imgbtnBorrarReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnBorrarReporte;
+        
+        /// <summary>
         /// Control pDetalle.
         /// </summary>
         /// <remarks>

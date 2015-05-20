@@ -943,6 +943,7 @@
                                                     ID="imgNormal"
                                                     runat="server"
                                                     Hidden="true"
+                                                    StyleSpec="margin-right: 3px;"
                                                     Height="100"
                                                     Cls="img-resize"
                                                     Width="100">
@@ -950,6 +951,26 @@
                                                         <Click Fn="PopupPic"></Click>
                                                     </Listeners>
                                                     </ext:Image>
+                                                    
+                                                     <ext:ImageButton 
+                                                            ID="imgbtnBorrarReporte" 
+                                                            runat="server" 
+                                                            
+                                                            ImageUrl="assets/img/controles/delete-normal.png" 
+                                                            DisabledImageUrl="assets/img/controles/delete-disable.png"
+                                                            OverImageUrl="assets/img/controles/delete-over.png" 
+                                                            PressedImageUrl="assets/img/controles/delete-pressed.png"
+                                                            ToolTip="Norrar" 
+                                                            Height="23" 
+                                                            Width="23">
+                                                            <Listeners>
+                                                                <Click Handler="App.sOrdenEstimacion.getAt(0).set('RutaImagen','');
+                                                                      App.imgNormal.setImageUrl('');
+                                                                      Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO');">
+                                                                </Click>
+                                                            </Listeners>
+                                                        </ext:ImageButton>
+
                                             </Items>
                                         </ext:FieldContainer> 
                                     </Items>

@@ -7,8 +7,22 @@ var imgbtnFormaNuevo_Click = function () {
     var d = new Date();
 
     //Habilitar o Deshabilitar controles
-    App.cmbMov.setValue("");
-    App.cmbMov.setReadOnly(true);
+    //App.cmbMov.setValue("");
+    //App.cmbMov.setReadOnly(false);
+
+    //identificamos que tablero de que modulo es
+    var tablero = window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.title;
+
+    if (tablero == 'REPORTES & ESTIMACIONES') {
+        App.cmbMov.select('Mesa de reporte');
+        App.cmbMov.setReadOnly(true);
+    }
+    else {
+        App.cmbMov.select('Orden de Cambio');
+        App.cmbMov.setReadOnly(true);
+    }
+
+
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
     App.imgbtnCancelar.setDisabled(true);
@@ -61,25 +75,14 @@ var imgbtnFormaNuevo_Click = function () {
 
 var imgbtnImprimir_Click = function () {
     if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte' || App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
-        //        if (App.txtfNoReporte.getValue().length > 0 && App.txtfNoReporte.getValue() != null && App.txtfNoReporte.getValue().trim() !='') { 
-       Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue()); 
+          Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue()); 
         window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
         window.parent.App.wGenerador.setHeight(160);
         window.parent.App.wGenerador.setWidth(590);
         window.parent.App.wGenerador.center();
         window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
         window.parent.App.wGenerador.show();
-        //        } else {
-        //            Ext.Msg.show({
-        //                id: 'msgOrdenesEstimaciones',
-        //                title: 'ADVERTENCIA',
-        //                msg: '<p align="center">Es necesario un No. de Reporte.</p>',
-        //                buttons: Ext.MessageBox.OK,
-        //                onEsc: Ext.emptyFn,
-        //                closable: false,
-        //                icon: Ext.MessageBox.INFO
-        //            });
-        //        }
+
     }
     else {
         window.parent.App.wGenerador.load('FormaReporteOrdenCambioD.aspx');
@@ -306,26 +309,7 @@ var imgbtnBorrar_Click_Success = function (response, result) {
     //Se actualiza el tablero
     window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     window.parent.App.wEmergente.hide();
-    //    var d = new Date();
-    //    //Limpiar controles del encabezado
-    //    App.cmbMov.clearValue();
-    //    App.txtfMovID.setValue(null);
-    //    App.cmbMov.setValue('');
-    //    App.cmbMov.setReadOnly(false);
-    //    App.cmbSucursal.clearValue();   
-    //    App.txtfSucursalNombre.setValue('');
-
-    //    App.dfFechaEmision.setValue(d);
-    //    App.txtfObservaciones.setValue(null);
-    //    App.sbOrdenEstimacion.setText('SIN AFECTAR');
-
-    //    App.imgbtnBorrar.setDisabled(true);
-
-    //    //Borrar el GridPanel del Detalle y Encabezado
-    //    App.sConceptos.removeAll();
-    //    App.sOrdenEstimacion.removeAll();
-    //    Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
-    //    window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
+  
 };
 
 //Método que se lanza antes de llamar al procedimiento de Afectar
@@ -1763,7 +1747,7 @@ Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO')
 
 //Imagen Preview Normal
 var fufNormal_Change = function (event, control, txtReporte) {
-    console.log(App.sOrdenEstimacion.getAt(0));
+   
 
     
 
