@@ -34,7 +34,7 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Int;
-                sqlpID.Value = iFacturaOrdenEstimacionD.ID;
+                sqlpID.Value = iFacturaOrdenEstimacionD.MovID;
 
                 SqlParameter sqlpPreciarioConcepto = new SqlParameter();
                 sqlpPreciarioConcepto.ParameterName = "@Concepto";
@@ -84,7 +84,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Insertar(FacturaOrdenEstimacionD " + iFacturaOrdenEstimacionD.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Insertar(FacturaOrdenEstimacionD " + iFacturaOrdenEstimacionD.MovID + ")): " + ex.Message);
             }
         }
 
@@ -141,6 +141,57 @@ namespace OSEF.APP.DL
             catch (Exception ex)
             {
                 throw new Exception("Error capa de datos (public static int BorrarFacturasOrdenEstimacionDPorConcepto(int ID " + dID + ")): " + ex.Message);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Método que borra Factura por concepto y por OrdenEstimacion
+        /// </summary>
+        /// <param name="dID"></param>
+        public static int BorrarFacturaOrdenEstimacionDPorConceptoYNombre(int dID, string strIDConcepto, string nIMG)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spD_BorrarFacturaOrdenEstimacionDPorConcepto";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = dID;
+
+                SqlParameter sqlpPreciarioConcepto = new SqlParameter();
+                sqlpPreciarioConcepto.ParameterName = "@Concepto";
+                sqlpPreciarioConcepto.SqlDbType = SqlDbType.Char;
+                sqlpPreciarioConcepto.Size = 10;
+                sqlpPreciarioConcepto.Value = strIDConcepto;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpPreciarioConcepto);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción DELETE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int BorrarFacturaOrdenEstimacionDPorConceptoYNombre(int ID " + dID + ")): " + ex.Message);
             }
         }
 

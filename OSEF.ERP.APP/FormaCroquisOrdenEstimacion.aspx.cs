@@ -16,17 +16,45 @@ namespace OSEF.ERP.APP
         {
             if (!X.IsAjaxRequest)
             {
-                int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
-                string strConcepto = Cookies.GetCookie("cookieConceptoOrdenEstimacion").Value;
-                List<CroquisOrdenEstimacionD> lCroquisOrdenEstimacionD = CroquisOrdenEstimacionBusiness.ObtenerCroquisOrdenEstimacionDPorMovPreciarioConcepto(iID, strConcepto);
+                onLoadDataImages();
+            }
+        }
 
-                foreach (CroquisOrdenEstimacionD sd in lCroquisOrdenEstimacionD)
+
+        [DirectMethod]
+        public void onLoadDataImages()
+        {
+            int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
+            string strConcepto = Cookies.GetCookie("cookieConceptoOrdenEstimacion").Value;
+            List<CroquisOrdenEstimacionD> lCroquisOrdenEstimacionD = CroquisOrdenEstimacionBusiness.ObtenerCroquisOrdenEstimacionDPorMovPreciarioConcepto(iID, strConcepto);
+
+            foreach (CroquisOrdenEstimacionD sd in lCroquisOrdenEstimacionD)
+            {
+                sd.Direccion = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + sd.Direccion;
+            }
+
+            sImagenesOrdenEstimacionD.DataSource = lCroquisOrdenEstimacionD;
+            sImagenesOrdenEstimacionD.DataBind(); 
+        }
+
+        [DirectMethod]
+        public void BorrarCroquis(string conceptoID, int MovID, string nombreimg)
+        {
+            int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
+            string strConcepto = Cookies.GetCookie("cookieConceptoOrdenEstimacion").Value;
+            string strDireccion = Server.MapPath(" ") + "\\croquisOrdenEstimacion\\" + iID + "\\" + strConcepto;
+            string url = strDireccion + "\\" + nombreimg;
+            if (!(conceptoID.Equals("") && MovID.Equals("") && nombreimg.Equals("")))
+            {
+                CroquisOrdenEstimacionBusiness.BorrarCroquisOrdenEstimacionDPorConceptoYNombre(MovID, conceptoID, nombreimg);
+                try
                 {
-                    sd.Direccion = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + sd.Direccion;
+                    System.IO.File.Delete(url);
                 }
-
-                sImagenesOrdenEstimacionD.DataSource = lCroquisOrdenEstimacionD;
-                sImagenesOrdenEstimacionD.DataBind();
+                catch (Exception e)
+                {
+                    e.Message.ToString();
+                }
             }
         }
     }

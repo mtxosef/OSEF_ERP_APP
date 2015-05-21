@@ -426,6 +426,7 @@
 :r c:\SqlServerScripts\Consultar\ImagenOrdenesEstimacionesD\web_spS_ObtenerImagenOrdenEstimacionDPorConcepto.sql
 -- ImagenOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\ImagenOrdenesEstimacionesD\web_spD_BorrarImagenOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\ImagenOrdenesEstimacionesD\web_spD_BorrarImagenOrdenEstimacionDPorConceptoYNombre.sql
 :r c:\SqlServerScripts\Borrar\ImagenOrdenesEstimacionesD\web_spD_BorrarImagenOrdenEstimacionDPorOrdenEstimacion.sql
 -----------------------------------------------------------------------------------
 -- FacturaOrdenesEstimacionesD (Insertar)

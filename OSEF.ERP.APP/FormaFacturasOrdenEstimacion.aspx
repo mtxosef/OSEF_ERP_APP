@@ -55,6 +55,14 @@
             });
 
         });
+        var onDelete_image = function (conceptoID, ID, nombreIMG) {
+            App.direct.BorrarFactura(conceptoID, ID, nombreIMG);
+            App.sImagenesOrdenEstimacionD.reload({
+                callback: function () {
+                    App.direct.onLoadDataFactura();
+                }
+            }); 
+        };
 	</script>
 
     <ext:XScript ID="XScript1" runat="server">
@@ -74,7 +82,7 @@
             <Model>
                 <ext:Model ID="mImagenesOrdenEstimacionD" runat="server">
                     <Fields>
-                        <ext:ModelField Name="ID" Type="Int" />
+                        <ext:ModelField Name="MovID" Type="Int" />
                         <ext:ModelField Name="Concepto" Type="String" />
                         <ext:ModelField Name="Nombre" Type="String" />
                         <ext:ModelField Name="Direccion" Type="String" />      
@@ -89,7 +97,6 @@
             ID="fpImagenesOrdenEstimacionD"
             runat="server" 
             BodyStyle="background-color:#fff;"
-          
             Height="479"
             Width="660"
             AutoScroll="true">
@@ -108,12 +115,15 @@
                         <Html>
                             <tpl for=".">
                                 <div class="thumb-wrap" id="{Nombre}">
-
-                                
-
-                                    <div class="thumb"><a class="fancybox-effects-d" href="{Direccion}" title="{Concepto}"><img src="{Direccion}" title="{Nombre}"></img></a></div>
-                                    <span class="x-editable">{Nombre}</span>
-                                </div>
+                                    <div class="thumb">
+                                        <a class="fancybox-effects-d" href="{Direccion}" title="{Concepto}">
+                                            <img src="{Direccion}" title="{Nombre}"></img>
+                                        </a>
+                                    </div>
+                                    <span class="x-editable">{Nombre} 
+                                        <img src="resources/images/delete.gif" style="margin-top:10px" onclick="onDelete_image('{Concepto}','{MovID}','{Nombre}');" title="Borrar"></img>
+                                    </span>
+                                </div>    
                             </tpl>
                             <div class="x-clear"></div>
                         </Html>

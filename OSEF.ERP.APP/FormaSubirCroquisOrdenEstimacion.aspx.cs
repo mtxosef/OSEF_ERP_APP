@@ -45,7 +45,7 @@ namespace OSEF.ERP.APP
 
             //3. Realizar el objeto e insertar en la base de datos
             CroquisOrdenEstimacionD oCroquisOrdenEstimacionD = new CroquisOrdenEstimacionD();
-            oCroquisOrdenEstimacionD.ID = iID;
+            oCroquisOrdenEstimacionD.MovID = iID;
             oCroquisOrdenEstimacionD.Concepto = strConcepto;
             oCroquisOrdenEstimacionD.Nombre = e.FileName;
             oCroquisOrdenEstimacionD.Direccion = "\\croquisOrdenEstimacion\\" + iID + "\\" + strConcepto + "\\" + e.FileName;

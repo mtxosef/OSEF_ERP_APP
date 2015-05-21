@@ -24,7 +24,7 @@ namespace OSEF.APP.EL
 
         #region Propiedades
 
-        public int ID
+        public int MovID
         {
             get { return id; }
             set { id = value; }

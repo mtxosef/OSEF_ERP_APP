@@ -55,8 +55,15 @@
             });
 
         });
+        var onDelete_image = function (conceptoID, ID, nombreIMG) { 
+            App.direct.BorrarImagen(conceptoID, ID, nombreIMG);
+            App.sImagenesOrdenEstimacionD.reload({
+                callback: function () {
+                    App.direct.onLoadDataImages();
+                }
+            }); 
+        };
 	</script>
-
     <ext:XScript ID="XScript1" runat="server">
         <script>
             var prepareData = function (data) {
@@ -74,7 +81,7 @@
             <Model>
                 <ext:Model ID="mImagenesOrdenEstimacionD" runat="server">
                     <Fields>
-                        <ext:ModelField Name="ID" Type="Int" />
+                        <ext:ModelField Name="MovID" Type="Int" />
                         <ext:ModelField Name="Concepto" Type="String" />
                         <ext:ModelField Name="Nombre" Type="String" />
                         <ext:ModelField Name="Direccion" Type="String" />      
@@ -108,11 +115,10 @@
                         <Html>
                             <tpl for=".">
                                 <div class="thumb-wrap" id="{Nombre}">
-
-                                
-
                                     <div class="thumb"><a class="fancybox-effects-d" href="{Direccion}" title="{Concepto}"><img src="{Direccion}" title="{Nombre}"></img></a></div>
-                                    <span class="x-editable">{Nombre}</span>
+                                    <span class="x-editable">{Nombre} 
+                                    <img src="resources/images/delete.gif" style="cursor: pointer; margin-top:10px;" onclick="onDelete_image('{Concepto}','{MovID}','{Nombre}');" title="Borrar"></img>
+                                    </span>
                                 </div>
                             </tpl>
                             <div class="x-clear"></div>

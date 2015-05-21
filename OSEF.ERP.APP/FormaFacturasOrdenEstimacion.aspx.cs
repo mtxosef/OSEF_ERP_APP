@@ -16,17 +16,43 @@ namespace OSEF.ERP.APP
         {
             if (!X.IsAjaxRequest)
             {
-                int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
-                string strConcepto = Cookies.GetCookie("cookieConceptoOrdenEstimacion").Value;
-                List<FacturaOrdenEstimacionD> lFacturaOrdenEstimacionD = FacturaOrdenEstimacionBusiness.ObtenerFacturaOrdenEstimacionDPorMovPreciarioConcepto(iID, strConcepto);
+                onLoadDataFactura();
+            }
+        }
 
-                foreach (FacturaOrdenEstimacionD sd in lFacturaOrdenEstimacionD)
+        [DirectMethod]
+        public void onLoadDataFactura() {
+            int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
+            string strConcepto = Cookies.GetCookie("cookieConceptoOrdenEstimacion").Value;
+            List<FacturaOrdenEstimacionD> lFacturaOrdenEstimacionD = FacturaOrdenEstimacionBusiness.ObtenerFacturaOrdenEstimacionDPorMovPreciarioConcepto(iID, strConcepto);
+
+            foreach (FacturaOrdenEstimacionD sd in lFacturaOrdenEstimacionD)
+            {
+                sd.Direccion = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + sd.Direccion;
+            }
+
+            sImagenesOrdenEstimacionD.DataSource = lFacturaOrdenEstimacionD;
+            sImagenesOrdenEstimacionD.DataBind();
+        }
+
+        [DirectMethod]
+        public void BorrarFactura(string conceptoID, int MovID, string nombreimg)
+        {
+            int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
+            string strConcepto = Cookies.GetCookie("cookieConceptoOrdenEstimacion").Value;
+            string strDireccion = Server.MapPath(" ") + "\\facturasOrdenEstimacion\\" + iID + "\\" + strConcepto;
+            string url = strDireccion + "\\" + nombreimg;
+            if (!(conceptoID.Equals("") &&  nombreimg.Equals("")) && MovID > 0)
+            {
+                FacturaOrdenEstimacionBusiness.BorrarFacturaOrdenEstimacionDPorConceptoYNombre(MovID, conceptoID, nombreimg);
+                try
                 {
-                    sd.Direccion = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + sd.Direccion;
+                    System.IO.File.Delete(url);
                 }
-
-                sImagenesOrdenEstimacionD.DataSource = lFacturaOrdenEstimacionD;
-                sImagenesOrdenEstimacionD.DataBind();
+                catch (Exception e)
+                {
+                    e.Message.ToString();
+                }
             }
         }
     }

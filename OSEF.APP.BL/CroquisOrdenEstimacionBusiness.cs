@@ -38,6 +38,16 @@ namespace OSEF.APP.BL
 
 
         /// <summary>
+        /// Método que borra un registro en base al concepto y nombre de la tabla de CroquisOrdenEstimacionD
+        /// </summary>
+        /// <param name="IdMov"></param>
+        /// <param name="strIDConcepto"></param>
+        public static int BorrarCroquisOrdenEstimacionDPorConceptoYNombre(int IdMov, string strIDConcepto, string nIMG)
+        {
+            return CroquisOrdenEstimacionDDataAccess.BorrarCroquisOrdenEstimacionDPorConceptoYNombre(IdMov, strIDConcepto, nIMG);
+        }
+
+        /// <summary>
         /// Método que borra registros de la tabla Facturas OrdenEstimacion por ID de movimiento
         /// </summary>
         /// <param name="IdMov"></param>

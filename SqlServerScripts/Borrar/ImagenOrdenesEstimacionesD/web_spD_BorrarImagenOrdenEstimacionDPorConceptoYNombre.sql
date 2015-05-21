@@ -18,19 +18,21 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spD_BorrarCroquisOrdenEstimacionDPorConcepto' AND
+			WHERE  name = 'web_spD_BorrarImagenOrdenEstimacionDPorConceptoYNombre' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spD_BorrarCroquisOrdenEstimacionDPorConcepto
+	DROP PROCEDURE web_spD_BorrarImagenOrdenEstimacionDPorConceptoYNombre
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Viernes 20 de Febrero de 2014
--- Description:	Obtener los registros de Imagenes Volumetrias por su Volumetria y PreciarioConcepto
+-- Author:		Giovanni Flores
+-- Create date: Miercoles 20 de Mayo de 2015
+-- Description:	Eliminar una imagen por su MovID, ConceptoID y su nombre
 -- =============================================
-CREATE PROCEDURE web_spD_BorrarCroquisOrdenEstimacionDPorConcepto
+CREATE PROCEDURE web_spD_BorrarImagenOrdenEstimacionDPorConceptoYNombre
 	-- Add the parameters for the stored procedure here
 	@ID					INT,
-	@Concepto	CHAR(10)
+	@Concepto	CHAR(10),
+	@NombreIMG		VARCHAR(50)
+
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -39,8 +41,8 @@ BEGIN
 
     -- Insert statements for procedure here
 	DELETE
-		CroquisOrdenEstimacionD
+		ImagenesOrdenEstimacionD
 		WHERE
-		MovID = @ID AND Concepto = @Concepto
+		MovID = @ID AND Concepto = @Concepto AND Nombre = @NombreIMG;
 END
 GO

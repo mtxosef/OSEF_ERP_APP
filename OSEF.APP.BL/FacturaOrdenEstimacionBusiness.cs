@@ -36,6 +36,16 @@ namespace OSEF.APP.BL
             return FacturaOrdenEstimacionDDataAccess.BorrarFacturasOrdenEstimacionDPorConcepto(IdMov, strIDConcepto);
         }
 
+        /// <summary>
+        /// Método que borra un registro en base al concepto y imagen de la tabla de FacturaOrdenEstimacionD
+        /// </summary>
+        /// <param name="IdMov"></param>
+        /// <param name="strIDConcepto"></param>
+        public static int BorrarFacturaOrdenEstimacionDPorConceptoYNombre(int IdMov, string strIDConcepto, string nIMG)
+        {
+            return FacturaOrdenEstimacionDDataAccess.BorrarFacturaOrdenEstimacionDPorConceptoYNombre(IdMov, strIDConcepto, nIMG);
+        }
+
 
         /// <summary>
         /// Método que borra registros de la tabla Facturas OrdenEstimacion por ID de movimiento

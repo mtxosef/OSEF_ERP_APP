@@ -45,7 +45,7 @@ namespace OSEF.ERP.APP
 
             //3. Realizar el objeto e insertar en la base de datos
             FacturaOrdenEstimacionD oFacturaOrdenEstimacionD = new FacturaOrdenEstimacionD();
-            oFacturaOrdenEstimacionD.ID = iID;
+            oFacturaOrdenEstimacionD.MovID = iID;
             oFacturaOrdenEstimacionD.Concepto = strConcepto;
             oFacturaOrdenEstimacionD.Nombre = e.FileName;
             oFacturaOrdenEstimacionD.Direccion = "\\facturasOrdenEstimacion\\" + iID + "\\" + strConcepto + "\\" + e.FileName;

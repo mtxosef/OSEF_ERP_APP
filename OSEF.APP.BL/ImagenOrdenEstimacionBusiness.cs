@@ -36,6 +36,16 @@ namespace OSEF.APP.BL
             return ImagenOrdenEstimacionDDataAccess.BorrarImagenesOrdenEstimacionDPorConcepto(IdMov, strIDConcepto);
         }
 
+        /// <summary>
+        /// Método que borra un registro en base al concepto y nombre de la tabla de ImagenesVolumetriasD
+        /// </summary>
+        /// <param name="IdMov"></param>
+        /// <param name="strIDConcepto"></param>
+        public static int BorrarImagenesOrdenEstimacionDPorConceptoYNombre(int IdMov, string strIDConcepto, string nIMG)
+        {
+            return ImagenOrdenEstimacionDDataAccess.BorrarImagenesOrdenEstimacionDPorConceptoYNombre(IdMov, strIDConcepto, nIMG);
+        }
+
 
         /// <summary>
         /// Método que borra registros de la tabla Imagenes Volumetria por ID de movimiento

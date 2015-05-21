@@ -45,7 +45,7 @@ namespace OSEF.ERP.APP
 
             //3. Realizar el objeto e insertar en la base de datos
             ImagenOrdenEstimacionD oImagenOrdenEstimacionD = new ImagenOrdenEstimacionD();
-            oImagenOrdenEstimacionD.ID = iID;
+            oImagenOrdenEstimacionD.MovID = iID;
             oImagenOrdenEstimacionD.Concepto = strConcepto;
             oImagenOrdenEstimacionD.Nombre = e.FileName;
             oImagenOrdenEstimacionD.Direccion = "\\imagenesOrdenEstimacion\\" + iID + "\\" + strConcepto + "\\" + e.FileName;
