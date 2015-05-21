@@ -104,12 +104,18 @@
                             FileSizeLimit="15 MB"
                             FileTypes="*.png;*.jpg;*.jpeg;*.gif"
                             FileTypesDescription="Archivos de imagen"
+                            >
+<%--
                             FileUploadLimit="0"
-                            FileQueueLimit="1">
+                            
+                            FileQueueLimit="1"--%>
+
                             <Button>
                                 <ext:Button ID="btnSubirImagenesOrdenEstimacion" runat="server" Text="Subir..." />
                             </Button>
                             <Listeners>
+                       
+                             <BeforeRender Fn="validaLimite_BeforeRender"></BeforeRender>   
                                 <SwfUploadLoadFailed Fn="loadFailed" />
                                 <FileSelected Fn="fileSelected" />
                                 <UploadStart Handler="updateRecord(file.id, 'Estatus', 'Enviando');" />
@@ -117,8 +123,7 @@
                                 <UploadComplete Handler="updateRecord(file.id, 'Progreso', 1); updateRecord(file.id, 'Estatus', 'Cargado');" />
                                 <UploadAborted Handler="updateRecord(file.id, 'Estatus', 'Abortado');" />
                                 <UploadRemoved Handler="var store = this.up('grid').store; store.remove(store.getById(file.id));" />
-                                <UploadError Fn="uploadError" /><%--
-                                <UploadSuccess Handler="window.parent.App.wEmergente.getBody().App.sConceptos.reload();"></UploadSuccess>--%>
+                                <UploadError Fn="uploadError" />
                                 <FileSelectionError Fn="fileSelectionError" />
                             </Listeners>
                         </ext:MultiUpload>
@@ -156,6 +161,7 @@
                     </Items>
                 </ext:Toolbar>
             </TopBar>
+           
         </ext:GridPanel>
     </form>
 </body>

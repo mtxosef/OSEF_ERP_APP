@@ -16,7 +16,31 @@
     }
 };
 
+
+
+
+var validaLimite_BeforeRender = function () {
+
+    var movimiento = window.parent.App.wEmergente.getBody().App.cmbMov.getValue().trim();
+    // window.parent.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.title;
+    Ext.util.Cookies.set('cockieMovimientoCroquis', movimiento);
+
+
+    //    if (movimiento == 'Mesa de reporte') {
+    //        Ext.util.Cookies.get('cookieEditarOrdenEstimacion', movimiento)
+    //    }
+    //    else {
+
+    //    }
+
+
+}
+
+
+
 var fileSelected = function (item, file) {
+
+
 
     var validaCaracteres = /^[a-zA-Z0-9-_.\s]{1,100}$/;
 
@@ -110,6 +134,9 @@ var uploadError = function (item, file, errorCode, message) {
 };
 
 var fileSelectionError = function (item, file, errorCode, message) {
+
+
+
     if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
         alert("Haz seleccionado demasiadas imagenes.\n" + (message === 0 ? "Haz excedido el límite de imágenes." : "Puedes seleccionar " + (message > 1 ? "hasta" + message + " archivos." : "sólo un archivo.")));
         return;

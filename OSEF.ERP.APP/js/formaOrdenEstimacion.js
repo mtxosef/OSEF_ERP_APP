@@ -16,10 +16,16 @@ var imgbtnFormaNuevo_Click = function () {
     if (tablero == 'REPORTES & ESTIMACIONES') {
         App.cmbMov.select('Mesa de reporte');
         App.cmbMov.setReadOnly(true);
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
+      
     }
     else {
         App.cmbMov.select('Orden de Cambio');
         App.cmbMov.setReadOnly(true);
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
+      
     }
 
 
@@ -109,13 +115,21 @@ var sMov_Add = function (store, registros, index, eOpts) {
         //identificamos que tablero de que modulo es
         var tablero = window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.title;
 
+
+
         if (tablero == 'REPORTES & ESTIMACIONES') {
             App.cmbMov.select('Mesa de reporte');
             App.cmbMov.setReadOnly(true);
+            //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+            Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
+         
         }
         else {
             App.cmbMov.select('Orden de Cambio');
             App.cmbMov.setReadOnly(true);
+            //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+            Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
+           
         }
 
         // App.cmbMov.setReadOnly(true);
@@ -135,8 +149,8 @@ var sMov_Change = function (combo) {
 
         App.fufNormal.hidden=false;
         App.imgNormal.hidden = false;
-
-
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
 
     }
 
@@ -147,8 +161,8 @@ var sMov_Change = function (combo) {
         App.pDatosReporteDos.tab.hide();
         App.pDatosReporte.hide();
         App.cIntExt.hidden = true;
-     
-       
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
     }
     App.gpOrdenEstimacion.reconfigure();
 };
