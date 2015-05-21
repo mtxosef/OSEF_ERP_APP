@@ -173,9 +173,15 @@ namespace OSEF.APP.DL
                 sqlpPreciarioConcepto.Size = 10;
                 sqlpPreciarioConcepto.Value = strIDConcepto;
 
+                //SqlParameter sqlpNombre = new SqlParameter();
+                //sqlpNombre.ParameterName = "@NombreIMG";
+                //sqlpNombre.SqlDbType = SqlDbType.VarChar;
+                //sqlpNombre.Value = nIMG;
+
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpPreciarioConcepto);
+                //sqlcComando.Parameters.Add(sqlpNombre);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();

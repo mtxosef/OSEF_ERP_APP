@@ -50,8 +50,9 @@ namespace OSEF.ERP.APP
                 {
                     File.Delete(url);
                 }
-                catch (Exception)
+                catch (Exception e)
                 { 
+                    X.Msg.Alert("Error", e.Message.ToString(), new JFunction { Fn = "showResult" }).Show();
                 }
             }
         }

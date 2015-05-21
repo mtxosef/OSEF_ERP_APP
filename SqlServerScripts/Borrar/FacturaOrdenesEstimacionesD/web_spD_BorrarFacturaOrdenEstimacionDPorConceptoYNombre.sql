@@ -18,23 +18,20 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spI_InsertarImagenOrdenEstimacionD' AND
+			WHERE  name = 'web_spD_BorrarFacturaOrdenEstimacionDPorConceptoYNombre' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spI_InsertarImagenOrdenEstimacionD
+	DROP PROCEDURE web_spD_BorrarFacturaOrdenEstimacionDPorConceptoYNombre
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Jueves 19 de Febrero de 2015
--- Description:	Insertar un registro de ImagenVolumetriaD
+-- Author:		Giovanni Flores
+-- Create date: Jueves 21 de Mayo del 2015
+-- Description:	Elimina las facturas por ID, Concepto y Nombre de la factura
 -- =============================================
-CREATE PROCEDURE web_spI_InsertarImagenOrdenEstimacionD
+CREATE PROCEDURE web_spD_BorrarFacturaOrdenEstimacionDPorConceptoYNombre
 	-- Add the parameters for the stored procedure here
 	@ID					INT,
-	@Concepto			CHAR(10),
-	@Nombre				VARCHAR(500),
-	@Direccion			VARCHAR(500),
-	@Usuario			VARCHAR(50),
-	@FechaAlta			SMALLDATETIME
+	@Concepto	CHAR(10),
+	@NombreIMG VARCHAR(500)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -42,24 +39,9 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-    INSERT INTO
-		ImagenesOrdenEstimacionD
-		(
-			MovID,
-			Concepto,
-			Nombre,
-			Direccion,
-			Usuario,
-			FechaAlta
-		)
-	VALUES
-		(
-			@ID,
-			@Concepto,
-			@Nombre,
-			@Direccion,
-			@Usuario,
-			@FechaAlta
-		)
+	DELETE
+		FacturasOrdenEstimacionD
+		WHERE
+		MovID = @ID AND Concepto = @Concepto AND Nombre = @NombreIMG
 END
 GO

@@ -435,6 +435,7 @@
 :r c:\SqlServerScripts\Consultar\FacturaOrdenesEstimacionesD\web_spS_ObtenerFacturaOrdenEstimacionDPorConcepto.sql
 -- FacturaOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorConceptoYNombre.sql
 :r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorOrdenEstimacion.sql
 -----------------------------------------------------------------------------------
 -- CroquisOrdenesEstimacionesD (Insertar)
@@ -443,6 +444,7 @@
 :r c:\SqlServerScripts\Consultar\CroquisOrdenesEstimacionesD\web_spS_ObtenerCroquisOrdenEstimacionDPorConcepto.sql
 -- CroquisOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorConceptoYNombre.sql
 :r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorOrdenEstimacion.sql
 -----------------------------------------------------------------------------------
 -- GenradorOrdenesEstimacionesD (Insertar)
