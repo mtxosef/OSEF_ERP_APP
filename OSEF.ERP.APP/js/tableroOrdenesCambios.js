@@ -245,3 +245,26 @@ var cCuadrilla_Renderer = function (valor, columna, registro) {
         return registro.get('RCuadrilla').Nombre;
     }
 };
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbMovimientoFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.value;
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Sucursal
+    if (valor == 'Todos') {
+        App.sOrdenesEstimaciones.clearFilter();
+    }
+    else {
+        App.sOrdenesEstimaciones.filterBy(function (elemento) {
+
+            if (elemento.get('Mov').trim() == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};

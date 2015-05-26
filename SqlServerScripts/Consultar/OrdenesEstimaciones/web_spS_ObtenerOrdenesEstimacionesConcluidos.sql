@@ -69,6 +69,6 @@ BEGIN
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Orden de Cambio'
+		Estatus = 'CONCLUIDO' AND Mov in('Orden de Cambio','Orden de Compra')
 END
 GO

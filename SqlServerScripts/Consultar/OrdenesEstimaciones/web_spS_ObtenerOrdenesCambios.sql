@@ -68,6 +68,6 @@ BEGIN
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-	 Mov ='Orden de Cambio'
+	 Mov in('Orden de Cambio','Orden de Compra')
 END
 GO

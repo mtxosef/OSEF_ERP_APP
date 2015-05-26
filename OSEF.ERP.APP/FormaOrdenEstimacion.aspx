@@ -390,6 +390,9 @@
                                                         <Change Fn="sMov_Change" />
                                                     </Listeners>
                                                 </ext:ComboBox>
+
+                                               
+
                                                 <ext:TextField
                                                     ID="txtfMovID"
                                                     runat="server"
@@ -397,6 +400,17 @@
                                                     Margins="0 50 0 0"
                                                     Disabled="true">
                                                 </ext:TextField>
+
+                                                 <ext:Checkbox ID="chkBoxOrdenCompra" 
+                                                 runat="server" 
+                                                 FieldLabel="O. Compra">
+                                                    <Listeners>
+                                                        <AfterRender Fn="chkBoxOrdenCompra_AfterRender" />
+                                                        <Change Fn="chkBoxOrdenCompra_AfterRender" />
+                                                    </Listeners>
+                                                </ext:Checkbox>
+
+
                                                 <ext:TextField 
                                                     ID="txtOrigen" 
                                                     runat="server" 

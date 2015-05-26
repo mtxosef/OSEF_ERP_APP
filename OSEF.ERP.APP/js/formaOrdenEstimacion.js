@@ -614,6 +614,33 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnImprimir.setDisabled(false);
     }
 
+    //Si es orden de cambio concluida
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
+    && registro[0].get('Mov').trim() == "Orden de Compra") {
+
+
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+        //Deshabilita los campos en un movimiento afectado
+        App.cIntExt.hidden = true;
+        App.cmbMov.setReadOnly(true);
+
+
+        App.txtfSucursalCR.setDisabled(true);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
+        App.imgbtnCancelar.setDisabled(false);
+        App.txtfObservaciones.setDisabled(true);
+        App.imgbtnImprimir.setDisabled(false);
+    }
+
     //Si es Reporte
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
          && registro[0].get('Mov').trim() == "Mesa de reporte") {
@@ -747,6 +774,28 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnBorrar.setDisabled(false);
     }
 
+    //Si es Orden de cambio Y NO ESTA AFECTADO
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR'
+         && registro[0].get('Mov').trim() == "Orden de Cambio") {
+
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
+
+        App.cIntExt.hidden = true;
+        App.cmbMov.setReadOnly(true);
+        App.txtfSucursalCR.setDisabled(false);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(false);
+        App.imgbtnBorrar.setDisabled(false);
+    }
+
     //Si es Estimacion
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'PENDIENTE'
          && registro[0].get('Mov').trim() == "Estimacion") {
@@ -853,7 +902,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         var storeDetalle = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
 
         //Validaciones antes de cargar el detalle del movimiento
-        if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+        if (App.cmbMov.getValue().trim() == "Orden de Cambio" || App.cmbMov.getValue().trim() == "Orden de Compra") {
 
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0) {
@@ -980,7 +1029,7 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
     if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
         //Verificar si toda la fila contiene datos
 
-        if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+        if (App.cmbMov.getValue().trim() == "Orden de Cambio" || App.cmbMov.getValue().trim() == "Orden de Compra") {
 
 
             if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
@@ -1021,7 +1070,7 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
 var cePreciarioConcepto_Edit = function (cellediting, columna) {
 
 
-    if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+    if (App.cmbMov.getValue().trim() == "Orden de Cambio" || App.cmbMov.getValue().trim() == "Orden de Compra") {
         //Verificar si abajo de esta columna existe otra
         if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
             //Verificar si toda la fila contiene datos
@@ -1387,6 +1436,8 @@ var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
 
 //Lo que hace el comando de croquis
 var ccCroquis_Command = function (column, nombre, registro, renglon, opciones) {
+
+
 
     //Valida que se escocja un concepto antes
     if (registro.get('ConceptoID') != '') {
@@ -1887,5 +1938,16 @@ var fufNormal_Change = function (event, control, txtReporte) {
             if (registro.get('ConceptoID').trim().length > 1) {
                 metadata.style = "background-color: #CC0000; color: #fff;";
             }
+        }
+    }
+
+
+
+    //Validador Compra o no
+    var chkBoxOrdenCompra_AfterRender = function (componente, value) {
+        if (componente.checked) {
+            App.cmbMov.setValue('Orden de Compra');
+        } else {
+            App.cmbMov.setValue('Orden de Cambio');
         }
     }

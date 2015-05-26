@@ -176,6 +176,27 @@
                         Width="190"
                         DataIndex="Mov">
                         <Renderer Fn="cMov_Renderer" />
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbMovimiento"
+                                runat="server"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="Orden de Cambio" Value="Orden de Cambio"/>
+                                    <ext:ListItem Index="2" Text="Orden de Compra" Value="Orden de Compra"/>
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbMovimientoFiltro_Select" />
+                                </Listeners>
+                            </ext:ComboBox>
+                        </HeaderItems>
+
+
                     </ext:Column>
                     <ext:Column
                         ID="cSucursal"
