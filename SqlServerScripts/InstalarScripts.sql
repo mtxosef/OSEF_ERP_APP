@@ -500,6 +500,7 @@
 :r c:\SqlServerScripts\Insertar\PreciariosGeneralesConceptosAdicionales\web_spI_InsertarPreciarioGeneralConceptoAdicional.sql
 --PreciariosGeneralesConceptosAdicionales(Consultar)
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalEnUsoPorIDyClave.sql
 --PreciariosGeneralesConceptosAdicionales(Modificar)
 :r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptosAdicionales\web_spU_ActualizarPreciarioGeneralConceptoAdicional.sql
 ------------------------------------------------------------------------------------------------------------------------------

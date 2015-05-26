@@ -29,9 +29,9 @@ namespace OSEF.APP.BL
         /// Método que borrar algun PreciarioGeneralConcepto por su Preciario
         /// </summary>
         /// <param name="dID"></param>
-        public static int Borrar(string dID)
+        public static int Borrar(string ID, string clave)
         {
-            return PreciarioGeneralConceptoDataAccess.Borrar(dID);
+            return PreciarioGeneralConceptoDataAccess.Borrar(ID,clave);
         } 
 
         #endregion
@@ -84,6 +84,16 @@ namespace OSEF.APP.BL
         public static string ObtenerUltimoConceptoAdicional()
         {
             return PreciarioGeneralConceptoDataAccess.ObtenerUltimoConceptoAdicional();
+        }
+
+
+        /// <summary>
+        /// Obtener registros de conceptos en uso en OrdenesEstimacionesD
+        /// </summary>
+        /// <param name="strID"></param> 
+        public static bool ObtenerConceptosEnUsoPorIDyClave(string ID, string clave)
+        {
+            return PreciarioGeneralConceptoDataAccess.ObtenerConceptosEnUsoPorIDyClave(ID, clave);
         }
 
         #endregion

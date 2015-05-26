@@ -193,7 +193,7 @@ namespace OSEF.APP.DL
         /// Método que borrar algun PreciarioGeneralConcepto por su Preciario
         /// </summary>
         /// <param name="dID"></param>
-        public static int Borrar(string dID)
+        public static int Borrar(string ID, string clave)
         {
             try
             {
@@ -209,10 +209,17 @@ namespace OSEF.APP.DL
                 sqlpIdConcepto.ParameterName = "@ID";
                 sqlpIdConcepto.SqlDbType = SqlDbType.Char;
                 sqlpIdConcepto.Size = 10;
-                sqlpIdConcepto.Value = dID;
+                sqlpIdConcepto.Value = ID;
+
+                SqlParameter sqlpIdClave = new SqlParameter();
+                sqlpIdClave.ParameterName = "@CLAVE";
+                sqlpIdClave.SqlDbType = SqlDbType.Char;
+                sqlpIdClave.Size = 30;
+                sqlpIdClave.Value = clave;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpIdConcepto);
+                sqlcComando.Parameters.Add(sqlpIdClave);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -228,7 +235,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Borrar(PreciarioGeneralConcepto " + dID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Borrar(PreciarioGeneralConcepto " + ID + ")): " + ex.Message);
             }
         }
 
@@ -558,6 +565,64 @@ namespace OSEF.APP.DL
                 throw new Exception("Error capa de datos (public static int Actualizar(PreciarioGeneralConcepto " + iPreciarioConcepto.Clave + ")): " + ex.Message);
             }
         }
+
+
+
+
+        /// <summary>
+        /// Revisar si existen registros de Conceptos en uso
+        /// /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="clave"></param>
+        /// <returns></returns>
+        public static bool ObtenerConceptosEnUsoPorIDyClave(string ID, string clave)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerPreciarioGeneralConceptoAdicionalEnUsoPorIDyClave";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Char;
+                sqlpID.Size = 10;
+                sqlpID.Value = ID;
+
+                SqlParameter sqlpClave = new SqlParameter();
+                sqlpClave.ParameterName = "@CLAVE";
+                sqlpClave.SqlDbType = SqlDbType.Char;
+                sqlpClave.Size = 30;
+                sqlpClave.Value = clave;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpClave);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                bool result = Convert.ToBoolean(sqlcComando.ExecuteScalar());
+
+                //6. Asignar la lista de objetos
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static bool ObtenerConceptosEnUsoPorIDyClave(string " + ID + ", string "+clave+")): " + ex.Message);
+            }
+        }
+
 
         #endregion
 

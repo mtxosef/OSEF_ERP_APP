@@ -187,25 +187,55 @@ var cSubSubCategoria_Renderer = function (valor, columna, registro) {
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     //Eliminar registro
 
-    Ext.Msg.show({
-        id: 'msgConceptoEliminar',
-        title: 'Advertencia',
-        msg: '¿Estás seguro de eliminar este concepto? ',
-        buttons: Ext.MessageBox.YESNO,
-        onEsc: Ext.emptyFn,
-        closable: false,
-        fn: function (btn) {
+    App.direct.ObtenerConceptosEnUsoPorIDyClave(registro.get('ID'), registro.get('Clave'), {
+        success: function (result) { 
+            if (result) {
+                Ext.Msg.show({
+                    id: 'msgPreciarioConcepto',
+                    title: 'Advertencia Preciarios',
+                    msg: "El concepto actualmente se encuentra en uso y no se puede eliminar.",
 
-            if (btn === 'yes') {
-                    App.sCarga.removeAt(fila);
-                    HabilitarGuardar();
+                    buttons: Ext.MessageBox.OK,
+                    onEsc: Ext.emptyFn,
+                    closable: false,
+                    icon: Ext.MessageBox.WARNING
+                });
+            } else {
+
+                Ext.Msg.show({
+                    id: 'msgConceptoEliminar',
+                    title: 'Advertencia',
+                    msg: '¿Estás seguro de eliminar este concepto? ',
+                    buttons: Ext.MessageBox.YESNO,
+                    onEsc: Ext.emptyFn,
+                    closable: false,
+                    fn: function (btn) {
+                        if (btn === 'yes') {
+                            App.sCarga.removeAt(fila);
+                            HabilitarGuardar();
+                        }
+                        else {
+
+                        }
+                    },
+                    icon: Ext.MessageBox.WARNING
+                });
             }
-            else {
-              
-            } 
         },
-        icon: Ext.MessageBox.WARNING
-    }); 
+        failure: function (errorMessage) {
+            Ext.Msg.show({
+                id: 'msgPreciarioConcepto',
+                title: 'Error Preciarios',
+                msg: "Ha ocurrido un error inesperado.", 
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+    });
+
+
 };
 
 //Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
