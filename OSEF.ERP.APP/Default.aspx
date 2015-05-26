@@ -229,8 +229,7 @@
             <Listeners>
                 <Show Handler="this.resizer.disable();" Single="true" />
             </Listeners>
-        </ext:Window>
-        
+        </ext:Window>  
 
         <ext:Window 
             ID="wGenerador"
