@@ -403,6 +403,7 @@
 
                                                  <ext:Checkbox ID="chkBoxOrdenCompra" 
                                                  runat="server" 
+
                                                  FieldLabel="O. Compra">
                                                     <Listeners>
                                                         <AfterRender Fn="chkBoxOrdenCompra_AfterRender" />

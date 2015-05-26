@@ -18,14 +18,18 @@ var imgbtnFormaNuevo_Click = function () {
         App.cmbMov.setReadOnly(true);
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
+        App.chkBoxOrdenCompra.setVisible(false);
+       
       
     }
     else {
+
+       
         App.cmbMov.select('Orden de Cambio');
         App.cmbMov.setReadOnly(true);
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
-      
+        App.chkBoxOrdenCompra.setVisible(true);
     }
 
 
@@ -122,6 +126,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
             App.cmbMov.setReadOnly(true);
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
+            App.chkBoxOrdenCompra.setVisible(false);
          
         }
         else {
@@ -129,7 +134,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
             App.cmbMov.setReadOnly(true);
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
-           
+            App.chkBoxOrdenCompra.setVisible(true);
         }
 
         // App.cmbMov.setReadOnly(true);
@@ -152,6 +157,8 @@ var sMov_Change = function (combo) {
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
 
+        App.chkBoxOrdenCompra.setVisible(false);
+
     }
 
     if (combo.value.trim() == 'Orden de Cambio') {
@@ -163,6 +170,8 @@ var sMov_Change = function (combo) {
         App.cIntExt.hidden = true;
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
+
+        App.chkBoxOrdenCompra.setVisible(false);
     }
     App.gpOrdenEstimacion.reconfigure();
 };
@@ -485,6 +494,9 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.cmbMov.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
         App.txtfObservaciones.setDisabled(true);
+        App.chkBoxOrdenCompra.setDisabled(true);
+
+
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
@@ -568,7 +580,11 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     App.imgbtnImprimir.setDisabled(true);
+
     App.imgbtnAfectar.setDisabled(true);
+
+    App.chkBoxOrdenCompra.setDisabled(true);
+
     window.parent.App.wEmergente.setTitle('Movimiento Cancelado');
 };
 
@@ -603,7 +619,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         //Deshabilita los campos en un movimiento afectado
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
-
+        App.chkBoxOrdenCompra.setVisible(false);
 
         App.txtfSucursalCR.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
@@ -631,6 +647,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
 
+        App.chkBoxOrdenCompra.setVisible(true);
+        App.chkBoxOrdenCompra.setValue(true);
+        App.chkBoxOrdenCompra.setDisabled(true);
 
         App.txtfSucursalCR.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
@@ -764,7 +783,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
-
+        App.chkBoxOrdenCompra.setVisible(false);
 
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
@@ -786,7 +805,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
-
+        App.chkBoxOrdenCompra.setVisible(false);
 
         App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
