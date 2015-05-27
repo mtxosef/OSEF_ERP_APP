@@ -95,9 +95,13 @@ namespace OSEF.APP.DL
                 sqlpTotal.Precision = 10;
                 sqlpTotal.Scale = 2;
                 sqlpTotal.Value = iGeneradorOrdenEstimacionD.Total;
-                
 
-
+                SqlParameter sqlpPlano = new SqlParameter();
+                sqlpPlano.ParameterName = "@Plano";
+                sqlpPlano.SqlDbType = SqlDbType.Char;
+                sqlpPlano.Size = 20;
+                sqlpPlano.Value = iGeneradorOrdenEstimacionD.Plano;
+                 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpPreciarioConcepto);
@@ -111,6 +115,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpAlto);
                 sqlcComando.Parameters.Add(sqlpCantidad);
                 sqlcComando.Parameters.Add(sqlpTotal);
+                sqlcComando.Parameters.Add(sqlpPlano);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

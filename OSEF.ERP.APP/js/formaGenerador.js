@@ -35,6 +35,7 @@ var sFormaGenerador_Load = function () {
 
         App.imgbtnAceptar.setDisabled(true);
         App.txtDescripcionCorta.setDisabled(true);
+        App.txtPlano.setDisabled(true);
 
     }
 
@@ -43,6 +44,7 @@ var sFormaGenerador_Load = function () {
 
         App.imgbtnAceptar.setDisabled(true);
         App.txtDescripcionCorta.setDisabled(true);
+        App.txtPlano.setDisabled(true);
 
     }
 
@@ -51,6 +53,7 @@ var sFormaGenerador_Load = function () {
 
         App.imgbtnAceptar.setDisabled(true);
         App.txtDescripcionCorta.setDisabled(true);
+        App.txtPlano.setDisabled(true);
 
     }
     else if (App.sFormaGenerador.getCount() < 19) {
@@ -59,6 +62,7 @@ var sFormaGenerador_Load = function () {
     }
 
     App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
+    App.txtPlano.setValue(App.sFormaGenerador.getAt(0).get('Plano'));
 
     //Pinta el total
     var sum = 0;
