@@ -30,6 +30,8 @@ var validaConcluidos = function (a, d, f) {
 //Evento lanzado al cargar el store de avance encabezado
 var sFormaGenerador_Load = function () {
 
+
+
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de generador para solo vista
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
@@ -55,14 +57,21 @@ var sFormaGenerador_Load = function () {
         App.txtDescripcionCorta.setDisabled(true);
         App.txtPlano.setDisabled(true);
 
+
     }
     else if (App.sFormaGenerador.getCount() < 19) {
         App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
 
     }
 
-    App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion'));
-    App.txtPlano.setValue(App.sFormaGenerador.getAt(0).get('Plano'));
+    App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion').trim());
+
+    var tablero = window.parent.App.wEmergente.getBody().App.cmbMov.getValue(); 
+    if (tablero.trim() == 'Mesa de reporte') {
+        App.txtPlano.setVisible(false);
+    } else { 
+       App.txtPlano.setValue(App.sFormaGenerador.getAt(0).get('Plano').trim());
+    }
 
     //Pinta el total
     var sum = 0;
