@@ -1098,6 +1098,7 @@
                                                 ID="cIntExt"
                                                 runat="server"
                                                 Text="Int/Ext"
+                                                Visible="true"
                                                 Width="75"
                                                 DataIndex="IntExt">
                                                 <Editor>
