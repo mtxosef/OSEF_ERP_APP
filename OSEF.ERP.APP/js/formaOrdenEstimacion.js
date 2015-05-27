@@ -156,6 +156,7 @@ var sMov_Change = function (combo) {
         App.cIntExt.setVisible(true);
         App.fufNormal.hidden = false;
         App.imgNormal.hidden = false;
+        App.txtNoOrden.setVisible(false);
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
 
@@ -170,7 +171,8 @@ var sMov_Change = function (combo) {
         App.pDatosReporteDos.tab.hide();
         App.pDatosReporte.hide();
       //  App.cIntExt.setVisible(false);
-            App.cIntExt.hidden = true;
+        App.cIntExt.hidden = true;
+        App.txtNoOrden.setVisible(true);
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
 

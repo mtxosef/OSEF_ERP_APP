@@ -123,3 +123,6 @@ ALTER TABLE OrdenesEstimaciones ADD MovEnLinea BIT NULL
 ALTER TABLE ImagenesOrdenEstimacionD ALTER COLUMN Nombre VARCHAR(500) NOT NULL
 ALTER TABLE FacturasOrdenEstimacionD ALTER COLUMN Nombre VARCHAR(500) NOT NULL
 ALTER TABLE CroquisOrdenEstimacionD ALTER COLUMN Nombre VARCHAR(500) NOT NULL
+
+--Cambios Giovanni Flores 26 de Mayo 2015
+ALTER TABLE GeneradorOrdenEstimacionD ADD Plano CHAR(20) NULL

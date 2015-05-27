@@ -499,6 +499,16 @@
                                                         Cls="my-date-picker">
                                                     </PickerOptions>
                                                 </ext:DateField>
+
+                                                 <ext:TextField 
+                                                    ID="txtNoOrden" 
+                                                    FieldLabel="No. Orden"
+                                                    LabelWidth="70"
+                                                    runat="server" 
+                                                    
+                                                    Width="180" 
+                                                    ReadOnly="true"> 
+                                                </ext:TextField>
                                                 
                                             </Items>
                                         </ext:FieldContainer>
