@@ -64,8 +64,8 @@ BEGIN
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido 
-		
+		Atendido,
+		NoOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE 
@@ -100,8 +100,8 @@ UNION
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido 
-		
+		Atendido ,
+		NoOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE 

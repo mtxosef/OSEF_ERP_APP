@@ -73,6 +73,7 @@
                         <ext:ModelField Name="ImporteFinal" Type="Float" />
                         <ext:ModelField Name="RutaImagen" Type="String" />
                         <ext:ModelField Name="Atendido" Type="String" />
+                        <ext:ModelField Name="NoOrden" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>

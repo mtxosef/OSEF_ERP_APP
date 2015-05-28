@@ -126,3 +126,6 @@ ALTER TABLE CroquisOrdenEstimacionD ALTER COLUMN Nombre VARCHAR(500) NOT NULL
 
 --Cambios Giovanni Flores 26 de Mayo 2015
 ALTER TABLE GeneradorOrdenEstimacionD ADD Plano CHAR(20) NULL
+
+--Cambios Giovanni Flores 27 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones ADD NoOrden CHAR(3) NULL

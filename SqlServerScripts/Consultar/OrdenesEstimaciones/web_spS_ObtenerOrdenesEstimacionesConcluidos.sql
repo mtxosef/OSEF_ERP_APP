@@ -64,7 +64,8 @@ BEGIN
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido
+		Atendido,
+		NoOrden
 		
 	FROM
 		OrdenesEstimaciones

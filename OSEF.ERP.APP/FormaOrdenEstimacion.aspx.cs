@@ -102,7 +102,8 @@ namespace OSEF.ERP.APP
                     ImporteTotal = oOrdenEstimacion.ImporteTotal,
                     HoraOrigen = oOrdenEstimacion.HoraOrigen,
                     RutaImagen = oOrdenEstimacion.RutaImagen,
-                    Atendido = oOrdenEstimacion.Atendido
+                    Atendido = oOrdenEstimacion.Atendido,
+                    NoOrden = oOrdenEstimacion.NoOrden
                 }); 
                 imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
@@ -327,9 +328,12 @@ namespace OSEF.ERP.APP
                         break;
                     case "fufNormal":
                         oOrdenEstimacionForma.RutaImagen = sd.Value;
-                        break; 
+                        break;
                     case "chkAtendido":
                         oOrdenEstimacionForma.Atendido = sd.Value;
+                        break;
+                    case "txtNoOrden":
+                        oOrdenEstimacionForma.NoOrden = sd.Value;
                         break;
                 }
             }
@@ -423,7 +427,8 @@ namespace OSEF.ERP.APP
                     ImporteFinal = oOrdenEstimacionForma.ImporteTotal,
                     HoraOrigen = oOrdenEstimacionForma.HoraOrigen,
                     RutaImagen = oOrdenEstimacionForma.RutaImagen,
-                    Atendido = oOrdenEstimacionForma.Atendido
+                    Atendido = oOrdenEstimacionForma.Atendido,
+                    NoOrden = oOrdenEstimacionForma.NoOrden
                 });
 
 
@@ -487,6 +492,7 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("ImporteFinal", oOrdenEstimacionForma.ImporteTotal);
                 sOrdenEstimacion.GetAt(0).Set("HoraOrigen", oOrdenEstimacionForma.HoraOrigen);
                 sOrdenEstimacion.GetAt(0).Set("RutaImagen", oOrdenEstimacionForma.RutaImagen);
+                sOrdenEstimacion.GetAt(0).Set("NoOrden", oOrdenEstimacionForma.NoOrden);
                 //13. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
