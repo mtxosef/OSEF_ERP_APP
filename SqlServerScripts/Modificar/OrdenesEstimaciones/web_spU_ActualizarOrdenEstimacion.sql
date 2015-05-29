@@ -54,8 +54,7 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@ImporteTotal	DECIMAL(20,2),
 	@HoraOrigen		DATETIME,
 	@RutaImagen		VARCHAR(500),
-	@Atendido		VARCHAR(5),
-	@NoOrden		CHAR(3)
+	@Atendido		VARCHAR(5)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -90,8 +89,7 @@ BEGIN
 		ImporteTotal = @ImporteTotal,
 		HoraOrigen = @HoraOrigen,
 		RutaImagen = @RutaImagen,
-		Atendido = @Atendido,
-		NoOrden = @NoOrden
+		Atendido = @Atendido
 	WHERE
 		ID = @ID
 END

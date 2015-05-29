@@ -512,10 +512,10 @@ namespace OSEF.APP.DL
                 else
                     sqlpAtendido.Value = "Si";
 
-                SqlParameter sqlpNoOrden = new SqlParameter();
-                sqlpNoOrden.ParameterName = "@NoOrden";
-                sqlpNoOrden.SqlDbType = SqlDbType.VarChar;
-                sqlpNoOrden.Value = uOrdenEstimacion.NoOrden;
+                //SqlParameter sqlpNoOrden = new SqlParameter();
+                //sqlpNoOrden.ParameterName = "@NoOrden";
+                //sqlpNoOrden.SqlDbType = SqlDbType.VarChar;
+                //sqlpNoOrden.Value = uOrdenEstimacion.NoOrden;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -544,7 +544,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
                 sqlcComando.Parameters.Add(sqlpAtendido);
-                sqlcComando.Parameters.Add(sqlpNoOrden);
+                //sqlcComando.Parameters.Add(sqlpNoOrden);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

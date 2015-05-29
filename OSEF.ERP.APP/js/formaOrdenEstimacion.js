@@ -269,7 +269,7 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
 
         //4. Recargar el tablero
-        window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload(); 
+        window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
         App.txtNoOrden.setValue(App.sOrdenEstimacion.getAt(0).get('NoOrden'));
         //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
