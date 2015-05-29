@@ -22,16 +22,33 @@
                 <!-- Header -->
                 <div class="metro panorama">
                     <div class="panorama-sections">
-                        <!-- Primer pagina  Procesos -->
+
+                        <!-- Primer pagina  Programa -->
                         <div class="panorama-section">
-                            <h2>Procesos</h2>
+                            <h2>Programa</h2>
                             <div class="tile-column-span-2">
-                                <a class="tile widepeek" href="#" id="avances">
+                                 <a class="tile widepeek" href="#" id="avances">
                                     <div class="tile wide image">
                                         <img src="assets/img/revisiones.png" alt="Revisiones" />
                                         <div class="text-header">Avances</div>
                                     </div>
                                 </a>
+
+                            
+
+                            </div>
+                        
+
+                            
+                          
+                        </div>
+                        <!-- Fin Primer pagina  -->
+
+                        <!-- segunda pagina  Procesos -->
+                        <div class="panorama-section">
+                            <h2>Procesos</h2>
+                            <div class="tile-column-span-2">
+                              
 
                                 <a class="tile wide imagetext wideimage bg-color-fucsia" id="volumetrias" href="#">
                                     <img src="assets/img/menu-volumetria.png" alt="Volumetrías" class="img-large" />
@@ -39,23 +56,26 @@
                                         <div class="text2">Volumetrías Preciario</div>
                                     </div>
                                 </a>
-
-                            </div>
-                            <%--Cambio y Mto--%>
-                            <div class="tile-column-span-1">
-                                 <a class="tile squarepeek bg-color-purple" href="#" id="OrdenesEstimaciones">
-                                    <img src="assets/img/menu-mnto.png" alt="Ordenes & Estimaciones" />
-                                    <div class="text-inner">
-                                        <div class="text4">Reportes & Estimaciones</div>
-                                    </div>
-                                </a>
-                                
-                               <a class="tile square image bg-color-darken" id="ordenesCambio" href="#">
+                                 <a class="tile square image bg-color-darken" id="ordenesCambio" href="#">
                                     <img src="assets/img/menu-cambio.png" alt="Gantt" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Ordenes de Cambio</div>
                                     </div>
                                 </a>
+
+                                 <a class="tile square squarepeek bg-color-purple" href="#" id="OrdenesEstimaciones">
+                                    <img src="assets/img/menu-mnto.png" alt="Ordenes & Estimaciones" />
+                                    <div class="text-inner">
+                                        <div class="text4">Reportes & Estimaciones</div>
+                                    </div>
+                                </a>
+
+                            </div>
+                            <%--Cambio y Mto--%>
+                            <div class="tile-column-span-1">
+                                
+                                
+                              
                                <%-- <a class="tile square image bg-color-red" id="mantenimiento" href="#">
                                     <img src="assets/img/menu-mnto.png" alt="Mantenimiento" />
                                     <div class="textover-wrapper transparent">
@@ -98,9 +118,9 @@
                                 </a> 
                             </div>
                         </div>
-                        <!-- Fin Primer pagina Procesos -->
+                        <!-- Fin segunda pagina Procesos -->
 
-                        <!-- Segunda pagina Catálogos -->
+                        <!-- tercera pagina Catálogos -->
                         <div class="panorama-section">
                             <h2>Catálogos</h2>
                             <div class="tile-column-span-2">                            
@@ -208,9 +228,9 @@
 
                             </div>
                         </div>
-                        <!-- Fin Segunda pagina Catálogos -->
+                        <!-- Fin tercera pagina Catálogos -->
 
-                        <!-- Tercera pagina Reportes -->
+                        <!-- 4ta pagina Reportes -->
                         <div class="panorama-section tile-span-4">
                             <h2>Configuración</h2>
 
@@ -245,7 +265,7 @@
 
 
                         </div>
-                        <!-- Fin Tercera pagina Reportes -->
+                        <!-- Fin 4ta pagina Reportes -->
                     </div>
                 </div>
                 <a id="panorama-scroll-prev" href="#"> <img src="assets/img/controles/left-nav.png" height="22px" width="22px" class="scrollhr" alt="Next" /></a>
