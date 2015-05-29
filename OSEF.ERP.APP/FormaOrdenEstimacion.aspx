@@ -509,6 +509,7 @@
                                                     Margins="0 3 0 0"
                                                     Width="180" > 
                                                 </ext:TextField>
+
                                                 <ext:TextField 
                                                     ID="txtReferenciaOrden" 
                                                     EmptyText="REFERENCIA ORDEN"

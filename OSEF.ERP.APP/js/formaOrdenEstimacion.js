@@ -125,6 +125,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
             App.chkBoxOrdenCompra.setVisible(false);
+            App.txtReferenciaOrden.setVisible(false);
 
 
         }
@@ -134,7 +135,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
             App.chkBoxOrdenCompra.setVisible(true);
-
+            App.txtReferenciaOrden.setVisible(true);
         }
 
         // App.cmbMov.setReadOnly(true);

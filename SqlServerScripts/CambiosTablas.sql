@@ -129,3 +129,6 @@ ALTER TABLE GeneradorOrdenEstimacionD ADD Plano CHAR(20) NULL
 
 --Cambios Giovanni Flores 27 de Mayo 2015
 ALTER TABLE OrdenesEstimaciones ADD NoOrden CHAR(3) NULL
+
+--Cambios Giovanni Flores 29 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones ADD ReferenciaOrden VARCHAR(90) NULL
