@@ -34,7 +34,12 @@
                                     </div>
                                 </a>
 
-                            
+                             <a class="tile square image bg-color-yellow" id="gantt" href="#">
+                                    <img src="assets/img/menu-gantt.png" alt="Gantt" />
+                                    <div class="textover-wrapper transparent">
+                                        <div class="text2">Visual Gantt</div>
+                                    </div>
+                                </a>
 
                             </div>
                         
@@ -56,33 +61,23 @@
                                         <div class="text2">Volumetrías Preciario</div>
                                     </div>
                                 </a>
-                                 <a class="tile square image bg-color-darken" id="ordenesCambio" href="#">
+                                 <a class="tile wide imagetext wideimage bg-color-darken" id="ordenesCambio" href="#">
                                     <img src="assets/img/menu-cambio.png" alt="Gantt" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Ordenes de Cambio</div>
                                     </div>
                                 </a>
 
-                                 <a class="tile square squarepeek bg-color-purple" href="#" id="OrdenesEstimaciones">
+                               <%-- tile square square bg-color-purple--%>
+                                 <a class="tile wide imagetext wideimage bg-color-purple" href="#" id="OrdenesEstimaciones">
                                     <img src="assets/img/menu-mnto.png" alt="Ordenes & Estimaciones" />
-                                    <div class="text-inner">
+                                    <div class="textover-wrapper transparent">
                                         <div class="text4">Reportes & Estimaciones</div>
                                     </div>
                                 </a>
 
                             </div>
-                            <%--Cambio y Mto--%>
-                            <div class="tile-column-span-1">
-                                
-                                
-                              
-                               <%-- <a class="tile square image bg-color-red" id="mantenimiento" href="#">
-                                    <img src="assets/img/menu-mnto.png" alt="Mantenimiento" />
-                                    <div class="textover-wrapper transparent">
-                                        <div class="text2">Mantenimiento</div>
-                                    </div>
-                                </a>--%>
-                            </div>
+                       
 
                             <div class="tile-column-span-2">
                                 <a class="tile wide imagetext wideimage bg-color-green" id="exploradorPreciarioConcepto" href="#">
@@ -99,24 +94,24 @@
                                     </div>
                                 </a>
                                 
-
-                               <a class="tile square image bg-color-yellow" id="gantt" href="#">
-                                    <img src="assets/img/menu-gantt.png" alt="Gantt" />
+                                  <a class="tile wide imagetext wideimage bg-color-orange" id="MesaDeReporte" href="#">
+                                    <img src="assets/img/Search.png" alt="Explorador" />
                                     <div class="textover-wrapper transparent">
-                                        <div class="text2">Visual Gantt</div>
+                                        <div class="text2">Explorador Mesa de Reporte</div>
                                     </div>
-                                </a>
+                                </a> 
+                              
 
                             </div>
                             
-                            <div class="tile-column-span-1">
+                            <%--<div class="tile-column-span-1">
                                 <a class="tile wide imagetext wideimage bg-color-orange" id="MesaDeReporte" href="#">
                                     <img src="assets/img/Search.png" alt="Explorador" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Explorador Mesa de Reporte</div>
                                     </div>
                                 </a> 
-                            </div>
+                            </div>--%>
                         </div>
                         <!-- Fin segunda pagina Procesos -->
 

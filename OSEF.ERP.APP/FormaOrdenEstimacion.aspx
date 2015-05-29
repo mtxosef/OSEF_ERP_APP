@@ -506,9 +506,15 @@
                                                     FieldLabel="No. Orden"
                                                     LabelWidth="70"
                                                     runat="server" 
-                                                    
-                                                    Width="180" 
-                                                    ReadOnly="true"> 
+                                                    Margins="0 3 0 0"
+                                                    Width="180" > 
+                                                </ext:TextField>
+                                                <ext:TextField 
+                                                    ID="txtReferenciaOrden" 
+                                                    EmptyText="REFERENCIA ORDEN"
+                                                    LabelWidth="90"
+                                                    runat="server" 
+                                                    Width="177" > 
                                                 </ext:TextField>
                                                 
                                             </Items>
