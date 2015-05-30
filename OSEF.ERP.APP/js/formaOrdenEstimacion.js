@@ -392,6 +392,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
+
+
         App.sConceptos.removeAt(App.sConceptos.getCount() - 1);
         //Actualizar campos 
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
@@ -502,11 +504,28 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         });
 
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
+
         App.cmbMov.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
-        App.txtfObservaciones.setDisabled(true);
-        App.chkBoxOrdenCompra.setDisabled(true);
-
+        App.dfFechaEmision.setReadOnly(true);
+        App.txtfObservaciones.setReadOnly(true);
+        App.txtfNoReporte.setReadOnly(true);
+        App.cmbDivision.setReadOnly(true);
+        App.dfFechaOrigen.setReadOnly(true);
+        App.dfFechaMaxima.setReadOnly(true);
+        App.tHoraOrigen.setReadOnly(true);
+        App.nfDiasAtencion.setReadOnly(true);
+        App.txtfReporta.setReadOnly(true);
+        App.txtfTrabajoRequerido.setReadOnly(true);
+        App.txtfCodigoFalla.setReadOnly(true);
+        App.dfFechaLlegada.setReadOnly(true);
+        App.tfHoraLlegada.setReadOnly(true);
+        App.dfFechaFinActividad.setReadOnly(true);
+        App.tfHoraFinActividad.setReadOnly(true);
+        App.cmbCuadrilla.setReadOnly(true);
+        App.chkAtendido.setReadOnly(true);
+        App.txtNoOrden.setReadOnly(true);
+        App.txtReferenciaOrden.setReadOnly(true);
 
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
@@ -588,6 +607,10 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.tfHoraFinActividad.setReadOnly(true);
     App.cmbCuadrilla.setReadOnly(true);
     App.tHoraOrigen.setReadOnly(true);
+
+    App.txtNoOrden.setReadOnly(true);
+    App.txtReferenciaOrden.setReadOnly(true);
+    
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     App.imgbtnImprimir.setDisabled(true);
@@ -929,7 +952,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(true);
+        App.imgbtnBorrar.setDisabled(true);
         App.txtfObservaciones.setDisabled(true);
+
     }
 
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
