@@ -66,7 +66,8 @@ BEGIN
 		HoraOrigen,
 		RutaImagen,
 		Atendido,
-		NoOrden
+		NoOrden,
+		ReferenciaOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE

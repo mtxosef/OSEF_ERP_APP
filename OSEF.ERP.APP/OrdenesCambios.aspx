@@ -155,6 +155,7 @@
                                 <ext:ModelField Name="RCuadrilla" Type="Object" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
+                                 <ext:ModelField Name="NoOrden" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -168,6 +169,7 @@
             </Store>
             <ColumnModel>
                 <Columns>
+                    
                     <ext:Column 
                         ID="cMovimiento"
                         runat="server"
@@ -194,10 +196,28 @@
                                     <Select Fn="cmbMovimientoFiltro_Select" />
                                 </Listeners>
                             </ext:ComboBox>
-                        </HeaderItems>
-
-
+                        </HeaderItems> 
                     </ext:Column>
+                    
+                      <ext:Column
+                        ID="cNoOrden"
+                        runat="server"
+                        Text="No.Orden"
+                        Align="Center"
+                        Width="70"
+                        DataIndex="NoOrden"> 
+                        <HeaderItems> 
+                        <ext:TextField
+                                ID="txtReporte"
+                                EmptyText="Buscar"
+                                runat="server">
+                                <Listeners>
+                                    <Change Fn="txtNoOrdenFiltro_Change" />
+                                </Listeners>
+                            </ext:TextField>
+                        </HeaderItems>
+                    </ext:Column>
+
                     <ext:Column
                         ID="cSucursal"
                         runat="server"

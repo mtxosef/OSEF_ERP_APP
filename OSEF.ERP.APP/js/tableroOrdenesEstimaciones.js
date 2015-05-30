@@ -143,8 +143,7 @@ var txtReporteFiltro_Change = function (textfield, newValue, oldValue, e) {
         }
     }
     }]);
-    App.gpOrdenesEstimaciones.getSelectionModel().deselectAll();
-    
+    App.gpOrdenesEstimaciones.getSelectionModel().deselectAll(); 
 };
 
 //Evento que hace el filtro al seleccionar algun elemento

@@ -69,7 +69,6 @@ var imgbtnFormaNuevo_Click = function () {
     App.tHoraOrigen.setReadOnly(false);
     App.chkAtendido.setValue(false);
 
-
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
@@ -179,7 +178,6 @@ var sMov_Change = function (combo) {
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
 
-        App.chkBoxOrdenCompra.setVisible(false);
         App.txtReferenciaOrden.setVisible(true);
     }
     App.gpOrdenEstimacion.reconfigure();
@@ -275,6 +273,8 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
         //4. Recargar el tablero
         window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+       // App.sOrdenEstimacion.reload();
+
         App.txtNoOrden.setValue(App.sOrdenEstimacion.getAt(0).get('NoOrden'));
         //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
@@ -612,8 +612,7 @@ var sOrdenesMantenimiento_Load = function () {
 };
 
 //Evento lanzado al agregar un registro al store
-var sOrdenesMantenimiento_Add = function (avance, registro) {
-
+var sOrdenesMantenimiento_Add = function (avance, registro) { 
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
     && registro[0].get('Mov').trim() == "Orden de Cambio") {
@@ -629,6 +628,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
         //Deshabilita los campos en un movimiento afectado
         //     App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
@@ -656,6 +656,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
         //Deshabilita los campos en un movimiento afectado
         //     App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
@@ -798,6 +799,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
         App.chkBoxOrdenCompra.setVisible(false);
 
         //      App.cIntExt.hidden = true;
@@ -822,6 +824,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
         App.chkBoxOrdenCompra.setValue(true);
         App.chkBoxOrdenCompra.setDisabled(false);
 
@@ -870,6 +873,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
 
         if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
             App.chkAtendido.setValue(true);

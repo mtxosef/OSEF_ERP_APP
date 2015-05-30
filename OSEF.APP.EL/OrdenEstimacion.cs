@@ -41,6 +41,7 @@ namespace OSEF.APP.EL
         string Rutaimagen;
         string atendido;
         string noorden;
+        string referenciaorden;
 
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
@@ -246,6 +247,12 @@ namespace OSEF.APP.EL
             set { noorden = value; }
         }
 
+
+        public string ReferenciaOrden
+        {
+            get { return referenciaorden; }
+            set { referenciaorden = value; }
+        }
         #endregion
     }
 }

@@ -157,6 +157,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ComboBox cmbMovimiento;
         
         /// <summary>
+        /// Control cNoOrden.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cNoOrden;
+        
+        /// <summary>
+        /// Control txtReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtReporte;
+        
+        /// <summary>
         /// Control cSucursal.
         /// </summary>
         /// <remarks>

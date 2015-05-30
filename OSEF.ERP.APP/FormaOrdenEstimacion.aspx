@@ -74,6 +74,7 @@
                         <ext:ModelField Name="RutaImagen" Type="String" />
                         <ext:ModelField Name="Atendido" Type="String" />
                         <ext:ModelField Name="NoOrden" Type="String" />
+                        <ext:ModelField Name="ReferenciaOrden" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -392,8 +393,6 @@
                                                     </Listeners>
                                                 </ext:ComboBox>
 
-                                               
-
                                                 <ext:TextField
                                                     ID="txtfMovID"
                                                     runat="server"
@@ -402,7 +401,7 @@
                                                     Disabled="true">
                                                 </ext:TextField>
 
-                                                 <ext:Checkbox ID="chkBoxOrdenCompra" 
+                                                <ext:Checkbox ID="chkBoxOrdenCompra" 
                                                  runat="server" 
 
                                                  FieldLabel="O. Compra">
@@ -411,7 +410,6 @@
                                                         <Change Fn="chkBoxOrdenCompra_AfterRender" />
                                                     </Listeners>
                                                 </ext:Checkbox>
-
 
                                                 <ext:TextField 
                                                     ID="txtOrigen" 
@@ -423,6 +421,7 @@
                                                     Width="200" 
                                                     Disabled="true"> 
                                                 </ext:TextField>
+
                                                 <ext:TextField 
                                                     ID="txtOrigenID" 
                                                     FieldLabel="Origen ID"
@@ -432,6 +431,7 @@
                                                     Width="180" 
                                                     Disabled="true"> 
                                                 </ext:TextField>
+                                            
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer
@@ -507,7 +507,9 @@
                                                     LabelWidth="70"
                                                     runat="server" 
                                                     Margins="0 3 0 0"
-                                                    Width="180" > 
+                                                    Width="180" 
+                                                    ReadOnly="true"
+                                                    > 
                                                 </ext:TextField>
 
                                                 <ext:TextField 

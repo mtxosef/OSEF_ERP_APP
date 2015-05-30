@@ -65,7 +65,8 @@ BEGIN
 		HoraOrigen,
 		RutaImagen,
 		Atendido,
-		NoOrden
+		NoOrden,
+		ReferenciaOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE 
@@ -101,7 +102,8 @@ UNION
 		HoraOrigen,
 		RutaImagen,
 		Atendido ,
-		NoOrden
+		NoOrden,
+		ReferenciaOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE 

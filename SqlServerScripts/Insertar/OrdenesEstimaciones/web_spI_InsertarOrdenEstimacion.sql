@@ -56,8 +56,8 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 	@ImporteTotal	DECIMAL(20,2),
 	@HoraOrigen		DATETIME,
 	@RutaImagen		VARCHAR(500),
-	@Atendido		VARCHAR(5)
-	
+	@Atendido		VARCHAR(5),
+	@ReferenciaOrden	VARCHAR(90)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -110,7 +110,8 @@ END NoOrden);
 			RutaImagen,
 			Atendido,
 			MovEnLinea,
-			NoOrden
+			NoOrden,
+			ReferenciaOrden
 		)
 	VALUES (
 			@Mov,
@@ -141,7 +142,8 @@ END NoOrden);
 			@RutaImagen,
 			@Atendido,
 			1,
-			@NoOrden
+			@NoOrden,
+			@ReferenciaOrden
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

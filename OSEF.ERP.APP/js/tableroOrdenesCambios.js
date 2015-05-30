@@ -268,3 +268,17 @@ var cmbMovimientoFiltro_Select = function (combobox, registro) {
         });
     }
 };
+
+var txtNoOrdenFiltro_Change = function (textfield, newValue, oldValue, e) {
+    App.sOrdenesEstimaciones.clearFilter();
+    App.sOrdenesEstimaciones.filter([{ filterFn: function (item) { 
+        if (item.get('NoOrden').indexOf(newValue.toUpperCase()) > -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    }]);
+    App.gpOrdenesEstimaciones.getSelectionModel().deselectAll();
+};

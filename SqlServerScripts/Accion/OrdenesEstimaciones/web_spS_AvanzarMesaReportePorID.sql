@@ -66,7 +66,8 @@ BEGIN
 		@ImporteTotal			DECIMAL(20,2),
 		@HoraOrigen				DATETIME,
 		@RutaImagen				VARCHAR(500),
-		@Atendido				VARCHAR(5)
+		@Atendido				VARCHAR(5),
+		@RefenciaOrden			VARCHAR(90)
 		
 	SELECT
 		@MovA = @Mov,
@@ -94,7 +95,8 @@ BEGIN
 		@ImporteTotal = ImporteTotal,
 		@HoraOrigen = HoraOrigen,
 		@RutaImagen = RutaImagen,
-		@Atendido = Atendido
+		@Atendido = Atendido,
+		@RefenciaOrden = ReferenciaOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE

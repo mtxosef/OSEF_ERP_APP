@@ -103,7 +103,8 @@ namespace OSEF.ERP.APP
                     HoraOrigen = oOrdenEstimacion.HoraOrigen,
                     RutaImagen = oOrdenEstimacion.RutaImagen,
                     Atendido = oOrdenEstimacion.Atendido,
-                    NoOrden = oOrdenEstimacion.NoOrden
+                    NoOrden = oOrdenEstimacion.NoOrden,
+                    ReferenciaOrden = oOrdenEstimacion.ReferenciaOrden
                 }); 
                 imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
@@ -335,11 +336,11 @@ namespace OSEF.ERP.APP
                     case "txtNoOrden":
                         oOrdenEstimacionForma.NoOrden = sd.Value;
                         break;
+                    case "txtReferenciaOrden":
+                        oOrdenEstimacionForma.ReferenciaOrden = sd.Value;
+                        break;
                 }
             }
-
-           
-
             //3. Regresar el objeto
             return oOrdenEstimacionForma;
         }
@@ -392,6 +393,8 @@ namespace OSEF.ERP.APP
 
                 oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
 
+                oOrdenEstimacionForma = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(oOrdenEstimacionForma.Id);
+
                 //4. Agregar el objeto al Store de Revisión
                 sOrdenEstimacion.Add(new
                 {
@@ -428,9 +431,9 @@ namespace OSEF.ERP.APP
                     HoraOrigen = oOrdenEstimacionForma.HoraOrigen,
                     RutaImagen = oOrdenEstimacionForma.RutaImagen,
                     Atendido = oOrdenEstimacionForma.Atendido,
-                    NoOrden = oOrdenEstimacionForma.NoOrden
-                });
-
+                    NoOrden = oOrdenEstimacionForma.NoOrden,
+                    ReferenciaOrden = oOrdenEstimacionForma.ReferenciaOrden
+                }); 
 
                 //7. Guardar Detalle y regresar valor
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
@@ -493,6 +496,7 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("HoraOrigen", oOrdenEstimacionForma.HoraOrigen);
                 sOrdenEstimacion.GetAt(0).Set("RutaImagen", oOrdenEstimacionForma.RutaImagen);
                 sOrdenEstimacion.GetAt(0).Set("NoOrden", oOrdenEstimacionForma.NoOrden);
+                sOrdenEstimacion.GetAt(0).Set("ReferenciaOrden", oOrdenEstimacionForma.ReferenciaOrden);
                 //13. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
