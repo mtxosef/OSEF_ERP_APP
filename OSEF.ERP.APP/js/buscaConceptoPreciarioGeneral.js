@@ -30,14 +30,15 @@ var gpConceptos_ItemDblClick = function (gridview, registro, gvhtml, index) {
         Ext.util.Cookies.set('cookieIDBorrarFotosOrdenEstimacion', window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('ID'));
         Ext.util.Cookies.set('cookieConceptoFotosOrdenEstimacion', window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).get('ConceptoID'));
         //se manda llamar el metodo de lado del servidor
-         window.parent.App.wEmergente.getBody().App.direct.obtenerImagenesPorConcepto();
+        window.parent.App.wEmergente.getBody().App.direct.obtenerImagenesPorConcepto();
 
     }
 
 
     //valida en el doble click si el concept ya esta en store del detalle de volumetria
     if (window.parent.App.wEmergente.getBody().App.sConceptos.find('ConceptoID', App.sConceptosFiltrados.getAt(index).get('ID')) == -1) {
-        //se actualiza el Store contenedor con datos del store del grid de ayuda
+        //se actualiza el Store contenedor con datos del store del grid de ayuda 
+        window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("RPreciarioConceptos", registro.data);
         window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("ConceptoID", App.sConceptosFiltrados.getAt(index).get('ID'));
         window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Unidad", App.sConceptosFiltrados.getAt(index).get('Unidad'));
         window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Precio", App.sConceptosFiltrados.getAt(index).get('Costo'));
@@ -96,6 +97,7 @@ var gpConceptos_keyDown = function (gridview, registro, gvhtml, index, keyevent)
         //valida en el doble click si el concept ya esta en store del detalle de volumetria
         if (window.parent.App.wEmergente.getBody().App.sConceptos.find('ConceptoID', App.sConceptosFiltrados.getAt(index).get('ID')) == -1) {
             //se actualiza el Store contenedor con datos del store del grid de ayuda
+            window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("RPreciarioConceptos", registro.data);
             window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("ConceptoID", App.sConceptosFiltrados.getAt(index).get('ID'));
             window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Unidad", App.sConceptosFiltrados.getAt(index).get('Unidad'));
             window.parent.App.wEmergente.getBody().App.sConceptos.getAt(Ext.util.Cookies.get('cookieRenglonOrdenEstimacionD')).set("Precio", App.sConceptosFiltrados.getAt(index).get('Costo'));

@@ -271,7 +271,7 @@
                                                 <ext:Model ID="mCarga" runat="server">
                                                     <Fields>
                                                         <ext:ModelField Name="ID" Type="String" />
-                                                        <ext:ModelField Name="Clave" Type="String" />
+                                                        <ext:ModelField Name="Clave" Type="String" /> 
                                                         <ext:ModelField Name="Descripcion" Type="String" />
                                                         <ext:ModelField Name="Unidad" Type="String" />
                                                         <ext:ModelField Name="Costo" Type="Float" />
@@ -308,14 +308,14 @@
                                                 DataIndex="Unidad"
                                                 Width="75">
                                             </ext:Column>
-                                                <ext:Column
+                                            <ext:Column
                                                 ID="cCosto"
                                                 runat="server"
                                                 Text="Costo"
                                                 Width="85"
                                                 DataIndex="Costo">
                                             </ext:Column>
-                                              <ext:Column
+                                            <ext:Column
                                                 ID="cMoneda"
                                                 runat="server"
                                                 Text="Moneda"
@@ -327,8 +327,7 @@
                                     <Listeners>
                                     <Select Fn="gpConceptos_Select"></Select>
                                         <ItemClick Fn="gpConceptos_ItemClick" />
-                                        <ItemDblClick Fn="gpConceptos_ItemDblClick" />
-                                      
+                                        <ItemDblClick Fn="gpConceptos_ItemDblClick" /> 
                                     </Listeners>
                                     <SelectionModel>
                                         <ext:RowSelectionModel

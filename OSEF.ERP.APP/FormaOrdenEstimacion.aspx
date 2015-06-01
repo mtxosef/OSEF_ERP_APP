@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/formaOrdenEstimacion.js"></script>
     
 </head>
@@ -1066,8 +1065,7 @@
                                             </Model>
                                             <Listeners>
                                                 <Update Fn="sConceptos_DataUpdate" ></Update>
-                                                <Load Fn="sConceptos_Load"></Load>
-                                                
+                                                <Load Fn="sConceptos_Load"></Load> 
                                             </Listeners>
                                         </ext:Store>
                                     </Store>
@@ -1090,14 +1088,16 @@
                                                 <Listeners>
                                                     <Command Fn="ccAcciones_Command" />
                                                 </Listeners>
-                                            </ext:CommandColumn>
+                                            </ext:CommandColumn> 
+                                            
                                             <ext:Column
                                                 ID="cIDPreciario"
                                                 runat="server"
-                                                Text="Concepto"
+                                                Text="CLAVE"
                                                 Width="105"
-                                                DataIndex="ConceptoID">
-                                            </ext:Column>
+                                                DataIndex="RPreciarioConceptos">
+                                                <Renderer Fn="cRenderer_Clave"></Renderer>
+                                            </ext:Column> 
                                             <ext:CommandColumn
                                                 ID="ccConcepto"
                                                 runat="server" 
@@ -1156,7 +1156,7 @@
                                                         MaxLength="10"
                                                         EnforceMaxLength="true"
                                                         MaxValue="999999999"
-                                                        MinValue="0"
+                                                        MinValue="1"
                                                         Step="1">
                                                         <Listeners>
                                                             <Change Fn="calcularImporteCantidad_Change"></Change>

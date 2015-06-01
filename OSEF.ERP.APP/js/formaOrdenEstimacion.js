@@ -2027,3 +2027,6 @@ var chkBoxOrdenCompra_AfterRender = function (componente, value) {
         App.cmbMov.setValue('Orden de Cambio');
     }
 }
+var cRenderer_Clave = function (value, metadata, registro) {
+    return registro.get('RPreciarioConceptos').Clave;
+};
