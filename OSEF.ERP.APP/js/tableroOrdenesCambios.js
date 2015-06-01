@@ -71,7 +71,7 @@ var gpOrdenesEstimaciones_ItemClick = function (gridview, registro, gvhtml, inde
 //Filtros
 
 //Evento que hace el filtro al seleccionar algun elemento
-var cmbUsuarioFiltro_Select = function (combobox, registro) {
+var cmbUsuarioFiltro_Select = function (combobox, registro) { 
     //1. Obtener el valor
     var valor = combobox.getValue();
 

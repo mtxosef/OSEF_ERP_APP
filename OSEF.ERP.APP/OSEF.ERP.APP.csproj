@@ -415,6 +415,7 @@
     <Content Include="Global.asax" />
     <Content Include="gnt-all-debug.js" />
     <Content Include="GruposMenu2.aspx" />
+    <Content Include="Header.htm" />
     <Content Include="imagenes\agrupadores\cuestionario.png" />
     <Content Include="imagenes\agrupadores\datos-de-contacto.png" />
     <Content Include="imagenes\agrupadores\Datos-de-facturacion.png" />

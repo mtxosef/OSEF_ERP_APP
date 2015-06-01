@@ -22,7 +22,7 @@ namespace OSEF.ERP.APP
                 sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
                 sUsuarios.DataBind();
 
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnOrdenesDeCambio();
                 sSucursales.DataBind();
 
 

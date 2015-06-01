@@ -21,7 +21,7 @@ namespace OSEF.ERP.APP
                 sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerMesaDeReportesConcluidos();
                 sMesaDeReporte.DataBind();
 
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
+                sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
                 sSucursales.DataBind();
 
                 sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();

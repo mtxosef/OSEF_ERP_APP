@@ -74,6 +74,22 @@ namespace OSEF.APP.BL
         }
 
 
+        /// <summary>
+        /// Método que obtiene todos los regsitros de Sucursales
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesEnUsoEnOrdenesDeCambio()
+        {
+            //return SucursalDataAccess.ObtenerSucursales();
+            List<Sucursal> lSucursal = SucursalDataAccess.ObtenerSucursalesEnUsoEnOrdenesDeCambio(); 
+            foreach (Sucursal c in lSucursal)
+            {
+                c.RColonia = ColoniaBusiness.ObtenerColoniaPorID(c.Colonia); 
+            } 
+            return lSucursal;
+        }
+
+
 
         /// <summary>
         /// Método que obtiene todos los regsitros de Sucursales en uso
@@ -83,6 +99,27 @@ namespace OSEF.APP.BL
         {
             //return SucursalDataAccess.ObtenerSucursales();
             List<Sucursal> lSucursal = SucursalDataAccess.ObtenerSucursalesEnUso();
+
+            foreach (Sucursal c in lSucursal)
+            {
+                c.RColonia = ColoniaBusiness.ObtenerColoniaPorID(c.Colonia);
+
+            }
+
+
+            return lSucursal;
+        }
+
+
+
+        /// <summary>
+        /// Método que obtiene todos los regsitros de Sucursales en uso
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesEnUsoEnConcluidos()
+        {
+            //return SucursalDataAccess.ObtenerSucursales();
+            List<Sucursal> lSucursal = SucursalDataAccess.ObtenerSucursalesEnUsoEnConcluidos();
 
             foreach (Sucursal c in lSucursal)
             {
