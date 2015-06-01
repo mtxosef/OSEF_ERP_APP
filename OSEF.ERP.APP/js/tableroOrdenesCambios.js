@@ -269,10 +269,15 @@ var cmbMovimientoFiltro_Select = function (combobox, registro) {
     }
 };
 
+
+
 var txtNoOrdenFiltro_Change = function (textfield, newValue, oldValue, e) {
     App.sOrdenesEstimaciones.clearFilter();
-    App.sOrdenesEstimaciones.filter([{ filterFn: function (item) { 
-        if (item.get('NoOrden').indexOf(newValue.toUpperCase()) > -1) {
+
+
+    App.sOrdenesEstimaciones.filter([{ filterFn: function (item) {
+
+        if (item.get('NoOrden').indexOf(newValue.toUpperCase()) > -1 || item.get('RSucursal').CR.toString().toUpperCase().indexOf(newValue.toUpperCase()) > -1) {
             return true;
         }
         else {
@@ -281,4 +286,12 @@ var txtNoOrdenFiltro_Change = function (textfield, newValue, oldValue, e) {
     }
     }]);
     App.gpOrdenesEstimaciones.getSelectionModel().deselectAll();
+};
+
+//Asignar la descripción de la sucursal a esta columna
+var cNoOrden_Renderer = function (valor, columna, registro) {
+
+    if (valor.length != 0) {
+        return registro.get('RSucursal').CR +'-'+ registro.get('NoOrden');
+    }
 };

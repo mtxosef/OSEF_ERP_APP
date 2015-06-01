@@ -59,7 +59,7 @@ var sOrdenesEstimaciones_DataChanged = function () {
 var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     App.sOrdenesEstimaciones.clearFilter();
     App.sOrdenesEstimaciones.filter([{ filterFn: function (item) {
-        if (item.get('Mov').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('Id').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
+        if (item.get('Mov').toUpperCase().indexOf(newValue.toUpperCase()) > -1 || item.get('MovID').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
         else { return false; }
     }
     }]);
@@ -67,7 +67,6 @@ var txtBuscar_Change = function (textfield, newValue, oldValue, e) {
     App.imgbtnEditar.setDisabled(true);
     App.imgbtnBorrar.setDisabled(true);
 };
-
 
 //Acciones al hacer clic en un registro
 var gpOrdenesEstimaciones_ItemClick = function (gridview, registro, gvhtml, index) {

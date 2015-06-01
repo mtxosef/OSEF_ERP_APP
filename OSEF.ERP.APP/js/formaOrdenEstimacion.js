@@ -28,8 +28,19 @@ var imgbtnFormaNuevo_Click = function () {
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
         App.chkBoxOrdenCompra.setVisible(true);
+        App.chkBoxOrdenCompra.setDisabled(false);
+        App.chkBoxOrdenCompra.setReadOnly(false);
+        App.chkBoxOrdenCompra.setValue(false);
     }
 
+
+    App.txtNoOrden.setValue('');
+
+    App.txtReferenciaOrden.setDisabled(false);
+    App.txtReferenciaOrden.setReadOnly(false);
+    App.txtReferenciaOrden.setValue('');
+
+    
 
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
@@ -273,12 +284,14 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
         //4. Recargar el tablero
         window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
-       // App.sOrdenEstimacion.reload();
+      
 
-        App.txtNoOrden.setValue(App.sOrdenEstimacion.getAt(0).get('NoOrden'));
+       
         //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + App.sOrdenEstimacion.getAt(0).get('ID'));
+        App.txtNoOrden.setValue(App.sOrdenEstimacion.getAt(0).get('NoOrden'));
+
 
         App.cmbMov.setReadOnly(true);
         //6. Deshabilita los comandos del grid
@@ -525,12 +538,13 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.cmbCuadrilla.setReadOnly(true);
         App.chkAtendido.setReadOnly(true);
         App.txtNoOrden.setReadOnly(true);
+        App.chkBoxOrdenCompra.setReadOnly(true);
         App.txtReferenciaOrden.setReadOnly(true);
 
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
-
+        App.txtNoOrden.setValue(App.sOrdenEstimacion.getAt(0).get('NoOrden'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
 
         //Deshabilita boton de afectar porque aqui concluye el flujo
@@ -654,6 +668,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
         //Deshabilita los campos en un movimiento afectado
         //     App.cIntExt.hidden = true;
+        App.txtReferenciaOrden.setReadOnly(true);
         App.cmbMov.setReadOnly(true);
         App.chkBoxOrdenCompra.setVisible(false);
         App.txtfSucursalCR.setDisabled(true);
@@ -663,6 +678,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnCancelar.setDisabled(false);
         App.txtfObservaciones.setDisabled(true);
         App.imgbtnImprimir.setDisabled(false);
+        App.txtNoOrden.setReadOnly(true);
     }
 
     //Si es orden de cambio concluida
@@ -687,6 +703,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.chkBoxOrdenCompra.setValue(true);
         App.chkBoxOrdenCompra.setDisabled(true);
 
+        App.txtReferenciaOrden.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(true);
@@ -953,7 +970,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnCancelar.setDisabled(true);
         App.imgbtnBorrar.setDisabled(true);
         App.txtfObservaciones.setDisabled(true);
-
+        App.txtReferenciaOrden.setDisabled(true);
+        App.chkBoxOrdenCompra.setVisible(false);
     }
 
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
