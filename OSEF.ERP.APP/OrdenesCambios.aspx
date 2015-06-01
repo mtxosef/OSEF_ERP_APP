@@ -175,7 +175,7 @@
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="190"
+                        Width="170"
                         DataIndex="Mov">
                         <Renderer Fn="cMov_Renderer" />
                         <HeaderItems>
@@ -206,6 +206,7 @@
                         Align="Center"
                         Width="70"
                         DataIndex="NoOrden"> 
+                        <Renderer Fn="cNoOrden_Renderer"></Renderer>
                         <HeaderItems> 
                         <ext:TextField
                                 ID="txtReporte"
@@ -223,7 +224,7 @@
                         runat="server"
                         Text="SUCURSAL"
                         Align="Left"
-                        Width="275"
+                        Width="260"
                         DataIndex="Sucursal">
                       <Renderer Fn="cSucursal_Renderer" />
                         <HeaderItems>
@@ -267,7 +268,7 @@
                         runat="server"
                         Text="FECHA EMISIÓN"
                         Align="Center"
-                        Width="155"
+                        Width="135"
                         DataIndex="FechaEmision"
                         Format="dd/MM/yyyy">
                         <HeaderItems>
@@ -312,7 +313,7 @@
                         runat="server"
                         Text="ESTATUS"
                         Align="Center"
-                        Width="155"
+                        Width="135"
                         DataIndex="Estatus">
                         <HeaderItems>
                             <ext:ComboBox
@@ -345,7 +346,7 @@
                         runat="server"
                         Text="USUARIO"
                         Align="Center"
-                        Width="155"
+                        Width="135"
                         DataIndex="Usuario">
                         <HeaderItems>
                              <ext:ComboBox
