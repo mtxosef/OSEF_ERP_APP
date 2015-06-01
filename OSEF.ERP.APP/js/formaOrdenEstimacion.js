@@ -667,8 +667,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
-    && registro[0].get('Mov').trim() == "Orden de Compra") {
-        console.log('Orden de compra(643): ' + registro[0].get('NoOrden'));
+    && registro[0].get('Mov').trim() == "Orden de Compra") { 
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
