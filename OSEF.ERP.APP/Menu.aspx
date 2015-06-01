@@ -40,20 +40,15 @@
                                         <div class="text2">Visual Gantt</div>
                                     </div>
                                 </a>
-
-
-                                 <a class="tile square image bg-color-green" id="Monitoreo" href="http://plantas.ibuho.mx:81" target="_blank">
+                                 
+                                 <a class="tile square image bg-color-green" id="lPlantas" 
+                                 href="" target="_blank">
                                     <img src="assets/img/menu-preciariosG.png" alt="Gantt" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Monitor</div>
                                     </div>
-                                </a>
-
-                            </div>
-                        
-
-                            
-                          
+                                </a> 
+                            </div>  
                         </div>
                         <!-- Fin Primer pagina  -->
 

@@ -50,7 +50,8 @@ BEGIN
 		FechaBloqueo,
 		UltimoAcceso,
 		CambioContrasena,
-		Empresa
+		Empresa,
+		Contrasena
 	FROM
 		Usuarios
 	WHERE
