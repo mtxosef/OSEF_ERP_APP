@@ -330,14 +330,13 @@ $(document).ready(function () {
         });
     });
 
-parent.App.direct.getData({
-            success: function (result) {
-                console.log(result);
-                $("#lPlantas").attr("href", result);
-            },
-            failure: function (errorMsg) {
-                Ext.Msg.alert('Error', errorMsg);
-            }
-        });
-    
+    parent.App.direct.getData({
+        success: function (result) { 
+            $("#lPlantas").attr("href", 'http://localhost:81/PlantasElectricas/index.php?txtUsr='+result.Nombre+'&txtPwd='+result.Contrasena);
+        },
+        failure: function (errorMsg) {
+            Ext.Msg.alert('Error', errorMsg);
+        }
+    });
+
 });
