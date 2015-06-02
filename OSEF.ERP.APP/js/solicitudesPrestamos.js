@@ -128,7 +128,7 @@ function cargarEstilo() {
         document.getElementsByTagName("head")[0].appendChild(fileref);
         document.getElementsByTagName("head")[0].appendChild(fileref2);
     }
-}
+};
 
 //Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
@@ -771,6 +771,7 @@ var btnAgregarBienesSocio_Click = function () {
     }
 };
 
+//Evento clic del botón agregar bienes del aval
 var btnAgregarBienesAval_Click = function () {
     var ID = App.pBienesAval.componentLayout.layoutCount;
     if (App.rBienesMueblesAval.getValue() == true) {
