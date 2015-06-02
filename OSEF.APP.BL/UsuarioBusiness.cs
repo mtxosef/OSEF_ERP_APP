@@ -132,7 +132,7 @@ namespace OSEF.APP.BL
                 FormsIdentity ident = ((FormsIdentity)c.Page.User.Identity);
                 FormsAuthenticationTicket ticket = ident.Ticket;
 
-                if ((c.Page.Session["Usuario"] == null))
+                if (c.Page.Session["Usuario"] == null)
                 {
                     Usuario oUsuario = JSON.Deserialize<Usuario>(ticket.UserData);
                     c.Page.Session["Usuario"] = oUsuario;

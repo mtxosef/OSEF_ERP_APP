@@ -302,6 +302,9 @@ namespace OSEF.ERP.APP
 
             FirmasReportes oFirmas = FirmasReportesBusiness.ObtenerFirmasReportesPorModulo("Reportes");
 
+                //Checar ticket de autenticación
+                UsuarioBusiness.checkValidSession(this);
+
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 string strElaboro = oUsuario.Nombre + " " + oUsuario.APaterno + " " + oUsuario.AMaterno;
                 string strReviso = oFirmas.FirmaReviso;

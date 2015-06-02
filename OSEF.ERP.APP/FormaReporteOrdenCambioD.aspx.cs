@@ -26,17 +26,11 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-                String.IsNullOrEmpty(txtAutorizo.Text) || 
-                String.IsNullOrEmpty(txtReviso.Text))
-            {
-            
-            }
-            else{
+          
                 //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
+                string strElaboro = "";
+                string strReviso = "";
+                string strAutorizo = "";
 
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
@@ -103,9 +97,6 @@ namespace OSEF.ERP.APP
                     conn.Dispose();
                 }
 
-            }
-            
-
         }
 
 
@@ -115,19 +106,12 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-               String.IsNullOrEmpty(txtAutorizo.Text) ||
-               String.IsNullOrEmpty(txtReviso.Text))
-            {
-                
-            }
-            else{
 
 
             //Firmas documento(Parametros)
-            string strElaboro = txtElaboro.Value.ToString();
-            string strReviso = txtReviso.Value.ToString();
-            string strAutorizo = txtAutorizo.Value.ToString();
+            string strElaboro = "";
+            string strReviso = "";
+            string strAutorizo = "";
             string path = AppDomain.CurrentDomain.BaseDirectory;
             //1. Configurar la conexión y el tipo de comando
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -184,8 +168,6 @@ namespace OSEF.ERP.APP
                         conn.Close();
                     conn.Dispose();
                 }
-
-            }
         }
 
 
@@ -196,20 +178,10 @@ namespace OSEF.ERP.APP
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-                String.IsNullOrEmpty(txtAutorizo.Text) ||
-                String.IsNullOrEmpty(txtReviso.Text))
-            {
-                
-            }
-            else
-            {
-
-
                 //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
+                string strElaboro = "";
+                string strReviso = "";
+                string strAutorizo = "";
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -268,7 +240,7 @@ namespace OSEF.ERP.APP
                         conn.Close();
                     conn.Dispose();
                 }
-            }
+            
         }
 
 
@@ -279,20 +251,10 @@ namespace OSEF.ERP.APP
             string strID = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
 
 
-            if (String.IsNullOrEmpty(txtElaboro.Text) ||
-               String.IsNullOrEmpty(txtAutorizo.Text) ||
-               String.IsNullOrEmpty(txtReviso.Text))
-            {
-                
-            }
-            else
-            {
-
-
                 //Firmas documento(Parametros)
-                string strElaboro = txtElaboro.Value.ToString();
-                string strReviso = txtReviso.Value.ToString();
-                string strAutorizo = txtAutorizo.Value.ToString();
+                string strElaboro = "";
+                string strReviso = "";
+                string strAutorizo = "";
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 //1. Configurar la conexión y el tipo de comando
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
@@ -352,7 +314,6 @@ namespace OSEF.ERP.APP
                         conn.Close();
                     conn.Dispose();
                 }
-            }
         }
 
 

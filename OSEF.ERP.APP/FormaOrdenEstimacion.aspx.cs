@@ -23,11 +23,11 @@ namespace OSEF.ERP.APP
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
-                //2. Checar ticket de autenticación
-                //UsuarioBusiness.checkValidSession(this);
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
                 sCuadrillas.DataBind(); 
             }
+            //2. Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
         }
 
 
@@ -354,6 +354,10 @@ namespace OSEF.ERP.APP
         /// <returns></returns>
         private string GuardarMovimiento(ref OrdenEstimacion oOrdenEstimacionForma, OrdenEstimacion oOrdenEstimacion, List<OrdenEstimacionD> lOrdenEstimacionD)
         {
+
+            //Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
+
             //1. Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
             Usuario oUsuario = (Usuario)Session["Usuario"];
             oOrdenEstimacionForma.Usuario = oUsuario.ID;
@@ -390,6 +394,9 @@ namespace OSEF.ERP.APP
                 {
                     oOrdenEstimacionForma.RutaImagen = "";
                 }
+
+
+                
 
                 oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
 

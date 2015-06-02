@@ -197,9 +197,12 @@ namespace OSEF.ERP.APP
         /// <param name="lVolumetriaD"></param>
         private string GuardarMovimiento(ref Volumetria oVolumetriaForma, Volumetria oVolumetria, List<VolumetriaD> lVolumetriaD)
         {
+            
             //1. Lo que sucede cuando es nuevo y no se habia guardado
             if (oVolumetria == null)
             {
+                //Checar ticket de autenticación
+                UsuarioBusiness.checkValidSession(this);
                 //2. Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
                 Usuario oUsuario = (Usuario)Session["Usuario"];
                 oVolumetriaForma.Usuario = oUsuario.ID;
