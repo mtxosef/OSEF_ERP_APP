@@ -42,20 +42,27 @@ namespace OSEF.ERP.APP
             sMesaDeReporte.DataBind();
             sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
             sSucursales.DataBind();
-        } 
+        }
         [DirectMethod]
         protected void getCheckedRecords(object sender, DirectEventArgs e)
         {
             string data = e.ExtraParams["Values"];
             JsonObject[] jObjAr = JSON.Deserialize<JsonObject[]>(data);
             int n = 0;
-            foreach (JsonObject o in jObjAr)
+            if (jObjAr.Length > 0)
             {
-                int id = Convert.ToInt32(o["Id"]);
-                MesaDeReporteBusiness.FacturarMesaDeReportePorID(id);
-                n++;
-            } 
-            X.Msg.Alert("Status", n + " Registros Facturados.", new JFunction { Fn = "showResult" }).Show();
+                foreach (JsonObject o in jObjAr)
+                {
+                    int id = Convert.ToInt32(o["Id"]);
+                    MesaDeReporteBusiness.FacturarMesaDeReportePorID(id);
+                    n++;
+                }
+                X.Msg.Alert("Mensaje", n + " Registros Facturados.", new JFunction { Fn = "showResult(true)" }).Show();
+            }
+            else
+            {
+                X.Msg.Alert("Atención", "Selecione al menos 1 registro.", new JFunction { Fn = "showResult(false)" }).Show();
+            }
         }
     }
 }

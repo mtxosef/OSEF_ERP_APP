@@ -168,6 +168,8 @@ var sMesaDeReporte_Load = function (avance, registro, index) {
     F.decimalSeparator = '.';
     App.ToolBarTotal.setText('TOTAL: $' + F.number(sum, "000,000,000.00"));
 }
-var showResult = function () {
-    App.sMesaDeReporte.reload();
+var showResult = function (t) {
+    if (t) {
+        App.sMesaDeReporte.reload();
+    } 
 }
