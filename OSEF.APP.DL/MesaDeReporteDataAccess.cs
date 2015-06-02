@@ -798,6 +798,49 @@ namespace OSEF.APP.DL
         /// Método que Afecta un registro de MesaDeReporte
         /// </summary>
         /// <param name="aRevision"></param>
+        public static int FacturarMesaDeReportePorID(int ID)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spU_FacturarMesaDeReporte";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = ID;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int FacturarMesaDeReportePorID(int " + ID + ")): " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Método que Afecta un registro de MesaDeReporte
+        /// </summary>
+        /// <param name="aRevision"></param>
         public static int AfectarEstimacionPorID(MesaDeReporte aMesaDeReporte)
         {
             try

@@ -18,57 +18,27 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerMesaDeReportesConcluidos' AND
+			WHERE  name = 'web_spU_FacturarMesaDeReporte' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
+	DROP PROCEDURE web_spU_FacturarMesaDeReporte
 GO
 -- =============================================
 -- Author:		Giovanni Flores
--- Create date: Jueves 23 de Abril de 2015
--- Description:	Obtener todos los registros de Mesa de Reportes Concluidos
+-- Create date: Lunes 01 de Junio de 2015
+-- Description:	Facturar un registro de Mesa de Reporte con estatus concluido y MovLinea 1
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
+CREATE PROCEDURE web_spU_FacturarMesaDeReporte
 	-- Add the parameters for the stored procedure here
+	@ID				INT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
+	SET NOCOUNT ON; 
     -- Insert statements for procedure here
-	SELECT
-		ID,
-		Mov,
-		MovID,
-		Sucursal,
-		FechaEmision,
-		Observaciones,
-		Estatus,
-		Usuario,
-		Origen,
-		OrigenID,
-		Reporte,
-		Division,
-		FechaOrigen,
-		FechaMaximaAtencion,
-		DiasAtencion,
-		Reporto,
-		TrabajoRequerido,
-		TrabajoRealizado,
-		CodigoFalla,
-		FechaLlegada,
-		HoraLlegada,
-		FechaFinActividad,
-		HoraFinActividad,
-		Cuadrilla,
-		ImporteTotal,
-		HoraOrigen,
-		RutaImagen,
-		Atendido,
-		Facturado
-	FROM
-		OrdenesEstimaciones
-	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND Facturado = 0;
+    UPDATE OrdenesEstimaciones
+	SET Facturado = 1
+	WHERE
+		ID = @ID
 END
 GO

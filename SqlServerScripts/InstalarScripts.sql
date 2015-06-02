@@ -407,6 +407,7 @@
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarOrdenPorID.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarEstimacionPorID.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AvanzarMesaReportePorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spU_FacturarMesaDeReporte.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_CancelarOrdenEstimacionPorID.sql
 -----------------------------------------------------------------------------------
 -- OrdenesEstimacionesD (Borrar)

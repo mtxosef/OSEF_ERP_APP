@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using Ext.Net;
+using System.Text;
 
 namespace OSEF.ERP.APP
 {
@@ -39,6 +40,22 @@ namespace OSEF.ERP.APP
         {
             sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerMesaDeReportesConcluidos();
             sMesaDeReporte.DataBind();
+            sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
+            sSucursales.DataBind();
         } 
+        [DirectMethod]
+        protected void getCheckedRecords(object sender, DirectEventArgs e)
+        {
+            string data = e.ExtraParams["Values"];
+            JsonObject[] jObjAr = JSON.Deserialize<JsonObject[]>(data);
+            int n = 0;
+            foreach (JsonObject o in jObjAr)
+            {
+                int id = Convert.ToInt32(o["Id"]);
+                MesaDeReporteBusiness.FacturarMesaDeReportePorID(id);
+                n++;
+            } 
+            X.Msg.Alert("Status", n + " Registros Facturados.", new JFunction { Fn = "showResult" }).Show();
+        }
     }
 }

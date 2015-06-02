@@ -85,6 +85,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ToolbarSpacer tsExploradorMesaDeReporte;
         
         /// <summary>
+        /// Control imgbtnFacturar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnFacturar;
+        
+        /// <summary>
+        /// Control ToolbarSpacer1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ToolbarSpacer ToolbarSpacer1;
+        
+        /// <summary>
         /// Control txtfBuscar.
         /// </summary>
         /// <remarks>
@@ -229,13 +247,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.GridView gvExploradorMesaDeReporte;
         
         /// <summary>
-        /// Control rsmExploradorMesaDeReporte.
+        /// Control CheckboxSelectionModel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.RowSelectionModel rsmExploradorMesaDeReporte;
+        protected global::Ext.Net.CheckboxSelectionModel CheckboxSelectionModel1;
         
         /// <summary>
         /// Control sbMesaDeReporte.
@@ -245,5 +263,14 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.StatusBar sbMesaDeReporte;
+        
+        /// <summary>
+        /// Control ToolBarTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ToolbarTextItem ToolBarTotal;
     }
 }

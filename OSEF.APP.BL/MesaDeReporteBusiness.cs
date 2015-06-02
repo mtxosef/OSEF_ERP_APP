@@ -117,7 +117,7 @@ namespace OSEF.APP.BL
         /// </summary>
         /// <param name="aRevision"></param>
         public static int AfectarMesaDeReportePorID(MesaDeReporte aMesaDeReporte)
-        { 
+        {
             return MesaDeReporteDataAccess.AfectarMesaDeReportePorID(aMesaDeReporte);
         }
 
@@ -151,6 +151,15 @@ namespace OSEF.APP.BL
         public static int CancelarMesaDeReportePorID(int iID)
         {
             return MesaDeReporteDataAccess.CancelarMesaDeReportePorID(iID);
+        }
+
+        /// <summary>
+        /// Método que Factura un registro de MesaDeReporte
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int FacturarMesaDeReportePorID(int ID)
+        {
+            return MesaDeReporteDataAccess.FacturarMesaDeReportePorID(ID);
         }
 
         #endregion

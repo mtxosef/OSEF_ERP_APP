@@ -45,7 +45,7 @@
             <TopBar>
                 <ext:Toolbar ID="tbPreciarios" runat="server">
                     <Items>
-                             <ext:ComboBox
+                        <ext:ComboBox
                                 ID="cmbSucursal"
                                 runat="server"
                                 LabelWidth="70"
@@ -100,13 +100,35 @@
                                 <Change Fn="cmbSucursal_Change" />
                                 </Listeners>
                             </ext:ComboBox>
- 
-                        
+
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="tsExploradorMesaDeReporte" 
-                        Width="320">
+                        Width="160"> 
+                        </ext:ToolbarSpacer>
+                          
+                        <ext:ImageButton
+                                    ID="imgbtnFacturar"
+                                    runat="server"
+                                    ImageUrl="assets/img/controles/fact.png"
+                                    OverImageUrl=""
+                                    PressedImageUrl=""
+                                    Height="22px"
+                                    Width="22px">    
+                                    <DirectEvents>
+                                        <Click OnEvent="getCheckedRecords">
+                                            <EventMask ShowMask="true" />
+                                            <ExtraParams>
+                                                <ext:Parameter Name="Values" Value="Ext.encode(#{gpExploradorMesaDeReporte}.getRowsValues({selectedOnly:true}))" Mode="Raw" />
+                                            </ExtraParams>
+                                        </Click>
+                                    </DirectEvents>                                          
+                                </ext:ImageButton>
                         
+                        <ext:ToolbarSpacer 
+                        runat="server" 
+                        ID="ToolbarSpacer1" 
+                        Width="100"> 
                         </ext:ToolbarSpacer>
 
                         <ext:TextField 
@@ -114,6 +136,7 @@
                             runat="server"
                             AutoFocus="true"
                             EmptyText="BUSCAR POR ASUNTO"
+                            StyleSpec="margin-top: 0px;"
                             Width="290">
                             <Listeners>
                                 <Change Fn="txtBuscar_Change" />
@@ -138,8 +161,7 @@
                 <ext:Store
                     ID="sMesaDeReporte"
                     runat="server"
-                   OnReadData="OnReadData_sMesaDeReporte"
-                    >
+                   OnReadData="OnReadData_sMesaDeReporte">
                     <Model>
                         <ext:Model ID="mMesaDeReporte" runat="server">
                             <Fields>
@@ -163,6 +185,7 @@
                     </Sorters>
                     <Listeners>
                         <DataChanged Fn="sMesaDeReportes_DataChanged" />
+                        <Load Fn="sMesaDeReporte_Load" />
                     </Listeners>
                 </ext:Store>
             </Store>
@@ -331,19 +354,15 @@
                 </ext:GridView>
             </View>
             <SelectionModel>
-                <ext:RowSelectionModel
-                    ID="rsmExploradorMesaDeReporte"
-                    runat="server">
-                </ext:RowSelectionModel>
+                <ext:CheckboxSelectionModel ID="CheckboxSelectionModel1" runat="server" Mode="Multi" /> 
             </SelectionModel>
             <FooterBar>
-                <ext:StatusBar
-                    ID="sbMesaDeReporte"
-                    runat="server"
-                    Text=""
-                    StatusAlign="Left">
-                </ext:StatusBar>
-            </FooterBar>
+                <ext:StatusBar ID="sbMesaDeReporte" runat="server" Text="">
+                    <Items>
+                        <ext:ToolbarTextItem ID="ToolBarTotal" runat="server" Text="TOTAL: " />  
+                    </Items>
+                </ext:StatusBar> 
+            </FooterBar> 
         </ext:GridPanel>
     </form>
 </body>
