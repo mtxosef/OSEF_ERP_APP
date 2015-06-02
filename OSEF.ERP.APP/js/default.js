@@ -13,3 +13,7 @@ var sUsuario_Load_Success = function (response, result) {
     App.btnUsuario.setText(App.sUsuario.getAt(0).get('Nombre') + ' ' + App.sUsuario.getAt(0).get('APaterno') + ' ' + App.sUsuario.getAt(0).get('AMaterno'));
     App.mOpciones.setWidth(App.btnUsuario.getWidth());
 };
+
+$(document).ready(function () {
+    $("#pcreditos").html("© " + new Date().getFullYear() + " Osef Technology");
+});

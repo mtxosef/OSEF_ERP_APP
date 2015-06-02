@@ -241,7 +241,12 @@ namespace OSEF.APP.DL
                 if (iOrdenEstimacion.Atendido == null)
                     sqlpAtendido.Value = "NO";
                 else
-                    sqlpAtendido.Value = "SI"; 
+                    sqlpAtendido.Value = "SI";
+
+                SqlParameter sqlpReferenciaOrden = new SqlParameter();
+                sqlpReferenciaOrden.ParameterName = "@ReferenciaOrden";
+                sqlpReferenciaOrden.SqlDbType = SqlDbType.VarChar;
+                sqlpReferenciaOrden.Value = iOrdenEstimacion.ReferenciaOrden;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -272,6 +277,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
                 sqlcComando.Parameters.Add(sqlpAtendido);
+                sqlcComando.Parameters.Add(sqlpReferenciaOrden);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -510,7 +516,17 @@ namespace OSEF.APP.DL
                 if (uOrdenEstimacion.Atendido == "False")
                     sqlpAtendido.Value = "No";
                 else
-                    sqlpAtendido.Value = "Si"; 
+                    sqlpAtendido.Value = "Si";
+
+                SqlParameter sqlpReferenciaOrden = new SqlParameter();
+                sqlpReferenciaOrden.ParameterName = "@ReferenciaOrden";
+                sqlpReferenciaOrden.SqlDbType = SqlDbType.VarChar;
+                sqlpReferenciaOrden.Value = uOrdenEstimacion.ReferenciaOrden;
+
+                //SqlParameter sqlpNoOrden = new SqlParameter();
+                //sqlpNoOrden.ParameterName = "@NoOrden";
+                //sqlpNoOrden.SqlDbType = SqlDbType.VarChar;
+                //sqlpNoOrden.Value = uOrdenEstimacion.NoOrden;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -539,6 +555,8 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpHoraOrigen);
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
                 sqlcComando.Parameters.Add(sqlpAtendido);
+                sqlcComando.Parameters.Add(sqlpReferenciaOrden);
+                //sqlcComando.Parameters.Add(sqlpNoOrden);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 

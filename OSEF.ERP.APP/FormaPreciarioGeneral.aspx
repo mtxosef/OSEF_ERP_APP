@@ -696,8 +696,6 @@
                                         </Plugins>
                                     </ext:PagingToolbar>
                                 </BottomBar>
-
-
                                 </ext:GridPanel>
                                 <%--Fin Detalle PRECIARIO--%>
                             </Items>

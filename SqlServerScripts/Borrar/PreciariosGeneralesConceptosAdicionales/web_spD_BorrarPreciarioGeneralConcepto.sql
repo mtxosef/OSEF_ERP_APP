@@ -29,17 +29,19 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spD_BorrarPreciarioGeneralConceptoAdicional
 	-- Add the parameters for the stored procedure here
-	@ID			CHAR(10)
+	@ID			CHAR(10),
+	@CLAVE		CHAR(30)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
+    -- Insert statements for procedure here 
     DELETE FROM
 		PreciariosGeneralesConceptos
 	WHERE
-		ID = @ID
+		ID = @ID AND 
+		CLAVE = @CLAVE
 END
 GO

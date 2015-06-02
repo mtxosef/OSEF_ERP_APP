@@ -40,7 +40,8 @@ CREATE PROCEDURE web_spI_InsertarGeneradorOrdenEstimacionD
 	@Ancho				DECIMAL(10,2),
 	@Alto				DECIMAL(10,2),
 	@Cantidad			DECIMAL(10,2),
-	@Total				DECIMAL(10,2)
+	@Total				DECIMAL(10,2),
+	@Plano				CHAR(20)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -62,7 +63,8 @@ BEGIN
 			Ancho,
 			Alto,
 			Cantidad,
-			Total
+			Total,
+			Plano
 		)
 	VALUES
 		(
@@ -77,7 +79,8 @@ BEGIN
 			@Ancho,
 			@Alto,
 			@Cantidad,
-			@Total				
+			@Total,			
+			@Plano	
 		)
 END
 GO

@@ -21,6 +21,8 @@ namespace OSEF.APP.EL
         decimal alto; 
         decimal cantidad;
         decimal total;
+        string plano;
+
         PreciarioGeneralConcepto rconcepto;
 
 
@@ -101,7 +103,11 @@ namespace OSEF.APP.EL
             set { total = value; }
         }
 
-
+        public string Plano
+        {
+            get { return plano; }
+            set { plano = value; }
+        }
         public PreciarioGeneralConcepto RConcepto
         {
             get { return rconcepto; }

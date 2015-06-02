@@ -5,28 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-     <link rel="stylesheet" href="css/login.css" />
-    <link rel="Stylesheet" href="css/customControls.css" />
-    <link rel="stylesheet" href="css/xMask.css" />
-    <link rel="stylesheet" href="css/xDatePicker.css" />
-    <link rel="stylesheet" href="css/xSplitButton.css" />
-    <link rel="stylesheet" href="css/xGridPanel.css" />
-    <link rel="stylesheet" href="css/xWindowPopup.css" />
-    <link rel="stylesheet" href="css/xTabPanel.css"/>
-    <link rel="stylesheet" href="css/xComboBox.css"/>
-    <link rel="stylesheet" href="css/xCustomChart.css"/>
-    <link rel="stylesheet" href="css/xIcons.css"/>
-    <link rel="stylesheet" href="css/xToolbar.css"/>
-    <link rel="stylesheet" href="css/xLabel.css"/>
-    <link rel="stylesheet" href="css/xTreePanel.css"/>
-    <link rel="stylesheet" href="css/xHiperlink.css"/>
-    <link rel="stylesheet" href="css/xTextField.css"/>
-    <link rel="stylesheet" href="css/xFieldSet.css"/>
-    <link rel="stylesheet" href="css/xPanel.css"/>
-    <link rel="stylesheet" href="css/xButton.css"/>
+    <%Response.WriteFile("Header.htm");%>
     <script type='text/javascript' src="js/tableroOrdenesCambios.js"></script>
-
-    
+    <script type="text/javascript" src="js/libs/jquery-2.0.3.min.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
@@ -155,6 +136,7 @@
                                 <ext:ModelField Name="RCuadrilla" Type="Object" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
+                                 <ext:ModelField Name="NoOrden" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -168,21 +150,62 @@
             </Store>
             <ColumnModel>
                 <Columns>
+                    
                     <ext:Column 
                         ID="cMovimiento"
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="190"
+                        Width="170"
                         DataIndex="Mov">
                         <Renderer Fn="cMov_Renderer" />
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbMovimiento"
+                                runat="server"
+                                ForceSelection="true"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="Orden de Cambio" Value="Orden de Cambio"/>
+                                    <ext:ListItem Index="2" Text="Orden de Compra" Value="Orden de Compra"/>
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbMovimientoFiltro_Select" />
+                                </Listeners>
+                            </ext:ComboBox>
+                        </HeaderItems> 
                     </ext:Column>
+                    
+                      <ext:Column
+                        ID="cNoOrden"
+                        runat="server"
+                        Text="No.Orden"
+                        Align="Center"
+                        Width="70"
+                        DataIndex="NoOrden"> 
+                        <Renderer Fn="cNoOrden_Renderer"></Renderer>
+                        <HeaderItems> 
+                        <ext:TextField
+                                ID="txtReporte"
+                                EmptyText="Buscar"
+                                runat="server">
+                                <Listeners>
+                                    <Change Fn="txtNoOrdenFiltro_Change" />
+                                </Listeners>
+                            </ext:TextField>
+                        </HeaderItems>
+                    </ext:Column>
+
                     <ext:Column
                         ID="cSucursal"
                         runat="server"
                         Text="SUCURSAL"
                         Align="Left"
-                        Width="275"
+                        Width="260"
                         DataIndex="Sucursal">
                       <Renderer Fn="cSucursal_Renderer" />
                         <HeaderItems>
@@ -226,7 +249,7 @@
                         runat="server"
                         Text="FECHA EMISIÓN"
                         Align="Center"
-                        Width="155"
+                        Width="135"
                         DataIndex="FechaEmision"
                         Format="dd/MM/yyyy">
                         <HeaderItems>
@@ -271,7 +294,7 @@
                         runat="server"
                         Text="ESTATUS"
                         Align="Center"
-                        Width="155"
+                        Width="135"
                         DataIndex="Estatus">
                         <HeaderItems>
                             <ext:ComboBox
@@ -289,9 +312,9 @@
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                              <%--  <Listeners>
+                                <Listeners>
                                     <Select Fn="cmbEstatusFiltro_Select" />
-                                </Listeners>--%>
+                                </Listeners>
                               
 
                             </ext:ComboBox>
@@ -304,7 +327,7 @@
                         runat="server"
                         Text="USUARIO"
                         Align="Center"
-                        Width="155"
+                        Width="135"
                         DataIndex="Usuario">
                         <HeaderItems>
                              <ext:ComboBox
@@ -377,7 +400,6 @@
                 </ext:StatusBar>
             </FooterBar>
         </ext:GridPanel>
-
     </form>
 </body>
 </html>

@@ -70,6 +70,7 @@
                                     <ExtraParams>
                                        <ext:Parameter Name="DescripcionCorta" Value="App.txtDescripcionCorta.getValue()" Mode="Raw" />
                                         <ext:Parameter Name="GeneradorD" Value="Ext.encode(#{sFormaGenerador}.getRecordsValues())" Mode="Raw" />
+                                        <ext:Parameter Name="vPlano" Value="App.txtPlano.getValue().length > 0 ? App.txtPlano.getValue():''" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
@@ -89,7 +90,7 @@
                                 <Click Handler="window.parent.App.wGenerador.hide();" />
                             </Listeners>
                         </ext:ImageButton>
-
+                        
                         <ext:TextField
                         ID="txtDescripcionCorta" 
                         runat="server" 
@@ -105,6 +106,21 @@
                                      }">
                                 </SpecialKey>--%>
                                <%-- <SpecialKey Fn="txtDescripcion_Corta_SpecialKey"></SpecialKey>--%>
+                            </Listeners>
+                        </ext:TextField>
+
+
+                        <ext:TextField
+                        ID="txtPlano" 
+                        runat="server"  
+                        Width="300"
+                        EmptyText="Descripción del plano" MaxLength="20" EnforceMaxLength="true" AllowBlank="false">
+                            <Listeners>
+                                 <SpecialKey Handler="if (e.keyCode == 10) {
+                                 App.gpFormaGenerador.editingPlugin.startEdit(0, 0);
+
+                                     }">
+                                </SpecialKey>
                             </Listeners>
                         </ext:TextField>
                     </Items>
@@ -133,6 +149,7 @@
                                     <ext:ModelField Name="Cantidad" Type="Float" />
                                     <ext:ModelField Name="Total" Type="Float" />
                                     <ext:ModelField Name="RConcepto" Type="Object" />
+                                    <ext:ModelField Name="Plano" Type="String" />
                                 </Fields>
                             </ext:Model>
                         </Model>

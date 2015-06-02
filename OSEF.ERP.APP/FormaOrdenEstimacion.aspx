@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <link rel="stylesheet" href="css/xButton.css"/>
     <script type='text/javascript' src="js/formaOrdenEstimacion.js"></script>
     
 </head>
@@ -73,6 +72,8 @@
                         <ext:ModelField Name="ImporteFinal" Type="Float" />
                         <ext:ModelField Name="RutaImagen" Type="String" />
                         <ext:ModelField Name="Atendido" Type="String" />
+                        <ext:ModelField Name="NoOrden" Type="String" />
+                        <ext:ModelField Name="ReferenciaOrden" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -390,6 +391,7 @@
                                                         <Change Fn="sMov_Change" />
                                                     </Listeners>
                                                 </ext:ComboBox>
+
                                                 <ext:TextField
                                                     ID="txtfMovID"
                                                     runat="server"
@@ -397,6 +399,17 @@
                                                     Margins="0 50 0 0"
                                                     Disabled="true">
                                                 </ext:TextField>
+
+                                                <ext:Checkbox 
+                                                ID="chkBoxOrdenCompra" 
+                                                 runat="server" 
+                                                 FieldLabel="O. Compra">
+                                                    <Listeners>
+                                                        <AfterRender Fn="chkBoxOrdenCompra_AfterRender" />
+                                                        <Change Fn="chkBoxOrdenCompra_AfterRender" />
+                                                    </Listeners>
+                                                </ext:Checkbox>
+
                                                 <ext:TextField 
                                                     ID="txtOrigen" 
                                                     runat="server" 
@@ -407,6 +420,7 @@
                                                     Width="200" 
                                                     Disabled="true"> 
                                                 </ext:TextField>
+
                                                 <ext:TextField 
                                                     ID="txtOrigenID" 
                                                     FieldLabel="Origen ID"
@@ -416,6 +430,7 @@
                                                     Width="180" 
                                                     Disabled="true"> 
                                                 </ext:TextField>
+                                            
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer
@@ -484,6 +499,25 @@
                                                         Cls="my-date-picker">
                                                     </PickerOptions>
                                                 </ext:DateField>
+
+                                                 <ext:TextField 
+                                                    ID="txtNoOrden" 
+                                                    FieldLabel="No. Orden"
+                                                    LabelWidth="70"
+                                                    runat="server" 
+                                                    Margins="0 3 0 0"
+                                                    Width="180" 
+                                                    ReadOnly="true"
+                                                    > 
+                                                </ext:TextField>
+
+                                                <ext:TextField 
+                                                    ID="txtReferenciaOrden" 
+                                                    EmptyText="REFERENCIA ORDEN"
+                                                    LabelWidth="90"
+                                                    runat="server" 
+                                                    Width="177" > 
+                                                </ext:TextField>
                                                 
                                             </Items>
                                         </ext:FieldContainer>
@@ -1031,8 +1065,7 @@
                                             </Model>
                                             <Listeners>
                                                 <Update Fn="sConceptos_DataUpdate" ></Update>
-                                                <Load Fn="sConceptos_Load"></Load>
-                                                
+                                                <Load Fn="sConceptos_Load"></Load> 
                                             </Listeners>
                                         </ext:Store>
                                     </Store>
@@ -1055,14 +1088,16 @@
                                                 <Listeners>
                                                     <Command Fn="ccAcciones_Command" />
                                                 </Listeners>
-                                            </ext:CommandColumn>
+                                            </ext:CommandColumn> 
+                                            
                                             <ext:Column
                                                 ID="cIDPreciario"
                                                 runat="server"
-                                                Text="Concepto"
+                                                Text="CLAVE"
                                                 Width="105"
-                                                DataIndex="ConceptoID">
-                                            </ext:Column>
+                                                DataIndex="RPreciarioConceptos">
+                                                <Renderer Fn="cRenderer_Clave"></Renderer>
+                                            </ext:Column> 
                                             <ext:CommandColumn
                                                 ID="ccConcepto"
                                                 runat="server" 
@@ -1083,6 +1118,7 @@
                                                 ID="cIntExt"
                                                 runat="server"
                                                 Text="Int/Ext"
+                                                Visible="true"
                                                 Width="75"
                                                 DataIndex="IntExt">
                                                 <Editor>
@@ -1120,7 +1156,7 @@
                                                         MaxLength="10"
                                                         EnforceMaxLength="true"
                                                         MaxValue="999999999"
-                                                        MinValue="0"
+                                                        MinValue="1"
                                                         Step="1">
                                                         <Listeners>
                                                             <Change Fn="calcularImporteCantidad_Change"></Change>

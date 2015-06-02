@@ -118,3 +118,20 @@ ALTER TABLE OrdenesEstimaciones ADD Atendido VARCHAR(5) NULL
 
 --Cambios Giovanni Flores 18 de Mayo 2015
 ALTER TABLE OrdenesEstimaciones ADD MovEnLinea BIT NULL
+
+--Cambios Giovanni Flores 21 de Mayo 2015
+ALTER TABLE ImagenesOrdenEstimacionD ALTER COLUMN Nombre VARCHAR(500) NOT NULL
+ALTER TABLE FacturasOrdenEstimacionD ALTER COLUMN Nombre VARCHAR(500) NOT NULL
+ALTER TABLE CroquisOrdenEstimacionD ALTER COLUMN Nombre VARCHAR(500) NOT NULL
+
+--Cambios Giovanni Flores 26 de Mayo 2015
+ALTER TABLE GeneradorOrdenEstimacionD ADD Plano CHAR(20) NULL
+
+--Cambios Giovanni Flores 27 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones ADD NoOrden CHAR(3) NULL
+
+--Cambios Giovanni Flores 29 de Mayo 2015
+ALTER TABLE OrdenesEstimaciones ADD ReferenciaOrden VARCHAR(90) NULL
+
+--Cambios Giovanni Flores 01 de Junio 2015
+ALTER TABLE OrdenesEstimaciones ADD Facturado BIT NULL

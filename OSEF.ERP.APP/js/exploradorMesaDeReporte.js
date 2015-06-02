@@ -154,7 +154,22 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
             else { return false; }
         }
         }]);
-    }
+    } 
+}; 
 
+var sMesaDeReporte_Load = function (avance, registro, index) { 
+    var sum = 0;
+    App.sMesaDeReporte.each(function (record) {
+        sum += record.get('ImporteTotal');
+    });
 
-};
+    var F = Ext.util.Format;
+    F.thousandSeparator = ',';
+    F.decimalSeparator = '.';
+    App.ToolBarTotal.setText('TOTAL: $' + F.number(sum, "000,000,000.00"));
+}
+var showResult = function (t) {
+    if (t) {
+        App.sMesaDeReporte.reload();
+    } 
+}

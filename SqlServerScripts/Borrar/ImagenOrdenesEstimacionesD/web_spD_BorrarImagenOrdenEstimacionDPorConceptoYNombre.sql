@@ -31,7 +31,7 @@ CREATE PROCEDURE web_spD_BorrarImagenOrdenEstimacionDPorConceptoYNombre
 	-- Add the parameters for the stored procedure here
 	@ID					INT,
 	@Concepto	CHAR(10),
-	@NombreIMG		VARCHAR(50)
+	@NombreIMG		VARCHAR(500)
 
 AS
 BEGIN

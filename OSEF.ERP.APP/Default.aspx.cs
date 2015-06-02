@@ -79,5 +79,13 @@ namespace OSEF.ERP.APP
             FormsAuthentication.SignOut();
             Response.Redirect("~/Login.aspx", true);   
         }
+
+        [DirectMethod]
+        public Usuario getData()
+        {
+            Usuario oUsuario = (Usuario)Session["Usuario"];
+            //string str = "http://localhost:81/PlantasElectricas/index.php?txtUsr=" + oUsuario.Nombre + "&txtPwd=" + oUsuario.Contrasena;
+            return oUsuario;
+        }
     }
 }

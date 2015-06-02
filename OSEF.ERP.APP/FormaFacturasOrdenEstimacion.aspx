@@ -56,19 +56,38 @@
 
         });
         var onDelete_image = function (conceptoID, ID, nombreIMG) {
-            App.direct.BorrarFactura(conceptoID, ID, nombreIMG);
-            App.sImagenesOrdenEstimacionD.reload({
-                callback: function () {
-                    App.direct.onLoadDataFactura();
-                }
-            }); 
+
+            Ext.Msg.show({
+                id: 'msgEliminaImagen',
+                title: 'Advertencia',
+                msg: '¿Estás seguro de eliminar la factura: '+nombreIMG+'? ',
+                buttons: Ext.MessageBox.YESNO,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                fn: function (btn) { 
+                    if (btn === 'yes') {
+                        App.direct.BorrarFactura(conceptoID, ID, nombreIMG);
+                        App.sImagenesOrdenEstimacionD.reload({
+                            callback: function () {
+                                App.direct.onLoadDataFactura();
+                            }
+                        });
+                        window.parent.App.wEmergente.getBody().App.sConceptos.reload({
+                            callback: function () {
+                                window.parent.App.wEmergente.getBody().App.direct.sOrdenMantenimiento_Load();
+                            }
+                        });
+                    }
+                },
+                icon: Ext.MessageBox.WARNING
+            });
         };
 	</script>
 
     <ext:XScript ID="XScript1" runat="server">
         <script>
             var prepareData = function (data) {
-                data.Nombre = Ext.util.Format.ellipsis(data.Nombre, 50);
+                data.Nombre = Ext.util.Format.ellipsis(data.Nombre, 500);
                 return data;
             };
         </script>

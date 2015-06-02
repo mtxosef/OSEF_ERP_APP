@@ -274,6 +274,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfMovID;
         
         /// <summary>
+        /// Control chkBoxOrdenCompra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkBoxOrdenCompra;
+        
+        /// <summary>
         /// Control txtOrigen.
         /// </summary>
         /// <remarks>
@@ -353,6 +362,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.DateField dfFechaEmision;
+        
+        /// <summary>
+        /// Control txtNoOrden.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtNoOrden;
+        
+        /// <summary>
+        /// Control txtReferenciaOrden.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtReferenciaOrden;
         
         /// <summary>
         /// Control fcObservaciones.

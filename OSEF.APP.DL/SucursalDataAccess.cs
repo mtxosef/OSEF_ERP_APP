@@ -593,6 +593,89 @@ namespace OSEF.APP.DL
 
 
         /// <summary>
+        /// Obtener todos los registros de Sucursales en uso
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesEnUsoEnConcluidos()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerSucursalesEnUsoEnConcluidos";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<Sucursal> result = LibraryGenerics<Sucursal>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<Sucursal> ObtenerSucursalesEnUsoEnConcluidos()): " + ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Obtener todos los registros de Sucursales en uso Ordenes de cambio
+        /// </summary>
+        /// <returns></returns>
+        public static List<Sucursal> ObtenerSucursalesEnUsoEnOrdenesDeCambio()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerSucursalesEnUsoOrdenesDeCambio";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<Sucursal> result = LibraryGenerics<Sucursal>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<Sucursal> ObtenerSucursalesEnUsoEnOrdenesDeCambio()): " + ex.Message);
+            }
+        }
+
+
+
+        /// <summary>
         /// Obtener todos los registros de Sucursales
         /// </summary>
         /// <returns></returns>

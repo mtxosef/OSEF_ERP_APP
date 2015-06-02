@@ -63,7 +63,7 @@ var sCodigoPPTA_Add = function (sucursal, registro) {
 
     //    App.txtID.setValue(registro[0].get('ID'));
 //    App.cmbEspecialidad.setValue(registro[0].get('REspecialidad').ID);
-    App.txtCodigoMainSaver.setValue(registro[0].get('CodigoMainSaver'));
+    App.txtCodigoMainSaver.setValue(registro[0].get('CodigoMainSaver').trim());
 //    App.txtDescripcion.setValue(registro[0].get('Descripcion'));
     App.txtDias.setValue(registro[0].get('Dias'));
 //    App.txtPrioridad.setValue(registro[0].get('Prioridad'));

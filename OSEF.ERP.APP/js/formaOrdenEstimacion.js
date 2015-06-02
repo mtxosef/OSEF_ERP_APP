@@ -16,12 +16,31 @@ var imgbtnFormaNuevo_Click = function () {
     if (tablero == 'REPORTES & ESTIMACIONES') {
         App.cmbMov.select('Mesa de reporte');
         App.cmbMov.setReadOnly(true);
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
+        App.chkBoxOrdenCompra.setVisible(false);
+
+
     }
     else {
         App.cmbMov.select('Orden de Cambio');
         App.cmbMov.setReadOnly(true);
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
+        App.chkBoxOrdenCompra.setVisible(true);
+        App.chkBoxOrdenCompra.setDisabled(false);
+        App.chkBoxOrdenCompra.setReadOnly(false);
+        App.chkBoxOrdenCompra.setValue(false);
     }
 
+
+    App.txtNoOrden.setValue('');
+
+    App.txtReferenciaOrden.setDisabled(false);
+    App.txtReferenciaOrden.setReadOnly(false);
+    App.txtReferenciaOrden.setValue('');
+
+    
 
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
@@ -61,7 +80,6 @@ var imgbtnFormaNuevo_Click = function () {
     App.tHoraOrigen.setReadOnly(false);
     App.chkAtendido.setValue(false);
 
-
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
@@ -75,7 +93,7 @@ var imgbtnFormaNuevo_Click = function () {
 
 var imgbtnImprimir_Click = function () {
     if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte' || App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
-          Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue()); 
+        Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue());
         window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
         window.parent.App.wGenerador.setHeight(160);
         window.parent.App.wGenerador.setWidth(590);
@@ -109,13 +127,25 @@ var sMov_Add = function (store, registros, index, eOpts) {
         //identificamos que tablero de que modulo es
         var tablero = window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.title;
 
+
+
         if (tablero == 'REPORTES & ESTIMACIONES') {
             App.cmbMov.select('Mesa de reporte');
             App.cmbMov.setReadOnly(true);
+            //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+            Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
+            App.chkBoxOrdenCompra.setVisible(false);
+            App.txtReferenciaOrden.setVisible(false);
+
+
         }
         else {
             App.cmbMov.select('Orden de Cambio');
             App.cmbMov.setReadOnly(true);
+            //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+            Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
+            App.chkBoxOrdenCompra.setVisible(true);
+            App.txtReferenciaOrden.setVisible(true);
         }
 
         // App.cmbMov.setReadOnly(true);
@@ -131,12 +161,19 @@ var sMov_Change = function (combo) {
         //   App.pDatosReporte.show(); 
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
-        App.cIntExt.hidden = false;
-
-        App.fufNormal.hidden=false;
+        //  App.cIntExt.hidden = false;
+        App.cIntExt.setVisible(true);
+        App.fufNormal.hidden = false;
         App.imgNormal.hidden = false;
 
+        App.txtNoOrden.setVisible(false);
 
+
+        App.txtReferenciaOrden.setVisible(false);
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
+
+        App.chkBoxOrdenCompra.setVisible(false);
 
     }
 
@@ -146,9 +183,13 @@ var sMov_Change = function (combo) {
         App.pDatosReporte.tab.hide();
         App.pDatosReporteDos.tab.hide();
         App.pDatosReporte.hide();
+        //  App.cIntExt.setVisible(false);
         App.cIntExt.hidden = true;
-     
-       
+        App.txtNoOrden.setVisible(true);
+        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+        Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
+
+        App.txtReferenciaOrden.setVisible(true);
     }
     App.gpOrdenEstimacion.reconfigure();
 };
@@ -167,12 +208,12 @@ var cmbMov_Select = function (combobox, registro) {
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') == 'Nuevo') {
         App.sConceptos.removeAll();
     }
-        //Validar si se asigna el primer renglon del detalle
-        PrimerRenglonDetalle();
-        //Validar si se habilita el boton de afectar
-        HabilitarAfectar();
-        //Validar si se habilita Guardar
-        HabilitarGuardar();
+    //Validar si se asigna el primer renglon del detalle
+    PrimerRenglonDetalle();
+    //Validar si se habilita el boton de afectar
+    HabilitarAfectar();
+    //Validar si se habilita Guardar
+    HabilitarGuardar();
 };
 
 //Evento de clic del botón BuscarSucursal
@@ -240,12 +281,18 @@ var imgbtnGuardar_Click_Success = function (response, result) {
         //3. Actualiza al estatus BORRADOR de la captura
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
 
+
         //4. Recargar el tablero
         window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
+      
 
+       
         //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + App.sOrdenEstimacion.getAt(0).get('ID'));
+        App.txtNoOrden.setValue(App.sOrdenEstimacion.getAt(0).get('NoOrden'));
+
+
         App.cmbMov.setReadOnly(true);
         //6. Deshabilita los comandos del grid
         App.ccFotos.commands[0].disabled = false;
@@ -309,11 +356,11 @@ var imgbtnBorrar_Click_Success = function (response, result) {
     //Se actualiza el tablero
     window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     window.parent.App.wEmergente.hide();
-  
+
 };
 
 //Método que se lanza antes de llamar al procedimiento de Afectar
-var imgbtnAfectar_Click_Before = function () { 
+var imgbtnAfectar_Click_Before = function () {
     Ext.util.Cookies.set('cookieEsEstimacion', 'No');
 
     if (App.sOrdenEstimacion.getCount() != 0) {
@@ -345,7 +392,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
     //1. Actualizar el store del tablero
     window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
     var d = new Date();
-   
+
     if (result.extraParamsResponse.mov == 'Estimacion') {
 
         //2. Lanzar ventana de movimiento afectado
@@ -358,6 +405,8 @@ var imgbtnAfectar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
+
+
         App.sConceptos.removeAt(App.sConceptos.getCount() - 1);
         //Actualizar campos 
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
@@ -372,7 +421,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.dfFechaEmision.setValue(d);
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
 
-        
+
 
         //6. Deshabilita los comandos del grid
         App.ccFotos.commands[0].disabled = false;
@@ -434,7 +483,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnImprimir.setDisabled(false);
 
-        
+
 
         //3. Remover la útima fila
         var ultimoRegistro = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
@@ -468,13 +517,34 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         });
 
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
+
         App.cmbMov.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
-        App.txtfObservaciones.setDisabled(true);
+        App.dfFechaEmision.setReadOnly(true);
+        App.txtfObservaciones.setReadOnly(true);
+        App.txtfNoReporte.setReadOnly(true);
+        App.cmbDivision.setReadOnly(true);
+        App.dfFechaOrigen.setReadOnly(true);
+        App.dfFechaMaxima.setReadOnly(true);
+        App.tHoraOrigen.setReadOnly(true);
+        App.nfDiasAtencion.setReadOnly(true);
+        App.txtfReporta.setReadOnly(true);
+        App.txtfTrabajoRequerido.setReadOnly(true);
+        App.txtfCodigoFalla.setReadOnly(true);
+        App.dfFechaLlegada.setReadOnly(true);
+        App.tfHoraLlegada.setReadOnly(true);
+        App.dfFechaFinActividad.setReadOnly(true);
+        App.tfHoraFinActividad.setReadOnly(true);
+        App.cmbCuadrilla.setReadOnly(true);
+        App.chkAtendido.setReadOnly(true);
+        App.txtNoOrden.setReadOnly(true);
+        App.chkBoxOrdenCompra.setReadOnly(true);
+        App.txtReferenciaOrden.setReadOnly(true);
+
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
-
+        App.txtNoOrden.setValue(App.sOrdenEstimacion.getAt(0).get('NoOrden'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
 
         //Deshabilita boton de afectar porque aqui concluye el flujo
@@ -505,7 +575,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
 
     }
     //4. Recargar el tablero
-   
+
     window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload({
         callback: function () {
             window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.getSelectionModel().select(window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.find("Id", Ext.util.Cookies.get('cookieEditarOrdenEstimacion')));
@@ -551,10 +621,18 @@ var imgbtnCancelar_Click_Success = function (response, result) {
     App.tfHoraFinActividad.setReadOnly(true);
     App.cmbCuadrilla.setReadOnly(true);
     App.tHoraOrigen.setReadOnly(true);
+
+    App.txtNoOrden.setReadOnly(true);
+    App.txtReferenciaOrden.setReadOnly(true);
+    
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     App.imgbtnImprimir.setDisabled(true);
+
     App.imgbtnAfectar.setDisabled(true);
+
+    App.chkBoxOrdenCompra.setDisabled(true);
+
     window.parent.App.wEmergente.setTitle('Movimiento Cancelado');
 };
 
@@ -565,14 +643,13 @@ var sOrdenesMantenimiento_Load = function () {
     App.direct.sOrdenMantenimiento_Load();
     // store = window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones;
 
-  
+
 
 
 };
 
 //Evento lanzado al agregar un registro al store
-var sOrdenesMantenimiento_Add = function (avance, registro) {
-   
+var sOrdenesMantenimiento_Add = function (avance, registro) { 
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
     && registro[0].get('Mov').trim() == "Orden de Cambio") {
@@ -586,11 +663,47 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
+        App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
         //Deshabilita los campos en un movimiento afectado
-        App.cIntExt.hidden = true;
+        //     App.cIntExt.hidden = true;
+        App.txtReferenciaOrden.setReadOnly(true);
+        App.cmbMov.setReadOnly(true);
+        App.chkBoxOrdenCompra.setVisible(false);
+        App.txtfSucursalCR.setDisabled(true);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnAfectar.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(true);
+        App.imgbtnCancelar.setDisabled(false);
+        App.txtfObservaciones.setDisabled(true);
+        App.imgbtnImprimir.setDisabled(false);
+        App.txtNoOrden.setReadOnly(true);
+    }
+
+    //Si es orden de cambio concluida
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
+    && registro[0].get('Mov').trim() == "Orden de Compra") { 
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
+        App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
+        //Deshabilita los campos en un movimiento afectado
+        //     App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
 
+        App.chkBoxOrdenCompra.setVisible(true);
+        App.chkBoxOrdenCompra.setValue(true);
+        App.chkBoxOrdenCompra.setDisabled(true);
 
+        App.txtReferenciaOrden.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnAfectar.setDisabled(true);
@@ -632,7 +745,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnImprimir.setDisabled(false);
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
-        App.cIntExt.hidden = false;
+        //  App.cIntExt.hidden = false;
 
         App.cmbMov.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
@@ -701,7 +814,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
             App.chkAtendido.setValue(false);
         }
 
-        App.cIntExt.hidden = false;
+        //     App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
         App.cmbMov.setReadOnly(true);
@@ -724,8 +837,39 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
+        App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
+        App.chkBoxOrdenCompra.setVisible(false);
 
-        App.cIntExt.hidden = true;
+        //      App.cIntExt.hidden = true;
+        App.cmbMov.setReadOnly(true);
+        App.txtfSucursalCR.setDisabled(false);
+        App.dfFechaEmision.setDisabled(true);
+        App.imgbtnGuardar.setDisabled(false);
+        App.imgbtnBorrar.setDisabled(false);
+    }
+
+    //Si es Orden de cambio Y NO ESTA AFECTADO
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR'
+         && registro[0].get('Mov').trim() == "Orden de Compra") {
+
+        App.cmbMov.setValue(registro[0].get('Mov'));
+        App.txtfMovID.setValue(registro[0].get('MovID'));
+        App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
+        App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
+        App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
+        App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
+        App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
+        App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
+        App.txtNoOrden.setValue(registro[0].get('NoOrden'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
+        App.chkBoxOrdenCompra.setValue(true);
+        App.chkBoxOrdenCompra.setDisabled(false);
+
+        App.chkBoxOrdenCompra.setVisible(true);
+
+        //    App.cIntExt.hidden = true;
         App.cmbMov.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(false);
         App.dfFechaEmision.setDisabled(true);
@@ -752,6 +896,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
+        App.txtNoOrden.setValue(registro[0].get('NoOrden'));
         App.txtfNoReporte.setValue(registro[0].get('Reporte'));
         App.cmbDivision.setValue(registro[0].get('Division'));
         App.dfFechaOrigen.setValue(registro[0].get('FechaOrigen'));
@@ -766,6 +912,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
+        App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
 
         if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
             App.chkAtendido.setValue(true);
@@ -791,7 +938,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setReadOnly(true);
         App.cmbCuadrilla.setReadOnly(true);
 
-        App.cIntExt.hidden = false;
+        //      App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
         App.pDatosReporteDos.tab.show();
         App.cmbMov.setReadOnly(true);
@@ -821,7 +968,10 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.imgbtnAfectar.setDisabled(true);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(true);
+        App.imgbtnBorrar.setDisabled(true);
         App.txtfObservaciones.setDisabled(true);
+        App.txtReferenciaOrden.setDisabled(true);
+        App.chkBoxOrdenCompra.setVisible(false);
     }
 
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
@@ -839,7 +989,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         var storeDetalle = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
 
         //Validaciones antes de cargar el detalle del movimiento
-        if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+        if (App.cmbMov.getValue().trim() == "Orden de Cambio" || App.cmbMov.getValue().trim() == "Orden de Compra") {
 
 
             if (storeDetalle.get('ConceptoID').length != 0 && storeDetalle.get('Cantidad') != 0 && storeDetalle.get('Precio') != 0) {
@@ -918,7 +1068,7 @@ var cImporte_Renderer = function (valor) {
 //Calular Importe cuando la columna de precio cambia
 var calcularImportePrecio_Change = function (component) {
     var valorCantidad = App.sConceptos.getAt(indiceDetalle).data.Cantidad;
-   
+
     if (valorCantidad == null || valorCantidad == "") {
         valorCantidad = 0;
     }
@@ -930,7 +1080,7 @@ var calcularImportePrecio_Change = function (component) {
 //Calcula el importe cuando cambia la cantidad
 var calcularImporteCantidad_Change = function (component) {
     var valorPrecio = App.sConceptos.getAt(indiceDetalle).data.Precio;
-   
+
     if (valorPrecio == null || valorPrecio == "") {
         valorPrecio = 0;
     }
@@ -966,7 +1116,7 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
     if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
         //Verificar si toda la fila contiene datos
 
-        if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+        if (App.cmbMov.getValue().trim() == "Orden de Cambio" || App.cmbMov.getValue().trim() == "Orden de Compra") {
 
 
             if (registro.get('ConceptoID').length != 0 && registro.get('Cantidad') != 0 && registro.get('Precio') != 0) {
@@ -994,20 +1144,15 @@ var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) 
                 //Validar si se habilita el boton de afectar
                 HabilitarAfectar();
             }
-
-
         }
-
-
     }
-
 }
 
 //Evento que se lanza despues de editar una columna en PreciarioConceptoOrdenEstimacion
 var cePreciarioConcepto_Edit = function (cellediting, columna) {
 
 
-    if (App.cmbMov.getValue().trim() == "Orden de Cambio") {
+    if (App.cmbMov.getValue().trim() == "Orden de Cambio" || App.cmbMov.getValue().trim() == "Orden de Compra") {
         //Verificar si abajo de esta columna existe otra
         if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
             //Verificar si toda la fila contiene datos
@@ -1074,13 +1219,13 @@ var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
 
     indiceDetalle = index;
 
-//    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
-//        && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
+    //    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
+    //        && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
 
-//        App.imgbtnImprimir.setDisabled(false);
-//    }
-//    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
-//    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+    //        App.imgbtnImprimir.setDisabled(false);
+    //    }
+    //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
+    //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
     App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
@@ -1091,15 +1236,15 @@ var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
 var obetenerRenglon_Select = function (a, registro, c) {
     indiceDetalle = registro.internalId;
 
-//    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
-//            && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
+    //    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
+    //            && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
 
-//        App.imgbtnImprimir.setDisabled(false);
+    //        App.imgbtnImprimir.setDisabled(false);
 
-//    }
+    //    }
 
-//    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
-//    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+    //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
+    //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
     App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
@@ -1146,21 +1291,15 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
 
 
 var sConceptos_Load = function (avance, registro, index) {
-
     var sum = 0;
     App.sConceptos.each(function (record) {
-
         sum += record.get('Importe');
     });
-
     var F = Ext.util.Format;
     F.thousandSeparator = ',';
     F.decimalSeparator = '.';
     App.dfTotal.setValue('' + F.number(sum, "$000,000,000.00"));
     App.dfTotalSinRender.setValue(sum);
-
- 
-
 }
 
 
@@ -1169,11 +1308,11 @@ var sConceptos_Load = function (avance, registro, index) {
 var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
     if (grid.getStore().getCount() - 1 == rowIndex) {
         toolbar.items.get(0).hide();
-     
+
     }
-  
+
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
         //Toma el primer elemento de la columna para poder desabilitarlo
         var botonEliminar = toolbar.items.get(0);
@@ -1182,7 +1321,7 @@ var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
     }
 
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de borrar
-        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
 
         //Toma el primer elemento de la columna para poder desabilitarlo
         var botonEliminar = toolbar.items.get(0);
@@ -1227,7 +1366,7 @@ var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 //Validaciones de comandos para conceptos
 var ccConcepto_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-    
+
     //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver conceptos
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
 
@@ -1330,14 +1469,14 @@ var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 
 //Lo que hace el comando de fotos
 var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
-    
+
 
 
     //Valida que se escocja un concepto antes
     if (registro.get('ConceptoID') != '') {
 
         Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
-    
+
         if (nombre == 'cnCargarFotos') {
             window.parent.App.wGenerador.load('FormaSubirImagenesOrdenEstimacion.aspx');
             window.parent.App.wGenerador.setHeight(350);
@@ -1373,6 +1512,8 @@ var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
 
 //Lo que hace el comando de croquis
 var ccCroquis_Command = function (column, nombre, registro, renglon, opciones) {
+
+
 
     //Valida que se escocja un concepto antes
     if (registro.get('ConceptoID') != '') {
@@ -1577,7 +1718,7 @@ var ccGenerador_Command = function (columna, comando, registro, fila, opciones) 
 
 
         Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
-       
+
         window.parent.App.wGenerador.load('FormaGenerador.aspx');
         window.parent.App.wGenerador.setHeight(310);
         window.parent.App.wGenerador.setWidth(915);
@@ -1624,63 +1765,59 @@ function PrimerRenglonDetalle() {
 
 
     if (App.cmbMov.getValue() != null && App.txtfSucursalCR.getValue() != '') {
-  
-            var store = App.gpOrdenEstimacion.getStore();
-            if (store.getCount() == 0) {
 
-                    //Insertar el primer registro
-                    store.insert(0, { Renglon: 0 });
-            
-            }
-        }
-    };
+        var store = App.gpOrdenEstimacion.getStore();
+        if (store.getCount() == 0) {
 
-    //Función que valida si se habilita el botón de Guardar
-    function HabilitarGuardar() {
+            //Insertar el primer registro
+            store.insert(0, { Renglon: 0 });
 
-        if (App.cmbMov.getValue() != null && App.txtfSucursalCR.getValue() != '') {
-            App.imgbtnGuardar.setDisabled(false);
-        }
-        else {
-            App.imgbtnGuardar.setDisabled(true);
         }
     }
+};
 
-    //Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
-    var validaConcluidos = function (a, d, f) {
-        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
-            return false;
-        }
-        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
-            return false;
-        }
-        //si es estimacion ya no se pueden editar
-        if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
-            return false;
-        }
-        else {
-            return true
-        }
-    };
+//Función que valida si se habilita el botón de Guardar
+function HabilitarGuardar() {
+
+    if (App.cmbMov.getValue() != null && App.txtfSucursalCR.getValue() != '') {
+        App.imgbtnGuardar.setDisabled(false);
+    }
+    else {
+        App.imgbtnGuardar.setDisabled(true);
+    }
+}
+
+//Evento que valida si ya esta concluido para bloquear el detalle y si es borrador no hace nada si ya esta concluido o cancelado
+var validaConcluidos = function (a, d, f) {
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO') {
+        return false;
+    }
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CANCELADO') {
+        return false;
+    }
+    //si es estimacion ya no se pueden editar
+    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
+        return false;
+    }
+    else {
+        return true
+    }
+};
 
 
-    //Validar si se habilita el botón d Afectar
-    function HabilitarAfectar() {
-   
-        //Obtiene la fecha de emision del store
-        if (App.cmbMov.getValue() != null && App.txtfSucursalCR.getValue() != '') {
+//Validar si se habilita el botón d Afectar
+function HabilitarAfectar() {
 
-            if (App.cmbMov.isValid() && App.txtfSucursalCR.isValid()) {
+    //Obtiene la fecha de emision del store
+    if (App.cmbMov.getValue() != null && App.txtfSucursalCR.getValue() != '') {
 
-                if (App.gpOrdenEstimacion.getStore().getCount() != 0) {
+        if (App.cmbMov.isValid() && App.txtfSucursalCR.isValid()) {
 
-                    if (App.sConceptos.getAt(0).get('ConceptoID').length != 0 && App.sConceptos.getAt(0).get('Cantidad') != 0 && App.sConceptos.getAt(0).get('Precio') != 0) {
+            if (App.gpOrdenEstimacion.getStore().getCount() != 0) {
 
-                        App.imgbtnAfectar.setDisabled(false);
-                    }
-                }
-                else {
-                    App.imgbtnAfectar.setDisabled(true);
+                if (App.sConceptos.getAt(0).get('ConceptoID').length != 0 && App.sConceptos.getAt(0).get('Cantidad') != 0 && App.sConceptos.getAt(0).get('Precio') != 0) {
+
+                    App.imgbtnAfectar.setDisabled(false);
                 }
             }
             else {
@@ -1691,55 +1828,59 @@ function PrimerRenglonDetalle() {
             App.imgbtnAfectar.setDisabled(true);
         }
     }
-
-    //Función que deshabilita todos los controles cuando se afecta un movimiento
-    function DeshabilitarControlesAfectar() {
-        App.cmbMov.setReadOnly(true);
-        App.txtfSucursalCR.setDisabled(true);
-        App.dfFechaEmision.setDisabled(true);
-        App.txtfObservaciones.setDisabled(true);
-        App.imgbtnGuardar.setDisabled(true);
-        App.imgbtnBorrar.setDisabled(true);
+    else {
+        App.imgbtnAfectar.setDisabled(true);
     }
+}
+
+//Función que deshabilita todos los controles cuando se afecta un movimiento
+function DeshabilitarControlesAfectar() {
+    App.cmbMov.setReadOnly(true);
+    App.txtfSucursalCR.setDisabled(true);
+    App.dfFechaEmision.setDisabled(true);
+    App.txtfObservaciones.setDisabled(true);
+    App.imgbtnGuardar.setDisabled(true);
+    App.imgbtnBorrar.setDisabled(true);
+}
 
 
-  
 
-    // Función que suma o resta días a la fecha indicada
 
-    function sumarDiasAtencion(d, fecha) {
+// Función que suma o resta días a la fecha indicada
 
-        if (fecha != null) { 
+function sumarDiasAtencion(d, fecha) {
 
-            var sFecha = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
-            var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
-            var aFecha = sFecha.split(sep);
-            var fecha = aFecha[2] + '/' + aFecha[1] + '/' + aFecha[0];
-            fecha = new Date(fecha);
-            fecha.setDate(fecha.getDate() + parseInt(d));
-            var anno = fecha.getFullYear();
-            var mes = fecha.getMonth() + 1;
-            var dia = fecha.getDate();
-            mes = (mes < 10) ? ("0" + mes) : mes;
-            dia = (dia < 10) ? ("0" + dia) : dia;
-            var fechaFinal = dia + sep + mes + sep + anno;
-          
-            App.dfFechaMaxima.setValue(fechaFinal);
-        }
+    if (fecha != null) {
+
+        var sFecha = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
+        var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
+        var aFecha = sFecha.split(sep);
+        var fecha = aFecha[2] + '/' + aFecha[1] + '/' + aFecha[0];
+        fecha = new Date(fecha);
+        fecha.setDate(fecha.getDate() + parseInt(d));
+        var anno = fecha.getFullYear();
+        var mes = fecha.getMonth() + 1;
+        var dia = fecha.getDate();
+        mes = (mes < 10) ? ("0" + mes) : mes;
+        dia = (dia < 10) ? ("0" + dia) : dia;
+        var fechaFinal = dia + sep + mes + sep + anno;
+
+        App.dfFechaMaxima.setValue(fechaFinal);
     }
+}
 
-   
 
-    //Evento que se lanza al poner algun caracter en el control de la Cuadrilla
-    var cmbCuadrilla_Change = function (combobox, valorNuevo, viejoValor) {
-        App.sCuadrillas.clearFilter();
-        if (App.cmbCuadrilla.getValue() != null) {
-            App.sCuadrillas.filter([{ filterFn: function (item) {
-                if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Nombre').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
-                else { return false; }
-            }
-            }]);
+
+//Evento que se lanza al poner algun caracter en el control de la Cuadrilla
+var cmbCuadrilla_Change = function (combobox, valorNuevo, viejoValor) {
+    App.sCuadrillas.clearFilter();
+    if (App.cmbCuadrilla.getValue() != null) {
+        App.sCuadrillas.filter([{ filterFn: function (item) {
+            if (item.get('ID').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1 || item.get('Nombre').toUpperCase().indexOf(valorNuevo.toUpperCase()) > -1) { return true; }
+            else { return false; }
         }
+        }]);
+    }
 
 };
 
@@ -1747,9 +1888,9 @@ Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO')
 
 //Imagen Preview Normal
 var fufNormal_Change = function (event, control, txtReporte) {
-   
 
-    
+
+
 
     if (txtReporte.length != 0) {
 
@@ -1815,63 +1956,77 @@ var fufNormal_Change = function (event, control, txtReporte) {
 };
 
 
-    var PopupPic = function () {
+var PopupPic = function () {
 
-        if (App.sOrdenEstimacion.getAt(0) != undefined) {
-            var direccion = App.sOrdenEstimacion.getAt(0).get('RutaImagen');
-            window.open(direccion, "", "resizable=1,HEIGHT=500,WIDTH=600");
-        }
-        else {
-            Ext.Msg.show({
-                id: 'msgOrdenEstimacion',
-                title: 'Advertencia',
-                msg: "Debes de guardar el movimiento antes",
-                buttons: Ext.MessageBox.OK,
-                onEsc: Ext.emptyFn,
-                closable: false,
-                icon: Ext.MessageBox.WARNING
-            });
-        }
-
+    if (App.sOrdenEstimacion.getAt(0) != undefined) {
+        var direccion = App.sOrdenEstimacion.getAt(0).get('RutaImagen');
+        window.open(direccion, "", "resizable=1,HEIGHT=500,WIDTH=600");
     }
-    //RENDER COLUMN PICTURES
-    var cConFotos_Renderer = function (value, metadata, registro) { 
-        metadata.style = "background-color: #71DB00; color: #fff;";
-    };
-    //RENDER COLUMN PICTURES
-    var cSinFotos_Renderer = function (value, metadata, registro) { 
-        metadata.style = "background-color: #FF1205; color: #fff;";
-    };
-    //Render column
-    var cCheckFotos_Renderer = function (value, metadata, registro) {
-        if (registro.get('Fotos') > 0 && registro.get('ConceptoID').trim().length > 0) {
-            metadata.style = "background-color: #669900; color: #fff;";
-        } else {
-            if (registro.get('ConceptoID').trim().length > 1) {
-                metadata.style = "background-color: #CC0000; color: #fff;";
-            }
-        }
+    else {
+        Ext.Msg.show({
+            id: 'msgOrdenEstimacion',
+            title: 'Advertencia',
+            msg: "Debes de guardar el movimiento antes",
+            buttons: Ext.MessageBox.OK,
+            onEsc: Ext.emptyFn,
+            closable: false,
+            icon: Ext.MessageBox.WARNING
+        });
     }
 
-    //Render column
-    var cCheckCroquis_Renderer = function (value, metadata, registro) {
-        if (registro.get('Croquis') > 0 && registro.get('ConceptoID').trim().length > 0) {
-            metadata.style = "background-color: #669900; color: #fff;";
-        } else {
-            if (registro.get('ConceptoID').trim().length > 1) {
-                metadata.style = "background-color: #CC0000; color: #fff;";
-            }
+}
+//RENDER COLUMN PICTURES
+var cConFotos_Renderer = function (value, metadata, registro) {
+    metadata.style = "background-color: #71DB00; color: #fff;";
+};
+//RENDER COLUMN PICTURES
+var cSinFotos_Renderer = function (value, metadata, registro) {
+    metadata.style = "background-color: #FF1205; color: #fff;";
+};
+//Render column
+var cCheckFotos_Renderer = function (value, metadata, registro) {
+    if (registro.get('Fotos') > 0 && registro.get('ConceptoID').trim().length > 0) {
+        metadata.style = "background-color: #669900; color: #fff;";
+    } else {
+        if (registro.get('ConceptoID').trim().length > 1) {
+            metadata.style = "background-color: #CC0000; color: #fff;";
         }
     }
+}
 
-
-    //Render column
-    var cCheckFacturas_Renderer = function (value, metadata, registro) {
-        if (registro.get('Facturas') > 0 && registro.get('ConceptoID').trim().length > 0) {
-            metadata.style = "background-color: #669900; color: #fff;";
-        } else {
-            if (registro.get('ConceptoID').trim().length > 1) {
-                metadata.style = "background-color: #CC0000; color: #fff;";
-            }
+//Render column
+var cCheckCroquis_Renderer = function (value, metadata, registro) {
+    if (registro.get('Croquis') > 0 && registro.get('ConceptoID').trim().length > 0) {
+        metadata.style = "background-color: #669900; color: #fff;";
+    } else {
+        if (registro.get('ConceptoID').trim().length > 1) {
+            metadata.style = "background-color: #CC0000; color: #fff;";
         }
     }
+}
+
+
+//Render column
+var cCheckFacturas_Renderer = function (value, metadata, registro) {
+    if (registro.get('Facturas') > 0 && registro.get('ConceptoID').trim().length > 0) {
+        metadata.style = "background-color: #669900; color: #fff;";
+    } else {
+        if (registro.get('ConceptoID').trim().length > 1) {
+            metadata.style = "background-color: #CC0000; color: #fff;";
+        }
+    }
+}
+
+
+
+//Validador Compra o no
+var chkBoxOrdenCompra_AfterRender = function (componente, value) {
+    if (componente.checked) {
+        App.cmbMov.setValue('Orden de Compra');
+    } else {
+        App.cmbMov.setValue('Orden de Cambio');
+    }
+}
+var cRenderer_Clave = function (value, metadata, registro) {
+    return registro.get('RPreciarioConceptos').Clave;
+};

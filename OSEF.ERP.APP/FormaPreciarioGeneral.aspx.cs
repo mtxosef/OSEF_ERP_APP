@@ -316,7 +316,7 @@ namespace OSEF.ERP.APP
                         List<PreciarioGeneralConcepto> lDetallePreciarioEliminados = JSON.Deserialize<List<PreciarioGeneralConcepto>>(strRegistrosEliminados);
                         foreach (PreciarioGeneralConcepto sd in lDetallePreciarioEliminados)
                         { 
-                            PreciarioGeneralConceptoBusiness.Borrar(sd.ID);
+                            PreciarioGeneralConceptoBusiness.Borrar(sd.ID, sd.Clave);
                         }
                     }
                 
@@ -665,7 +665,16 @@ namespace OSEF.ERP.APP
             return PreciarioGeneralConceptoBusiness.ObtenerUltimoConceptoAdicional();
         }
 
-        #endregion
+        /// <summary>
+        /// Evento que comprueba si es posible eliminar el concepto
+        /// </summary> 
+        /// <returns></returns>
+        [DirectMethod]
+        public bool ObtenerConceptosEnUsoPorIDyClave(string ID, string clave)
+        {
+            return PreciarioGeneralConceptoBusiness.ObtenerConceptosEnUsoPorIDyClave(ID, clave);
+        }
 
+        #endregion
     }
 }

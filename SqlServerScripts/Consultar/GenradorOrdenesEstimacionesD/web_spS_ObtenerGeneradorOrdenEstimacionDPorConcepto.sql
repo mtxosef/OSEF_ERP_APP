@@ -50,7 +50,8 @@ BEGIN
 		Ancho,
 		Alto,
 		Cantidad,
-		Total
+		Total,
+		Plano
 	FROM
 		GeneradorOrdenEstimacionD
 	WHERE

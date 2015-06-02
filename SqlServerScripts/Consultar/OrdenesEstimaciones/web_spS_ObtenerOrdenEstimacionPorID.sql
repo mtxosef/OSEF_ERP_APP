@@ -65,7 +65,9 @@ BEGIN
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido
+		Atendido,
+		NoOrden,
+		ReferenciaOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE

@@ -64,10 +64,11 @@ BEGIN
 		ImporteTotal,
 		HoraOrigen,
 		RutaImagen,
-		Atendido
+		Atendido,
+		NoOrden
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-	 Mov ='Orden de Cambio'
+	 Mov in('Orden de Cambio','Orden de Compra')
 END
 GO

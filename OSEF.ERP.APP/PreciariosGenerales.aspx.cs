@@ -47,7 +47,7 @@ namespace OSEF.ERP.APP
 
         
             //2. Se borra el registro
-                PreciarioGeneralConceptoBusiness.Borrar(strID);
+            //PreciarioGeneralConceptoBusiness.Borrar(strID);
                 PreciarioGeneralSubSubCategoriaBusiness.Borrar(strID);
                 PreciarioGeneralSubCategoriaBusiness.Borrar(strID);
                 PreciarioGeneralCategoriaBusiness.Borrar(strID);

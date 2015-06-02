@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerSucursalesEnUso' AND
+			WHERE  name = 'web_spS_ObtenerSucursalesEnUsoEnConcluidos' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerSucursalesEnUso
+	DROP PROCEDURE web_spS_ObtenerSucursalesEnUsoEnConcluidos
 GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: Viernes 15 de Mayo 2015
 -- Description:	Obtiene todas las Sucursales en Uso
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerSucursalesEnUso
+CREATE PROCEDURE web_spS_ObtenerSucursalesEnUsoEnConcluidos
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -68,6 +68,7 @@ BEGIN
 		s.Estatus
 	FROM
 		Sucursales s 
-		WHERE s.ID IN (SELECT oe.Sucursal FROM OrdenesEstimaciones oe);
+		WHERE s.ID IN (SELECT oe.Sucursal FROM OrdenesEstimaciones oe 
+		WHERE oe.Mov = 'Mesa de reporte' AND oe.Estatus = 'CONCLUIDO' AND MovEnLinea = 1);
 END
 GO

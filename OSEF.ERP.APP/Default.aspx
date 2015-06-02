@@ -11,26 +11,9 @@
     <title>Revisiones de obra</title>
     <link rel="shortcut icon" href="images/myApp.ico" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootmetro.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="Stylesheet" href="css/customControls.css" />
-    <link rel="stylesheet" href="css/xMask.css" />
-    <link rel="stylesheet" href="css/xDatePicker.css" />
-    <link rel="stylesheet" href="css/xSplitButton.css" />
-    <link rel="stylesheet" href="css/xGridPanel.css" />
-    <link rel="stylesheet" href="css/xWindowPopup.css" />
-    <link rel="stylesheet" href="css/xTabPanel.css"/>
-    <link rel="stylesheet" href="css/xComboBox.css"/>
-    <link rel="stylesheet" href="css/xCustomChart.css"/>
-    <link rel="stylesheet" href="css/xIcons.css"/>
-    <link rel="stylesheet" href="css/xToolbar.css"/>
-    <link rel="stylesheet" href="css/xLabel.css"/>
-    <link rel="stylesheet" href="css/xTreePanel.css"/>
-    <link rel="stylesheet" href="css/xHiperlink.css"/>
-    <link rel="stylesheet" href="css/xTextField.css"/>
-    <link rel="stylesheet" href="css/xFieldSet.css"/>
-    <link rel="stylesheet" href="css/xPanel.css"/>
-    <link rel="stylesheet" href="css/xButton.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/demo.css" /> 
+    <%Response.WriteFile("Header.htm");%>
+    <script type="text/javascript" src="js/libs/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="js/default.js"></script>
 </head>
 <body>
@@ -157,22 +140,7 @@
         <%-- Footer--%>
         <div id="footer-menu">
             <div id="creditos" class="creditos-menu" >
-                <p>© 2014 Osef Technology</p>
-                <%--<div id="social">
-                    <ul>
-                        <li ><a href="#">
-                    
-                            <img src="img/social/fb.png" alt="Facebook" class="imgs"  />
-                        
-                            </a></li>
-                        <li><a href="#">
-                            <img src="img/social/twiter.png" alt="Twitter" class="imgs"  /></a></li>
-                        <li><a href="#">
-                            <img src="img/social/youtube.png" alt="YouTube" class="imgs"  /></a></li>
-                        <li><a href="#">
-                            <img src="img/social/linked.png" alt="LinkedIn" class="imgs"  /></a></li>
-                    </ul>
-                </div>--%>
+                <p id="pcreditos">© 2014</p> 
             </div>
         </div>
         <%-- Footer--%>
@@ -229,8 +197,7 @@
             <Listeners>
                 <Show Handler="this.resizer.disable();" Single="true" />
             </Listeners>
-        </ext:Window>
-        
+        </ext:Window>  
 
         <ext:Window 
             ID="wGenerador"
@@ -276,7 +243,6 @@
                 <LoadMask ShowMask="true" Msg="Cargando..." />
             </Loader>
         </ext:Window>
-
     </form>
 </body>
 </html>

@@ -55,19 +55,40 @@
             });
 
         });
-        var onDelete_image = function (conceptoID, ID, nombreIMG) { 
-            App.direct.BorrarImagen(conceptoID, ID, nombreIMG);
-            App.sImagenesOrdenEstimacionD.reload({
-                callback: function () {
-                    App.direct.onLoadDataImages();
-                }
-            }); 
+        var onDelete_image = function (conceptoID, ID, nombreIMG) {
+            Ext.Msg.show({
+                id: 'msgConceptoEliminar',
+                title: 'Advertencia',
+                msg: '¿Estás seguro de eliminar esta imagen: ' + nombreIMG + '? ',
+                buttons: Ext.MessageBox.YESNO,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                fn: function (btn) {
+                    if (btn === 'yes') {
+                        App.direct.BorrarImagen(conceptoID, ID, nombreIMG);
+                        App.sImagenesOrdenEstimacionD.reload({
+                            callback: function () {
+                                App.direct.onLoadDataImages();
+                            }
+                        });
+                        window.parent.App.wEmergente.getBody().App.sConceptos.reload({
+                            callback: function () {
+                                window.parent.App.wEmergente.getBody().App.direct.sOrdenMantenimiento_Load();
+                            }
+                        });
+                    }
+                },
+                icon: Ext.MessageBox.WARNING
+            });
+            var showResult = function (btn) {
+                Ext.Msg.notify("Button Click", "You clicked the " + btn + " button");
+            };
         };
 	</script>
     <ext:XScript ID="XScript1" runat="server">
         <script>
             var prepareData = function (data) {
-                data.Nombre = Ext.util.Format.ellipsis(data.Nombre, 50);
+                data.Nombre = Ext.util.Format.ellipsis(data.Nombre, 500);
                 return data;
             };
         </script>

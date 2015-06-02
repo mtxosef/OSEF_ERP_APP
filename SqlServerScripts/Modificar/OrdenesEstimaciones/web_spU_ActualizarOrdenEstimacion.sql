@@ -54,12 +54,29 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@ImporteTotal	DECIMAL(20,2),
 	@HoraOrigen		DATETIME,
 	@RutaImagen		VARCHAR(500),
-	@Atendido		VARCHAR(5)
+	@Atendido		VARCHAR(5),
+	@ReferenciaOrden	VARCHAR(90)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
+
+	DECLARE @SucBefore CHAR(10); 
+	SET @SucBefore = (SELECT TOP(1) oe.Sucursal FROM OrdenesEstimaciones oe WHERE oe.ID = @ID);
+
+	DECLARE @NoOrden CHAR(3);
+DECLARE @CR SMALLINT;
+SET @CR = (SELECT TOP(1) s.CR FROM Sucursales s WHERE s.ID = LTRIM(@Sucursal));
+SET @NoOrden = (SELECT TOP(1) oe.NoOrden +1 FROM OrdenesEstimaciones oe INNER JOIN Sucursales s 
+				ON oe.Sucursal = s.ID AND oe.Mov IN ('Orden de Cambio','Orden de Compra')
+				AND s.CR = @CR AND s.ID = @Sucursal ORDER BY oe.NoOrden DESC);
+SET @NoOrden = (SELECT CASE
+	WHEN @NoOrden IS NULL THEN '001'
+	WHEN @NoOrden > 0 AND @NoOrden < 10 THEN '00'+@NoOrden
+	WHEN @NoOrden > 10 AND @NoOrden < 99 THEN '0'+@NoOrden 
+	WHEN @NoOrden > 99 AND @NoOrden < 999 THEN  @NoOrden 
+END NoOrden);
 
     -- Insert statements for procedure here
     UPDATE
@@ -89,7 +106,8 @@ BEGIN
 		ImporteTotal = @ImporteTotal,
 		HoraOrigen = @HoraOrigen,
 		RutaImagen = @RutaImagen,
-		Atendido = @Atendido
+		Atendido = @Atendido,
+		ReferenciaOrden = @ReferenciaOrden
 	WHERE
 		ID = @ID
 END

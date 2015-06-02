@@ -45,46 +45,11 @@
              <ext:FieldContainer
                 ID="fcFirmas"
                 runat="server"
-                FieldLabel="Firmas"
                 AnchorHorizontal="100%"
                 LabelWidth="120"
                 Layout="HBoxLayout">
                 <Items>
-                      <ext:TextField
-                        ID="txtElaboro"
-                        runat="server"
-                        Width="140"
-                        EmptyText="Firma Elaboró"
-                        Margins="0 3 0 0"
-                        AutoFocus="true"
-                         AllowBlank="false">
-                         <Listeners>
-                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                         </Listeners>
-                    </ext:TextField>
-                    <ext:TextField
-                        ID="txtReviso"
-                        runat="server"
-                        Width="140"
-                        EmptyText="Firma Revisó"
-                        Margins="0 3 0 0"
-                         AllowBlank="false">
-                       <Listeners>
-                             <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                       </Listeners>
-                    </ext:TextField>
-                      <ext:TextField
-                        ID="txtAutorizo"
-                        runat="server"
-                        Width="140"
-                        EmptyText="Firma Autorizó"
-                        Margins="0 3 0 0"
-                        AllowBlank="false">
-                       <Listeners>
-                                <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
-                                   
-                            </Listeners>
-                    </ext:TextField>
+                   
                 </Items>
             </ext:FieldContainer>
         </Items>

@@ -23,11 +23,11 @@ namespace OSEF.ERP.APP
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
-                //2. Checar ticket de autenticación
-                //UsuarioBusiness.checkValidSession(this);
                 sCuadrillas.DataSource = CuadrillaBusiness.ObtenerCuadrillas();
                 sCuadrillas.DataBind(); 
             }
+            //2. Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
         }
 
 
@@ -102,7 +102,9 @@ namespace OSEF.ERP.APP
                     ImporteTotal = oOrdenEstimacion.ImporteTotal,
                     HoraOrigen = oOrdenEstimacion.HoraOrigen,
                     RutaImagen = oOrdenEstimacion.RutaImagen,
-                    Atendido = oOrdenEstimacion.Atendido
+                    Atendido = oOrdenEstimacion.Atendido,
+                    NoOrden = oOrdenEstimacion.NoOrden,
+                    ReferenciaOrden = oOrdenEstimacion.ReferenciaOrden
                 }); 
                 imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
@@ -216,7 +218,7 @@ namespace OSEF.ERP.APP
             }
 
             //4. Lanzar la afectación del Movimiento
-            if (strMovimiento.Trim().Equals("Orden de Cambio"))
+            if (strMovimiento.Trim().Equals("Orden de Cambio") || strMovimiento.Trim().Equals("Orden de Compra"))
             {
                 OrdenEstimacionBusiness.AfectarOrdenPorID(oFormaOrdenEstimacion);
                 e.ExtraParamsResponse.Add(new Ext.Net.Parameter("mov", "Orden", ParameterMode.Value));
@@ -327,15 +329,18 @@ namespace OSEF.ERP.APP
                         break;
                     case "fufNormal":
                         oOrdenEstimacionForma.RutaImagen = sd.Value;
-                        break; 
+                        break;
                     case "chkAtendido":
                         oOrdenEstimacionForma.Atendido = sd.Value;
                         break;
+                    case "txtNoOrden":
+                        oOrdenEstimacionForma.NoOrden = sd.Value;
+                        break;
+                    case "txtReferenciaOrden":
+                        oOrdenEstimacionForma.ReferenciaOrden = sd.Value;
+                        break;
                 }
             }
-
-           
-
             //3. Regresar el objeto
             return oOrdenEstimacionForma;
         }
@@ -349,6 +354,10 @@ namespace OSEF.ERP.APP
         /// <returns></returns>
         private string GuardarMovimiento(ref OrdenEstimacion oOrdenEstimacionForma, OrdenEstimacion oOrdenEstimacion, List<OrdenEstimacionD> lOrdenEstimacionD)
         {
+
+            //Checar ticket de autenticación
+            UsuarioBusiness.checkValidSession(this);
+
             //1. Traemeos el objeto de sesion para llenr el objeto con los datos de usuario
             Usuario oUsuario = (Usuario)Session["Usuario"];
             oOrdenEstimacionForma.Usuario = oUsuario.ID;
@@ -386,7 +395,12 @@ namespace OSEF.ERP.APP
                     oOrdenEstimacionForma.RutaImagen = "";
                 }
 
+
+                
+
                 oOrdenEstimacionForma.Id = OrdenEstimacionBusiness.insertarOrdenEstimacion(oOrdenEstimacionForma);
+
+                oOrdenEstimacionForma = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(oOrdenEstimacionForma.Id);
 
                 //4. Agregar el objeto al Store de Revisión
                 sOrdenEstimacion.Add(new
@@ -423,9 +437,10 @@ namespace OSEF.ERP.APP
                     ImporteFinal = oOrdenEstimacionForma.ImporteTotal,
                     HoraOrigen = oOrdenEstimacionForma.HoraOrigen,
                     RutaImagen = oOrdenEstimacionForma.RutaImagen,
-                    Atendido = oOrdenEstimacionForma.Atendido
-                });
-
+                    Atendido = oOrdenEstimacionForma.Atendido,
+                    NoOrden = oOrdenEstimacionForma.NoOrden,
+                    ReferenciaOrden = oOrdenEstimacionForma.ReferenciaOrden
+                }); 
 
                 //7. Guardar Detalle y regresar valor
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);
@@ -487,6 +502,8 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("ImporteFinal", oOrdenEstimacionForma.ImporteTotal);
                 sOrdenEstimacion.GetAt(0).Set("HoraOrigen", oOrdenEstimacionForma.HoraOrigen);
                 sOrdenEstimacion.GetAt(0).Set("RutaImagen", oOrdenEstimacionForma.RutaImagen);
+                sOrdenEstimacion.GetAt(0).Set("NoOrden", oOrdenEstimacionForma.NoOrden);
+                sOrdenEstimacion.GetAt(0).Set("ReferenciaOrden", oOrdenEstimacionForma.ReferenciaOrden);
                 //13. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);

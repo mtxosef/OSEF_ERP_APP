@@ -66,6 +66,7 @@
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColonia.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniaPorID.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasEnSucursalesPorID.sql
+:r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerSucursalesEnUsoOrdenesDeCambio.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasPorMunicipio.sql
 -- Colonias (Insertar)
 :r c:\SqlServerScripts\Insertar\Colonias\web_spI_InsertarColonia.sql
@@ -406,6 +407,7 @@
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarOrdenPorID.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarEstimacionPorID.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AvanzarMesaReportePorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spU_FacturarMesaDeReporte.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_CancelarOrdenEstimacionPorID.sql
 -----------------------------------------------------------------------------------
 -- OrdenesEstimacionesD (Borrar)
@@ -435,6 +437,7 @@
 :r c:\SqlServerScripts\Consultar\FacturaOrdenesEstimacionesD\web_spS_ObtenerFacturaOrdenEstimacionDPorConcepto.sql
 -- FacturaOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorConceptoYNombre.sql
 :r c:\SqlServerScripts\Borrar\FacturaOrdenesEstimacionesD\web_spD_BorrarFacturaOrdenEstimacionDPorOrdenEstimacion.sql
 -----------------------------------------------------------------------------------
 -- CroquisOrdenesEstimacionesD (Insertar)
@@ -443,6 +446,7 @@
 :r c:\SqlServerScripts\Consultar\CroquisOrdenesEstimacionesD\web_spS_ObtenerCroquisOrdenEstimacionDPorConcepto.sql
 -- CroquisOrdenesEstimacionesD (Borrar)
 :r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorConcepto.sql
+:r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorConceptoYNombre.sql
 :r c:\SqlServerScripts\Borrar\CroquisOrdenesEstimacionesD\web_spD_BorrarCroquisOrdenEstimacionDPorOrdenEstimacion.sql
 -----------------------------------------------------------------------------------
 -- GenradorOrdenesEstimacionesD (Insertar)
@@ -498,6 +502,7 @@
 :r c:\SqlServerScripts\Insertar\PreciariosGeneralesConceptosAdicionales\web_spI_InsertarPreciarioGeneralConceptoAdicional.sql
 --PreciariosGeneralesConceptosAdicionales(Consultar)
 :r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalPorClave.sql
+:r c:\SqlServerScripts\Consultar\PreciariosGeneralesConceptosAdicionales\web_spS_ObtenerPreciarioGeneralConceptoAdicionalEnUsoPorIDyClave.sql
 --PreciariosGeneralesConceptosAdicionales(Modificar)
 :r c:\SqlServerScripts\Modificar\PreciariosGeneralesConceptosAdicionales\web_spU_ActualizarPreciarioGeneralConceptoAdicional.sql
 ------------------------------------------------------------------------------------------------------------------------------

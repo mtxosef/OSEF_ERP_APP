@@ -40,6 +40,8 @@ namespace OSEF.APP.EL
         Nullable<DateTime> Horaorigen;
         string Rutaimagen;
         string atendido;
+        string noorden;
+        string referenciaorden;
 
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
@@ -239,6 +241,18 @@ namespace OSEF.APP.EL
             set { atendido = value; }
         }
 
+        public string NoOrden
+        {
+            get { return noorden; }
+            set { noorden = value; }
+        }
+
+
+        public string ReferenciaOrden
+        {
+            get { return referenciaorden; }
+            set { referenciaorden = value; }
+        }
         #endregion
     }
 }
