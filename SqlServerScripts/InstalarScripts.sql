@@ -474,6 +474,7 @@
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRCroquis.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGenerador.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGeneradorPorConceptoID.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenesPorConceptoID.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRFacturas.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenes.sql
 -----------------------------------------------------------------------------------------------------------------------------------------
