@@ -66,7 +66,6 @@
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColonia.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniaPorID.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasEnSucursalesPorID.sql
-:r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerSucursalesEnUsoOrdenesDeCambio.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasPorMunicipio.sql
 -- Colonias (Insertar)
 :r c:\SqlServerScripts\Insertar\Colonias\web_spI_InsertarColonia.sql
@@ -211,6 +210,7 @@
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalPorID.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnUso.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnRevisionesPorID.sql
+:r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnUsoOrdenesDeCambio.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesSinPreciario.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesDisponibles.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesCR.sql
