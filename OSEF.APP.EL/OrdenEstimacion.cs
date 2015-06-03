@@ -42,6 +42,7 @@ namespace OSEF.APP.EL
         string atendido;
         string noorden;
         string referenciaorden;
+        string clasificacion;
 
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
@@ -252,6 +253,12 @@ namespace OSEF.APP.EL
         {
             get { return referenciaorden; }
             set { referenciaorden = value; }
+        }
+         
+        public string Clasificacion
+        {
+            get { return clasificacion; }
+            set { clasificacion = value; }
         }
         #endregion
     }

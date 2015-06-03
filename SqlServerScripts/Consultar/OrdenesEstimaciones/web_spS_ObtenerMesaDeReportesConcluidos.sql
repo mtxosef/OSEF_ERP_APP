@@ -65,7 +65,11 @@ BEGIN
 		HoraOrigen,
 		RutaImagen,
 		Atendido,
-		Facturado
+		MovEnLinea,
+		NoOrden,
+		ReferenciaOrden
+		Facturado,
+		Clasificacion
 	FROM
 		OrdenesEstimaciones
 	WHERE 

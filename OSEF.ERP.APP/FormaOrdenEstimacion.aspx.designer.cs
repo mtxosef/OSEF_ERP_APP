@@ -643,6 +643,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldSet FieldSet1;
         
         /// <summary>
+        /// Control fc4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fc4;
+        
+        /// <summary>
+        /// Control cmbClasificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbClasificacion;
+        
+        /// <summary>
         /// Control FieldContainer2.
         /// </summary>
         /// <remarks>

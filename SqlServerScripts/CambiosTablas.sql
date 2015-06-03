@@ -134,4 +134,7 @@ ALTER TABLE OrdenesEstimaciones ADD NoOrden CHAR(3) NULL
 ALTER TABLE OrdenesEstimaciones ADD ReferenciaOrden VARCHAR(90) NULL
 
 --Cambios Giovanni Flores 01 de Junio 2015
-ALTER TABLE OrdenesEstimaciones ADD Facturado BIT NULL
+ALTER TABLE OrdenesEstimaciones ADD Facturado BIT NOT NULL DEFAULT (0)
+
+--Cambios Giovanni Flores 03 de Junio 2015
+ALTER TABLE OrdenesEstimaciones ADD Clasificacion VARCHAR(25) NOT NULL DEFAULT('')

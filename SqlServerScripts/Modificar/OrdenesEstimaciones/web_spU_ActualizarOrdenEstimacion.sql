@@ -55,7 +55,8 @@ CREATE PROCEDURE web_spU_ActualizarOrdenEstimacion
 	@HoraOrigen		DATETIME,
 	@RutaImagen		VARCHAR(500),
 	@Atendido		VARCHAR(5),
-	@ReferenciaOrden	VARCHAR(90)
+	@ReferenciaOrden	VARCHAR(90),
+	@Clasificacion			VARCHAR(25)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -107,7 +108,8 @@ END NoOrden);
 		HoraOrigen = @HoraOrigen,
 		RutaImagen = @RutaImagen,
 		Atendido = @Atendido,
-		ReferenciaOrden = @ReferenciaOrden
+		ReferenciaOrden = @ReferenciaOrden,
+		Clasificacion = @Clasificacion
 	WHERE
 		ID = @ID
 END

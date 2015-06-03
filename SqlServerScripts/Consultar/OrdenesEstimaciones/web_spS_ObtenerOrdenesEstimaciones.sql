@@ -66,7 +66,9 @@ BEGIN
 		RutaImagen,
 		Atendido,
 		NoOrden,
-		ReferenciaOrden
+		ReferenciaOrden,
+		Facturado,
+		Clasificacion
 	FROM
 		OrdenesEstimaciones
 	WHERE 
@@ -103,7 +105,9 @@ UNION
 		RutaImagen,
 		Atendido ,
 		NoOrden,
-		ReferenciaOrden
+		ReferenciaOrden,
+		Facturado,
+		Clasificacion
 	FROM
 		OrdenesEstimaciones
 	WHERE 

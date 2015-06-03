@@ -67,7 +67,9 @@ BEGIN
 		RutaImagen,
 		Atendido,
 		NoOrden,
-		ReferenciaOrden
+		ReferenciaOrden,
+		Facturado,
+		Clasificacion
 	FROM
 		OrdenesEstimaciones
 	WHERE
