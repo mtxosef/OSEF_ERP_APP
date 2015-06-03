@@ -55,14 +55,14 @@
                                 Cls="spanCustomCombo xEspacioCmbxCustom"
                                 PageSize="10"
                                 DisplayField="Nombre"
-                                StyleSpec="margin-right: 6px;"
+                                StyleSpec="margin-right: 3px;"
                                 Editable="true"
                                 MatchFieldWidth="true"
                                 ForceSelection="true"
                                 QueryMode="Local"
                                 TypeAhead="true"
                                 EnforceMaxLength="true">
-                                 <ListConfig ID="lcPreciario" runat="server" Width="400" Cls="xEspacioCmbxCustom">
+                                 <ListConfig ID="lcPreciario" runat="server" Width="400"                                                                Cls="xEspacioCmbxCustom">
                                     <ItemTpl ID="itPreciario" runat="server">
                                         <Html>
                                             <div class="search-item">
@@ -101,12 +101,51 @@
                                 </Listeners>
                             </ext:ComboBox>
 
+                      
+                            <ext:ComboBox
+                                ID="cmbMovimiento"
+                                runat="server"
+                                FieldLabel="CLASIFICACIÓN"
+                                ForceSelection="true"
+                                Width="220"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="" />
+                                    <ext:ListItem Index="1" Text="MOBILIARIO" Value="MOBILIARIO"/>
+                                    <ext:ListItem Index="2" Text="CERRAJERIA" Value="CERRAJERIA"/>
+                                    <ext:ListItem Index="3" Text="INMUEBLE" Value="INMUEBLE"/>
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                             <%--   <Listeners>
+                                    <Select Fn="cmbTipoFiltro_Select" />
+                                </Listeners>--%>
+                            </ext:ComboBox>
+                  
+
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="tsExploradorMesaDeReporte" 
-                        Width="160"> 
+                        Width="20"> 
                         </ext:ToolbarSpacer>
                           
+
+                         <ext:Container
+                                ID="cMantenimientos"
+                                runat="server">
+                                 <Content>
+                                     <asp:ImageButton 
+                                        ID="imgbtnMantenimientos" 
+                                        runat="server" 
+                                        Height="22"
+                                        Width="22"
+                                        OnClick="ExportEt"
+                                        class="imgs" 
+                                        ImageUrl="assets/img/controles/ExcelNormal.png"/>
+                                </Content>
+                            </ext:Container>
+
                         <ext:ImageButton
                                     ID="imgbtnFacturar"
                                     runat="server"
@@ -128,7 +167,7 @@
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="ToolbarSpacer1" 
-                        Width="100"> 
+                        Width="5"> 
                         </ext:ToolbarSpacer>
 
                         <ext:TextField 
@@ -172,16 +211,20 @@
                                 <ext:ModelField Name="Reporte" Type="String" />
                                  <ext:ModelField Name="RSucursal" Type="Object" />
                                 <ext:ModelField Name="FechaEmision" Type="Date" />
+                                <ext:ModelField Name="FechaOrigen" Type="Date" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
                                 <ext:ModelField Name="Estatus" Type="String" />
                                 <ext:ModelField Name="ImporteTotal" Type="Float" />
                                 <ext:ModelField Name="Usuario" Type="String" />
+                                <ext:ModelField Name="TrabajoRequerido" Type="String" />
+                                <ext:ModelField Name="TrabajoRealizado" Type="String" />
+                                
                                
                             </Fields>
                         </ext:Model>
                     </Model>
                       <Sorters>
-                        <ext:DataSorter Property="FechaEmision" Direction="DESC" />
+                        <ext:DataSorter Property="Reporte" Direction="ASC" />
                     </Sorters>
                     <Listeners>
                         <DataChanged Fn="sMesaDeReportes_DataChanged" />
@@ -197,7 +240,7 @@
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="170"
+                        Width="150"
                         DataIndex="Mov">
                          <HeaderItems>
                             <ext:TextField
@@ -212,13 +255,30 @@
                         </HeaderItems>
                         <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
+                     <ext:Column 
+                        ID="cReporte"
+                        runat="server"
+                        Text="REPORTE"
+                        Align="Center"
+                        Width="80"
+                        DataIndex="Reporte">
+                         <HeaderItems>
+                            <ext:TextField
+                                ID="txtFiltroReporte"
+                                runat="server">
+                              <Listeners>
+                                    <Change Fn="txtReporteFiltro_Change" />
+                                </Listeners>
+                            </ext:TextField>
+                        </HeaderItems>
+                    </ext:Column>
                      <ext:DateColumn
                         ID="dcFechaEmision"
                         runat="server"
-                        Text="EMITIDO"
+                        Text="FECHA ORIGEN"
                         Align="Center"
                         Width="100"
-                        DataIndex="FechaEmision"
+                        DataIndex="FechaOrigen"
                         Format="dd/MM/yyyy">
                         <HeaderItems>
                             <ext:ComboBox
@@ -267,6 +327,24 @@
                       <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
                     
+                      <ext:Column
+                        ID="cTrabajoRequerido"
+                        runat="server"
+                        Text="TRABAJO REQUERIDO"
+                        Align="Center"
+                        Width="170"
+                        DataIndex="TrabajoRequerido">
+                    </ext:Column> 
+
+                      <ext:Column
+                        ID="cTrabajoRealizado"
+                        runat="server"
+                        Text="TRABAJO REALIZADO"
+                        Align="Center"
+                        Width="170"
+                        DataIndex="TrabajoRealizado">
+                    </ext:Column> 
+
                     <ext:Column
                         ID="cAsunto"
                         runat="server"
@@ -359,7 +437,7 @@
             <FooterBar>
                 <ext:StatusBar ID="sbMesaDeReporte" runat="server" Text="">
                     <Items>
-                        <ext:ToolbarTextItem ID="ToolBarTotal" runat="server" Text="TOTAL: " />  
+                        <ext:ToolbarTextItem ID="ToolBarTotal" runat="server"  Text="TOTAL: " />  
                     </Items>
                 </ext:StatusBar> 
             </FooterBar> 

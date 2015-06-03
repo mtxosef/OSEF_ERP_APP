@@ -171,5 +171,23 @@ var sMesaDeReporte_Load = function (avance, registro, index) {
 var showResult = function (t) {
     if (t) {
         App.sMesaDeReporte.reload();
-    } 
+    }
 }
+
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var txtReporteFiltro_Change = function (textfield, newValue, oldValue, e) {
+    App.sMesaDeReporte.clearFilter();
+    App.sMesaDeReporte.filter([{ filterFn: function (item) {
+
+        if (item.get('Reporte').toUpperCase().indexOf(newValue.toUpperCase()) > -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    }]);
+    App.gpExploradorMesaDeReporte.getSelectionModel().deselectAll();
+};

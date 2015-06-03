@@ -1385,6 +1385,12 @@
       <DependentUpon>rCroquis.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reportess\rMantenimientosFacturador.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rMantenimientosFacturador.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportess\rReportesCuadrillas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1536,6 +1542,10 @@
     <EmbeddedResource Include="reportess\rCroquis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rCroquis.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportess\rMantenimientosFacturador.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rMantenimientosFacturador.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportess\rReportesCuadrillas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -23,49 +23,47 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerReportePorCuadrilla' AND
+			WHERE  name = 'web_spS_ObtenerReportesPorClasificacion' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerReportePorCuadrilla
+	DROP PROCEDURE web_spS_ObtenerReportesPorClasificacion
 GO
 
-CREATE PROCEDURE web_spS_ObtenerReportePorCuadrilla
+CREATE PROCEDURE web_spS_ObtenerReportesPorClasificacion
 	-- Add the parameters for the stored procedure here
-		@CUADRILLA CHAR(10)
+		@CLASIFICACION VARCHAR(25)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
     -- Insert statements for procedure here
 		SELECT 
 		--DATOS DEL REPORTE
 		OE.Reporte,
 		--Datos de la sucursal
-		S.CR,
 		S.Nombre Sucursal,
+		S.CR,
+		OE.Division,
 		--DATOS DEL REPORTE 2
 		OE.FechaOrigen,
-		OE.HoraOrigen,
-		OE.Reporto,
 		OE.TrabajoRequerido,
-		OE.FechaMaximaAtencion,
-		OE.Estatus,
-		S.DireccionZona,
-		OE.Atendido,
-		--DATOS DEL REPORTE 3
-		C.Descripcion
+		OE.TrabajoRealizado,
+		OE.FechaLlegada,
+		OE.HoraLlegada,
+		OE.FechaFinActividad,
+		OE.HoraFinActividad,
+		OE.ImporteTotal,OE.MovEnLinea
 		
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento
-		LEFT JOIN Cuadrillas C
-		ON OE.Cuadrilla = C.ID
 		-- Nos trameos los datos de la sucursal
 		LEFT JOIN Sucursales S
-		ON S.ID = OE.Sucursal
-		
-		WHERE OE.Cuadrilla = @CUADRILLA
-		AND OE.Mov in('Mesa de reporte') AND MovEnLinea = 1
-		;
+		ON S.ID = OE.Sucursal 
+		WHERE 
+		OE.Mov in('Mesa de reporte')  
+		AND OE.MovEnLinea = 1
+	 AND OE.Estatus IN('CONCLUIDO') 
+	-- AND Facturado=1
+		--AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'
 END
 GO

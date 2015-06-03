@@ -190,7 +190,7 @@
                                  <ext:ModelField Name="RSucursal" Type="Object" />
                                  <ext:ModelField Name="FechaOrigen" Type="Date" />
                                  <ext:ModelField Name="Reporto" Type="String" />
-                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
+                                 <ext:ModelField Name="TrabajoRealizado" Type="String" />
                                  <ext:ModelField Name="FechaMaximaAtencion" Type="Date" />
                                  <ext:ModelField Name="Estatus" Type="String" />
                                  <ext:ModelField Name="Zona" Type="String" />
