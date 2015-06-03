@@ -111,7 +111,8 @@ END NoOrden);
 			Atendido,
 			MovEnLinea,
 			NoOrden,
-			ReferenciaOrden
+			ReferenciaOrden,
+			Facturado
 		)
 	VALUES (
 			@Mov,
@@ -143,7 +144,8 @@ END NoOrden);
 			@Atendido,
 			1,
 			@NoOrden,
-			@ReferenciaOrden
+			@ReferenciaOrden,
+			0
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END
