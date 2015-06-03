@@ -63,7 +63,8 @@ BEGIN
 		OE.Mov in('Mesa de reporte')  
 		AND OE.MovEnLinea = 1
 	 AND OE.Estatus IN('CONCLUIDO') 
-	-- AND Facturado=1
-		--AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'
+	 AND Facturado=1
+	AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'
 END
 GO
+

@@ -1,5 +1,9 @@
 ﻿//Evento de clic del botón Nuevo
 var imgbtnNuevo_Click = function () {
+    Ext.util.Cookies.set('cookieCP', '');
+    Ext.util.Cookies.set('cookieEstado', '');
+    Ext.util.Cookies.set('cookieMunicipio', '');
+    Ext.util.Cookies.set('cookieColonia', '');
     Ext.util.Cookies.set('cookieEditarSucursal', 'Nuevo');
     window.parent.App.wEmergente.load('FormaSucursal.aspx');
     window.parent.App.wEmergente.setHeight(460);
@@ -22,6 +26,10 @@ var imgbtnGuardar_Click_SuccessCR = function () {
 
 //Evento de click del botón Editar
 var imgbtnEditar_Click = function () {
+    Ext.util.Cookies.set('cookieCP', '');
+    Ext.util.Cookies.set('cookieEstado', '');
+    Ext.util.Cookies.set('cookieMunicipio', '');
+    Ext.util.Cookies.set('cookieColonia', '');
     Ext.util.Cookies.set('cookieEditarSucursal', App.gpSucursales.getSelectionModel().getSelection()[0].get('ID'));
     window.parent.App.wEmergente.load('FormaSucursal.aspx');
     window.parent.App.wEmergente.setHeight(460);

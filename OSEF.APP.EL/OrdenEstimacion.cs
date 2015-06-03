@@ -44,6 +44,10 @@ namespace OSEF.APP.EL
         string referenciaorden;
         string clasificacion;
 
+        bool facturado;
+
+      
+
         Sucursal rsucursal;
         List<OrdenEstimacionD> rordenestimaciond;
         Cuadrilla rcuadrilla;
@@ -259,6 +263,12 @@ namespace OSEF.APP.EL
         {
             get { return clasificacion; }
             set { clasificacion = value; }
+        }
+
+        public bool Facturado
+        {
+            get { return facturado; }
+            set { facturado = value; }
         }
         #endregion
     }

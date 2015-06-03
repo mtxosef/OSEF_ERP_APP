@@ -103,14 +103,14 @@
 
                       
                             <ext:ComboBox
-                                ID="cmbMovimiento"
+                                ID="cmbClasificacion"
                                 runat="server"
                                 FieldLabel="CLASIFICACIÓN"
                                 ForceSelection="true"
                                 Width="220"
                                 Editable="false">
                                 <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="" />
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
                                     <ext:ListItem Index="1" Text="MOBILIARIO" Value="MOBILIARIO"/>
                                     <ext:ListItem Index="2" Text="CERRAJERIA" Value="CERRAJERIA"/>
                                     <ext:ListItem Index="3" Text="INMUEBLE" Value="INMUEBLE"/>
@@ -118,9 +118,9 @@
                                 <SelectedItems>
                                     <ext:ListItem Index="0" />
                                 </SelectedItems>
-                             <%--   <Listeners>
-                                    <Select Fn="cmbTipoFiltro_Select" />
-                                </Listeners>--%>
+                                <Listeners>
+                                    <Select Fn="cmbClasificacion_Select" />
+                                </Listeners>
                             </ext:ComboBox>
                   
 
@@ -217,9 +217,10 @@
                                 <ext:ModelField Name="ImporteTotal" Type="Float" />
                                 <ext:ModelField Name="Usuario" Type="String" />
                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
-                                <ext:ModelField Name="TrabajoRealizado" Type="String" />
-                                
-                               
+                                <ext:ModelField Name="TrabajoRealizado" Type="String" /> 
+                                <ext:ModelField Name="Facturado" Type="Boolean" />
+                                 <ext:ModelField Name="Clasificacion" Type="String" />
+                                 
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -235,6 +236,15 @@
 
             <ColumnModel>
                 <Columns>
+                     <ext:Column 
+                        ID="cFacturado"
+                        runat="server"
+                        Text="FACTURADO"
+                        Align="Center"
+                        Width="80"
+                        DataIndex="Facturado">
+                        <Renderer Fn="cFacturado_Renderer"></Renderer>
+                    </ext:Column>
                     <ext:Column 
                         ID="cMovimiento"
                         runat="server"

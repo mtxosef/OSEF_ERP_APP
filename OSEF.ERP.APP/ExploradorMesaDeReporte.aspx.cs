@@ -75,7 +75,7 @@ namespace OSEF.ERP.APP
         protected void ExportEt(object sender, EventArgs e)
         {
 
-         //  string nombreReporte = cmbCuadrillas.Text;
+            string parametro = cmbClasificacion.Value.ToString();
 
 
             //1. Configurar la conexión y el tipo de comando
@@ -88,7 +88,7 @@ namespace OSEF.ERP.APP
 
                 DataTable dt = new DataTable();
                 adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
-                adaptador.SelectCommand.Parameters.Add(@"CLASIFICACION", SqlDbType.VarChar).Value = "";
+                adaptador.SelectCommand.Parameters.Add(@"CLASIFICACION", SqlDbType.VarChar).Value = parametro;
                 adaptador.Fill(dt);
 
 
@@ -98,8 +98,7 @@ namespace OSEF.ERP.APP
                 reporteCuadrila.SetDataSource(dt);
 
 
-                //reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Cuadrilla " + nombreReporte);
-                reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Cuadrilla ");
+                 reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Mantenimiento " + parametro);
 
             }
             catch (Exception ex)

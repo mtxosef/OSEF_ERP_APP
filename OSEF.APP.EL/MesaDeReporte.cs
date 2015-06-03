@@ -42,11 +42,11 @@ namespace OSEF.APP.EL
         Nullable<DateTime> fechafinActividad;
         Nullable<DateTime> horafinactividad;
         string cuadrilla;
-        decimal importetotal;
+        decimal importetotal; 
+        bool facturado;
+        string clasificacion;
 
-       
-
-
+         
         #endregion
 
         #region Propiedades
@@ -222,6 +222,16 @@ namespace OSEF.APP.EL
         {
             get { return importetotal; }
             set { importetotal = value; }
+        }
+        public bool Facturado
+        {
+            get { return facturado; }
+            set { facturado = value; }
+        }
+        public string Clasificacion
+        {
+            get { return clasificacion; }
+            set { clasificacion = value; }
         }
         #endregion
     }

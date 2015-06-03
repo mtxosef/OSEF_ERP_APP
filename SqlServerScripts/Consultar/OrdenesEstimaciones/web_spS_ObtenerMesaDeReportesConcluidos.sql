@@ -67,12 +67,12 @@ BEGIN
 		Atendido,
 		MovEnLinea,
 		NoOrden,
-		ReferenciaOrden
+		ReferenciaOrden,
 		Facturado,
 		Clasificacion
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND Facturado = 0;
+		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 ;
 END
 GO

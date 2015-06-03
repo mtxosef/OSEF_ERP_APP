@@ -114,7 +114,7 @@ END NoOrden);
 			NoOrden,
 			ReferenciaOrden,
 			Facturado,
-			Mobiliario
+			Clasificacion
 		)
 	VALUES (
 			@Mov,

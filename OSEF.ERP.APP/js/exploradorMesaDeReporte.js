@@ -48,6 +48,29 @@ var cmbUsuarioFiltro_Select = function (combobox, registro) {
     }
 };
 
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbClasificacion_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Preciario
+    if (valor == 'Todos') {
+        App.sMesaDeReporte.clearFilter();
+    }
+    else {
+        App.sMesaDeReporte.filterBy(function (elemento) {
+            console.log(elemento);
+            if (elemento.get('Clasificacion') == valor) {
+                return true
+            }
+            else {
+                return false;
+            }
+        });
+    }
+};
+
 //Evento que hace el filtro al seleccionar algun elemento
 var cmbSucursalFiltro_Select = function (combobox, registro) {
     //1. Obtener el valor
@@ -155,9 +178,11 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
         }
         }]);
     } 
-}; 
+};
 
-var sMesaDeReporte_Load = function (avance, registro, index) { 
+var sMesaDeReporte_Load = function (avance, registro, index) {
+
+    console.log(registro);
     var sum = 0;
     App.sMesaDeReporte.each(function (record) {
         sum += record.get('ImporteTotal');
@@ -191,3 +216,13 @@ var txtReporteFiltro_Change = function (textfield, newValue, oldValue, e) {
     }]);
     App.gpExploradorMesaDeReporte.getSelectionModel().deselectAll();
 };
+
+var cFacturado_Renderer = function (valor, columna, registro) {
+    if (registro.get('Facturado')) {
+        columna.style = "background-color: #0C8D1B; color: #fff;";
+        return "Si";
+    } else {
+        columna.style = "background-color: #ff0033; color: #fff;";
+        return "No";
+    }
+}

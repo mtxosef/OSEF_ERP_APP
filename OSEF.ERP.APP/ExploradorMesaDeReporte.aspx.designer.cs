@@ -76,13 +76,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mSucursales;
         
         /// <summary>
-        /// Control cmbMovimiento.
+        /// Control cmbClasificacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbMovimiento;
+        protected global::Ext.Net.ComboBox cmbClasificacion;
         
         /// <summary>
         /// Control tsExploradorMesaDeReporte.
@@ -164,6 +164,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Model mMesaDeReporte;
+        
+        /// <summary>
+        /// Control cFacturado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cFacturado;
         
         /// <summary>
         /// Control cMovimiento.
