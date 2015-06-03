@@ -15,9 +15,9 @@ namespace OSEF.ERP.APP
         protected void Page_Load(object sender, EventArgs e)
         {
           //Nos traemos la variable de sesion que contiene al reporte
-           ReportDocument reporte= (ReportDocument)Session["imprimir"];
-           crvVisor.ToolPanelView = ToolPanelViewType.None;
-           crvVisor.ReportSource = reporte;
+           //ReportDocument reporte= (ReportDocument)Session["imprimir"];
+           //crvVisor.ToolPanelView = ToolPanelViewType.None;
+           //crvVisor.ReportSource = reporte;
            
         }
 
@@ -27,8 +27,9 @@ namespace OSEF.ERP.APP
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
+            string strClave = Session["Clave"].ToString();
             reporte.Load(Server.MapPath("reportess/" + namereport + ".rpt"));
-            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Vista Preliminar");
+            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, strClave);
 
         }
         //Metodo que exporta a un documento de excel
@@ -37,8 +38,20 @@ namespace OSEF.ERP.APP
 
             ReportDocument reporte = (ReportDocument)Session["imprimir"];
             string namereport = Session["ReportName"].ToString();
+            string strClave = Session["Clave"].ToString();
             reporte.Load(Server.MapPath("reportess/" + namereport + ".rpt"));
-            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Vista Preliminar");
+            reporte.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, strClave);
+
+        }
+
+        protected void toPopUp(object sender, EventArgs e) {
+
+            string namereport = Session["ReportName"].ToString();
+            string strClave = Session["Clave"].ToString();
+            ReportDocument reporte = (ReportDocument)Session["imprimir"];
+            reporte.Load(Server.MapPath("reportess/" + namereport + ".rpt"));
+            reporte.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("reportess/" + strClave + ".pdf"));
+            ClientScript.RegisterStartupScript(this.Page.GetType(), "popupOpener", "var popup=window.open('reportess/" + strClave + ".pdf',null,'height=700,width=660');popup.focus();", true);
 
         }
     }
