@@ -33,6 +33,13 @@ CREATE PROCEDURE web_spS_ObtenerReportesPorClasificacion
 		@CLASIFICACION VARCHAR(25)
 AS
 BEGIN
+
+IF (@CLASIFICACION = 'Todos')
+BEGIN
+SET @CLASIFICACION = ''
+END
+
+
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
@@ -63,7 +70,7 @@ BEGIN
 		OE.Mov in('Mesa de reporte')  
 		AND OE.MovEnLinea = 1
 	 AND OE.Estatus IN('CONCLUIDO') 
-	 AND Facturado=1
+	 AND oe.Revisado=1
 	AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'
 END
 GO
