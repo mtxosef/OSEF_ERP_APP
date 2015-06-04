@@ -99,7 +99,7 @@ var imgbtnImprimir_Click = function () {
     if (App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Mesa de reporte' || App.sOrdenEstimacion.getAt(0).get('Mov').trim() == 'Estimacion') {
         Ext.util.Cookies.set('NReporte', App.txtfNoReporte.getValue());
         window.parent.App.wGenerador.load('FormaReporteEstimacion.aspx');
-        window.parent.App.wGenerador.setHeight(560);
+        window.parent.App.wGenerador.setHeight(160);
         window.parent.App.wGenerador.setWidth(590);
         window.parent.App.wGenerador.center();
         window.parent.App.wGenerador.setTitle('Reporte del Movimiento: ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
