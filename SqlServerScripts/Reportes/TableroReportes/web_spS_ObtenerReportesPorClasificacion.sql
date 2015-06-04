@@ -52,7 +52,7 @@ BEGIN
 		OE.HoraLlegada,
 		OE.FechaFinActividad,
 		OE.HoraFinActividad,
-		OE.ImporteTotal,OE.MovEnLinea
+		OE.ImporteTotal,OE.MovEnLinea, OE.Observaciones
 		
 		FROM OrdenesEstimaciones OE
 		--Detalle del movimiento

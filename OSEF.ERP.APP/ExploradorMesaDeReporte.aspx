@@ -352,7 +352,7 @@
                         Text="TRABAJO REALIZADO"
                         Align="Center"
                         Width="170"
-                        DataIndex="TrabajoRealizado">
+                        DataIndex="Observaciones">
                     </ext:Column> 
 
                     <ext:Column
