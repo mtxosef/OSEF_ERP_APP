@@ -243,25 +243,18 @@
                    <ext:CheckColumn ID="ckFacturado"
                         runat="server"
                         Text="Facturado?" 
+                        Align="Left"
                         DataIndex="Facturado"    
                         StopSelection="false"
                         Editable="true"                     
                         Width="60"> 
                     </ext:CheckColumn>
 
-                   <ext:Column 
-                        ID="cFacturado"
-                        runat="server"
-                        Text="FACTURADO"
-                        Align="Center"
-                        Width="80"
-                        DataIndex="Facturado">
-                        <Renderer Fn="cFacturado_Renderer"></Renderer>
-                    </ext:Column>
                      
                    <ext:CheckColumn ID="cRevisado"
                         runat="server"
                         Text="Revisado?" 
+                        Align="Left"
                         DataIndex="Revisado"    
                         StopSelection="false"
                         Editable="true"                     
@@ -378,13 +371,11 @@
                         Text="TRABAJO REALIZADO"
                         Align="Center"
                         Width="170"
-<<<<<<< HEAD
+
                         DataIndex="Observaciones">
                     </ext:Column> 
-=======
-                        DataIndex="TrabajoRealizado">
-                   </ext:Column> 
->>>>>>> origin/master
+
+
 
                    <ext:Column
                         ID="cAsunto"
