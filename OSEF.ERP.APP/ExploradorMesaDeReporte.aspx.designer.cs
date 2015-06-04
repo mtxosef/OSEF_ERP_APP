@@ -166,6 +166,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mMesaDeReporte;
         
         /// <summary>
+        /// Control CellEditing1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CellEditing CellEditing1;
+        
+        /// <summary>
+        /// Control ckFacturado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CheckColumn ckFacturado;
+        
+        /// <summary>
         /// Control cFacturado.
         /// </summary>
         /// <remarks>
@@ -173,6 +191,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column cFacturado;
+        
+        /// <summary>
+        /// Control cRevisado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CheckColumn cRevisado;
         
         /// <summary>
         /// Control cMovimiento.
@@ -317,15 +344,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.GridView gvExploradorMesaDeReporte;
-        
-        /// <summary>
-        /// Control CheckboxSelectionModel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CheckboxSelectionModel CheckboxSelectionModel1;
         
         /// <summary>
         /// Control sbMesaDeReporte.

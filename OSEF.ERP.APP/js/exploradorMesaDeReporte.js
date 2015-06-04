@@ -182,7 +182,6 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
 
 var sMesaDeReporte_Load = function (avance, registro, index) {
 
-    console.log(registro);
     var sum = 0;
     App.sMesaDeReporte.each(function (record) {
         sum += record.get('ImporteTotal');
@@ -226,3 +225,23 @@ var cFacturado_Renderer = function (valor, columna, registro) {
         return "No";
     }
 }
+
+var getUpdatedRecords = function () {
+
+    var store = App.sMesaDeReporte;
+    var editedRecords = store.getUpdatedRecords();
+    var encodedupdaterecords;
+    var xudata = [];
+
+    if (editedRecords.length > 0 || editedRecords != null) {
+        for (i = 0; i < editedRecords.length; i++) {
+            xudata.push(editedRecords[i].data);
+        }
+        if (xudata.length > 0) {
+            encodedupdaterecords = Ext.encode(xudata);
+            return encodedupdaterecords;
+        } else {
+            return 0;
+        }
+    }
+};

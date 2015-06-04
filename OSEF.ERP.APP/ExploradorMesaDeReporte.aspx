@@ -145,7 +145,7 @@
                                         ImageUrl="assets/img/controles/ExcelNormal.png"/>
                                 </Content>
                             </ext:Container>
-
+                              
                         <ext:ImageButton
                                     ID="imgbtnFacturar"
                                     runat="server"
@@ -155,15 +155,15 @@
                                     Height="22px"
                                     Width="22px">    
                                     <DirectEvents>
-                                        <Click OnEvent="getCheckedRecords">
+                                        <Click OnEvent="getUpdatedRecords">
                                             <EventMask ShowMask="true" />
-                                            <ExtraParams>
-                                                <ext:Parameter Name="Values" Value="Ext.encode(#{gpExploradorMesaDeReporte}.getRowsValues({selectedOnly:true}))" Mode="Raw" />
+                                            <ExtraParams> 
+                                                <ext:Parameter Name="registrosactualizados" Value="getUpdatedRecords()" Mode="Raw" />
                                             </ExtraParams>
                                         </Click>
                                     </DirectEvents>                                          
                                 </ext:ImageButton>
-                        
+
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="ToolbarSpacer1" 
@@ -219,8 +219,8 @@
                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
                                 <ext:ModelField Name="TrabajoRealizado" Type="String" /> 
                                 <ext:ModelField Name="Facturado" Type="Boolean" />
-                                 <ext:ModelField Name="Clasificacion" Type="String" />
-                                 
+                                <ext:ModelField Name="Clasificacion" Type="String" />
+                                <ext:ModelField Name="Revisado" Type="Boolean" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -234,9 +234,22 @@
                 </ext:Store>
             </Store>
 
+           <Plugins>
+            <ext:CellEditing ID="CellEditing1" runat="server" ClicksToEdit="1" />
+        </Plugins> 
             <ColumnModel>
                 <Columns>
-                     <ext:Column 
+                
+                   <ext:CheckColumn ID="ckFacturado"
+                        runat="server"
+                        Text="Facturado?" 
+                        DataIndex="Facturado"    
+                        StopSelection="false"
+                        Editable="true"                     
+                        Width="60"> 
+                    </ext:CheckColumn>
+
+                   <ext:Column 
                         ID="cFacturado"
                         runat="server"
                         Text="FACTURADO"
@@ -245,7 +258,17 @@
                         DataIndex="Facturado">
                         <Renderer Fn="cFacturado_Renderer"></Renderer>
                     </ext:Column>
-                    <ext:Column 
+                     
+                   <ext:CheckColumn ID="cRevisado"
+                        runat="server"
+                        Text="Revisado?" 
+                        DataIndex="Revisado"    
+                        StopSelection="false"
+                        Editable="true"                     
+                        Width="60"> 
+                    </ext:CheckColumn>
+
+                   <ext:Column 
                         ID="cMovimiento"
                         runat="server"
                         Text="MOVIMIENTO"
@@ -265,7 +288,8 @@
                         </HeaderItems>
                         <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
-                     <ext:Column 
+                    
+                   <ext:Column 
                         ID="cReporte"
                         runat="server"
                         Text="REPORTE"
@@ -282,7 +306,8 @@
                             </ext:TextField>
                         </HeaderItems>
                     </ext:Column>
-                     <ext:DateColumn
+                    
+                   <ext:DateColumn
                         ID="dcFechaEmision"
                         runat="server"
                         Text="FECHA ORIGEN"
@@ -327,7 +352,8 @@
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:DateColumn>
-                     <ext:Column
+
+                   <ext:Column
                         ID="cSucursal"
                         runat="server"
                         Text="SUCURSAL"
@@ -337,7 +363,7 @@
                       <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
                     
-                      <ext:Column
+                   <ext:Column
                         ID="cTrabajoRequerido"
                         runat="server"
                         Text="TRABAJO REQUERIDO"
@@ -346,16 +372,16 @@
                         DataIndex="TrabajoRequerido">
                     </ext:Column> 
 
-                      <ext:Column
+                   <ext:Column
                         ID="cTrabajoRealizado"
                         runat="server"
                         Text="TRABAJO REALIZADO"
                         Align="Center"
                         Width="170"
                         DataIndex="TrabajoRealizado">
-                    </ext:Column> 
+                   </ext:Column> 
 
-                    <ext:Column
+                   <ext:Column
                         ID="cAsunto"
                         runat="server"
                         Text="ASUNTO"
@@ -364,7 +390,7 @@
                         DataIndex="Observaciones">
                     </ext:Column>
                     
-                    <ext:Column
+                   <ext:Column
                         ID="cTotal"
                         runat="server"
                         Text="Importe"
@@ -373,6 +399,7 @@
                         DataIndex="ImporteTotal">
                         <Renderer Fn="cImporte_renderer"></Renderer>
                     </ext:Column>
+
                    <ext:Column
                         ID="cUsuario"
                         runat="server"
@@ -429,6 +456,7 @@
                         </HeaderItems>
                     
                     </ext:Column>
+
                 </Columns>
             </ColumnModel>
             <Listeners>
@@ -441,9 +469,7 @@
                     StripeRows="true">
                 </ext:GridView>
             </View>
-            <SelectionModel>
-                <ext:CheckboxSelectionModel ID="CheckboxSelectionModel1" runat="server" Mode="Multi" /> 
-            </SelectionModel>
+             
             <FooterBar>
                 <ext:StatusBar ID="sbMesaDeReporte" runat="server" Text="">
                     <Items>

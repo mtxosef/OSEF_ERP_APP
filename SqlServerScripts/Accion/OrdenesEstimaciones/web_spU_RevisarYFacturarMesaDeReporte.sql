@@ -30,8 +30,8 @@ GO
 CREATE PROCEDURE web_spU_RevisarYFacturarMesaDeReporte
 	-- Add the parameters for the stored procedure here
 	@ID				INT,
-	@Reviso			BIT,
-	@Facturar		BIT
+	@Facturado		BIT,
+	@Revisado			BIT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -39,7 +39,7 @@ BEGIN
 	SET NOCOUNT ON; 
     -- Insert statements for procedure here  
 	UPDATE OrdenesEstimaciones
-	SET Facturado = 1, Revisado = @Reviso
+	SET Facturado = @Facturado, Revisado = @Revisado
 	WHERE ID = @ID;
 	END 
 GO
