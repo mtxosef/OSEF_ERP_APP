@@ -45,7 +45,7 @@ namespace OSEF.APP.EL
         decimal importetotal; 
         bool facturado;
         string clasificacion;
-
+        bool revisado;
          
         #endregion
 
@@ -232,6 +232,12 @@ namespace OSEF.APP.EL
         {
             get { return clasificacion; }
             set { clasificacion = value; }
+        }
+
+        public bool Revisado
+        {
+            get { return revisado; }
+            set { revisado = value; }
         }
         #endregion
     }

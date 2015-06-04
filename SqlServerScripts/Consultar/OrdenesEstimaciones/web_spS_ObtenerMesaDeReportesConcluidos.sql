@@ -69,7 +69,8 @@ BEGIN
 		NoOrden,
 		ReferenciaOrden,
 		Facturado,
-		Clasificacion
+		Clasificacion,
+		Revisado
 	FROM
 		OrdenesEstimaciones
 	WHERE 

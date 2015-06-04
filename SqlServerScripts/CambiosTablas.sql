@@ -138,3 +138,6 @@ ALTER TABLE OrdenesEstimaciones ADD Facturado BIT NOT NULL DEFAULT (0)
 
 --Cambios Giovanni Flores 03 de Junio 2015
 ALTER TABLE OrdenesEstimaciones ADD Clasificacion VARCHAR(25) NOT NULL DEFAULT('')
+
+--Cambios Giovanni Flores 03 de Junio 2015
+ALTER TABLE OrdenesEstimaciones ADD Revisado BIT NOT  NULL DEFAULT (0)
