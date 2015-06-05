@@ -218,7 +218,6 @@
                                 <ext:ModelField Name="ImporteTotal" Type="Float" />
                                 <ext:ModelField Name="Usuario" Type="String" />
                                 <ext:ModelField Name="TrabajoRequerido" Type="String" />
-                                <ext:ModelField Name="TrabajoRealizado" Type="String" /> 
                                 <ext:ModelField Name="Facturado" Type="Boolean" />
                                 <ext:ModelField Name="Clasificacion" Type="String" />
                                 <ext:ModelField Name="Revisado" Type="Boolean" />
@@ -400,16 +399,6 @@
                     </ext:Column> 
 
 
-
-                   <ext:Column
-                        ID="cAsunto"
-                        runat="server"
-                        Text="ASUNTO"
-                        Align="Center"
-                        Width="300"
-                        DataIndex="Observaciones">
-                    </ext:Column>
-                    
                    <ext:Column
                         ID="cTotal"
                         runat="server"
