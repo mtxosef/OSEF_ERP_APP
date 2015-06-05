@@ -137,6 +137,10 @@ namespace OSEF.AVANCES.SUCURSALES
                 strcookieMunicipio = Cookies.GetCookie("cookieMunicipio").Value;
                 strcookieEstado = Cookies.GetCookie("cookieEstado").Value;
                 strcookieColonia = Cookies.GetCookie("cookieColonia").Value;
+                oSucursal.CodigoPostal = strcookieCP;
+                oSucursal.Colonia = strcookieColonia;
+                oSucursal.Estado = strcookieEstado;
+                oSucursal.Municipio = strcookieMunicipio;
             }
             else {
                 strcookieCP = Cookies.GetCookie("cookieCP").Value;
@@ -248,9 +252,6 @@ namespace OSEF.AVANCES.SUCURSALES
                         break;
                 }
             }
-         
-           
-
             oSucursal.FinObra = Convert.ToDateTime(strFinObra);
             oSucursal.SemanasObra = Convert.ToInt16(strSemanasObra);
             
