@@ -116,5 +116,7 @@ namespace OSEF.ERP.APP
                 X.Msg.Alert("Atención", "Selecione al menos 1 registro.", new JFunction { Fn = "showResult(false)" }).Show();
             }
         }
+
+
     }
 }

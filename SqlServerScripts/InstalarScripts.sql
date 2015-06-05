@@ -477,6 +477,7 @@
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenesPorConceptoID.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRFacturas.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenes.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRCaratulaDeEstimacionDeCostos.sql
 -----------------------------------------------------------------------------------------------------------------------------------------
 --CodigosPostales(Insertar)
 :r c:\SqlServerScripts\Insertar\CodigosPostales\web_spI_InsertarCodigoPostal.sql

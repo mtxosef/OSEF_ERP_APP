@@ -245,3 +245,24 @@ var getUpdatedRecords = function () {
         }
     }
 };
+
+var setCheckedAllRecords_Facturado = function (avance, registro, index) {
+    App.sMesaDeReporte.each(function (record) {
+        if (App.chkFacturado.getValue()) {
+            record.set('Facturado', true);
+        } else {
+            record.set('Facturado', false);
+        }
+    });
+}
+
+var setCheckedAllRecords_Revisado = function (avance, registro, index) {
+    App.sMesaDeReporte.each(function (record) {
+        if (App.chkRevisar.getValue()) {
+            record.set('Revisado', true);
+        } else {
+            record.set('Revisado', false);
+        }
+    });
+}
+ 

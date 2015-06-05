@@ -184,6 +184,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.CheckColumn ckFacturado;
         
         /// <summary>
+        /// Control chkFacturado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkFacturado;
+        
+        /// <summary>
         /// Control cRevisado.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.CheckColumn cRevisado;
+        
+        /// <summary>
+        /// Control chkRevisar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkRevisar;
         
         /// <summary>
         /// Control cMovimiento.

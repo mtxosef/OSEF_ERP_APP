@@ -45,6 +45,8 @@
             <TopBar>
                 <ext:Toolbar ID="tbPreciarios" runat="server">
                     <Items>
+                     
+
                         <ext:ComboBox
                                 ID="cmbSucursal"
                                 runat="server"
@@ -102,7 +104,7 @@
                             </ext:ComboBox>
 
                       
-                            <ext:ComboBox
+                        <ext:ComboBox
                                 ID="cmbClasificacion"
                                 runat="server"
                                 FieldLabel="CLASIFICACIÓN"
@@ -169,7 +171,6 @@
                         ID="ToolbarSpacer1" 
                         Width="5"> 
                         </ext:ToolbarSpacer>
-
                         <ext:TextField 
                             ID="txtfBuscar"
                             runat="server"
@@ -243,22 +244,45 @@
                    <ext:CheckColumn ID="ckFacturado"
                         runat="server"
                         Text="Facturado?" 
-                        Align="Left"
+                        Align="Center"
                         DataIndex="Facturado"    
                         StopSelection="false"
                         Editable="true"                     
                         Width="60"> 
+                        <HeaderItems>
+                            
+                        <ext:Checkbox ID="chkFacturado" 
+                            runat="server"
+                            Name="chkFacturado" 
+                            Checked="false" >
+                            <Listeners>
+                                <Change Fn="setCheckedAllRecords_Facturado"></Change> 
+                            </Listeners>
+                        </ext:Checkbox>
+                         
+                        </HeaderItems>
                     </ext:CheckColumn>
 
                      
                    <ext:CheckColumn ID="cRevisado"
                         runat="server"
                         Text="Revisado?" 
-                        Align="Left"
+                        Align="Center"
                         DataIndex="Revisado"    
                         StopSelection="false"
                         Editable="true"                     
                         Width="60"> 
+                        <HeaderItems>
+                            
+                        <ext:Checkbox ID="chkRevisar" 
+                            runat="server"
+                            Name="chkRevisar" 
+                            Checked="false" >
+                            <Listeners>
+                                <Change Fn="setCheckedAllRecords_Revisado"></Change> 
+                            </Listeners>
+                        </ext:Checkbox>
+                        </HeaderItems>
                     </ext:CheckColumn>
 
                    <ext:Column 
