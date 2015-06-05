@@ -1379,6 +1379,12 @@
       <DependentUpon>rCaratulaDeEstimacion.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reportess\rCaratulaEstimacionDeCostos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rCaratulaEstimacionDeCostos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportess\rCroquis.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1538,6 +1544,10 @@
     <EmbeddedResource Include="reportess\rCaratulaDeEstimacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rCaratulaDeEstimacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportess\rCaratulaEstimacionDeCostos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rCaratulaEstimacionDeCostos.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportess\rCroquis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

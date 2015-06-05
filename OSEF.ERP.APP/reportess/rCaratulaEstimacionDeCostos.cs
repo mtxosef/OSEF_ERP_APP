@@ -16,14 +16,14 @@ namespace OSEF.ERP.APP.reportess {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rPresupuesto : ReportClass {
+    public class rCaratulaEstimacionDeCostos : ReportClass {
         
-        public rPresupuesto() {
+        public rCaratulaEstimacionDeCostos() {
         }
         
         public override string ResourceName {
             get {
-                return "rPresupuesto.rpt";
+                return "rCaratulaEstimacionDeCostos.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OSEF.ERP.APP.reportess {
         
         public override string FullResourceName {
             get {
-                return "OSEF.ERP.APP.reportess.rPresupuesto.rpt";
+                return "OSEF.ERP.APP.reportess.rCaratulaEstimacionDeCostos.rpt";
             }
             set {
                 // Do nothing
@@ -106,25 +106,17 @@ namespace OSEF.ERP.APP.reportess {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_IDMovimiento {
+        public CrystalDecisions.Shared.IParameterField Parameter_pProveedor {
             get {
                 return this.DataDefinition.ParameterFields[0];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_reviso {
-            get {
-                return this.DataDefinition.ParameterFields[1];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrPresupuesto : Component, ICachedReport {
+    public class CachedrCaratulaEstimacionDeCostos : Component, ICachedReport {
         
-        public CachedrPresupuesto() {
+        public CachedrCaratulaEstimacionDeCostos() {
         }
         
         [Browsable(false)]
@@ -161,7 +153,7 @@ namespace OSEF.ERP.APP.reportess {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rPresupuesto rpt = new rPresupuesto();
+            rCaratulaEstimacionDeCostos rpt = new rCaratulaEstimacionDeCostos();
             rpt.Site = this.Site;
             return rpt;
         }

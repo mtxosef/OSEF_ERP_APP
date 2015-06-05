@@ -906,9 +906,6 @@
                                                         <ext:ListItem Index="1" Text="CERRAJERIA" Value="CERRAJERIA" />
                                                         <ext:ListItem Index="2" Text="INMUEBLE" Value="INMUEBLE" /> 
                                                     </Items> 
-                                                    <SelectedItems>
-                                                        <ext:ListItem Index="0" />
-                                                    </SelectedItems>
                                                 </ext:ComboBox>
                                                 </Items>
                                         </ext:FieldContainer>
