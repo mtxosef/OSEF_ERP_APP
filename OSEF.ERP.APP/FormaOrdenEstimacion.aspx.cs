@@ -341,7 +341,7 @@ namespace OSEF.ERP.APP
                         oOrdenEstimacionForma.ReferenciaOrden = sd.Value;
                         break;
                     case "cmbClasificacion":
-                        oOrdenEstimacionForma.Clasificacion = sd.Value;
+                        oOrdenEstimacionForma.Clasificacion = sd.Value == null ? "":sd.Value;
                         break;
 
                 }
@@ -445,7 +445,7 @@ namespace OSEF.ERP.APP
                     Atendido = oOrdenEstimacionForma.Atendido,
                     NoOrden = oOrdenEstimacionForma.NoOrden,
                     ReferenciaOrden = oOrdenEstimacionForma.ReferenciaOrden,
-                    Clasificacion = oOrdenEstimacionForma.Clasificacion
+                    Clasificacion = oOrdenEstimacionForma.Clasificacion == null ? oOrdenEstimacionForma.Clasificacion : ""
                 }); 
 
                 //7. Guardar Detalle y regresar valor
