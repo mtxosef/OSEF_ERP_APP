@@ -224,6 +224,7 @@ var cmbMov_Select = function (combobox, registro) {
 
 //Evento de clic del botón BuscarSucursal
 var btnBuscarSucursal_Click = function () {
+    Ext.util.Cookies.set('cookieElijeSucursal', "OrdenEstimacion");
     window.parent.App.wAyudaConcepto.load('FormaBuscaSucursal.aspx');
     window.parent.App.wAyudaConcepto.setHeight(370);
     window.parent.App.wAyudaConcepto.setWidth(720);
