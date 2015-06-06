@@ -74,7 +74,7 @@
                                     <ext:Parameter Name="archivo" Value="App.txfArchivoActual.getValue()" Mode="Raw" />
                                     <ext:Parameter Name="DetallePreciario" Value="Ext.encode(#{sCarga}.getRecordsValues())"
                                         Mode="Raw" />
-                                    <ext:Parameter Name="sucursal" Value="App.txtIDSucursal.getValue()" Mode="Raw" />
+                                    <ext:Parameter Name="sucursal" Value="App.txtfSucursalID.getValue()" Mode="Raw" />
                                 </ExtraParams>
                             </Click>
                         </DirectEvents>
@@ -115,7 +115,7 @@
                     <ext:FieldContainer ID="FieldContainerCPCol" runat="server" LabelWidth="120" FieldLabel="Sucursal"
                         AnchorHorizontal="100%" Layout="ColumnLayout">
                         <Items>
-                            <ext:TextField ID="cmbSucursal" runat="server" Width="200" StyleSpec="margin-right: 6px;"
+                            <ext:TextField ID="txtfSucursalCR" runat="server" Width="200" StyleSpec="margin-right: 6px;"
                                 MaxLength="50" EnforceMaxLength="true" AllowBlank="true" ReadOnly="true">
                                 <RightButtons>
                                     <ext:Button ID="btnBuscaSucursal" runat="server" Icon="Find" StandOut="true">
@@ -129,7 +129,7 @@
                                 MaxLength="50" EnforceMaxLength="true" AllowBlank="true" ReadOnly="true"> 
                             </ext:TextField>
 
-                             <ext:TextField ID="txtIDSucursal" runat="server"  
+                             <ext:TextField ID="txtfSucursalID" runat="server"  
                                  Hidden="true"> 
                             </ext:TextField>
                         </Items>

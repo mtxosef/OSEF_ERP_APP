@@ -130,13 +130,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.FieldContainer FieldContainerCPCol;
         
         /// <summary>
-        /// Control cmbSucursal.
+        /// Control txtfSucursalCR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField cmbSucursal;
+        protected global::Ext.Net.TextField txtfSucursalCR;
         
         /// <summary>
         /// Control btnBuscaSucursal.
@@ -157,13 +157,13 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.TextField txtfSucursalNombre;
         
         /// <summary>
-        /// Control txtIDSucursal.
+        /// Control txtfSucursalID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField txtIDSucursal;
+        protected global::Ext.Net.TextField txtfSucursalID;
         
         /// <summary>
         /// Control fcFechaEmision.
