@@ -131,6 +131,9 @@
 
                              <ext:TextField ID="txtfSucursalID" runat="server"  
                                  Hidden="true"> 
+                                 <Listeners>
+                                 <Change Fn="txtfSucursalID_Change"></Change>
+                                 </Listeners>
                             </ext:TextField>
                         </Items>
                     </ext:FieldContainer>

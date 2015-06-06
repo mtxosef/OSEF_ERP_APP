@@ -160,6 +160,12 @@ var cmbSucursal_Change = function (combobox, valorNuevo, viejoValor) {
     HabilitarGuardar();
 };
 
+//Evento que se lanza al poner algun caracter en el control de la Sucursal
+var txtfSucursalID_Change = function () {
+
+    HabilitarGuardar();
+};
+
 //Evento que se lanza al poner algun texto en la descripcion
 var txtfDescripcion_Change = function (txtDescripcion, Evento) {
     //Validar si se habilita Guardar
@@ -191,16 +197,16 @@ var sPreciario_Add = function (avance, registro) {
     if (Ext.util.Cookies.get('cookieEditarPreciario') != 'Nuevo') {
         App.txtfID.setValue(registro[0].get('ID'));
         App.txtfDescripcion.setValue(registro[0].get('Descripcion'));
-        App.cmbSucursal.setValue(registro[0].get('RSucursal').CR);
+        App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
         App.txtfSucursalNombre.setValue(registro[0].get('RSucursal').Nombre);
         App.txfArchivoActual.setValue(registro[0].get('Archivo'));
         App.cmbEstatus.setValue(registro[0].get('Estatus'));
         App.dfFechaEmision.setValue(registro[0].get('FechaAlta'));
-        App.txtIDSucursal.setValue(registro[0].get('Sucursal'));
+        App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
         //Deshabilita botones cuando se edita un movimiento al cargar el store
         App.cmbEstatus.setDisabled(false);
-        App.cmbSucursal.setDisabled(true);
+        App.txtfSucursalCR.setDisabled(true);
         App.cmbEstatus.setDisabled(true);
         App.nfHoja.setDisabled(true);
         App.btnCargar.setDisabled(true);
@@ -268,7 +274,7 @@ function HabilitarGuardar() {
     }
 
     //Valida que todos los controles del encabezado obligatorios estén llenos
-     if (App.cmbSucursal.getValue() != null && FileUploadValue != "" && App.txtfDescripcion.getValue() != "" && App.sCarga.getCount() != 0) {
+     if (App.txtfSucursalCR.getValue() != "" && FileUploadValue != "" && App.txtfDescripcion.getValue() != "" && App.sCarga.getCount() != 0) {
         App.imgbtnGuardar.setDisabled(false);
     }
     else 
@@ -354,7 +360,7 @@ var cmbSucursal_Change_Success = function (response, result) {
             icon: Ext.MessageBox.WARNING
         });
 
-        App.cmbSucursal.clearValue();
+        App.txtfSucursalCR.setValue("");
         App.txtfSucursalNombre.setValue("");
     }
     else {
