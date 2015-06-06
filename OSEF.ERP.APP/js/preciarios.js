@@ -432,14 +432,13 @@ var sCarga_Load = function (avance, registro, index) {
 
 
 //Evento de clic del botón BuscarSucursal
-var btnBuscarSucursal_Click = function () {
-
-    Ext.util.Cookies.set('cookieElijeSucursal',"Preciario");
+var btnBuscarSucursal_Click = function () { 
     window.parent.App.wAyudaConcepto.load('FormaBuscaSucursal.aspx');
+
     window.parent.App.wAyudaConcepto.setHeight(370);
-    window.parent.App.wAyudaConcepto.setWidth(720);
+    window.parent.App.wAyudaConcepto.setWidth(720); 
     window.parent.App.wAyudaConcepto.center();
-    window.parent.App.wAyudaConcepto.setTitle('Seleccionar Sucursal');
+    window.parent.App.wAyudaConcepto.setTitle('Seleccionar Sucursal'); 
     window.parent.App.wAyudaConcepto.show();
 };
 
