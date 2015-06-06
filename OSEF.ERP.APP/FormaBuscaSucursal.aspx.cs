@@ -16,7 +16,16 @@ namespace OSEF.ERP.APP
         {
             if (!X.IsAjaxRequest)
             {
-                List<Sucursal> lSucursal = SucursalBusiness.ObtenerSucursales();
+                string str = Cookies.GetCookie("cookieElijeSucursal").Value != null ? Cookies.GetCookie("cookieElijeSucursal").Value : "";
+                List<Sucursal> lSucursal;
+                if (str.Equals("Preciario"))
+                {
+                    lSucursal = SucursalBusiness.ObtenerSucursalesDisponibles();
+                }
+                else
+                {
+                    lSucursal = SucursalBusiness.ObtenerSucursales();
+                }
                 sBSucursales.DataSource = lSucursal;
                 sBSucursales.DataBind();
 
@@ -31,7 +40,17 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         protected void OnReadData_sSucursales(object sender, StoreReadDataEventArgs e)
         {
-            List<Sucursal> lSucursal = SucursalBusiness.ObtenerSucursales();
+
+            string str = Cookies.GetCookie("cookieElijeSucursal").Value != null ? Cookies.GetCookie("cookieElijeSucursal").Value : "";
+            List<Sucursal> lSucursal;
+            if (str.Equals("Preciario"))
+            {
+                lSucursal = SucursalBusiness.ObtenerSucursalesDisponibles();
+            }
+            else
+            {
+                lSucursal = SucursalBusiness.ObtenerSucursales();
+            }
             sBSucursales.DataSource = lSucursal;
             sBSucursales.DataBind();
         }

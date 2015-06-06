@@ -432,7 +432,8 @@ var sCarga_Load = function (avance, registro, index) {
 
 
 //Evento de clic del botón BuscarSucursal
-var btnBuscarSucursal_Click = function () { 
+var btnBuscarSucursal_Click = function () {
+    Ext.util.Cookies.set('cookieElijeSucursal', "Preciario");
     window.parent.App.wAyudaConcepto.load('FormaBuscaSucursal.aspx');
 
     window.parent.App.wAyudaConcepto.setHeight(370);
