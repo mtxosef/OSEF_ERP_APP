@@ -472,12 +472,13 @@ var ccDimensiones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
 //Evento que actualuza el importe total cuando se usa el generador
 var sConceptos_DataUpdate = function (store, registro, operacion, columnaStore) {
 
-
+    console.log(indiceDetalle);
     //Verificar si abajo de esta columna existe otra
     if (App.sConceptos.getAt(indiceDetalle + 1) == undefined) {
         //Verificar si toda la fila contiene datos
         if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
             //Obtener el Renglon anterior
+
             var renglonAnterior = App.sConceptos.getAt(indiceDetalle).get('Renglon') + 1;
             //Insertar un nuevo registro
             App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
@@ -701,21 +702,21 @@ var cePreciarioConcepto_Edit = function (cellediting, columna) {
         }   
     }
 
-    //Verificar si abajo de esta columna existe otra
-    if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
-        //Verificar si toda la fila contiene datos
-        var registro = App.sConceptos.getAt(columna.rowIdx);
-        if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
-            //Obtener el Renglon anterior
-            var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
-            //Insertar un nuevo registro
-            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
-            //Actualiza el renglon anterior pintando el botón de borrar
-            App.gpVolumetriaDetalle.getView().refreshNode(App.sConceptos.getCount() - 2);
-            //Validar si se habilita el boton de afectar
-            HabilitarAfectar();
-        }
-    }
+//    //Verificar si abajo de esta columna existe otra
+//    if (App.sConceptos.getAt(columna.rowIdx + 1) == undefined) {
+//        //Verificar si toda la fila contiene datos
+//        var registro = App.sConceptos.getAt(columna.rowIdx);
+//        if (registro.get('ConceptoID').length != 0 && registro.get('Utilizada') != 0) {
+//            //Obtener el Renglon anterior
+//            var renglonAnterior = App.sConceptos.getAt(columna.rowIdx).get('Renglon') + 1;
+//            //Insertar un nuevo registro
+//            App.sConceptos.insert(App.sConceptos.getCount(), { Renglon: renglonAnterior });
+//            //Actualiza el renglon anterior pintando el botón de borrar
+//            App.gpVolumetriaDetalle.getView().refreshNode(App.sConceptos.getCount() - 2);
+//            //Validar si se habilita el boton de afectar
+//            HabilitarAfectar();
+//        }
+//    }
 };
 
 //Trae la descripcion al displayfield
@@ -914,3 +915,22 @@ var imgbtnBuscar_Click = function () {
     window.parent.App.wAyudaConcepto.setTitle('Seleccionar preciarios');
     window.parent.App.wAyudaConcepto.show();
 };
+
+
+//Obtner el indice del grid panel del detalle y desplegar informacion
+var obetenerRenglon_Select = function (a, registro, c) {
+
+    indiceDetalle = registro.internalId;
+
+    //    if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && App.sOrdenEstimacion.getAt(0).get('Estatus') == 'CONCLUIDO'
+    //            && App.sOrdenEstimacion.getAt(0).get('Mov').trim() == "Orden de Cambio") {
+
+    //        App.imgbtnImprimir.setDisabled(false);
+
+    //    }
+
+    //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
+    //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+
+
+}
