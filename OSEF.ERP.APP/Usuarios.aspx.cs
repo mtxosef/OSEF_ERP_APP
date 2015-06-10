@@ -36,8 +36,7 @@ namespace OSEF.AVANCES.SUCURSALES
         {
             sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
             sUsuarios.DataBind();
-        }
-
+        } 
         /// <summary>
         /// Método para elimnar un registro
         /// </summary>
@@ -45,7 +44,15 @@ namespace OSEF.AVANCES.SUCURSALES
         [DirectMethod]
         public void EliminarUsuario(string strID)
         {
-            UsuarioBusiness.Borrar(strID);
+            if (UsuarioBusiness.ValidarUsuarioEnUso(strID))
+            {
+                UsuarioBusiness.Borrar(strID);
+                X.Msg.Alert("Atención", "Usuario " + strID + " eliminado.", new JFunction { Fn = "showResult" }).Show(); 
+            }
+            else
+            {
+                X.Msg.Alert("Error", "El usuario no se puede eliminar, verifique sus dependencias y de de baja al usuario.", new JFunction { Fn = "showResult" }).Show();
+            }
         }
     }
 }

@@ -224,6 +224,7 @@
 -- Usuarios (Consultar)
 :r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarios.sql
 :r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarioPorID.sql
+:r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ValidarUsuarioEnUso.sql
 :r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarioPorCorreo.sql
 :r c:\SqlServerScripts\Consultar\Usuarios\web_spS_ObtenerUsuarioPorIDCorreo.sql
 -- Usuarios (Insertar)

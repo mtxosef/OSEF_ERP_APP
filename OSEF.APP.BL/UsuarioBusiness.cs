@@ -76,6 +76,17 @@ namespace OSEF.APP.BL
             return UsuarioDataAccess.ObtenerUsuarioPorID(strID);
         }
 
+
+        /// <summary>
+        /// Valida un registro de Usuario por su ID
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+        public static bool ValidarUsuarioEnUso(string strID)
+        {
+            return UsuarioDataAccess.ValidarUsuarioEnUso(strID);
+        }
+
         /// <summary>
         /// Obtener un registro de Usuario por su Correo
         /// </summary>

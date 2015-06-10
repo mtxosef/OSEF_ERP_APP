@@ -40,6 +40,10 @@ var txtfID_Blur_Before = function (textfield, tipo, evento) {
     }
 };
 
+var showResult = function () { 
+
+}
+
 //Evento que es lanzado despues del DirectEvent
 var txtfID_Blur_Success = function (response, result) {
     if (result.extraParamsResponse.repetido) {
@@ -171,15 +175,20 @@ var imgbtnBorrar_Click = function () {
     var identificador = App.gpUsuarios.getSelectionModel().getSelection()[0].get('ID');
     var indice = App.gpUsuarios.getStore().find('ID', identificador);
     var nombre = App.sUsuarios.getAt(indice).get('Nombre');
-    App.direct.EliminarUsuario(identificador);
-    App.gpUsuarios.getStore().removeAt(indice);
-    Ext.net.Notification.show({
-        iconCls: 'icon-delete',
-        pinEvent: 'click',
-        header: true,
-        width: 350,
-        html: '<p class="deletePop">ID: ' + identificador + '</p><p class="deletePop">Nombre: ' + nombre + '</p>',
-        title: 'Eliminar registro'
+    Ext.Msg.show({
+        id: 'msgUsuarioEliminar',
+        title: 'Advertencia',
+        msg: '¿Estás seguro de eliminar el usuario: ' + nombre + '? ',
+        buttons: Ext.MessageBox.YESNO,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        fn: function (btn) {
+            if (btn === 'yes') {
+                App.direct.EliminarUsuario(identificador);
+                App.gpUsuarios.getStore().reload();
+            }
+        },
+        icon: Ext.MessageBox.WARNING
     });
 };
 

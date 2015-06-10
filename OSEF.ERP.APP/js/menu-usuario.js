@@ -332,7 +332,8 @@ $(document).ready(function () {
 
     parent.App.direct.getData({
         success: function (result) {
-            $("#lPlantas").attr("href", 'http://plantas.ibuho.mx:81/PlantasElectricas/index.php?IdProcess=1&txtUsr=' + result.Nombre + '&txtPwd=' + result.Contrasena);
+//            $("#lPlantas").attr("href", 'http://plantas.ibuho.mx:81/index.php?IdProcess=1&txtUsr=' + result.Nombre + '&txtPwd=' + result.Contrasena);
+            $("#lPlantas").attr("href", 'http://localhost:81/PlantasElectricas/index.php?IdProcess=1&txtUsr=' + result.Nombre + '&txtPwd=' + result.Contrasena);
         },
         failure: function (errorMsg) {
             Ext.Msg.alert('Error', errorMsg);

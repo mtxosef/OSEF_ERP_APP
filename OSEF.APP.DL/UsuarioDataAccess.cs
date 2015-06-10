@@ -447,6 +447,51 @@ namespace OSEF.APP.DL
             }
         }
 
+
+        /// <summary>
+        /// Método que valida el usuario para su posible eliminación
+        /// </summary>
+        /// <param name="strUsuario"></param>
+        /// <param name="strContrasena"></param>
+        /// <returns></returns>
+        public static bool ValidarUsuarioEnUso(string strUsuario)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcClienteComando = new SqlCommand();
+                sqlcClienteComando.Connection = sqlcConectar;
+                sqlcClienteComando.CommandType = CommandType.StoredProcedure;
+                sqlcClienteComando.CommandText = "web_spS_ValidarUsuarioEnUso";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpUsuario = new SqlParameter();
+                sqlpUsuario.ParameterName = "@ID";
+                sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+                sqlpUsuario.Value = strUsuario;
+                  
+                //3. Agregar los parametros al comando
+                sqlcClienteComando.Parameters.Add(sqlpUsuario); 
+
+                //4. Abrir la conexión
+                sqlcClienteComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa un dato
+                bool result = Convert.ToBoolean(sqlcClienteComando.ExecuteScalar());
+
+                //6. Cerrar la conexión
+                sqlcClienteComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (ValidarUsuarioEnUso(string " + strUsuario + ")): " + ex.Message);
+            }
+        }
+
         #endregion
 
         #region Acción
