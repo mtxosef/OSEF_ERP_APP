@@ -506,8 +506,6 @@ namespace OSEF.APP.DL
                 else
                     sqlpHoraFinActividad.Value = uMesaDeReporte.HoraFinActividad;
 
-
-
                 SqlParameter sqlpCuadrilla = new SqlParameter();
                 sqlpCuadrilla.ParameterName = "@Cuadrilla";
                 sqlpCuadrilla.SqlDbType = SqlDbType.VarChar;
@@ -833,6 +831,107 @@ namespace OSEF.APP.DL
             catch (Exception ex)
             {
                 throw new Exception("Error capa de datos (public static int FacturarMesaDeReportePorID(int " + ID + ")): " + ex.Message);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Método que Afecta un registro de MesaDeReporte
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int RevisarMesaDeReportePorID(int ID)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spU_RevisarMesaDeReporte";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = ID;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int RevisarMesaDeReportePorID(int " + ID + ")): " + ex.Message);
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Método que Afecta un registro de MesaDeReporte
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int RevisarYFacturarMesaDeReportePorID(MesaDeReporte mdr)
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spU_RevisarYFacturarMesaDeReporte";
+
+                //2. Declarar los parametros
+                SqlParameter sqlpID = new SqlParameter();
+                sqlpID.ParameterName = "@ID";
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Value = mdr.Id;
+                 
+                SqlParameter sqlpFacturado = new SqlParameter();
+                sqlpFacturado.ParameterName = "@Facturado";
+                sqlpFacturado.SqlDbType = SqlDbType.Bit;
+                sqlpFacturado.Value = mdr.Facturado;
+
+                SqlParameter sqlpRevisado = new SqlParameter();
+                sqlpRevisado.ParameterName = "@Revisado";
+                sqlpRevisado.SqlDbType = SqlDbType.Bit;
+                sqlpRevisado.Value = mdr.Revisado;
+
+                //3. Agregar los parametros al comando
+                sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpFacturado);
+                sqlcComando.Parameters.Add(sqlpRevisado);
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción UPDATE que no regresa filas
+                int result = sqlcComando.ExecuteNonQuery();
+
+                //6. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //7. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static int RevisarMesaDeReportePorID(int " + mdr.Id + ")): " + ex.Message);
             }
         }
 

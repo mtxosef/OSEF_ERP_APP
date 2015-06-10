@@ -66,7 +66,6 @@
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColonia.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniaPorID.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasEnSucursalesPorID.sql
-:r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerSucursalesEnUsoOrdenesDeCambio.sql
 :r c:\SqlServerScripts\Consultar\Colonias\web_spS_ObtenerColoniasPorMunicipio.sql
 -- Colonias (Insertar)
 :r c:\SqlServerScripts\Insertar\Colonias\web_spI_InsertarColonia.sql
@@ -211,6 +210,7 @@
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalPorID.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnUso.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnRevisionesPorID.sql
+:r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesEnUsoOrdenesDeCambio.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesSinPreciario.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesDisponibles.sql
 :r c:\SqlServerScripts\Consultar\Sucursales\web_spS_ObtenerSucursalesCR.sql
@@ -406,8 +406,8 @@
 -- OrdenesEstimaciones (Acción)
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarOrdenPorID.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarEstimacionPorID.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spU_RevisarYFacturarMesaDeReporte.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AvanzarMesaReportePorID.sql
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spU_FacturarMesaDeReporte.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_CancelarOrdenEstimacionPorID.sql
 -----------------------------------------------------------------------------------
 -- OrdenesEstimacionesD (Borrar)
@@ -474,8 +474,10 @@
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRCroquis.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGenerador.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRGeneradorPorConceptoID.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenesPorConceptoID.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRFacturas.sql
 :r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRImagenes.sql
+:r c:\SqlServerScripts\Reportes\OrdenesEstimaciones\web_spS_ObtenerRCaratulaDeEstimacionDeCostos.sql
 -----------------------------------------------------------------------------------------------------------------------------------------
 --CodigosPostales(Insertar)
 :r c:\SqlServerScripts\Insertar\CodigosPostales\web_spI_InsertarCodigoPostal.sql
@@ -536,3 +538,5 @@
 :r c:\SqlServerScripts\Insertar\FirmasReportes\web_spI_InsertarFirmas.sql
 -- Firmas (Modificar)
 :r c:\SqlServerScripts\Modificar\FirmasReportes\web_spU_ActualizarFirmas.sql
+-- Reporte de Mantenimientos por clasificacion
+:r c:\SqlServerScripts\Reportes\TableroReportes\web_spS_ObtenerReportesPorClasificacion.sql

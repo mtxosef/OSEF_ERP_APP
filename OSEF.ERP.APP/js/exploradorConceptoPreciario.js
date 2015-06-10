@@ -170,3 +170,12 @@ var txtCosto_renderer = function (valor) {
 };
 
 
+var imgbtnAceptarPreciarioExplorador = function () {
+    var w = window.parent.App.wReporte;
+    w.load('Previa.aspx');
+    w.setHeight(146);
+    w.setWidth(300);
+    w.center();
+    w.setTitle('Reporte del concepto');
+    w.show(); 
+}

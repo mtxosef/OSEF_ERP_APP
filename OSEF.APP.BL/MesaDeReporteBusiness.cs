@@ -162,6 +162,24 @@ namespace OSEF.APP.BL
             return MesaDeReporteDataAccess.FacturarMesaDeReportePorID(ID);
         }
 
+        /// <summary>
+        /// Método que Revisa un registro de MesaDeReporte
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int RevisarMesaDeReportePorID(int ID)
+        {
+            return MesaDeReporteDataAccess.RevisarMesaDeReportePorID(ID);
+        }
+
+        /// <summary>
+        /// Método que Revisa un registro de MesaDeReporte
+        /// </summary>
+        /// <param name="aRevision"></param>
+        public static int RevisarYFacturarMesaDeReportePorID(MesaDeReporte mdr)
+        {
+            return MesaDeReporteDataAccess.RevisarYFacturarMesaDeReportePorID(mdr);
+        }
+
         #endregion
     }
 }

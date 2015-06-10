@@ -115,17 +115,57 @@ namespace OSEF.AVANCES.SUCURSALES
             string strEstatus = e.ExtraParams["estatus"];
             string strFinObra = e.ExtraParams["FInObra"];
             string strSemanasObra = e.ExtraParams["semanasObra"];
+
             string strcookieEditarSucursal = Cookies.GetCookie("cookieEditarSucursal").Value;
 
-            string strcookieCP = Cookies.GetCookie("cookieCP").Value;
-            string strcookieMunicipio = Cookies.GetCookie("cookieMunicipio").Value;
-            string strcookieEstado = Cookies.GetCookie("cookieEstado").Value;
-            string strcookieColonia = Cookies.GetCookie("cookieColonia").Value;
+           
 
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRegistro);
             Sucursal oSucursal = new Sucursal();
             oSucursal.FechaAlta = DateTime.Now;
 
+
+            string strcookieCP = "";
+            string strcookieMunicipio = "";
+            string strcookieEstado = "";
+            string strcookieColonia = "";
+
+            if (strcookieEditarSucursal.Equals("Nuevo"))
+            {
+
+                strcookieCP = Cookies.GetCookie("cookieCP").Value;
+                strcookieMunicipio = Cookies.GetCookie("cookieMunicipio").Value;
+                strcookieEstado = Cookies.GetCookie("cookieEstado").Value;
+                strcookieColonia = Cookies.GetCookie("cookieColonia").Value;
+                oSucursal.CodigoPostal = strcookieCP;
+                oSucursal.Colonia = strcookieColonia;
+                oSucursal.Estado = strcookieEstado;
+                oSucursal.Municipio = strcookieMunicipio;
+            }
+            else {
+                strcookieCP = Cookies.GetCookie("cookieCP").Value;
+                strcookieMunicipio = Cookies.GetCookie("cookieMunicipio").Value;
+                strcookieEstado = Cookies.GetCookie("cookieEstado").Value;
+                strcookieColonia = Cookies.GetCookie("cookieColonia").Value; 
+                if (strcookieCP.Length > 0)
+                {
+                    oSucursal.CodigoPostal = strcookieCP;
+                    oSucursal.Colonia = strcookieColonia;
+                    oSucursal.Estado = strcookieEstado;
+                    oSucursal.Municipio = strcookieMunicipio;
+                } else {
+                    Sucursal oSucursalForma = SucursalBusiness.ObtenerSucursalPorID(strcookieEditarSucursal); 
+                    if (oSucursal != null)
+                    {
+                        oSucursal.CodigoPostal = oSucursalForma.CodigoPostal;
+                        oSucursal.Colonia = oSucursalForma.Colonia;
+                        oSucursal.Estado = oSucursalForma.Estado;
+                        oSucursal.Municipio = oSucursalForma.Municipio;
+                    } 
+                }
+
+            }
+            
             //2. Por cada elemento del submit de la Forma detectar el campo y asignarlo al objeto correspondiente
             foreach (KeyValuePair<string, string> sd in dRegistro)
             {
@@ -212,12 +252,6 @@ namespace OSEF.AVANCES.SUCURSALES
                         break;
                 }
             }
-
-            oSucursal.CodigoPostal = strcookieCP;
-            oSucursal.Colonia = strcookieColonia;
-            oSucursal.Estado = strcookieEstado;
-            oSucursal.Municipio = strcookieMunicipio;
-
             oSucursal.FinObra = Convert.ToDateTime(strFinObra);
             oSucursal.SemanasObra = Convert.ToInt16(strSemanasObra);
             

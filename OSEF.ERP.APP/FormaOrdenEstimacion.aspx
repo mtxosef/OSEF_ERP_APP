@@ -74,6 +74,7 @@
                         <ext:ModelField Name="Atendido" Type="String" />
                         <ext:ModelField Name="NoOrden" Type="String" />
                         <ext:ModelField Name="ReferenciaOrden" Type="String" />
+                        <ext:ModelField Name="Clasificacion" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -399,7 +400,7 @@
                                                     Margins="0 50 0 0"
                                                     Disabled="true">
                                                 </ext:TextField>
-
+                                                 
                                                 <ext:Checkbox 
                                                 ID="chkBoxOrdenCompra" 
                                                  runat="server" 
@@ -638,6 +639,8 @@
                                                     FieldLabel="Atendido"
                                                     Checked="false">
                                                 </ext:Checkbox>
+                                                
+                                                
                                             </Items>
                                         </ext:FieldContainer>
 
@@ -884,7 +887,28 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
-
+                                    <ext:FieldContainer ID="fc4"
+                                            runat="server"
+                                            FieldLabel="Clasificación"
+                                            LabelWidth="120" 
+                                            AnchorHorizontal="100%"
+                                            Layout="HBoxLayout">
+                                            <Items>
+                                        <ext:ComboBox 
+                                                    ID="cmbClasificacion"
+                                                    runat="server"
+                                                    Width="200"
+                                                    Margins="0 3 0 0"
+                                                    Editable="false"
+                                                    AllowBlank="false">
+                                                    <Items>
+                                                        <ext:ListItem Index="0" Text="MOBILIARIO" Value="MOBILIARIO" />
+                                                        <ext:ListItem Index="1" Text="CERRAJERIA" Value="CERRAJERIA" />
+                                                        <ext:ListItem Index="2" Text="INMUEBLE" Value="INMUEBLE" /> 
+                                                    </Items> 
+                                                </ext:ComboBox>
+                                                </Items>
+                                        </ext:FieldContainer>
                                         <ext:FieldContainer 
                                             ID="FieldContainer2"
                                             runat="server"
@@ -1007,6 +1031,9 @@
 
                                             </Items>
                                         </ext:FieldContainer> 
+                                        
+
+
                                     </Items>
                                 </ext:FieldSet>
                             </Items>

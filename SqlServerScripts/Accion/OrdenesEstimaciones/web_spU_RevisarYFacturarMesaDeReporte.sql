@@ -18,27 +18,28 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spU_FacturarMesaDeReporte' AND
+			WHERE  name = 'web_spU_RevisarYFacturarMesaDeReporte' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spU_FacturarMesaDeReporte
+	DROP PROCEDURE web_spU_RevisarYFacturarMesaDeReporte
 GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: Lunes 01 de Junio de 2015
--- Description:	Facturar un registro de Mesa de Reporte con estatus concluido y MovLinea 1
+-- Description:	Revisar y facturar un registro de Mesa de Reporte con estatus concluido y MovLinea 1
 -- =============================================
-CREATE PROCEDURE web_spU_FacturarMesaDeReporte
+CREATE PROCEDURE web_spU_RevisarYFacturarMesaDeReporte
 	-- Add the parameters for the stored procedure here
-	@ID				INT
+	@ID				INT,
+	@Facturado		BIT,
+	@Revisado			BIT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON; 
-    -- Insert statements for procedure here
-    UPDATE OrdenesEstimaciones
-	SET Facturado = 1
-	WHERE
-		ID = @ID
-END
+    -- Insert statements for procedure here  
+	UPDATE OrdenesEstimaciones
+	SET Facturado = @Facturado, Revisado = @Revisado
+	WHERE ID = @ID;
+	END 
 GO

@@ -173,8 +173,6 @@ namespace OSEF.APP.DL
                 else
                     sqlpCodigoFalla.Value = iOrdenEstimacion.CodigoFalla;
 
-            
-
                 SqlParameter sqlpFechaLlegada = new SqlParameter();
                 sqlpFechaLlegada.ParameterName = "@FechaLlegada";
                 sqlpFechaLlegada.SqlDbType = SqlDbType.SmallDateTime;
@@ -247,6 +245,11 @@ namespace OSEF.APP.DL
                 sqlpReferenciaOrden.ParameterName = "@ReferenciaOrden";
                 sqlpReferenciaOrden.SqlDbType = SqlDbType.VarChar;
                 sqlpReferenciaOrden.Value = iOrdenEstimacion.ReferenciaOrden;
+                 
+                SqlParameter sqlpClasificacion = new SqlParameter();
+                sqlpClasificacion.ParameterName = "@Clasificacion";
+                sqlpClasificacion.SqlDbType = SqlDbType.VarChar;
+                sqlpClasificacion.Value = iOrdenEstimacion.Clasificacion;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -278,6 +281,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
                 sqlcComando.Parameters.Add(sqlpAtendido);
                 sqlcComando.Parameters.Add(sqlpReferenciaOrden);
+                sqlcComando.Parameters.Add(sqlpClasificacion);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -523,6 +527,12 @@ namespace OSEF.APP.DL
                 sqlpReferenciaOrden.SqlDbType = SqlDbType.VarChar;
                 sqlpReferenciaOrden.Value = uOrdenEstimacion.ReferenciaOrden;
 
+
+                SqlParameter sqlpClasificacion = new SqlParameter();
+                sqlpClasificacion.ParameterName = "@Clasificacion";
+                sqlpClasificacion.SqlDbType = SqlDbType.VarChar;
+                sqlpClasificacion.Value = uOrdenEstimacion.Clasificacion;
+
                 //SqlParameter sqlpNoOrden = new SqlParameter();
                 //sqlpNoOrden.ParameterName = "@NoOrden";
                 //sqlpNoOrden.SqlDbType = SqlDbType.VarChar;
@@ -556,6 +566,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpRutaImagen);
                 sqlcComando.Parameters.Add(sqlpAtendido);
                 sqlcComando.Parameters.Add(sqlpReferenciaOrden);
+                sqlcComando.Parameters.Add(sqlpClasificacion);
                 //sqlcComando.Parameters.Add(sqlpNoOrden);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();

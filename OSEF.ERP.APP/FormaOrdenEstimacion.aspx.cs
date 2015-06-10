@@ -104,7 +104,8 @@ namespace OSEF.ERP.APP
                     RutaImagen = oOrdenEstimacion.RutaImagen,
                     Atendido = oOrdenEstimacion.Atendido,
                     NoOrden = oOrdenEstimacion.NoOrden,
-                    ReferenciaOrden = oOrdenEstimacion.ReferenciaOrden
+                    ReferenciaOrden = oOrdenEstimacion.ReferenciaOrden,
+                    Clasificacion = oOrdenEstimacion.Clasificacion
                 }); 
                 imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
@@ -339,6 +340,10 @@ namespace OSEF.ERP.APP
                     case "txtReferenciaOrden":
                         oOrdenEstimacionForma.ReferenciaOrden = sd.Value;
                         break;
+                    case "cmbClasificacion":
+                        oOrdenEstimacionForma.Clasificacion = sd.Value == null ? "":sd.Value;
+                        break;
+
                 }
             }
             //3. Regresar el objeto
@@ -439,7 +444,8 @@ namespace OSEF.ERP.APP
                     RutaImagen = oOrdenEstimacionForma.RutaImagen,
                     Atendido = oOrdenEstimacionForma.Atendido,
                     NoOrden = oOrdenEstimacionForma.NoOrden,
-                    ReferenciaOrden = oOrdenEstimacionForma.ReferenciaOrden
+                    ReferenciaOrden = oOrdenEstimacionForma.ReferenciaOrden,
+                    Clasificacion = oOrdenEstimacionForma.Clasificacion == null ? oOrdenEstimacionForma.Clasificacion : ""
                 }); 
 
                 //7. Guardar Detalle y regresar valor

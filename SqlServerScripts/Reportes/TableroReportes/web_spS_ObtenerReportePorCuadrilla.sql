@@ -64,6 +64,8 @@ BEGIN
 		LEFT JOIN Sucursales S
 		ON S.ID = OE.Sucursal
 		
-		WHERE OE.Cuadrilla = @CUADRILLA;
+		WHERE OE.Cuadrilla = @CUADRILLA
+		AND OE.Mov in('Mesa de reporte') AND MovEnLinea = 1
+		;
 END
 GO

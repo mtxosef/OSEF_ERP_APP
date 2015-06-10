@@ -275,16 +275,16 @@
                     Width="50"
                     Disabled="true">
                     <DirectEvents>
-                        <Click OnEvent="imgbtnExportar_Click" Success="window.open('Previa.aspx', '_blank');">
+                        <Click OnEvent="imgbtnExportar_Click" Success="imgbtnAceptarPreciarioExplorador">
                             <EventMask ShowMask="true" Msg="Cargando Reporte..." />
                              <ExtraParams>
                                 <ext:Parameter Name="preciario" Value="App.txtPreciario.getValue()" Mode="Raw" />
+                                <ext:Parameter Name="clave" Value="App.txtClave.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="conceptoID" Value="App.txtConceptoID.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="elaboro" Value="App.txtElaboro.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="reviso" Value="App.txtReviso.getValue()" Mode="Raw" />
                                 <ext:Parameter Name="autorizo" Value="App.txtAutorizo.getValue()" Mode="Raw" />
                             </ExtraParams>
-
                         </Click>
                     </DirectEvents>
                 </ext:ImageButton>

@@ -65,10 +65,15 @@ BEGIN
 		HoraOrigen,
 		RutaImagen,
 		Atendido,
-		Facturado
+		MovEnLinea,
+		NoOrden,
+		ReferenciaOrden,
+		Facturado,
+		Clasificacion,
+		Revisado
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND Facturado = 0;
+		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 ;
 END
 GO

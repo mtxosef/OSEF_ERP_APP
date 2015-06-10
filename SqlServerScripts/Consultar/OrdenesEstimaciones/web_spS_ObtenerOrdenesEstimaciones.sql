@@ -66,12 +66,14 @@ BEGIN
 		RutaImagen,
 		Atendido,
 		NoOrden,
-		ReferenciaOrden
+		ReferenciaOrden,
+		Facturado,
+		Clasificacion
 	FROM
 		OrdenesEstimaciones
 	WHERE 
 	 Mov in('Mesa de reporte','Estimacion') AND MovEnLinea = 1
-	 AND Estatus IN('CONCLUIDO','PENDIENTE','BORRADOR')
+	 AND Estatus IN('CONCLUIDO','PENDIENTE','BORRADOR')  AND Facturado <> 1 
 UNION	 
 	SELECT
 		ID,
@@ -103,12 +105,14 @@ UNION
 		RutaImagen,
 		Atendido ,
 		NoOrden,
-		ReferenciaOrden
+		ReferenciaOrden,
+		Facturado,
+		Clasificacion
 	FROM
 		OrdenesEstimaciones
 	WHERE 
 	 Mov in('Mesa de reporte','Estimacion') AND MovEnLinea = 0
-	 AND Estatus IN('BORRADOR') 
+	 AND Estatus IN('BORRADOR') AND Facturado <> 1
 
 END
 GO

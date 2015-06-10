@@ -19,8 +19,6 @@ var imgbtnFormaNuevo_Click = function () {
         //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
         App.chkBoxOrdenCompra.setVisible(false);
-
-
     }
     else {
         App.cmbMov.select('Orden de Cambio');
@@ -40,7 +38,7 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtReferenciaOrden.setReadOnly(false);
     App.txtReferenciaOrden.setValue('');
 
-    
+
 
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
@@ -55,7 +53,6 @@ var imgbtnFormaNuevo_Click = function () {
     App.dfFechaEmision.setValue(d);
     App.txtfClave.setValue('');
     App.taDescripcion.setValue('');
-
     App.txtfNoReporte.setValue('');
     App.cmbDivision.setValue('');
     App.dfFechaOrigen.setValue('');
@@ -79,6 +76,13 @@ var imgbtnFormaNuevo_Click = function () {
     App.tHoraOrigen.setValue('');
     App.tHoraOrigen.setReadOnly(false);
     App.chkAtendido.setValue(false);
+    App.cmbClasificacion.setValue('');
+    App.cmbClasificacion.setReadOnly(false);
+    App.cmbCuadrilla.setReadOnly(false);
+    App.txtfCodigoFalla.setDisabled(false);
+    App.cmbDivision.setReadOnly(false);
+    App.txtfTrabajoRequerido.setReadOnly(false);
+    App.txtfReporta.setReadOnly(false);
 
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
@@ -135,6 +139,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
             App.chkBoxOrdenCompra.setVisible(false);
+            //            App.chkMobiliario.setVisible(true);
             App.txtReferenciaOrden.setVisible(false);
 
 
@@ -145,6 +150,7 @@ var sMov_Add = function (store, registros, index, eOpts) {
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
             App.chkBoxOrdenCompra.setVisible(true);
+            //            App.chkMobiliario.setVisible(false);
             App.txtReferenciaOrden.setVisible(true);
         }
 
@@ -218,6 +224,7 @@ var cmbMov_Select = function (combobox, registro) {
 
 //Evento de clic del botón BuscarSucursal
 var btnBuscarSucursal_Click = function () {
+    Ext.util.Cookies.set('cookieElijeSucursal', "OrdenEstimacion");
     window.parent.App.wAyudaConcepto.load('FormaBuscaSucursal.aspx');
     window.parent.App.wAyudaConcepto.setHeight(370);
     window.parent.App.wAyudaConcepto.setWidth(720);
@@ -284,9 +291,9 @@ var imgbtnGuardar_Click_Success = function (response, result) {
 
         //4. Recargar el tablero
         window.parent.App.pCentro.getBody().App.sOrdenesEstimaciones.reload();
-      
 
-       
+
+
         //5. Asignar la cookie con el nuevo ID y asignarlo al titulo de la ventan
         Ext.util.Cookies.set('cookieEditarOrdenEstimacion', App.sOrdenEstimacion.getAt(0).get('ID'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + App.sOrdenEstimacion.getAt(0).get('ID'));
@@ -469,6 +476,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.tfHoraFinActividad.setReadOnly(true);
         App.cmbCuadrilla.setReadOnly(true);
         App.chkAtendido.setReadOnly(true);
+        App.cmbClasificacion.setReadOnly(true);
 
 
         //Actualizar campos afetados
@@ -537,6 +545,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         App.tfHoraFinActividad.setReadOnly(true);
         App.cmbCuadrilla.setReadOnly(true);
         App.chkAtendido.setReadOnly(true);
+        App.cmbClasificacion.setReadOnly(true);
         App.txtNoOrden.setReadOnly(true);
         App.chkBoxOrdenCompra.setReadOnly(true);
         App.txtReferenciaOrden.setReadOnly(true);
@@ -624,7 +633,7 @@ var imgbtnCancelar_Click_Success = function (response, result) {
 
     App.txtNoOrden.setReadOnly(true);
     App.txtReferenciaOrden.setReadOnly(true);
-    
+
     App.sbOrdenEstimacion.setText('CANCELADO');
     App.imgbtnCancelar.setDisabled(true);
     App.imgbtnImprimir.setDisabled(true);
@@ -649,7 +658,7 @@ var sOrdenesMantenimiento_Load = function () {
 };
 
 //Evento lanzado al agregar un registro al store
-var sOrdenesMantenimiento_Add = function (avance, registro) { 
+var sOrdenesMantenimiento_Add = function (avance, registro) {
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
     && registro[0].get('Mov').trim() == "Orden de Cambio") {
@@ -683,7 +692,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
 
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
-    && registro[0].get('Mov').trim() == "Orden de Compra") { 
+    && registro[0].get('Mov').trim() == "Orden de Compra") {
         App.cmbMov.setValue(registro[0].get('Mov'));
         App.txtfMovID.setValue(registro[0].get('MovID'));
         App.txtfSucursalCR.setValue(registro[0].get('RSucursal').CR);
@@ -762,18 +771,21 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfReporta.setReadOnly(true);
         App.txtfTrabajoRequerido.setReadOnly(true);
 
-        App.txtfCodigoFalla.setReadOnly(true);
         App.dfFechaLlegada.setReadOnly(true);
         App.tfHoraLlegada.setReadOnly(true);
         App.dfFechaFinActividad.setReadOnly(true);
         App.tfHoraFinActividad.setReadOnly(true);
-        App.cmbCuadrilla.setReadOnly(true);
         App.chkAtendido.setReadOnly(true);
         if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
             App.chkAtendido.setValue(true);
         } else {
             App.chkAtendido.setValue(false);
         }
+        App.txtfCodigoFalla.setDisabled(true);
+
+        App.cmbCuadrilla.setReadOnly(true);
+        App.tHoraOrigen.setReadOnly(true);
+        App.cmbClasificacion.setReadOnly(true);
         App.imgbtnAfectar.setDisabled(false);
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
@@ -813,6 +825,12 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         } else {
             App.chkAtendido.setValue(false);
         }
+        App.cmbClasificacion.setValue(registro[0].get('Clasificacion').trim());
+        //        if (registro[0].get('Mobiliario')) {
+        //            App.chkMobiliario.setValue(true);
+        //        } else {
+        //            App.chkMobiliario.setValue(false);
+        //        }
 
         //     App.cIntExt.hidden = false;
         App.pDatosReporte.tab.show();
@@ -919,6 +937,14 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         } else {
             App.chkAtendido.setValue(false);
         }
+
+        App.cmbClasificacion.setValue(registro[0].get('Clasificacion').trim());
+        App.cmbClasificacion.setReadOnly(true);
+        //        if (registro[0].get('Mobiliario')) {
+        //            App.chkMobiliario.setValue(true);
+        //        } else {
+        //            App.chkMobiliario.setValue(false);
+        //        }
 
         //Deshabilita controles
         App.txtfObservaciones.setReadOnly(true);

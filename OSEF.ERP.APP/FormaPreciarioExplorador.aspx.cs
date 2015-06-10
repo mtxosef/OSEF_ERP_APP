@@ -25,6 +25,7 @@ namespace OSEF.ERP.APP
             //Parametros del store procedure
             string strPreciario = e.ExtraParams["preciario"];
             string strConceptoID = e.ExtraParams["conceptoID"];
+            string strClave = e.ExtraParams["clave"];
 
             //Firmas documento(Parametros)
             string strElaboro = e.ExtraParams["elaboro"];
@@ -60,7 +61,7 @@ namespace OSEF.ERP.APP
 
                         reporte.SetParameterValue("path", path);
 
-                      
+                        Session["Clave"] = strClave;
                         Session["ReportName"] = nombre;
                         Session["imprimir"] = reporte;
 
@@ -77,10 +78,7 @@ namespace OSEF.ERP.APP
                     conn.Close();
                 conn.Dispose();
             }
-
         }
-
-
-
+        
     }
 }

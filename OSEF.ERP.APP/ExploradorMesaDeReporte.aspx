@@ -45,6 +45,8 @@
             <TopBar>
                 <ext:Toolbar ID="tbPreciarios" runat="server">
                     <Items>
+                     
+
                         <ext:ComboBox
                                 ID="cmbSucursal"
                                 runat="server"
@@ -55,14 +57,14 @@
                                 Cls="spanCustomCombo xEspacioCmbxCustom"
                                 PageSize="10"
                                 DisplayField="Nombre"
-                                StyleSpec="margin-right: 6px;"
+                                StyleSpec="margin-right: 3px;"
                                 Editable="true"
                                 MatchFieldWidth="true"
                                 ForceSelection="true"
                                 QueryMode="Local"
                                 TypeAhead="true"
                                 EnforceMaxLength="true">
-                                 <ListConfig ID="lcPreciario" runat="server" Width="400" Cls="xEspacioCmbxCustom">
+                                 <ListConfig ID="lcPreciario" runat="server" Width="400"                                                                Cls="xEspacioCmbxCustom">
                                     <ItemTpl ID="itPreciario" runat="server">
                                         <Html>
                                             <div class="search-item">
@@ -101,12 +103,51 @@
                                 </Listeners>
                             </ext:ComboBox>
 
+                      
+                        <ext:ComboBox
+                                ID="cmbClasificacion"
+                                runat="server"
+                                FieldLabel="CLASIFICACIÓN"
+                                ForceSelection="true"
+                                Width="220"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
+                                    <ext:ListItem Index="1" Text="MOBILIARIO" Value="MOBILIARIO"/>
+                                    <ext:ListItem Index="2" Text="CERRAJERIA" Value="CERRAJERIA"/>
+                                    <ext:ListItem Index="3" Text="INMUEBLE" Value="INMUEBLE"/>
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbClasificacion_Select" />
+                                </Listeners>
+                            </ext:ComboBox>
+                  
+
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="tsExploradorMesaDeReporte" 
-                        Width="160"> 
+                        Width="20"> 
                         </ext:ToolbarSpacer>
                           
+
+                         <ext:Container
+                                ID="cMantenimientos"
+                                runat="server">
+                                 <Content>
+                                     <asp:ImageButton 
+                                        ID="imgbtnMantenimientos" 
+                                        runat="server" 
+                                        Height="22"
+                                        Width="22"
+                                        OnClick="ExportEt"
+                                        class="imgs" 
+                                        ImageUrl="assets/img/controles/ExcelNormal.png"/>
+                                </Content>
+                            </ext:Container>
+                              
                         <ext:ImageButton
                                     ID="imgbtnFacturar"
                                     runat="server"
@@ -116,21 +157,20 @@
                                     Height="22px"
                                     Width="22px">    
                                     <DirectEvents>
-                                        <Click OnEvent="getCheckedRecords">
+                                        <Click OnEvent="getUpdatedRecords">
                                             <EventMask ShowMask="true" />
-                                            <ExtraParams>
-                                                <ext:Parameter Name="Values" Value="Ext.encode(#{gpExploradorMesaDeReporte}.getRowsValues({selectedOnly:true}))" Mode="Raw" />
+                                            <ExtraParams> 
+                                                <ext:Parameter Name="registrosactualizados" Value="getUpdatedRecords()" Mode="Raw" />
                                             </ExtraParams>
                                         </Click>
                                     </DirectEvents>                                          
                                 </ext:ImageButton>
-                        
+
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="ToolbarSpacer1" 
-                        Width="100"> 
+                        Width="5"> 
                         </ext:ToolbarSpacer>
-
                         <ext:TextField 
                             ID="txtfBuscar"
                             runat="server"
@@ -172,16 +212,20 @@
                                 <ext:ModelField Name="Reporte" Type="String" />
                                  <ext:ModelField Name="RSucursal" Type="Object" />
                                 <ext:ModelField Name="FechaEmision" Type="Date" />
+                                <ext:ModelField Name="FechaOrigen" Type="Date" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
                                 <ext:ModelField Name="Estatus" Type="String" />
                                 <ext:ModelField Name="ImporteTotal" Type="Float" />
                                 <ext:ModelField Name="Usuario" Type="String" />
-                               
+                                <ext:ModelField Name="TrabajoRequerido" Type="String" />
+                                <ext:ModelField Name="Facturado" Type="Boolean" />
+                                <ext:ModelField Name="Clasificacion" Type="String" />
+                                <ext:ModelField Name="Revisado" Type="Boolean" />
                             </Fields>
                         </ext:Model>
                     </Model>
                       <Sorters>
-                        <ext:DataSorter Property="FechaEmision" Direction="DESC" />
+                        <ext:DataSorter Property="Reporte" Direction="ASC" />
                     </Sorters>
                     <Listeners>
                         <DataChanged Fn="sMesaDeReportes_DataChanged" />
@@ -190,14 +234,62 @@
                 </ext:Store>
             </Store>
 
+           <Plugins>
+            <ext:CellEditing ID="CellEditing1" runat="server" ClicksToEdit="1" />
+        </Plugins> 
             <ColumnModel>
                 <Columns>
-                    <ext:Column 
+                
+                   <ext:CheckColumn ID="ckFacturado"
+                        runat="server"
+                        Text="Facturado?" 
+                        Align="Center"
+                        DataIndex="Facturado"    
+                        StopSelection="false"
+                        Editable="true"                     
+                        Width="60"> 
+                        <HeaderItems>
+                            
+                        <ext:Checkbox ID="chkFacturado" 
+                            runat="server"
+                            Name="chkFacturado" 
+                            Checked="false" >
+                            <Listeners>
+                                <Change Fn="setCheckedAllRecords_Facturado"></Change> 
+                            </Listeners>
+                        </ext:Checkbox>
+                         
+                        </HeaderItems>
+                    </ext:CheckColumn>
+
+                     
+                   <ext:CheckColumn ID="cRevisado"
+                        runat="server"
+                        Text="Revisado?" 
+                        Align="Center"
+                        DataIndex="Revisado"    
+                        StopSelection="false"
+                        Editable="true"                     
+                        Width="60"> 
+                        <HeaderItems>
+                            
+                        <ext:Checkbox ID="chkRevisar" 
+                            runat="server"
+                            Name="chkRevisar" 
+                            Checked="false" >
+                            <Listeners>
+                                <Change Fn="setCheckedAllRecords_Revisado"></Change> 
+                            </Listeners>
+                        </ext:Checkbox>
+                        </HeaderItems>
+                    </ext:CheckColumn>
+
+                   <ext:Column 
                         ID="cMovimiento"
                         runat="server"
                         Text="MOVIMIENTO"
                         Align="Center"
-                        Width="170"
+                        Width="150"
                         DataIndex="Mov">
                          <HeaderItems>
                             <ext:TextField
@@ -212,13 +304,32 @@
                         </HeaderItems>
                         <Renderer Fn="cMov_Renderer" />
                     </ext:Column>
-                     <ext:DateColumn
+                    
+                   <ext:Column 
+                        ID="cReporte"
+                        runat="server"
+                        Text="REPORTE"
+                        Align="Center"
+                        Width="80"
+                        DataIndex="Reporte">
+                         <HeaderItems>
+                            <ext:TextField
+                                ID="txtFiltroReporte"
+                                runat="server">
+                              <Listeners>
+                                    <Change Fn="txtReporteFiltro_Change" />
+                                </Listeners>
+                            </ext:TextField>
+                        </HeaderItems>
+                    </ext:Column>
+                    
+                   <ext:DateColumn
                         ID="dcFechaEmision"
                         runat="server"
-                        Text="EMITIDO"
+                        Text="FECHA ORIGEN"
                         Align="Center"
                         Width="100"
-                        DataIndex="FechaEmision"
+                        DataIndex="FechaOrigen"
                         Format="dd/MM/yyyy">
                         <HeaderItems>
                             <ext:ComboBox
@@ -257,7 +368,8 @@
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:DateColumn>
-                     <ext:Column
+
+                   <ext:Column
                         ID="cSucursal"
                         runat="server"
                         Text="SUCURSAL"
@@ -267,16 +379,27 @@
                       <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
                     
-                    <ext:Column
-                        ID="cAsunto"
+                   <ext:Column
+                        ID="cTrabajoRequerido"
                         runat="server"
-                        Text="ASUNTO"
+                        Text="TRABAJO REQUERIDO"
                         Align="Center"
-                        Width="300"
+                        Width="170"
+                        DataIndex="TrabajoRequerido">
+                    </ext:Column> 
+
+                   <ext:Column
+                        ID="cTrabajoRealizado"
+                        runat="server"
+                        Text="TRABAJO REALIZADO"
+                        Align="Center"
+                        Width="170"
+
                         DataIndex="Observaciones">
-                    </ext:Column>
-                    
-                    <ext:Column
+                    </ext:Column> 
+
+
+                   <ext:Column
                         ID="cTotal"
                         runat="server"
                         Text="Importe"
@@ -285,6 +408,7 @@
                         DataIndex="ImporteTotal">
                         <Renderer Fn="cImporte_renderer"></Renderer>
                     </ext:Column>
+
                    <ext:Column
                         ID="cUsuario"
                         runat="server"
@@ -341,6 +465,7 @@
                         </HeaderItems>
                     
                     </ext:Column>
+
                 </Columns>
             </ColumnModel>
             <Listeners>
@@ -353,13 +478,11 @@
                     StripeRows="true">
                 </ext:GridView>
             </View>
-            <SelectionModel>
-                <ext:CheckboxSelectionModel ID="CheckboxSelectionModel1" runat="server" Mode="Multi" /> 
-            </SelectionModel>
+             
             <FooterBar>
                 <ext:StatusBar ID="sbMesaDeReporte" runat="server" Text="">
                     <Items>
-                        <ext:ToolbarTextItem ID="ToolBarTotal" runat="server" Text="TOTAL: " />  
+                        <ext:ToolbarTextItem ID="ToolBarTotal" runat="server"  Text="TOTAL: " />  
                     </Items>
                 </ext:StatusBar> 
             </FooterBar> 

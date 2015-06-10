@@ -7,6 +7,11 @@ using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using Ext.Net;
 using System.Text;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using CrystalDecisions.CrystalReports.Engine;
+using OSEF.APP.EL;
 
 namespace OSEF.ERP.APP
 {
@@ -31,6 +36,7 @@ namespace OSEF.ERP.APP
             }
         }
 
+
         /// <summary>
         /// Evento que vuelve a leer los datos para ser cargados al store
         /// </summary>
@@ -43,26 +49,74 @@ namespace OSEF.ERP.APP
             sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
             sSucursales.DataBind();
         }
-        [DirectMethod]
-        protected void getCheckedRecords(object sender, DirectEventArgs e)
+         
+        //Exporta a Excel el grid
+        protected void ExportEt(object sender, EventArgs e)
         {
-            string data = e.ExtraParams["Values"];
-            JsonObject[] jObjAr = JSON.Deserialize<JsonObject[]>(data);
-            int n = 0;
-            if (jObjAr.Length > 0)
+
+            string parametro = cmbClasificacion.Value.ToString();
+
+
+            //1. Configurar la conexión y el tipo de comando
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+            try
             {
-                foreach (JsonObject o in jObjAr)
+                SqlCommand comando = new SqlCommand("web_spS_ObtenerReportesPorClasificacion", conn);
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+
+                DataTable dt = new DataTable();
+                adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adaptador.SelectCommand.Parameters.Add(@"CLASIFICACION", SqlDbType.VarChar).Value = parametro;
+                adaptador.Fill(dt);
+
+
+
+                ReportDocument reporteCuadrila = new ReportDocument();
+                reporteCuadrila.Load(Server.MapPath("reportess/rMantenimientosFacturador.rpt"));
+                reporteCuadrila.SetDataSource(dt);
+
+
+                reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Mantenimiento " + parametro);
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+            finally
+            {
+                if (conn.State != ConnectionState.Closed)
+                    conn.Close();
+                conn.Dispose();
+            }
+        }
+
+
+        protected void getUpdatedRecords(object sender, DirectEventArgs e)
+        {
+            string strRevisados = e.ExtraParams["registrosactualizados"];
+            int n = 0;
+            if (strRevisados != null && !strRevisados.Equals("0"))
+            {
+                List<MesaDeReporte> lMesaDeReporte = JSON.Deserialize<List<MesaDeReporte>>(strRevisados);
+                foreach (MesaDeReporte mdr in lMesaDeReporte)
                 {
-                    int id = Convert.ToInt32(o["Id"]);
-                    MesaDeReporteBusiness.FacturarMesaDeReportePorID(id);
+                    MesaDeReporte xmdr = new MesaDeReporte();
+                    xmdr.Id = mdr.Id;
+                    xmdr.Facturado = mdr.Facturado;
+                    xmdr.Revisado = mdr.Revisado;
+                    MesaDeReporteBusiness.RevisarYFacturarMesaDeReportePorID(mdr);
                     n++;
                 }
-                X.Msg.Alert("Mensaje", n + " Registros Facturados.", new JFunction { Fn = "showResult(true)" }).Show();
+                X.Msg.Alert("Atención", n+" Registros actualizados", new JFunction { Fn = "showResult(true)" }).Show();
             }
             else
             {
                 X.Msg.Alert("Atención", "Selecione al menos 1 registro.", new JFunction { Fn = "showResult(false)" }).Show();
             }
         }
+
+
     }
 }

@@ -730,6 +730,9 @@
                                     </ColumnModel>
                                     <Listeners>
                                         <ItemClick Fn="gpPreciarioConceptos_ItemClick" />
+                               
+                                        <Select Fn="obetenerRenglon_Select"></Select>
+                          
                                     </Listeners>
                                     <SelectionModel>
                                         <ext:CellSelectionModel

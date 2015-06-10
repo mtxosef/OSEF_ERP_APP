@@ -76,6 +76,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mSucursales;
         
         /// <summary>
+        /// Control cmbClasificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbClasificacion;
+        
+        /// <summary>
         /// Control tsExploradorMesaDeReporte.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ToolbarSpacer tsExploradorMesaDeReporte;
+        
+        /// <summary>
+        /// Control cMantenimientos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cMantenimientos;
+        
+        /// <summary>
+        /// Control imgbtnMantenimientos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnMantenimientos;
         
         /// <summary>
         /// Control imgbtnFacturar.
@@ -139,6 +166,51 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mMesaDeReporte;
         
         /// <summary>
+        /// Control CellEditing1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CellEditing CellEditing1;
+        
+        /// <summary>
+        /// Control ckFacturado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CheckColumn ckFacturado;
+        
+        /// <summary>
+        /// Control chkFacturado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkFacturado;
+        
+        /// <summary>
+        /// Control cRevisado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CheckColumn cRevisado;
+        
+        /// <summary>
+        /// Control chkRevisar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkRevisar;
+        
+        /// <summary>
         /// Control cMovimiento.
         /// </summary>
         /// <remarks>
@@ -155,6 +227,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtMovID;
+        
+        /// <summary>
+        /// Control cReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cReporte;
+        
+        /// <summary>
+        /// Control txtFiltroReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtFiltroReporte;
         
         /// <summary>
         /// Control dcFechaEmision.
@@ -184,13 +274,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cSucursal;
         
         /// <summary>
-        /// Control cAsunto.
+        /// Control cTrabajoRequerido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Column cAsunto;
+        protected global::Ext.Net.Column cTrabajoRequerido;
+        
+        /// <summary>
+        /// Control cTrabajoRealizado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cTrabajoRealizado;
         
         /// <summary>
         /// Control cTotal.
@@ -245,15 +344,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.GridView gvExploradorMesaDeReporte;
-        
-        /// <summary>
-        /// Control CheckboxSelectionModel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CheckboxSelectionModel CheckboxSelectionModel1;
         
         /// <summary>
         /// Control sbMesaDeReporte.

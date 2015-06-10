@@ -67,7 +67,10 @@ BEGIN
 		@HoraOrigen				DATETIME,
 		@RutaImagen				VARCHAR(500),
 		@Atendido				VARCHAR(5),
-		@RefenciaOrden			VARCHAR(90)
+		@RefenciaOrden			VARCHAR(90),
+		@NoOrden				CHAR(3),
+		@Facturado				BIT;
+
 		
 	SELECT
 		@MovA = @Mov,
@@ -96,7 +99,9 @@ BEGIN
 		@HoraOrigen = HoraOrigen,
 		@RutaImagen = RutaImagen,
 		@Atendido = Atendido,
-		@RefenciaOrden = ReferenciaOrden
+		@RefenciaOrden = ReferenciaOrden,
+		@NoOrden = NoOrden,
+		@Facturado = Facturado
 	FROM
 		OrdenesEstimaciones
 	WHERE
@@ -142,7 +147,10 @@ BEGIN
 			HoraOrigen,
 			RutaImagen,
 			Atendido,
-			MovEnLinea
+			MovEnLinea,
+			NoOrden,
+			ReferenciaOrden,
+			Facturado
 		)
 	VALUES
 		(
@@ -172,7 +180,10 @@ BEGIN
 			@HoraOrigen,
 			@RutaImagen,
 			@Atendido,
-			1
+			1,
+			@NoOrden,
+			@RefenciaOrden,
+			@Facturado
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()
