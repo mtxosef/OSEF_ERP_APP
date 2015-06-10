@@ -29,7 +29,7 @@ GO
 -- =============================================
 CREATE PROCEDURE web_spI_InsertarSolicitudPrestamo
 	-- Add the parameters for the stored procedure here
-	@ID							CHAR(8) OUTPUT,
+	@ID							CHAR(8),
 	@Cliente					CHAR(8),
 	@Nacionalidad				VARCHAR(20),
 	@NumeroDependientes			TINYINT,
@@ -136,47 +136,47 @@ BEGIN
 	SET NOCOUNT ON;
 	
 	--Formar el ID
-	DECLARE
-		@ID_TEMP INT,
-		@VALOR CHAR(8)
+	--DECLARE
+	--	@ID_TEMP INT,
+	--	@VALOR CHAR(8)
 		
-		SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 3, LEN(ID)) AS INT)) FROM SolicitudesPrestamos WHERE ID LIKE 'SP%'
-		IF (@ID_TEMP IS NOT NULL)
-		BEGIN
-			SET @ID_TEMP = @ID_TEMP + 1
-		END
-		ELSE
-		BEGIN
-			SET @ID_TEMP = 1
-		END
+	--	SELECT @ID_TEMP = MAX(CAST(SUBSTRING(ID, 3, LEN(ID)) AS INT)) FROM SolicitudesPrestamos WHERE ID LIKE 'SP%'
+	--	IF (@ID_TEMP IS NOT NULL)
+	--	BEGIN
+	--		SET @ID_TEMP = @ID_TEMP + 1
+	--	END
+	--	ELSE
+	--	BEGIN
+	--		SET @ID_TEMP = 1
+	--	END
 
-		--DECIMAL
-		IF ((@ID_TEMP / 10) < 1)
-		BEGIN
-			SET @VALOR = 'SP00000' + CAST(@ID_TEMP AS CHAR(1))
-		END
-		ELSE IF ((@ID_TEMP / 100) < 1)
-		BEGIN
-			SET @VALOR = 'SP0000' + CAST(@ID_TEMP AS CHAR(2))
-		END
-		ELSE IF ((@ID_TEMP / 1000) < 1)
-		BEGIN
-			SET @VALOR = 'SP000' + CAST(@ID_TEMP AS CHAR(3))
-		END
-		ELSE IF ((@ID_TEMP / 10000) < 1)
-		BEGIN
-			SET @VALOR = 'SP00' + CAST(@ID_TEMP AS CHAR(4))
-		END
-		ELSE IF ((@ID_TEMP / 100000) < 1)
-		BEGIN
-			SET @VALOR = 'SP0' + CAST(@ID_TEMP AS CHAR(5))
-		END
-		ELSE
-		BEGIN
-			SET @VALOR = 'SP' + CAST(@ID_TEMP AS CHAR(6))
-		END
+	--	--DECIMAL
+	--	IF ((@ID_TEMP / 10) < 1)
+	--	BEGIN
+	--		SET @VALOR = 'SP00000' + CAST(@ID_TEMP AS CHAR(1))
+	--	END
+	--	ELSE IF ((@ID_TEMP / 100) < 1)
+	--	BEGIN
+	--		SET @VALOR = 'SP0000' + CAST(@ID_TEMP AS CHAR(2))
+	--	END
+	--	ELSE IF ((@ID_TEMP / 1000) < 1)
+	--	BEGIN
+	--		SET @VALOR = 'SP000' + CAST(@ID_TEMP AS CHAR(3))
+	--	END
+	--	ELSE IF ((@ID_TEMP / 10000) < 1)
+	--	BEGIN
+	--		SET @VALOR = 'SP00' + CAST(@ID_TEMP AS CHAR(4))
+	--	END
+	--	ELSE IF ((@ID_TEMP / 100000) < 1)
+	--	BEGIN
+	--		SET @VALOR = 'SP0' + CAST(@ID_TEMP AS CHAR(5))
+	--	END
+	--	ELSE
+	--	BEGIN
+	--		SET @VALOR = 'SP' + CAST(@ID_TEMP AS CHAR(6))
+	--	END
 		
-		SELECT @ID = @VALOR
+	--	SELECT @ID = @VALOR
 
 		-- Insert statements for procedure here
 		INSERT INTO

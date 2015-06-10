@@ -359,6 +359,9 @@ namespace OSEF.ERP.APP
                 switch (sd.Key)
                 {
                     //5. Datos del cliente y la solicitud de prestamo
+                    case "txtfID":
+                        oSolicitudPrestamo.ID = sd.Value;
+                        break;
                     case "cmbCliente":
                         oSolicitudPrestamo.Cliente = sd.Value;
                         oCliente.ID = sd.Value;
@@ -494,7 +497,10 @@ namespace OSEF.ERP.APP
                         oCliente.EmpresaNoInterior = sd.Value;
                         break;
                     case "txtfEmpresaCodigoPostal":
-                        oCliente.EmpresaCodigoPostal = Convert.ToInt32(sd.Value);
+                        if (sd.Value == null || sd.Value == string.Empty)
+                            oCliente.EmpresaCodigoPostal = null;
+                        else
+                            oCliente.EmpresaCodigoPostal = Convert.ToInt32(sd.Value);
                         break;
                     case "cmbEmpresaEstado":
                         oCliente.EmpresaEstado = sd.Value;
@@ -788,16 +794,17 @@ namespace OSEF.ERP.APP
                                 break;
                         }
                         break;
-                    case "App.rgAvalEmpresaTipo_Group":
-                        switch (sd.Value)
-                        {
-                            case "App.rAvalEmpresaTipoEmpleado":
-                                oSolicitudPrestamo.AvalEmpresaTipo = "EMPLEADO";
-                                break;
-                            case "App.rAvalEmpresaTipoGiroComercial":
-                                oSolicitudPrestamo.AvalEmpresaTipo = "GIRO COMERCIAL";
-                                break;
-                        }
+                    case "txtAvalEmpresaGiroComercial":
+                        oSolicitudPrestamo.AvalEmpresaTipo = sd.Value;
+                        //switch (sd.Value)
+                        //{
+                        //    case "App.rAvalEmpresaTipoEmpleado":
+                        //        oSolicitudPrestamo.AvalEmpresaTipo = "EMPLEADO";
+                        //        break;
+                        //    case "App.rAvalEmpresaTipoGiroComercial":
+                        //        oSolicitudPrestamo.AvalEmpresaTipo = "GIRO COMERCIAL";
+                        //        break;
+                        //}
                         break;
                     case "txtfAvalEmpresaTelefono":
                         oSolicitudPrestamo.AvalEmpresaTelefono = sd.Value;
@@ -843,7 +850,8 @@ namespace OSEF.ERP.APP
                 oSolicitudPrestamo.FechaAlta = DateTime.Now;
                 oSolicitudPrestamo.FechaModificacion = DateTime.Now;
                 oSolicitudPrestamo.UsuarioModificacion = oUsuario.ID;
-                oSolicitudPrestamo.ID = SolicitudPrestamoBusiness.Insertar(oSolicitudPrestamo);
+                //oSolicitudPrestamo.ID = SolicitudPrestamoBusiness.Insertar(oSolicitudPrestamo);
+                SolicitudPrestamoBusiness.Insertar(oSolicitudPrestamo);
             }
             else
             {

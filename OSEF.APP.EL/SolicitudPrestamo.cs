@@ -106,7 +106,7 @@ namespace OSEF.APP.EL
         string avalempresatelefono;
         Nullable<short> avalempresatelefonoext;
         bool avalempresapropietario;
-        string avalempresatipo;
+        string avalempresagiro;
         string avalempresaanterior;
         int cantidad;
         short plazo;
@@ -696,8 +696,8 @@ namespace OSEF.APP.EL
 
         public string AvalEmpresaTipo
         {
-            get { return avalempresatipo; }
-            set { avalempresatipo = value; }
+            get { return avalempresagiro; }
+            set { avalempresagiro = value; }
         }
 
         public string AvalEmpresaAnterior

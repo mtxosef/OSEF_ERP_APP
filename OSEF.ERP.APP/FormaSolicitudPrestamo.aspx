@@ -215,7 +215,10 @@
                                                                 ID="txtfID" 
                                                                 runat="server"
                                                                 FieldLabel="ID"
-                                                                Disabled="true"
+                                                                Disabled="false"
+                                                                MaxLength="8"
+                                                                AutoFocus="true"
+                                                                EnforceMaxLength="true"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
                                                             </ext:TextField>
                                                         </Items>
@@ -232,7 +235,6 @@
                                                             <ext:ComboBox
                                                                 ID="cmbCliente" 
                                                                 runat="server" 
-                                                                AutoFocus="true"
                                                                 Disabled="false"
                                                                 ValueField="ID"
                                                                 DisplayField="ID"
@@ -3112,7 +3114,7 @@
                                                             <ext:Parameter Name="LabelWidth" Value="120" Mode="Raw" />
                                                             <ext:Parameter Name="EnforceMaxLength" Value="true" Mode="Raw" />
                                                             <ext:Parameter Name="AllowBlank" Value="true" Mode="Raw" />
-                                                            <ext:Parameter Name="MaxLength" Value="50" Mode="Raw" />
+                                                            <ext:Parameter Name="MaxLength" Value="20" Mode="Raw" />
                                                         </Defaults>
                                                         <Items>
                                                             <ext:TextField 

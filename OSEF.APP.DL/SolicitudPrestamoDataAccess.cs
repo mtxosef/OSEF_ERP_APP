@@ -37,7 +37,8 @@ namespace OSEF.APP.DL
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Char;
                 sqlpID.Size = 8;
-                sqlpID.Direction = ParameterDirection.Output;
+                //sqlpID.Direction = ParameterDirection.InputOutput;
+                sqlpID.Value = iSolicitudPrestamo.ID;
 
                 SqlParameter sqlpCliente = new SqlParameter();
                 sqlpCliente.ParameterName = "@Cliente";
@@ -614,7 +615,10 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpAvalEmpresaTipo = new SqlParameter();
                 sqlpAvalEmpresaTipo.ParameterName = "@AvalEmpresaTipo";
                 sqlpAvalEmpresaTipo.SqlDbType = SqlDbType.VarChar;
-                sqlpAvalEmpresaTipo.Value = iSolicitudPrestamo.AvalEmpresaTipo;
+                if (iSolicitudPrestamo.AvalEmpresaTipo == null)
+                    sqlpAvalEmpresaTipo.Value = DBNull.Value;
+                else
+                    sqlpAvalEmpresaTipo.Value = iSolicitudPrestamo.AvalEmpresaTipo;
 
                 SqlParameter sqlpAvalEmpresaTelefono = new SqlParameter();
                 sqlpAvalEmpresaTelefono.ParameterName = "@AvalEmpresaTelefono";
@@ -798,13 +802,14 @@ namespace OSEF.APP.DL
                 sqlcComando.Connection.Open();
 
                 //5. Ejecutar la instrucción INSERT que regresa un dato que es el ID
-                int result = Convert.ToInt32(sqlcComando.ExecuteScalar());
+                int result = Convert.ToInt32(sqlcComando.ExecuteNonQuery());
 
                 //6. Cerrar la conexión
                 sqlcComando.Connection.Close();
 
                 //7. Regresar el resultado
-                return sqlcComando.Parameters["@ID"].Value.ToString();
+                //return sqlcComando.Parameters["@ID"].Value.ToString();
+                return "test";
             }
             catch (Exception ex)
             {
