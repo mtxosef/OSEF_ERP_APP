@@ -265,4 +265,17 @@ var setCheckedAllRecords_Revisado = function (avance, registro, index) {
         }
     });
 }
- 
+
+
+//Concatenar la columna de Movimiento
+var cClasificacion_Renderer = function (valor, metaData, registro) {
+    var clasi = registro.get('Clasificacion'); 
+    switch (clasi) {
+        case 'MOBILIARIO':
+            return '<img class="IconColumnaEstatus" src="assets/img/controles/rsofa.png" alt="borrador" width="16" heigth="16" />' +registro.get('Clasificacion');
+        case 'CERRAJERIA':
+            return '<img class="IconColumnaEstatus" src="assets/img/controles/rkey.png" alt="pendiente" width="16" heigth="16"/> ' + registro.get('Clasificacion');
+        case 'INMUEBLE':
+            return '<img class="IconColumnaEstatus" src="assets/img/controles/rhome.png" alt="concluido" width="16" heigth="16"/> ' + registro.get('Clasificacion'); 
+    }
+};

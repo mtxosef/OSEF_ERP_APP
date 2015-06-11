@@ -127,7 +127,6 @@ namespace OSEF.ERP.APP
                 rCaratulaEstimacionCostos.Load(Server.MapPath("reportess/rCaratulaEstimacionDeCostos.rpt"));
                 rCaratulaEstimacionCostos.SetDataSource(dt);
                 rCaratulaEstimacionCostos.SetParameterValue("pProveedor", "A & R Construcciones S.A de C.V");
-                //rCaratulaEstimacionCostos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Reportes Mantenimiento " + parametro);
                 rCaratulaEstimacionCostos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.Excel, Response, true, "Reportes Mantenimiento " + parametro);
             }
             catch (Exception ex)
