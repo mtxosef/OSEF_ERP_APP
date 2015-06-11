@@ -265,9 +265,7 @@ var setCheckedAllRecords_Revisado = function (avance, registro, index) {
         }
     });
 }
-
-
-//Concatenar la columna de Movimiento
+ 
 var cClasificacion_Renderer = function (valor, metaData, registro) {
     var clasi = registro.get('Clasificacion'); 
     switch (clasi) {

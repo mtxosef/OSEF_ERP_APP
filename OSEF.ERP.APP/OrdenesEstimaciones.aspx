@@ -199,6 +199,7 @@
                                  <ext:ModelField Name="RutaImagen" Type="String" />
                                  <ext:ModelField Name="Atendido" Type="String" />
                                  <ext:ModelField Name="NoOrden" Type="String" />
+                                 <ext:ModelField Name="Clasificacion" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -302,6 +303,16 @@
 
                     </ext:Column>
                     
+                     <ext:DateColumn
+                        ID="cClasificacion"
+                        runat="server"
+                        Text="CLASIFICACIÓN"
+                        Align="Center"
+                        Width="120" 
+                        DataIndex="Clasificacion">
+                        <Renderer Fn="cClasificacion_Renderer" />
+                    </ext:DateColumn> 
+    
                     <ext:Column
                         ID="cReporta"
                         runat="server"
@@ -364,8 +375,8 @@
                                 </SelectedItems>
                             </ext:ComboBox>
                         </HeaderItems>
-                    </ext:DateColumn>
-                    
+                    </ext:DateColumn> 
+
                      <ext:DateColumn
                         ID="dcHoraOrigen"
                         runat="server"
