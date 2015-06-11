@@ -23,12 +23,12 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerReportesPorClasificacion' AND
+			WHERE  name = 'web_spS_ObtenerConceptosRevisados' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerReportesPorClasificacion
+	DROP PROCEDURE web_spS_ObtenerConceptosRevisados
 GO
 
-CREATE PROCEDURE web_spS_ObtenerReportesPorClasificacion
+CREATE PROCEDURE web_spS_ObtenerConceptosRevisados
 	-- Add the parameters for the stored procedure here
 		@CLASIFICACION VARCHAR(25)
 AS
@@ -47,6 +47,12 @@ END
 		SELECT 
 		--DATOS DEL REPORTE
 		OE.Reporte,
+		OED.ConceptoID,
+		PGC.CLAVE,
+		PGC.Descripcion,
+		OED.Precio,
+		OED.Cantidad,
+		OED.Importe,
 		--Datos de la sucursal
 		S.Nombre Sucursal,
 		S.CR,
@@ -59,10 +65,11 @@ END
 		OE.HoraLlegada,
 		OE.FechaFinActividad,
 		OE.HoraFinActividad,
-		OE.Clasificacion,
 		OE.ImporteTotal,OE.MovEnLinea, OE.Observaciones
 		
 		FROM OrdenesEstimaciones OE
+		JOIN OrdenesEstimacionesD OED ON OE.ID = OED.ID
+		JOIN PreciariosGeneralesConceptos PGC ON PGC.ID = OED.ConceptoID
 		--Detalle del movimiento
 		-- Nos trameos los datos de la sucursal
 		LEFT JOIN Sucursales S

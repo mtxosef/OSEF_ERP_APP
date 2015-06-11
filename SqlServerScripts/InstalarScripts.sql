@@ -542,3 +542,4 @@
 :r c:\SqlServerScripts\Modificar\FirmasReportes\web_spU_ActualizarFirmas.sql
 -- Reporte de Mantenimientos por clasificacion
 :r c:\SqlServerScripts\Reportes\TableroReportes\web_spS_ObtenerReportesPorClasificacion.sql
+:r c:\SqlServerScripts\Reportes\TableroReportes\web_spS_ObtenerConceptosRevisados.sql
