@@ -377,7 +377,17 @@
                             </ext:ComboBox>
                         </HeaderItems>
                     </ext:DateColumn>
-
+                    
+                   <ext:Column
+                        ID="cClasificacion"
+                        runat="server"
+                        Text="CLASIFICACIÓN"
+                        Align="Center"
+                        Width="170"
+                        DataIndex="Clasificacion"> 
+                        <Renderer Fn="cClasificacion_Renderer" />
+                    </ext:Column>
+                    
                    <ext:Column
                         ID="cSucursal"
                         runat="server"
@@ -387,7 +397,7 @@
                         DataIndex="Sucursal">
                       <Renderer Fn="cSucursal_Renderer" />
                     </ext:Column>
-                    
+
                    <ext:Column
                         ID="cTrabajoRequerido"
                         runat="server"
