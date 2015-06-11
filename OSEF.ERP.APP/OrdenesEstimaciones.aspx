@@ -312,7 +312,7 @@
                         DataIndex="Clasificacion">
                         <Renderer Fn="cClasificacion_Renderer" />
                     </ext:DateColumn> 
-
+    
                     <ext:Column
                         ID="cReporta"
                         runat="server"
