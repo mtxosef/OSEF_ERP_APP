@@ -129,7 +129,7 @@
                         <ext:ToolbarSpacer 
                         runat="server" 
                         ID="tsExploradorMesaDeReporte" 
-                        Width="20"> 
+                        Width="15"> 
                         </ext:ToolbarSpacer>
                           
 
@@ -145,14 +145,23 @@
                                         OnClick="ExportEt"
                                         class="imgs" 
                                         ImageUrl="assets/img/controles/ExcelNormal.png"/>
+                                     <asp:ImageButton 
+                                        ID="ImageButton2" 
+                                        runat="server" 
+                                        Height="22"
+                                        Width="22"
+                                        OnClick="ExportEstimacionCostos"
+                                        class="imgs" 
+                                        ImageUrl="assets/img/controles/EstCost.png"/>
                                 </Content>
                             </ext:Container>
-                              
+                            
+
                         <ext:ImageButton
                                     ID="imgbtnFacturar"
                                     runat="server"
                                     ImageUrl="assets/img/controles/fact.png"
-                                    OverImageUrl=""
+                                    OverImageUrl="" 
                                     PressedImageUrl=""
                                     Height="22px"
                                     Width="22px">    
@@ -177,7 +186,7 @@
                             AutoFocus="true"
                             EmptyText="BUSCAR POR ASUNTO"
                             StyleSpec="margin-top: 0px;"
-                            Width="290">
+                            Width="280">
                             <Listeners>
                                 <Change Fn="txtBuscar_Change" />
                             </Listeners>

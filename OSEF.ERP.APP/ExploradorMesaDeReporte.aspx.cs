@@ -92,7 +92,6 @@ namespace OSEF.ERP.APP
             }
         }
 
-
         protected void getUpdatedRecords(object sender, DirectEventArgs e)
         {
             string strRevisados = e.ExtraParams["registrosactualizados"];
@@ -117,6 +116,32 @@ namespace OSEF.ERP.APP
             }
         }
 
-
+        //Exporta a Excel el grid
+        protected void ExportEstimacionCostos(object sender, EventArgs e)
+        {
+            string parametro = cmbClasificacion.Value.ToString();
+            //1. Configurar la conexión y el tipo de comando
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+            try
+            {
+                SqlCommand comando = new SqlCommand("web_spS_ObtenerConceptosRevisados", conn);
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando); 
+                DataTable dt = new DataTable();
+                adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adaptador.SelectCommand.Parameters.Add(@"CLASIFICACION", SqlDbType.VarChar).Value = parametro;
+                adaptador.Fill(dt); 
+                ReportDocument rCaratulaEstimacionCostos = new ReportDocument();
+                rCaratulaEstimacionCostos.Load(Server.MapPath("reportess/rCaratulaEstimacionDeCostos.rpt"));
+                rCaratulaEstimacionCostos.SetDataSource(dt);
+                rCaratulaEstimacionCostos.SetParameterValue("pProveedor", "A & R Construcciones S.A de C.V");
+                rCaratulaEstimacionCostos.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Reportes Mantenimiento " + parametro);
+            }catch (Exception ex){
+                ex.Message.ToString();
+            }finally{
+                if (conn.State != ConnectionState.Closed)
+                    conn.Close();
+                    conn.Dispose();
+            }
+        }
     }
 }
