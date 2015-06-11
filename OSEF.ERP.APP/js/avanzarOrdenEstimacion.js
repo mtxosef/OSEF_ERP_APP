@@ -77,6 +77,38 @@ function HabilitarControlesAvanzar() {
     window.parent.App.imgbtnGuardar.setDisabled(false);
     window.parent.App.imgbtnBorrar.setDisabled(false);
     window.parent.App.chkAtendido.setReadOnly(false);
+
+
+
+
+    window.parent.App.dfFechaOrigen.setReadOnly(false);
+    window.parent.App.dfFechaMaxima.setReadOnly(false);
+    window.parent.App.nfDiasAtencion.setReadOnly(false);
+    window.parent.App.nfDiasAtencion.setDisabled(false);
+    window.parent.App.txtfReporta.setReadOnly(false);
+    window.parent.App.txtfReporta.setDisabled(false);
+    window.parent.App.txtfTrabajoRequerido.setReadOnly(false);
+    window.parent.App.txtfTrabajoRequerido.setDisabled(false);
+
+
+    window.parent.App.txtfCodigoFalla.setDisabled(false);
+    window.parent.App.txtfCodigoFalla.setReadOnly(false);
+
+    window.parent.App.dfFechaLlegada.setReadOnly(false);
+    window.parent.App.tfHoraLlegada.setReadOnly(false);
+    window.parent.App.dfFechaFinActividad.setReadOnly(false);
+    window.parent.App.tfHoraFinActividad.setReadOnly(false);
+    window.parent.App.cmbCuadrilla.setReadOnly(false);
+    window.parent.App.cmbCuadrilla.setDisabled(false);
+
+
+    window.parent.App.tHoraOrigen.setReadOnly(false);
+    window.parent.App.chkAtendido.setDisabled(false);
+    window.parent.App.chkAtendido.setReadOnly(false);
+
+
+    window.parent.App.cmbClasificacion.setReadOnly(false);
+    window.parent.App.cmbDivision.setReadOnly(false);
   
     //6. Deshabilita los comandos del grid
     window.parent.App.ccFotos.commands[0].disabled = false;

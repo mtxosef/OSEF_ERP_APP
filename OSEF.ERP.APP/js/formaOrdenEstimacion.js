@@ -482,6 +482,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         //Actualizar campos afetados
         App.txtfMovID.setValue(App.sOrdenEstimacion.getAt(0).get('MovID'));
         App.sbOrdenEstimacion.setText(App.sOrdenEstimacion.getAt(0).get('Estatus'));
+        App.cmbClasificacion.setValue(App.sOrdenEstimacion.getAt(0).get('Clasificacion'));
         window.parent.App.wEmergente.setTitle('Editar Movimiento ' + Ext.util.Cookies.get('cookieEditarOrdenEstimacion'));
 
         //Deshabilita boton de afectar porque aqui concluye el flujo
@@ -750,7 +751,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
-        App.cmbClasificacion.setValue(registro[0].get('Clasificacíon'));
+        App.cmbClasificacion.setValue(registro[0].get('Clasificacion').trim());
 
         App.imgbtnImprimir.setDisabled(false);
         App.pDatosReporte.tab.show();
@@ -820,13 +821,15 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
+        App.cmbClasificacion.setValue(registro[0].get('Clasificacion').trim());
+
 
         if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
             App.chkAtendido.setValue(true);
         } else {
             App.chkAtendido.setValue(false);
         }
-        App.cmbClasificacion.setValue(registro[0].get('Clasificacion').trim());
+        
         //        if (registro[0].get('Mobiliario')) {
         //            App.chkMobiliario.setValue(true);
         //        } else {

@@ -229,6 +229,7 @@ namespace OSEF.ERP.APP
             oOrdenEstimacion = OrdenEstimacionBusiness.ObtenerOrdenEstimacionPorID(oFormaOrdenEstimacion.Id);
             sOrdenEstimacion.GetAt(0).Set("MovID", oOrdenEstimacion.MovID);
             sOrdenEstimacion.GetAt(0).Set("Estatus", oOrdenEstimacion.Estatus);
+            sOrdenEstimacion.GetAt(0).Set("Clasificacion", oOrdenEstimacion.Clasificacion);
         }
 
         /// <summary>
@@ -510,6 +511,7 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("RutaImagen", oOrdenEstimacionForma.RutaImagen);
                 sOrdenEstimacion.GetAt(0).Set("NoOrden", oOrdenEstimacionForma.NoOrden);
                 sOrdenEstimacion.GetAt(0).Set("ReferenciaOrden", oOrdenEstimacionForma.ReferenciaOrden);
+                sOrdenEstimacion.GetAt(0).Set("Clasificacion", oOrdenEstimacionForma.Clasificacion);
                 //13. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);

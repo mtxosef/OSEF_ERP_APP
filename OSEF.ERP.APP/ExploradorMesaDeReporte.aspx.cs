@@ -51,7 +51,7 @@ namespace OSEF.ERP.APP
         }
          
         //Exporta a Excel el grid
-        protected void ExportEt()
+        protected void ExportEt(object sender, EventArgs e)
         {
 
             string parametro = cmbClasificacion.Value.ToString();
@@ -110,7 +110,7 @@ namespace OSEF.ERP.APP
         }
 
         //Exporta a Excel el grid
-        protected void ExportEstimacionCostos()
+        protected void ExportEstimacionCostos(object sender, EventArgs e)
         {
             string parametro = cmbClasificacion.Value.ToString();
             //1. Configurar la conexión y el tipo de comando
@@ -146,7 +146,7 @@ namespace OSEF.ERP.APP
                 object s = sender;
                 EventArgs ee = e;
                 //ExportEt();
-                ExportEstimacionCostos();
+                //ExportEstimacionCostos();
             }
             catch (Exception ex)
             {
