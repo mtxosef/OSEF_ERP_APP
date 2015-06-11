@@ -142,7 +142,7 @@
                                         runat="server" 
                                         Height="22"
                                         Width="22"
-                                        OnClick="ExportEt"
+                                        OnClick="packReport"
                                         class="imgs" 
                                         ImageUrl="assets/img/controles/ExcelNormal.png"/>
                                      <asp:ImageButton 
@@ -150,7 +150,7 @@
                                         runat="server" 
                                         Height="22"
                                         Width="22"
-                                        OnClick="ExportEstimacionCostos"
+                                        OnClick="packReport"
                                         class="imgs" 
                                         ImageUrl="assets/img/controles/EstCost.png"/>
                                 </Content>

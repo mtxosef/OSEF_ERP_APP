@@ -750,6 +750,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaFinActividad.setValue(registro[0].get('FechaFinActividad'));
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
+        App.cmbClasificacion.setValue(registro[0].get('Clasificacíon'));
 
         App.imgbtnImprimir.setDisabled(false);
         App.pDatosReporte.tab.show();

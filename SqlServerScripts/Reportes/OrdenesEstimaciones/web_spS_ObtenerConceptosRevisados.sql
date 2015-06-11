@@ -46,41 +46,25 @@ END
     -- Insert statements for procedure here
 		SELECT 
 		--DATOS DEL REPORTE
-		OE.ID,
-		OE.Reporte,
 		OED.ConceptoID,
-		PGC.CLAVE,
+		PGC.CLAVE, 
 		PGC.Descripcion,
-		OED.Precio,
-		OED.Cantidad,
-		OED.Importe,
-		--Datos de la sucursal
-		S.Nombre Sucursal,
-		S.CR,
-		OE.Division,
-		--DATOS DEL REPORTE 2
-		OE.FechaOrigen,
-		OE.TrabajoRequerido,
-		OE.TrabajoRealizado,
-		OE.FechaLlegada,
-		OE.HoraLlegada,
-		OE.FechaFinActividad,
-		OE.HoraFinActividad,
-		OE.ImporteTotal,OE.MovEnLinea, OE.Observaciones
-		
+		OED.Precio,	
+		(SELECT SUM(OEDSQ.Cantidad) FROM OrdenesEstimacionesD OEDSQ WHERE OEDSQ.ConceptoID = OED.ConceptoID)  Cantidades,
+		(SELECT SUM(OEDSQ.Importe) FROM OrdenesEstimacionesD OEDSQ WHERE OEDSQ.ConceptoID = OED.ConceptoID)  Importes
 		FROM OrdenesEstimaciones OE
 		JOIN OrdenesEstimacionesD OED ON OE.ID = OED.ID
-		JOIN PreciariosGeneralesConceptos PGC ON PGC.ID = OED.ConceptoID
-		--Detalle del movimiento
-		-- Nos trameos los datos de la sucursal
-		LEFT JOIN Sucursales S
-		ON S.ID = OE.Sucursal 
+		JOIN PreciariosGeneralesConceptos PGC ON PGC.ID = OED.ConceptoID 
 		WHERE 
 		OE.Mov in('Mesa de reporte')  
 		AND OE.MovEnLinea = 1
 	 AND OE.Estatus IN('CONCLUIDO') 
 	 AND oe.Revisado=1
-	AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'
+	AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%' 
+	GROUP BY OED.ConceptoID,
+		PGC.CLAVE, 
+		PGC.Descripcion,
+		OED.Precio ORDER BY OED.ConceptoID DESC;
 END
 GO
 
