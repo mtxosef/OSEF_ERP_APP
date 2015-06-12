@@ -297,10 +297,8 @@
                                         </Model>
                                     </ext:Store>
                                 </Store>
-
                             </ext:ComboBox>
                         </HeaderItems>
-
                     </ext:Column>
                     
                      <ext:DateColumn
@@ -311,6 +309,26 @@
                         Width="120" 
                         DataIndex="Clasificacion">
                         <Renderer Fn="cClasificacion_Renderer" />
+                        <HeaderItems>
+                            <ext:ComboBox
+                                ID="cmbFClasificacion"
+                                runat="server"
+                                Width="200"
+                                Editable="false">
+                                <Items>
+                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" /> 
+                                    <ext:ListItem Index="1" Text="MOBILIARIO" Value="MOBILIARIO" />
+                                    <ext:ListItem Index="2" Text="CERRAJERIA" Value="CERRAJERIA" />
+                                    <ext:ListItem Index="3" Text="INMUEBLE" Value="INMUEBLE" /> 
+                                </Items>
+                                <SelectedItems>
+                                    <ext:ListItem Index="0" />
+                                </SelectedItems>
+                                <Listeners>
+                                    <Select Fn="cmbClasificacionFiltro_Select" />
+                                </Listeners> 
+                            </ext:ComboBox>
+                        </HeaderItems>
                     </ext:DateColumn> 
     
                     <ext:Column
@@ -449,29 +467,7 @@
                         Align="Center"
                         Width="110"
                         DataIndex="Sucursal">
-                         <Renderer Fn="cZona_Renderer" />
-                      <%--  <HeaderItems>
-                            <ext:ComboBox
-                                ID="ComboBox1"
-                                runat="server"
-                                ForceSelection="true"
-                                Editable="false">
-                                <Items>
-                                    <ext:ListItem Index="0" Text="(Todos)" Value="Todos" />
-                                    <ext:ListItem Index="1" Text="PENDIENTE" />
-                                    <ext:ListItem Index="2" Text="BORRADOR" />
-                                    <ext:ListItem Index="3" Text="CONCLUIDO" />
-                                    <ext:ListItem Index="4" Text="CANCELADO" />
-                                </Items>
-                                <SelectedItems>
-                                    <ext:ListItem Index="0" />
-                                </SelectedItems>
-                                <Listeners>
-                                    <Select Fn="cmbEstatusFiltro_Select" />
-                                </Listeners>
-
-                            </ext:ComboBox>
-                        </HeaderItems>--%>
+                         <Renderer Fn="cZona_Renderer" /> 
                     </ext:Column> 
                     
                     <ext:Column

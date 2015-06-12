@@ -312,3 +312,24 @@ var cClasificacion_Renderer = function (valor, metaData, registro) {
             return '<img class="IconColumnaEstatus" src="assets/img/controles/rhome.png" alt="concluido" width="16" heigth="16"/> ' + registro.get('Clasificacion');
     }
 };
+
+
+//Evento que hace el filtro al seleccionar algun elemento
+var cmbClasificacionFiltro_Select = function (combobox, registro) {
+    //1. Obtener el valor
+    var valor = combobox.getValue();
+    console.log(valor); 
+    //2. Validar si es todos o hacer el filtro, sino si hace el filtro por Clasificacion
+    if (valor == 'Todos') {
+        App.sOrdenesEstimaciones.clearFilter();
+    } else {
+        App.sOrdenesEstimaciones.filterBy(function (elemento) {
+            if (elemento.get('Clasificacion') == valor) {
+                return true
+            }
+            else {
+                return false;
+            } 
+        });
+    }
+};

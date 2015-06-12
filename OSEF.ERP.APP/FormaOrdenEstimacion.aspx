@@ -1184,6 +1184,8 @@
                                                         EnforceMaxLength="true"
                                                         MaxValue="999999999"
                                                         MinValue="1"
+                                                        ReadOnly="true"
+                                                        Editable="true"
                                                         Step="1">
                                                         <Listeners>
                                                             <Change Fn="calcularImporteCantidad_Change"></Change>
