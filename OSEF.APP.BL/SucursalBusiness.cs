@@ -137,7 +137,14 @@ namespace OSEF.APP.BL
         /// <returns></returns>
         public static List<Sucursal> ObtenerSucursalesDisponibles()
         {
-            return SucursalDataAccess.ObtenerSucursalesDisponibles();
+            List<Sucursal> lSucursal = SucursalDataAccess.ObtenerSucursalesDisponibles();
+            foreach (Sucursal c in lSucursal)
+            {
+                c.RColonia = ColoniaBusiness.ObtenerColoniaPorID(c.Colonia);
+
+            }
+            return lSucursal;
+
         }
 
         /// <summary>
