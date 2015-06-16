@@ -203,7 +203,8 @@
                 </Columns>
             </ColumnModel>
             <Listeners>
-                <ItemClick Fn="gpConceptos_ItemClick" />
+                <ItemClick Fn="gpConceptos_ItemClick" /> 
+                <ItemDblClick Fn="imgbtnEditar_Click"></ItemDblClick>
             </Listeners>
             <SelectionModel>
                 <ext:RowSelectionModel

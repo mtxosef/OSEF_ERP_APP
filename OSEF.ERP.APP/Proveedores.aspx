@@ -188,6 +188,7 @@
             </ColumnModel>
             <Listeners>
                 <ItemClick Fn="itemclick_Habilitar" />
+                <ItemDblClick Fn="imgbtnEditar_Click"></ItemDblClick>
             </Listeners>
             <SelectionModel>
                 <ext:RowSelectionModel
