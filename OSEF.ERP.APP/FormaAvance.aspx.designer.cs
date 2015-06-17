@@ -58,6 +58,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Model mRevision;
         
         /// <summary>
+        /// Control sRevisionD.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sRevisionD;
+        
+        /// <summary>
+        /// Control mRevisionD.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mRevisionD;
+        
+        /// <summary>
         /// Control sProveedores.
         /// </summary>
         /// <remarks>
@@ -391,31 +409,22 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.FieldContainer fcSucursal;
         
         /// <summary>
-        /// Control cmbSucursal.
+        /// Control txtfSucursalCR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbSucursal;
+        protected global::Ext.Net.TextField txtfSucursalCR;
         
         /// <summary>
-        /// Control sSucursales.
+        /// Control btnBuscarSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store sSucursales;
-        
-        /// <summary>
-        /// Control mSucursales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model mSucursales;
+        protected global::Ext.Net.Button btnBuscarSucursal;
         
         /// <summary>
         /// Control txtfSucursalNombre.
@@ -425,6 +434,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfSucursalNombre;
+        
+        /// <summary>
+        /// Control txtfSucursalID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtfSucursalID;
         
         /// <summary>
         /// Control fcFechaEmision.
@@ -470,24 +488,6 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField txtfObservaciones;
-        
-        /// <summary>
-        /// Control pDivisorColumnas2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Panel pDivisorColumnas2;
-        
-        /// <summary>
-        /// Control imgbtnGaleria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnGaleria;
         
         /// <summary>
         /// Control pComentarios.

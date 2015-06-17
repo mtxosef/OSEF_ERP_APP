@@ -62,6 +62,28 @@
         </ext:Store>
 
         <ext:Store
+            ID="sRevisionD"
+            runat="server"
+            GroupField="Categoria">
+            <Model>
+                <ext:Model
+                    ID="mRevisionD"
+                    runat="server">
+                    <Fields>
+                        <ext:ModelField Name="Revision" Type="Int" />
+                        <ext:ModelField Name="Renglon" Type="Int" />
+                        <ext:ModelField Name="Categoria" Type="String" />
+                        <ext:ModelField Name="SubCategoria" Type="String" />
+                        <ext:ModelField Name="Concepto" Type="String" />
+                        <ext:ModelField Name="Proveedor" Type="String" />
+                        <ext:ModelField Name="Programado" Type="Float" />
+                        <ext:ModelField Name="Real" Type="Float" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+        </ext:Store>
+
+        <ext:Store
             ID="sProveedores"
             runat="server">
             <Model>
@@ -83,7 +105,8 @@
 
         <ext:Store
             ID="sCategorias"
-            runat="server">
+            runat="server"
+            OnReadData="OnReadData_sCategorias">
             <Model>
                 <ext:Model
                     ID="mCategorias"
@@ -96,14 +119,12 @@
                     </Fields>
                 </ext:Model>
             </Model>
-            <Listeners>
-                <Load Fn="sCategorias_Load" />
-            </Listeners>
         </ext:Store>
 
         <ext:Store
             ID="sSubCategorias"
-            runat="server">
+            runat="server"
+            OnReadData="OnReadData_sSubCategorias">
             <Model>
                 <ext:Model
                     ID="mSubCategorias"
@@ -117,14 +138,12 @@
                     </Fields>
                 </ext:Model>
             </Model>
-            <Listeners>
-                <Load Fn="sSubCategorias_Load" />
-            </Listeners>
         </ext:Store>
 
         <ext:Store
             ID="sConceptos"
-            runat="server">
+            runat="server"
+            OnReadData="OnReadData_sConceptos">
             <Model>
                 <ext:Model ID="mConceptos" runat="server">
                     <Fields>
@@ -203,8 +222,7 @@
                                     <ExtraParams>
                                         <ext:Parameter Name="RevisionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                         <ext:Parameter Name="Revision" Value="Ext.encode(#{sRevision}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="RevisionDObraCivil" Value="Ext.encode(#{sObraCivil}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="Sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="RevisionD" Value="ObtenerDetalle()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
@@ -470,7 +488,10 @@
                                                                     Step="1"
                                                                     LabelWidth="120"
                                                                     Margins="0 3 0 0"
-                                                                    AllowBlank="false">
+                                                                    AllowBlank="false"
+                                                                    EmptyNumber="0"
+                                                                    AllowExponential="false"
+                                                                    EmptyText="0">
                                                                     <Listeners>
                                                                         <Change Fn="nfSemana_Change" />
                                                                     </Listeners>
@@ -483,59 +504,44 @@
                                                             FieldLabel="Sucursal"
                                                             AnchorHorizontal="100%"
                                                             LabelWidth="120"
+                                                            Height="25"
                                                             Layout="HBoxLayout">
                                                             <Items>
-                                                                <ext:ComboBox
-                                                                    ID="cmbSucursal"
-                                                                    runat="server"
-                                                                    DisplayField="ID"
-                                                                    ValueField="ID"
-                                                                    Width="200"
-                                                                    MatchFieldWidth="false"
+                                                                <ext:TextField 
+                                                                    ID="txtfSucursalCR" 
+                                                                    runat="server" 
+                                                                    Width="200" 
                                                                     Margins="0 3 0 0"
-                                                                    Cls="spanCustomCombo xEspacioCmbxCustom"
-                                                                    PageSize="10"
-                                                                    AllowBlank="false"
-                                                                    ForceSelection="true"
-                                                                    QueryMode="Local"
-                                                                    TypeAhead="true">
-                                                                    <ListConfig ID="lcEstado" runat="server" Width="350" Cls="xEspacioCmbxCustom">
-                                                                        <ItemTpl ID="itSucursal" runat="server">
-                                                                            <Html>
-                                                                                <div class="search-item">
-							                                                        <h3>{ID}</h3>
-                                                                                    <span>{Nombre}</span>
-						                                                        </div>
-                                                                            </Html>
-                                                                        </ItemTpl>
-                                                                    </ListConfig>
-                                                                    <Store>
-                                                                        <ext:Store
-                                                                            ID="sSucursales"
-                                                                            runat="server">
-                                                                            <Model>
-                                                                                <ext:Model
-                                                                                    ID="mSucursales"
-                                                                                    runat="server">
-                                                                                    <Fields>
-                                                                                        <ext:ModelField Name="ID" />
-                                                                                        <ext:ModelField Name="Nombre" />
-                                                                                    </Fields>
-                                                                                </ext:Model>                            
-                                                                            </Model>
-                                                                        </ext:Store>
-                                                                    </Store>
+                                                                    MaxLength="50" 
+                                                                    EnforceMaxLength="true" 
+                                                                    AllowBlank="true" 
+                                                                    ReadOnly="true">
+                                                                    <RightButtons>
+                                                                        <ext:Button 
+                                                                            ID="btnBuscarSucursal" 
+                                                                            runat="server" 
+                                                                            Icon="Find" 
+                                                                            StandOut="true">
+                                                                            <Listeners>
+                                                                                <Click Fn="btnBuscarSucursal_Click" />
+                                                                            </Listeners>
+                                                                        </ext:Button>
+                                                                    </RightButtons>
                                                                     <Listeners>
-                                                                        <Select Fn="cmbSucursal_Select" />
-                                                                        <Change Fn="cmbSucursal_Change" />
+                                                                        <Change Fn="txtfSucursalCR_Change" />
                                                                     </Listeners>
-                                                                </ext:ComboBox>
+                                                                </ext:TextField>
                                                                 <ext:TextField
                                                                     ID="txtfSucursalNombre"
                                                                     runat="server"
                                                                     Width="360"
                                                                     Margins="0 3 0 0"
                                                                     Disabled="true">
+                                                                </ext:TextField>
+                                                                <ext:TextField 
+                                                                    ID="txtfSucursalID" 
+                                                                    runat="server"  
+                                                                    Hidden="true"> 
                                                                 </ext:TextField>
                                                             </Items>
                                                         </ext:FieldContainer>
@@ -601,7 +607,7 @@
                                                         </ext:FieldContainer>
                                                     </Items>
                                                 </ext:Panel>
-                                                <ext:Panel
+<%--                                                <ext:Panel
                                                     ID="pDivisorColumnas2"
                                                     runat="server"
                                                     StyleSpec="margin-left: 85px;">
@@ -621,7 +627,7 @@
                                                             </Listeners>
                                                         </ext:ImageButton>
                                                     </Items>
-                                                </ext:Panel>
+                                                </ext:Panel>--%>
                                             </Items>
                                         </ext:Panel>
                                     </Items>

@@ -53,7 +53,10 @@ namespace OSEF.APP.DL
                 sqlpProveedor.ParameterName = "@Proveedor";
                 sqlpProveedor.SqlDbType = SqlDbType.Char;
                 sqlpProveedor.Size = 7;
-                sqlpProveedor.Value = iRevisionD.Proveedor;
+                if (iRevisionD.Proveedor.Equals(""))
+                    sqlpProveedor.Value = DBNull.Value;
+                else
+                    sqlpProveedor.Value = iRevisionD.Proveedor;
 
                 SqlParameter sqlpProgramado = new SqlParameter();
                 sqlpProgramado.ParameterName = "@Programado";

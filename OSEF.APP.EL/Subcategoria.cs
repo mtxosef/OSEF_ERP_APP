@@ -17,6 +17,9 @@ namespace OSEF.APP.EL
         string descripcion;
         string categoria;
 
+        Categoria rcategoria;
+        List<Concepto> rconcepto;
+
         #endregion
 
         #region Propiedades
@@ -43,6 +46,18 @@ namespace OSEF.APP.EL
         {
             get { return categoria; }
             set { categoria = value; }
+        }
+
+        public Categoria RCategoria
+        {
+            get { return rcategoria; }
+            set { rcategoria = value; }
+        }
+
+        public List<Concepto> RConcepto
+        {
+            get { return rconcepto; }
+            set { rconcepto = value; }
         }
 
         #endregion

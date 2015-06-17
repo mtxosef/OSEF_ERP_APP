@@ -24,13 +24,11 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type='text/javascript' src="js/formaOrdenEstimacion.js"></script>
-    
+    <script type='text/javascript' src="js/formaOrdenEstimacion.js"></script>    
 </head>
 <body>
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="rmFormaOrdenEstimacion" runat="server" HideInDesign="true" >
-        </ext:ResourceManager>
+        <ext:ResourceManager ID="rmFormaOrdenEstimacion" runat="server" HideInDesign="true" />
     
         <ext:Store
             ID="sOrdenEstimacion"
@@ -392,25 +390,22 @@
                                                         <Change Fn="sMov_Change" />
                                                     </Listeners>
                                                 </ext:ComboBox>
-
                                                 <ext:TextField
                                                     ID="txtfMovID"
                                                     runat="server"
                                                     Width="110"
                                                     Margins="0 50 0 0"
                                                     Disabled="true">
-                                                </ext:TextField>
-                                                 
+                                                </ext:TextField>                                                 
                                                 <ext:Checkbox 
-                                                ID="chkBoxOrdenCompra" 
-                                                 runat="server" 
-                                                 FieldLabel="O. Compra">
+                                                    ID="chkBoxOrdenCompra" 
+                                                    runat="server" 
+                                                    FieldLabel="O. Compra">
                                                     <Listeners>
                                                         <AfterRender Fn="chkBoxOrdenCompra_AfterRender" />
                                                         <Change Fn="chkBoxOrdenCompra_AfterRender" />
                                                     </Listeners>
                                                 </ext:Checkbox>
-
                                                 <ext:TextField 
                                                     ID="txtOrigen" 
                                                     runat="server" 
@@ -421,7 +416,6 @@
                                                     Width="200" 
                                                     Disabled="true"> 
                                                 </ext:TextField>
-
                                                 <ext:TextField 
                                                     ID="txtOrigenID" 
                                                     FieldLabel="Origen ID"
@@ -430,8 +424,7 @@
                                                     runat="server" 
                                                     Width="180" 
                                                     Disabled="true"> 
-                                                </ext:TextField>
-                                            
+                                                </ext:TextField>                                            
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer

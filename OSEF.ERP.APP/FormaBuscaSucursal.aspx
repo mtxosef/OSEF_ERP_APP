@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/xFieldSet.css" />
     <link rel="stylesheet" href="css/xPanel.css" />
     <link rel="stylesheet" href="css/xButton.css" />
-    <script type='text/javascript' src="js/buscasucursales.js"></script>
+    <script type='text/javascript' src="js/buscaSucursales.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
@@ -114,8 +114,7 @@
                     </Sorters>
                     <Listeners>
                         <DataChanged Fn="sBSucursales_DataChanged" />
-                    </Listeners>
-                  
+                    </Listeners>                  
                 </ext:Store>
             </Store>
             <ColumnModel>
@@ -141,8 +140,8 @@
                         Align="Center"
                         Width="260"
                         DataIndex="Calle" >
-                        <Renderer Fn="cDireccion_Renderer">  </Renderer>
-                        </ext:Column>
+                        <Renderer Fn="cDireccion_Renderer" />
+                    </ext:Column>
                 </Columns>
             </ColumnModel>
             <Listeners>

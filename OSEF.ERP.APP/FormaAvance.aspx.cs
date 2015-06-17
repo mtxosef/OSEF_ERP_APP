@@ -23,26 +23,59 @@ namespace OSEF.ERP.APP
             //1. Primer solicitud
             if (!X.IsAjaxRequest)
             {
-                //2. Cargar sucursales
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursales();
-                sSucursales.DataBind();
-
-                //3. Cargar Proveedores
+                //2. Cargar Proveedores
                 sProveedores.DataSource = ProveedorBusiness.ObtenerProveedores();
                 sProveedores.DataBind();
 
-                //4. Cargar las Categorias
+                //3. Cargar las Categorias
                 sCategorias.DataSource = CategoriaBusiness.ObtenerCategorias();
                 sCategorias.DataBind();
 
-                //5. Cargar las SubCategorias
+                //4. Cargar las SubCategorias
                 sSubCategorias.DataSource = SubcategoriaBusiness.ObtenerSubCategorias();
                 sSubCategorias.DataBind();
 
-                //6. Cargar todos los Conceptos
-                sConceptos.DataSource = ConceptoBusiness.ObtenerConceptos();
-                sConceptos.DataBind();
+                //5. Validar si es un registro nuevo carga Categorias, SubCategorias y Conceptos
+                if (Cookies.GetCookie("cookieEditarRevision").Value.Equals("Nuevo"))
+                {
+                    //6. Cargar todos los Conceptos
+                    sConceptos.DataSource = ConceptoBusiness.ObtenerConceptos();
+                    sConceptos.DataBind();
+                }
            }
+        }
+
+        /// <summary>
+        /// Evento que lee el store de Datos sCategorias
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sCategorias(object sender, StoreReadDataEventArgs e)
+        {
+            sCategorias.DataSource = CategoriaBusiness.ObtenerCategorias();
+            sCategorias.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que lee el store de Datos sSubCategorias
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sSubCategorias(object sender, StoreReadDataEventArgs e)
+        {
+            sSubCategorias.DataSource = SubcategoriaBusiness.ObtenerSubCategorias();
+            sSubCategorias.DataBind();
+        }
+
+        /// <summary>
+        /// Evento que lee el store de Datos sConceptos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnReadData_sConceptos(object sender, StoreReadDataEventArgs e)
+        {
+            sConceptos.DataSource = ConceptoBusiness.ObtenerConceptos();
+            sConceptos.DataBind();
         }
 
         /// <summary>
@@ -55,14 +88,15 @@ namespace OSEF.ERP.APP
             //1. Obtener datos de la Forma y saber si es edición o nuevo
             string strRevisionForma = e.ExtraParams["RevisionForma"];
             string strRevision = e.ExtraParams["Revision"];
-            string strRevisionDObraCivil = e.ExtraParams["RevisionDObraCivil"];
-            string strcookieEditarRevision = Cookies.GetCookie("cookieEditarRevision").Value;
+            string strRevisionD = e.ExtraParams["RevisionD"];
             string strSucursal = e.ExtraParams["Sucursal"];
+            string strcookieEditarRevision = Cookies.GetCookie("cookieEditarRevision").Value;
+
             //2. Serializar el encabezado y el detalle
-            Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRevisionForma);
-            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro,strSucursal);
+            Dictionary<string, string> dRevision = JSON.Deserialize<Dictionary<string, string>>(strRevisionForma);
+            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRevision);
             Revision oRevision = JSON.Deserialize<List<Revision>>(strRevision).FirstOrDefault();
-            List<RevisionD> lRevisionD = JSON.Deserialize<List<RevisionD>>(strRevisionDObraCivil);
+            List<RevisionD> lRevisionD = JSON.Deserialize<List<RevisionD>>(strRevisionD);
 
             //3. Guardar o Actuaizar el Movimiento
             string strAccion = GuardarMovimiento(ref oRevisionForma, oRevision, lRevisionD);
@@ -95,7 +129,7 @@ namespace OSEF.ERP.APP
 
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRevisionForma);
-            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro,strSucursal);
+            Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro);
             Revision oRevision = JSON.Deserialize<List<Revision>>(strRevision).FirstOrDefault();
             List<RevisionD> lRevisionD = JSON.Deserialize<List<RevisionD>>(strRevisionDObraCivil);
 
@@ -138,8 +172,8 @@ namespace OSEF.ERP.APP
                 Revision oRevision = RevisionBusiness.ObtenerRevisionPorID(Convert.ToInt32(strcookieEditarRevision));
                 
                 //Cargar el detalle del movimiento
-                //sObraCivil.DataSource = RevisionDBusiness.ObtenerRevisionesDPorRevision(oRevision.ID);
-                //sObraCivil.DataBind();
+                sRevisionD.DataSource = RevisionDBusiness.ObtenerRevisionesDPorRevision(oRevision.ID);
+                sRevisionD.DataBind();
 
                 sRevision.Add(new
                 {
@@ -166,10 +200,12 @@ namespace OSEF.ERP.APP
         /// <param name="lRevisionD"></param>
         private string GuardarMovimiento(ref Revision oRevisionForma, Revision oRevision, List<RevisionD> lRevisionD)
         {
-            //2. Lo que sucede cuando es nuevo y no se habia guardado
+            //1. Lo que sucede cuando es nuevo y no se habia guardado
             if (oRevision == null)
             {
+                //2. Asignar campos faltantes
                 oRevisionForma.Estatus = "BORRADOR";
+
                 //3. Insertar en la base de datos
                 oRevisionForma.ID = RevisionBusiness.Insertar(oRevisionForma);
 
@@ -189,7 +225,7 @@ namespace OSEF.ERP.APP
                 });
 
                 //5. Guardar Detalle y regresar valor
-                GuardarDetalleObraCivil(lRevisionD, oRevisionForma);
+                GuardarDetalle(lRevisionD, oRevisionForma);
                 return "insertar";
             }
             else
@@ -209,7 +245,7 @@ namespace OSEF.ERP.APP
 
                 //8. Borrar todo el detalle e insertarlo de nuevo
                 RevisionDBusiness.BorrarPorRevision(oRevisionForma.ID);
-                GuardarDetalleObraCivil(lRevisionD, oRevisionForma);
+                GuardarDetalle(lRevisionD, oRevisionForma);
 
                 //9. Regresar valor
                 return "modificar";
@@ -221,13 +257,13 @@ namespace OSEF.ERP.APP
         /// </summary>
         /// <param name="lRevisionD"></param>
         /// <param name="oRevisionForma"></param>
-        private void GuardarDetalleObraCivil(List<RevisionD> lRevisionD, Revision oRevisionForma)
+        private void GuardarDetalle(List<RevisionD> lRevisionD, Revision oRevisionForma)
         {
             //1. Insertar los datos del detalle
             foreach (RevisionD sd in lRevisionD)
             {
                 //2. Validar que el objeto no venga en blanco
-                if (sd.Concepto.Equals(string.Empty) || sd.Proveedor.Equals(string.Empty) || sd.Programado == 0 || sd.Real == 0)
+                if (sd.Concepto.Equals(string.Empty) && sd.Proveedor.Equals(string.Empty) && sd.Programado == 0 && sd.Real == 0)
                     continue;
                 else
                 {
@@ -242,7 +278,7 @@ namespace OSEF.ERP.APP
         /// </summary>
         /// <param name="dRegistro"></param>
         /// <returns></returns>
-        private Revision ObtenerObjetoDesdeForma(Dictionary<string, string> dRegistro,string sucursal)
+        private Revision ObtenerObjetoDesdeForma(Dictionary<string, string> dRegistro)
         {
             //1. Declarar objeto Revision donde se guardarán los valores
             Revision oRevisionForma = new Revision();
@@ -259,6 +295,9 @@ namespace OSEF.ERP.APP
                     case "nfSemana":
                         oRevisionForma.Semana = Convert.ToInt16(sd.Value);
                         break;
+                    case "txtfSucursalID":
+                        oRevisionForma.Sucursal = sd.Value;
+                        break;
                     case "dfFechaEmision":
                         oRevisionForma.FechaEmision = Convert.ToDateTime(sd.Value);
                         break;
@@ -274,11 +313,9 @@ namespace OSEF.ERP.APP
                     case "txtfComentarios":
                         oRevisionForma.Comentarios = sd.Value;
                         break;
-
-                       
                 }
             }
-            oRevisionForma.Sucursal = sucursal;
+
             //3. Regresar la Revision
             return oRevisionForma;
         }

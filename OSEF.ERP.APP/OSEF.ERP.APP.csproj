@@ -465,7 +465,7 @@
     <Content Include="js\buscacodigosPostales.js" />
     <Content Include="js\buscaConceptoPreciario.js" />
     <Content Include="js\buscaConceptoPreciarioGeneral.js" />
-    <Content Include="js\buscasucursales.js" />
+    <Content Include="js\buscaSucursales.js" />
     <Content Include="js\cambiarContrasena.js" />
     <Content Include="js\certificadosInversiones.js" />
     <Content Include="js\clientes.js" />

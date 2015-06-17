@@ -16,6 +16,9 @@ namespace OSEF.APP.EL
         byte orden;
         string descripcion;
 
+        List<Subcategoria> rsubcategoria;
+        List<Concepto> rconcepto;
+
         #endregion
 
         #region Propiedades
@@ -36,6 +39,18 @@ namespace OSEF.APP.EL
         {
             get { return descripcion; }
             set { descripcion = value; }
+        }
+
+        public List<Subcategoria> RSubCategoria
+        {
+            get { return rsubcategoria; }
+            set { rsubcategoria = value; }
+        }
+
+        public List<Concepto> RConcepto
+        {
+            get { return rconcepto; }
+            set { rconcepto = value; }
         }
 
         #endregion

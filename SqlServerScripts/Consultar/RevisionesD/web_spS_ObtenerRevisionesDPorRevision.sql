@@ -38,14 +38,22 @@ BEGIN
 
     -- Insert statements for procedure here
 	SELECT
-		Revision,
-		Renglon,
-		Concepto,
-		Proveedor,
-		Programado,
-		Real
+		A.Revision,
+		A.Renglon,
+		D.ID AS Categoria,
+		C.ID AS SubCategoria,
+		A.Concepto,
+		A.Proveedor,
+		A.Programado,
+		A.Real
 	FROM
-		RevisionesD
+		RevisionesD A
+	INNER JOIN
+		Conceptos B ON A.Concepto = B.ID
+	LEFT JOIN
+		SubCategorias C ON B.SubCategoria = C.ID
+	INNER JOIN
+		Categorias D ON B.Categoria = D.ID		
 	WHERE
 		Revision = @Revision
 END

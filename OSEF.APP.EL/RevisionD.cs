@@ -14,6 +14,8 @@ namespace OSEF.APP.EL
 
         int revision;
         short renglon;
+        string categoria;
+        string subcategoria;
         string concepto;
         string proveedor;
         decimal programado;
@@ -36,6 +38,18 @@ namespace OSEF.APP.EL
         {
             get { return renglon; }
             set { renglon = value; }
+        }
+
+        public string Categoria
+        {
+            get { return categoria; }
+            set { categoria = value; }
+        }
+
+        public string SubCategoria
+        {
+            get { return subcategoria; }
+            set { subcategoria = value; }
         }
 
         public string Concepto

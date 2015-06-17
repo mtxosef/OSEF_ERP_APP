@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaSucursal.aspx.cs"
-    Inherits="OSEF.AVANCES.SUCURSALES.FormaSucursales" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaSucursal.aspx.cs" Inherits="OSEF.AVANCES.SUCURSALES.FormaSucursales" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -28,70 +28,84 @@
 </head>
 <body>
     <form id="Form1" runat="server">
-    <ext:ResourceManager ID="rmFormaSucursal" runat="server" HideInDesign="true" />
-    <ext:Store ID="sSucursal" runat="server">
-        <Model>
-            <ext:Model ID="mSucursal" runat="server" IDProperty="ID">
-                <Fields>
-                    <ext:ModelField Name="ID" Type="String" />
-                    <ext:ModelField Name="CR" Type="String" />
-                    <ext:ModelField Name="Nombre" Type="String" />
-                    <ext:ModelField Name="DireccionZona" Type="String" />
-                    <ext:ModelField Name="GerenteBBVANombre" Type="String" />
-                    <ext:ModelField Name="GerenteBBVAAPaterno" Type="String" />
-                    <ext:ModelField Name="GerenteBBVAAMaterno" Type="String" />
-                    <ext:ModelField Name="SupervisorNombre" Type="String" />
-                    <ext:ModelField Name="SupervisorAPaterno" Type="String" />
-                    <ext:ModelField Name="SupervisorAMaterno" Type="String" />
-                    <ext:ModelField Name="ProveedorEnergia" Type="String" />
-                    <ext:ModelField Name="Superficie" Type="Int" />
-                    <ext:ModelField Name="CoordinadorNombre" Type="String" />
-                    <ext:ModelField Name="CoordinadorAPaterno" Type="String" />
-                    <ext:ModelField Name="CoordinadorAMaterno" Type="String" />
-                    <ext:ModelField Name="Calle" Type="String" />
-                    <ext:ModelField Name="EntreCalles" Type="String" />
-                    <ext:ModelField Name="NoExterior" Type="String" />
-                    <ext:ModelField Name="NoInterior" Type="String" />
-                    <ext:ModelField Name="CodigoPostal" Type="String" />
-                    <ext:ModelField Name="Colonia" Type="String" />
-                    <ext:ModelField Name="Estado" Type="String" />
-                    <ext:ModelField Name="Municipio" Type="String" /> 
-                     
-                    <ext:ModelField Name="RCodigopostal" Type="Object" />
-                    
-                    <ext:ModelField Name="RColonia" Type="Object" />
-                    
-                    <ext:ModelField Name="REstado" Type="Object" />
-                    
-                    <ext:ModelField Name="RMunicipio" Type="Object" /> 
+        <ext:ResourceManager ID="rmFormaSucursal" runat="server" HideInDesign="true" />
+    
+        <ext:Store ID="sSucursal" runat="server">
+            <Model>
+                <ext:Model ID="mSucursal" runat="server" IDProperty="ID">
+                    <Fields>
+                        <ext:ModelField Name="ID" Type="String" />
+                        <ext:ModelField Name="CR" Type="String" />
+                        <ext:ModelField Name="Nombre" Type="String" />
+                        <ext:ModelField Name="DireccionZona" Type="String" />
+                        <ext:ModelField Name="GerenteBBVANombre" Type="String" />
+                        <ext:ModelField Name="GerenteBBVAAPaterno" Type="String" />
+                        <ext:ModelField Name="GerenteBBVAAMaterno" Type="String" />
+                        <ext:ModelField Name="SupervisorNombre" Type="String" />
+                        <ext:ModelField Name="SupervisorAPaterno" Type="String" />
+                        <ext:ModelField Name="SupervisorAMaterno" Type="String" />
+                        <ext:ModelField Name="ProveedorEnergia" Type="String" />
+                        <ext:ModelField Name="Superficie" Type="Int" />
+                        <ext:ModelField Name="CoordinadorNombre" Type="String" />
+                        <ext:ModelField Name="CoordinadorAPaterno" Type="String" />
+                        <ext:ModelField Name="CoordinadorAMaterno" Type="String" />
+                        <ext:ModelField Name="Calle" Type="String" />
+                        <ext:ModelField Name="EntreCalles" Type="String" />
+                        <ext:ModelField Name="NoExterior" Type="String" />
+                        <ext:ModelField Name="NoInterior" Type="String" />
+                        <ext:ModelField Name="CodigoPostal" Type="String" />
+                        <ext:ModelField Name="Colonia" Type="String" />
+                        <ext:ModelField Name="Estado" Type="String" />
+                        <ext:ModelField Name="Municipio" Type="String" />
+                        <ext:ModelField Name="RCodigopostal" Type="Object" />
+                        <ext:ModelField Name="RColonia" Type="Object" />
+                        <ext:ModelField Name="REstado" Type="Object" />
+                        <ext:ModelField Name="RMunicipio" Type="Object" />
+                        <ext:ModelField Name="TerminoContrato" Type="Date" />
+                        <ext:ModelField Name="InicioObra" Type="Date" />
+                        <ext:ModelField Name="FinObra" Type="Date" />
+                        <ext:ModelField Name="SemanasObra" Type="Int" />
+                        <ext:ModelField Name="FechaAlta" Type="Date" />
+                        <ext:ModelField Name="Estatus" Type="String" />
+                        <ext:ModelField Name="RProvedor" Type="Object" />
+                    </Fields>
+                </ext:Model>
+            </Model>
+            <Listeners>
+                <Load Fn="sSucursal_Load" />
+                <Add Fn="sSucursal_Add" />
+            </Listeners>
+        </ext:Store>
 
-                    <ext:ModelField Name="TerminoContrato" Type="Date" />
-                    <ext:ModelField Name="InicioObra" Type="Date" />
-                    <ext:ModelField Name="FinObra" Type="Date" />
-                    <ext:ModelField Name="SemanasObra" Type="Int" />
-                    <ext:ModelField Name="FechaAlta" Type="Date" />
-                    <ext:ModelField Name="Estatus" Type="String" />
-                    <ext:ModelField Name="RProvedor" Type="Object" />
-                </Fields>
-            </ext:Model>
-        </Model>
-        <Listeners>
-            <Load Fn="sSucursal_Load" />
-            <Add Fn="sSucursal_Add" />
-        </Listeners>
-    </ext:Store>
-    <div>
-        <ext:Panel ID="pSucursales" runat="server" Width="780" BodyStyle="background-color:transparent;">
-            <Items>
-                <ext:FormPanel ID="fpFormaSucursales" runat="server" Height="410" DefaultButton="imgbtnGuardar"
-                    MonitorResize="true">
-                    <Items>
-                        <ext:TabPanel ID="tbFormaSucursales" runat="server" ActiveTabIndex="0" Width="770"
-                            Plain="true" Cls="custotabpanel xchris">
-                            <Items>
-                                <ext:Panel ID="pDatoGenerales" runat="server" Title="Datos Generales" BodyPadding="10"
-                                    MonitorResize="true">
-                                    <Items>
+        <div>
+            <ext:Panel
+                ID="pSucursales"
+                runat="server"
+                Width="780"
+                BodyStyle="background-color:transparent;">
+                <Items>
+                    <ext:FormPanel
+                        ID="fpFormaSucursales"
+                        runat="server"
+                        Height="410"
+                        DefaultButton="imgbtnGuardar"
+                        MonitorResize="true">
+                        <Items>
+                            <ext:TabPanel
+                                ID="tbFormaSucursales"
+                                runat="server"
+                                ActiveTabIndex="0"
+                                Width="770"
+                                Plain="true"
+                                Cls="custotabpanel xchris">
+                                <Items>
+                                    <ext:Panel
+                                        ID="pDatoGenerales"
+                                        runat="server"
+                                        Title="Datos Generales"
+                                        BodyPadding="10"
+                                        MonitorResize="true">
+                                        <Items>
                                         <ext:FieldContainer ID="ContenedorID" runat="server" FieldLabel="ID" LabelWidth="120"
                                             AnchorHorizontal="100%" Layout="ColumnLayout">
                                             <Items>
