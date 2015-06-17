@@ -300,6 +300,7 @@
             </ColumnModel>
             <Listeners>
                 <ItemClick Fn="gpSucursales_ItemClick" />
+                <ItemDblClick Fn="imgbtnEditar_Click"></ItemDblClick>
             </Listeners>
             <SelectionModel>
                 <ext:RowSelectionModel

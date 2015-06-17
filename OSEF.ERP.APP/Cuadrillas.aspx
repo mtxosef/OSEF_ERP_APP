@@ -149,6 +149,7 @@
         
         <Listeners>
             <ItemClick Fn="gpCuadrillas_Select" />
+            <ItemDblClick Fn="imgbtnEditar_Click"></ItemDblClick>
         </Listeners>
 
         <SelectionModel>
