@@ -1,4 +1,6 @@
-﻿//Boton de nuevo
+﻿var editable = true;
+
+//Boton de nuevo
 var imgbtnNuevo_Click = function () {
     //1. Obtener fecha actual
     var d = new Date();
@@ -92,55 +94,56 @@ var imgbtnInfo_Click = function () {
 
 //Método que se lanza antes de llamar al procedimiento de Afectar
 var imgbtnAfectar_Click_Before = function () {
-    //    if (App.sRevision.getCount() != 0) {
-    //        if (App.sRevision.getAt(0).get('Estatus') == 'PENDIENTE') {
-    //            App.wEmergente.load('FormaAvanzarMovimiento.aspx');
-    //            App.wEmergente.setHeight(170);
-    //            App.wEmergente.setWidth(220);
-    //            App.wEmergente.center();
-    //            App.wEmergente.setTitle('Avanzar Movimiento');
-    //            App.wEmergente.show();
-    //            return false;
-    //        }
-    //        else {
-    //            return true;
-    //        }
-    //    }
-    //    else {
-    //        return true;
-    //    }
+    if (App.sRevision.getCount() != 0) {
+        if (App.sRevision.getAt(0).get('Estatus') == 'PENDIENTE') {
+            App.wEmergente.load('FormaAvanzarMovimiento.aspx');
+            App.wEmergente.setHeight(170);
+            App.wEmergente.setWidth(220);
+            App.wEmergente.center();
+            App.wEmergente.setTitle('Avanzar Movimiento');
+            App.wEmergente.show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    else {
+        return true;
+    }
 };
 
 //Afectar el movimiento
 var imgbtnAfectar_Click_Success = function (response, result) {
-    //    //1. Actualizar el store del tablero
-    //    window.parent.App.pCentro.getBody().App.sAvances.reload();
+    //1. Actualizar el store del tablero
+    window.parent.App.pCentro.getBody().App.sAvances.reload();
 
-    //    //2. Lanzar ventana de movimiento afectado
-    //    Ext.Msg.show({
-    //        id: 'msgAvance',
-    //        title: 'AFECTAR',
-    //        msg: '<p align="center">Movimiento afectado ID: ' + App.sRevision.getAt(0).get('ID') + '.</p>',
-    //        buttons: Ext.MessageBox.OK,
-    //        onEsc: Ext.emptyFn,
-    //        closable: false,
-    //        icon: Ext.MessageBox.INFO
-    //    });
+    //2. Lanzar ventana de movimiento afectado
+    Ext.Msg.show({
+        id: 'msgAvance',
+        title: 'AFECTAR',
+        msg: '<p align="center">Movimiento afectado ID: ' + App.sRevision.getAt(0).get('ID') + '.</p>',
+        buttons: Ext.MessageBox.OK,
+        onEsc: Ext.emptyFn,
+        closable: false,
+        icon: Ext.MessageBox.INFO
+    });
 
-    //    //Actualizar campos afetados
-    //    App.txtfMovID.setValue(App.sRevision.getAt(0).get('MovID'));
-    //    App.sbFormaAvance.setText(App.sRevision.getAt(0).get('Estatus'));
+    //3. Actualizar campos afetados
+    App.txtfMovID.setValue(App.sRevision.getAt(0).get('MovID'));
+    App.sbFormaAvance.setText(App.sRevision.getAt(0).get('Estatus'));
 
-    //    //3. Remover la útima fila
-    //    var ultimoRegistro = App.sObraCivil.getAt(App.sObraCivil.getCount() - 1);
-    //    if (ultimoRegistro.get('Concepto').length == 0 && ultimoRegistro.get('Proveedor').length == 0 && ultimoRegistro.get('Programado') == 0 && ultimoRegistro.get('Real') == 0) {
-    //        App.sObraCivil.removeAt(App.sObraCivil.getCount() - 1);
-    //    }
+    //4. Deseleccionar datos del GridPanel y deshabilitar los controles
+    App.sCategorias.each(function (registro) {
+        var gridpanel = Ext.getCmp('gpCategoria' + registro.get('ID'));
+        if (gridpanel != undefined) {
+            gridpanel.getSelectionModel().deselectAll();
+        }
+    });
 
-    //    //4. Deseleccionar datos del GridPanel y deshabilitar los controles
-    //    App.gpObraCivil.getSelectionModel().deselectAll();
-    //    DeshabilitarControlesAfectar();
-    //    Ext.util.Cookies.set('cookieEditarRevision', App.sRevision.getAt(0).get('ID'));
+    //5. Deshabilitar botones y asignar ID en Cookie
+    DeshabilitarControlesAfectar();
+    Ext.util.Cookies.set('cookieEditarRevision', App.sRevision.getAt(0).get('ID'));
 };
 
 //Para autorizar un movimiento a afectar
@@ -206,13 +209,17 @@ var sMov_Add = function (store, registros, index, eOpts) {
     var d = new Date();
 
     //Validar si es nuevo, se asigna el movimieno Iniciar Proyecto y Semana número 1
-    if (registros[0].get('ID') == 'Iniciar proyecto' && Ext.util.Cookies.get('cookieEditarRevision') == 'Nuevo') {
+    if (registros[0].get('ID') == 'Iniciar proyecto') {
         App.cmbMov.select(registros[0].get('ID'));
         App.cmbMov.setReadOnly(true);
         App.nfSemana.setValue(1);
         App.nfSemana.setReadOnly(true);
         App.dfFechaEmision.setValue(d);
         App.dfFechaRevision.focus();
+    }
+    else {
+        App.cmbMov.setReadOnly(true);
+        App.txtfSucursalCR.setReadOnly(true);
     }
 };
 
@@ -259,6 +266,10 @@ var sConceptos_Load = function (store, registros, transaccion, opciones) {
         //2. Configurar el detalle
         ConfigurarDetalle(store);
     }
+    else {
+        //3. Configurar el detalle
+        MostrarDetalle(App.sRevisionD);
+    }
 };
 
 //Evento que muestra el valor de la columna Concepto por su descripción y no por su ID
@@ -304,27 +315,6 @@ var cReal_Renderer = function (valor) {
     return F.number(valor, "000.00%");
 };
 
-//Evento que se lanza despues de editar una columna en ObraCivil
-var ceCategorias_Edit = function (cellediting, columna) {
-    //    var grid = Ext.getCmp('gpCategoria' + cellediting.id.substring(11, 16));
-    //    var store = grid.getStore();
-    //    //Verificar si abajo de esta columna existe otra
-    //    if (store.getAt(columna.rowIdx + 1) == undefined) {
-    //        //Verificar si toda la fila contiene datos
-    //        var registro = store.getAt(columna.rowIdx);
-    //        if (registro.get('Concepto').length != 0 && registro.get('Proveedor').length != 0 && registro.get('Programado') != 0 && registro.get('Real') != 0) {
-    //            //Obtener el Renglon anterior
-    //            var renglonAnterior = store.getAt(columna.rowIdx).get('Renglon') + 1;
-    //            //Insertar un nuevo registro
-    //            store.insert(store.getCount(), { Renglon: renglonAnterior });
-    //            //Actualiza el renglon anterior pintando el botón de borrar
-    //            grid.getView().refreshNode(store.getCount() - 2);
-    //            //Validar si se habilita Afectar
-    //            HabilitarAfectar();
-    //        }
-    //    }
-};
-
 //Evento lanzado al cargar el store de avance encabezado
 var sRevision_Load = function () {
     App.direct.sRevision_Load();
@@ -346,36 +336,29 @@ var sRevision_Add = function (avance, registro) {
         App.txtfComentarios.setValue(registro[0].get('Comentarios'));
         App.sbFormaAvance.setText(registro[0].get('Estatus'));
 
-        //Agregar una fila para seguir capturando
-        //var renglonAnterior = App.sObraCivil.getAt(App.sObraCivil.getCount() - 1).get('Renglon') + 1;
-        //App.sObraCivil.insert(App.sObraCivil.getCount(), { Renglon: renglonAnterior });
+        if (registro[0].get('Estatus') == 'PENDIENTE') {
+            editable = false;
+        }
 
         //Construir detalle
-        MostrarDetalle(App.sRevisionD);
+        App.sConceptos.reload();
     }
 };
 
 //Evento de la columna de acciones
 var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
-    //    //Eliminar registro
-    //    App.sObraCivil.removeAt(fila);
+    //Eliminar registro
+    registro.store.removeAt(fila);
 
-    //    //Asignar renglones
-    //    var renglon = 0;
-    //    App.sObraCivil.each(function (dato) {
-    //        dato.set('Renglon', renglon);
-    //        renglon = renglon + 1;
-    //    });
+    //Asignar renglones
+    var renglon = 0;
+    registro.store.each(function (dato) {
+        dato.set('Renglon', renglon);
+        renglon = renglon + 1;
+    });
 
-    //    //Validar si se habilita Afectar
-    //    HabilitarAfectar();
-};
-
-//Ocultar el último renglon
-var ccAcciones_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
-    //    if (grid.getStore().getCount() - 1 == rowIndex) {
-    //        toolbar.items.get(0).hide();
-    //    }
+    //Validar si se habilita Afectar
+    HabilitarAfectar();
 };
 
 //Función que valida si se habilita el botón de Guardar
@@ -474,7 +457,7 @@ function ConfigurarDetalle(store) {
                 { name: 'Concepto', type: 'string' },
                 { name: 'SubCategoria', type: 'string' },
                 { name: 'Categoria', type: 'string' },
-                { name: 'SubCategoriaDesc', type: 'string'},
+                { name: 'SubCategoriaDesc', type: 'string' },
                 { name: 'Proveedor', type: 'string' },
                 { name: 'Programado', type: 'float' },
                 { name: 'Real', type: 'float' }
@@ -517,8 +500,8 @@ function ConfigurarDetalle(store) {
             id: 'gpCategoria' + registro.get('ID'),
             store: Ext.data.StoreManager.lookup('s' + registro.get('ID')),
             columns: [
-                    { id: 'ccEliminar' + registro.get('ID'), width: 25, xtype: "commandcolumn", commands: [{ xtype: "button", command: "Borrar", tooltip: { text: "Borrar" }, iconCls: "#Delete"}], prepareToolbar: ccAcciones_PrepareToolbar, listeners: { command: { fn: ccAcciones_Command}} },
-                    { id: 'cConcepto' + registro.get('ID'), text: 'Concepto', dataIndex: 'Concepto', flex: 1, renderer: cConcepto_Renderer, editor: { id: 'cmbConceptos' + registro.get('ID'), xtype: 'combobox', displayField: 'Descripcion', valueField: 'ID', queryMode: 'local', store: sConceptos} },
+                    { id: 'ccEliminar' + registro.get('ID'), width: 25, xtype: "commandcolumn", commands: [{ xtype: "button", command: "Borrar", tooltip: { text: "Borrar" }, iconCls: "#Delete"}], listeners: { command: { fn: ccAcciones_Command}} },
+                    { id: 'cConcepto' + registro.get('ID'), text: 'Concepto', dataIndex: 'Concepto', flex: 1, renderer: cConcepto_Renderer },
                     { id: 'cSubCategoriaDesc' + registro.get('ID'), text: 'SubCategoria', dataIndex: 'SubCategoriaDesc' },
                     { id: 'cProveedor' + registro.get('ID'), text: 'Proveedor', dataIndex: 'Proveedor', flex: 1, renderer: cProveedor_Renderer, editor: { id: 'cmbProveedores' + registro.get('ID'), xtype: 'combobox', displayField: 'Nombre', valueField: 'ID', queryMode: 'local', store: App.sProveedores} },
                     { id: 'cProgramado' + registro.get('ID'), text: 'Programado', dataIndex: 'Programado', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cProgramado_Renderer, editor: { id: 'nfProgramado' + registro.get('ID'), xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
@@ -540,7 +523,9 @@ function ConfigurarDetalle(store) {
                 ptype: 'cellediting',
                 clicksToEdit: 1,
                 listeners: {
-                    edit: ceCategorias_Edit
+                    beforeedit: {
+                        fn: function (editor, context, opciones) { return editable; }
+                    }
                 }
             },
             viewConfig: {
@@ -588,11 +573,14 @@ var ObtenerDetalle = function () {
 
     var contador = 1;
     App.sCategorias.each(function (registro) {
-        var store = Ext.getCmp('gpCategoria' + registro.get('ID')).getStore();
-        store.each(function (modelo) {
-            sRevision.add({ Revision: modelo.get('Revision'), Renglon: modelo.get('Renglon'), Concepto: modelo.get('Concepto'), Proveedor: modelo.get('Proveedor'), Programado: modelo.get('Programado'), Real: modelo.get('Real') });
-            contador++;
-        });
+        var gridpanel = Ext.getCmp('gpCategoria' + registro.get('ID'));
+        if (gridpanel != undefined) {
+            var store = gridpanel.getStore();
+            store.each(function (modelo) {
+                sRevision.add({ Revision: modelo.get('Revision'), Renglon: modelo.get('Renglon'), Concepto: modelo.get('Concepto'), Proveedor: modelo.get('Proveedor'), Programado: modelo.get('Programado'), Real: modelo.get('Real') });
+                contador++;
+            });
+        }
     });
 
     return Ext.encode(sRevision.getRecordsValues());
@@ -637,14 +625,7 @@ function MostrarDetalle(store) {
             }]
         });
 
-        //6. Filtrar el store de Conceptos por su Categoria
-        store.each(function (record, index) {
-            if (record.get('Categoria') == categorias[i].name) {
-                sConceptos.add(record);
-            }
-        });
-
-        //7. Construir el Modelo del Store para el GridPanel
+        //6. Construir el Modelo del Store para el GridPanel
         Ext.define('mCategoria' + categorias[i].name, {
             extend: 'Ext.data.Model',
             idProperty: 'Renglon',
@@ -661,7 +642,7 @@ function MostrarDetalle(store) {
             ]
         });
 
-        //8. Contriur el Store del GridPanel
+        //7. Contriur el Store del GridPanel
         var sCategoria = Ext.create('Ext.data.Store', {
             storeId: 's' + categorias[i].name,
             model: 'mCategoria' + categorias[i].name,
@@ -679,42 +660,87 @@ function MostrarDetalle(store) {
             }
         });
 
-        //9. Agregar los conceptos al store del GridPanel
-        sConceptos.each(function (record, index) {
-            var registro = store.findRecord('Concepto', record.get('Concepto'));
-            console.log(App.sSubCategorias.findExact('ID', registro.get('SubCategoria')));
-            //sCategoria.add({ Revision: registro.get('Revision'), Renglon: registro.get('Renglon'), Concepto: registro.get('Concepto'), SubCategoria: registro.get('SubCategoria'), Categoria: registro.get('Categoria'), SubCategoriaDesc: App.sSubCategorias.getAt(App.sSubCategorias.findExact('ID', registro.get('SubCategoria'))).get('Descripcion'), Proveedor: registro.get('Proveedor'), Programado: registro.get('Programado'), Real: registro.get('Real') });
+        //8. Filtrar el store de Conceptos por su Categoria
+        store.each(function (record, index) {
+            if (record.get('Categoria') == categorias[i].name) {
+                var indice = App.sSubCategorias.findExact('ID', record.get('SubCategoria'));
+                if (indice == -1) {
+                    sCategoria.add({ Revision: record.get('Revision'), Renglon: record.get('Renglon'), Concepto: record.get('Concepto'), SubCategoria: record.get('SubCategoria'), Categoria: record.get('Categoria'), SubCategoriaDesc: '', Proveedor: record.get('Proveedor'), Programado: record.get('Programado'), Real: record.get('Real') });
+                }
+                else {
+                    sCategoria.add({ Revision: record.get('Revision'), Renglon: record.get('Renglon'), Concepto: record.get('Concepto'), SubCategoria: record.get('SubCategoria'), Categoria: record.get('Categoria'), SubCategoriaDesc: App.sSubCategorias.getAt(indice).get('Descripcion'), Proveedor: record.get('Proveedor'), Programado: record.get('Programado'), Real: record.get('Real') });
+                }
+
+                sConceptos.add({ ID: record.get('Concepto'), Descripcion: App.sConceptos.getAt(App.sConceptos.findExact('ID', record.get('Concepto'))).get('Descripcion') });
+            }
         });
 
-        //console.log(sCategoria);
-    }
-}
+        //9. Construir el gridPanel
+        var gpCategoria = Ext.create('Ext.grid.Panel', {
+            id: 'gpCategoria' + categorias[i].name,
+            store: Ext.data.StoreManager.lookup('s' + categorias[i].name),
+            columns: [
+                    { id: 'ccEliminar' + categorias[i].name, width: 25, xtype: "commandcolumn", commands: [{ xtype: "button", command: "Borrar", tooltip: { text: "Borrar" }, iconCls: "#Delete"}], listeners: { command: { fn: ccAcciones_Command}} },
+                    { id: 'cConcepto' + categorias[i].name, text: 'Concepto', dataIndex: 'Concepto', flex: 1, renderer: cConcepto_Renderer },
+                    { id: 'cSubCategoriaDesc' + categorias[i].name, text: 'SubCategoria', dataIndex: 'SubCategoriaDesc' },
+                    { id: 'cProveedor' + categorias[i].name, text: 'Proveedor', dataIndex: 'Proveedor', flex: 1, renderer: cProveedor_Renderer, editor: { id: 'cmbProveedores' + categorias[i].name, xtype: 'combobox', displayField: 'Nombre', valueField: 'ID', queryMode: 'local', store: App.sProveedores} },
+                    { id: 'cProgramado' + categorias[i].name, text: 'Programado', dataIndex: 'Programado', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cProgramado_Renderer, editor: { id: 'nfProgramado' + categorias[i].name, xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
+                    { id: 'cReal' + categorias[i].name, text: 'Real', dataIndex: 'Real', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cReal_Renderer, editor: { id: 'nfReal' + categorias[i].name, xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} }
+                ],
+            height: 210,
+            width: 870,
+            enableColumnHide: false,
+            enableColumnMove: false,
+            enableColumnResize: false,
+            header: false,
+            sortableColumns: false,
+            selType: 'cellmodel',
+            selModel: {
+                mode: 'SINGLE'
+            },
+            plugins: {
+                id: 'ceCategoria' + categorias[i].name,
+                ptype: 'cellediting',
+                clicksToEdit: 1,
+                listeners: {
+                    beforeedit: {
+                        fn: function (editor, context, opciones) { return editable; }
+                    }
+                }
+            },
+            viewConfig: {
+                id: 'gvCategoria' + categorias[i].name,
+                stripeRows: true
+            },
+            features: [{ ftype: 'groupingsummary', hideGroupedHeader: true}]
+        });
 
-//Función que valida si se cargan los conceptos en el GridPanel detalle
-function PrimerRenglonDetalle() {
-    //1. Validar si ya se llenarón los datos de Mov, Semana, Sucursal, Fecha de Emisión y Fecha de Revisión
-    if (App.cmbMov.getValue() != null && App.nfSemana.getValue() != null && App.txtfSucursalCR.getValue() != null && App.dfFechaEmision.getValue() != null && App.dfFechaRevision.getValue() != null) {
-        //2. Validar si son validos los campos de Semana, Fecha Emision y Fecha de Revisión
-        if (App.nfSemana.isValid() && App.dfFechaEmision.isValid() && App.dfFechaRevision.isValid()) {
-            var store = App.gpObraCivil.getStore();
-            if (store.getCount() == 0) {
-                //Insertar el primer registro
-                store.insert(0, { Renglon: 0 });
-            }
-        }
+        //10. Agregar el GridPanel al Panel correspondiente
+        pCategoria.add(gpCategoria);
     }
+
+    //11. Asignar la primer pestaña como activa
+    App.tpDetalle.setActiveTab(0);
 }
 
 //Función que deshabilita todos los controles cuando se afecta un movimiento
 function DeshabilitarControlesAfectar() {
-    //    App.cmbMov.setDisabled(true);
-    //    App.nfSemana.setDisabled(true);
-    //    App.cmbSucursal.setDisabled(true);
-    //    App.dfFechaEmision.setDisabled(true);
-    //    App.dfFechaRevision.setDisabled(true);
-    //    App.txtfObservaciones.setDisabled(true);
-    //    App.txtfComentarios.setDisabled(true);
-    //    App.gpObraCivil.setDisabled(true);
-    //    App.imgbtnGuardar.setDisabled(true);
-    //    App.imgbtnBorrar.setDisabled(true);
+    //1. Deshabilitar controles
+    App.cmbMov.setDisabled(true);
+    App.nfSemana.setDisabled(true);
+    App.txtfSucursalCR.setDisabled(true);
+    App.dfFechaEmision.setDisabled(true);
+    App.dfFechaRevision.setDisabled(true);
+    App.txtfObservaciones.setDisabled(true);
+    App.txtfComentarios.setDisabled(true);
+    App.imgbtnGuardar.setDisabled(true);
+    App.imgbtnBorrar.setDisabled(true);
+
+    //2. Deshabilitar los GridPanel
+    App.sCategorias.each(function (registro) {
+        var gridpanel = Ext.getCmp('gpCategoria' + registro.get('ID'));
+        if (gridpanel != undefined) {
+            editable = false;
+        }
+    });
 }

@@ -89,7 +89,6 @@ namespace OSEF.ERP.APP
             string strRevisionForma = e.ExtraParams["RevisionForma"];
             string strRevision = e.ExtraParams["Revision"];
             string strRevisionD = e.ExtraParams["RevisionD"];
-            string strSucursal = e.ExtraParams["Sucursal"];
             string strcookieEditarRevision = Cookies.GetCookie("cookieEditarRevision").Value;
 
             //2. Serializar el encabezado y el detalle
@@ -123,15 +122,14 @@ namespace OSEF.ERP.APP
             //1. Obtener datos de la Forma y saber si es edición o nuevo
             string strRevisionForma = e.ExtraParams["RevisionForma"];
             string strRevision = e.ExtraParams["Revision"];
-            string strRevisionDObraCivil = e.ExtraParams["RevisionDObraCivil"];
+            string strRevisionD = e.ExtraParams["RevisionD"];
             string strcookieEditarRevision = Cookies.GetCookie("cookieEditarRevision").Value;
-            string strSucursal = e.ExtraParams["Sucursal"];
 
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strRevisionForma);
             Revision oRevisionForma = ObtenerObjetoDesdeForma(dRegistro);
             Revision oRevision = JSON.Deserialize<List<Revision>>(strRevision).FirstOrDefault();
-            List<RevisionD> lRevisionD = JSON.Deserialize<List<RevisionD>>(strRevisionDObraCivil);
+            List<RevisionD> lRevisionD = JSON.Deserialize<List<RevisionD>>(strRevisionD);
 
             //3. Guardar o Actuaizar el Movimiento
             string strAccion = GuardarMovimiento(ref oRevisionForma, oRevision, lRevisionD);
@@ -147,10 +145,10 @@ namespace OSEF.ERP.APP
                     break;
             }
 
-            //4. Lanzar la afectación del Movimiento
+            //5. Lanzar la afectación del Movimiento
             RevisionBusiness.AfectarRevisionPorID(oRevisionForma);
-
             oRevision = RevisionBusiness.ObtenerRevisionPorID(oRevisionForma.ID);
+
             //7. Actualizar store de Revision
             sRevision.GetAt(0).Set("MovID", oRevision.MovID);
             sRevision.GetAt(0).Set("Estatus", oRevision.Estatus);

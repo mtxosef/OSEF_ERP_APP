@@ -19,10 +19,10 @@
             window.parent.App.sRevision.getAt(0).set('RSucursal', result.RSucursal);
 
             window.parent.App.cmbMov.setValue(window.parent.App.sRevision.getAt(0).get('Mov'));
-            window.parent.App.cmbMov.setReadOnly(false);
+            window.parent.App.cmbMov.setReadOnly(true);
             window.parent.App.txtfMovID.setValue('');
             window.parent.App.nfSemana.setValue(window.parent.App.sRevision.getAt(0).get('Semana'));
-            window.parent.App.nfSemana.setReadOnly(false);
+            window.parent.App.nfSemana.setReadOnly(true);
             window.parent.App.dfFechaEmision.setValue(window.parent.App.sRevision.getAt(0).get('FechaEmision'));
             window.parent.App.dfFechaRevision.setValue('');
             window.parent.App.txtfObservaciones.setValue('');
@@ -39,13 +39,21 @@
 
 //Habilitar los controles de la FormaAvance
 function HabilitarControlesAvanzar() {
+    //1. Habilitar botones
     window.parent.App.cmbMov.setDisabled(false);
     window.parent.App.nfSemana.setDisabled(false);
     window.parent.App.dfFechaEmision.setDisabled(false);
     window.parent.App.dfFechaRevision.setDisabled(false);
     window.parent.App.txtfObservaciones.setDisabled(false);
     window.parent.App.txtfComentarios.setDisabled(false);
-    window.parent.App.gpObraCivil.setDisabled(false);
     window.parent.App.imgbtnGuardar.setDisabled(false);
     window.parent.App.imgbtnBorrar.setDisabled(false);
+
+    //2. Habilitar GridPanels
+    window.parent.App.sCategorias.each(function (registro) {
+        var gridpanel = window.parent.Ext.getCmp('gpCategoria' + registro.get('ID'));
+        if (gridpanel != undefined) {
+            window.parent.editable = true;
+        }
+    });
 }

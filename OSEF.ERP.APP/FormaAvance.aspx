@@ -259,8 +259,7 @@
                                     <ExtraParams>
                                         <ext:Parameter Name="RevisionForma" Value="Ext.encode(this.up('form').getForm().getValues(false, false, false, true))" Mode="Raw" />
                                         <ext:Parameter Name="Revision" Value="Ext.encode(#{sRevision}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="RevisionDObraCivil" Value="Ext.encode(#{sObraCivil}.getRecordsValues())" Mode="Raw" />
-                                        <ext:Parameter Name="Sucursal" Value="App.cmbSucursal.getValue()" Mode="Raw" />
+                                        <ext:Parameter Name="RevisionD" Value="ObtenerDetalle()" Mode="Raw" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>
