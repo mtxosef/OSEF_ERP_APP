@@ -44,14 +44,33 @@ END
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
     -- Insert statements for procedure here
+		
 		SELECT 
 		--DATOS DEL REPORTE
 		OED.ConceptoID,
 		PGC.CLAVE, 
 		PGC.Descripcion,
 		OED.Precio,	
-		(SELECT SUM(OEDSQ.Cantidad) FROM OrdenesEstimacionesD OEDSQ WHERE OEDSQ.ConceptoID = OED.ConceptoID)  Cantidades,
-		(SELECT SUM(OEDSQ.Importe) FROM OrdenesEstimacionesD OEDSQ WHERE OEDSQ.ConceptoID = OED.ConceptoID)  Importes
+		(SELECT SUM(OEDSQ.Cantidad) FROM OrdenesEstimacionesD OEDSQ 
+		JOIN OrdenesEstimaciones SOE
+		ON SOE.ID= OEDSQ.ID
+		AND OEDSQ.ConceptoID = OED.ConceptoID
+		AND SOE.Mov in('Mesa de reporte')  
+		AND SOE.MovEnLinea = 1
+	 AND SOE.Estatus IN('CONCLUIDO') 
+	 AND SOE.Revisado=1
+	AND SOE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'  
+
+		)  Cantidades,
+		(SELECT SUM(OEDSQ.Importe) FROM OrdenesEstimacionesD OEDSQ 
+		JOIN OrdenesEstimaciones SOE
+		ON SOE.ID= OEDSQ.ID
+		AND OEDSQ.ConceptoID = OED.ConceptoID
+		AND SOE.Mov in('Mesa de reporte')  
+		AND SOE.MovEnLinea = 1
+	 AND SOE.Estatus IN('CONCLUIDO') 
+	 AND SOE.Revisado=1
+	AND SOE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'  )  Importes
 		FROM OrdenesEstimaciones OE
 		JOIN OrdenesEstimacionesD OED ON OE.ID = OED.ID
 		JOIN PreciariosGeneralesConceptos PGC ON PGC.ID = OED.ConceptoID 
@@ -64,6 +83,11 @@ END
 	GROUP BY OED.ConceptoID,
 		PGC.CLAVE, 
 		PGC.Descripcion,
+		OE.MovEnLinea,
+		OE.Mov,
+		OE.Estatus,
+		OE.Revisado,
+		OE.Clasificacion,
 		OED.Precio ORDER BY OED.ConceptoID DESC;
 END
 GO
