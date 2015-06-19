@@ -99,13 +99,6 @@
                         EmptyText="Descripción Corta">
                             <Listeners>
                                 <Blur Fn="txtDescripcion_Corta_Change"></Blur>
-
-                              <%--   <SpecialKey Handler="if (e.getKey() === e.ENTER) {
-                                 App.gpFormaGenerador.editingPlugin.startEdit(0, 0);
-
-                                     }">
-                                </SpecialKey>--%>
-                               <%-- <SpecialKey Fn="txtDescripcion_Corta_SpecialKey"></SpecialKey>--%>
                             </Listeners>
                         </ext:TextField>
 
@@ -359,7 +352,7 @@
                                     MinValue="-999999999"
                                     Step="1">
                                     <Listeners>
-                                        <Change Fn="calcularTotalCantidad_Change"></Change>
+                                        <Change Fn="calcularTotalCantidad_Change"></Change> 
                                     </Listeners>
                                 </ext:NumberField>
                             </Editor>

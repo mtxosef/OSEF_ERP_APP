@@ -1745,17 +1745,13 @@ var ccGenerador_Command = function (columna, comando, registro, fila, opciones) 
 
     Ext.util.Cookies.set('cookieRenglonOrdenEstimacionD', fila);
     if (registro.get('ConceptoID') != '') {
-
-
         Ext.util.Cookies.set('cookieConceptoOrdenEstimacion', registro.get('ConceptoID'));
-
         window.parent.App.wGenerador.load('FormaGenerador.aspx');
         window.parent.App.wGenerador.setHeight(310);
         window.parent.App.wGenerador.setWidth(915);
         window.parent.App.wGenerador.center();
         window.parent.App.wGenerador.setTitle('Generador');
         window.parent.App.wGenerador.show();
-
     }
     else {
         Ext.Msg.show({

@@ -1164,27 +1164,7 @@
                                                 Text="Cantidad"
                                                 DataIndex="Cantidad"
                                                 Width="80">
-                                                <Renderer Fn="cCantidad_Renderer" />
-                                                <Editor>
-                                                    <ext:NumberField 
-                                                        ID="nfCantidad"
-                                                        runat="server"
-                                                        AllowDecimals="true"
-                                                        AllowExponential="false"
-                                                        DecimalPrecision="2"
-                                                        DecimalSeparator="."
-                                                        MaxLength="10"
-                                                        EnforceMaxLength="true"
-                                                        MaxValue="999999999"
-                                                        MinValue="1"
-                                                        ReadOnly="true"
-                                                        Editable="true"
-                                                        Step="1">
-                                                        <Listeners>
-                                                            <Change Fn="calcularImporteCantidad_Change"></Change>
-                                                        </Listeners>
-                                                    </ext:NumberField>
-                                                </Editor>
+                                                <Renderer Fn="cCantidad_Renderer" /> 
                                             </ext:NumberColumn>
                                             <ext:CommandColumn
                                                 ID="ccGenerador"

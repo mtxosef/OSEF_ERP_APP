@@ -66,8 +66,9 @@ var sFormaGenerador_Load = function () {
 
     App.txtDescripcionCorta.setValue(App.sFormaGenerador.getAt(0).get('Descripcion').trim());
 
-    var tablero = window.parent.App.wEmergente.getBody().App.cmbMov.getValue(); 
+    var tablero = window.parent.App.wEmergente.getBody().App.cmbMov.getValue();
     if (tablero.trim() == 'Mesa de reporte') {
+        App.txtDescripcionCorta.setVisible(false);
         App.txtPlano.setVisible(false);
     } else { 
        App.txtPlano.setValue(App.sFormaGenerador.getAt(0).get('Plano').trim());
@@ -314,6 +315,7 @@ var calcularTotalCantidad_Change = function (component) {
     F.decimalSeparator = '.';
     App.dfTotal.setValue(F.number(sum, "000,000,000.00"));
     ImporteFinal = sum;
+    HabilitarGuardar();
 }
 
 
@@ -333,12 +335,12 @@ var txtDescripcion_Corta_Change = function () {
 //Validar si se habilita el botón d Afectar
 function HabilitarGuardar() {
     //Obtiene la fecha de emision del store
-    if (App.txtDescripcionCorta.getValue() != '' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR' && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() != 'Estimacion') {
-
-
+    var tablero = window.parent.App.wEmergente.getBody().App.cmbMov.getValue();
+    if (tablero.trim() == 'Mesa de reporte'
+    && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR' 
+    && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() != 'Estimacion') { 
         if (App.gpFormaGenerador.getStore().getCount() != 0) 
-            {
-
+            { 
                 if (App.sFormaGenerador.getAt(0).get('Area').length != 0
                     && App.sFormaGenerador.getAt(0).get('Total') != 0) {
 
@@ -348,13 +350,24 @@ function HabilitarGuardar() {
             else 
             {
                 App.imgbtnAceptar.setDisabled(true);
-            }
-        
-        
+            } 
     }
     else {
         App.imgbtnAceptar.setDisabled(true);
     }
+
+    if (window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Estatus') == 'BORRADOR'
+    && window.parent.App.wEmergente.getBody().App.sOrdenEstimacion.getAt(0).get('Mov').trim() != 'Estimacion'
+    && App.gpFormaGenerador.getStore().getCount() != 0) {
+        if(App.sFormaGenerador.getAt(0).get('Area').length != 0
+                    && App.sFormaGenerador.getAt(0).get('Total') != 0) {
+
+                    App.imgbtnAceptar.setDisabled(false);
+                }
+    }else{
+                App.imgbtnAceptar.setDisabled(true);
+    }
+
 }
 
 

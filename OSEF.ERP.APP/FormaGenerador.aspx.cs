@@ -32,7 +32,7 @@ namespace OSEF.ERP.APP
         {
             //1. Obtener datos de la Forma y saber si es edición o nuevo
 
-            string strDescripcion = e.ExtraParams["DescripcionCorta"];
+            string strDescripcion = e.ExtraParams["DescripcionCorta"].Trim().Equals("") || e.ExtraParams["DescripcionCorta"] ==null?"":e.ExtraParams["DescripcionCorta"];
             string strGeneradorD = e.ExtraParams["GeneradorD"];
             string strPlano = e.ExtraParams["vPlano"];
             int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);
