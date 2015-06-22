@@ -345,14 +345,15 @@
                                     runat="server"
                                     AllowDecimals="true"
                                     AllowExponential="false"
-                                    DecimalPrecision="2"
+                                    DecimalPrecision="4"
+                                    Editable="true"
                                     DecimalSeparator="."
                                     MaxLength="10"
                                     EnforceMaxLength="true"
                                     MinValue="-999999999"
                                     Step="1">
                                     <Listeners>
-                                        <Change Fn="calcularTotalCantidad_Change"></Change> 
+                                        <Blur Fn="calcularTotalCantidad_Change"></Blur> 
                                     </Listeners>
                                 </ext:NumberField>
                             </Editor>
