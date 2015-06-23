@@ -65,9 +65,18 @@ var imgbtnGuardar_Click_Success = function (response, result) {
             closable: false,
             icon: Ext.MessageBox.INFO
         });
+
         App.imgbtnBorrar.setDisabled(false);
         Ext.util.Cookies.set('cookieEditarRevision', App.sRevision.getAt(0).get('ID'));
         window.parent.App.wEmergente.setTitle('Editar avance ' + App.sRevision.getAt(0).get('ID'));
+
+        //Deshabilita los comandos del grid
+        App.sCategorias.each(function (registro) {
+            var gridpanel = Ext.getCmp('gpCategoria' + registro.get('ID'));
+            if (gridpanel != undefined) {
+                gridpanel.reconfigure();
+            }
+        });
     }
     else {
         Ext.Msg.show({
@@ -138,6 +147,7 @@ var imgbtnAfectar_Click_Success = function (response, result) {
         var gridpanel = Ext.getCmp('gpCategoria' + registro.get('ID'));
         if (gridpanel != undefined) {
             gridpanel.getSelectionModel().deselectAll();
+            gridpanel.reconfigure();
         }
     });
 
@@ -361,6 +371,77 @@ var ccAcciones_Command = function (columna, comando, registro, fila, opciones) {
     HabilitarAfectar();
 };
 
+//Lo que hace el comando de fotos
+var ccFotos_Command = function (column, nombre, registro, renglon, opciones) {
+    Ext.util.Cookies.set('cookieConceptoRevision', registro.get('Concepto'));
+
+    if (nombre == 'cnCargarFotos') {
+        window.parent.App.wGenerador.load('FormaSubirImagenesAvance.aspx');
+        window.parent.App.wGenerador.setHeight(350);
+        window.parent.App.wGenerador.setWidth(600);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Subir Fotos');
+        window.parent.App.wGenerador.show();
+    }
+    else {
+        window.parent.App.wGenerador.load('FormaImagenesAvance.aspx');
+        window.parent.App.wGenerador.setHeight(520);
+        window.parent.App.wGenerador.setWidth(670);
+        window.parent.App.wGenerador.center();
+        window.parent.App.wGenerador.setTitle('Visualizar Fotos');
+        window.parent.App.wGenerador.show();
+    }
+};
+
+//Validaciones de comandos para fotos
+var ccFotos_PrepareToolbar = function (grid, toolbar, rowIndex, record) {
+
+    //1. Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarRevision') != 'Nuevo' && App.sRevision.getAt(0).get('Estatus') == 'CONCLUIDO') {
+        //2. Toma el primer elemento de la columna para poder deshabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar fotos a un movimiento concluido");
+    }
+
+    //3. Valida el estatus del movimiento para saber si se tiene que habilitar el comando de ver fotos
+    if (Ext.util.Cookies.get('cookieEditarRevision') != 'Nuevo' && App.sRevision.getAt(0).get('Estatus') == 'CANCELADO') {
+        //4. Toma el primer elemento de la columna para poder deshabilitarlo
+        var botonCargar = toolbar.items.get(0);
+        botonCargar.setDisabled(true);
+        botonCargar.setTooltip("No se pueden cargar fotos a un movimiento cancelado");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar conceptos 
+    if (Ext.util.Cookies.get('cookieEditarRevision') != 'Nuevo' && App.sRevision.getAt(0).get('Mov').trim() == 'Iniciar proyecto') {
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        botonCargar2.setDisabled(true);
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar fotos 
+    if (Ext.util.Cookies.get('cookieEditarRevision') == 'Nuevo' && App.sRevision.getAt(0) == undefined) {
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(true);
+        botonVerFotos2.setDisabled(true);
+        botonCargar2.setTooltip("Debes de guardar el movimiento antes");
+        botonVerFotos2.setTooltip("Debes de guardar el movimiento antes");
+    }
+
+    //Valida el estatus del movimiento para saber si se tiene que habilitar el comando de cargar y ver fotos
+    if (Ext.util.Cookies.get('cookieEditarRevision') != 'Nuevo' && App.sRevision.getAt(0).get('Estatus') == 'BORRADOR') {
+        //Toma el primer elemento de la columna para poder desabilitarlo
+        var botonCargar2 = toolbar.items.get(0);
+        var botonVerFotos2 = toolbar.items.get(1);
+        botonCargar2.setDisabled(false);
+        botonVerFotos2.setDisabled(false);
+        botonCargar2.setTooltip("Cargar Fotos");
+        botonVerFotos2.setTooltip("Ver Fotos");
+    }
+};
+
 //Función que valida si se habilita el botón de Guardar
 function HabilitarGuardar() {
     //1. Validar si Mov y SucursalCR tienen información
@@ -501,11 +582,12 @@ function ConfigurarDetalle(store) {
             store: Ext.data.StoreManager.lookup('s' + registro.get('ID')),
             columns: [
                     { id: 'ccEliminar' + registro.get('ID'), width: 25, xtype: "commandcolumn", commands: [{ xtype: "button", command: "Borrar", tooltip: { text: "Borrar" }, iconCls: "#Delete"}], listeners: { command: { fn: ccAcciones_Command}} },
-                    { id: 'cConcepto' + registro.get('ID'), text: 'Concepto', dataIndex: 'Concepto', flex: 1, renderer: cConcepto_Renderer },
+                    { id: 'cConcepto' + registro.get('ID'), width:300, text: 'Concepto', dataIndex: 'Concepto', renderer: cConcepto_Renderer },
                     { id: 'cSubCategoriaDesc' + registro.get('ID'), text: 'SubCategoria', dataIndex: 'SubCategoriaDesc' },
-                    { id: 'cProveedor' + registro.get('ID'), text: 'Proveedor', dataIndex: 'Proveedor', flex: 1, renderer: cProveedor_Renderer, editor: { id: 'cmbProveedores' + registro.get('ID'), xtype: 'combobox', displayField: 'Nombre', valueField: 'ID', queryMode: 'local', store: App.sProveedores} },
-                    { id: 'cProgramado' + registro.get('ID'), text: 'Programado', dataIndex: 'Programado', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cProgramado_Renderer, editor: { id: 'nfProgramado' + registro.get('ID'), xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
-                    { id: 'cReal' + registro.get('ID'), text: 'Real', dataIndex: 'Real', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cReal_Renderer, editor: { id: 'nfReal' + registro.get('ID'), xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} }
+                    { id: 'cProveedor' + registro.get('ID'), width: 300, text: 'Proveedor', dataIndex: 'Proveedor', flex: 1, renderer: cProveedor_Renderer, editor: { id: 'cmbProveedores' + registro.get('ID'), xtype: 'combobox', displayField: 'Nombre', valueField: 'ID', queryMode: 'local', store: App.sProveedores} },
+                    { id: 'cProgramado' + registro.get('ID'), width: 100, text: 'Programado', dataIndex: 'Programado', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cProgramado_Renderer, editor: { id: 'nfProgramado' + registro.get('ID'), xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
+                    { id: 'cReal' + registro.get('ID'), width: 100, text: 'Real', dataIndex: 'Real', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cReal_Renderer, editor: { id: 'nfReal' + registro.get('ID'), xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
+                    { id: 'ccFotos' + registro.get('ID'), text: 'Fotos', width: 65, xtype: "commandcolumn", commands: [{ xtype: "button", command: "cnCargarFotos", tooltip: { text: "Cargar Fotos" }, iconCls: "#ImageAdd" }, { xtype: "button", command: "cnVerFotos", tooltip: { text: "Ver Fotos" }, iconCls: "#FolderPicture"}], prepareToolbar: ccFotos_PrepareToolbar, listeners: { command: { fn: ccFotos_Command}} }
                 ],
             height: 210,
             width: 870,
@@ -685,7 +767,8 @@ function MostrarDetalle(store) {
                     { id: 'cSubCategoriaDesc' + categorias[i].name, text: 'SubCategoria', dataIndex: 'SubCategoriaDesc' },
                     { id: 'cProveedor' + categorias[i].name, text: 'Proveedor', dataIndex: 'Proveedor', flex: 1, renderer: cProveedor_Renderer, editor: { id: 'cmbProveedores' + categorias[i].name, xtype: 'combobox', displayField: 'Nombre', valueField: 'ID', queryMode: 'local', store: App.sProveedores} },
                     { id: 'cProgramado' + categorias[i].name, text: 'Programado', dataIndex: 'Programado', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cProgramado_Renderer, editor: { id: 'nfProgramado' + categorias[i].name, xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
-                    { id: 'cReal' + categorias[i].name, text: 'Real', dataIndex: 'Real', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cReal_Renderer, editor: { id: 'nfReal' + categorias[i].name, xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} }
+                    { id: 'cReal' + categorias[i].name, text: 'Real', dataIndex: 'Real', xtype: 'numbercolumn', align: 'center', summaryType: 'sum', renderer: cReal_Renderer, editor: { id: 'nfReal' + categorias[i].name, xtype: 'numberfield', allowDecimals: true, allowExponential: false, decimalPrecision: 2, decimalSeparator: '.', step: 0.01, maxValue: 100, minValue: 0} },
+                    { id: 'ccFotos' + categorias[i].name, text: 'Fotos', width: 65, xtype: "commandcolumn", commands: [{ xtype: "button", command: "cnCargarFotos", tooltip: { text: "Cargar Fotos" }, iconCls: "#ImageAdd" }, { xtype: "button", command: "cnVerFotos", tooltip: { text: "Ver Fotos" }, iconCls: "#FolderPicture"}], prepareToolbar: ccFotos_PrepareToolbar, listeners: { command: { fn: ccFotos_Command}} }
                 ],
             height: 210,
             width: 870,

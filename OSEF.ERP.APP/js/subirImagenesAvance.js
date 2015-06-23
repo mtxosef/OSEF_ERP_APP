@@ -17,21 +17,19 @@ var cEstatusIcon_Renderer = function (value) {
     }
 };
 
+//Seleccionar archivo
 var fileSelected = function (item, file) {
-
     var validaCaracteres = /^[a-zA-Z0-9-_.\s]{1,100}$/;
 
+    //1. Validar el nombre
     if (validaCaracteres.test(file.name)) {
-
     }
-
     else {
         Ext.Msg.alert('Error', 'La imagen tiene demasiados caracteres o tiene carácteres especiales"');
         return false;
     }
 
-
-
+    //2. Agregar registro al grid y store
     this.up('grid').store.add({
         ID: file.id,
         Nombre: file.name,
@@ -41,13 +39,15 @@ var fileSelected = function (item, file) {
     });
 };
 
+//Actualizar algun registro
 var updateRecord = function (id, field, value) {
-    var rec = App.gpSubirImagenessOrdenEstimacion.store.getById(id);
+    var rec = App.gpSubirImagenesAvance.store.getById(id);
 
     rec.set(field, value);
     rec.commit();
 };
 
+//Cancelar subir imagenes
 var abortUpload = function (btn) {
     var selModel = btn.up('grid').getSelectionModel(),
                 records;
@@ -58,9 +58,10 @@ var abortUpload = function (btn) {
     }
 
     records = selModel.getSelection();
-    App.muSubirImagenesOrdenEstimacion.abortUpload(records[0].getId());
+    App.muSubirImagenesAvance.abortUpload(records[0].getId());
 };
 
+//Borrar alguna imagen que se sube
 var removeUpload = function (btn) {
     var selModel = btn.up('grid').getSelectionModel(),
                 records;
@@ -71,9 +72,10 @@ var removeUpload = function (btn) {
     }
 
     records = selModel.getSelection();
-    App.muSubirImagenesOrdenEstimacion.removeUpload(records[0].getId());
+    App.muSubirImagenesAvance.removeUpload(records[0].getId());
 };
 
+//Lanzar errores si los hay
 var uploadError = function (item, file, errorCode, message) {
     updateRecord(file.id, 'Progreso', 0);
     updateRecord(file.id, 'Estatus', 'Error');
@@ -110,6 +112,7 @@ var uploadError = function (item, file, errorCode, message) {
     }
 };
 
+//Lanzar error de selección
 var fileSelectionError = function (item, file, errorCode, message) {
     if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
         alert("You have attempted to queue too many files.\n" + (message === 0 ? "You have reached the upload limit." : "You may select " + (message > 1 ? "up to " + message + " files." : "one file.")));
@@ -132,8 +135,7 @@ var fileSelectionError = function (item, file, errorCode, message) {
     }
 };
 
+//Lanzar error
 var loadFailed = function () {
     alert("Something went wrong while loading SWFUpload. If this were a real application we'd clean up and then give you an alternative");
 };
-
-

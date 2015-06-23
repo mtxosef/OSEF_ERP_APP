@@ -67,6 +67,7 @@
     <Compile Include="GeneradorVolumetriaDataAccess.cs" />
     <Compile Include="GrupoMenuDataAccess.cs" />
     <Compile Include="ImagenOrdenEstimacionDDataAccess.cs" />
+    <Compile Include="ImagenRevisionDDataAccess.cs" />
     <Compile Include="ImagenVolumetriaDDataAccess.cs" />
     <Compile Include="MenuDataAccess.cs" />
     <Compile Include="MesaDeReporteDataAccess.cs" />

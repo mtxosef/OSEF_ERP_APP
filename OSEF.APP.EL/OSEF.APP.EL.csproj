@@ -69,6 +69,7 @@
     <Compile Include="GeneradorVolumetriaD.cs" />
     <Compile Include="GrupoMenu.cs" />
     <Compile Include="ImagenOrdenEstimacionD.cs" />
+    <Compile Include="ImagenRevisionD.cs" />
     <Compile Include="ImagenVolumetriaD.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MesaDeReporte.cs" />

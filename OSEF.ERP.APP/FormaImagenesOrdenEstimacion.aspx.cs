@@ -20,6 +20,7 @@ namespace OSEF.ERP.APP
                 onLoadDataImages();
             }
         }
+
         [DirectMethod]
         public void onLoadDataImages() {
             int iID = Convert.ToInt32(Cookies.GetCookie("cookieEditarOrdenEstimacion").Value);

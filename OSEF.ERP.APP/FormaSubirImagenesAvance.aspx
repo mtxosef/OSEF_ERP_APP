@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaSubirImagenesOrdenEstimacion.aspx.cs" Inherits="OSEF.ERP.APP.FormaSubirImagenesOrdenEstimacion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormaSubirImagenesAvance.aspx.cs" Inherits="OSEF.ERP.APP.FormaSubirImagenesAvance" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
+<head runat="server">
     <title></title>
     <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
@@ -24,23 +24,23 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-    <script type="text/javascript" src="js/subirImagenesOrdenEstimacion.js"></script>
+    <script type="text/javascript" src="js/subirImagenesAvance.js"></script>
 </head>
 <body class="xCustomBody">
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="rmFormaSubirImagenesOrdenEstimacion" runat="server" HideInDesign="true" />
+        <ext:ResourceManager ID="rmFormaSubirImagenesAvance" runat="server" HideInDesign="true" />
 
         <ext:GridPanel
-            ID="gpSubirImagenessOrdenEstimacion"
+            ID="gpSubirImagenesAvance"
             runat="server"
             Width="590"
             Height="300"
             EnableColumnHide="false"
             EnableColumnMove="false">
             <Store>
-                <ext:Store ID="sSubirImagenesOrdenEstimacion" runat="server">
+                <ext:Store ID="sSubirImagenesAvance" runat="server">
                     <Model>
-                        <ext:Model ID="mSubirImagenessOrdenEstimacion" runat="server" IDProperty="ID">
+                        <ext:Model ID="mSubirImagenesAvance" runat="server" IDProperty="ID">
                             <Fields>
                                 <ext:ModelField Name="ID" Type="Int" />
                                 <ext:ModelField Name="Nombre" Type="String" />
@@ -94,12 +94,12 @@
                 </Columns>
             </ColumnModel>
             <TopBar>
-                <ext:Toolbar ID="tbSubirImagenesOrdenEstimacion" runat="server">
+                <ext:Toolbar ID="tbSubirImagenesAvance" runat="server">
                     <Items>
                         <ext:MultiUpload
-                            ID="muSubirImagenesOrdenEstimacion"
+                            ID="muSubirImagenesAvance"
                             runat="server"
-                            OnFileUpload="muSubirImagenesOrdenEstimacion_OnFileUpload"
+                            OnFileUpload="muSubirImagenesAvance_OnFileUpload"
                             FileDropAnywhere="true"
                             FileSizeLimit="15 MB"
                             FileTypes="*.png;*.jpg;*.jpeg;*.gif"
@@ -107,7 +107,7 @@
                             FileUploadLimit="100"
                             FileQueueLimit="0">
                             <Button>
-                                <ext:Button ID="btnSubirImagenesOrdenEstimacion" runat="server" Text="Subir..." />
+                                <ext:Button ID="btnSubirImagenesAvance" runat="server" Text="Subir..." />
                             </Button>
                             <Listeners>
                                 <SwfUploadLoadFailed Fn="loadFailed" />
@@ -128,9 +128,8 @@
                             runat="server"
                             Text="Iniciar"
                             Icon="Tick"
-                            Handler="#{muSubirImagenesOrdenEstimacion}.startUpload();" > 
-                           
-                            </ext:Button>
+                            Handler="#{muSubirImagenesAvance}.startUpload();">
+                        </ext:Button>
                         <ext:Button
                             ID="btnCancelar"
                             runat="server"
@@ -142,7 +141,7 @@
                             runat="server"
                             Text="Cancelar Todo"
                             Icon="Decline"
-                            Handler="#{muSubirImagenesOrdenEstimacion}.abortAllUploads();" />
+                            Handler="#{muSubirImagenesAvance}.abortAllUploads();" />
                         <ext:Button
                             ID="btnEliminar"
                             runat="server"
@@ -154,11 +153,12 @@
                             runat="server"
                             Text="Eliminar Todo"
                             Icon="Delete"
-                            Handler="#{muSubirImagenesOrdenEstimacion}.removeAllUploads();" />
+                            Handler="#{muSubirImagenesAvance}.removeAllUploads();" />
                     </Items>
                 </ext:Toolbar>
             </TopBar>
         </ext:GridPanel>
+
     </form>
 </body>
 </html>

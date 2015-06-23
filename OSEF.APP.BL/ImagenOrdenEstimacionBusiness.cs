@@ -7,6 +7,9 @@ using OSEF.APP.DL;
 
 namespace OSEF.APP.BL
 {
+    /// <summary>
+    /// Clase que se encarga de la manipulación de capa de negocio de ImagenOrdenEstimacion
+    /// </summary>
     public class ImagenOrdenEstimacionBusiness
     {
 

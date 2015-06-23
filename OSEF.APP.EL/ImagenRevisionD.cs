@@ -6,27 +6,27 @@ using System.Text;
 namespace OSEF.APP.EL
 {
     /// <summary>
-    /// Clase que controla la entidad de imagenOrdenEstimacionD
+    /// Clase que controla la entidad de ImagenRevisionD
     /// </summary>
-    public class ImagenOrdenEstimacionD
+    public class ImagenRevisionD
     {
         #region Campos
 
-        int id;
+        int revision;
         string concepto;
         string nombre;
         string direccion;
-        string usuario;
+        string usuarioalta;
         DateTime fechaalta;
 
         #endregion
 
         #region Propiedades
 
-        public int MovID
+        public int Revision
         {
-            get { return id; }
-            set { id = value; }
+            get { return revision; }
+            set { revision = value; }
         }
 
         public string Concepto
@@ -47,10 +47,10 @@ namespace OSEF.APP.EL
             set { direccion = value; }
         }
 
-        public string Usuario
+        public string UsuarioAlta
         {
-            get { return usuario; }
-            set { usuario = value; }
+            get { return usuarioalta; }
+            set { usuarioalta = value; }
         }
 
         public DateTime FechaAlta

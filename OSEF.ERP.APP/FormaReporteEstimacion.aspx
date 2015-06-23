@@ -6,7 +6,7 @@
 
 <head id="Head1" runat="server">
     <title></title>
-      <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link rel="Stylesheet" href="css/customControls.css" />
     <link rel="stylesheet" href="css/xMask.css" />
     <link rel="stylesheet" href="css/xDatePicker.css" />
@@ -25,31 +25,27 @@
     <link rel="stylesheet" href="css/xFieldSet.css"/>
     <link rel="stylesheet" href="css/xPanel.css"/>
     <link rel="stylesheet" href="css/xButton.css"/>
-
     <script type='text/javascript' src="js/formaReporteMovimientoEstimacion.js"></script>
 </head>
-
-
 <body>
-<ext:ResourceManager ID="rmFormaReporteOrdenCambioD" runat="server" />
     <form id="form1" runat="server">
+        <ext:ResourceManager ID="rmFormaReporteOrdenCambioD" runat="server" HideInDesign="true" />
   
-         <ext:FormPanel 
-        ID="fpEspecificarParametros" 
-        runat="server"
-        Width="580"
-        Height="120"
-        BodyPadding="10"
-        DefaultAnchor="100%">
-        <Items>
-             <ext:FieldContainer
-                ID="fcFirmas"
-                runat="server"
-              
-                AnchorHorizontal="100%"
-                LabelWidth="120"
-                Layout="HBoxLayout">
-                <Items>
+        <ext:FormPanel
+            ID="fpEspecificarParametros" 
+            runat="server"
+            Width="580"
+            Height="120"
+            BodyPadding="10"
+            DefaultAnchor="100%">
+            <Items>
+                <ext:FieldContainer
+                    ID="fcFirmas"
+                    runat="server"
+                    AnchorHorizontal="100%"
+                    LabelWidth="120"
+                    Layout="HBoxLayout">
+                    <Items>
                      <%-- <ext:TextField
                         ID="txtElaboro"
                         runat="server"
@@ -84,9 +80,9 @@
                                 <Blur Handler="this.setValue(this.getValue().toUpperCase());" />
                             </Listeners>
                     </ext:TextField>--%>
-                </Items>
-            </ext:FieldContainer>
-        </Items>
+                    </Items>
+                </ext:FieldContainer>
+            </Items>
 
 
 

@@ -85,19 +85,19 @@ namespace OSEF.ERP.APP
                     RSucursal = oOrdenEstimacion.RSucursal,
                     Origen = oOrdenEstimacion.Origen,
                     OrigenId = oOrdenEstimacion.OrigenId,
-                    Reporte =oOrdenEstimacion.Reporte,
-                    Division=oOrdenEstimacion.Division,
-                    FechaOrigen=oOrdenEstimacion.FechaOrigen,
+                    Reporte = oOrdenEstimacion.Reporte,
+                    Division = oOrdenEstimacion.Division,
+                    FechaOrigen = oOrdenEstimacion.FechaOrigen,
                     FechaMaximaAtencion = oOrdenEstimacion.FechaMaximaAtencion,
-                    DiasAtencion=oOrdenEstimacion.DiasAtencion,
-                    Reporto=oOrdenEstimacion.Reporto,
-                    TrabajoRequerido=oOrdenEstimacion.TrabajoRequerido,
-                    TrabajoRealizado=oOrdenEstimacion.TrabajoRealizado,
-                    CodigoFalla=oOrdenEstimacion.CodigoFalla,
-                    FechaLlegada=oOrdenEstimacion.FechaLlegada,
-                    HoraLlegada=oOrdenEstimacion.HoraLlegada,
-                    FechaFinActividad=oOrdenEstimacion.FechaFinActividad,
-                    HoraFinActividad=oOrdenEstimacion.HoraFinActividad,
+                    DiasAtencion = oOrdenEstimacion.DiasAtencion,
+                    Reporto = oOrdenEstimacion.Reporto,
+                    TrabajoRequerido = oOrdenEstimacion.TrabajoRequerido,
+                    TrabajoRealizado = oOrdenEstimacion.TrabajoRealizado,
+                    CodigoFalla = oOrdenEstimacion.CodigoFalla,
+                    FechaLlegada = oOrdenEstimacion.FechaLlegada,
+                    HoraLlegada = oOrdenEstimacion.HoraLlegada,
+                    FechaFinActividad = oOrdenEstimacion.FechaFinActividad,
+                    HoraFinActividad = oOrdenEstimacion.HoraFinActividad,
                     Cuadrilla = oOrdenEstimacion.Cuadrilla,
                     ImporteTotal = oOrdenEstimacion.ImporteTotal,
                     HoraOrigen = oOrdenEstimacion.HoraOrigen,
@@ -106,7 +106,7 @@ namespace OSEF.ERP.APP
                     NoOrden = oOrdenEstimacion.NoOrden,
                     ReferenciaOrden = oOrdenEstimacion.ReferenciaOrden,
                     Clasificacion = oOrdenEstimacion.Clasificacion
-                }); 
+                });
                 imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
             }
@@ -371,8 +371,8 @@ namespace OSEF.ERP.APP
             //2. Actualizamos el Estatus e Insertar en la base de datos
             oOrdenEstimacionForma.Estatus = "BORRADOR"; 
             string strReporte = oOrdenEstimacionForma.Reporte;
-           // string strImagen = fufNormal.FileName;
-           // oOrdenEstimacionForma.RutaImagen = strImagen;
+            string strImagen = fufNormal.FileName;
+            oOrdenEstimacionForma.RutaImagen = strImagen;
 
             string bandera = Cookies.GetCookie("cookieTieneImagenReporte").Value;
 

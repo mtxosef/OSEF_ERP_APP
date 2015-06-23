@@ -493,7 +493,6 @@
                                                         Cls="my-date-picker">
                                                     </PickerOptions>
                                                 </ext:DateField>
-
                                                  <ext:TextField 
                                                     ID="txtNoOrden" 
                                                     FieldLabel="No. Orden"
@@ -501,18 +500,15 @@
                                                     runat="server" 
                                                     Margins="0 3 0 0"
                                                     Width="180" 
-                                                    ReadOnly="true"
-                                                    > 
+                                                    ReadOnly="true">
                                                 </ext:TextField>
-
                                                 <ext:TextField 
                                                     ID="txtReferenciaOrden" 
                                                     EmptyText="REFERENCIA ORDEN"
                                                     LabelWidth="90"
                                                     runat="server" 
-                                                    Width="177" > 
-                                                </ext:TextField>
-                                                
+                                                    Width="177"> 
+                                                </ext:TextField>                                                
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer
@@ -585,13 +581,12 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
-
                                         <ext:FieldContainer 
                                             ID="fc1"
                                             runat="server"
                                             FieldLabel="No. Reporte"
                                             LabelWidth="120"
-                                             Height="25"
+                                            Height="25"
                                             AnchorHorizontal="100%"
                                             Layout="HBoxLayout">
                                             <Items>
@@ -632,11 +627,8 @@
                                                     FieldLabel="Atendido"
                                                     Checked="false">
                                                 </ext:Checkbox>
-                                                
-                                                
                                             </Items>
                                         </ext:FieldContainer>
-
                                         <ext:FieldContainer 
                                             ID="fcFechaOrigen"
                                             runat="server"
@@ -680,8 +672,7 @@
                                                     Disabled="false" />
                                             </Items>
                                         </ext:FieldContainer>
-
-                                         <ext:FieldContainer 
+                                        <ext:FieldContainer 
                                             ID="fcAtencion"
                                             runat="server"
                                             FieldLabel="Fecha Atencion"
@@ -689,7 +680,7 @@
                                             AnchorHorizontal="100%"
                                             Layout="HBoxLayout">
                                             <Items>
-                                            <ext:DateField
+                                                <ext:DateField
                                                     ID="dfFechaMaxima"
                                                     runat="server"
                                                     EmptyText="Fecha Máxima Atención"
@@ -732,8 +723,7 @@
                                                     </Listeners>
                                                 </ext:NumberField>
                                             </Items>
-                                        </ext:FieldContainer>
-                                        
+                                        </ext:FieldContainer>                                        
                                         <ext:FieldContainer
                                             ID="fcTrabajoRequerido"
                                             runat="server"
@@ -756,7 +746,6 @@
                                                 </ext:TextField>
                                             </Items>
                                         </ext:FieldContainer>
-
                                         <ext:FieldContainer
                                             ID="fcReporte"
                                             runat="server"
@@ -779,7 +768,6 @@
                                                 </ext:TextField>
                                             </Items>
                                         </ext:FieldContainer>
-
                                         <ext:FieldContainer 
                                             ID="FieldContainer1"
                                             runat="server"
@@ -807,7 +795,6 @@
                                                         <ext:ListItem Index="2" />
                                                     </SelectedItems>
                                                 </ext:ComboBox>
-
                                                 <ext:ComboBox
                                                     ID="cmbCuadrilla"
                                                     runat="server"
@@ -854,10 +841,8 @@
                                                         <Change Fn="cmbCuadrilla_Change" />
                                                     </Listeners>
                                                 </ext:ComboBox>
-
                                             </Items>
                                         </ext:FieldContainer>
-
                                     </Items>
                                 </ext:FieldSet>
                             </Items>
@@ -880,14 +865,15 @@
                                     DefaultAnchor="100%"
                                     AutoScroll="false">
                                     <Items>
-                                    <ext:FieldContainer ID="fc4"
+                                        <ext:FieldContainer
+                                            ID="fc4"
                                             runat="server"
                                             FieldLabel="Clasificación"
                                             LabelWidth="120" 
                                             AnchorHorizontal="100%"
                                             Layout="HBoxLayout">
                                             <Items>
-                                        <ext:ComboBox 
+                                                <ext:ComboBox 
                                                     ID="cmbClasificacion"
                                                     runat="server"
                                                     Width="200"
@@ -986,8 +972,7 @@
                                                     Margins="0 75 0 0"
                                                     AllowBlank="false">
                                                     <Listeners>
-                                                        <Change Handler="fufNormal_Change(event,this,App.txtfNoReporte.getValue());"  ></Change>
-                                                        
+                                                        <Change Handler="fufNormal_Change(event,this,App.txtfNoReporte.getValue());" />
                                                     </Listeners>
                                                 </ext:FileUploadField>
                                                 <ext:Image 
@@ -1001,32 +986,26 @@
                                                     <Listeners>
                                                         <Click Fn="PopupPic"></Click>
                                                     </Listeners>
-                                                    </ext:Image>
-                                                    
-                                                     <ext:ImageButton 
-                                                            ID="imgbtnBorrarReporte" 
-                                                            runat="server" 
-                                                            
-                                                            ImageUrl="assets/img/controles/delete-normal.png" 
-                                                            DisabledImageUrl="assets/img/controles/delete-disable.png"
-                                                            OverImageUrl="assets/img/controles/delete-over.png" 
-                                                            PressedImageUrl="assets/img/controles/delete-pressed.png"
-                                                            ToolTip="Norrar" 
-                                                            Height="23" 
-                                                            Width="23">
-                                                            <Listeners>
-                                                                <Click Handler="App.sOrdenEstimacion.getAt(0).set('RutaImagen','');
-                                                                      App.imgNormal.setImageUrl('');
-                                                                      Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO');">
-                                                                </Click>
-                                                            </Listeners>
-                                                        </ext:ImageButton>
-
+                                                </ext:Image>
+                                                <ext:ImageButton 
+                                                    ID="imgbtnBorrarReporte" 
+                                                    runat="server"
+                                                    ImageUrl="assets/img/controles/delete-normal.png" 
+                                                    DisabledImageUrl="assets/img/controles/delete-disable.png"
+                                                    OverImageUrl="assets/img/controles/delete-over.png" 
+                                                    PressedImageUrl="assets/img/controles/delete-pressed.png"
+                                                    ToolTip="Norrar" 
+                                                    Height="23" 
+                                                    Width="23">
+                                                    <Listeners>
+                                                        <Click Handler="App.sOrdenEstimacion.getAt(0).set('RutaImagen','');
+                                                                App.imgNormal.setImageUrl('');
+                                                                Ext.util.Cookies.set('cookieTieneImagenReporte', 'NO');">
+                                                        </Click>
+                                                    </Listeners>
+                                                </ext:ImageButton>
                                             </Items>
-                                        </ext:FieldContainer> 
-                                        
-
-
+                                        </ext:FieldContainer>
                                     </Items>
                                 </ext:FieldSet>
                             </Items>
@@ -1059,7 +1038,6 @@
                                         <ext:Store
                                             ID="sConceptos"
                                             OnReadData="sConceptos_OnReadData"
-                                           
                                             runat="server">
                                             <Model>
                                                 <ext:Model 
@@ -1108,8 +1086,7 @@
                                                 <Listeners>
                                                     <Command Fn="ccAcciones_Command" />
                                                 </Listeners>
-                                            </ext:CommandColumn> 
-                                            
+                                            </ext:CommandColumn>
                                             <ext:Column
                                                 ID="cIDPreciario"
                                                 runat="server"
@@ -1255,7 +1232,6 @@
                                                     <Command Fn="ccFotos_Command" /> 
                                                 </Listeners>
                                                 <Renderer Fn="cCheckFotos_Renderer" />
-                                                
                                             </ext:CommandColumn>
                                             <ext:CommandColumn
                                                 ID="ccCroquis"
@@ -1368,6 +1344,7 @@
                 </ext:Toolbar>
             </BottomBar>
         </ext:FormPanel>
+
         <ext:Window 
             ID="wEmergente"
             runat="server"

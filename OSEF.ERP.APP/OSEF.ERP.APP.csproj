@@ -366,6 +366,7 @@
     <Content Include="FormaGaleria.aspx" />
     <Content Include="FormaGenerador.aspx" />
     <Content Include="FormaGeneradorVolumetriaD.aspx" />
+    <Content Include="FormaImagenesAvance.aspx" />
     <Content Include="FormaImagenesOrdenEstimacion.aspx" />
     <Content Include="FormaImagenesPreciarios.aspx" />
     <Content Include="FormaInfoGraficas.aspx" />
@@ -384,6 +385,7 @@
     <Content Include="FormaSolicitudPrestamo.aspx" />
     <Content Include="FormaSubirCroquisOrdenEstimacion.aspx" />
     <Content Include="FormaSubirFacturasOrdenEstimacion.aspx" />
+    <Content Include="FormaSubirImagenesAvance.aspx" />
     <Content Include="FormaSubirImagenesCliente.aspx" />
     <Content Include="FormaSubirImagenesOrdenEstimacion.aspx" />
     <Content Include="FormaSubirImagenesPreciario.aspx" />
@@ -487,6 +489,7 @@
     <Content Include="js\lib\jQuery\jquery-migrate-1.2.1.min.js" />
     <Content Include="js\lib\jQuery\jquery.min.js" />
     <Content Include="js\registro.js" />
+    <Content Include="js\subirImagenesAvance.js" />
     <Content Include="js\tableroOrdenesCambios.js" />
     <Content Include="js\subirCroquisOrdenEstimacion.js" />
     <Content Include="js\subirFacturasOrdenEstimacion.js" />
@@ -985,6 +988,13 @@
     <Compile Include="FormaGeneradorVolumetriaD.aspx.designer.cs">
       <DependentUpon>FormaGeneradorVolumetriaD.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormaImagenesAvance.aspx.cs">
+      <DependentUpon>FormaImagenesAvance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaImagenesAvance.aspx.designer.cs">
+      <DependentUpon>FormaImagenesAvance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormaImagenesOrdenEstimacion.aspx.cs">
       <DependentUpon>FormaImagenesOrdenEstimacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1110,6 +1120,13 @@
     </Compile>
     <Compile Include="FormaSubirFacturasOrdenEstimacion.aspx.designer.cs">
       <DependentUpon>FormaSubirFacturasOrdenEstimacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormaSubirImagenesAvance.aspx.cs">
+      <DependentUpon>FormaSubirImagenesAvance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormaSubirImagenesAvance.aspx.designer.cs">
+      <DependentUpon>FormaSubirImagenesAvance.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormaSubirImagenesCliente.aspx.cs">
       <DependentUpon>FormaSubirImagenesCliente.aspx</DependentUpon>
@@ -1485,6 +1502,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\img\menu\" />
+    <Folder Include="imagenesAvance\" />
     <Folder Include="imagenesReportes\" />
     <Folder Include="imagesVolumetrias\" />
     <Folder Include="images\menu\" />

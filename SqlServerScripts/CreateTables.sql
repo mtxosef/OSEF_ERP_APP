@@ -156,6 +156,15 @@ CREATE TABLE RevisionesD(
 	Real						DECIMAL(5, 2)	NULL
 )
 
+CREATE TABLE ImagenesRevisionesD(
+	Revision					INT				NOT NULL FOREIGN KEY REFERENCES Revisiones(ID),
+	Concepto					CHAR(7)			NOT NULL FOREIGN KEY REFERENCES Conceptos(ID),
+	Nombre						VARCHAR(50)		NOT NULL,
+	Direccion					VARCHAR(500)	NOT NULL,
+	UsuarioAlta					VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	FechaAlta					SMALLDATETIME	NOT NULL
+)
+
 CREATE TABLE CuentasContables(
 	Cuenta						VARCHAR(20)		NOT NULL PRIMARY KEY,
 	Descripcion					VARCHAR(100)	NULL,
@@ -558,9 +567,9 @@ CREATE TABLE PreciariosGeneralesConceptos(
 )
 
 CREATE TABLE Cuadrillas(
-ID CHAR(10) NOT NULL PRIMARY KEY,
-Nombre VARCHAR(100) NOT NULL,
-Descripcion VARCHAR(1000) NULL
+	ID							CHAR(10)		NOT NULL PRIMARY KEY,
+	Nombre						VARCHAR(100)	NOT NULL,
+	Descripcion					VARCHAR(1000)	NULL
 )
 
 CREATE TABLE OrdenesEstimaciones(
@@ -667,14 +676,14 @@ CREATE TABLE GeneradorVolumetriaD(
 )
 
 CREATE TABLE CodigoPPTA(
-	CodigoMainSaver				CHAR(50) NOT NULL PRIMARY KEY,
-	Dias						CHAR(5) NULL
+	CodigoMainSaver				CHAR(50)		NOT NULL PRIMARY KEY,
+	Dias						CHAR(5)			NULL
 )
 
 CREATE TABLE FirmasReportes(
-	FirmaReviso				VARCHAR(100) NOT NULL,
-	FirmaAutorizo			VARCHAR(100) NOT NULL,
-	Modulo					VARCHAR(100) NULL,
+	FirmaReviso					VARCHAR(100)	NOT NULL,
+	FirmaAutorizo				VARCHAR(100)	NOT NULL,
+	Modulo						VARCHAR(100)	NULL,
 )
 
 

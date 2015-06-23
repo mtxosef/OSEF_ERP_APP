@@ -10,16 +10,7 @@
 namespace OSEF.ERP.APP {
     
     
-    public partial class FormaReporteEstimacion {
-        
-        /// <summary>
-        /// Control Head1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+    public partial class FormaSubirImagenesAvance {
         
         /// <summary>
         /// Control form1.
@@ -31,111 +22,156 @@ namespace OSEF.ERP.APP {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control rmFormaReporteOrdenCambioD.
+        /// Control rmFormaSubirImagenesAvance.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager rmFormaReporteOrdenCambioD;
+        protected global::Ext.Net.ResourceManager rmFormaSubirImagenesAvance;
         
         /// <summary>
-        /// Control fpEspecificarParametros.
+        /// Control gpSubirImagenesAvance.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel fpEspecificarParametros;
+        protected global::Ext.Net.GridPanel gpSubirImagenesAvance;
         
         /// <summary>
-        /// Control fcFirmas.
+        /// Control sSubirImagenesAvance.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FieldContainer fcFirmas;
+        protected global::Ext.Net.Store sSubirImagenesAvance;
         
         /// <summary>
-        /// Control imgbtnPresupuesto.
+        /// Control mSubirImagenesAvance.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnPresupuesto;
+        protected global::Ext.Net.Model mSubirImagenesAvance;
         
         /// <summary>
-        /// Control imgbtnResumen.
+        /// Control cNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnResumen;
+        protected global::Ext.Net.Column cNombre;
         
         /// <summary>
-        /// Control imgbtnEstimacion.
+        /// Control cTamano.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnEstimacion;
+        protected global::Ext.Net.Column cTamano;
         
         /// <summary>
-        /// Control imgbtnGenerador.
+        /// Control cEstatusIcon.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnGenerador;
+        protected global::Ext.Net.Column cEstatusIcon;
         
         /// <summary>
-        /// Control imgbtnCroquis.
+        /// Control cEstatus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnCroquis;
+        protected global::Ext.Net.Column cEstatus;
         
         /// <summary>
-        /// Control imgbtnFotos.
+        /// Control pbcProgreso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnFotos;
+        protected global::Ext.Net.ProgressBarColumn pbcProgreso;
         
         /// <summary>
-        /// Control imgbtnFacturas.
+        /// Control tbSubirImagenesAvance.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnFacturas;
+        protected global::Ext.Net.Toolbar tbSubirImagenesAvance;
         
         /// <summary>
-        /// Control imgbtnTodos.
+        /// Control muSubirImagenesAvance.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnTodos;
+        protected global::Ext.Net.MultiUpload muSubirImagenesAvance;
         
         /// <summary>
-        /// Control sbParametros1.
+        /// Control btnSubirImagenesAvance.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.StatusBar sbParametros1;
+        protected global::Ext.Net.Button btnSubirImagenesAvance;
+        
+        /// <summary>
+        /// Control btnIniciar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnIniciar;
+        
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelar;
+        
+        /// <summary>
+        /// Control btnCancelarTodo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelarTodo;
+        
+        /// <summary>
+        /// Control btnEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnEliminar;
+        
+        /// <summary>
+        /// Control btnEliminarTodo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnEliminarTodo;
     }
 }
