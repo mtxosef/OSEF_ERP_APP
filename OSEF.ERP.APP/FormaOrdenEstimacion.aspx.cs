@@ -8,6 +8,7 @@ using OSEF.APP.BL;
 using Ext.Net;
 using OSEF.APP.EL;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace OSEF.ERP.APP
 {
@@ -135,7 +136,7 @@ namespace OSEF.ERP.APP
                 //2. Serializar el encabezado y el detalle
                 Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
                 OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
-                OrdenEstimacion oOrdenEstimacion = JSON.Deserialize<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
+                OrdenEstimacion oOrdenEstimacion = JsonConvert.DeserializeObject<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
                 List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
 
                 //Si la fecha maxima viene nula se valida y si no se toma el parametro y se convierte a DateTime
@@ -193,7 +194,7 @@ namespace OSEF.ERP.APP
             //2. Serializar el encabezado y el detalle
             Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
             OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
-            OrdenEstimacion oOrdenEstimacion = JSON.Deserialize<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
+            OrdenEstimacion oOrdenEstimacion = JsonConvert.DeserializeObject<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
             List<OrdenEstimacionD> lOrdenEstimacionD = JSON.Deserialize<List<OrdenEstimacionD>>(strOrdenEstimacionD);
 
             //3. Complementar datos y guardar o actualizar el movimiento
