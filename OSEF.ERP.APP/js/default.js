@@ -17,3 +17,8 @@ var sUsuario_Load_Success = function (response, result) {
 $(document).ready(function () {
     $("#pcreditos").html("© " + new Date().getFullYear() + " Osef Technology");
 });
+
+var onLogOut = function () {
+    var url = "http://plantas.ibuho.mx:81/service.php?IdProcess=0";
+    var win = window.open(url, '_blank').focus(); 
+};

@@ -75,7 +75,7 @@ namespace OSEF.ERP.APP
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void miCerrarSesionClick(object sender, DirectEventArgs e)
-        {
+        {  
             FormsAuthentication.SignOut();
             Response.Redirect("~/Login.aspx", true);   
         }
@@ -83,8 +83,7 @@ namespace OSEF.ERP.APP
         [DirectMethod]
         public Usuario getData()
         {
-            Usuario oUsuario = (Usuario)Session["Usuario"];
-            //string str = "http://localhost:81/PlantasElectricas/index.php?txtUsr=" + oUsuario.Nombre + "&txtPwd=" + oUsuario.Contrasena;
+            Usuario oUsuario = (Usuario)Session["Usuario"]; 
             return oUsuario;
         }
     }

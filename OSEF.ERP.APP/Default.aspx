@@ -82,11 +82,13 @@
                                               </Listeners>
                                             </ext:MenuItem>
                                             <ext:MenuItem ID="miCerrarSesion" runat="server" Text="Cerrar sesión">
+                                                   <Listeners>
+                                                    <Click Fn="onLogOut"></Click>
+                                                   </Listeners>
                                                    <DirectEvents>
-                                                        <Click  OnEvent="miCerrarSesionClick"></Click>
-                                                   </DirectEvents>
-                                            </ext:MenuItem>
-                                             
+                                                        <Click OnEvent="miCerrarSesionClick"></Click> 
+                                                   </DirectEvents> 
+                                            </ext:MenuItem> 
                                         </Items>
                                     </ext:Menu>
                                 </Menu>
