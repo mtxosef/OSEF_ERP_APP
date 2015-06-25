@@ -931,6 +931,14 @@ var obetenerRenglon_Select = function (a, registro, c) {
 
     //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
     //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
+}
 
-
+var btnBuscar_Cliente = function () {
+    var win = window.parent.App.wAyudaConcepto;
+    win.load('FormaBuscaCliente.aspx');
+    win.setHeight(290);
+    win.setWidth(660);
+    win.center();
+    win.setTitle('BUSQUEDA DE CLIENTES');
+    win.show();
 }

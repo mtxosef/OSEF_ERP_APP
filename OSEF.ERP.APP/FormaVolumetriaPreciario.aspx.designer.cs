@@ -265,6 +265,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfMovID;
         
         /// <summary>
+        /// Control cmbCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField cmbCliente;
+        
+        /// <summary>
+        /// Control btnBuscaCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button btnBuscaCliente;
+        
+        /// <summary>
         /// Control fcPreciario.
         /// </summary>
         /// <remarks>
