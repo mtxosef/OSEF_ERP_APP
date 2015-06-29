@@ -180,11 +180,14 @@ namespace OSEF.ERP.APP
             sMesaDeReporte.DataBind();
             sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
             sSucursales.DataBind();
+
+            this.gpExploradorMesaDeReporte.ColumnModel.Columns[1].Hidden = true;
         }
 
         [DirectMethod]
         public void ObtenerMesaDeReporteFacturado()
         {
+            this.gpExploradorMesaDeReporte.ColumnModel.Columns[1].Hidden = false;
             sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerHistorialMesaDeReportesConcluidos();
             sMesaDeReporte.DataBind();
         }
