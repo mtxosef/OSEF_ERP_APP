@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AhorroDataAccess.cs" />
+    <Compile Include="AhorroDDataAccess.cs" />
     <Compile Include="ArticuloDataAccess.cs" />
     <Compile Include="BienInmuebleSolicitudPrestamoDataAccess.cs" />
     <Compile Include="BienMuebleSolicitudPrestamoDataAccess.cs" />

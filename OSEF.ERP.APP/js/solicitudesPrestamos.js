@@ -557,12 +557,7 @@ var sSolicitudPrestamo_Add = function (store, registro) {
         App.rAvalEmpresaPropietarioNo.setValue(true);
     }
 
-    if (registro[0].get('AvalEmpresaTipo') === 'EMPLEADO') {
-        App.rAvalEmpresaTipoEmpleado.setValue(true);
-    }
-    else {
-        App.rAvalEmpresaTipoGiroComercial.setValue(true);
-    }
+    App.txtAvalEmpresaGiroComercial.setValue(registro[0].get('AvalEmpresaTipo'));
 
     //Septima parte
     App.nfCantidad.setValue(registro[0].get('Cantidad'));
@@ -584,7 +579,7 @@ var cmbCliente_Change = function (combobox, valorNuevo, valorAnterior) {
         LimpiarDatosSocio();
     }
     else {
-        AsignarDatosSocio(App.sCliente.getAt(0));
+        AsignarDatosSocio(App.sCliente.findRecord('ID', valorNuevo));
     }
 };
 

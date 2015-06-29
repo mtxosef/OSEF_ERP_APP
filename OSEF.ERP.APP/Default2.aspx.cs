@@ -15,6 +15,23 @@ namespace OSEF.AVANCES.SUCURSALES
     public partial class Default2 : System.Web.UI.Page
     {
         /// <summary>
+        /// Se produce al principio de la inicialización de la página.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            UsuarioBusiness.checkValidSession(this);
+            Usuario oUsuario = (Usuario)Session["Usuario"];
+
+            if (oUsuario == null)
+            {
+                FormsAuthentication.SignOut();
+                Response.Redirect("~/Login.aspx", true);
+            }
+        }
+
+        /// <summary>
         /// Evento que se lanza al cargar la página
         /// </summary>
         /// <param name="sender"></param>

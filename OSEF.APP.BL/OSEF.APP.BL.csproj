@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AhorroBusiness.cs" />
+    <Compile Include="AhorroDBusiness.cs" />
     <Compile Include="ArticuloBusiness.cs" />
     <Compile Include="BienInmuebleSolicitudPrestamoBusiness.cs" />
     <Compile Include="BienMuebleSolicitudPrestamoBusiness.cs" />

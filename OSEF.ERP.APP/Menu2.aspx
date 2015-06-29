@@ -32,47 +32,33 @@
                                         <div class="text-header">Ahorros</div>
                                     </div>
                                 </a>
-
                                 <a class="tile wide imagetext wideimage bg-color-green" id="inversiones" href="#">
                                     <img src="assets/img/menu-inversiones.png" alt="Inversiones" class="img-large" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Inversiones</div>
                                     </div>
                                 </a>
-
-                               
                             </div>
-
-
-                             <div class="tile-column-span-2">                            
-                           
-
-                             <a class="tile square image bg-color-yellow" id="prestamos" href="#">
+                            <div class="tile-column-span-2">
+                                <a class="tile square image bg-color-yellow" id="prestamos" href="#">
                                     <img src="assets/img/menu-prestamos.png" alt="Préstamos" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Préstamos</div>
                                     </div>
-                                </a>
-                                
+                                </a>                                
                                 <a class="tile square image" href="#" id="A7">
                                     <img src="assets/img/menu-conta.png" alt="Contabilidad" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Contabilidad</div>
                                     </div>
                                 </a>
-
-                                 
-
-                                 <a class="tile wide imagetext wideimage bg-color-gray" href="#">
+                                <a class="tile wide imagetext wideimage bg-color-gray" href="#">
                                     <img src="assets/img/menu-corte.png" alt="Corte de Caja" class="img-large" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Corte de caja</div>
                                     </div>
                                 </a>
                             </div>
-
-
-
                         </div>
                         <!-- Fin Primer pagina Procesos -->
 
@@ -85,15 +71,13 @@
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Artículos</div>
                                     </div>
-                                </a>
-                            
+                                </a>                            
                                 <a class="tile wide imagetext wideimage bg-color-green" id="socios" href="#">
                                     <img src="assets/img/menu-socios.png" alt="Socios" />
                                     <div class="textover-wrapper transparent">
                                         <div class="text2">Socios</div>
                                     </div>
                                 </a>
-
                                 <a class="tile square bg-color-red" id="cuentascontables" href="#">
                                     <img src="assets/img/menu-cuentas.png" alt="Cuentas Contables" />
                                     <div class="textover-wrapper transparent">

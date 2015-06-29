@@ -231,12 +231,33 @@ CREATE TABLE Clientes(
 	Usuario						VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID)
 )
 
+CREATE TABLE Ahorros(
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Mov							VARCHAR(50)		NOT NULL,
+	MovID						VARCHAR(10)		NULL,
+	FechaEmision				SMALLDATETIME	NULL,
+	Cliente						CHAR(8)			NOT NULL FOREIGN KEY REFERENCES Clientes(ID),
+	Importe						MONEY			NOT NULL,
+	Saldo						MONEY			NOT NULL,
+	Usuario						VARCHAR(50)		NOT NULL FOREIGN KEY REFERENCES Usuarios(ID),
+	Estatus						VARCHAR(20)		NOT NULL
+)
+
+CREATE TABLE AhorrosD(
+	Ahorro						INT				NOT NULL FOREIGN KEY REFERENCES Ahorros(ID),
+	Renglon						TINYINT			NOT NULL,
+	Articulo					CHAR(2)			NOT NULL FOREIGN KEY REFERENCES Articulos(ID),
+	SaldoAnterior				MONEY			NOT NULL,
+	Importe						MONEY			NOT NULL,
+	Saldo						MONEY			NOT NULL
+)
+
 CREATE TABLE SolicitudesPrestamos(
 	ID							CHAR(8)			NOT NULL PRIMARY KEY,--P0000001
 	Cliente						CHAR(8)			NOT NULL FOREIGN KEY REFERENCES Clientes(ID),
 	Nacionalidad				VARCHAR(20)		NULL,
 	NumeroDependientes			TINYINT			NULL,
-	Edades						VARCHAR(10)		NULL,
+	Edades						VARCHAR(20)		NULL,
 	RegistroMatrimonial			VARCHAR(50)		NULL,
 	TipoCasa					VARCHAR(50)		NULL,
 	AniosDomicilio				TINYINT			NULL,
@@ -409,6 +430,15 @@ CREATE TABLE Beneficiarios(
 	Telefono					VARCHAR(15)		NULL,
 	TelefonoMovil				VARCHAR(15)		NULL,
 	Parentesco					VARCHAR(20)		NULL
+)
+
+CREATE TABLE Saldos(
+	ID							INT				IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Modulo						CHAR(4)			NOT NULL,
+	Cliente						CHAR(8)			NOT NULL FOREIGN KEY REFERENCES Clientes(ID),
+	Prestamo					CHAR(8)			NULL FOREIGN KEY REFERENCES SolicitudesPrestamos(ID),
+	Inversion					CHAR(8)			NULL FOREIGN KEY REFERENCES CertificadosInversiones(ID),
+	Saldo						MONEY			NOT NULL
 )
 
 CREATE TABLE Preciarios(

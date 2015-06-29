@@ -326,6 +326,7 @@
     <Content Include="ExploradorPreciarioConceptos.aspx" />
     <Content Include="ExploradorPreciariosConceptosGenerales.aspx" />
     <Content Include="ExploradorRegistroConaproch.aspx" />
+    <Content Include="fAhorro.aspx" />
     <Content Include="fancylibs\blank.gif" />
     <Content Include="fancylibs\fancybox_loading%402x.gif" />
     <Content Include="fancylibs\fancybox_loading.gif" />
@@ -458,6 +459,8 @@
     <Content Include="images\youtube.png" />
     <Content Include="InnerForm.aspx" />
     <Content Include="js\administrador.js" />
+    <Content Include="js\ahorro.js" />
+    <Content Include="js\ahorros.js" />
     <Content Include="js\articulos.js" />
     <Content Include="js\avance.js" />
     <Content Include="js\avanzarMovimiento.js" />
@@ -606,6 +609,7 @@
     <Content Include="SolicitudesPrestamos.aspx" />
     <Content Include="Subcategorias.aspx" />
     <Content Include="Sucursales.aspx" />
+    <Content Include="tAhorros.aspx" />
     <Content Include="tVtasUnidadesVsTiempo.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Usuarios2.aspx" />
@@ -777,6 +781,13 @@
     </Compile>
     <Compile Include="ExploradorRegistroConaproch.aspx.designer.cs">
       <DependentUpon>ExploradorRegistroConaproch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fAhorro.aspx.cs">
+      <DependentUpon>fAhorro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fAhorro.aspx.designer.cs">
+      <DependentUpon>fAhorro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finalidades.aspx.cs">
       <DependentUpon>Finalidades.aspx</DependentUpon>
@@ -1470,6 +1481,13 @@
     </Compile>
     <Compile Include="Sucursales.aspx.designer.cs">
       <DependentUpon>Sucursales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tAhorros.aspx.cs">
+      <DependentUpon>tAhorros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tAhorros.aspx.designer.cs">
+      <DependentUpon>tAhorros.aspx</DependentUpon>
     </Compile>
     <Compile Include="tVtasUnidadesVsTiempo.aspx.cs">
       <DependentUpon>tVtasUnidadesVsTiempo.aspx</DependentUpon>

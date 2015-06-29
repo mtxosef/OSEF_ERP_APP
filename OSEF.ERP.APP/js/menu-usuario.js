@@ -6,6 +6,14 @@ $(document).ready(function () {
         parent.App.pCentro.getLoader().load('Menu.aspx');
     });
 
+    //Abrir tablero de ahorros Caja Popular Hidrocalida
+    $("#ahorros").click(function (event) {
+        $("#contenedor").fadeOut(timer, function () {
+            parent.App.imgbtnRegresar.show();
+            parent.App.pCentro.getLoader().load('tAhorros.aspx');
+        });
+    });
+
     $("#avances").click(function (event) {
         $("#contenedor").fadeOut(timer, function () {
             parent.App.imgbtnRegresar.show();

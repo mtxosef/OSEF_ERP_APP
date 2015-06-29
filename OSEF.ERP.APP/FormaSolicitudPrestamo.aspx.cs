@@ -19,6 +19,8 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            UsuarioBusiness.checkValidSession(this);
+
             //1. Validar que no sea una petición Ajax
             if (!X.IsAjaxRequest)
             {
@@ -515,7 +517,10 @@ namespace OSEF.ERP.APP
                         oCliente.EmpresaTelefono = sd.Value;
                         break;
                     case "nfEmpresaTelefonoExt":
-                        oCliente.EmpresaTelefonoExt = Convert.ToInt16(sd.Value);
+                        if (sd.Value == null)
+                            oCliente.EmpresaTelefonoExt = null;
+                        else
+                            oCliente.EmpresaTelefonoExt = Convert.ToInt16(sd.Value);
                         break;
                     case "nfAntiguedad":
                         oSolicitudPrestamo.Antiguedad = Convert.ToByte(sd.Value);

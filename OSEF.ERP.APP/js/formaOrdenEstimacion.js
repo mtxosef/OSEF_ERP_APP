@@ -1,29 +1,27 @@
 ﻿//------------------------------------------------ENCABEZADO------------------------------------------------------------
 var indiceDetalle;
 var ImporteFinal;
+
 //Boton de nuevo de la forma no del tablero
 var imgbtnFormaNuevo_Click = function () {
-    //Asignar la fecha en una variable
+    //1. Asignar la fecha en una variable
     var d = new Date();
 
-    //Habilitar o Deshabilitar controles
-    //App.cmbMov.setValue("");
-    //App.cmbMov.setReadOnly(false);
-
-    //identificamos que tablero de que modulo es
+    //2. Identificamos que tablero de que modulo es
     var tablero = window.parent.App.pCentro.getBody().App.gpOrdenesEstimaciones.title;
-
     if (tablero == 'REPORTES & ESTIMACIONES') {
         App.cmbMov.select('Mesa de reporte');
         App.cmbMov.setReadOnly(true);
-        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+
+        //3. Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Reporte');
         App.chkBoxOrdenCompra.setVisible(false);
     }
     else {
         App.cmbMov.select('Orden de Cambio');
         App.cmbMov.setReadOnly(true);
-        //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
+
+        //4. Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
         Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
         App.chkBoxOrdenCompra.setVisible(true);
         App.chkBoxOrdenCompra.setDisabled(false);
@@ -31,68 +29,71 @@ var imgbtnFormaNuevo_Click = function () {
         App.chkBoxOrdenCompra.setValue(false);
     }
 
-
-    App.txtNoOrden.setValue('');
-
+    //4. Deshabilitar controles
     App.txtReferenciaOrden.setDisabled(false);
-    App.txtReferenciaOrden.setReadOnly(false);
-    App.txtReferenciaOrden.setValue('');
-
-
-
     App.txtfObservaciones.setDisabled(false);
     App.dfFechaEmision.setDisabled(false);
     App.imgbtnCancelar.setDisabled(true);
     App.imgbtnImprimir.setDisabled(true);
-    //Limpiar campos
-    App.txtfMovID.setValue('');
-    App.txtfSucursalCR.setValue('');
     App.txtfSucursalCR.setDisabled(false);
+    App.txtfCodigoFalla.setDisabled(false);
+
+    //5. Asignar controles como Solo Lectura
+    App.txtReferenciaOrden.setReadOnly(false);
+    App.dfFechaOrigen.setReadOnly(false);
+    App.dfFechaMaxima.setReadOnly(false);
+    App.dfFechaLlegada.setReadOnly(false);
+    App.tfHoraLlegada.setReadOnly(false);
+    App.dfFechaFinActividad.setReadOnly(false);
+    App.tfHoraFinActividad.setReadOnly(false);
+    App.tHoraOrigen.setReadOnly(false);
+    App.cmbClasificacion.setReadOnly(false);
+    App.cmbCuadrilla.setReadOnly(false);
+    App.txtfTrabajoRequerido.setReadOnly(false);
+    App.txtfReporta.setReadOnly(false);
+    App.cmbDivision.setReadOnly(false);
+
+    //6. Limpiar campos
+    App.txtfMovID.setValue('');
+    App.txtNoOrden.setValue('');
+    App.txtfSucursalCR.setValue('');
+    App.txtReferenciaOrden.setValue('');    
     App.txtfSucursalNombre.setValue('');
     App.txtfObservaciones.setValue('');
-    App.dfFechaEmision.setValue(d);
     App.txtfClave.setValue('');
     App.taDescripcion.setValue('');
     App.txtfNoReporte.setValue('');
     App.cmbDivision.setValue('');
     App.dfFechaOrigen.setValue('');
     App.dfFechaMaxima.setValue('');
-    App.dfFechaOrigen.setReadOnly(false);
-    App.dfFechaMaxima.setReadOnly(false);
     App.nfDiasAtencion.setValue('');
     App.txtfReporta.setValue('');
     App.txtfTrabajoRequerido.setValue('');
-
     App.txtfCodigoFalla.setValue('');
     App.dfFechaLlegada.setValue('');
-    App.dfFechaLlegada.setReadOnly(false);
     App.tfHoraLlegada.setValue('');
-    App.tfHoraLlegada.setReadOnly(false);
     App.dfFechaFinActividad.setValue('');
-    App.dfFechaFinActividad.setReadOnly(false);
     App.tfHoraFinActividad.setValue('');
-    App.tfHoraFinActividad.setReadOnly(false);
     App.cmbCuadrilla.setValue('');
     App.tHoraOrigen.setValue('');
-    App.tHoraOrigen.setReadOnly(false);
     App.chkAtendido.setValue(false);
-    App.cmbClasificacion.setValue('');
-    App.cmbClasificacion.setReadOnly(false);
-    App.cmbCuadrilla.setReadOnly(false);
-    App.txtfCodigoFalla.setDisabled(false);
-    App.cmbDivision.setReadOnly(false);
-    App.txtfTrabajoRequerido.setReadOnly(false);
-    App.txtfReporta.setReadOnly(false);
+    App.cmbClasificacion.setValue('');    
 
-    //Cambiar Estatus, Cookie y Titulo Window
+    //7. Cambiar Estatus, Cookie y Titulo Window
+    App.dfFechaEmision.setValue(d);
     App.sbOrdenEstimacion.setText('SIN AFECTAR');
     Ext.util.Cookies.set('cookieEditarOrdenEstimacion', 'Nuevo');
     Ext.util.Cookies.set('cookieEsEstimacion', 'No');
     window.parent.App.wEmergente.setTitle('Nuevo Movimiento');
 
-    //Borrar el GridPanel del Detalle y Encabezado
+    //8. Borrar el GridPanel del Detalle y Encabezado
     App.sConceptos.removeAll();
     App.sOrdenEstimacion.removeAll();
+};
+
+//Vuelve al tablero ocultando la ventana emergente
+var imgbtnAbrir_Click = function () {
+    window.parent.App.wEmergente.hide();
 };
 
 var imgbtnImprimir_Click = function () {
@@ -115,11 +116,6 @@ var imgbtnImprimir_Click = function () {
         window.parent.App.wGenerador.show();
     }
 }
-
-//Vuelve al tablero ocultando la ventana emergente
-var imgbtnAbrir_Click = function () {
-    window.parent.App.wEmergente.hide();
-};
 
 //Se lanza por cada elemento agregado al Store de Movimientos
 var sMov_Add = function (store, registros, index, eOpts) {
@@ -1787,24 +1783,18 @@ var ccConcepto_Command = function (columna, comando, registro, fila, opciones) {
 //-----------------------------------------------VALIDACIONES-----------------------------------------------
 //Función que valida si se habilita el primer renlgon en el GridPanel detalle
 function PrimerRenglonDetalle() {
-    //Validar si se asigna el primer renglon del concepto
-
-
+    //1. Validar si se asigna el primer renglon del concepto
     if (App.cmbMov.getValue() != null && App.txtfSucursalCR.getValue() != '') {
-
         var store = App.gpOrdenEstimacion.getStore();
         if (store.getCount() == 0) {
-
             //Insertar el primer registro
             store.insert(0, { Renglon: 0 });
-
         }
     }
 };
 
 //Función que valida si se habilita el botón de Guardar
 function HabilitarGuardar() {
-
     if (App.cmbMov.getValue() != null && App.txtfSucursalCR.getValue() != '') {
         App.imgbtnGuardar.setDisabled(false);
     }

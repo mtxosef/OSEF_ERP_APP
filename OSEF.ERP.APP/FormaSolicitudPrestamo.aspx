@@ -433,7 +433,7 @@
                                                                 runat="server"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="20"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 FieldLabel="Nacionalidad">
                                                                 <Listeners>
                                                                     <Blur Handler="App.txtfNacionalidad.setValue(App.txtfNacionalidad.getValue().toUpperCase());" />
@@ -468,7 +468,7 @@
                                                                 ID="txtfEdades"
                                                                 runat="server"
                                                                 FieldLabel="Edades"
-                                                                MaxLength="10"
+                                                                MaxLength="20"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
                                                             </ext:TextField>
                                                         </Items>
@@ -1400,7 +1400,7 @@
                                                                 ID="nfAntiguedad"
                                                                 runat="server"
                                                                 AllowDecimals="false"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 FieldLabel="Antigüedad"
                                                                 Width="325"
                                                                 LabelWidth="120"
@@ -1412,7 +1412,7 @@
                                                             <ext:NumberField
                                                                 ID="nfIngresos"
                                                                 runat="server"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 AllowDecimals="true"
                                                                 EmptyText="Ingresos"
                                                                 MaxLength="6"
@@ -2496,7 +2496,7 @@
                                                                 ID="txtfAvalNombre"
                                                                 runat="server"
                                                                 LabelWidth="120"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 EmptyText="Nombres"
                                                                 FieldLabel="Nombre"
                                                                 AutoFocus="true"
@@ -2509,7 +2509,7 @@
                                                              <ext:TextField
                                                                 ID="txtfAvalApellidoPaterno"
                                                                 runat="server"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 EmptyText="Apellido paterno"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
                                                                 <Listeners>
@@ -2553,7 +2553,7 @@
                                                             <ext:ComboBox
                                                                 ID="cmbAvalEstadoCivil"
                                                                 runat="server"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 Editable="false"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 Disabled="false"
@@ -3031,7 +3031,7 @@
                                                                 MaxLength="2"
                                                                 MinValue="0"
                                                                 Width="325"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 LabelWidth="120"
                                                                 MaxValue="99"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
@@ -3039,7 +3039,7 @@
                                                             <ext:NumberField
                                                                 ID="nfAvalEmpresaIngresos"
                                                                 runat="server"
-                                                                AllowBlank="false"
+                                                                AllowBlank="true"
                                                                 AllowDecimals="true"
                                                                 EmptyText="Ingresos"
                                                                 MaxLength="6"

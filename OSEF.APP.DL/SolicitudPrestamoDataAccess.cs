@@ -474,7 +474,10 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpAvalEstadoCivil = new SqlParameter();
                 sqlpAvalEstadoCivil.ParameterName = "@AvalEstadoCivil";
                 sqlpAvalEstadoCivil.SqlDbType = SqlDbType.VarChar;
-                sqlpAvalEstadoCivil.Value = iSolicitudPrestamo.AvalEstadoCivil;
+                if (iSolicitudPrestamo.AvalEstadoCivil == null)
+                    sqlpAvalEstadoCivil.Value = DBNull.Value;
+                else
+                    sqlpAvalEstadoCivil.Value = iSolicitudPrestamo.AvalEstadoCivil;
 
                 SqlParameter sqlpAvalRegistroMatrimonial = new SqlParameter();
                 sqlpAvalRegistroMatrimonial.ParameterName = "@AvalRegistroMatrimonial";
@@ -1276,6 +1279,9 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpAvalEstadoCivil = new SqlParameter();
                 sqlpAvalEstadoCivil.ParameterName = "@AvalEstadoCivil";
                 sqlpAvalEstadoCivil.SqlDbType = SqlDbType.VarChar;
+                if (uSolicitudPrestamo.AvalEstadoCivil == null)
+                    sqlpAvalEstadoCivil.Value = DBNull.Value;
+                else
                 sqlpAvalEstadoCivil.Value = uSolicitudPrestamo.AvalEstadoCivil;
 
                 SqlParameter sqlpAvalRegistroMatrimonial = new SqlParameter();
