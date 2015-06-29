@@ -825,7 +825,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         } else {
             App.chkAtendido.setValue(false);
         }
-        
+
         //        if (registro[0].get('Mobiliario')) {
         //            App.chkMobiliario.setValue(true);
         //        } else {
@@ -865,6 +865,7 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.dfFechaEmision.setDisabled(true);
         App.imgbtnGuardar.setDisabled(false);
         App.imgbtnBorrar.setDisabled(false);
+        App.imgbtnImprimir.setDisabled(false);
     }
 
     //Si es Orden de cambio Y NO ESTA AFECTADO
@@ -1988,8 +1989,7 @@ var PopupPic = function () {
             closable: false,
             icon: Ext.MessageBox.WARNING
         });
-    }
-
+    } 
 }
 //RENDER COLUMN PICTURES
 var cConFotos_Renderer = function (value, metadata, registro) {

@@ -495,3 +495,18 @@ var pDatosEmpresa_Render = function () {
     else {
     }
 }
+
+var txtBuscarCliente_Change = function (textfield, newValue, oldValue, e) {
+    App.sClientes.clearFilter();
+    App.sClientes.filter([{ filterFn: function (item) {
+        if (item.get('Nombre').toUpperCase().indexOf(newValue.toUpperCase()) > -1) { return true; }
+        else { return false; }
+    }
+    }]);
+};
+
+//Acciones al hacer clic en un registro de busqueda
+var gpBuscaClientes_ItemDblClick = function (gridview, registro, gvhtml, index) {
+    window.parent.App.wEmergente.getBody().App.cmbCliente.setValue(App.sClientes.getAt(index).get('Nombre')); 
+    window.parent.App.wAyudaConcepto.hide();
+};

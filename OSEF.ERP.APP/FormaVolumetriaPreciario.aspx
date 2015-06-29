@@ -318,6 +318,7 @@
                                     runat="server"
                                     FieldLabel="Movimiento"
                                     LabelWidth="120"
+                                    Height="25px"
                                     AnchorHorizontal="100%"
                                     Layout="HBoxLayout">
                                     <Items>
@@ -359,7 +360,31 @@
                                             Width="110"
                                             Margins="0 3 0 0"
                                             Disabled="true" />
-                                    </Items>
+                                            
+                                        <ext:TextField 
+                                        ID="cmbCliente" 
+                                        runat="server" 
+                                        Width="250" 
+                                        StyleSpec="margin-right: 3px;  height:24px;"
+                                        AllowBlank="false" 
+                                        FieldLabel="Cliente"
+                                        ReadOnly="true"> 
+                                        <RightButtons>
+                                            <ext:Button 
+                                            ID="btnBuscaCliente" 
+                                            runat="server" 
+                                            Icon="Find" 
+                                            StandOut="true">
+                                                <Listeners>
+                                                    <Click Fn="btnBuscar_Cliente" />
+                                                </Listeners>
+                                            </ext:Button>
+                                        </RightButtons>  
+                                        <Listeners>  
+                                            <Change Fn="cmbPreciario_Change" />
+                                            </Listeners>  
+                                     </ext:TextField> 
+                                    </Items>  
                                 </ext:FieldContainer>
                                 <ext:FieldContainer
                                     ID="fcPreciario"
@@ -427,7 +452,7 @@
                                         ID="cmbPreciario" 
                                         runat="server" 
                                         Width="200" 
-                                        StyleSpec="margin-right: 6px;"
+                                        StyleSpec="margin-right: 3px;"
                                         AllowBlank="false" 
                                         ReadOnly="true"> 
                                                     <RightButtons>
