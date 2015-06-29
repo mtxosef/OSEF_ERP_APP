@@ -51,7 +51,7 @@
                                 ID="cmbSucursal"
                                 runat="server"
                                 LabelWidth="70"
-                                Width="350"
+                                Width="300"
                                 FieldLabel="SUCURSAL"
                                 ValueField="ID"
                                 Cls="spanCustomCombo xEspacioCmbxCustom"
@@ -166,7 +166,7 @@
                                     Height="22px"
                                     Width="22px">    
                                     <DirectEvents>
-                                        <Click OnEvent="getUpdatedRecords">
+                                        <Click OnEvent="setRevisar">
                                             <EventMask ShowMask="true" />
                                             <ExtraParams> 
                                                 <ext:Parameter Name="registrosactualizados" Value="getUpdatedRecords()" Mode="Raw" />
@@ -174,6 +174,50 @@
                                         </Click>
                                     </DirectEvents>                                          
                                 </ext:ImageButton>
+                                
+                                <ext:ImageButton
+                                    ID="imgbtnFacturado"
+                                    runat="server"
+                                    ImageUrl="assets/img/controles/factred.png"
+                                    Height="22px"
+                                    Width="22px">
+                                    <DirectEvents>
+                                        <Click OnEvent="setFacturar">
+                                            <EventMask ShowMask="true" />
+                                            <ExtraParams> 
+                                                <ext:Parameter Name="rData" Value="onBilledRecords()" Mode="Raw" />
+                                            </ExtraParams>
+                                        </Click>
+                                    </DirectEvents>       
+                                    <%--<Listeners> 
+                                        <Click Fn="onBilledRecords"></Click>
+                                    </Listeners>--%>
+                                </ext:ImageButton>
+                                <ext:Checkbox
+                                    ID="chkHistorialFacturado" 
+                                    runat="server"
+                                    Name="chkHistorialFacturado"
+                                    FieldLabel="Facturado" 
+                                    Checked="false">
+                                    <Listeners> 
+                                        <Change Handler="chkHistorialFacturado_Change()"></Change>
+                                    </Listeners>
+                                </ext:Checkbox> 
+                                <%--<ext:ImageButton
+                                    ID="ImageButton1"
+                                    runat="server"
+                                    ImageUrl="assets/img/controles/factred.png"
+                                    Height="22px"
+                                    Width="22px">
+                                    <DirectEvents>
+                                        <Click OnEvent="getUpdatedRecords">
+                                            <EventMask ShowMask="true" />
+                                            <ExtraParams> 
+                                                <ext:Parameter Name="registrosactualizados" Value="getUpdatedRecords()" Mode="Raw" />
+                                            </ExtraParams>
+                                        </Click>
+                                    </DirectEvents>       
+                                </ext:ImageButton>--%>
 
                         <ext:ToolbarSpacer 
                         runat="server" 
@@ -186,7 +230,7 @@
                             AutoFocus="true"
                             EmptyText="BUSCAR POR ASUNTO"
                             StyleSpec="margin-top: 0px;"
-                            Width="280">
+                            Width="250">
                             <Listeners>
                                 <Change Fn="txtBuscar_Change" />
                             </Listeners>
@@ -251,12 +295,12 @@
                 
                    <ext:CheckColumn ID="ckFacturado"
                         runat="server"
-                        Text="Facturado?" 
+                        Text="FACTURADO?" 
                         Align="Center"
                         DataIndex="Facturado"    
                         StopSelection="false"
                         Editable="true"                     
-                        Width="60"> 
+                        Width="80"> 
                         <HeaderItems>
                             
                         <ext:Checkbox ID="chkFacturado" 
@@ -274,12 +318,12 @@
                      
                    <ext:CheckColumn ID="cRevisado"
                         runat="server"
-                        Text="Revisado?" 
+                        Text="REVISADO?" 
                         Align="Center"
                         DataIndex="Revisado"    
                         StopSelection="false"
                         Editable="true"                     
-                        Width="60"> 
+                        Width="80"> 
                         <HeaderItems>
                             
                         <ext:Checkbox ID="chkRevisar" 
@@ -383,7 +427,7 @@
                         runat="server"
                         Text="CLASIFICACIÓN"
                         Align="Center"
-                        Width="170"
+                        Width="120"
                         DataIndex="Clasificacion"> 
                         <Renderer Fn="cClasificacion_Renderer" />
                     </ext:Column>
@@ -421,7 +465,7 @@
                    <ext:Column
                         ID="cTotal"
                         runat="server"
-                        Text="Importe"
+                        Text="IMPORTE"
                         Align="Center"
                         Width="95"
                         DataIndex="ImporteTotal">

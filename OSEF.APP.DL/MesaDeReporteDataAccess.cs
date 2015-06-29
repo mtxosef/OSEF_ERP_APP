@@ -697,6 +697,51 @@ namespace OSEF.APP.DL
                 throw new Exception("Error capa de datos (public static List<MesaDeReporte> ObtenerMesaDeReportesConcluidos()): " + ex.Message);
             }
         }
+
+
+
+
+        /// <summary>
+        /// Obtener todos los registros de MesaDeReportes
+        /// </summary>
+        /// <returns></returns>
+        public static List<MesaDeReporte> ObtenerHistorialMesaDeReportesConcluidos()
+        {
+            try
+            {
+                //1. Configurar la conexión y el tipo de comando
+                SqlConnection sqlcConectar = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+                SqlCommand sqlcComando = new SqlCommand();
+                sqlcComando.Connection = sqlcConectar;
+                sqlcComando.CommandType = CommandType.StoredProcedure;
+                sqlcComando.CommandText = "web_spS_ObtenerHistorialMesaDeReportesConcluidos";
+
+                //2. Declarar los parametros
+
+                //3. Agregar los parametros al comando
+
+                //4. Abrir la conexión
+                sqlcComando.Connection.Open();
+
+                //5. Ejecutar la instrucción SELECT que regresa filas
+                SqlDataReader reader = sqlcComando.ExecuteReader();
+
+                //6. Asignar la lista de Clientes
+                List<MesaDeReporte> result = LibraryGenerics<MesaDeReporte>.ConvertDataSetToList(reader);
+
+                //7. Cerrar la conexión
+                sqlcComando.Connection.Close();
+
+                //8. Regresar el resultado
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error capa de datos (public static List<MesaDeReporte> ObtenerHistorialMesaDeReportesConcluidos()): " + ex.Message);
+            }
+        }
+
+
         /// <summary>
         /// Obtener un registro de MesaDeReporte por su ID
         /// </summary>
@@ -796,7 +841,7 @@ namespace OSEF.APP.DL
         /// Método que Afecta un registro de MesaDeReporte
         /// </summary>
         /// <param name="aRevision"></param>
-        public static int FacturarMesaDeReportePorID(int ID)
+        public static int FacturarMesaDeReportePorID(MesaDeReporte mr)
         {
             try
             {
@@ -811,10 +856,22 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Int;
-                sqlpID.Value = ID;
+                sqlpID.Value = mr.Id;
+
+                SqlParameter sqlpFacturado = new SqlParameter();
+                sqlpFacturado.ParameterName = "@Facturado";
+                sqlpFacturado.SqlDbType = SqlDbType.Int;
+                sqlpFacturado.Value = mr.Facturado;
+
+                SqlParameter sqlpFacturaMantenimiento = new SqlParameter();
+                sqlpFacturaMantenimiento.ParameterName = "@FacturaMantenimiento";
+                sqlpFacturaMantenimiento.SqlDbType = SqlDbType.VarChar;
+                sqlpFacturaMantenimiento.Value = mr.FacturaMantenimiento;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpFacturado);
+                sqlcComando.Parameters.Add(sqlpFacturaMantenimiento);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -830,7 +887,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int FacturarMesaDeReportePorID(int " + ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int FacturarMesaDeReportePorID(MesaDeReporte " + mr.Id + ")): " + ex.Message);
             }
         }
 
@@ -840,7 +897,7 @@ namespace OSEF.APP.DL
         /// Método que Afecta un registro de MesaDeReporte
         /// </summary>
         /// <param name="aRevision"></param>
-        public static int RevisarMesaDeReportePorID(int ID)
+        public static int RevisarMesaDeReportePorID(MesaDeReporte mr)
         {
             try
             {
@@ -855,10 +912,16 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Int;
-                sqlpID.Value = ID;
+                sqlpID.Value = mr.Id;
+
+                SqlParameter sqlpRevisado = new SqlParameter();
+                sqlpRevisado.ParameterName = "@Revisado";
+                sqlpRevisado.SqlDbType = SqlDbType.Bit;
+                sqlpRevisado.Value = mr.Revisado; 
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
+                sqlcComando.Parameters.Add(sqlpRevisado);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -874,7 +937,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int RevisarMesaDeReportePorID(int " + ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int RevisarMesaDeReportePorID(MesaDeReporte " + mr.Id + ")): " + ex.Message);
             }
         }
 
@@ -901,21 +964,15 @@ namespace OSEF.APP.DL
                 sqlpID.ParameterName = "@ID";
                 sqlpID.SqlDbType = SqlDbType.Int;
                 sqlpID.Value = mdr.Id;
-                 
-                SqlParameter sqlpFacturado = new SqlParameter();
-                sqlpFacturado.ParameterName = "@Facturado";
-                sqlpFacturado.SqlDbType = SqlDbType.Bit;
-                sqlpFacturado.Value = mdr.Facturado;
 
                 SqlParameter sqlpRevisado = new SqlParameter();
                 sqlpRevisado.ParameterName = "@Revisado";
                 sqlpRevisado.SqlDbType = SqlDbType.Bit;
-                sqlpRevisado.Value = mdr.Revisado;
+                sqlpRevisado.Value = mdr.Revisado; 
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
-                sqlcComando.Parameters.Add(sqlpFacturado);
-                sqlcComando.Parameters.Add(sqlpRevisado);
+                sqlcComando.Parameters.Add(sqlpRevisado); 
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -931,7 +988,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int RevisarMesaDeReportePorID(int " + mdr.Id + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int RevisarYFacturarMesaDeReportePorID(MesaDeReporte " + mdr.Id + ")): " + ex.Message);
             }
         }
 

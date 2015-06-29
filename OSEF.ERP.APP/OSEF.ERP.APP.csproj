@@ -1531,6 +1531,7 @@
     <Folder Include="imagenesAvance\" />
     <Folder Include="imagenesReportes\" />
     <Folder Include="imagesVolumetrias\" />
+    <Folder Include="images\clientes\" />
     <Folder Include="images\menu\" />
     <Folder Include="preciariosGenerales\" />
   </ItemGroup>

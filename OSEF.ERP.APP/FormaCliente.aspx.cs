@@ -8,6 +8,7 @@ using OSEF.APP.BL;
 using Ext.Net;
 using System.Configuration;
 using OSEF.APP.EL;
+using System.IO;
 
 namespace OSEF.ERP.APP
 {
@@ -286,6 +287,16 @@ namespace OSEF.ERP.APP
                 ClienteBusiness.Actualizar(oCliente);
             }
 
+            string strDireccion = Server.MapPath(" ") + "\\images\\clientes\\" + oCliente.ID + "\\logo\\";
+            if (Directory.Exists(strDireccion))
+            {
+                fuImagenCliente.PostedFile.SaveAs(strDireccion + fuImagenCliente.FileName);
+            }
+            else
+            {
+                Directory.CreateDirectory(strDireccion);
+                fuImagenCliente.PostedFile.SaveAs(strDireccion + fuImagenCliente.FileName);
+            }
             //6. Mandar parametro (ID del Cliente)
             e.ExtraParamsResponse.Add(new Ext.Net.Parameter("registro", oCliente.ID, ParameterMode.Value));
         }

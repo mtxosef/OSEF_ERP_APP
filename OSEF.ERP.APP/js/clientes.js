@@ -510,3 +510,8 @@ var gpBuscaClientes_ItemDblClick = function (gridview, registro, gvhtml, index) 
     window.parent.App.wEmergente.getBody().App.cmbCliente.setValue(App.sClientes.getAt(index).get('Nombre')); 
     window.parent.App.wAyudaConcepto.hide();
 };
+
+
+var onFUCliente = function () {
+    console.log(App.fuImagenCliente);
+}

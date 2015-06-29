@@ -112,22 +112,13 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfID;
         
         /// <summary>
-        /// Control lblAnexos.
+        /// Control fuImagenCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label lblAnexos;
-        
-        /// <summary>
-        /// Control imgbtnAnexos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.ImageButton imgbtnAnexos;
+        protected global::Ext.Net.FileUploadField fuImagenCliente;
         
         /// <summary>
         /// Control fcNombre.

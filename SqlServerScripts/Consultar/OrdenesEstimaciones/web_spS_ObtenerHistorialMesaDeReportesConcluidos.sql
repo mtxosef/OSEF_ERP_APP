@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerMesaDeReportesConcluidos' AND
+			WHERE  name = 'web_spS_ObtenerHistorialMesaDeReportesConcluidos' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
+	DROP PROCEDURE web_spS_ObtenerHistorialMesaDeReportesConcluidos
 GO
 -- =============================================
 -- Author:		Giovanni Flores
 -- Create date: Jueves 23 de Abril de 2015
 -- Description:	Obtener todos los registros de Mesa de Reportes Concluidos
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerMesaDeReportesConcluidos
+CREATE PROCEDURE web_spS_ObtenerHistorialMesaDeReportesConcluidos
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -75,7 +75,7 @@ BEGIN
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND FacturaMantenimiento IS NULL
+		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND FacturaMantenimiento IS NOT NULL
 		AND Facturado <> 1;
 END
 GO

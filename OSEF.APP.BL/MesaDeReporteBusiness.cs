@@ -92,6 +92,24 @@ namespace OSEF.APP.BL
         }
 
         /// <summary>
+        /// Método que obtiene todos los regsitros de MesaDeReporte
+        /// </summary>
+        /// <returns></returns>
+        public static List<MesaDeReporte> ObtenerHistorialMesaDeReportesConcluidos()
+        {
+            //1. Obtener las MesaDeReportes en una lista
+            List<MesaDeReporte> lMesaDeReportesConcluidos = MesaDeReporteDataAccess.ObtenerHistorialMesaDeReportesConcluidos();
+
+            //2. Complementarlas con sucursal
+            foreach (MesaDeReporte sd in lMesaDeReportesConcluidos)
+            {
+                sd.RSucursal = SucursalBusiness.ObtenerSucursalPorID(sd.Sucursal);
+
+            }
+            return lMesaDeReportesConcluidos;
+        }
+
+        /// <summary>
         /// Obtener un registro de MesaDeReporte por su ID
         /// </summary>
         /// <param name="iID"></param>
@@ -157,7 +175,7 @@ namespace OSEF.APP.BL
         /// Método que Factura un registro de MesaDeReporte
         /// </summary>
         /// <param name="aRevision"></param>
-        public static int FacturarMesaDeReportePorID(int ID)
+        public static int FacturarMesaDeReportePorID(MesaDeReporte ID)
         {
             return MesaDeReporteDataAccess.FacturarMesaDeReportePorID(ID);
         }
@@ -166,7 +184,7 @@ namespace OSEF.APP.BL
         /// Método que Revisa un registro de MesaDeReporte
         /// </summary>
         /// <param name="aRevision"></param>
-        public static int RevisarMesaDeReportePorID(int ID)
+        public static int RevisarMesaDeReportePorID(MesaDeReporte ID)
         {
             return MesaDeReporteDataAccess.RevisarMesaDeReportePorID(ID);
         }
