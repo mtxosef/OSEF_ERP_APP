@@ -863,6 +863,12 @@ namespace OSEF.APP.DL
                 sqlpFacturado.SqlDbType = SqlDbType.Int;
                 sqlpFacturado.Value = mr.Facturado;
 
+
+                SqlParameter sqlpRevisado = new SqlParameter();
+                sqlpRevisado.ParameterName = "@Revisado";
+                sqlpRevisado.SqlDbType = SqlDbType.Int;
+                sqlpRevisado.Value = mr.Revisado;
+
                 SqlParameter sqlpFacturaMantenimiento = new SqlParameter();
                 sqlpFacturaMantenimiento.ParameterName = "@FacturaMantenimiento";
                 sqlpFacturaMantenimiento.SqlDbType = SqlDbType.VarChar;
@@ -871,6 +877,7 @@ namespace OSEF.APP.DL
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpFacturado);
+                sqlcComando.Parameters.Add(sqlpRevisado);
                 sqlcComando.Parameters.Add(sqlpFacturaMantenimiento);
 
                 //4. Abrir la conexión

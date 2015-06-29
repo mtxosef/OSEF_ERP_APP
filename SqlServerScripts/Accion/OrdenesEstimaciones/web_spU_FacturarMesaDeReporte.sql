@@ -31,6 +31,7 @@ CREATE PROCEDURE web_spU_FacturarMesaDeReporte
 	-- Add the parameters for the stored procedure here
 	@ID				INT, 
 	@Facturado			BIT,
+	@Revisado			BIT,
 	@FacturaMantenimiento VARCHAR(50)
 AS
 BEGIN
@@ -39,7 +40,7 @@ BEGIN
 	SET NOCOUNT ON; 
     -- Insert statements for procedure here  
 	UPDATE OrdenesEstimaciones
-	SET Facturado = @Facturado, FacturaMantenimiento = @FacturaMantenimiento
+	SET Facturado = @Facturado, Revisado = @Revisado, FacturaMantenimiento = @FacturaMantenimiento
 	WHERE ID = @ID;
 	END 
 GO

@@ -272,12 +272,13 @@ var cClasificacion_Renderer = function (valor, metaData, registro) {
 var chkHistorialFacturado_Change = function () {
     var loadmask = new Ext.LoadMask(Ext.getBody(), { msg: "Espere..." });
     loadmask.show();
-    if(App.chkHistorialFacturado.getValue())
-    {  
+    if (App.chkHistorialFacturado.getValue()) {
         App.direct.ObtenerMesaDeReporteFacturado();
+//        console.log(App.gpExploradorMesaDeReporte);
         loadmask.hide();
-    } else { 
+    } else {
         App.direct.ObtenerMesaDeReporte();
+        //        App.gpExploradorMesaDeReporte.setHidden(2, true);
         loadmask.hide();
     }
 };
@@ -300,14 +301,31 @@ var onBilledRecords = function () {
         i++;
     }
     if (billed & report) {
-        data.push(xmov);
-        dlg = Ext.MessageBox.prompt('ATENCIÓN', 'Escribe el numero de factura:', function (btn, text) {
-            if (btn == 'ok') {
-                ok = true;
-                data.push(text);
-                return data;
-            }
-        }); 
+        Ext.Msg.show({
+            title: 'ATENCIÓN',
+            msg: 'Escribe el numero de factura: ',
+            width: 300,
+            buttons: Ext.MessageBox.OKCANCEL,
+            multiline: true,
+            fn: function (value, text) {
+                if (value == 'ok') {
+                    if (/^[A-Za-z0-9 ]{3,20}$/.test(text)) {
+                        App.direct.setFacturar(getUpdatedRecords(), text);
+                    } else {
+                        Ext.Msg.show({
+                            id: 'msgReportFact',
+                            title: 'ADVERTENCIA',
+                            msg: "DEBE DE ESCRIBIR UN NÚMERO DE FACTURA VÁLIDO.",
+                            buttons: Ext.MessageBox.OK,
+                            onEsc: Ext.emptyFn,
+                            closable: false,
+                            icon: Ext.MessageBox.WARNING
+                        }); 
+                    }
+                }
+            },
+            animEl: 'addAddressBtn'
+        });
     } else {
         if (urecords.length <= 0) {
             Ext.Msg.show({
@@ -319,7 +337,6 @@ var onBilledRecords = function () {
                 closable: false,
                 icon: Ext.MessageBox.WARNING
             });
-            return 0;
         } else {
             Ext.Msg.show({
                 id: 'msgFactReport',
@@ -330,7 +347,21 @@ var onBilledRecords = function () {
                 closable: false,
                 icon: Ext.MessageBox.WARNING
             });
-            return 0;
         }
     }
+};
+
+//Evento que hace el filtro al seleccionar algun elemento
+var txtFacturaMantenimiento_Change = function (textfield, newValue, oldValue, e) {
+    App.sMesaDeReporte.clearFilter();
+    App.sMesaDeReporte.filter([{ filterFn: function (item) { 
+        if (item.get('FacturaMantenimiento').toUpperCase().indexOf(newValue.toUpperCase()) > -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    }]);
+    App.gpExploradorMesaDeReporte.getSelectionModel().deselectAll();
 };

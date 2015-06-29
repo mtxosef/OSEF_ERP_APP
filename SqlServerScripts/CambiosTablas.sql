@@ -146,4 +146,4 @@ ALTER TABLE OrdenesEstimaciones ADD Revisado BIT NOT  NULL DEFAULT (0)
 ALTER TABLE Clientes ADD RutaLogo VARCHAR(500) NOT NULL DEFAULT('')
 
 --Cambios Giovanni Flores 26 de Junio 2015
-ALTER TABLE OrdenesEstimaciones ADD FacturaMantenimiento VARCHAR(50) NULL DEFAULT('') 
+ALTER TABLE OrdenesEstimaciones ADD FacturaMantenimiento VARCHAR(50)NOT NULL DEFAULT('') 

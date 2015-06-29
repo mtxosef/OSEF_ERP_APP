@@ -181,17 +181,17 @@
                                     ImageUrl="assets/img/controles/factred.png"
                                     Height="22px"
                                     Width="22px">
-                                    <DirectEvents>
+                                    <%--<DirectEvents>
                                         <Click OnEvent="setFacturar">
                                             <EventMask ShowMask="true" />
                                             <ExtraParams> 
                                                 <ext:Parameter Name="rData" Value="onBilledRecords()" Mode="Raw" />
                                             </ExtraParams>
                                         </Click>
-                                    </DirectEvents>       
-                                    <%--<Listeners> 
+                                    </DirectEvents> --%>      
+                                    <Listeners> 
                                         <Click Fn="onBilledRecords"></Click>
-                                    </Listeners>--%>
+                                    </Listeners>
                                 </ext:ImageButton>
                                 <ext:Checkbox
                                     ID="chkHistorialFacturado" 
@@ -263,7 +263,7 @@
                                 <ext:ModelField Name="MovID" Type="String" />
                                 <ext:ModelField Name="Sucursal" Type="String" />
                                 <ext:ModelField Name="Reporte" Type="String" />
-                                 <ext:ModelField Name="RSucursal" Type="Object" />
+                                <ext:ModelField Name="RSucursal" Type="Object" />
                                 <ext:ModelField Name="FechaEmision" Type="Date" />
                                 <ext:ModelField Name="FechaOrigen" Type="Date" />
                                 <ext:ModelField Name="Observaciones" Type="String" />
@@ -274,6 +274,7 @@
                                 <ext:ModelField Name="Facturado" Type="Boolean" />
                                 <ext:ModelField Name="Clasificacion" Type="String" />
                                 <ext:ModelField Name="Revisado" Type="Boolean" />
+                                <ext:ModelField Name="FacturaMantenimiento" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -310,10 +311,30 @@
                             <Listeners>
                                 <Change Fn="setCheckedAllRecords_Facturado"></Change> 
                             </Listeners>
-                        </ext:Checkbox>
-                         
+                        </ext:Checkbox> 
                         </HeaderItems>
                     </ext:CheckColumn>
+                    <ext:Column
+                    ID="cFMantenimiento"
+                    runat="server"
+                    Align="Center"
+                    Name="cFMantenimiento"
+                    Text="FACTURA"
+                    Hidden="false"
+                    Width="80"
+                    DataIndex="FacturaMantenimiento">
+                        <HeaderItems>
+                            <ext:TextField
+                                ID="txtFacturaMantenimiento"
+                                runat="server"
+                                EmptyText="Filtrar por Factura"
+                                Editable="false">
+                              <Listeners>
+                                    <Change Fn="txtFacturaMantenimiento_Change" />
+                                </Listeners>
+                            </ext:TextField>
+                        </HeaderItems>
+                    </ext:Column>
 
                      
                    <ext:CheckColumn ID="cRevisado"

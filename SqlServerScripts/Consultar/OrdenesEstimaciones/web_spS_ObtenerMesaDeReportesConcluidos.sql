@@ -75,7 +75,7 @@ BEGIN
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND FacturaMantenimiento IS NULL
+		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND FacturaMantenimiento = ''
 		AND Facturado <> 1;
 END
 GO

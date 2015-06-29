@@ -89,7 +89,7 @@ namespace OSEF.ERP.APP
                     MesaDeReporte xmdr = new MesaDeReporte();
                     xmdr.Id = mdr.Id; 
                     xmdr.Revisado = mdr.Revisado;
-                    MesaDeReporteBusiness.RevisarMesaDeReportePorID(mdr);
+                    MesaDeReporteBusiness.RevisarMesaDeReportePorID(xmdr);
                     n++;
                 }
                 X.Msg.Alert("ATENCIÓN", n + " REGISTROS REVISADOS.", new JFunction { Fn = "showResult(true)" }).Show();
@@ -101,11 +101,12 @@ namespace OSEF.ERP.APP
         }
 
         [DirectMethod]
-        public void setFacturar(object sender, DirectEventArgs e)
+        public void setFacturar(string data, string fmantenimiento)
         {
             //string strRevisados = e.ExtraParams["registrosactualizados"];
+            string strFacturados = data;
 
-            string strFacturados = e.ExtraParams["rData"];
+            //string strFacturados = e.ExtraParams["rData"];
             int n = 0;
             if (strFacturados != null && !strFacturados.Equals("0"))
             {
@@ -115,9 +116,10 @@ namespace OSEF.ERP.APP
                 {
                     MesaDeReporte xmdr = new MesaDeReporte();
                     xmdr.Id = mdr.Id;
-                    xmdr.Facturado = mdr.Facturado; 
-                    //xmdr.FacturaMantenimiento = fmantenimiento;
-                    MesaDeReporteBusiness.FacturarMesaDeReportePorID(mdr);
+                    xmdr.Facturado = mdr.Facturado;
+                    xmdr.Revisado = mdr.Revisado;
+                    xmdr.FacturaMantenimiento = fmantenimiento;
+                    MesaDeReporteBusiness.FacturarMesaDeReportePorID(xmdr);
                     n++;
                 }
                 X.Msg.Alert("ATENCIÓN", n + " REGISTROS FACTURADOS.", new JFunction { Fn = "showResult(true)" }).Show();
