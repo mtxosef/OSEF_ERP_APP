@@ -399,7 +399,7 @@
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenEstimacionPorID.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesEstimacionesConcluidos.sql
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerMesaDeReportesConcluidos.sql 
-:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerHistorialMesaDeReportesConcluidos.sql 
+:r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerHistorialMesaDeReportesConcluidos.sql  
 :r c:\SqlServerScripts\Consultar\OrdenesEstimaciones\web_spS_ObtenerOrdenesCambios.sql
 -- OrdenesEstimaciones (Insertar)
 :r c:\SqlServerScripts\Insertar\OrdenesEstimaciones\web_spI_InsertarOrdenEstimacion.sql
@@ -407,8 +407,9 @@
 :r c:\SqlServerScripts\Modificar\OrdenesEstimaciones\web_spU_ActualizarOrdenEstimacion.sql
 -- OrdenesEstimaciones (Acción)
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarOrdenPorID.sql
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarEstimacionPorID.sql
-:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spU_RevisarYFacturarMesaDeReporte.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AfectarEstimacionPorID.sql 
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spU_FacturarMesaDeReporte.sql
+:r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spU_RevisarMesaDeReporte.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_AvanzarMesaReportePorID.sql
 :r c:\SqlServerScripts\Accion\OrdenesEstimaciones\web_spS_CancelarOrdenEstimacionPorID.sql
 -----------------------------------------------------------------------------------
