@@ -230,7 +230,7 @@
                             AutoFocus="true"
                             EmptyText="BUSCAR POR ASUNTO"
                             StyleSpec="margin-top: 0px;"
-                            Width="250">
+                            Width="150">
                             <Listeners>
                                 <Change Fn="txtBuscar_Change" />
                             </Listeners>
@@ -319,8 +319,7 @@
                     runat="server"
                     Align="Center"
                     Name="cFMantenimiento"
-                    Text="FACTURA"
-                    Hidden="false"
+                    Text="FACTURA" 
                     Width="80"
                     DataIndex="FacturaMantenimiento">
                         <HeaderItems>

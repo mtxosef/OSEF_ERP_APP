@@ -142,6 +142,8 @@ var sMov_Add = function (store, registros, index, eOpts) {
         }
         else {
             App.cmbMov.select('Orden de Cambio');
+            Ext.getCmp('fcObservaciones').setFieldLabel('Justificación');
+            App.txtfObservaciones.emptyText = 'Escriba la justificación del concepto.'; 
             App.cmbMov.setReadOnly(true);
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
