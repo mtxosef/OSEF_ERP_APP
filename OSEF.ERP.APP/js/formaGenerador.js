@@ -59,7 +59,7 @@ var sFormaGenerador_Load = function () {
 
 
     }
-    else if (App.sFormaGenerador.getCount() < 19) {
+    else {
         App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});
 
     }
@@ -135,7 +135,7 @@ var ceGenerador_Edit = function (cellediting, columna) {
 
 
         if (registro.get('Area').length != 0
-        && registro.get('Total') != 0 && App.sFormaGenerador.getCount() < 19) {
+        && registro.get('Total') != 0) {
 
             //Insertar un nuevo registro
             App.sFormaGenerador.insert(App.sFormaGenerador.getCount(), {});

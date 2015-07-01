@@ -59,8 +59,8 @@ END
 		AND SOE.MovEnLinea = 1
 	 AND SOE.Estatus IN('CONCLUIDO') 
 	 AND SOE.Revisado=1
-	AND SOE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'  
-
+	  AND SOE.Facturado=0
+	AND SOE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'   
 		)  Cantidades,
 		(SELECT SUM(OEDSQ.Importe) FROM OrdenesEstimacionesD OEDSQ 
 		JOIN OrdenesEstimaciones SOE
@@ -70,7 +70,8 @@ END
 		AND SOE.MovEnLinea = 1
 	 AND SOE.Estatus IN('CONCLUIDO') 
 	 AND SOE.Revisado=1
-	AND SOE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'  )  Importes
+	  AND SOE.Facturado=0
+	AND SOE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'   )   Importes
 		FROM OrdenesEstimaciones OE
 		JOIN OrdenesEstimacionesD OED ON OE.ID = OED.ID
 		JOIN PreciariosGeneralesConceptos PGC ON PGC.ID = OED.ConceptoID 
@@ -79,7 +80,8 @@ END
 		AND OE.MovEnLinea = 1
 	 AND OE.Estatus IN('CONCLUIDO') 
 	 AND oe.Revisado=1
-	AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%' 
+	  AND oe.Facturado=0
+	AND OE.CLASIFICACION LIKE '%'+@CLASIFICACION+'%'   
 	GROUP BY OED.ConceptoID,
 		PGC.CLAVE, 
 		PGC.Descripcion,
@@ -88,6 +90,7 @@ END
 		OE.Estatus,
 		OE.Revisado,
 		OE.Clasificacion,
+		OE.Facturado,
 		OED.Precio ORDER BY OED.ConceptoID DESC;
 END
 GO
