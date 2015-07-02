@@ -8,6 +8,7 @@ using Ext.Net;
 using OSEF.APP.BL;
 using OSEF.APP.EL;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace OSEF.ERP.APP
 {
@@ -98,7 +99,9 @@ namespace OSEF.ERP.APP
                     RPreciario= oVolumetria.RPreciario,
                     RSucursal = oVolumetria.RSucursal,
                     Origen= oVolumetria.Origen,
-                    OrigenID = oVolumetria.Origenid
+                    OrigenID = oVolumetria.Origenid,
+                    Cliente = oVolumetria.Cliente,
+                    RCliente = oVolumetria.RCliente
                 });
             }
         }
@@ -180,6 +183,12 @@ namespace OSEF.ERP.APP
                     case "txtfObservaciones":
                         oVolumetriaForma.Observaciones = sd.Value;
                         break;
+                    case "IdCliente":
+                        oVolumetriaForma.RCliente = ClienteBusiness.ObtenerClientePorID(sd.Value);
+                        break;
+                    case "txtCliente":
+                        oVolumetriaForma.Cliente = sd.Value;
+                        break;
                 }
             }
             oVolumetriaForma.Estatus = "BORRADOR";
@@ -224,7 +233,9 @@ namespace OSEF.ERP.APP
                     RPreciario = oVolumetriaForma.RPreciario,
                     RSucursal = oVolumetriaForma.RSucursal,
                     Estatus = oVolumetriaForma.Estatus,
-                    Usuario = oVolumetriaForma.Usuario
+                    Usuario = oVolumetriaForma.Usuario,
+                    //Cliente = oVolumetriaForma.Cliente,
+                    RCliente = oVolumetriaForma.RCliente
                 });
 
                 //5. Guardar Detalle y regresar valor
@@ -234,7 +245,13 @@ namespace OSEF.ERP.APP
             else
             {
                 //6. Complementar datos y actualizar encabezado
+
                 oVolumetriaForma.ID = oVolumetria.ID;
+                //if (oVolumetriaForma.Cliente == null)
+                //{
+                //    oVolumetriaForma.Cliente = "";
+                //    oVolumetria.RCliente.ID = "";
+                //}
                 VolumetriaBusiness.actualizarVolumetria(oVolumetriaForma);
 
                 //7. Actualizar store de Revision
@@ -243,6 +260,7 @@ namespace OSEF.ERP.APP
                 sVolumetria.GetAt(0).Set("Preciario", oVolumetriaForma.Preciario);
                 sVolumetria.GetAt(0).Set("FechaEmision", oVolumetriaForma.FechaEmision);
                 sVolumetria.GetAt(0).Set("Observaciones", oVolumetriaForma.Observaciones);
+                //sVolumetria.GetAt(0).Set("Cliente", oVolumetriaForma.Cliente);
 
                 //8. Borrar todo el detalle e insertarlo de nuevo
                 VolumetriaDBusiness.BorrarPorVolumetria(oVolumetriaForma.ID);

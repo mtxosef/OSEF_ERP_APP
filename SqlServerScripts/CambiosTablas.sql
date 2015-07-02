@@ -147,3 +147,9 @@ ALTER TABLE Clientes ADD RutaLogo VARCHAR(500) NOT NULL DEFAULT('')
 
 --Cambios Giovanni Flores 26 de Junio 2015
 ALTER TABLE OrdenesEstimaciones ADD FacturaMantenimiento VARCHAR(50)NOT NULL DEFAULT('') 
+
+--Cambios Giovanni Flores 30 de Junio 2015
+ALTER TABLE Volumetrias ADD Cliente CHAR(8) NULL FOREIGN KEY REFERENCES Clientes(ID)
+
+--Cambios Giovanni Flores 1 de Junio 2015
+ALTER TABLE OrdenesEstimaciones ADD Cliente CHAR(8) NULL FOREIGN KEY REFERENCES Clientes(ID)

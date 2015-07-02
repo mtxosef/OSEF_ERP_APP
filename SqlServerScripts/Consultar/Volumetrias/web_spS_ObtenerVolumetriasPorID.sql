@@ -46,7 +46,8 @@ BEGIN
 		Observaciones,
 		Estatus,
 		Usuario,
-		Preciario
+		Preciario,
+		Cliente
 	FROM
 		Volumetrias
 	WHERE

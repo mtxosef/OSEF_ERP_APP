@@ -52,6 +52,8 @@
                         <ext:ModelField Name="RPreciario" Type="Object" />
                         <ext:ModelField Name="Origen" Type="String" />
                         <ext:ModelField Name="OrigenID" Type="String" />
+                        <ext:ModelField Name="Cliente" Type="String"/>
+                        <ext:ModelField Name="RCliente" Type="Object"/>
                     </Fields>
                 </ext:Model>
             </Model>
@@ -361,29 +363,7 @@
                                             Margins="0 3 0 0"
                                             Disabled="true" />
                                             
-                                        <ext:TextField 
-                                        ID="cmbCliente" 
-                                        runat="server" 
-                                        Width="250" 
-                                        StyleSpec="margin-right: 3px;  height:24px;"
-                                        AllowBlank="false" 
-                                        FieldLabel="Cliente"
-                                        ReadOnly="true"> 
-                                        <RightButtons>
-                                            <ext:Button 
-                                            ID="btnBuscaCliente" 
-                                            runat="server" 
-                                            Icon="Find" 
-                                            StandOut="true">
-                                                <Listeners>
-                                                    <Click Fn="btnBuscar_Cliente" />
-                                                </Listeners>
-                                            </ext:Button>
-                                        </RightButtons>  
-                                        <Listeners>  
-                                            <Change Fn="cmbPreciario_Change" />
-                                            </Listeners>  
-                                     </ext:TextField> 
+                                       
                                     </Items>  
                                 </ext:FieldContainer>
                                 <ext:FieldContainer
@@ -530,6 +510,38 @@
                                                 Cls="my-date-picker">
                                             </PickerOptions>
                                         </ext:DateField>
+                                         <ext:TextField 
+                                        ID="IdCliente" 
+                                        runat="server" 
+                                        Width="227" 
+                                        Height="25px"
+                                        StyleSpec="margin-right: 3px;  height:24px;"
+                                        AllowBlank="false" 
+                                        FieldLabel="Cliente"
+                                        ReadOnly="true"> 
+                                        <RightButtons>
+                                            <ext:Button 
+                                            ID="btnBuscaCliente" 
+                                            runat="server" 
+                                            Icon="Find" 
+                                            StandOut="true">
+                                                <Listeners>
+                                                    <Click Fn="btnBuscar_Cliente" />
+                                                </Listeners>
+                                            </ext:Button>
+                                        </RightButtons>  
+                                        <Listeners>  
+                                            <Change Fn="cmbPreciario_Change" />
+                                            </Listeners>  
+                                     </ext:TextField> 
+                                     <ext:TextField
+                                             ID="txtCliente"
+                                             runat ="server"
+                                             Width="130"
+                                             StyleSpec="margin-right: 3px;  height:24px;"
+                                                AllowBlank="false" 
+                                                ReadOnly="true"/> 
+
                                     </Items>
                                 </ext:FieldContainer>
                                 <ext:FieldContainer

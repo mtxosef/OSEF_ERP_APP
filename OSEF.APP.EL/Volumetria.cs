@@ -24,12 +24,8 @@ namespace OSEF.APP.EL
         string origen;
         string origenid;
         string usuario;
-
-      
-
-    
-
-        
+        string cliente;
+        Cliente rcliente;
 
         #endregion
 
@@ -116,10 +112,18 @@ namespace OSEF.APP.EL
             get { return usuario; }
             set { usuario = value; }
         }
-        #endregion
 
+        public string Cliente
+        {
+            get { return cliente; }
+            set { cliente = value; }
+        }
 
-
-
+        public Cliente RCliente
+        {
+            get { return rcliente; }
+            set { rcliente = value; }
+        }
+        #endregion 
     }
 }

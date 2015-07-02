@@ -73,6 +73,8 @@
                         <ext:ModelField Name="NoOrden" Type="String" />
                         <ext:ModelField Name="ReferenciaOrden" Type="String" />
                         <ext:ModelField Name="Clasificacion" Type="String" />
+                        <ext:ModelField Name="Cliente" Type="String" />
+                        <ext:ModelField Name="RCliente" Type="Object" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -339,7 +341,7 @@
                             Title="Datos Generales"
                             BodyPadding="5"
                             Width="900"
-                            Height="206" 
+                            Height="226" 
                             AutoScroll="false">
                             <Items>
                                 <ext:FieldSet 
@@ -477,6 +479,7 @@
                                             ID="fcFechaEmision"
                                             runat="server"
                                             LabelWidth="120"
+                                            Height="25px"
                                             FieldLabel="Fecha de emisión"
                                             AnchorHorizontal="100%"
                                             Layout="HBoxLayout">
@@ -508,7 +511,10 @@
                                                     LabelWidth="90"
                                                     runat="server" 
                                                     Width="177"> 
-                                                </ext:TextField>                                                
+                                                </ext:TextField>            
+                                                
+                                                
+                                                                                    
                                             </Items>
                                         </ext:FieldContainer>
                                         <ext:FieldContainer
@@ -532,12 +538,50 @@
                                                 </ext:TextField>
                                             </Items>
                                         </ext:FieldContainer>
+                                        <ext:FieldContainer
+                                        ID="fClientes"
+                                        runat="server"
+                                        LabelWidth="120"
+                                        Width="227" 
+                                        Height="25px"
+                                        FieldLabel="Cliente"
+                                        Layout="HBoxLayout">
+                                        <Items>
+                                            <ext:TextField 
+                                                ID="IdCliente" 
+                                                runat="server" 
+                                                Width="200" 
+                                                StyleSpec="margin-right: 3px;  height:24px;"
+                                                AllowBlank="false" 
+                                                ReadOnly="true"> 
+                                                <RightButtons>
+                                                    <ext:Button 
+                                                    ID="btnBuscaCliente" 
+                                                    runat="server" 
+                                                    Icon="Find" 
+                                                    StandOut="true">
+                                                        <Listeners>
+                                                            <Click Fn="btnBuscar_Cliente" />
+                                                        </Listeners>
+                                                    </ext:Button>
+                                                </RightButtons>  
+                                             </ext:TextField> 
+                                             <ext:TextField
+                                             ID="txtCliente"
+                                             runat ="server"
+                                             Width="360"
+                                             StyleSpec="margin-right: 3px;  height:24px;"
+                                                AllowBlank="false" 
+                                                ReadOnly="true"/> 
+                                        </Items>
+                                        </ext:FieldContainer>
                                     </Items>
                                 </ext:FieldSet>
                                 <ext:FieldContainer
                                     ID="fcDescricpion"
                                     runat="server"
                                     AnchorHorizontal="100%" 
+                                    Height="120"
                                     Layout="ColumnLayout">
                                     <Items>
                                         <ext:TextField 
@@ -556,7 +600,7 @@
                                             StyleSpec="margin-left: 0px;  margin-top:-5px;"
                                             Text=""
                                             Cls="xcustomtextAreaSinBorde"
-                                            Height="66"
+                                            Height="110"
                                             Width="808" >
                                         </ext:TextArea>
                                     </Items>
@@ -1023,14 +1067,14 @@
                         <ext:FieldSet
                             ID="fsDetalle" 
                             runat="server" 
-                            Height="225" 
+                            Height="205" 
                             Title="Detalle"
                             DefaultAnchor="100%">
                             <Items>
                                 <ext:GridPanel
                                     ID="gpOrdenEstimacion"
                                     runat="server"
-                                    Width="870"
+                                    Width="900"
                                     Height="200"
                                     EnableColumnHide="false"
                                     EnableColumnMove="false">

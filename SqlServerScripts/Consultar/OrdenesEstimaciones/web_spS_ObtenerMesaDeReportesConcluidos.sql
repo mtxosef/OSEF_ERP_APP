@@ -71,7 +71,8 @@ BEGIN
 		Facturado,
 		Clasificacion,
 		Revisado,
-		FacturaMantenimiento
+		FacturaMantenimiento,
+		Cliente
 	FROM
 		OrdenesEstimaciones
 	WHERE 

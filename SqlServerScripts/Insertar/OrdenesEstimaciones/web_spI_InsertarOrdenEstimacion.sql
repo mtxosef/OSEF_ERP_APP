@@ -58,7 +58,8 @@ CREATE PROCEDURE web_spI_InsertarOrdenEstimacion
 	@RutaImagen		VARCHAR(500),
 	@Atendido		VARCHAR(5),
 	@ReferenciaOrden	VARCHAR(90),
-	@Clasificacion			VARCHAR(25)
+	@Clasificacion			VARCHAR(25),
+	@Cliente				CHAR(8)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -114,7 +115,8 @@ END NoOrden);
 			NoOrden,
 			ReferenciaOrden,
 			Facturado,
-			Clasificacion
+			Clasificacion,
+			Cliente
 		)
 	VALUES (
 			@Mov,
@@ -148,7 +150,8 @@ END NoOrden);
 			@NoOrden,
 			@ReferenciaOrden,
 			0,
-			@Clasificacion
+			@Clasificacion,
+			@Cliente
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

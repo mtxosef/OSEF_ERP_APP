@@ -68,7 +68,8 @@ BEGIN
 		NoOrden,
 		ReferenciaOrden,
 		Facturado,
-		Clasificacion
+		Clasificacion,
+		Cliente
 	FROM
 		OrdenesEstimaciones
 	WHERE 
@@ -107,7 +108,8 @@ UNION
 		NoOrden,
 		ReferenciaOrden,
 		Facturado,
-		Clasificacion
+		Clasificacion,
+		Cliente
 	FROM
 		OrdenesEstimaciones
 	WHERE 
