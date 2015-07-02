@@ -153,3 +153,8 @@ ALTER TABLE Volumetrias ADD Cliente CHAR(8) NULL FOREIGN KEY REFERENCES Clientes
 
 --Cambios Giovanni Flores 1 de Junio 2015
 ALTER TABLE OrdenesEstimaciones ADD Cliente CHAR(8) NULL FOREIGN KEY REFERENCES Clientes(ID)
+
+--Cambios Giovanni Flores 2 de Junio 2015
+ALTER TABLE Sucursales ADD TipoConcepto VARCHAR(50) NULL
+ALTER TABLE Sucursales ADD EmpresaSupervisora VARCHAR(50) NULL
+ALTER TABLE Sucursales ADD TipoObra VARCHAR(50) NULL

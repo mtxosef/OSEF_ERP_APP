@@ -66,7 +66,10 @@ BEGIN
 		FinObra,
 		SemanasObra,
 		FechaAlta,
-		Estatus
+		Estatus,
+		TipoConcepto,
+		EmpresaSupervisora,
+		TipoObra
 	FROM
 		Sucursales
 	WHERE

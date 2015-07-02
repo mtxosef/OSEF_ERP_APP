@@ -65,7 +65,10 @@ BEGIN
 		s.FinObra,
 		s.SemanasObra,
 		s.FechaAlta,
-		s.Estatus
+		s.Estatus,
+		TipoConcepto,
+		EmpresaSupervisora,
+		TipoObra
 	FROM
 		Sucursales s 
 		WHERE s.ID IN (SELECT oe.Sucursal FROM OrdenesEstimaciones oe 

@@ -47,7 +47,11 @@ namespace OSEF.APP.EL
         Municipio rmunicipio;
         Colonia rcolonia;
         CodigoPostal rcodigopostal;
-         
+
+        string tipoconcepto;
+        string tipoobra;
+        string empresasupervisora;
+
         #endregion
 
         #region Propiedades
@@ -256,6 +260,24 @@ namespace OSEF.APP.EL
         {
             get { return rcodigopostal; }
             set { rcodigopostal = value; }
+        }
+
+        public string TipoConcepto
+        {
+            get { return tipoconcepto; }
+            set { tipoconcepto = value; }
+        }
+
+        public string TipoObra
+        {
+            get { return tipoobra; }
+            set { tipoobra = value; }
+        }
+
+        public string EmpresaSupervisora
+        {
+            get { return empresasupervisora; }
+            set { empresasupervisora = value; }
         }
         #endregion
     }

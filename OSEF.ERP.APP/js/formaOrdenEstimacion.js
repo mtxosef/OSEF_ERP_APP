@@ -1280,7 +1280,7 @@ var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
     //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
     //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
-    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
+//    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
 };
 
@@ -1299,7 +1299,7 @@ var obetenerRenglon_Select = function (a, registro, c) {
     //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
     //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
-    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
+//    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
 }
 

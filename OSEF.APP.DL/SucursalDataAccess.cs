@@ -190,6 +190,21 @@ namespace OSEF.APP.DL
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
                 sqlpEstatus.Value = iSucursal.Estatus;
 
+                SqlParameter sqlpTipoConcepto = new SqlParameter();
+                sqlpTipoConcepto.ParameterName = "@TipoConcepto";
+                sqlpTipoConcepto.SqlDbType = SqlDbType.VarChar;
+                sqlpTipoConcepto.Value = iSucursal.TipoConcepto;
+
+                SqlParameter sqlpEmpresaSupervisora = new SqlParameter();
+                sqlpEmpresaSupervisora.ParameterName = "@EmpresaSupervisora";
+                sqlpEmpresaSupervisora.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaSupervisora.Value = iSucursal.EmpresaSupervisora;
+
+                SqlParameter sqlpTipoObra = new SqlParameter();
+                sqlpTipoObra.ParameterName = "@TipoObra";
+                sqlpTipoObra.SqlDbType = SqlDbType.VarChar;
+                sqlpTipoObra.Value = iSucursal.TipoObra;
+                 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpCR);
@@ -220,6 +235,9 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpSemanasObra);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
                 sqlcComando.Parameters.Add(sqlpEstatus);
+                sqlcComando.Parameters.Add(sqlpTipoConcepto);
+                sqlcComando.Parameters.Add(sqlpEmpresaSupervisora);
+                sqlcComando.Parameters.Add(sqlpTipoObra);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -408,8 +426,23 @@ namespace OSEF.APP.DL
                 SqlParameter sqlpEstatus = new SqlParameter();
                 sqlpEstatus.ParameterName = "@Estatus";
                 sqlpEstatus.SqlDbType = SqlDbType.VarChar;
-                sqlpEstatus.Value = uSucursal.Estatus;
+                sqlpEstatus.Value = uSucursal.Estatus; 
 
+                SqlParameter sqlpTipoConcepto = new SqlParameter();
+                sqlpTipoConcepto.ParameterName = "@TipoConcepto";
+                sqlpTipoConcepto.SqlDbType = SqlDbType.VarChar;
+                sqlpTipoConcepto.Value = uSucursal.TipoConcepto;
+
+                SqlParameter sqlpEmpresaSupervisora = new SqlParameter();
+                sqlpEmpresaSupervisora.ParameterName = "@EmpresaSupervisora";
+                sqlpEmpresaSupervisora.SqlDbType = SqlDbType.VarChar;
+                sqlpEmpresaSupervisora.Value = uSucursal.EmpresaSupervisora;
+
+                SqlParameter sqlpTipoObra = new SqlParameter();
+                sqlpTipoObra.ParameterName = "@TipoObra";
+                sqlpTipoObra.SqlDbType = SqlDbType.VarChar;
+                sqlpTipoObra.Value = uSucursal.TipoObra;
+                 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
                 sqlcComando.Parameters.Add(sqlpCR);
@@ -439,7 +472,10 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpFinObra);
                 sqlcComando.Parameters.Add(sqlpSemanasObra);
                 sqlcComando.Parameters.Add(sqlpFechaAlta);
-                sqlcComando.Parameters.Add(sqlpEstatus);
+                sqlcComando.Parameters.Add(sqlpEstatus); 
+                sqlcComando.Parameters.Add(sqlpTipoConcepto);
+                sqlcComando.Parameters.Add(sqlpEmpresaSupervisora);
+                sqlcComando.Parameters.Add(sqlpTipoObra);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();

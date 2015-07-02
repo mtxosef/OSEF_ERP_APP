@@ -28,8 +28,7 @@
 </head>
 <body>
     <form id="Form1" runat="server">
-        <ext:ResourceManager ID="rmFormaSucursal" runat="server" HideInDesign="true" />
-    
+        <ext:ResourceManager ID="rmFormaSucursal" runat="server" HideInDesign="true" /> 
         <ext:Store ID="sSucursal" runat="server">
             <Model>
                 <ext:Model ID="mSucursal" runat="server" IDProperty="ID">
@@ -68,6 +67,9 @@
                         <ext:ModelField Name="FechaAlta" Type="Date" />
                         <ext:ModelField Name="Estatus" Type="String" />
                         <ext:ModelField Name="RProvedor" Type="Object" />
+                        <ext:ModelField Name="TipoConcepto" Type="String" />
+                        <ext:ModelField Name="EmpresaSupervisora" Type="String" />
+                        <ext:ModelField Name="TipoObra" Type="String" />
                     </Fields>
                 </ext:Model>
             </Model>
@@ -75,8 +77,7 @@
                 <Load Fn="sSucursal_Load" />
                 <Add Fn="sSucursal_Add" />
             </Listeners>
-        </ext:Store>
-
+        </ext:Store> 
         <div>
             <ext:Panel
                 ID="pSucursales"
@@ -87,7 +88,7 @@
                     <ext:FormPanel
                         ID="fpFormaSucursales"
                         runat="server"
-                        Height="410"
+                        Height="470"
                         DefaultButton="imgbtnGuardar"
                         MonitorResize="true">
                         <Items>
@@ -106,6 +107,7 @@
                                         BodyPadding="10"
                                         MonitorResize="true">
                                         <Items>
+
                                         <ext:FieldContainer ID="ContenedorID" runat="server" FieldLabel="ID" LabelWidth="120"
                                             AnchorHorizontal="100%" Layout="ColumnLayout">
                                             <Items>
@@ -231,9 +233,8 @@
 
                                                 </ext:TextField>
                                             </Items>
-                                        </ext:FieldContainer>
-
-                                                 <ext:FieldContainer ID="FieldContainer1" runat="server" LabelWidth="120" FieldLabel="Municipio"
+                                        </ext:FieldContainer> 
+                                        <ext:FieldContainer ID="FieldContainer1" runat="server" LabelWidth="120" FieldLabel="Municipio"
                                             AnchorHorizontal="100%" Layout="ColumnLayout">
                                             <Items>
                                               
@@ -372,10 +373,45 @@
                                                 </ext:ComboBox>
                                             </Items>
                                         </ext:FieldContainer>
+                                         
+                                        <ext:FieldContainer ID="ContenedorESTDCONTO" runat="server" FieldLabel="Empresa Supervisora"
+                                            LabelWidth="120" AnchorHorizontal="100%" Layout="ColumnLayout">
+                                            <Items>  
+                                                <ext:ComboBox 
+                                                    ID="cmbEmpresaSupervisora"
+                                                    runat="server" Width="200" Disabled="false" Editable="false" StyleSpec="margin-right: 6px;"> 
+                                                    <Items>
+                                                        <ext:ListItem Index="0" Text="LEND LEASE" Value="LEND LEASE" />
+                                                        <ext:ListItem Index="1" Text="JONES LAND LASALL" Value="JONES LAND LASALL" />
+                                                    </Items>
+                                                </ext:ComboBox>  
+                                                <ext:ComboBox 
+                                                    ID="cmbTipoConcepto"
+                                                    runat="server" Width="300" Disabled="false" Editable="false" FieldLabel="Tipo Concepto"> 
+                                                    <Items>
+                                                        <ext:ListItem Index="0" Text="ADICIONAL" Value="LEND LEASE" />
+                                                        <ext:ListItem Index="1" Text="FUERA DEL CATÁlOGO" Value="JONES LAND LASALL" />
+                                                    </Items> 
+                                                </ext:ComboBox> 
+                                            </Items>
+                                        </ext:FieldContainer>
+
+                                        
+                                        <ext:FieldContainer ID="fTipoObra" runat="server" FieldLabel="Tipo de Obra" AnchorHorizontal="100%"
+                                            LabelWidth="120" Layout="ColumnLayout">
+                                            <Items>
+                                                <ext:TextField ID="txtTipoObra" runat="server" Width="506" StyleSpec="margin-right: 6px;" EmptyText="OBRA TIPO X"
+                                                    MaxLength="100" EnforceMaxLength="true">
+                                                    <Listeners>
+                                                        <Blur Handler="App.txtTipoObra.setValue(App.txtTipoObra.getValue().toUpperCase());" />
+                                                    </Listeners>
+                                                </ext:TextField>
+                                            </Items>
+                                        </ext:FieldContainer> 
                                     </Items>
                                 </ext:Panel>
-                                <ext:Panel ID="pContrato" runat="server" Title="P Ulises" BodyPadding="10" AutoScroll="true">
-                                    <Items>
+                                    <ext:Panel ID="pContrato" runat="server" Title="P Ulises" BodyPadding="10" AutoScroll="true">
+                                        <Items>
                                         <ext:FieldContainer ID="ContenedorContratista" runat="server" LabelWidth="120" FieldLabel="Contratista"
                                             AnchorHorizontal="100%" Layout="ColumnLayout">
                                             <Items>
@@ -398,6 +434,7 @@
                                                 </ext:ComboBox>
                                             </Items>
                                         </ext:FieldContainer>
+
                                         <ext:FieldContainer ID="ContenedorInicioObra" runat="server" FieldLabel="Inicio Obra"
                                             LabelWidth="120" AnchorHorizontal="100%" Layout="ColumnLayout">
                                             <Items>
@@ -420,6 +457,7 @@
                                                 </ext:DateField>
                                             </Items>
                                         </ext:FieldContainer>
+                                        
                                         <ext:FieldContainer ID="ContenedorSemanas" runat="server" FieldLabel="Semanas Obra"
                                             LabelWidth="120" Layout="ColumnLayout">
                                             <Items>
@@ -429,6 +467,7 @@
                                                 </ext:NumberField>
                                             </Items>
                                         </ext:FieldContainer>
+
                                         <ext:FieldContainer ID="ContenedorCordinador" runat="server" LabelWidth="120" FieldLabel="Coordinador"
                                             AnchorHorizontal="100%" Layout="ColumnLayout">
                                             <Items>
@@ -487,7 +526,7 @@
                                             </Items>
                                         </ext:FieldContainer>
                                     </Items>
-                                </ext:Panel>
+                                    </ext:Panel>
                             </Items>
                         </ext:TabPanel>
                     </Items>

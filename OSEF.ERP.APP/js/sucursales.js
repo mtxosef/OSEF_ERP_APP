@@ -6,7 +6,7 @@ var imgbtnNuevo_Click = function () {
     Ext.util.Cookies.set('cookieColonia', '');
     Ext.util.Cookies.set('cookieEditarSucursal', 'Nuevo');
     window.parent.App.wEmergente.load('FormaSucursal.aspx');
-    window.parent.App.wEmergente.setHeight(460);
+    window.parent.App.wEmergente.setHeight(520);
     window.parent.App.wEmergente.setWidth(800);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Nueva sucursal');
@@ -32,7 +32,7 @@ var imgbtnEditar_Click = function () {
     Ext.util.Cookies.set('cookieColonia', '');
     Ext.util.Cookies.set('cookieEditarSucursal', App.gpSucursales.getSelectionModel().getSelection()[0].get('ID'));
     window.parent.App.wEmergente.load('FormaSucursal.aspx');
-    window.parent.App.wEmergente.setHeight(460);
+    window.parent.App.wEmergente.setHeight(520);
     window.parent.App.wEmergente.setWidth(800);
     window.parent.App.wEmergente.center();
     window.parent.App.wEmergente.setTitle('Editar sucursal ' + Ext.util.Cookies.get('cookieEditarSucursal'));
@@ -174,6 +174,10 @@ var sSucursal_Add = function (sucursal, registro) {
     App.txtColonia.setValue(registro[0].get('RColonia').Descripcion);
     App.txtEstado.setValue(registro[0].get('REstado').Descripcion);
     App.txtMunicipio.setValue(registro[0].get('RMunicipio').Descripcion);
+
+    App.cmbEmpresaSupervisora.setValue(registro[0].get('EmpresaSupervisora'));
+    App.cmbTipoConcepto.setValue(registro[0].get('TipoConcepto'));
+    App.txtTipoObra.setValue(registro[0].get('TipoObra'));
 
     App.cmbProveedor.setValue(registro[0].get('RProvedor').ID);
     App.dfInicioObra.setValue(registro[0].get('InicioObra'));
