@@ -42,9 +42,11 @@ namespace OSEF.APP.EL
         string atendido;
         string noorden;
         string referenciaorden;
-        string clasificacion;
-
+        string clasificacion; 
         bool facturado;
+        string cliente;
+        Cliente Rcliente;
+
 
       
 
@@ -270,6 +272,18 @@ namespace OSEF.APP.EL
             get { return facturado; }
             set { facturado = value; }
         }
+
+        public string Cliente
+        {
+            get { return cliente; }
+            set { cliente = value; }
+        }
+        public Cliente RCliente
+        {
+            get { return Rcliente; }
+            set { Rcliente = value; }
+        }
+
         #endregion
     }
 }

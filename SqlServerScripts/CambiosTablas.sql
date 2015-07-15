@@ -141,3 +141,36 @@ ALTER TABLE OrdenesEstimaciones ADD Clasificacion VARCHAR(25) NOT NULL DEFAULT('
 
 --Cambios Giovanni Flores 03 de Junio 2015
 ALTER TABLE OrdenesEstimaciones ADD Revisado BIT NOT  NULL DEFAULT (0)
+
+--Cambios Giovanni Flores 25 de Junio 2015
+ALTER TABLE Clientes ADD RutaLogo VARCHAR(500) NOT NULL DEFAULT('')
+
+--Cambios Giovanni Flores 26 de Junio 2015
+ALTER TABLE OrdenesEstimaciones ADD FacturaMantenimiento VARCHAR(50)NOT NULL DEFAULT('') 
+
+--Cambios Giovanni Flores 30 de Junio 2015
+ALTER TABLE Volumetrias ADD Cliente CHAR(8) NULL FOREIGN KEY REFERENCES Clientes(ID)
+
+--Cambios Giovanni Flores 1 de Junio 2015
+ALTER TABLE OrdenesEstimaciones ADD Cliente CHAR(8) NULL FOREIGN KEY REFERENCES Clientes(ID)
+
+--Cambios Giovanni Flores 2 de Junio 2015
+ALTER TABLE Sucursales ADD TipoConcepto VARCHAR(50) NULL
+ALTER TABLE Sucursales ADD EmpresaSupervisora VARCHAR(50) NULL
+ALTER TABLE Sucursales ADD TipoObra VARCHAR(50) NULL
+
+--Cambios Giovanni Flores 3 de Junio 2015
+ALTER TABLE dbo.Clientes DROP COLUMN Empresa ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaCalle ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaNoExterior ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaNoInterior ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaColonia ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaEstado ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaMunicipio ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaCodigoPostal ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaEntreCalles ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaTelefonoExt ;
+ALTER TABLE dbo.Clientes DROP COLUMN EmpresaTelefono ;
+ALTER TABLE dbo.Clientes DROP COLUMN Puesto ;
+ALTER TABLE dbo.Clientes DROP COLUMN TipoSocio ;
+ALTER TABLE dbo.Clientes DROP COLUMN NumeroSocio ;

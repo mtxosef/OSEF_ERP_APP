@@ -46,7 +46,8 @@ namespace OSEF.APP.EL
         bool facturado;
         string clasificacion;
         bool revisado;
-         
+        string facturamantenimiento;
+
         #endregion
 
         #region Propiedades
@@ -239,6 +240,12 @@ namespace OSEF.APP.EL
             get { return revisado; }
             set { revisado = value; }
         }
+        public string FacturaMantenimiento
+        {
+            get { return facturamantenimiento; }
+            set { facturamantenimiento = value; }
+        }
+         
         #endregion
     }
 }

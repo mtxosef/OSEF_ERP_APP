@@ -237,32 +237,23 @@ var getUpdatedRecords = function () {
         for (i = 0; i < editedRecords.length; i++) {
             xudata.push(editedRecords[i].data);
         }
-        if (xudata.length > 0) {
-            encodedupdaterecords = Ext.encode(xudata);
-            return encodedupdaterecords;
+        if (xudata.length > 0) { 
+            return Ext.encode(xudata);
         } else {
             return 0;
         }
     }
 };
 
-var setCheckedAllRecords_Facturado = function (avance, registro, index) {
-    App.sMesaDeReporte.each(function (record) {
-        if (App.chkFacturado.getValue()) {
-            record.set('Facturado', true);
-        } else {
-            record.set('Facturado', false);
-        }
-    });
+var setCheckedAllRecords_Facturado = function (avance, registro, index) { 
+    App.sMesaDeReporte.each(function (record) { 
+        App.chkFacturado.getValue() ? record.set('Facturado', true) : record.set('Facturado', false);
+    }); 
 }
 
 var setCheckedAllRecords_Revisado = function (avance, registro, index) {
     App.sMesaDeReporte.each(function (record) {
-        if (App.chkRevisar.getValue()) {
-            record.set('Revisado', true);
-        } else {
-            record.set('Revisado', false);
-        }
+        App.chkRevisar.getValue() ? record.set('Revisado', true) : record.set('Revisado', false); 
     });
 }
  
@@ -276,4 +267,101 @@ var cClasificacion_Renderer = function (valor, metaData, registro) {
         case 'INMUEBLE':
             return '<img class="IconColumnaEstatus" src="assets/img/controles/rhome.png" alt="concluido" width="16" heigth="16"/> ' + registro.get('Clasificacion'); 
     }
+};
+
+var chkHistorialFacturado_Change = function () {
+    var loadmask = new Ext.LoadMask(Ext.getBody(), { msg: "Espere..." });
+    loadmask.show();
+    if (App.chkHistorialFacturado.getValue()) {
+        App.direct.ObtenerMesaDeReporteFacturado();
+//        console.log(App.gpExploradorMesaDeReporte);
+        loadmask.hide();
+    } else {
+        App.direct.ObtenerMesaDeReporte();
+        //        App.gpExploradorMesaDeReporte.setHidden(2, true);
+        loadmask.hide();
+    }
+};
+
+var onBilledRecords = function () {
+    var billed = false,
+        report = false,
+        ok = false,
+        store = App.sMesaDeReporte,
+        urecords = store.getUpdatedRecords(),
+        i = 0, data = [],
+        xmov = [], dlg;
+    for (; i < urecords.length; ) {
+        billed = urecords[i].data.Facturado ? true : false;
+        report = urecords[i].data.Revisado ? true : false;
+        //        console.log(urecords[i].data.Reporte);   
+        if (!(billed & report)) {
+            xmov.push(urecords[i].data.MovID);
+        }
+        i++;
+    }
+    if (billed & report) {
+        Ext.Msg.show({
+            title: 'ATENCIÓN',
+            msg: 'Escribe el numero de factura: ',
+            width: 300,
+            buttons: Ext.MessageBox.OKCANCEL,
+            multiline: true,
+            fn: function (value, text) {
+                if (value == 'ok') {
+                    if (/^[A-Za-z0-9 ]{3,20}$/.test(text)) {
+                        App.direct.setFacturar(getUpdatedRecords(), text);
+                    } else {
+                        Ext.Msg.show({
+                            id: 'msgReportFact',
+                            title: 'ADVERTENCIA',
+                            msg: "DEBE DE ESCRIBIR UN NÚMERO DE FACTURA VÁLIDO.",
+                            buttons: Ext.MessageBox.OK,
+                            onEsc: Ext.emptyFn,
+                            closable: false,
+                            icon: Ext.MessageBox.WARNING
+                        }); 
+                    }
+                }
+            },
+            animEl: 'addAddressBtn'
+        });
+    } else {
+        if (urecords.length <= 0) {
+            Ext.Msg.show({
+                id: 'msgReportFact',
+                title: 'ADVERTENCIA',
+                msg: "SELECCIONE AL MENOS 1 REGISTRO.",
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        } else {
+            Ext.Msg.show({
+                id: 'msgFactReport',
+                title: 'ADVERTENCIA',
+                msg: 'UPS! LOS REGISTROS CON NÚMERO DE MOVIMIENTO:<br> ' + xmov.join(", ") + '<br>NO ESTAN FACTURADOS O NO ESTAN REVISADOS.',
+                buttons: Ext.MessageBox.OK,
+                onEsc: Ext.emptyFn,
+                closable: false,
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+    }
+};
+
+//Evento que hace el filtro al seleccionar algun elemento
+var txtFacturaMantenimiento_Change = function (textfield, newValue, oldValue, e) {
+    App.sMesaDeReporte.clearFilter();
+    App.sMesaDeReporte.filter([{ filterFn: function (item) { 
+        if (item.get('FacturaMantenimiento').toUpperCase().indexOf(newValue.toUpperCase()) > -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    }]);
+    App.gpExploradorMesaDeReporte.getSelectionModel().deselectAll();
 };

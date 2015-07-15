@@ -87,8 +87,10 @@ namespace OSEF.APP.BL
             Volumetria oVolumetria = VolumetriaDataAccess.ObtenerVolumetriaPorID(iID);
             oVolumetria.RSucursal = SucursalBusiness.ObtenerSucursalPorID(oVolumetria.Sucursal);
             oVolumetria.RPreciario = PreciarioBusiness.ObtenerPreciarioPorID(oVolumetria.Preciario);
-
-
+            if (oVolumetria.Cliente != null)
+            {
+                oVolumetria.RCliente = ClienteBusiness.ObtenerClientePorID(oVolumetria.Cliente);
+            }
             return oVolumetria;
         }
 

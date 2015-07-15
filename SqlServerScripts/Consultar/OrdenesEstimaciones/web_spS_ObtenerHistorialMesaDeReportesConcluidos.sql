@@ -18,16 +18,16 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerClientes' AND
+			WHERE  name = 'web_spS_ObtenerHistorialMesaDeReportesConcluidos' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerClientes
+	DROP PROCEDURE web_spS_ObtenerHistorialMesaDeReportesConcluidos
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Miercoles 07 de Enero de 2015
--- Description:	Obtener todos los registros de Clientes
+-- Author:		Giovanni Flores
+-- Create date: Jueves 23 de Abril de 2015
+-- Description:	Obtener todos los registros de Mesa de Reportes Concluidos
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerClientes
+CREATE PROCEDURE web_spS_ObtenerHistorialMesaDeReportesConcluidos
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -38,32 +38,45 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT
 		ID,
-		Nombre,
-		APaterno,
-		AMaterno,
-		RFC,
-		CURP,
-		FechaNacimiento,
-		Edad,
-		Sexo,
-		EstadoCivil,
-		Profesion,
-		Correo,
-		Telefono,
-		TelefonoMovil,
-		Calle,
-		NoExterior,
-		NoInterior,
-		Colonia,
-		CodigoPostal,
-		EntreCalles,
-		Estado,
-		Municipio, 
-		FechaAlta,
+		Mov,
+		MovID,
+		Sucursal,
+		FechaEmision,
+		Observaciones,
 		Estatus,
 		Usuario,
-		RutaLogo
+		Origen,
+		OrigenID,
+		Reporte,
+		Division,
+		FechaOrigen,
+		FechaMaximaAtencion,
+		DiasAtencion,
+		Reporto,
+		TrabajoRequerido,
+		TrabajoRealizado,
+		CodigoFalla,
+		FechaLlegada,
+		HoraLlegada,
+		FechaFinActividad,
+		HoraFinActividad,
+		Cuadrilla,
+		ImporteTotal,
+		HoraOrigen,
+		RutaImagen,
+		Atendido,
+		MovEnLinea,
+		NoOrden,
+		ReferenciaOrden,
+		Facturado,
+		Clasificacion,
+		Revisado,
+		FacturaMantenimiento,
+		Cliente
 	FROM
-		Clientes
+		OrdenesEstimaciones
+	WHERE 
+		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1
+		AND Facturado = 1 AND Revisado = 1;
 END
 GO

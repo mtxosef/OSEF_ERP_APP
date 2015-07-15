@@ -24,19 +24,14 @@ namespace OSEF.ERP.APP
 
                 rmExploradorMesaDeReporte.RegisterIcon(Icon.Delete);
 
-                sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerMesaDeReportesConcluidos();
-                sMesaDeReporte.DataBind();
-
-                sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
-                sSucursales.DataBind();
+                ObtenerMesaDeReporte();
 
                 sUsuarios.DataSource = UsuarioBusiness.ObtenerUsuarios();
                 sUsuarios.DataBind();
 
             }
         }
-
-
+         
         /// <summary>
         /// Evento que vuelve a leer los datos para ser cargados al store
         /// </summary>
@@ -44,10 +39,7 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         protected void OnReadData_sMesaDeReporte(object sender, StoreReadDataEventArgs e)
         {
-            sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerMesaDeReportesConcluidos();
-            sMesaDeReporte.DataBind();
-            sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
-            sSucursales.DataBind();
+            ObtenerMesaDeReporte();
         }
          
         //Exporta a Excel el grid
@@ -85,7 +77,7 @@ namespace OSEF.ERP.APP
             }
         }
 
-        protected void getUpdatedRecords(object sender, DirectEventArgs e)
+        protected void setRevisar(object sender, DirectEventArgs e)
         {
             string strRevisados = e.ExtraParams["registrosactualizados"];
             int n = 0;
@@ -95,17 +87,44 @@ namespace OSEF.ERP.APP
                 foreach (MesaDeReporte mdr in lMesaDeReporte)
                 {
                     MesaDeReporte xmdr = new MesaDeReporte();
-                    xmdr.Id = mdr.Id;
-                    xmdr.Facturado = mdr.Facturado;
+                    xmdr.Id = mdr.Id; 
                     xmdr.Revisado = mdr.Revisado;
-                    MesaDeReporteBusiness.RevisarYFacturarMesaDeReportePorID(mdr);
+                    MesaDeReporteBusiness.RevisarMesaDeReportePorID(xmdr);
                     n++;
                 }
-                X.Msg.Alert("Atención", n+" Registros actualizados", new JFunction { Fn = "showResult(true)" }).Show();
+                X.Msg.Alert("ATENCIÓN", n + " REGISTROS REVISADOS.", new JFunction { Fn = "showResult(true)" }).Show();
             }
             else
             {
-                X.Msg.Alert("Atención", "Selecione al menos 1 registro.", new JFunction { Fn = "showResult(false)" }).Show();
+                X.Msg.Alert("ATENCIÓN", "SELECCIONE AL MENOS 1 REGISTRO.", new JFunction { Fn = "showResult(false)" }).Show();
+            }
+        }
+
+        [DirectMethod]
+        public void setFacturar(string data, string fmantenimiento)
+        {
+            //string strRevisados = e.ExtraParams["registrosactualizados"];
+            string strFacturados = data;
+
+            //string strFacturados = e.ExtraParams["rData"];
+            int n = 0;
+            if (strFacturados != null && !strFacturados.Equals("0"))
+            {
+                
+                List<MesaDeReporte> lMesaDeReporte = JSON.Deserialize<List<MesaDeReporte>>(strFacturados);
+                foreach (MesaDeReporte mdr in lMesaDeReporte)
+                {
+                    MesaDeReporte xmdr = new MesaDeReporte();
+                    xmdr.Id = mdr.Id;
+                    xmdr.Facturado = mdr.Facturado;
+                    xmdr.Revisado = mdr.Revisado;
+                    xmdr.FacturaMantenimiento = fmantenimiento;
+                    MesaDeReporteBusiness.FacturarMesaDeReportePorID(xmdr);
+                    n++;
+                }
+                X.Msg.Alert("ATENCIÓN", n + " REGISTROS FACTURADOS.", new JFunction { Fn = "showResult(true)" }).Show();
+            } else {
+                X.Msg.Alert("ATENCIÓN", "SELECCIONE AL MENOS 1 REGISTRO.", new JFunction { Fn = "showResult(false)" }).Show();
             }
         }
 
@@ -152,6 +171,25 @@ namespace OSEF.ERP.APP
             {
                 ex.Message.ToString();
             }
+        }
+         
+        [DirectMethod]
+        public void ObtenerMesaDeReporte()
+        {
+            sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerMesaDeReportesConcluidos();
+            sMesaDeReporte.DataBind();
+            sSucursales.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnConcluidos();
+            sSucursales.DataBind();
+
+            this.gpExploradorMesaDeReporte.ColumnModel.Columns[1].Hidden = true;
+        }
+
+        [DirectMethod]
+        public void ObtenerMesaDeReporteFacturado()
+        {
+            this.gpExploradorMesaDeReporte.ColumnModel.Columns[1].Hidden = false;
+            sMesaDeReporte.DataSource = MesaDeReporteBusiness.ObtenerHistorialMesaDeReportesConcluidos();
+            sMesaDeReporte.DataBind();
         }
     }
 }

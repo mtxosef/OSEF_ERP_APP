@@ -33,24 +33,24 @@
         <ext:GridPanel
             ID="gpClientes"
             runat="server"
-            Height="220"
-            Width="960"
+            Height="170"
+            Width="550"
             Title=""
             EnableColumnHide="false"
             EnableColumnMove="false"
             Header="true"
-            TitleAlign="Left"
-            StyleSpec="margin:0 auto; margin-top: 20px;">
+            TitleAlign="Left">
             <TopBar>
                 <ext:Toolbar ID="tbCodigos" runat="server">
                     <Items>
-                        <ext:ToolbarSpacer ID="tbsCodigos" runat="server" Width="300">
+                        <ext:ToolbarSpacer ID="tbsCodigos" runat="server" Width="260">
                         </ext:ToolbarSpacer>
                         <ext:TextField 
                             ID="txtBuscar"
                             runat="server"
                             AutoFocus="true"
                             EmptyText="Buscar"
+                             Height="25" 
                             Width="200">
                             <Listeners>
                                 <Change Fn="txtBuscarCliente_Change" />
@@ -115,29 +115,7 @@
                         Text="CLIENTE"
                         Align="Left"
                         Width="280"
-                        DataIndex="NombreCompleto" />
-                    <ext:DateColumn
-                        ID="dcFechaNacimiento"
-                        runat="server"
-                        Text="NACIMIENTO"
-                        Align="Center"
-                        Width="100"
-                        DataIndex="FechaNacimiento"
-                        Format="dd/MM/yyyy" />
-                    <ext:Column
-                        ID="cCorreo"
-                        runat="server"
-                        Text="CORREO"
-                        Align="Left"
-                        Width="265"
-                        DataIndex="Correo" />
-                      <ext:Column
-                        ID="cTelefono"
-                        runat="server"
-                        Text="TELÉFONO"
-                        Align="Center"
-                        Width="115"
-                        DataIndex="Telefono"/>
+                        DataIndex="NombreCompleto" />  
                       <ext:Column
                         ID="cEstatus"
                         runat="server"
@@ -164,8 +142,7 @@
                     StatusAlign="Left"> 
                 </ext:StatusBar>
             </FooterBar>
-        </ext:GridPanel>
-
+        </ext:GridPanel> 
     </form>
 </body>
 </html>

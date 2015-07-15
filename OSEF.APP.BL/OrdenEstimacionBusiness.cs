@@ -137,7 +137,10 @@ namespace OSEF.APP.BL
             OrdenEstimacion oOrdenEstimacion = OrdenEstimacionDataAccess.ObtenerOrdenEstimacionaPorID(iID);
             oOrdenEstimacion.RSucursal = SucursalBusiness.ObtenerSucursalPorID(oOrdenEstimacion.Sucursal);
             oOrdenEstimacion.ROrdenEstimacionD = OrdenEstimacionDBusiness.ObtenerOrdenEstimacionDPorOrdenEstimacion(oOrdenEstimacion.Id);
-
+            if (oOrdenEstimacion.Cliente != null)
+            {
+                oOrdenEstimacion.RCliente = ClienteBusiness.ObtenerClientePorID(oOrdenEstimacion.Cliente);
+            }
             return oOrdenEstimacion;
         }
 

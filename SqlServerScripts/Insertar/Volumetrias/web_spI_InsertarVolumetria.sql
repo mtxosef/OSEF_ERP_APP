@@ -37,7 +37,8 @@ CREATE PROCEDURE web_spI_InsertarVolumetria
 	@Observaciones	VARCHAR(200),
 	@Estatus		VARCHAR(20),
 	@Usuario		VARCHAR(50),
-	@Preciario		CHAR(7)
+	@Preciario		CHAR(7),
+	@Cliente		CHAR(8)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -55,7 +56,8 @@ BEGIN
 			Observaciones,
 			Estatus,
 			Usuario,
-			Preciario
+			Preciario,
+			Cliente
 		)
 	VALUES (
 			@Mov,
@@ -65,7 +67,8 @@ BEGIN
 			@Observaciones,
 			@Estatus,
 			@Usuario,
-			@Preciario
+			@Preciario,
+			@Cliente
 			)
 	SELECT @ID = SCOPE_IDENTITY()
 END

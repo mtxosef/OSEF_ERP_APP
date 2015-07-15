@@ -83,6 +83,12 @@ namespace OSEF.APP.DL
                sqlpPreciario.Size = 7;
                sqlpPreciario.Value = iVolumetria.Preciario;
 
+               SqlParameter sqlpCliente = new SqlParameter();
+               sqlpCliente.ParameterName = "@Cliente";
+               sqlpCliente.SqlDbType = SqlDbType.Char;
+               sqlpCliente.Size = 8;
+               sqlpCliente.Value = iVolumetria.RCliente.ID; 
+
                //3. Agregar los parametros al comando
                sqlcComando.Parameters.Add(sqlpID);
                sqlcComando.Parameters.Add(sqlpMov);
@@ -93,6 +99,7 @@ namespace OSEF.APP.DL
                sqlcComando.Parameters.Add(sqlpEstatus);
                sqlcComando.Parameters.Add(sqlpUsuario);
                sqlcComando.Parameters.Add(sqlpPreciario);
+               sqlcComando.Parameters.Add(sqlpCliente);
 
                //4. Abrir la conexión
                sqlcComando.Connection.Open();
@@ -170,6 +177,14 @@ namespace OSEF.APP.DL
                sqlpPreciario.Size = 7;
                sqlpPreciario.Value = uVolumetria.Preciario;
 
+               SqlParameter sqlpCliente = new SqlParameter();
+               sqlpCliente.ParameterName = "@Cliente";
+               sqlpCliente.SqlDbType = SqlDbType.Char; 
+               if (uVolumetria.Cliente == null || uVolumetria.Cliente.Trim().Equals(""))
+                   sqlpCliente.Value = DBNull.Value;
+               else
+                   sqlpCliente.Value = uVolumetria.RCliente.ID;
+
                //3. Agregar los parametros al comando
                sqlcComando.Parameters.Add(sqlpID);
                sqlcComando.Parameters.Add(sqlpMov);
@@ -178,6 +193,7 @@ namespace OSEF.APP.DL
                sqlcComando.Parameters.Add(sqlpObservaciones);
                sqlcComando.Parameters.Add(sqlpEstatus);
                sqlcComando.Parameters.Add(sqlpPreciario);
+               sqlcComando.Parameters.Add(sqlpCliente);
 
                //4. Abrir la conexión
                sqlcComando.Connection.Open();

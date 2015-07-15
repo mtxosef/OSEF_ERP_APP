@@ -85,6 +85,33 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ImageButton imgbtnBorrar;
         
         /// <summary>
+        /// Control cmbSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbSucursal;
+        
+        /// <summary>
+        /// Control sSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store sSucursal;
+        
+        /// <summary>
+        /// Control mSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model mSucursal;
+        
+        /// <summary>
         /// Control tbsOrdenesCambio.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ToolbarSpacer tbsOrdenesCambio;
+        
+        /// <summary>
+        /// Control cCorreoEnviado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container cCorreoEnviado;
+        
+        /// <summary>
+        /// Control imgbtnFin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgbtnFin;
         
         /// <summary>
         /// Control imgbtnActualizar.

@@ -245,11 +245,19 @@ namespace OSEF.APP.DL
                 sqlpReferenciaOrden.ParameterName = "@ReferenciaOrden";
                 sqlpReferenciaOrden.SqlDbType = SqlDbType.VarChar;
                 sqlpReferenciaOrden.Value = iOrdenEstimacion.ReferenciaOrden;
-                 
+
                 SqlParameter sqlpClasificacion = new SqlParameter();
                 sqlpClasificacion.ParameterName = "@Clasificacion";
                 sqlpClasificacion.SqlDbType = SqlDbType.VarChar;
                 sqlpClasificacion.Value = iOrdenEstimacion.Clasificacion;
+
+                SqlParameter sqlpCliente = new SqlParameter();
+                sqlpCliente.ParameterName = "@Cliente";
+                sqlpCliente.SqlDbType = SqlDbType.Char;  
+                if (iOrdenEstimacion.Cliente == null || iOrdenEstimacion.Cliente.Trim().Equals(""))
+                    sqlpCliente.Value = DBNull.Value;
+                else
+                    sqlpCliente.Value = iOrdenEstimacion.Cliente;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
@@ -282,6 +290,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpAtendido);
                 sqlcComando.Parameters.Add(sqlpReferenciaOrden);
                 sqlcComando.Parameters.Add(sqlpClasificacion);
+                sqlcComando.Parameters.Add(sqlpCliente);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
 
@@ -533,6 +542,14 @@ namespace OSEF.APP.DL
                 sqlpClasificacion.SqlDbType = SqlDbType.VarChar;
                 sqlpClasificacion.Value = uOrdenEstimacion.Clasificacion;
 
+                SqlParameter sqlpCliente = new SqlParameter();
+                sqlpCliente.ParameterName = "@Cliente";
+                sqlpCliente.SqlDbType = SqlDbType.Char; 
+                if (uOrdenEstimacion.Cliente == null || uOrdenEstimacion.Cliente.Trim().Equals(""))
+                    sqlpCliente.Value = DBNull.Value;
+                else
+                    sqlpCliente.Value = uOrdenEstimacion.Cliente;
+
                 //SqlParameter sqlpNoOrden = new SqlParameter();
                 //sqlpNoOrden.ParameterName = "@NoOrden";
                 //sqlpNoOrden.SqlDbType = SqlDbType.VarChar;
@@ -567,6 +584,7 @@ namespace OSEF.APP.DL
                 sqlcComando.Parameters.Add(sqlpAtendido);
                 sqlcComando.Parameters.Add(sqlpReferenciaOrden);
                 sqlcComando.Parameters.Add(sqlpClasificacion);
+                sqlcComando.Parameters.Add(sqlpCliente);
                 //sqlcComando.Parameters.Add(sqlpNoOrden);
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();

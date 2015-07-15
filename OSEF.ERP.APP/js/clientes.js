@@ -507,6 +507,12 @@ var txtBuscarCliente_Change = function (textfield, newValue, oldValue, e) {
 
 //Acciones al hacer clic en un registro de busqueda
 var gpBuscaClientes_ItemDblClick = function (gridview, registro, gvhtml, index) {
-    window.parent.App.wEmergente.getBody().App.cmbCliente.setValue(App.sClientes.getAt(index).get('Nombre')); 
+    window.parent.App.wEmergente.getBody().App.IdCliente.setValue(App.sClientes.getAt(index).get('ID'));
+    window.parent.App.wEmergente.getBody().App.txtCliente.setValue(App.sClientes.getAt(index).get('Nombre')); 
     window.parent.App.wAyudaConcepto.hide();
 };
+
+
+var onFUCliente = function () {
+    console.log(App.fuImagenCliente);
+}

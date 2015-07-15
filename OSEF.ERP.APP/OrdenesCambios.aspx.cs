@@ -6,6 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using OSEF.APP.BL;
 using Ext.Net;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace OSEF.ERP.APP
 {
@@ -29,7 +33,8 @@ namespace OSEF.ERP.APP
                 sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesCambios();
                 sOrdenesEstimaciones.DataBind();
 
-              
+                sSucursal.DataSource = SucursalBusiness.ObtenerSucursalesEnUsoEnOrdenesDeCambio();
+                sSucursales.DataBind();
 
                 rmOrdenesEstimaciones.RegisterIcon(Icon.Delete);
             }
@@ -45,5 +50,52 @@ namespace OSEF.ERP.APP
             sOrdenesEstimaciones.DataSource = OrdenEstimacionBusiness.ObtenerOrdenesCambios();
             sOrdenesEstimaciones.DataBind();
         }
+
+
+
+        //Exporta a Excel el grid
+        protected void ExportEt(object sender, EventArgs e)
+        {
+
+            string sucursal = cmbSucursal.Value.ToString();
+
+
+            //1. Configurar la conexión y el tipo de comando
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OSEF"].ConnectionString);
+            try
+            {
+                SqlCommand comando = new SqlCommand("web_spS_ObtenerRItemsAdicionales", conn);
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+
+                DataTable dt = new DataTable();
+                adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                adaptador.SelectCommand.Parameters.Add(@"Sucursal", SqlDbType.Char).Value = sucursal;
+                adaptador.Fill(dt);
+
+
+
+                ReportDocument reporteCuadrila = new ReportDocument();
+                reporteCuadrila.Load(Server.MapPath("reportess/AutItemAdicioYOFueCatPreCat.rpt"));
+                reporteCuadrila.SetDataSource(dt);
+
+
+                reporteCuadrila.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Fin 049" + sucursal);
+
+
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+            finally
+            {
+                if (conn.State != ConnectionState.Closed)
+                    conn.Close();
+                conn.Dispose();
+            }
+        }
+
+
     }
 }

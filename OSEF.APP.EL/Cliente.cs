@@ -18,7 +18,7 @@ namespace OSEF.APP.EL
         string amaterno;
         string rfc;
         string curp;
-        DateTime fechanacimiento;
+        Nullable<DateTime> fechanacimiento;
         byte edad;
         string sexo;
         string estadocivil;
@@ -48,7 +48,7 @@ namespace OSEF.APP.EL
         string puesto;
         string tiposocio;
         string numerosocio;
-        DateTime fechaalta;
+        Nullable<DateTime> fechaalta;
         string estatus;
         string usuario;
 
@@ -94,7 +94,7 @@ namespace OSEF.APP.EL
             set { curp = value; }
         }
 
-        public DateTime FechaNacimiento
+        public Nullable<DateTime> FechaNacimiento
         {
             get { return fechanacimiento; }
             set { fechanacimiento = value; }
@@ -274,7 +274,7 @@ namespace OSEF.APP.EL
             set { numerosocio = value; }
         }
 
-        public DateTime FechaAlta
+        public Nullable<DateTime> FechaAlta
         {
             get { return fechaalta; }
             set { fechaalta = value; }

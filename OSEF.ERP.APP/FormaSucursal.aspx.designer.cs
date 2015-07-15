@@ -364,6 +364,51 @@ namespace OSEF.AVANCES.SUCURSALES {
         protected global::Ext.Net.ComboBox cmbEstatus;
         
         /// <summary>
+        /// Control ContenedorESTDCONTO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer ContenedorESTDCONTO;
+        
+        /// <summary>
+        /// Control cmbEmpresaSupervisora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbEmpresaSupervisora;
+        
+        /// <summary>
+        /// Control cmbTipoConcepto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbTipoConcepto;
+        
+        /// <summary>
+        /// Control fTipoObra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldContainer fTipoObra;
+        
+        /// <summary>
+        /// Control txtTipoObra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtTipoObra;
+        
+        /// <summary>
         /// Control pContrato.
         /// </summary>
         /// <remarks>

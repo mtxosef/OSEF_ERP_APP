@@ -142,6 +142,8 @@ var sMov_Add = function (store, registros, index, eOpts) {
         }
         else {
             App.cmbMov.select('Orden de Cambio');
+            Ext.getCmp('fcObservaciones').setFieldLabel('Justificación');
+            App.txtfObservaciones.emptyText = 'Escriba la justificación del concepto.'; 
             App.cmbMov.setReadOnly(true);
             //Nos sirve como idenfificador para saber si se van a subir croquis de orden de cambio o reportes
             Ext.util.Cookies.set('cockieMovimientoCroquis', 'Orden');
@@ -656,6 +658,7 @@ var sOrdenesMantenimiento_Load = function () {
 
 //Evento lanzado al agregar un registro al store
 var sOrdenesMantenimiento_Add = function (avance, registro) {
+    console.log(registro);
     //Si es orden de cambio concluida
     if (Ext.util.Cookies.get('cookieEditarOrdenEstimacion') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
     && registro[0].get('Mov').trim() == "Orden de Cambio") {
@@ -669,6 +672,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
         App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
@@ -698,6 +703,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+        
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
         App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
@@ -748,6 +756,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
         App.cmbClasificacion.setValue(registro[0].get('Clasificacion').trim());
+
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         App.imgbtnImprimir.setDisabled(false);
         App.pDatosReporte.tab.show();
@@ -818,7 +829,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
         App.cmbClasificacion.setValue(registro[0].get('Clasificacion').trim());
-
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
             App.chkAtendido.setValue(true);
@@ -855,6 +867,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
+
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
         App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
         App.chkBoxOrdenCompra.setVisible(false);
@@ -880,6 +895,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
+
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         App.txtNoOrden.setValue(registro[0].get('NoOrden'));
         App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
@@ -932,6 +950,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.tfHoraFinActividad.setValue(registro[0].get('HoraFinActividad'));
         App.cmbCuadrilla.setValue(registro[0].get('Cuadrilla'));
         App.txtReferenciaOrden.setValue(registro[0].get('ReferenciaOrden'));
+
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         if (registro[0].get('Atendido').trim().length > 0 && registro[0].get('Atendido').trim() == "Si") {
             App.chkAtendido.setValue(true);
@@ -988,6 +1009,9 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
+
         //Deshabilita los campos en un movimiento afectado
         App.cmbMov.setReadOnly(true);
         App.txtfSucursalCR.setDisabled(true);
@@ -1011,6 +1035,8 @@ var sOrdenesMantenimiento_Add = function (avance, registro) {
         App.sbOrdenEstimacion.setText(registro[0].get('Estatus'));
         App.txtfSucursalID.setValue(registro[0].get('Sucursal'));
 
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         //Agregar una fila para seguir capturando
         var storeDetalle = App.sConceptos.getAt(App.sConceptos.getCount() - 1);
@@ -1254,7 +1280,7 @@ var gpOrdenEstimacion_ItemClick = function (gridview, registro, gvhtml, index) {
     //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
     //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
-    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
+//    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
 };
 
@@ -1273,7 +1299,7 @@ var obetenerRenglon_Select = function (a, registro, c) {
     //    Ext.util.Cookies.set('cookieConceptoMovReporte', registro.get('ConceptoID'));
     //    Ext.util.Cookies.set('cookieConceptoClaveMovReporte', registro.get('RPreciarioConceptos').Clave);
 
-    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
+//    App.txtfClave.setValue(registro.get('RPreciarioConceptos').Clave);
     App.taDescripcion.setValue(registro.get('RPreciarioConceptos').Descripcion);
 }
 
@@ -2046,3 +2072,13 @@ var chkBoxOrdenCompra_AfterRender = function (componente, value) {
 var cRenderer_Clave = function (value, metadata, registro) {
     return registro.get('RPreciarioConceptos').Clave;
 };
+
+var btnBuscar_Cliente = function () {
+    var win = window.parent.App.wAyudaConcepto;
+    win.load('FormaBuscaCliente.aspx');
+    win.setHeight(220);
+    win.setWidth(500);
+    win.center();
+    win.setTitle('BUSQUEDA DE CLIENTES');
+    win.show();
+}

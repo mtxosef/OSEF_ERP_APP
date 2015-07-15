@@ -18,52 +18,29 @@ GO
 -- =============================================
 IF EXISTS (	SELECT name 
 			FROM sysobjects
-			WHERE  name = 'web_spS_ObtenerClientes' AND
+			WHERE  name = 'web_spU_FacturarMesaDeReporte' AND
 			TYPE = 'P')
-	DROP PROCEDURE web_spS_ObtenerClientes
+	DROP PROCEDURE web_spU_FacturarMesaDeReporte
 GO
 -- =============================================
--- Author:		Orlando Esparza
--- Create date: Miercoles 07 de Enero de 2015
--- Description:	Obtener todos los registros de Clientes
+-- Author:		Giovanni Flores
+-- Create date: Lunes 01 de Junio de 2015
+-- Description:	Facturar un registro de Mesa de Reporte con estatus concluido y MovLinea 1
 -- =============================================
-CREATE PROCEDURE web_spS_ObtenerClientes
+CREATE PROCEDURE web_spU_FacturarMesaDeReporte
 	-- Add the parameters for the stored procedure here
+	@ID				INT, 
+	@Facturado			BIT,
+	@Revisado			BIT,
+	@FacturaMantenimiento VARCHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	SELECT
-		ID,
-		Nombre,
-		APaterno,
-		AMaterno,
-		RFC,
-		CURP,
-		FechaNacimiento,
-		Edad,
-		Sexo,
-		EstadoCivil,
-		Profesion,
-		Correo,
-		Telefono,
-		TelefonoMovil,
-		Calle,
-		NoExterior,
-		NoInterior,
-		Colonia,
-		CodigoPostal,
-		EntreCalles,
-		Estado,
-		Municipio, 
-		FechaAlta,
-		Estatus,
-		Usuario,
-		RutaLogo
-	FROM
-		Clientes
-END
+	SET NOCOUNT ON; 
+    -- Insert statements for procedure here  
+	UPDATE OrdenesEstimaciones
+	SET Facturado = @Facturado, Revisado = @Revisado, FacturaMantenimiento = @FacturaMantenimiento
+	WHERE ID = @ID;
+	END 
 GO

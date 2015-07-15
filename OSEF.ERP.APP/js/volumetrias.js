@@ -22,7 +22,9 @@ var imgbtnFormaNuevo_Click = function () {
     App.txtfObservaciones.setValue('');
     App.dfFechaEmision.setValue(d);
     App.txtfClave.setValue('');
-    App.taDescripcion.setValue('');
+    App.taDescripcion.setValue(''); 
+    App.IdCliente.setValue('');
+    App.txtCliente.setValue('');
 
     //Cambiar Estatus, Cookie y Titulo Window
     App.sbFormaVolumetriaDetalle.setText('SIN AFECTAR');
@@ -303,7 +305,10 @@ var sVolumetria_Add = function (avance, registro) {
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+         
 
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
         //Deshabilita los campos en un movimiento afectado
         App.cmbMov.setReadOnly(true);
         App.cmbPreciario.setDisabled(true);
@@ -312,6 +317,8 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(false);
         App.txtfObservaciones.setDisabled(false);
+        App.IdCliente.setDisabled(true);
+        App.txtCliente.setDisabled(true);
     }
 
     //Valida el estatus para ver si permite seguir capturando o no
@@ -325,6 +332,8 @@ var sVolumetria_Add = function (avance, registro) {
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         //Deshabilita los campos en un movimiento afectado
         App.cmbMov.setReadOnly(true);
@@ -334,6 +343,8 @@ var sVolumetria_Add = function (avance, registro) {
         App.imgbtnGuardar.setDisabled(true);
         App.imgbtnCancelar.setDisabled(true);
         App.txtfObservaciones.setDisabled(false);
+        App.IdCliente.setDisabled(true);
+        App.txtCliente.setDisabled(true);
     }
 
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'BORRADOR' || registro[0].get('Estatus') == '') {
@@ -346,6 +357,10 @@ var sVolumetria_Add = function (avance, registro) {
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+        console.log(registro[0]);
+
+        App.IdCliente.setValue(registro[0].get('RCliente').ID);
+        App.txtCliente.setValue(registro[0].get('RCliente').Nombre);
 
         //Agregar una fila para seguir capturando
         var renglonAnterior = App.sConceptos.getAt(App.sConceptos.getCount() - 1).get('Renglon') + 1;
@@ -354,7 +369,7 @@ var sVolumetria_Add = function (avance, registro) {
         HabilitarAfectar();
         HabilitarAfectarFin();
     }
-      
+
     if (Ext.util.Cookies.get('cookieEditarVolumetria') != 'Nuevo' && registro[0].get('Estatus') == 'CONCLUIDO'
     && registro[0].get('Mov') == "Fin                                               ") {
         App.cmbMov.setValue(registro[0].get('Mov'));
@@ -366,6 +381,8 @@ var sVolumetria_Add = function (avance, registro) {
         App.dfFechaEmision.setValue(registro[0].get('FechaEmision'));
         App.txtfObservaciones.setValue(registro[0].get('Observaciones'));
         App.sbFormaVolumetriaDetalle.setText(registro[0].get('Estatus'));
+        App.IdCliente.setText(registro[0].get('RCliente').ID);
+        App.txtCliente.setText(registro[0].get('RCliente').Nombre);
 
         App.cmbMov.setReadOnly(true);
         App.cmbPreciario.setDisabled(true);
@@ -936,8 +953,8 @@ var obetenerRenglon_Select = function (a, registro, c) {
 var btnBuscar_Cliente = function () {
     var win = window.parent.App.wAyudaConcepto;
     win.load('FormaBuscaCliente.aspx');
-    win.setHeight(290);
-    win.setWidth(660);
+    win.setHeight(220);
+    win.setWidth(500);
     win.center();
     win.setTitle('BUSQUEDA DE CLIENTES');
     win.show();

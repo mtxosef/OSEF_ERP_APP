@@ -180,6 +180,7 @@
             </ColumnModel>
             <Listeners>
                 <ItemClick Fn="gpClientes_ItemClick" />
+                <ItemDblClick Fn="imgbtnEditar_Click"></ItemDblClick>
                <%-- <BeforeRender Fn="gpEstilo_Renderer" ></BeforeRender>--%>
             </Listeners>
             <SelectionModel>

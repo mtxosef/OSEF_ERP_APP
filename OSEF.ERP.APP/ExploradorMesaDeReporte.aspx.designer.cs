@@ -130,6 +130,24 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.ImageButton imgbtnFacturar;
         
         /// <summary>
+        /// Control imgbtnFacturado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ImageButton imgbtnFacturado;
+        
+        /// <summary>
+        /// Control chkHistorialFacturado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkHistorialFacturado;
+        
+        /// <summary>
         /// Control ToolbarSpacer1.
         /// </summary>
         /// <remarks>
@@ -200,6 +218,24 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Checkbox chkFacturado;
+        
+        /// <summary>
+        /// Control cFMantenimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column cFMantenimiento;
+        
+        /// <summary>
+        /// Control txtFacturaMantenimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtFacturaMantenimiento;
         
         /// <summary>
         /// Control cRevisado.

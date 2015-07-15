@@ -106,7 +106,9 @@ namespace OSEF.ERP.APP
                     Atendido = oOrdenEstimacion.Atendido,
                     NoOrden = oOrdenEstimacion.NoOrden,
                     ReferenciaOrden = oOrdenEstimacion.ReferenciaOrden,
-                    Clasificacion = oOrdenEstimacion.Clasificacion
+                    Clasificacion = oOrdenEstimacion.Clasificacion,
+                    Cliente = oOrdenEstimacion.Cliente,
+                    RCliente = oOrdenEstimacion.RCliente
                 });
                 imgNormal.ImageUrl = oOrdenEstimacion.RutaImagen;
 
@@ -344,7 +346,9 @@ namespace OSEF.ERP.APP
                     case "cmbClasificacion":
                         oOrdenEstimacionForma.Clasificacion = sd.Value == null ? "":sd.Value;
                         break;
-
+                    case "IdCliente":
+                        oOrdenEstimacionForma.Cliente = sd.Value == null ? "" : sd.Value;
+                        break;
                 }
             }
             //3. Regresar el objeto
@@ -446,7 +450,9 @@ namespace OSEF.ERP.APP
                     Atendido = oOrdenEstimacionForma.Atendido,
                     NoOrden = oOrdenEstimacionForma.NoOrden,
                     ReferenciaOrden = oOrdenEstimacionForma.ReferenciaOrden,
-                    Clasificacion = oOrdenEstimacionForma.Clasificacion == null ? oOrdenEstimacionForma.Clasificacion : ""
+                    Clasificacion = oOrdenEstimacionForma.Clasificacion == null ? oOrdenEstimacionForma.Clasificacion : "",
+                    Cliente = oOrdenEstimacionForma.Cliente,
+                    RCliente = oOrdenEstimacionForma.RCliente
                 }); 
 
                 //7. Guardar Detalle y regresar valor
@@ -478,6 +484,10 @@ namespace OSEF.ERP.APP
                 }
 
                 oOrdenEstimacionForma.Id = oOrdenEstimacion.Id;
+                //if (oOrdenEstimacionForma.Cliente == null)
+                //{
+                //    oOrdenEstimacionForma.Cliente = "";
+                //}
                 OrdenEstimacionBusiness.ActualizarOrdenEstimacion(oOrdenEstimacionForma);
 
                 //9. Actualizar store de OrdenesEstimaciones
@@ -512,6 +522,7 @@ namespace OSEF.ERP.APP
                 sOrdenEstimacion.GetAt(0).Set("NoOrden", oOrdenEstimacionForma.NoOrden);
                 sOrdenEstimacion.GetAt(0).Set("ReferenciaOrden", oOrdenEstimacionForma.ReferenciaOrden);
                 sOrdenEstimacion.GetAt(0).Set("Clasificacion", oOrdenEstimacionForma.Clasificacion);
+                sOrdenEstimacion.GetAt(0).Set("Cliente", oOrdenEstimacionForma.Cliente);
                 //13. Borrar todo el detalle e insertarlo de nuevo
                 OrdenEstimacionDBusiness.BorrarPorID(oOrdenEstimacionForma.Id);
                 GuardarDetalleOrdenEstimacion(lOrdenEstimacionD, oOrdenEstimacionForma);

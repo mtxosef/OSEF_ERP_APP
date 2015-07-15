@@ -35,7 +35,8 @@ CREATE PROCEDURE web_spU_ActualizarVolumetria
 	@Sucursal		CHAR(10),
 	@Observaciones	VARCHAR(200),
 	@Estatus		VARCHAR(10),
-	@Preciario		CHAR(7)
+	@Preciario		CHAR(7),
+	@Cliente		CHAR(8)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -51,7 +52,8 @@ BEGIN
 		Sucursal = @Sucursal,
 		Observaciones = @Observaciones,
 		Estatus = @Estatus,
-		Preciario= @Preciario
+		Preciario= @Preciario,
+		Cliente = @Cliente
 	WHERE
 		ID = @ID
 END

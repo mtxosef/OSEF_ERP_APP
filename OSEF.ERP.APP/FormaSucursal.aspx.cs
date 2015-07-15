@@ -84,8 +84,10 @@ namespace OSEF.AVANCES.SUCURSALES
                     SemanasObra = oSucursal.SemanasObra,
                     FechaAlta = oSucursal.FechaAlta,
                     Estatus = oSucursal.Estatus,
-                    RProvedor= oSucursal.RProvedor
-
+                    RProvedor= oSucursal.RProvedor,
+                    TipoConcepto = oSucursal.TipoConcepto,
+                    EmpresaSupervisora = oSucursal.EmpresaSupervisora,
+                    TipoObra = oSucursal.TipoObra
                 }); 
             }
         }
@@ -249,6 +251,15 @@ namespace OSEF.AVANCES.SUCURSALES
                         break;
                     case "cmbEstatus":
                         oSucursal.Estatus = sd.Value;
+                        break;
+                    case "cmbEmpresaSupervisora":
+                        oSucursal.EmpresaSupervisora = sd.Value == null || sd.Value.Equals("") ? "" : sd.Value;
+                        break;
+                    case "cmbTipoConcepto":
+                        oSucursal.TipoConcepto = sd.Value == null || sd.Value.Equals("") ? "" : sd.Value;
+                        break;
+                    case "txtTipoObra":
+                        oSucursal.TipoObra = sd.Value == null || sd.Value.Equals("") ? "" : sd.Value;
                         break;
                 }
             }

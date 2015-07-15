@@ -126,7 +126,7 @@
                                                         MaxLength="8"
                                                         EnforceMaxLength="true">
                                                     </ext:TextField>
-                                                    <ext:Label ID="lblAnexos" runat="server" Text="Adjuntar Anexos: " StyleSpec="margin-right: 6px;" Cls="xLabelCustomizado">
+                                                    <%--<ext:Label ID="lblAnexos" runat="server" Text="Adjuntar Anexos: " StyleSpec="margin-right: 6px;" Cls="xLabelCustomizado">
                                                     </ext:Label>
                                                     <ext:ImageButton 
                                                         ID="imgbtnAnexos" 
@@ -139,7 +139,19 @@
                                                         ToolTip="Anexos"
                                                         Height="25" 
                                                         Width="25">
-                                                    </ext:ImageButton>
+                                                    </ext:ImageButton>--%>
+                                                     
+                                                    <ext:FileUploadField 
+                                                        ID="fuImagenCliente" 
+                                                        runat="server" 
+                                                        EmptyText="Selecciona una imagen"
+                                                        FieldLabel="Logo"
+                                                        ButtonText=""
+                                                        Icon="ImageAdd">
+                                                        <Listeners>
+                                                            <Change Fn="onFUCliente"></Change>
+                                                        </Listeners> 
+                                                        </ext:FileUploadField>
                                                 </Items>
                                             </ext:FieldContainer>
                                             <ext:FieldContainer

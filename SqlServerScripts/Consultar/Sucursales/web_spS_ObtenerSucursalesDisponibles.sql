@@ -67,7 +67,10 @@ BEGIN
 		A.FinObra,
 		A.SemanasObra,
 		A.FechaAlta,
-		A.Estatus 
+		A.Estatus ,
+		A.TipoConcepto,
+		A.EmpresaSupervisora,
+		A.TipoObra
 	FROM 
 		Sucursales A 
 	WHERE NOT EXISTS(SELECT B.ID FROM Preciarios B  WHERE A.ID = B.Sucursal)

@@ -112,33 +112,6 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.Column cSocio;
         
         /// <summary>
-        /// Control dcFechaNacimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.DateColumn dcFechaNacimiento;
-        
-        /// <summary>
-        /// Control cCorreo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cCorreo;
-        
-        /// <summary>
-        /// Control cTelefono.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Column cTelefono;
-        
-        /// <summary>
         /// Control cEstatus.
         /// </summary>
         /// <remarks>

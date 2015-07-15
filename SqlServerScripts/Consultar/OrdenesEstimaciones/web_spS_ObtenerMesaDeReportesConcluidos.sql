@@ -70,11 +70,13 @@ BEGIN
 		ReferenciaOrden,
 		Facturado,
 		Clasificacion,
-		Revisado
+		Revisado,
+		FacturaMantenimiento,
+		Cliente
 	FROM
 		OrdenesEstimaciones
 	WHERE 
-		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 
+		Estatus = 'CONCLUIDO' AND Mov ='Mesa de Reporte' AND MovEnLinea = 1 AND FacturaMantenimiento = ''
 		AND Facturado <> 1;
 END
 GO

@@ -57,7 +57,10 @@ CREATE PROCEDURE web_spI_InsertarSucursal
 	@FinObra				DATE,
 	@SemanasObra			SMALLINT,
 	@FechaAlta				DATE,
-	@Estatus				VARCHAR(50)
+	@Estatus				VARCHAR(50),
+	@TipoConcepto		VARCHAR(50),
+	@EmpresaSupervisora		VARCHAR(50),
+	@TipoObra		VARCHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -143,7 +146,10 @@ BEGIN
 				FinObra,
 				SemanasObra,
 				FechaAlta,
-				Estatus
+				Estatus,
+				TipoConcepto,
+				EmpresaSupervisora,
+				TipoObra
 			)
 		VALUES (
 				@ID,
@@ -174,7 +180,10 @@ BEGIN
 				@FinObra,
 				@SemanasObra,
 				@FechaAlta,
-				@Estatus
+				@Estatus,
+				@TipoConcepto,
+				@EmpresaSupervisora,
+				@TipoObra
 				)
 END
 GO

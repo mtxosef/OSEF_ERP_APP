@@ -69,7 +69,8 @@ BEGIN
 		@Atendido				VARCHAR(5),
 		@RefenciaOrden			VARCHAR(90),
 		@NoOrden				CHAR(3),
-		@Facturado				BIT;
+		@Facturado				BIT,
+		@Cliente				CHAR(8);
 
 		
 	SELECT
@@ -101,7 +102,8 @@ BEGIN
 		@Atendido = Atendido,
 		@RefenciaOrden = ReferenciaOrden,
 		@NoOrden = NoOrden,
-		@Facturado = Facturado
+		@Facturado = Facturado,
+		@Cliente = Cliente
 	FROM
 		OrdenesEstimaciones
 	WHERE
@@ -150,7 +152,8 @@ BEGIN
 			MovEnLinea,
 			NoOrden,
 			ReferenciaOrden,
-			Facturado
+			Facturado,
+			Cliente
 		)
 	VALUES
 		(
@@ -183,7 +186,8 @@ BEGIN
 			1,
 			@NoOrden,
 			@RefenciaOrden,
-			@Facturado
+			@Facturado,
+			@Cliente
 		)
 	
 	SELECT @IDNuevo = SCOPE_IDENTITY()
