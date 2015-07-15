@@ -157,6 +157,15 @@ namespace OSEF.ERP.APP {
         protected global::Ext.Net.TextField txtfID;
         
         /// <summary>
+        /// Control imID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask imID;
+        
+        /// <summary>
         /// Control cDatosSocioC1.
         /// </summary>
         /// <remarks>
@@ -1136,6 +1145,15 @@ namespace OSEF.ERP.APP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.NumberField nfIngresos;
+        
+        /// <summary>
+        /// Control imIngresos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.InputMask imIngresos;
         
         /// <summary>
         /// Control nfOtrosIngresos.

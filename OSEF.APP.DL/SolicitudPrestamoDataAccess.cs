@@ -195,7 +195,6 @@ namespace OSEF.APP.DL
                     sqlpConyugeAPaterno.Value = DBNull.Value;
                 else
                     sqlpConyugeAPaterno.Value = iSolicitudPrestamo.ConyugeAPaterno;
-                sqlpConyugeAPaterno.Value = iSolicitudPrestamo.ConyugeAPaterno;
 
                 SqlParameter sqlpConyugeAMaterno = new SqlParameter();
                 sqlpConyugeAMaterno.ParameterName = "@ConyugeAMaterno";
@@ -204,7 +203,6 @@ namespace OSEF.APP.DL
                     sqlpConyugeAMaterno.Value = DBNull.Value;
                 else
                     sqlpConyugeAMaterno.Value = iSolicitudPrestamo.ConyugeAMaterno;
-                sqlpConyugeAMaterno.Value = iSolicitudPrestamo.ConyugeAMaterno;
 
                 SqlParameter sqlpConyugeFechaNacimiento = new SqlParameter();
                 sqlpConyugeFechaNacimiento.ParameterName = "@ConyugeFechaNacimiento";
@@ -382,7 +380,8 @@ namespace OSEF.APP.DL
                 sqlpConyugeEmpresaNoInterior.SqlDbType = SqlDbType.VarChar;
                 if (iSolicitudPrestamo.ConyugeEmpresaNoInterior == null)
                     sqlpConyugeEmpresaNoInterior.Value = DBNull.Value;
-                sqlpConyugeEmpresaNoInterior.Value = iSolicitudPrestamo.ConyugeEmpresaNoInterior;
+                else
+                    sqlpConyugeEmpresaNoInterior.Value = iSolicitudPrestamo.ConyugeEmpresaNoInterior;
 
                 SqlParameter sqlpConyugeEmpresaColonia = new SqlParameter();
                 sqlpConyugeEmpresaColonia.ParameterName = "@ConyugeEmpresaColonia";

@@ -120,24 +120,23 @@ namespace OSEF.ERP.APP
         /// <param name="e"></param>
         [DirectMethod]
         protected void imgbtnGuardar_Click(object sender, DirectEventArgs e)
-        {
-            
-                //1. Obtener datos de la Forma y saber si es edición o nuevo
-                string strOrdenEstimacionForma = e.ExtraParams["OrdenEstimacionForma"];
-                string strOrdenEstimacion = e.ExtraParams["OrdenEstimacion"];
-                string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
-                string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
-                string strSucursal = e.ExtraParams["Sucursal"];
-                string strDiasAtencion = e.ExtraParams["diasAtencion"];
-                string strFechaMaxima = e.ExtraParams["fechaMaxima"];
-                //Convertir a decimal los dias de atencion
-                decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
+        {            
+            //1. Obtener datos de la Forma y saber si es edición o nuevo
+            string strOrdenEstimacionForma = e.ExtraParams["OrdenEstimacionForma"];
+            string strOrdenEstimacion = e.ExtraParams["OrdenEstimacion"];
+            string strOrdenEstimacionD = e.ExtraParams["OrdenEstimacionD"];
+            string strcookieEditarOrdenEstimacion = Cookies.GetCookie("cookieEditarOrdenEstimacion").Value;
+            string strSucursal = e.ExtraParams["Sucursal"];
+            string strDiasAtencion = e.ExtraParams["diasAtencion"];
+            string strFechaMaxima = e.ExtraParams["fechaMaxima"];
+            //Convertir a decimal los dias de atencion
+            decimal diasAtencion = Convert.ToDecimal(strDiasAtencion);
                 
-                //2. Serializar el encabezado y el detalle
-                Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
-                OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
-                OrdenEstimacion oOrdenEstimacion = JsonConvert.DeserializeObject<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
-                List<OrdenEstimacionD> lOrdenEstimacionD = JsonConvert.DeserializeObject<List<OrdenEstimacionD>>(strOrdenEstimacionD);
+            //2. Serializar el encabezado y el detalle
+            Dictionary<string, string> dRegistro = JSON.Deserialize<Dictionary<string, string>>(strOrdenEstimacionForma);
+            OrdenEstimacion oFormaOrdenEstimacion = ObtenerObjetoDesdeForma(dRegistro);
+            OrdenEstimacion oOrdenEstimacion = JsonConvert.DeserializeObject<List<OrdenEstimacion>>(strOrdenEstimacion).FirstOrDefault();
+            List<OrdenEstimacionD> lOrdenEstimacionD = JsonConvert.DeserializeObject<List<OrdenEstimacionD>>(strOrdenEstimacionD);
 
                 //Si la fecha maxima viene nula se valida y si no se toma el parametro y se convierte a DateTime
                 if (strFechaMaxima.Equals("") || strFechaMaxima.Equals("null"))

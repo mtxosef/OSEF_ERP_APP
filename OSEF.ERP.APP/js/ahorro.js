@@ -183,8 +183,8 @@ var ncMonetario_Renderer = function (valor) {
 //Evento lanzado al cargar el store de Ahorro Encabezado
 var sAhorro_Load = function (store, registros, successful, opciones) {
     //1. Comenzar con el registro
-    store.insert(0, {});
-    console.log(store);
+    //store.insert(0, {});
+    //console.log(store);
 };
 
 //Se lanza por cada elemento agregado al Store de Movimientos

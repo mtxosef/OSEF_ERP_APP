@@ -220,6 +220,13 @@
                                                                 AutoFocus="true"
                                                                 EnforceMaxLength="true"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Plugins>
+                                                                    <ext:InputMask
+                                                                        ID="imID"
+                                                                        runat="server"
+                                                                        Mask="SP999999"
+                                                                        AllowInvalid="true" />
+                                                                </Plugins>
                                                             </ext:TextField>
                                                         </Items>
                                                     </ext:Container>
@@ -1368,11 +1375,11 @@
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;"
                                                                 MaxLength="5"
                                                                 MinValue="0"
-                                                                MaxValue="99999"
+                                                                MaxValue="32000"
                                                                 AllowDecimals="false"
                                                                 AllowExponential="false"
                                                                 Step="1"
-                                                                Note="Ejemplo: 44889">
+                                                                Note="Ejemplo: 24889">
                                                             </ext:NumberField>
                                                         </Items>
                                                     </ext:Container>
@@ -1419,6 +1426,12 @@
                                                                 MinValue="0"
                                                                 MaxValue="999999"
                                                                 StyleSpec="margin-right: 6px; margin-bottom: 6px;">
+                                                                <Plugins>
+                                                                    <ext:InputMask
+                                                                        ID="imIngresos"
+                                                                        runat="server">
+                                                                    </ext:InputMask>
+                                                                </Plugins>
                                                                 <Listeners>
                                                                     <Blur Fn="nfIngresos_Blur" />
                                                                 </Listeners>

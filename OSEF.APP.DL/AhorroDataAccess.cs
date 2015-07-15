@@ -18,10 +18,10 @@ namespace OSEF.APP.DL
         #region Insertar
 
         /// <summary>
-        /// Método que inserta un nuevo registro a la tabla de Articulos
+        /// Método que inserta un nuevo registro a la tabla de Ahorros
         /// </summary>
-        /// <param name="iArticulo"></param>
-        public static int Insertar(Articulo iArticulo)
+        /// <param name="iAhorro"></param>
+        public static int Insertar(Ahorro iAhorro)
         {
             try
             {
@@ -30,29 +30,65 @@ namespace OSEF.APP.DL
                 SqlCommand sqlcComando = new SqlCommand();
                 sqlcComando.Connection = sqlcConectar;
                 sqlcComando.CommandType = CommandType.StoredProcedure;
-                sqlcComando.CommandText = "web_spI_InsertarArticulo";
+                sqlcComando.CommandText = "web_spI_InsertarAhorro";
 
                 //2. Declarar los parametros
                 SqlParameter sqlpID = new SqlParameter();
                 sqlpID.ParameterName = "@ID";
-                sqlpID.SqlDbType = SqlDbType.Char;
-                sqlpID.Size = 2;
-                sqlpID.Value = iArticulo.ID;
+                sqlpID.SqlDbType = SqlDbType.Int;
+                sqlpID.Direction = ParameterDirection.Output;
 
-                SqlParameter sqlpCorta = new SqlParameter();
-                sqlpCorta.ParameterName = "@Corta";
-                sqlpCorta.SqlDbType = SqlDbType.VarChar;
-                sqlpCorta.Value = iArticulo.Corta;
+                SqlParameter sqlpMov = new SqlParameter();
+                sqlpMov.ParameterName = "@Mov";
+                sqlpMov.SqlDbType = SqlDbType.VarChar;
+                sqlpMov.Value = iAhorro.Mov;
 
-                SqlParameter sqlpDescripcion = new SqlParameter();
-                sqlpDescripcion.ParameterName = "@Descripcion";
-                sqlpDescripcion.SqlDbType = SqlDbType.VarChar;
-                sqlpDescripcion.Value = iArticulo.Descripcion;
+                SqlParameter sqlpMovID = new SqlParameter();
+                sqlpMovID.ParameterName = "@MovID";
+                sqlpMovID.SqlDbType = SqlDbType.VarChar;
+                sqlpMovID.Value = iAhorro.MovId;
+
+                SqlParameter sqlpFechaEmision = new SqlParameter();
+                sqlpFechaEmision.ParameterName = "@FechaEmision";
+                sqlpFechaEmision.SqlDbType = SqlDbType.SmallDateTime;
+                sqlpFechaEmision.Value = iAhorro.FechaEmision;
+
+                SqlParameter sqlpCliente = new SqlParameter();
+                sqlpCliente.ParameterName = "@Cliente";
+                sqlpCliente.SqlDbType = SqlDbType.Char;
+                sqlpCliente.Size = 8;
+                sqlpCliente.Value = iAhorro.Cliente;
+
+                SqlParameter sqlpImporte = new SqlParameter();
+                sqlpImporte.ParameterName = "@Importe";
+                sqlpImporte.SqlDbType = SqlDbType.Money;
+                sqlpImporte.Value = iAhorro.Importe;
+
+                SqlParameter sqlpSaldo = new SqlParameter();
+                sqlpSaldo.ParameterName = "@Saldo";
+                sqlpSaldo.SqlDbType = SqlDbType.Money;
+                sqlpSaldo.Value = iAhorro.Saldo;
+
+                SqlParameter sqlpUsuario = new SqlParameter();
+                sqlpUsuario.ParameterName = "@Usuario";
+                sqlpUsuario.SqlDbType = SqlDbType.VarChar;
+                sqlpUsuario.Value = iAhorro.Usuario;
+
+                SqlParameter sqlpEstatus = new SqlParameter();
+                sqlpEstatus.ParameterName = "@Estatus";
+                sqlpEstatus.SqlDbType = SqlDbType.VarChar;
+                sqlpEstatus.Value = iAhorro.Estatus;
 
                 //3. Agregar los parametros al comando
                 sqlcComando.Parameters.Add(sqlpID);
-                sqlcComando.Parameters.Add(sqlpCorta);
-                sqlcComando.Parameters.Add(sqlpDescripcion);
+                sqlcComando.Parameters.Add(sqlpMov);
+                sqlcComando.Parameters.Add(sqlpMovID);
+                sqlcComando.Parameters.Add(sqlpFechaEmision);
+                sqlcComando.Parameters.Add(sqlpCliente);
+                sqlcComando.Parameters.Add(sqlpImporte);
+                sqlcComando.Parameters.Add(sqlpSaldo);
+                sqlcComando.Parameters.Add(sqlpUsuario);
+                sqlcComando.Parameters.Add(sqlpEstatus);
 
                 //4. Abrir la conexión
                 sqlcComando.Connection.Open();
@@ -68,7 +104,7 @@ namespace OSEF.APP.DL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error capa de datos (public static int Insertar(Articulo " + iArticulo.ID + ")): " + ex.Message);
+                throw new Exception("Error capa de datos (public static int Insertar(Articulo " + iAhorro.Mov + ")): " + ex.Message);
             }
         }
 

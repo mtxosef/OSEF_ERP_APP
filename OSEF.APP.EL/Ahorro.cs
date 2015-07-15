@@ -17,6 +17,8 @@ namespace OSEF.APP.EL
         string movid;
         DateTime fechaemision;
         string cliente;
+        decimal importe;
+        decimal saldo;
         string usuario;
         string estatus;
 
@@ -54,6 +56,18 @@ namespace OSEF.APP.EL
         {
             get { return cliente; }
             set { cliente = value; }
+        }
+
+        public decimal Importe
+        {
+            get { return importe; }
+            set { importe = value; }
+        }
+
+        public decimal Saldo
+        {
+            get { return saldo; }
+            set { saldo = value; }
         }
 
         public string Usuario

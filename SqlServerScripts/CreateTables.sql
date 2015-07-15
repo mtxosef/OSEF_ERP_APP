@@ -759,6 +759,7 @@ CREATE TABLE FirmasReportes(
 --DROP TABLE OrdenesEstimaciones
 --DROP TABLE OrdenesEstimacionesD
 --DROP TABLE CodigoPPTA
-
+DROP TABLE AhorrosD
+DROP TABLE Ahorros
 
 
